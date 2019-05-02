@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Kube Scheduler调度扩展 - 小碗汤的博客 | Liabio Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Liabio" /><meta name="description" content="Kubernetes 自带了一个默认调度器kube-scheduler，其内置了很多节点预选和优选的调度算法，一般调度场景下可以满足要求。但是在一些特殊场景下，" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.55.4 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://liabio.github.io/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Kube Scheduler调度扩展" />
+<meta property="og:description" content="Kubernetes 自带了一个默认调度器kube-scheduler，其内置了很多节点预选和优选的调度算法，一般调度场景下可以满足要求。但是在一些特殊场景下，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://liabio.github.io/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/" />
+<meta property="article:published_time" content="2019-05-02T23:44:21&#43;08:00"/>
+<meta property="article:modified_time" content="2019-05-02T23:44:21&#43;08:00"/>
+
+<meta itemprop="name" content="Kube Scheduler调度扩展">
+<meta itemprop="description" content="Kubernetes 自带了一个默认调度器kube-scheduler，其内置了很多节点预选和优选的调度算法，一般调度场景下可以满足要求。但是在一些特殊场景下，">
+
+
+<meta itemprop="datePublished" content="2019-05-02T23:44:21&#43;08:00" />
+<meta itemprop="dateModified" content="2019-05-02T23:44:21&#43;08:00" />
+<meta itemprop="wordCount" content="2417">
+
+
+
+<meta itemprop="keywords" content="Kubernetes,Scheduler,Golang," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Kube Scheduler调度扩展"/>
+<meta name="twitter:description" content="Kubernetes 自带了一个默认调度器kube-scheduler，其内置了很多节点预选和优选的调度算法，一般调度场景下可以满足要求。但是在一些特殊场景下，"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Even</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Even</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Kube Scheduler调度扩展</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-05-02 </span>
+        <div class="post-category">
+            <a href="/categories/%E4%B8%AD%E6%96%87/"> 中文 </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#背景">背景</a></li>
+<li><a href="#整体架构">整体架构</a></li>
+<li><a href="#实现步骤">实现步骤</a>
+<ul>
+<li><a href="#实现扩展调度程序代码">实现扩展调度程序代码</a></li>
+<li><a href="#默认调度器部署">默认调度器部署</a></li>
+<li><a href="#扩展调度器镜像制作和部署">扩展调度器镜像制作和部署</a></li>
+<li><a href="#验证">验证</a></li>
+</ul></li>
+<li><a href="#从而可以通过编写扩展调度程序-对默认调度器的预选和优选算法进行扩展">从而可以通过编写扩展调度程序，对默认调度器的预选和优选算法进行扩展。</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<p>Kubernetes 自带了一个默认调度器kube-scheduler，其内置了很多节点预选和优选的调度算法，一般调度场景下可以满足要求。但是在一些特殊场景下，默认调度器不能满足我们复杂的调度需求。我们就需要对调度器进行扩展，以达到调度适合业务场景的目的。</p>
+
+<h2 id="背景">背景</h2>
+
+<p>中间件redis容器化后，需要两主不能在同一个节点上，一对主从不能在同一节点上；elasticsearch容器化后，两个data实例不能在同一节点上。在这类场景下，默认调度器内置的预选、优选算法不能满足需求，我们有以下三种选择：</p>
+
+<ul>
+<li><p>将新的调度算法添加到默认调度程序中，并重新编译镜像，最终该镜像运行的实例作为kubernetes集群调度器；</p></li>
+
+<li><p>参考kube-scheduler实现满足自己业务场景的调度程序，并编译镜像，将该程序作为独立的调度器运行到kubernetes集群内，需要用该调度器调度的pod实例，在spec.schedulerName里指定该调度器；</p></li>
+</ul>
+
+<p><img src="http://pqek9gnem.bkt.clouddn.com/20190426155726.png" alt="" /></p>
+
+<ul>
+<li>实现“调度扩展程序“：默认调度器kube-scheduler在进行预选时会调用该扩展程序进行过滤节点；在优选时会调用该扩展程序进行给节点打分，或者在bind操作时，调用该扩展器进行bind操作。</li>
+</ul>
+
+<p><strong>对上述三种方式进行评估：</strong></p>
+
+<p>第一种：将自己的调度算法添加到默认调度器kube-scheduler中，对原生代码侵入性较高，而且随着kubernetes版本升级，维护成本也较高；</p>
+
+<p>第二种：默认调度器里内置了很多优秀调度算法，如：检查节点资源是否充足；端口是否占用；volume是否被其他pod挂载；亲和性；均衡节点资源利用等，如果完全使用自己开发的调度器程序，可能在达到了实际场景调度需求同时，失去更佳的调度方案，除非集成默认调度器中的算法到自己独立调度程序中，但这无疑是不现实的；</p>
+
+<p>第三种：通过启动参数的policy配置，选用某些默认调度器中的预选、优选调度算法的同时，也可以调用外部扩展调度程序的算法，计算得到最优的调度节点，无需修改kube-scheduler代码，只需要在启动参数中增加配置文件即可将默认调度程序和扩展调度程序相互关联。</p>
+
+<p>可以参考：</p>
+
+<p><a href="https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/scheduler_extender.md">https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/scheduler_extender.md</a></p>
+
+<p>故采用第三种：实现扩展调度程序的方案。</p>
+
+<h2 id="整体架构">整体架构</h2>
+
+<p><img src="http://pqek9gnem.bkt.clouddn.com/20190426171921.png" alt="" /></p>
+
+<p>kube-scheduler在调度pod实例时，首先获取到Node1、Node2、Node3三个节点信息，进行默认的预选阶段，筛选满足要求的节点，其次再调用扩展程序中的预选算法，选出剩下的节点，假设预选阶段Node3上资源不足被过滤掉，预选结束后只剩Node1和Node2；Node1和Node2进入kube-scheduler默认的优选阶段进行节点打分，其次再调用扩展调度程序中的优选算法进行打分，kube-scheduler会将所有算法的打分结果进行加权求和，获得分数最高的节点作为pod最终bind节点，然后kube-scheduler调用apiserver进行bind操作。</p>
+
+<h2 id="实现步骤">实现步骤</h2>
+
+<h3 id="实现扩展调度程序代码">实现扩展调度程序代码</h3>
+
+<p>编写扩展调度器程序代码，根据实际业务调度场景编写预选逻辑、优选逻辑：</p>
+
+<p><img src="http://pqek9gnem.bkt.clouddn.com/20190427101526.png" alt="" /></p>
+
+<p>实现预选接口，入参为schedulerapi.ExtenderArgs，出参为schedulerapi.ExtenderFilterResult：</p>
+
+<p><img src="http://pqek9gnem.bkt.clouddn.com/20190427100915.png" alt="" /></p>
+
+<p>实现优选接口，入参为schedulerapi.ExtenderArgs，出参为schedulerapi.HostPriorityList：</p>
+
+<p><img src="http://pqek9gnem.bkt.clouddn.com/20190427101929.png" alt="" /></p>
+
+<p>暴露http接口：</p>
+
+<p><img src="http://pqek9gnem.bkt.clouddn.com/20190427101845.png" alt="" /></p>
+
+<p><strong>参考：</strong></p>
+
+<p><a href="https://github.com/ll837448792/k8s-scheduler-extender-example">https://github.com/ll837448792/k8s-scheduler-extender-example</a></p>
+
+<h3 id="默认调度器部署">默认调度器部署</h3>
+
+<p>由于kubernetes集群内已经有了一个名为default-scheduler的默认调度器，为了不影响集群正常调度功能，下面会创建一个名为my-kube-scheduler的调度器，这个调度器和default-scheduler除了启动参数不一样外，镜像无差别。</p>
+
+<p>1、创建一个名为my-scheduler-config的configmaps，data下的config.yaml文件指定了调度器的一些参数，包括leader选举，调度算法策略的选择（指定另一个configmaps），以及指定调度器的名称为my-kube-scheduler。</p>
+
+<p>相应的创建一个my-scheduler-policy的configmaps，里面指定了选择哪些预选、优选策略，以及外部扩展调度程序的urlPrefix、扩展预选URI、扩展优选URI、扩展pod优先级抢占URI、扩展bind URI、扩展优选算法的权重等。</p>
+
+<p>以保证my-kube-scheduler和扩展调度程序的通信。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">apiVersion<span class="p">:</span><span class="w"> </span>v1<span class="w">
+</span><span class="w"></span>kind<span class="p">:</span><span class="w"> </span>ConfigMap<span class="w">
+</span><span class="w"></span>metadata<span class="p">:</span><span class="w">
+</span><span class="w">  </span>name<span class="p">:</span><span class="w"> </span>my-scheduler-config<span class="w">
+</span><span class="w">  </span>namespace<span class="p">:</span><span class="w"> </span>kube-system<span class="w">
+</span><span class="w"></span>data<span class="p">:</span><span class="w">
+</span><span class="w">  </span>config.yaml<span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="sd">    apiVersion: kubescheduler.config.k8s.io/v1alpha1</span><span class="w">
+</span><span class="w">    </span>kind<span class="p">:</span><span class="w"> </span>KubeSchedulerConfiguration<span class="w">
+</span><span class="w">    </span>schedulerName<span class="p">:</span><span class="w"> </span>my-kube-scheduler<span class="w">
+</span><span class="w">    </span>algorithmSource<span class="p">:</span><span class="w">
+</span><span class="w">      </span>policy<span class="p">:</span><span class="w">
+</span><span class="w">        </span>configMap<span class="p">:</span><span class="w">
+</span><span class="w">          </span>namespace<span class="p">:</span><span class="w"> </span>kube-system<span class="w">
+</span><span class="w">          </span>name<span class="p">:</span><span class="w"> </span>my-scheduler-policy<span class="w">
+</span><span class="w">    </span>leaderElection<span class="p">:</span><span class="w">
+</span><span class="w">      </span>leaderElect<span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">      </span>lockObjectName<span class="p">:</span><span class="w"> </span>my-kube-scheduler<span class="w">
+</span><span class="w">      </span>lockObjectNamespace<span class="p">:</span><span class="w"> </span>kube-system<span class="w">
+</span><span class="w"></span>---<span class="w">
+</span><span class="w"></span>apiVersion<span class="p">:</span><span class="w"> </span>v1<span class="w">
+</span><span class="w"></span>kind<span class="p">:</span><span class="w"> </span>ConfigMap<span class="w">
+</span><span class="w"></span>metadata<span class="p">:</span><span class="w">
+</span><span class="w">  </span>name<span class="p">:</span><span class="w"> </span>my-scheduler-policy<span class="w">
+</span><span class="w">  </span>namespace<span class="p">:</span><span class="w"> </span>kube-system<span class="w">
+</span><span class="w"></span>data<span class="p">:</span><span class="w">
+</span><span class="w"> </span>policy.cfg<span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="sd">  {</span><span class="w">
+</span><span class="w">    </span><span class="s2">&#34;kind&#34;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Policy&#34;</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="s2">&#34;apiVersion&#34;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;v1&#34;</span><span class="p">,</span><span class="w">
+</span><span class="w">    </span><span class="s2">&#34;predicates&#34;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+</span><span class="w">      </span>{<span class="s2">&#34;name&#34;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;PodFitsHostPorts&#34;</span>}<span class="p">,</span><span class="w">
+</span><span class="w">      </span>{<span class="s2">&#34;name&#34;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;PodFitsResources&#34;</span>}<span class="p">,</span><span class="w">
+</span><span class="w">      </span>{<span class="s2">&#34;name&#34;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;NoDiskConflict&#34;</span>}<span class="p">,</span><span class="w">
+</span><span class="w">      </span>{<span class="s2">&#34;name&#34;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;MatchNodeSelector&#34;</span>}<span class="p">,</span><span class="w">
+</span><span class="w">      </span>{<span class="s2">&#34;name&#34;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;HostName&#34;</span>}<span class="w">
+</span><span class="w">    </span><span class="p">],</span><span class="w">
+</span><span class="w">    </span><span class="s2">&#34;priorities&#34;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+</span><span class="w">      </span>{<span class="s2">&#34;name&#34;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;LeastRequestedPriority&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;weight&#34;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="m">1</span>}<span class="p">,</span><span class="w">
+</span><span class="w">      </span>{<span class="s2">&#34;name&#34;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;BalancedResourceAllocation&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;weight&#34;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="m">1</span>}<span class="p">,</span><span class="w">
+</span><span class="w">      </span>{<span class="s2">&#34;name&#34;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;ServiceSpreadingPriority&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;weight&#34;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="m">1</span>}<span class="p">,</span><span class="w">
+</span><span class="w">      </span>{<span class="s2">&#34;name&#34;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;EqualPriority&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;weight&#34;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="m">1</span>}<span class="w">
+</span><span class="w">    </span><span class="p">],</span><span class="w">
+</span><span class="w">    </span><span class="s2">&#34;extenders&#34;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span>{<span class="w">
+</span><span class="w">      </span><span class="s2">&#34;urlPrefix&#34;</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;http://10.168.107.12:80/scheduler&#34;</span><span class="p">,</span><span class="w">
+</span><span class="w">      </span><span class="s2">&#34;filterVerb&#34;</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;predicates/always_true&#34;</span><span class="p">,</span><span class="w">
+</span><span class="w">      </span><span class="s2">&#34;prioritizeVerb&#34;</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;priorities/zero_score&#34;</span><span class="p">,</span><span class="w">
+</span><span class="w">      </span><span class="s2">&#34;preemptVerb&#34;</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;preemption&#34;</span><span class="p">,</span><span class="w">
+</span><span class="w">      </span><span class="s2">&#34;bindVerb&#34;</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="p">,</span><span class="w">
+</span><span class="w">      </span><span class="s2">&#34;weight&#34;</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w">
+</span><span class="w">      </span><span class="s2">&#34;enableHttps&#34;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+</span><span class="w">      </span><span class="s2">&#34;nodeCacheCapable&#34;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="w">    </span>}<span class="p">],</span><span class="w">
+</span><span class="w">    </span><span class="s2">&#34;hardPodAffinitySymmetricWeight&#34;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span><span class="w">  </span>}</code></pre></td></tr></table>
+</div>
+</div>
+<p>2、在my-kube-scheduler yaml文件中将configmaps：my-scheduler-config以文件的形式挂载到容器内/my-scheduler目录下，并在启动参数中指定&ndash;config=/my-scheduler/config.yaml，使用和默认调度器一样的镜像。</p>
+
+<p><img src="http://pqek9gnem.bkt.clouddn.com/20190426180012.png" alt="" /></p>
+
+<p>增加挂载：</p>
+
+<p><img src="http://pqek9gnem.bkt.clouddn.com/20190426194520.png" alt="" /></p>
+
+<p><img src="http://pqek9gnem.bkt.clouddn.com/20190426194610.png" alt="" /></p>
+
+<h3 id="扩展调度器镜像制作和部署">扩展调度器镜像制作和部署</h3>
+
+<p>1、编译扩展调度程序my-scheduler-extender镜像，以下为Dockerfile：</p>
+
+<p><img src="http://pqek9gnem.bkt.clouddn.com/20190426200003.png" alt="" /></p>
+
+<p>推送my-scheduler-extender镜像到harbor：</p>
+
+<p><img src="http://pqek9gnem.bkt.clouddn.com/20190426200105.png" alt="" /></p>
+
+<p>2、创建外部扩展程序my-scheduler-extender的deployment，如下为yaml描述：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">apiVersion<span class="p">:</span><span class="w"> </span>apps/v1<span class="w">
+</span><span class="w"></span>kind<span class="p">:</span><span class="w"> </span>Deployment<span class="w">
+</span><span class="w"></span>metadata<span class="p">:</span><span class="w">
+</span><span class="w">  </span>name<span class="p">:</span><span class="w"> </span>my-scheduler-extender<span class="w">
+</span><span class="w">  </span>namespace<span class="p">:</span><span class="w"> </span>kube-system<span class="w">
+</span><span class="w">  </span>labels<span class="p">:</span><span class="w">
+</span><span class="w">    </span>app<span class="p">:</span><span class="w"> </span>my-scheduler-extender<span class="w">
+</span><span class="w"></span>spec<span class="p">:</span><span class="w">
+</span><span class="w">  </span>replicas<span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">  </span>selector<span class="p">:</span><span class="w">
+</span><span class="w">    </span>matchLabels<span class="p">:</span><span class="w">
+</span><span class="w">      </span>app<span class="p">:</span><span class="w"> </span>my-scheduler-extender<span class="w">
+</span><span class="w">  </span>template<span class="p">:</span><span class="w">
+</span><span class="w">    </span>metadata<span class="p">:</span><span class="w">
+</span><span class="w">      </span>labels<span class="p">:</span><span class="w">
+</span><span class="w">        </span>app<span class="p">:</span><span class="w"> </span>my-scheduler-extender<span class="w">
+</span><span class="w">    </span>spec<span class="p">:</span><span class="w">
+</span><span class="w">      </span>containers<span class="p">:</span><span class="w">
+</span><span class="w">      </span>-<span class="w"> </span>name<span class="p">:</span><span class="w"> </span>my-scheduler-extender<span class="w">
+</span><span class="w">        </span>image<span class="p">:</span><span class="w"> </span><span class="m">192.168</span>.<span class="m">26.46</span>/k8s-deploy/my-scheduler-extender<span class="p">:</span>v1.<span class="m">0</span><span class="w">
+</span><span class="w">        </span>imagePullPolicy<span class="p">:</span><span class="w"> </span>Always<span class="w">
+</span><span class="w">        </span>livenessProbe<span class="p">:</span><span class="w">
+</span><span class="w">          </span>httpGet<span class="p">:</span><span class="w">
+</span><span class="w">            </span>path<span class="p">:</span><span class="w"> </span>/version<span class="w">
+</span><span class="w">            </span>port<span class="p">:</span><span class="w"> </span><span class="m">80</span><span class="w">
+</span><span class="w">        </span>readinessProbe<span class="p">:</span><span class="w">
+</span><span class="w">          </span>httpGet<span class="p">:</span><span class="w">
+</span><span class="w">            </span>path<span class="p">:</span><span class="w"> </span>/version<span class="w">
+</span><span class="w">            </span>port<span class="p">:</span><span class="w"> </span><span class="m">80</span><span class="w">
+</span><span class="w">        </span>ports<span class="p">:</span><span class="w">
+</span><span class="w">          </span>-<span class="w"> </span>containerPort<span class="p">:</span><span class="w"> </span><span class="m">80</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="验证">验证</h3>
+
+<p>查看my-kube-scheduler pod日志，加载到了policy里的extender信息，获取到了扩展调度器的接口地址：</p>
+
+<p><img src="http://pqek9gnem.bkt.clouddn.com/20190426200608.png" alt="" /></p>
+
+<p>创建一个nginx的pod，指定schedulerName为my-kube-scheduler：</p>
+
+<p><img src="http://pqek9gnem.bkt.clouddn.com/20190426195151.png" alt="" /></p>
+
+<p>查看扩展调度器pod日志，发现默认调度器会调用extender扩展调度器，如下为extender日志打印的入参、出参：</p>
+
+<p><img src="http://pqek9gnem.bkt.clouddn.com/20190426200413.png" alt="" /></p>
+
+<h2 id="从而可以通过编写扩展调度程序-对默认调度器的预选和优选算法进行扩展">从而可以通过编写扩展调度程序，对默认调度器的预选和优选算法进行扩展。</h2>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Liabio</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-05-02
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License" target="_blank">Creative Commons Attribution-ShareAlike License</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://liabio.github.io/img/wechat-qr-code.png">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="https://liabio.github.io/img/alipay-qr-code.png">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/kubernetes/">Kubernetes</a>
+          <a href="/tags/scheduler/">Scheduler</a>
+          <a href="/tags/golang/">Golang</a>
+          </div>
+      <nav class="post-nav">
+        
+        
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2019-05-02 23:44:21 \x2b0800 CST',
+        title: 'Kube Scheduler调度扩展',
+        clientID: '51d38d218fbea4c2547b',
+        clientSecret: '3511f0e367e332ac83bc593696d8bd557437c068',
+        repo: 'liabio.github.io',
+        owner: 'liabio',
+        admin: ['liabio'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="ll837448792@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/liang.li.96592836" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="https://github.com/liabio" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/li-liang-45-48" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+      <a href="http://localhost:1313" class="iconfont icon-bilibili" title="bilibili"></a>
+      <a href="https://www.jianshu.com/u/33c582f040ae" class="iconfont icon-jianshu" title="jianshu"></a>
+      <a href="https://mp.weixin.qq.com/s/04i5paoaWlbY9-v6qv_COQ" class="iconfont icon-weixingongzhonghao" title="weixingongzhonghao"></a>
+      <a href="https://segmentfault.com/u/smallsoup/articles" class="iconfont icon-segmentfault" title="segmentfault"></a>
+      <a href="https://juejin.im/user/5b0c1a17f265da08df28648c" class="iconfont icon-juejin" title="juejin"></a>
+      <a href="https://me.csdn.net/ll837448792" class="iconfont icon-csdn" title="csdn"></a>
+      <a href="https://www.cnblogs.com/liabio/" class="iconfont icon-blog" title="blog"></a>
+  <a href="https://liabio.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Liabio</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
