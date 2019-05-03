@@ -1,11 +1,10 @@
-<?xml-stylesheet type="text/xsl" href="https://liabio.github.io/sitemap.xsl"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
     <loc>https://liabio.github.io/about/</loc>
     <lastmod>2019-05-03T10:45:32+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
   </url>
   
   <url>
@@ -29,8 +28,6 @@
   <url>
     <loc>https://liabio.github.io/post/2019-05-03-hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2019-05-03T10:48:21+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
   </url>
   
   <url>
@@ -66,8 +63,6 @@
   <url>
     <loc>https://liabio.github.io/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/</loc>
     <lastmod>2019-05-02T23:44:21+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
   </url>
   
   <url>

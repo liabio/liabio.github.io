@@ -1,226 +1,230 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-cn">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>小碗汤的博客 | Liabio Blog</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.55.4" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+    <title>小碗汤的博客 | Liabio Blog | 专注于Java、Go语言(Golang)、Docker、Kubernetes、软件架构</title>
+    <meta property="og:title" content="小碗汤的博客 | Liabio Blog | 专注于Java、Go语言(Golang)、Docker、Kubernetes、软件架构">
+    <meta property="og:type" content="website">
+    <meta name="Keywords" content="golang,go语言,go语言笔记,小碗汤,docker,kubernetes,k8s,java,博客,python,软件架构,公众号,小程序,Hugo,theme,maupassant">
+    <meta name="description" content="专注于IT互联网，包括但不限于Go语言(golang)、Java、docker、kubernetes、Python、抖音分析、软件架构等">
+    <meta property="og:url" content="https://liabio.github.io/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="alternate" type="application/rss+xml+xml" href="https://liabio.github.io/index.xml" title="小碗汤的博客 | Liabio Blog" />
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
-<meta name="author" content="Liabio" /><meta name="description" content="Hugo theme even example site." /><meta name="keywords" content="Hugo, theme, even" />
-
-
-
-
-
-
-<meta name="generator" content="Hugo 0.55.4 with even 4.0.0" />
+    
 
 
-<link rel="canonical" href="https://liabio.github.io/" />
-  <link href="https://liabio.github.io/index.xml" rel="alternate" type="application/rss+xml" title="小碗汤的博客 | Liabio Blog" />
-  <link href="https://liabio.github.io/index.xml" rel="feed" type="application/rss+xml" title="小碗汤的博客 | Liabio Blog" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
-
-
-<meta property="og:title" content="小碗汤的博客 | Liabio Blog" />
-<meta property="og:description" content="Hugo theme even example site." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://liabio.github.io/" />
-
-<meta property="og:updated_time" content="2019-05-03T10:48:21&#43;08:00"/>
-
-<meta itemprop="name" content="小碗汤的博客 | Liabio Blog">
-<meta itemprop="description" content="Hugo theme even example site.">
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="小碗汤的博客 | Liabio Blog"/>
-<meta name="twitter:description" content="Hugo theme even example site."/>
-
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-
+    
+    
 </head>
+
+
 <body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">Even</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">Home</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">Archives</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">About</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">Even</a>
-</div>
-
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">Home</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">Archives</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">About</a>
-      </li>
-  </ul>
-</nav>
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <section id="posts" class="posts">
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2019-05-03-hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">Hugo搭建博客</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-05-03 </span>
-      <div class="post-category">
-          <a href="/categories/blog/"> Blog </a>
-          </div>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      在编译时报错如下： 1 2 3 Building sites … ERROR 2019/05/03 10:36:45 Failed to read Git log: fatal: Not a git repository (or any of the parent d irectories): .git Building sites … ERROR 2019/05/03 10:45:16 Failed to read Git log: fatal: your current branch &#39;master&#39; does not have a ny commits yet 需要先在站点根目录执行
-    </div>
-    <div class="read-more">
-      <a href="/post/2019-05-03-hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/">Kube Scheduler调度扩展</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2019-05-02 </span>
-      <div class="post-category">
-          <a href="/categories/kubernetes/"> Kubernetes </a>
-          </div>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Kubernetes 自带了一个默认调度器kube-scheduler，其内置了很多节点预选和优选的调度算法，一般调度场景下可以满足要求。但是在一些特殊场景下，
-    </div>
-    <div class="read-more">
-      <a href="/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    </section>
-  
-  <nav class="pagination">
-    
-    
-  </nav>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <h1>
+                        <a id="logo" href="https://liabio.github.io">
+                            小碗汤的博客 | Liabio Blog
+                        </a>
+                    </h1>
+                
+                <p class="description">专注于Java、Go语言(Golang)、Docker、Kubernetes、软件架构</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liabio.github.io">首页</a>
+                    
+                    <a class="current" href="https://liabio.github.io/" title="首页">首页</a>
+                    
+                    <a  href="https://liabio.github.io/post/" title="归档">归档</a>
+                    
+                    <a  href="https://liabio.github.io/tools/" title="工具">工具</a>
+                    
+                    <a  href="https://liabio.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liabio.github.io/about/" title="About">About</a>
+                    
+                </nav>
+            </div>
         </div>
-        
-
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="https://www.facebook.com/liang.li.96592836" class="iconfont icon-facebook" title="facebook"></a>
-      <a href="https://github.com/liabio" class="iconfont icon-github" title="github"></a>
-      <a href="https://www.zhihu.com/people/li-liang-45-48" class="iconfont icon-zhihu" title="zhihu"></a>
-      <a href="https://www.jianshu.com/u/33c582f040ae" class="iconfont icon-jianshu" title="jianshu"></a>
-      <a href="https://mp.weixin.qq.com/s/04i5paoaWlbY9-v6qv_COQ" class="iconfont icon-weixingongzhonghao" title="weixingongzhonghao"></a>
-      <a href="https://segmentfault.com/u/smallsoup/articles" class="iconfont icon-segmentfault" title="segmentfault"></a>
-      <a href="https://juejin.im/user/5b0c1a17f265da08df28648c" class="iconfont icon-juejin" title="juejin"></a>
-      <a href="https://me.csdn.net/ll837448792" class="iconfont icon-csdn" title="csdn"></a>
-      <a href="https://www.cnblogs.com/liabio/" class="iconfont icon-blog" title="blog"></a>
-  <a href="https://liabio.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
-
-<div class="copyright">
-  <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2017 - 
-    2019
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">Liabio</span>
-  </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
     </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+</header>
+
+
+<div id="body">
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://liabio.github.io/about/" title="About" >About</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年5月3日
+                            </date>
+                            
+                            <div class="post-content">
+                                冰冻三尺 非一日之寒 积土成山 非斯须之作 Hey，我是小碗汤，一只程序猿，主要从事Java、Golang、Docker、Kubernetes开发工……
+                            </div>
+                            <p class="readmore"><a href="https://liabio.github.io/about/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://liabio.github.io/post/2019-05-03-hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" title="Hugo搭建博客" >Hugo搭建博客</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年5月3日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/blog">Blog</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                在编译时报错如下： 1 2 3 Building sites … ERROR 2019/05/03 10:36:45 Failed to read Git log: fatal: Not a git repository (or any of the parent d irectories): .git Building sites … ERROR 2019/05/03 10:45:16 Failed to read Git log: fatal: your current branch &#39;master&#39; does not have a ny commits yet 需要先在站点根目录执行……
+                            </div>
+                            <p class="readmore"><a href="https://liabio.github.io/post/2019-05-03-hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://liabio.github.io/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/" title="Kube Scheduler调度扩展" >Kube Scheduler调度扩展</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年5月2日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/kubernetes">Kubernetes</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                Kubernetes 自带了一个默认调度器kube-scheduler，其内置了很多节点预选和优选的调度算法，一般调度场景下可以满足要求。但是在一些特殊场景下，……
+                            </div>
+                            <p class="readmore"><a href="https://liabio.github.io/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/">阅读全文</a></p>
+                        </article>
+                    
+                    
 
 
 
+
+
+                </div>
+            </div>
+
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liabio.github.io">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-05-03-hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" title="Hugo搭建博客">Hugo搭建博客</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/" title="Kube Scheduler调度扩展">Kube Scheduler调度扩展</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liabio.github.io/categories/blog/">blog(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(1)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://liabio.github.io/tags/golang/">golang</a>
+    
+    <a href="https://liabio.github.io/tags/kubernetes/">kubernetes</a>
+    
+    <a href="https://liabio.github.io/tags/scheduler/">scheduler</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liabio.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2019 <a href="https://liabio.github.io">小碗汤的博客 | Liabio Blog By Liabio</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+
+
+<script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
 
 
 

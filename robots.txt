@@ -1,2 +1,1 @@
 User-agent: *
-Sitemap: https://liabio.github.io/sitemap.xml
