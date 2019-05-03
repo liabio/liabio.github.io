@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on 小碗汤的博客</title>
+    <link>https://liabio.github.io/tags/Blog/</link>
+    <description>Recent content in Blog on 小碗汤的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 03 May 2019 10:48:21 +0800</lastBuildDate>
+    
+	<atom:link href="https://liabio.github.io/tags/Blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hugo搭建博客</title>
+      <link>https://liabio.github.io/post/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Fri, 03 May 2019 10:48:21 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/post/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description>在编译时报错如下： 1 2 3 4 5 Building sites … ERROR 2019/05/03 10:36:45 Failed to read Git log: fatal: Not a git repository (or any of the parent d irectories): .git Building sites … ERROR 2019/05/03 10:45:16 Failed to read Git log: fatal: your current branch &amp;#39;master&amp;#39; does not have a ny commits yet 需要先在站点根目录执行以下命令： 1 2 3 git init git add . git commit -m &amp;#39;test&amp;#39; config.toml中的baseUrl为http://liabio.github.io 不修改，调试时</description>
+    </item>
+    
+  </channel>
+</rss>

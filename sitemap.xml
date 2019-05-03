@@ -4,11 +4,17 @@
   
   <url>
     <loc>https://liabio.github.io/about/</loc>
-    <lastmod>2019-05-03T10:45:32+08:00</lastmod>
+    <lastmod>2019-05-03T16:31:03+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liabio.github.io/categories/Blog/</loc>
+    <lastmod>2019-05-04T10:48:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/tags/Blog/</loc>
     <lastmod>2019-05-04T10:48:21+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -20,7 +26,7 @@
   </url>
   
   <url>
-    <loc>https://liabio.github.io/tags/Golang/</loc>
+    <loc>https://liabio.github.io/tags/Hugo/</loc>
     <lastmod>2019-05-04T10:48:21+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -31,19 +37,7 @@
   </url>
   
   <url>
-    <loc>https://liabio.github.io/tags/Kubernetes/</loc>
-    <lastmod>2019-05-04T10:48:21+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://liabio.github.io/post/</loc>
-    <lastmod>2019-05-04T10:48:21+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://liabio.github.io/tags/Scheduler/</loc>
     <lastmod>2019-05-04T10:48:21+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -61,12 +55,30 @@
   </url>
   
   <url>
+    <loc>https://liabio.github.io/tags/Golang/</loc>
+    <lastmod>2019-05-02T23:44:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://liabio.github.io/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/</loc>
     <lastmod>2019-05-02T23:44:21+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liabio.github.io/categories/Kubernetes/</loc>
+    <lastmod>2019-05-02T23:44:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/tags/Kubernetes/</loc>
+    <lastmod>2019-05-02T23:44:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/tags/Scheduler/</loc>
     <lastmod>2019-05-02T23:44:21+08:00</lastmod>
     <priority>0</priority>
   </url>

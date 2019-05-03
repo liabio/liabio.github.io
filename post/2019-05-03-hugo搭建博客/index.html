@@ -93,6 +93,13 @@
                         </div>
                         
                         
+                        <div class="clear">
+                            <div class="toc-article">
+                                <div class="toc-title">文章目录</div>
+                                
+                            </div>
+                        </div>
+                        
                         <div class="post-content">
                             <p>在编译时报错如下：</p>
 <div class="highlight"><div class="chroma">
@@ -143,6 +150,35 @@ git commit -m &#39;test&#39;</pre></td></tr></table>
 <p>在网站<a href="https://shortname.disqus.com/admin/注册账号获取disqusShortname">https://shortname.disqus.com/admin/注册账号获取disqusShortname</a>
 <img src="/img/shortName1.png" alt="" /></p>
 
+<p>在github上创建一个用于存放评论的库，可以参考：<a href="https://utteranc.es/">https://utteranc.es/</a>
+<img src="/img/utteranc_comment1.png" alt="" /></p>
+
+<p>在config.toml中加：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">  [params.utteranc]
+      enable = true
+      repo = &#34;liabio/utteranc_comment&#34;    # 存储评论的Repo，格式为 owner/repo
+      issueTerm = &#34;pathname&#34;  #表示你选择以那种方式让github issue的评论和你的文章关联。
+      theme = &#34;github-light&#34; # 样式主题，有github-light和github-dark两种</pre></td></tr></table>
+</div>
+</div>
+<p>效果：
+<img src="/img/utteranc_comment2.png" alt="" /></p>
+
+<p>加文章计数器：
+<img src="/img/busuanzi1.png" alt="" /></p>
+
+<p>加了以后页面效果：
+<img src="/img/busuanzi2.png" alt="" /></p>
+
                         </div>
 
                         
@@ -163,9 +199,9 @@ git commit -m &#39;test&#39;</pre></td></tr></table>
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/">Kube Scheduler调度扩展</a></li>
-        
         <li><a href="/about/">About</a></li>
+        
+        <li><a href="/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/">Kube Scheduler调度扩展</a></li>
         
         <li><a href="/archives/"></a></li>
         
@@ -177,11 +213,9 @@ git commit -m &#39;test&#39;</pre></td></tr></table>
                             
                             <ul class="clearfix">
                                 
-                                <li><a href="https://liabio.github.io/tags/Kubernetes">Kubernetes</a></li>
+                                <li><a href="https://liabio.github.io/tags/Hugo">Hugo</a></li>
                                 
-                                <li><a href="https://liabio.github.io/tags/Scheduler">Scheduler</a></li>
-                                
-                                <li><a href="https://liabio.github.io/tags/Golang">Golang</a></li>
+                                <li><a href="https://liabio.github.io/tags/Blog">Blog</a></li>
                                 
                             </ul>
                             
@@ -213,7 +247,7 @@ git commit -m &#39;test&#39;</pre></td></tr></table>
     
     <div class="post bg-white">
       <script src="https://utteranc.es/client.js"
-            repo= "liabio.github.io"
+            repo= "liabio/utteranc_comment"
             issue-term="pathname"
             theme="github-light"
             crossorigin="anonymous"
@@ -300,7 +334,11 @@ git commit -m &#39;test&#39;</pre></td></tr></table>
         <h3 class="widget-title">标签</h3>
 <div class="tagcloud">
     
+    <a href="https://liabio.github.io/tags/Blog/">Blog</a>
+    
     <a href="https://liabio.github.io/tags/Golang/">Golang</a>
+    
+    <a href="https://liabio.github.io/tags/Hugo/">Hugo</a>
     
     <a href="https://liabio.github.io/tags/Kubernetes/">Kubernetes</a>
     

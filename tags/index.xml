@@ -12,9 +12,27 @@
     
     
     <item>
+      <title>Blog</title>
+      <link>https://liabio.github.io/tags/Blog/</link>
+      <pubDate>Fri, 03 May 2019 10:48:21 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/tags/Blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://liabio.github.io/tags/Hugo/</link>
+      <pubDate>Fri, 03 May 2019 10:48:21 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/tags/Hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Golang</title>
       <link>https://liabio.github.io/tags/Golang/</link>
-      <pubDate>Fri, 03 May 2019 10:48:21 +0800</pubDate>
+      <pubDate>Thu, 02 May 2019 23:44:21 +0800</pubDate>
       
       <guid>https://liabio.github.io/tags/Golang/</guid>
       <description></description>
@@ -23,7 +41,7 @@
     <item>
       <title>Kubernetes</title>
       <link>https://liabio.github.io/tags/Kubernetes/</link>
-      <pubDate>Fri, 03 May 2019 10:48:21 +0800</pubDate>
+      <pubDate>Thu, 02 May 2019 23:44:21 +0800</pubDate>
       
       <guid>https://liabio.github.io/tags/Kubernetes/</guid>
       <description></description>
@@ -32,7 +50,7 @@
     <item>
       <title>Scheduler</title>
       <link>https://liabio.github.io/tags/Scheduler/</link>
-      <pubDate>Fri, 03 May 2019 10:48:21 +0800</pubDate>
+      <pubDate>Thu, 02 May 2019 23:44:21 +0800</pubDate>
       
       <guid>https://liabio.github.io/tags/Scheduler/</guid>
       <description></description>
