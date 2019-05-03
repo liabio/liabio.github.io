@@ -12,11 +12,11 @@
     
     
     <item>
-      <title>Hugo搭建博客</title>
-      <link>https://liabio.github.io/post/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
+      <title>Hugo搭建博客教程</title>
+      <link>https://liabio.github.io/post/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</link>
       <pubDate>Fri, 03 May 2019 10:48:21 +0800</pubDate>
       
-      <guid>https://liabio.github.io/post/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <guid>https://liabio.github.io/post/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</guid>
       <description>在编译时报错如下： 1 2 3 4 5 Building sites … ERROR 2019/05/03 10:36:45 Failed to read Git log: fatal: Not a git repository (or any of the parent d irectories): .git Building sites … ERROR 2019/05/03 10:45:16 Failed to read Git log: fatal: your current branch &amp;#39;master&amp;#39; does not have a ny commits yet 需要先在站点根目录执行以下命令： 1 2 3 git init git add . git commit -m &amp;#39;test&amp;#39; config.toml中的baseUrl为http://liabio.github.io 不修改，调试时</description>
     </item>
     
