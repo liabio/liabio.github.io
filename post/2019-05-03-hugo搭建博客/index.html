@@ -100,11 +100,15 @@
 <pre class="chroma"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
 </span></pre></td>
 <td class="lntd">
-<pre class="chroma">Building sites … ERROR 2019/05/03 10:36:45 Failed to read Git log: fatal: Not a git repository (or any of the parent d irectories): .git
+<pre class="chroma">Building sites … ERROR 2019/05/03 10:36:45 Failed to read Git log: fatal: Not a git repository
+(or any of the parent d irectories): .git
 
-Building sites … ERROR 2019/05/03 10:45:16 Failed to read Git log: fatal: your current branch &#39;master&#39; does not have a ny commits yet</pre></td></tr></table>
+Building sites … ERROR 2019/05/03 10:45:16 Failed to read Git log: fatal: your current branch &#39;master&#39;
+does not have a ny commits yet</pre></td></tr></table>
 </div>
 </div>
 <p><img src="/img/bugo-error-git1.png" alt="" />
@@ -197,7 +201,7 @@ git commit -m &#39;test&#39;</pre></td></tr></table>
             return;
         }
         var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "https://liabio.github.io/" + '.disqus.com/embed.js';
+        s.src = '//' + "https-liabio-github-io" + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
