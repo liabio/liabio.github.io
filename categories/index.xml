@@ -6,17 +6,26 @@
     <description>Recent content in Categories on 小碗汤的博客 | Liabio Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 02 May 2019 23:44:21 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 03 May 2019 10:48:21 +0800</lastBuildDate>
     
 	<atom:link href="https://liabio.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>中文</title>
-      <link>https://liabio.github.io/categories/%E4%B8%AD%E6%96%87/</link>
+      <title>Blog</title>
+      <link>https://liabio.github.io/categories/blog/</link>
+      <pubDate>Fri, 03 May 2019 10:48:21 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/categories/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kubernetes</title>
+      <link>https://liabio.github.io/categories/kubernetes/</link>
       <pubDate>Thu, 02 May 2019 23:44:21 +0800</pubDate>
       
-      <guid>https://liabio.github.io/categories/%E4%B8%AD%E6%96%87/</guid>
+      <guid>https://liabio.github.io/categories/kubernetes/</guid>
       <description></description>
     </item>
     
