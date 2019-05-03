@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on 小碗汤的博客 | Liabio Blog</title>
+    <title>Categories on 小碗汤的博客</title>
     <link>https://liabio.github.io/categories/</link>
-    <description>Recent content in Categories on 小碗汤的博客 | Liabio Blog</description>
+    <description>Recent content in Categories on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 03 May 2019 10:48:21 +0800</lastBuildDate>
@@ -13,19 +13,19 @@
     
     <item>
       <title>Blog</title>
-      <link>https://liabio.github.io/categories/blog/</link>
+      <link>https://liabio.github.io/categories/Blog/</link>
       <pubDate>Fri, 03 May 2019 10:48:21 +0800</pubDate>
       
-      <guid>https://liabio.github.io/categories/blog/</guid>
+      <guid>https://liabio.github.io/categories/Blog/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Kubernetes</title>
-      <link>https://liabio.github.io/categories/kubernetes/</link>
+      <link>https://liabio.github.io/categories/Kubernetes/</link>
       <pubDate>Thu, 02 May 2019 23:44:21 +0800</pubDate>
       
-      <guid>https://liabio.github.io/categories/kubernetes/</guid>
+      <guid>https://liabio.github.io/categories/Kubernetes/</guid>
       <description></description>
     </item>
     

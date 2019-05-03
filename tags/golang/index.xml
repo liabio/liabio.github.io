@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Golang on 小碗汤的博客 | Liabio Blog</title>
-    <link>https://liabio.github.io/tags/golang/</link>
-    <description>Recent content in Golang on 小碗汤的博客 | Liabio Blog</description>
+    <title>Golang on 小碗汤的博客</title>
+    <link>https://liabio.github.io/tags/Golang/</link>
+    <description>Recent content in Golang on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 03 May 2019 10:48:21 +0800</lastBuildDate>
     
-	<atom:link href="https://liabio.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://liabio.github.io/tags/Golang/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hugo搭建博客</title>
-      <link>https://liabio.github.io/post/2019-05-03-hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
+      <link>https://liabio.github.io/post/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
       <pubDate>Fri, 03 May 2019 10:48:21 +0800</pubDate>
       
-      <guid>https://liabio.github.io/post/2019-05-03-hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid>
-      <description>在编译时报错如下： 1 2 3 Building sites … ERROR 2019/05/03 10:36:45 Failed to read Git log: fatal: Not a git repository (or any of the parent d irectories): .git Building sites … ERROR 2019/05/03 10:45:16 Failed to read Git log: fatal: your current branch &amp;#39;master&amp;#39; does not have a ny commits yet 需要先在站点根目录执行</description>
+      <guid>https://liabio.github.io/post/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description>在编译时报错如下： 1 2 3 Building sites … ERROR 2019/05/03 10:36:45 Failed to read Git log: fatal: Not a git repository (or any of the parent d irectories): .git Building sites … ERROR 2019/05/03 10:45:16 Failed to read Git log: fatal: your current branch &amp;#39;master&amp;#39; does not have a ny commits yet 需要先在站点根目录执行以下命令： 1 2 3 git init git add . git commit -m &amp;#39;test&amp;#39; config.toml中的baseUrl为http://liabio.github.io 不修改，调试时使用</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Thu, 02 May 2019 23:44:21 +0800</pubDate>
       
       <guid>https://liabio.github.io/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/</guid>
-      <description>Kubernetes 自带了一个默认调度器kube-scheduler，其内置了很多节点预选和优选的调度算法，一般调度场景下可以满足要求。但是在一些特殊场景下，</description>
+      <description>Kubernetes 自带了一个默认调度器kube-scheduler，其内置了很多节点预选和优选的调度算法，一般调度场景下可以满足要求。但是在一些特殊场景下，默认调度器不能满足我们复杂的调度需求。我们就需要对调度器进行扩展，以达到调度适合业务场景的目的。 背景 中间件redis容器化后，需要两主不能在</description>
     </item>
     
   </channel>

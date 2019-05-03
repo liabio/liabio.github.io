@@ -8,55 +8,55 @@
   </url>
   
   <url>
-    <loc>https://liabio.github.io/categories/blog/</loc>
-    <lastmod>2019-05-03T10:48:21+08:00</lastmod>
+    <loc>https://liabio.github.io/categories/Blog/</loc>
+    <lastmod>2019-05-04T10:48:21+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://liabio.github.io/categories/</loc>
-    <lastmod>2019-05-03T10:48:21+08:00</lastmod>
+    <lastmod>2019-05-04T10:48:21+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://liabio.github.io/tags/golang/</loc>
-    <lastmod>2019-05-03T10:48:21+08:00</lastmod>
+    <loc>https://liabio.github.io/tags/Golang/</loc>
+    <lastmod>2019-05-04T10:48:21+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://liabio.github.io/post/2019-05-03-hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2019-05-03T10:48:21+08:00</lastmod>
+    <loc>https://liabio.github.io/post/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2019-05-04T10:48:21+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liabio.github.io/tags/kubernetes/</loc>
-    <lastmod>2019-05-03T10:48:21+08:00</lastmod>
+    <loc>https://liabio.github.io/tags/Kubernetes/</loc>
+    <lastmod>2019-05-04T10:48:21+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://liabio.github.io/post/</loc>
-    <lastmod>2019-05-03T10:48:21+08:00</lastmod>
+    <lastmod>2019-05-04T10:48:21+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://liabio.github.io/tags/scheduler/</loc>
-    <lastmod>2019-05-03T10:48:21+08:00</lastmod>
+    <loc>https://liabio.github.io/tags/Scheduler/</loc>
+    <lastmod>2019-05-04T10:48:21+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://liabio.github.io/tags/</loc>
-    <lastmod>2019-05-03T10:48:21+08:00</lastmod>
+    <lastmod>2019-05-04T10:48:21+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://liabio.github.io/</loc>
-    <lastmod>2019-05-03T10:48:21+08:00</lastmod>
+    <lastmod>2019-05-04T10:48:21+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -66,8 +66,13 @@
   </url>
   
   <url>
-    <loc>https://liabio.github.io/categories/kubernetes/</loc>
+    <loc>https://liabio.github.io/categories/Kubernetes/</loc>
     <lastmod>2019-05-02T23:44:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/archives/</loc>
     <priority>0</priority>
   </url>
   
