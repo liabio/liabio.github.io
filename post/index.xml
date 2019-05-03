@@ -29,5 +29,14 @@
       <description>Kubernetes 自带了一个默认调度器kube-scheduler，其内置了很多节点预选和优选的调度算法，一般调度场景下可以满足要求。但是在一些特殊场景下，默认调度器不能满足我们复杂的调度需求。我们就需要对调度器进行扩展，以达到调度适合业务场景的目的。 背景 中间件redis容器化后，需要两主不能在</description>
     </item>
     
+    <item>
+      <title>博客test</title>
+      <link>https://liabio.github.io/post/2019-05-04-%E5%8D%9A%E5%AE%A2test/</link>
+      <pubDate>Thu, 02 May 2019 23:44:21 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/post/2019-05-04-%E5%8D%9A%E5%AE%A2test/</guid>
+      <description>asssssssssssssss</description>
+    </item>
+    
   </channel>
 </rss>
