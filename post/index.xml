@@ -6,10 +6,37 @@
     <description>Recent content in Posts on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 03 May 2019 10:48:21 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 14 May 2019 23:44:21 +0800</lastBuildDate>
     
 	<atom:link href="https://liabio.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>手把手教你搭建kubernetes集群.md</title>
+      <link>https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/</link>
+      <pubDate>Tue, 14 May 2019 23:44:21 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/</guid>
+      <description>1 2 3 4 5 6 7 8 9 cat &amp;gt; /etc/yum.repos.d/kubernetes.repo &amp;lt;&amp;lt; EOF [kubernetes] name=Kubernetes baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/ enabled=1 gpgcheck=0 repo_gpgcheck=1 gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg EOF 安装kubeadm、kubectl、kubelet 1 yum install -y kubeadm kubelet kubectl 如果在云服务器上搭建时，IP-18.219.28.143是公网IP 1 kubeadm init --kubernetes-version=v1.14.1 --pod-network-cidr=10.244.0.0/16 --service-cidr=10.96.0.0/12 --apiserver-advertise-address=18.219.28.143 --ignore-preflight-errors=Swap,NumCPU 1 init的时候可能会： [kubelet-check] Initial timeout of 40s passed 1 2 3 4 5 6 7 8 9 ![](/img/2019-05-</description>
+    </item>
+    
+    <item>
+      <title>手把手教你搭建kubernetes集群1</title>
+      <link>https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/</link>
+      <pubDate>Tue, 14 May 2019 23:44:21 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/</guid>
+      <description>部署 以CentOS7为基础，搭建一个Master主机和三个Node主机，各个Node主机的配置方式基本相同。 OS: CentOS 7.5 x86_64 Container runtime: Docker 18.06.ce Kubernetes: 1.13 IP 地址 主机名 角色 192.168.50.71 master, master.kubernetes.io master 192.168.50.72 node01, node01.kubernetes.io node 192.168.50.73 node02, node02.kubernetes.io node 192.168.50.74 node03, node03.kubernetes.io node 这里需要使用常规的域名格式，因为后面需要为集群配置Kubernetes Dashboard要求有SSL数字</description>
+    </item>
+    
+    <item>
+      <title>搭建k8s环境时gcr.io和quay.io拉取镜像失败</title>
+      <link>https://liabio.github.io/post/2019-05-14-%E6%90%AD%E5%BB%BAk8s%E7%8E%AF%E5%A2%83%E6%97%B6gcr.io%E5%92%8Cquay.io%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E5%A4%B1%E8%B4%A5/</link>
+      <pubDate>Tue, 14 May 2019 23:44:21 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/post/2019-05-14-%E6%90%AD%E5%BB%BAk8s%E7%8E%AF%E5%A2%83%E6%97%B6gcr.io%E5%92%8Cquay.io%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E5%A4%B1%E8%B4%A5/</guid>
+      <description>k8s在使用编排（manifest）工具进行yaml文件启动pod时，会遇到官方所给例子中spec.containers.image包含： 1 2 quay.io/coreos/example_ gcr.io/google_containers/example_ 也就是说，从quay.io和gcr.io进行镜像拉取，我们知道，国内访问外网是被屏蔽了的。可以将其替换为 quay-mirror.qiniu.com 和 registry.aliyuncs.com 例如 下拉镜像：quay.</description>
+    </item>
     
     <item>
       <title>Hugo搭建博客教程</title>
@@ -21,21 +48,60 @@
     </item>
     
     <item>
-      <title>Kube Scheduler调度扩展</title>
-      <link>https://liabio.github.io/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/</link>
-      <pubDate>Thu, 02 May 2019 23:44:21 +0800</pubDate>
-      
-      <guid>https://liabio.github.io/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/</guid>
-      <description>Kubernetes 自带了一个默认调度器kube-scheduler，其内置了很多节点预选和优选的调度算法，一般调度场景下可以满足要求。但是在一些特殊场景下，默认调度器不能满足我们复杂的调度需求。我们就需要对调度器进行扩展，以达到调度适合业务场景的目的。 背景 中间件redis容器化后，需要两主不能在</description>
-    </item>
-    
-    <item>
       <title>博客test</title>
       <link>https://liabio.github.io/post/2019-05-04-%E5%8D%9A%E5%AE%A2test/</link>
       <pubDate>Thu, 02 May 2019 23:44:21 +0800</pubDate>
       
       <guid>https://liabio.github.io/post/2019-05-04-%E5%8D%9A%E5%AE%A2test/</guid>
       <description>asssssssssssssss</description>
+    </item>
+    
+    <item>
+      <title>kube-scheduler调度扩展</title>
+      <link>https://liabio.github.io/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/</link>
+      <pubDate>Thu, 02 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://liabio.github.io/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/</guid>
+      <description>Kubernetes 自带了一个默认调度器kube-scheduler，其内置了很多节点预选和优选的调度算法，一般调度场景下可以满足要求。但是在一些特殊场景下，默认调度器不能满足我们复杂的调度需求。我们就需要对调度器进行扩展，以达到调度适合业务场景的目的。 背景 中间件redis容器化后，需要两主不能在</description>
+    </item>
+    
+    <item>
+      <title>快速搭建个人博客</title>
+      <link>https://liabio.github.io/post/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Mon, 06 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://liabio.github.io/post/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description>正所谓前人栽树，后人乘凉。 感谢Huxpro提供的博客模板 我的的博客 前言 从 Jekyll 到 GitHub Pages 中间踩了许多坑，终于把我的个人博客BY Blog搭建出来了。。。 本教程针对的是不懂技术又想搭建个人博客的小白，操作简单暴力且快速。当然懂技术那就更好了。 看看看博客的主页样式： 在手机上的布局： 废话不多说了</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://liabio.github.io/post/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://liabio.github.io/post/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/</guid>
+      <description>kubernetes自定义资源对象高级功能 kubernetes自定义资源对象再极大程度提高了API Server的可扩展性，让企业能够根据业务需求通过CRD编写controller或者operator来实现生产中各种特殊场景。随着k8s的版本升级，CRD的功能也越来越完善，下面对其中几点进行说明。
+以下验证kubernetes版本为1.13.2，docker版本：18.09.5
+Validation（验证） 在项目中用自定义资源对象时，如果创建自定义资源时某些字段不符合要求，会导致监听该资源对象的controller或者operator出现异常，解析结构体报错，所以Validation这个功能非常实用，在创建时就进行校验，减少后面的排错和异常处理的麻烦。
+可以通过 OpenAPI v3 schema验证自定义对象是否符合标准 。此外，以下限制适用于 schema：
+ 字段default、nullable、discriminator、readOnly、writeOnly、xml、 deprecated 和 $ref 不能设置。 该字段 uniqueItems 不能设置为 true。 该字段 additionalProperties 不能设置为 false。  可以使用 kube-apiserverCustomResourceValidation 上的功能门（feature gate）禁用此功能：
+1  --feature-gates=CustomResourceValidation=false   从以下特性门参数说明地址，可以看到Validation功能在k8s 1.8版本就已经有了，但是CustomResourceValidation特性门是默认false，1.9Beta之后版本默认为true
+https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates/
+以下示例将大概对该功能进行应用和说明，在以下示例中，CustomResourceDefinition 对自定义对象应用以下验证：
+ spec.replicas 为必填项，类型为integer，值为大于等于0小于50的偶数（2的倍数）； spec.repository 为必填项； spec.version为必填项； spec.pause为boolean类型； spec.updateStrategy为object类型，该object中有type、pipeline、assignStrategies属性； spec.updateStrategy.type为string类型，而且只能为&amp;rdquo;AssignReceive&amp;rdquo;, &amp;ldquo;AutoReceive&amp;rdquo;两个枚举值； spec.updateStrategy.pipeline为string类型，而且为正整数的字符串，符合正则表达式^([1-9][0-9]*){1,3}$; spec.updateStrategy.assignStrategies为array类型，其元素为object类型（包含slots和fromReplicas属性）； spec.updateStrategy.assignStrategies.slots为1-16384的正整数； spec.updateStrategy.assignStrategies.fromReplicas为字符串，符合正则表达式^[a-z0-9,]{3,}$，即至少匹配3位a-z或者0-9或者逗号的字符串； spec.pod为array类型，其元素为object类型（包含configmap、monitorImage、initImage、middlewareImage字段）； spec.pod.configmap、spec.pod.monitorImage、spec.pod.initImage 、spec.pod.middlewareImage为string类型；且用required指定configmap、initImage、middlewareImage字段为必填项。  将以下内容保存到 redis-cluster-crd.yaml：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75  apiVersion:apiextensions.k8s.io/v1beta1kind:CustomResourceDefinitionmetadata:name:redisclusters.redis.middleware.hc.cnspec:group:redis.middleware.hc.cnversions:-name:v1alpha1# Each version can be enabled/disabled by Served flag.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://liabio.github.io/post/2019-5-21-etcd%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://liabio.github.io/post/2019-5-21-etcd%E6%93%8D%E4%BD%9C/</guid>
+      <description>etcd操作 etcdctl安装 下载并解压二进制文件
+1 2  curl -L https://github.com/coreos/etcd/releases/download/v3.3.2/etcd-v3.3.2-linux-amd64.tar.gz -o etcd-v3.3.2-linux-amd64.tar.gz tar zxf etcd-v3.3.2-linux-amd64.tar.gz   解压后是一些文档和两个二进制文件etcd和etcdctl。etcd是server端，etcdctl是客户端。
+将解压后的etcd和etcdctl移动到$GOPATH/bin目录下，可以直接使用etcd和etcdctl命令
+1  mv etcd-v3.3.2-linux-amd64/etcd* /usr/local/bin/   1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108  # 获取etcd节点成员列表 $ ETCDCTL_API=3 etcdctl --cacert=/etc/kubernetes/pki/etcd/ca.</description>
     </item>
     
   </channel>

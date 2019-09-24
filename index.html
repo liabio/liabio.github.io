@@ -86,6 +86,75 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
+                                    <a href="https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/" title="手把手教你搭建kubernetes集群.md" >手把手教你搭建kubernetes集群.md</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年5月14日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/Kubernetes">Kubernetes</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                1 2 3 4 5 6 7 8 9 cat &gt; /etc/yum.repos.d/kubernetes.repo &lt;&lt; EOF [kubernetes] name=Kubernetes baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/ enabled=1 gpgcheck=0 repo_gpgcheck=1 gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg EOF 安装kubeadm、kubectl、kubelet 1 yum install -y kubeadm kubelet kubectl 如果在云服务器上搭建时，IP-18.219.28.143是公网IP 1 kubeadm init --kubernetes-version=v1.14.1 --pod-network-cidr=10.244.0.0/16 --service-cidr=10.96.0.0/12 --apiserver-advertise-address=18.219.28.143 --ignore-preflight-errors=Swap,NumCPU 1 init的时候可能会： [kubelet-check] Initial timeout of 40s passed 1 2 3 4 5 6 7 8 9 ![](/img/2019-05-……
+                            </div>
+                            <p class="readmore"><a href="https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/" title="手把手教你搭建kubernetes集群1" >手把手教你搭建kubernetes集群1</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年5月14日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/Kubernetes">Kubernetes</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                部署 以CentOS7为基础，搭建一个Master主机和三个Node主机，各个Node主机的配置方式基本相同。 OS: CentOS 7.5 x86_64 Container runtime: Docker 18.06.ce Kubernetes: 1.13 IP 地址 主机名 角色 192.168.50.71 master, master.kubernetes.io master 192.168.50.72 node01, node01.kubernetes.io node 192.168.50.73 node02, node02.kubernetes.io node 192.168.50.74 node03, node03.kubernetes.io node 这里需要使用常规的域名格式，因为后面需要为集群配置Kubernetes Dashboard要求有SSL数字……
+                            </div>
+                            <p class="readmore"><a href="https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://liabio.github.io/post/2019-05-14-%E6%90%AD%E5%BB%BAk8s%E7%8E%AF%E5%A2%83%E6%97%B6gcr.io%E5%92%8Cquay.io%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E5%A4%B1%E8%B4%A5/" title="搭建k8s环境时gcr.io和quay.io拉取镜像失败" >搭建k8s环境时gcr.io和quay.io拉取镜像失败</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年5月14日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/Kubernetes">Kubernetes</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                k8s在使用编排（manifest）工具进行yaml文件启动pod时，会遇到官方所给例子中spec.containers.image包含： 1 2 quay.io/coreos/example_ gcr.io/google_containers/example_ 也就是说，从quay.io和gcr.io进行镜像拉取，我们知道，国内访问外网是被屏蔽了的。可以将其替换为 quay-mirror.qiniu.com 和 registry.aliyuncs.com 例如 下拉镜像：quay.……
+                            </div>
+                            <p class="readmore"><a href="https://liabio.github.io/post/2019-05-14-%E6%90%AD%E5%BB%BAk8s%E7%8E%AF%E5%A2%83%E6%97%B6gcr.io%E5%92%8Cquay.io%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E5%A4%B1%E8%B4%A5/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
                                     <a href="https://liabio.github.io/post/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/" title="Hugo搭建博客教程" >Hugo搭建博客教程</a>
                                 </h1>
                             </header>
@@ -106,71 +175,33 @@
                             <p class="readmore"><a href="https://liabio.github.io/post/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">阅读全文</a></p>
                         </article>
                     
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://liabio.github.io/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/" title="Kube Scheduler调度扩展" >Kube Scheduler调度扩展</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年5月2日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://liabio.github.io/categories/Kubernetes">Kubernetes</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                Kubernetes 自带了一个默认调度器kube-scheduler，其内置了很多节点预选和优选的调度算法，一般调度场景下可以满足要求。但是在一些特殊场景下，默认调度器不能满足我们复杂的调度需求。我们就需要对调度器进行扩展，以达到调度适合业务场景的目的。 背景 中间件redis容器化后，需要两主不能在……
-                            </div>
-                            <p class="readmore"><a href="https://liabio.github.io/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://liabio.github.io/post/2019-05-04-%E5%8D%9A%E5%AE%A2test/" title="博客test" >博客test</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年5月2日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://liabio.github.io/categories/Kubernetes">Kubernetes</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                asssssssssssssss……
-                            </div>
-                            <p class="readmore"><a href="https://liabio.github.io/post/2019-05-04-%E5%8D%9A%E5%AE%A2test/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://liabio.github.io/archives/" title="" ></a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                1年1月1日
-                            </date>
-                            
-                            <div class="post-content">
-                                title: &ldquo;2019&rdquo; description: &ldquo;aaaaaaaaaaaaaa&rdquo; type: archives……
-                            </div>
-                            <p class="readmore"><a href="https://liabio.github.io/archives/">阅读全文</a></p>
-                        </article>
-                    
                     
 
 
+
+<ol class="page-navigator">
+    
+
+    
+    <li  class="current">
+        <a href="https://liabio.github.io/">1</a>
+    </li>
+    
+    <li >
+        <a href="https://liabio.github.io/page/2/">2</a>
+    </li>
+    
+    <li >
+        <a href="https://liabio.github.io/page/3/">3</a>
+    </li>
+    
+
+    
+    <li class="next">
+        <a href="https://liabio.github.io/page/2/">下一页</a>
+    </li>
+    
+</ol>
 
 
 
@@ -192,15 +223,39 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/" title="手把手教你搭建kubernetes集群.md">手把手教你搭建kubernetes集群.md</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/" title="手把手教你搭建kubernetes集群1">手把手教你搭建kubernetes集群1</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-05-14-%E6%90%AD%E5%BB%BAk8s%E7%8E%AF%E5%A2%83%E6%97%B6gcr.io%E5%92%8Cquay.io%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E5%A4%B1%E8%B4%A5/" title="搭建k8s环境时gcr.io和quay.io拉取镜像失败">搭建k8s环境时gcr.io和quay.io拉取镜像失败</a>
+    </li>
+    
+    <li>
         <a href="https://liabio.github.io/post/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/" title="Hugo搭建博客教程">Hugo搭建博客教程</a>
     </li>
     
     <li>
-        <a href="https://liabio.github.io/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/" title="Kube Scheduler调度扩展">Kube Scheduler调度扩展</a>
+        <a href="https://liabio.github.io/post/2019-05-04-%E5%8D%9A%E5%AE%A2test/" title="博客test">博客test</a>
     </li>
     
     <li>
-        <a href="https://liabio.github.io/post/2019-05-04-%E5%8D%9A%E5%AE%A2test/" title="博客test">博客test</a>
+        <a href="https://liabio.github.io/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/" title="kube-scheduler调度扩展">kube-scheduler调度扩展</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="快速搭建个人博客">快速搭建个人博客</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/" title=""></a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-5-21-etcd%E6%93%8D%E4%BD%9C/" title=""></a>
     </li>
     
 </ul>
@@ -248,7 +303,7 @@
     </li>
     
     <li>
-        <a href="https://liabio.github.io/categories/Kubernetes/">Kubernetes(2)</a>
+        <a href="https://liabio.github.io/categories/Kubernetes/">Kubernetes(4)</a>
     </li>
     
 </ul>

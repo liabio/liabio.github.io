@@ -8,6 +8,69 @@
   </url>
   
   <url>
+    <loc>https://liabio.github.io/categories/</loc>
+    <lastmod>2019-05-14T23:44:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/tags/Golang/</loc>
+    <lastmod>2019-05-14T23:44:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/categories/Kubernetes/</loc>
+    <lastmod>2019-05-14T23:44:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/tags/Kubernetes/</loc>
+    <lastmod>2019-05-14T23:44:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/post/</loc>
+    <lastmod>2019-05-14T23:44:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/tags/Scheduler/</loc>
+    <lastmod>2019-05-14T23:44:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/tags/</loc>
+    <lastmod>2019-05-14T23:44:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/</loc>
+    <lastmod>2019-05-14T23:44:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/</loc>
+    <lastmod>2019-05-14T23:44:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/</loc>
+    <lastmod>2019-05-14T23:44:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/post/2019-05-14-%E6%90%AD%E5%BB%BAk8s%E7%8E%AF%E5%A2%83%E6%97%B6gcr.io%E5%92%8Cquay.io%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E5%A4%B1%E8%B4%A5/</loc>
+    <lastmod>2019-05-14T23:44:21+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://liabio.github.io/categories/Blog/</loc>
     <lastmod>2019-05-03T10:48:21+08:00</lastmod>
     <priority>0</priority>
@@ -15,12 +78,6 @@
   
   <url>
     <loc>https://liabio.github.io/tags/Blog/</loc>
-    <lastmod>2019-05-03T10:48:21+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://liabio.github.io/categories/</loc>
     <lastmod>2019-05-03T10:48:21+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -37,59 +94,32 @@
   </url>
   
   <url>
-    <loc>https://liabio.github.io/post/</loc>
-    <lastmod>2019-05-03T10:48:21+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://liabio.github.io/tags/</loc>
-    <lastmod>2019-05-03T10:48:21+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://liabio.github.io/</loc>
-    <lastmod>2019-05-03T16:31:03+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://liabio.github.io/tags/Golang/</loc>
-    <lastmod>2019-05-02T23:44:21+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://liabio.github.io/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/</loc>
-    <lastmod>2019-05-02T23:44:21+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liabio.github.io/categories/Kubernetes/</loc>
-    <lastmod>2019-05-02T23:44:21+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://liabio.github.io/tags/Kubernetes/</loc>
-    <lastmod>2019-05-02T23:44:21+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://liabio.github.io/tags/Scheduler/</loc>
-    <lastmod>2019-05-02T23:44:21+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://liabio.github.io/post/2019-05-04-%E5%8D%9A%E5%AE%A2test/</loc>
     <lastmod>2019-05-02T23:44:21+08:00</lastmod>
   </url>
   
   <url>
+    <loc>https://liabio.github.io/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/</loc>
+    <lastmod>2019-05-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/post/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2017-02-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://liabio.github.io/archives/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/post/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/post/2019-5-21-etcd%E6%93%8D%E4%BD%9C/</loc>
     <priority>0</priority>
   </url>
   

@@ -1,0 +1,1659 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.55.4" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title> | 小碗汤的博客</title>
+    <meta property="og:title" content=" - 小碗汤的博客">
+    <meta property="og:type" content="article">
+        
+        
+    <meta name="Keywords" content="golang,go语言,go语言笔记,小碗汤,docker,kubernetes,k8s,java,博客,python,软件架构,公众号,小程序,Hugo,theme,maupassant">
+    <meta name="description" content="">
+        
+    <meta name="author" content="小碗汤">
+    <meta property="og:url" content="https://liabio.github.io/post/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+        <link rel="stylesheet" href="/css/prism.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liabio.github.io">
+                        小碗汤的博客
+                    </a>
+                
+                <p class="description">专注于Java、Go语言(Golang)、Docker、Kubernetes、软件架构</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liabio.github.io">首页</a>
+                    
+                    <a  href="https://liabio.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liabio.github.io/tools/" title="工具">工具</a>
+                    
+                    <a  href="https://liabio.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title"></h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            1年1月1日
+                        </date>
+                        
+                        
+                        <div class="post-meta">
+                            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span> 阅读</span></span>
+                        </div>
+                        
+                        
+                        <div class="post-content">
+                            
+
+<h1 id="kubernetes自定义资源对象高级功能">kubernetes自定义资源对象高级功能</h1>
+
+<p>kubernetes自定义资源对象再极大程度提高了API Server的可扩展性，让企业能够根据业务需求通过CRD编写controller或者operator来实现生产中各种特殊场景。随着k8s的版本升级，CRD的功能也越来越完善，下面对其中几点进行说明。</p>
+
+<p>以下验证kubernetes版本为1.13.2，docker版本：18.09.5</p>
+
+<p><img src="http://pqek9gnem.bkt.clouddn.com/20190515114234.png" alt="" /></p>
+
+<h2 id="validation-验证">Validation（验证）</h2>
+
+<p>在项目中用自定义资源对象时，如果创建自定义资源时某些字段不符合要求，会导致监听该资源对象的controller或者operator出现异常，解析结构体报错，所以Validation这个功能非常实用，在创建时就进行校验，减少后面的排错和异常处理的麻烦。</p>
+
+<p>可以通过 <a href="https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#schemaObject">OpenAPI v3 schema</a>验证自定义对象是否符合标准 。此外，以下限制适用于 schema：</p>
+
+<ul>
+<li>字段<code>default</code>、<code>nullable</code>、<code>discriminator</code>、<code>readOnly</code>、<code>writeOnly</code>、<code>xml</code>、 <code>deprecated</code> 和 <code>$ref</code> 不能设置。</li>
+<li>该字段 <code>uniqueItems</code> 不能设置为 true。</li>
+<li>该字段 <code>additionalProperties</code> 不能设置为 false。</li>
+</ul>
+
+<p>可以使用 kube-apiserver<code>CustomResourceValidation</code> 上的功能门（feature gate）禁用此功能：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">--feature-gates<span class="o">=</span><span class="nv">CustomResourceValidation</span><span class="o">=</span>false</code></pre></td></tr></table>
+</div>
+</div>
+<p>从以下特性门参数说明地址，可以看到Validation功能在k8s 1.8版本就已经有了，但是CustomResourceValidation特性门是默认false，1.9Beta之后版本默认为true</p>
+
+<p><a href="https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates/">https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates/</a></p>
+
+<p><img src="http://pqek9gnem.bkt.clouddn.com/20190515114653.png" alt="" /></p>
+
+<p>以下示例将大概对该功能进行应用和说明，在以下示例中，CustomResourceDefinition 对自定义对象应用以下验证：</p>
+
+<ul>
+<li><code>spec.replicas</code> 为必填项，类型为integer，值为大于等于0小于50的偶数（2的倍数）；</li>
+<li><code>spec.repository</code> 为必填项；</li>
+<li><code>spec.version</code>为必填项；</li>
+<li><code>spec.pause</code>为boolean类型；</li>
+<li><code>spec.updateStrategy</code>为object类型，该object中有type、pipeline、assignStrategies属性；</li>
+<li><code>spec.updateStrategy.type</code>为string类型，而且只能为&rdquo;AssignReceive&rdquo;, &ldquo;AutoReceive&rdquo;两个枚举值；</li>
+<li><code>spec.updateStrategy.pipeline</code>为string类型，而且为正整数的字符串，符合正则表达式<code>^([1-9][0-9]*){1,3}$</code>;</li>
+<li><code>spec.updateStrategy.assignStrategies</code>为array类型，其元素为object类型（包含slots和fromReplicas属性）；</li>
+<li><code>spec.updateStrategy.assignStrategies.slots</code>为1-16384的正整数；</li>
+<li><code>spec.updateStrategy.assignStrategies.fromReplicas</code>为字符串，符合正则表达式<code>^[a-z0-9,]{3,}$</code>，即至少匹配3位a-z或者0-9或者逗号的字符串；</li>
+<li><code>spec.pod</code>为array类型，其元素为object类型（包含configmap、monitorImage、initImage、middlewareImage字段）；</li>
+<li><code>spec.pod.configmap</code>、<code>spec.pod.monitorImage</code>、<code>spec.pod.initImage</code> 、<code>spec.pod.middlewareImage</code>为string类型；且用required指定configmap、initImage、middlewareImage字段为必填项。</li>
+</ul>
+
+<p>将以下内容保存到 <code>redis-cluster-crd.yaml</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">apiVersion<span class="p">:</span><span class="w"> </span>apiextensions.k8s.io/v1beta1<span class="w">
+</span><span class="w"></span>kind<span class="p">:</span><span class="w"> </span>CustomResourceDefinition<span class="w">
+</span><span class="w"></span>metadata<span class="p">:</span><span class="w">
+</span><span class="w">  </span>name<span class="p">:</span><span class="w"> </span>redisclusters.redis.middleware.hc.cn<span class="w">
+</span><span class="w"></span>spec<span class="p">:</span><span class="w">
+</span><span class="w">  </span>group<span class="p">:</span><span class="w"> </span>redis.middleware.hc.cn<span class="w">
+</span><span class="w">  </span>versions<span class="p">:</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>name<span class="p">:</span><span class="w"> </span>v1alpha1<span class="w">
+</span><span class="w">      </span><span class="c"># Each version can be enabled/disabled by Served flag.</span><span class="w">
+</span><span class="w">      </span>served<span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">      </span><span class="c"># One and only one version must be marked as the storage version.</span><span class="w">
+</span><span class="w">      </span>storage<span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span>scope<span class="p">:</span><span class="w"> </span>Namespaced<span class="w">
+</span><span class="w">  </span>names<span class="p">:</span><span class="w">
+</span><span class="w">    </span>kind<span class="p">:</span><span class="w"> </span>RedisCluster<span class="w">
+</span><span class="w">    </span>singular<span class="p">:</span><span class="w"> </span>rediscluster<span class="w">
+</span><span class="w">    </span>listKind<span class="p">:</span><span class="w"> </span>RedisClusterList<span class="w">
+</span><span class="w">    </span>plural<span class="p">:</span><span class="w"> </span>redisclusters<span class="w">
+</span><span class="w">    </span>shortNames<span class="p">:</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>rec<span class="w">
+</span><span class="w">    </span><span class="c"># 执行kubectl get all时会查到pod、service、该crd等属于all categories的资源对象</span><span class="w">
+</span><span class="w">    </span>categories<span class="p">:</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>all<span class="w">
+</span><span class="w">  </span>validation<span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="c"># openAPIV3Schema 适用于验证自定义对象的 schema。</span><span class="w">
+</span><span class="w">    </span>openAPIV3Schema<span class="p">:</span><span class="w">
+</span><span class="w">      </span>properties<span class="p">:</span><span class="w">
+</span><span class="w">        </span>spec<span class="p">:</span><span class="w">
+</span><span class="w">          </span>required<span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;replicas&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;repository&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;version&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w">          </span>properties<span class="p">:</span><span class="w">
+</span><span class="w">            </span>pause<span class="p">:</span><span class="w">
+</span><span class="w">              </span>type<span class="p">:</span><span class="w"> </span>boolean<span class="w">
+</span><span class="w">            </span>replicas<span class="p">:</span><span class="w">
+</span><span class="w">              </span>type<span class="p">:</span><span class="w"> </span>integer<span class="w">
+</span><span class="w">              </span>minimum<span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span><span class="w">              </span>maximum<span class="p">:</span><span class="w"> </span><span class="m">50</span><span class="w">
+</span><span class="w">              </span><span class="c"># 偶数</span><span class="w">
+</span><span class="w">              </span>multipleOf<span class="p">:</span><span class="w"> </span><span class="m">2</span><span class="w">
+</span><span class="w">            </span>updateStrategy<span class="p">:</span><span class="w">
+</span><span class="w">              </span>type<span class="p">:</span><span class="w"> </span>object<span class="w">
+</span><span class="w">              </span>properties<span class="p">:</span><span class="w">
+</span><span class="w">                </span>type<span class="p">:</span><span class="w">
+</span><span class="w">                  </span>type<span class="p">:</span><span class="w"> </span>string<span class="w">
+</span><span class="w">                  </span><span class="c"># 枚举</span><span class="w">
+</span><span class="w">                  </span>enum<span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;AssignReceive&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;AutoReceive&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w">                </span>pipeline<span class="p">:</span><span class="w">
+</span><span class="w">                  </span>type<span class="p">:</span><span class="w"> </span>string<span class="w">
+</span><span class="w">                  </span>pattern<span class="p">:</span><span class="w"> </span><span class="s1">&#39;^([1-9][0-9]*){1,3}$&#39;</span><span class="w">
+</span><span class="w">                </span>assignStrategies<span class="p">:</span><span class="w">
+</span><span class="w">                  </span>type<span class="p">:</span><span class="w"> </span>array<span class="w">
+</span><span class="w">                  </span>items<span class="p">:</span><span class="w">
+</span><span class="w">                    </span>type<span class="p">:</span><span class="w"> </span>object<span class="w">
+</span><span class="w">                    </span>properties<span class="p">:</span><span class="w">
+</span><span class="w">                      </span>slots<span class="p">:</span><span class="w">
+</span><span class="w">                        </span>type<span class="p">:</span><span class="w"> </span>integer<span class="w">
+</span><span class="w">                        </span>minimum<span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span><span class="w">                        </span>maximum<span class="p">:</span><span class="w"> </span><span class="m">16384</span><span class="w">
+</span><span class="w">                      </span>fromReplicas<span class="p">:</span><span class="w">
+</span><span class="w">                        </span>type<span class="p">:</span><span class="w"> </span>string<span class="w">
+</span><span class="w">                        </span><span class="c"># 至少匹配3位,a-z或者0-9或者,</span><span class="w">
+</span><span class="w">                        </span>pattern<span class="p">:</span><span class="w"> </span><span class="s1">&#39;^[a-z0-9,]{3,}$&#39;</span><span class="w">
+</span><span class="w">            </span>pod<span class="p">:</span><span class="w">
+</span><span class="w">              </span>type<span class="p">:</span><span class="w"> </span>array<span class="w">
+</span><span class="w">              </span>items<span class="p">:</span><span class="w">
+</span><span class="w">                </span>type<span class="p">:</span><span class="w"> </span>object<span class="w">
+</span><span class="w">                </span>required<span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;configmap&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;middlewareImage&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;initImage&#34;</span><span class="p">]</span><span class="w">
+</span><span class="w">                </span>properties<span class="p">:</span><span class="w">
+</span><span class="w">                  </span>configmap<span class="p">:</span><span class="w">
+</span><span class="w">                    </span>type<span class="p">:</span><span class="w"> </span>string<span class="w">
+</span><span class="w">                  </span>monitorImage<span class="p">:</span><span class="w">
+</span><span class="w">                    </span>type<span class="p">:</span><span class="w"> </span>string<span class="w">
+</span><span class="w">                  </span>initImage<span class="p">:</span><span class="w">
+</span><span class="w">                    </span>type<span class="p">:</span><span class="w"> </span>string<span class="w">
+</span><span class="w">                  </span>middlewareImage<span class="p">:</span><span class="w">
+</span><span class="w">                    </span>type<span class="p">:</span><span class="w"> </span>string</code></pre></td></tr></table>
+</div>
+</div>
+<p>创建它：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">kubectl create -f redis-cluster-crd.yaml</pre></td></tr></table>
+</div>
+</div>
+<p>默认不加validation时，在创建自定义资源对象时，不会校验，有些字段没有了（如<code>spec.replicas</code>）都可以正常被创建，为了减少排错的难度和operator、controller的麻烦的检验，所以在创建自定义资源定义时，就把validation加上。以上的检验应该覆盖到了常见的检验场景，其他场景可以自己摸索。具体还可以参考kubernetes源码，1.13.2版本kubernetes源码位于types.go第327行CustomResourceValidation结构体：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">$GOPATH/src/k8s.io/kubernetes/staging/src/k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/types.go</pre></td></tr></table>
+</div>
+</div>
+<p>将以下YAML保存到<code>redis-cluster-cr.yaml</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">apiVersion<span class="p">:</span><span class="w"> </span>redis.middleware.hc.cn/v1alpha1<span class="w">
+</span><span class="w"></span>kind<span class="p">:</span><span class="w"> </span>RedisCluster<span class="w">
+</span><span class="w"></span>metadata<span class="p">:</span><span class="w"> 
+</span><span class="w">  </span>name<span class="p">:</span><span class="w"> </span>example000-redis-cluster<span class="w">
+</span><span class="w">  </span>namespace<span class="p">:</span><span class="w"> </span>kube-system<span class="w">
+</span><span class="w"></span>spec<span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="c"># 代表redis集群的个数</span><span class="w">
+</span><span class="w">  </span>replicas<span class="p">:</span><span class="w"> </span><span class="m">3</span><span class="w">
+</span><span class="w">  </span><span class="c"># 代表是否进入维修状态</span><span class="w">
+</span><span class="w">  </span>pause<span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span>repository<span class="p">:</span><span class="w"> </span>library/redis<span class="w">
+</span><span class="w">  </span><span class="c"># 镜像版本，便于后续多版本特化支持</span><span class="w">
+</span><span class="w">  </span>version<span class="p">:</span><span class="w"> </span><span class="m">3.2</span>.<span class="m">6</span><span class="w">
+</span><span class="w">  </span><span class="c">#redis集群升级策略</span><span class="w">
+</span><span class="w">  </span>updateStrategy<span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="c"># 升级类型为AutoReceive（自动分配,不用AssignStrategies）, AssignReceive（指定值分配，需要用AssignStrategies）</span><span class="w">
+</span><span class="w">    </span>type<span class="p">:</span><span class="w"> </span>AssignReceive1<span class="w">
+</span><span class="w">    </span>pipeline<span class="p">:</span><span class="w"> </span><span class="s2">&#34;100a&#34;</span><span class="w">
+</span><span class="w">    </span>assignStrategies<span class="p">:</span><span class="w">
+</span><span class="w">       </span><span class="sd">- 
+</span><span class="sd">        slots: 0</span><span class="w">
+</span><span class="w">        </span>fromReplicas<span class="p">:</span><span class="w"> </span>nodeId1<span class="w">
+</span><span class="w">       </span><span class="sd">- 
+</span><span class="sd">        # 从nodeId3,nodeId4一共分配1000个卡槽</span><span class="w">
+</span><span class="w">        </span>slots<span class="p">:</span><span class="w"> </span><span class="m">1000</span><span class="w"> 
+</span><span class="w">        </span><span class="c"># 多个nodeId用逗号分隔</span><span class="w">
+</span><span class="w">        </span>fromReplicas<span class="p">:</span><span class="w"> </span>nodeId3<span class="p">,</span>nodeId4<span class="w">
+</span><span class="w">  </span><span class="c"># redis 实例配置详情</span><span class="w">
+</span><span class="w">  </span>pod<span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="c"># 配置文件模板名</span><span class="w">
+</span><span class="w">  </span>-<span class="w"> </span>configmap<span class="p">:</span><span class="w"> </span>example000-redis-cluster-config<span class="w">
+</span><span class="w">    </span><span class="c"># 监控镜像</span><span class="w">
+</span><span class="w">    </span>monitorImage<span class="p">:</span><span class="w"> </span>redis-exporter<span class="p">:</span>v1<span class="w">
+</span><span class="w">    </span><span class="c"># 初始化镜像</span><span class="w">
+</span><span class="w">    </span><span class="c">#initImage: redis-init:v1</span><span class="w">
+</span><span class="w">    </span><span class="c"># 中间件容器镜像</span><span class="w">
+</span><span class="w">    </span>middlewareImage<span class="p">:</span><span class="w"> </span>redis-trib<span class="p">:</span><span class="m">3.2</span>.<span class="m">6</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>并创建它：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">kubectl create -f redis-cluster-cr.yaml</code></pre></td></tr></table>
+</div>
+</div>
+<p>会发现报以下错误：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># kubectl apply -f redis-cluster-cr.yaml</span> 
+The RedisCluster <span class="s2">&#34;example000-redis-cluster&#34;</span> is invalid: <span class="o">[]</span>: Invalid value: map<span class="o">[</span>string<span class="o">]</span>interface <span class="o">{}{</span><span class="s2">&#34;apiVersion&#34;</span>:<span class="s2">&#34;redis.middleware.hc.cn/v1alpha1&#34;</span>, <span class="s2">&#34;kind&#34;</span>:<span class="s2">&#34;RedisCluster&#34;</span>, <span class="s2">&#34;metadata&#34;</span>:map<span class="o">[</span>string<span class="o">]</span>interface <span class="o">{}{</span><span class="s2">&#34;namespace&#34;</span>:<span class="s2">&#34;kube-system&#34;</span>, <span class="s2">&#34;uid&#34;</span>:<span class="s2">&#34;b0946031-766b-11e9-b457-000c295db389&#34;</span>, <span class="s2">&#34;resourceVersion&#34;</span>:<span class="s2">&#34;44231&#34;</span>, <span class="s2">&#34;generation&#34;</span>:19, <span class="s2">&#34;creationTimestamp&#34;</span>:<span class="s2">&#34;2019-05-14T17:14:10Z&#34;</span>, <span class="s2">&#34;annotations&#34;</span>:map<span class="o">[</span>string<span class="o">]</span>interface <span class="o">{}{</span><span class="s2">&#34;kubectl.kubernetes.io/last-applied-configuration&#34;</span>:<span class="s2">&#34;{\&#34;apiVersion\&#34;:\&#34;redis.middleware.hc.cn/v1alpha1\&#34;,\&#34;kind\&#34;:\&#34;RedisCluster\&#34;,\&#34;metadata\&#34;:{\&#34;annotations\&#34;:{},\&#34;name\&#34;:\&#34;example000-redis-cluster\&#34;,\&#34;namespace\&#34;:\&#34;kube-system\&#34;},\&#34;spec\&#34;:{\&#34;pause\&#34;:true,\&#34;pod\&#34;:[{\&#34;configmap\&#34;:\&#34;example000-redis-cluster-config\&#34;,\&#34;middlewareImage\&#34;:\&#34;redis-trib:3.2.6\&#34;,\&#34;monitorImage\&#34;:\&#34;redis-exporter:v1\&#34;}],\&#34;replicas\&#34;:3,\&#34;repository\&#34;:\&#34;library/redis\&#34;,\&#34;updateStrategy\&#34;:{\&#34;assignStrategies\&#34;:[{\&#34;fromReplicas\&#34;:\&#34;nodeId1\&#34;,\&#34;slots\&#34;:0},{\&#34;fromReplicas\&#34;:\&#34;nodeId3,nodeId4\&#34;,\&#34;slots\&#34;:1000}],\&#34;pipeline\&#34;:\&#34;100a\&#34;,\&#34;type\&#34;:\&#34;AssignReceive1\&#34;},\&#34;version\&#34;:\&#34;3.2.6\&#34;}}\n&#34;</span><span class="o">}</span>, <span class="s2">&#34;name&#34;</span>:<span class="s2">&#34;example000-redis-cluster&#34;</span><span class="o">}</span>, <span class="s2">&#34;spec&#34;</span>:map<span class="o">[</span>string<span class="o">]</span>interface <span class="o">{}{</span><span class="s2">&#34;version&#34;</span>:<span class="s2">&#34;3.2.6&#34;</span>, <span class="s2">&#34;pause&#34;</span>:true, <span class="s2">&#34;pod&#34;</span>:<span class="o">[]</span>interface <span class="o">{}{</span>map<span class="o">[</span>string<span class="o">]</span>interface <span class="o">{}{</span><span class="s2">&#34;middlewareImage&#34;</span>:<span class="s2">&#34;redis-trib:3.2.6&#34;</span>, <span class="s2">&#34;monitorImage&#34;</span>:<span class="s2">&#34;redis-exporter:v1&#34;</span>, <span class="s2">&#34;configmap&#34;</span>:<span class="s2">&#34;example000-redis-cluster-config&#34;</span><span class="o">}}</span>, <span class="s2">&#34;replicas&#34;</span>:3, <span class="s2">&#34;repository&#34;</span>:<span class="s2">&#34;library/redis&#34;</span>, <span class="s2">&#34;updateStrategy&#34;</span>:map<span class="o">[</span>string<span class="o">]</span>interface <span class="o">{}{</span><span class="s2">&#34;assignStrategies&#34;</span>:<span class="o">[]</span>interface <span class="o">{}{</span>map<span class="o">[</span>string<span class="o">]</span>interface <span class="o">{}{</span><span class="s2">&#34;fromReplicas&#34;</span>:<span class="s2">&#34;nodeId1&#34;</span>, <span class="s2">&#34;slots&#34;</span>:0<span class="o">}</span>, map<span class="o">[</span>string<span class="o">]</span>interface <span class="o">{}{</span><span class="s2">&#34;fromReplicas&#34;</span>:<span class="s2">&#34;nodeId3,nodeId4&#34;</span>, <span class="s2">&#34;slots&#34;</span>:1000<span class="o">}}</span>, <span class="s2">&#34;pipeline&#34;</span>:<span class="s2">&#34;100a&#34;</span>, <span class="s2">&#34;type&#34;</span>:<span class="s2">&#34;AssignReceive1&#34;</span><span class="o">}}}</span>: validation failure list:
+spec.updateStrategy.assignStrategies.fromReplicas in body should match <span class="s1">&#39;^[a-z0-9,]{3,}$&#39;</span>
+spec.updateStrategy.assignStrategies.slots in body should be greater than or equal to <span class="m">1</span>
+spec.updateStrategy.pipeline in body should match <span class="s1">&#39;^([1-9][0-9]*){1,3}$&#39;</span>
+spec.updateStrategy.type in body should be one of <span class="o">[</span>AssignReceive AutoReceive<span class="o">]</span>
+spec.pod.initImage in body is required
+spec.replicas in body should be a multiple of <span class="m">2</span></code></pre></td></tr></table>
+</div>
+</div>
+<p><img src="http://pqek9gnem.bkt.clouddn.com/20190515143233.png" alt="" /></p>
+
+<p>如果所有字段都符合校验逻辑，才可以创建对象。</p>
+
+<p>将以下 YAML 保存到 <code>redis-cluster-cr.yaml</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">apiVersion<span class="p">:</span><span class="w"> </span>redis.middleware.hc.cn/v1alpha1<span class="w">
+</span><span class="w"></span>kind<span class="p">:</span><span class="w"> </span>RedisCluster<span class="w">
+</span><span class="w"></span>metadata<span class="p">:</span><span class="w"> 
+</span><span class="w">  </span>name<span class="p">:</span><span class="w"> </span>example000-redis-cluster<span class="w">
+</span><span class="w">  </span>namespace<span class="p">:</span><span class="w"> </span>kube-system<span class="w">
+</span><span class="w"></span>spec<span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="c"># 代表redis集群的个数</span><span class="w">
+</span><span class="w">  </span>replicas<span class="p">:</span><span class="w"> </span><span class="m">6</span><span class="w">
+</span><span class="w">  </span><span class="c"># 代表是否进入维修状态</span><span class="w">
+</span><span class="w">  </span>pause<span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span>repository<span class="p">:</span><span class="w"> </span>library/redis<span class="w">
+</span><span class="w">  </span><span class="c"># 镜像版本，便于后续多版本特化支持</span><span class="w">
+</span><span class="w">  </span>version<span class="p">:</span><span class="w"> </span><span class="m">3.2</span>.<span class="m">6</span><span class="w">
+</span><span class="w">  </span><span class="c">#redis集群升级策略</span><span class="w">
+</span><span class="w">  </span>updateStrategy<span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="c"># 升级类型为AutoReceive（自动分配,不用AssignStrategies）, AssignReceive（指定值分配，需要用AssignStrategies）</span><span class="w">
+</span><span class="w">    </span>type<span class="p">:</span><span class="w"> </span>AssignReceive<span class="w">
+</span><span class="w">    </span>pipeline<span class="p">:</span><span class="w"> </span><span class="s2">&#34;100&#34;</span><span class="w">
+</span><span class="w">    </span>assignStrategies<span class="p">:</span><span class="w">
+</span><span class="w">       </span><span class="sd">- 
+</span><span class="sd">        slots: 1</span><span class="w">
+</span><span class="w">        </span>fromReplicas<span class="p">:</span><span class="w"> </span>all<span class="w">
+</span><span class="w">       </span><span class="sd">- 
+</span><span class="sd">        # 从nodeId3,nodeId4一共分配1000个卡槽</span><span class="w">
+</span><span class="w">        </span>slots<span class="p">:</span><span class="w"> </span><span class="m">1000</span><span class="w"> 
+</span><span class="w">        </span><span class="c"># 多个nodeId用逗号分隔</span><span class="w">
+</span><span class="w">        </span>fromReplicas<span class="p">:</span><span class="w"> </span>node1<span class="p">,</span>node2<span class="w">
+</span><span class="w">  </span><span class="c"># redis 实例配置详情</span><span class="w">
+</span><span class="w">  </span>pod<span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="c"># 配置文件模板名</span><span class="w">
+</span><span class="w">  </span>-<span class="w"> </span>configmap<span class="p">:</span><span class="w"> </span>example000-redis-cluster-config<span class="w">
+</span><span class="w">    </span><span class="c"># 监控镜像</span><span class="w">
+</span><span class="w">    </span>monitorImage<span class="p">:</span><span class="w"> </span>redis-exporter<span class="p">:</span>v1<span class="w">
+</span><span class="w">    </span><span class="c"># 初始化镜像</span><span class="w">
+</span><span class="w">    </span>initImage<span class="p">:</span><span class="w"> </span>redis-init<span class="p">:</span>v1<span class="w">
+</span><span class="w">    </span><span class="c"># 中间件容器镜像</span><span class="w">
+</span><span class="w">    </span>middlewareImage<span class="p">:</span><span class="w"> </span>redis-trib<span class="p">:</span><span class="m">3.2</span>.<span class="m">6</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>并创建它，发现才可以创建：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># kubectl apply -f redis-cluster-cr.yaml</span> 
+rediscluster.redis.middleware.hc.cn/example000-redis-cluster configured</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="category-分类">Category（分类）</h3>
+
+<p>类别是自定义资源所属的分组资源的列表（例如 <code>all</code>）。您可以使用 <code>kubectl get &lt;category-name&gt;</code> 列出属于该类别的资源。此功能可用于 v1.10 及以上k8s版本自定义资源。</p>
+
+<p>以下示例添加 <code>all</code> CustomResourceDefinition 中的类别列表，并说明如何使用 <code>kubectl get all</code> 输出自定义资源 。</p>
+
+<p>将以下 内容保存到 <code>redis-cluster-crd.yaml</code>中执行<code>kubectl apply -f redis-cluster-crd.yaml</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">apiVersion<span class="p">:</span><span class="w"> </span>apiextensions.k8s.io/v1beta1<span class="w">
+</span><span class="w"></span>kind<span class="p">:</span><span class="w"> </span>CustomResourceDefinition<span class="w">
+</span><span class="w"></span>metadata<span class="p">:</span><span class="w">
+</span><span class="w">  </span>name<span class="p">:</span><span class="w"> </span>redisclusters.redis.middleware.hc.cn<span class="w">
+</span><span class="w"></span>spec<span class="p">:</span><span class="w">
+</span><span class="w">  </span>group<span class="p">:</span><span class="w"> </span>redis.middleware.hc.cn<span class="w">
+</span><span class="w">  </span>versions<span class="p">:</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>name<span class="p">:</span><span class="w"> </span>v1alpha1<span class="w">
+</span><span class="w">      </span><span class="c"># Each version can be enabled/disabled by Served flag.</span><span class="w">
+</span><span class="w">      </span>served<span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">      </span><span class="c"># One and only one version must be marked as the storage version.</span><span class="w">
+</span><span class="w">      </span>storage<span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span>scope<span class="p">:</span><span class="w"> </span>Namespaced<span class="w">
+</span><span class="w">  </span>names<span class="p">:</span><span class="w">
+</span><span class="w">    </span>kind<span class="p">:</span><span class="w"> </span>RedisCluster<span class="w">
+</span><span class="w">    </span>singular<span class="p">:</span><span class="w"> </span>rediscluster<span class="w">
+</span><span class="w">    </span>listKind<span class="p">:</span><span class="w"> </span>RedisClusterList<span class="w">
+</span><span class="w">    </span>plural<span class="p">:</span><span class="w"> </span>redisclusters<span class="w">
+</span><span class="w">    </span>shortNames<span class="p">:</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>rec<span class="w">
+</span><span class="w">    </span><span class="c"># 执行kubectl get all时会查到pod、service、该crd等属于all categories的资源对象</span><span class="w">
+</span><span class="w">    </span>categories<span class="p">:</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>all</code></pre></td></tr></table>
+</div>
+</div>
+<p>将以下内容保存到<code>redis-cluster-cr.yaml</code>中执行<code>kubectl apply -f redis-cluster-cr.yaml</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">apiVersion<span class="p">:</span><span class="w"> </span>redis.middleware.hc.cn/v1alpha1<span class="w">
+</span><span class="w"></span>kind<span class="p">:</span><span class="w"> </span>RedisCluster<span class="w">
+</span><span class="w"></span>metadata<span class="p">:</span><span class="w"> 
+</span><span class="w">  </span>name<span class="p">:</span><span class="w"> </span>example000-redis-cluster<span class="w">
+</span><span class="w">  </span>namespace<span class="p">:</span><span class="w"> </span>kube-system<span class="w">
+</span><span class="w"></span>spec<span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="c"># 代表redis集群的个数</span><span class="w">
+</span><span class="w">  </span>replicas<span class="p">:</span><span class="w"> </span><span class="m">6</span><span class="w">
+</span><span class="w">  </span><span class="c"># 代表是否进入维修状态</span><span class="w">
+</span><span class="w">  </span>pause<span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span>repository<span class="p">:</span><span class="w"> </span>library/redis<span class="w">
+</span><span class="w">  </span><span class="c"># 镜像版本，便于后续多版本特化支持</span><span class="w">
+</span><span class="w">  </span>version<span class="p">:</span><span class="w"> </span><span class="m">3.2</span>.<span class="m">6</span><span class="w">
+</span><span class="w">  </span><span class="c">#redis集群升级策略</span><span class="w">
+</span><span class="w">  </span>updateStrategy<span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="c"># 升级类型为AutoReceive（自动分配,不用AssignStrategies）, AssignReceive（指定值分配，需要用AssignStrategies）</span><span class="w">
+</span><span class="w">    </span>type<span class="p">:</span><span class="w"> </span>AssignReceive<span class="w">
+</span><span class="w">    </span>pipeline<span class="p">:</span><span class="w"> </span><span class="s2">&#34;100&#34;</span><span class="w">
+</span><span class="w">    </span>assignStrategies<span class="p">:</span><span class="w">
+</span><span class="w">       </span><span class="sd">- 
+</span><span class="sd">        slots: 2000</span><span class="w">
+</span><span class="w">        </span>fromReplicas<span class="p">:</span><span class="w"> </span>nodeId1<span class="w">
+</span><span class="w">       </span><span class="sd">- 
+</span><span class="sd">        # 从nodeId3,nodeId4一共分配1000个卡槽</span><span class="w">
+</span><span class="w">        </span>slots<span class="p">:</span><span class="w"> </span><span class="m">1000</span><span class="w"> 
+</span><span class="w">        </span><span class="c"># 多个nodeId用逗号分隔</span><span class="w">
+</span><span class="w">        </span>fromReplicas<span class="p">:</span><span class="w"> </span>nodeId3<span class="p">,</span>nodeId4<span class="w">
+</span><span class="w">  </span><span class="c"># redis 实例配置详情</span><span class="w">
+</span><span class="w">  </span>pod<span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="c"># 配置文件模板名</span><span class="w">
+</span><span class="w">  </span>-<span class="w"> </span>configmap<span class="p">:</span><span class="w"> </span>example000-redis-cluster-config<span class="w">
+</span><span class="w">    </span><span class="c"># 监控镜像</span><span class="w">
+</span><span class="w">    </span>monitorImage<span class="p">:</span><span class="w"> </span>redis-exporter<span class="p">:</span>v1<span class="w">
+</span><span class="w">    </span><span class="c"># 初始化镜像</span><span class="w">
+</span><span class="w">    </span>initImage<span class="p">:</span><span class="w"> </span>redis-init<span class="p">:</span>v1<span class="w">
+</span><span class="w">    </span><span class="c"># 中间件容器镜像</span><span class="w">
+</span><span class="w">    </span>middlewareImage<span class="p">:</span><span class="w"> </span>redis-trib<span class="p">:</span><span class="m">3.2</span>.<span class="m">6</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>执行kubectl get all -nkube-system时会查到pod、service、该crd等属于all categories的资源对象。（这个可能得等几分钟才能生效）</p>
+
+<p><img src="http://pqek9gnem.bkt.clouddn.com/20190515102819.png" alt="" /></p>
+
+<h2 id="子资源">子资源</h2>
+
+<h3 id="status子资源">status子资源</h3>
+
+<p>启用状态子资源后，将公开自定义资源的子资源 <code>/status</code>。</p>
+
+<ul>
+<li>状态和规范节分别由自定义资源内的 <code>.status</code> 和 <code>.spec</code> JSONPath 表示。</li>
+<li><code>PUT /status</code> 对子资源的请求采用自定义资源对象，并忽略除状态节之外的任何更改。</li>
+<li><code>PUT /status</code> 对子资源的请求仅验证自定义资源的状态节。</li>
+<li><code>PUT/ POST/ PATCH</code> 请求自定义资源忽略更改状态节。</li>
+<li>对 spec 节的任何更改都会增加 <code>.metadata.generation</code> 的值。</li>
+</ul>
+
+<p>在code-generator生成代码时会生成，如下方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// RedisClusterInterface has methods to work with RedisCluster resources.
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">RedisClusterInterface</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nf">Create</span><span class="p">(</span><span class="o">*</span><span class="nx">v1alpha1</span><span class="p">.</span><span class="nx">RedisCluster</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="nx">v1alpha1</span><span class="p">.</span><span class="nx">RedisCluster</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span>
+    <span class="nf">Update</span><span class="p">(</span><span class="o">*</span><span class="nx">v1alpha1</span><span class="p">.</span><span class="nx">RedisCluster</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="nx">v1alpha1</span><span class="p">.</span><span class="nx">RedisCluster</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span>
+    <span class="nf">UpdateStatus</span><span class="p">(</span><span class="o">*</span><span class="nx">v1alpha1</span><span class="p">.</span><span class="nx">RedisCluster</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="nx">v1alpha1</span><span class="p">.</span><span class="nx">RedisCluster</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span>
+    <span class="o">......</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="scale子资源">scale子资源</h3>
+
+<p>启用 scale 子资源后，将公开自定义资源的子资源 <code>/scale</code>。该 autoscaling/v1.Scale 对象作为有效负载发送 /scale。</p>
+
+<p>要启用 scale 子资源，CustomResourceDefinition 中需要定义以下值。</p>
+
+<ul>
+<li><p>SpecReplicasPath 在与之对应的自定义资源中定义 JSONPath Scale.Spec.Replicas。这是一个必需的值。.spec 只允许使用带点符号的 JSONPaths 。如果 SpecReplicasPath 自定义资源中没有值，则 /scale 子资源将在GET上返回错误。</p></li>
+
+<li><p>StatusReplicasPath 在与之对应的自定义资源中定义 JSONPath Scale.Status.Replicas。这是一个必需的值。.stutus 只允许使用带点符号的 JSONPaths 。如果 StatusReplicasPath 自定义资源中没有值，则子资源 /scale 中的状态副本值将默认为 0。</p></li>
+
+<li><p>LabelSelectorPath在与之对应的自定义资源中定义 JSONPath Scale.Status.Selector。这是一个可选值。必须将其设置为与 HPA 一起使用。.status 只允许使用带点符号的 JSONPaths 。如果 LabelSelectorPath 自定义资源中没有值，则子资源 /scale 中的状态选择器值将默认为空字符串。</p></li>
+</ul>
+
+<p>在以下示例中，启用了status 和 scale 子资源。</p>
+
+<p>将以下内容保存到<code>redis-cluster-crd.yaml</code>并创建 <code>kubectl apply -f redis-cluster-crd.yaml</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">apiVersion<span class="p">:</span><span class="w"> </span>apiextensions.k8s.io/v1beta1<span class="w">
+</span><span class="w"></span>kind<span class="p">:</span><span class="w"> </span>CustomResourceDefinition<span class="w">
+</span><span class="w"></span>metadata<span class="p">:</span><span class="w">
+</span><span class="w">  </span>name<span class="p">:</span><span class="w"> </span>redisclusters.redis.middleware.hc.cn<span class="w">
+</span><span class="w"></span>spec<span class="p">:</span><span class="w">
+</span><span class="w">  </span>group<span class="p">:</span><span class="w"> </span>redis.middleware.hc.cn<span class="w">
+</span><span class="w">  </span>versions<span class="p">:</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>name<span class="p">:</span><span class="w"> </span>v1alpha1<span class="w">
+</span><span class="w">      </span><span class="c"># Each version can be enabled/disabled by Served flag.</span><span class="w">
+</span><span class="w">      </span>served<span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">      </span><span class="c"># One and only one version must be marked as the storage version.</span><span class="w">
+</span><span class="w">      </span>storage<span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span>scope<span class="p">:</span><span class="w"> </span>Namespaced<span class="w">
+</span><span class="w">  </span>names<span class="p">:</span><span class="w">
+</span><span class="w">    </span>kind<span class="p">:</span><span class="w"> </span>RedisCluster<span class="w">
+</span><span class="w">    </span>singular<span class="p">:</span><span class="w"> </span>rediscluster<span class="w">
+</span><span class="w">    </span>listKind<span class="p">:</span><span class="w"> </span>RedisClusterList<span class="w">
+</span><span class="w">    </span>plural<span class="p">:</span><span class="w"> </span>redisclusters<span class="w">
+</span><span class="w">    </span>shortNames<span class="p">:</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>rec<span class="w">
+</span><span class="w">    </span><span class="c"># 执行kubectl get all时会查到pod、service、该crd等属于all categories的资源对象</span><span class="w">
+</span><span class="w">    </span>categories<span class="p">:</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>all<span class="w">
+</span><span class="w">  </span>subresources<span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="c"># status enables the status subresource.</span><span class="w">
+</span><span class="w">    </span>status<span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span><span class="w">    </span>scale<span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="c"># specReplicasPath defines the JSONPath inside of a custom resource that corresponds to Scale.Spec.Replicas.</span><span class="w">
+</span><span class="w">      </span>specReplicasPath<span class="p">:</span><span class="w"> </span>.spec.replicas<span class="w">
+</span><span class="w">      </span><span class="c"># statusReplicasPath defines the JSONPath inside of a custom resource that corresponds to Scale.Status.Replicas.</span><span class="w">
+</span><span class="w">      </span>statusReplicasPath<span class="p">:</span><span class="w"> </span>.status.replicas<span class="w">
+</span><span class="w">      </span><span class="c"># labelSelectorPath defines the JSONPath inside of a custom resource that corresponds to Scale.Status.Selector.</span><span class="w">
+</span><span class="w">      </span>labelSelectorPath<span class="p">:</span><span class="w"> </span>.status.labelSelector</code></pre></td></tr></table>
+</div>
+</div>
+<p>创建 CustomResourceDefinition 对象后，您可以创建自定义对象。</p>
+
+<p>如果您将以下 YAML 保存到 <code>redis-cluster-cr.yaml</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">apiVersion<span class="p">:</span><span class="w"> </span>redis.middleware.hc.cn/v1alpha1<span class="w">
+</span><span class="w"></span>kind<span class="p">:</span><span class="w"> </span>RedisCluster<span class="w">
+</span><span class="w"></span>metadata<span class="p">:</span><span class="w"> 
+</span><span class="w">  </span>name<span class="p">:</span><span class="w"> </span>example000-redis-cluster<span class="w">
+</span><span class="w">  </span>namespace<span class="p">:</span><span class="w"> </span>kube-system<span class="w">
+</span><span class="w"></span>spec<span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="c"># 代表redis集群的个数</span><span class="w">
+</span><span class="w">  </span>replicas<span class="p">:</span><span class="w"> </span><span class="m">6</span><span class="w">
+</span><span class="w">  </span><span class="c"># 代表是否进入维修状态</span><span class="w">
+</span><span class="w">  </span>pause<span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span>repository<span class="p">:</span><span class="w"> </span>library/redis<span class="w">
+</span><span class="w">  </span><span class="c"># 镜像版本，便于后续多版本特化支持</span><span class="w">
+</span><span class="w">  </span>version<span class="p">:</span><span class="w"> </span><span class="m">3.2</span>.<span class="m">6</span><span class="w">
+</span><span class="w">  </span><span class="c">#redis集群升级策略</span><span class="w">
+</span><span class="w">  </span>updateStrategy<span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="c"># 升级类型为AutoReceive（自动分配,不用AssignStrategies）, AssignReceive（指定值分配，需要用AssignStrategies）</span><span class="w">
+</span><span class="w">    </span>type<span class="p">:</span><span class="w"> </span>AssignReceive<span class="w">
+</span><span class="w">    </span>pipeline<span class="p">:</span><span class="w"> </span><span class="s2">&#34;100&#34;</span><span class="w">
+</span><span class="w">    </span>assignStrategies<span class="p">:</span><span class="w">
+</span><span class="w">       </span><span class="sd">- 
+</span><span class="sd">        slots: 2000</span><span class="w">
+</span><span class="w">        </span>fromReplicas<span class="p">:</span><span class="w"> </span>nodeId1<span class="w">
+</span><span class="w">       </span><span class="sd">- 
+</span><span class="sd">        # 从nodeId3,nodeId4一共分配1000个卡槽</span><span class="w">
+</span><span class="w">        </span>slots<span class="p">:</span><span class="w"> </span><span class="m">1000</span><span class="w"> 
+</span><span class="w">        </span><span class="c"># 多个nodeId用逗号分隔</span><span class="w">
+</span><span class="w">        </span>fromReplicas<span class="p">:</span><span class="w"> </span>nodeId3<span class="p">,</span>nodeId4<span class="w">
+</span><span class="w">  </span><span class="c"># redis 实例配置详情</span><span class="w">
+</span><span class="w">  </span>pod<span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="c"># 配置文件模板名</span><span class="w">
+</span><span class="w">  </span>-<span class="w"> </span>configmap<span class="p">:</span><span class="w"> </span>example000-redis-cluster-config<span class="w">
+</span><span class="w">    </span><span class="c"># 监控镜像</span><span class="w">
+</span><span class="w">    </span>monitorImage<span class="p">:</span><span class="w"> </span>redis-exporter<span class="p">:</span>v1<span class="w">
+</span><span class="w">    </span><span class="c"># 初始化镜像</span><span class="w">
+</span><span class="w">    </span>initImage<span class="p">:</span><span class="w"> </span>redis-init<span class="p">:</span>v1<span class="w">
+</span><span class="w">    </span><span class="c"># 中间件容器镜像</span><span class="w">
+</span><span class="w">    </span>middlewareImage<span class="p">:</span><span class="w"> </span>redis-trib<span class="p">:</span><span class="m">3.2</span>.<span class="m">6</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>并创建它：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">kubectl create -f redis-cluster-cr.yaml</code></pre></td></tr></table>
+</div>
+</div>
+<p>然后在以下位置创建新的命名空间 RESTful API 端点：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">/apis/redis.middleware.hc.cn/v1alpha1/namespaces/kube-system/redisclusters/example000-redis-cluster/status</pre></td></tr></table>
+</div>
+</div>
+<p>和</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">/apis/redis.middleware.hc.cn/v1alpha1/namespaces/kube-system/redisclusters/example000-redis-cluster/scale</code></pre></td></tr></table>
+</div>
+</div>
+<p>可以使用该 <code>kubectl scale</code> 命令缩放自定义资源。例如，以上创建的自定义资源的的 <code>.spec.replicas</code> 设置为 10：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># kubectl get rec --all-namespaces</span>
+NAMESPACE     NAME                       DESIRED   PAUSE   AGE
+kube-system   example000-redis-cluster   <span class="m">6</span>         <span class="nb">true</span>    10h
+
+<span class="c1"># kubectl scale --replicas=10 rec/example000-redis-cluster -nkube-system</span>
+rediscluster.redis.middleware.hc.cn/example000-redis-cluster scaled
+
+<span class="c1"># kubectl get rec --all-namespaces</span>
+NAMESPACE     NAME                       DESIRED   PAUSE   AGE
+kube-system   example000-redis-cluster   <span class="m">10</span>        <span class="nb">true</span>    10h
+
+<span class="c1"># kubectl get rec example000-redis-cluster -n kube-system -o jsonpath=&#39;{.spec.replicas}&#39;</span>
+<span class="m">10</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="打印其他列">打印其他列</h2>
+
+<p>从 Kubernetes 1.11 开始，kubectl 使用服务器端打印。服务器决定 <code>kubectl get</code> 命令显示哪些列。您可以使用 CustomResourceDefinition 自定义这些列。下面的示例将输出 <code>Spec</code>、<code>Replicas</code> 和 <code>Age</code> 列。</p>
+
+<ol>
+<li>将 CustomResourceDefinition保存到 <code>redis-cluster-crd.yaml</code>。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="w">   </span>apiVersion<span class="p">:</span><span class="w"> </span>apiextensions.k8s.io/v1beta1<span class="w">
+</span><span class="w">   </span>kind<span class="p">:</span><span class="w"> </span>CustomResourceDefinition<span class="w">
+</span><span class="w">   </span>metadata<span class="p">:</span><span class="w">
+</span><span class="w">     </span>name<span class="p">:</span><span class="w"> </span>redisclusters.redis.middleware.hc.cn<span class="w">
+</span><span class="w">   </span>spec<span class="p">:</span><span class="w">
+</span><span class="w">     </span>group<span class="p">:</span><span class="w"> </span>redis.middleware.hc.cn<span class="w">
+</span><span class="w">     </span>versions<span class="p">:</span><span class="w">
+</span><span class="w">       </span>-<span class="w"> </span>name<span class="p">:</span><span class="w"> </span>v1alpha1<span class="w">
+</span><span class="w">         </span><span class="c"># Each version can be enabled/disabled by Served flag.</span><span class="w">
+</span><span class="w">         </span>served<span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">         </span><span class="c"># One and only one version must be marked as the storage version.</span><span class="w">
+</span><span class="w">         </span>storage<span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">     </span>scope<span class="p">:</span><span class="w"> </span>Namespaced<span class="w">
+</span><span class="w">     </span>names<span class="p">:</span><span class="w">
+</span><span class="w">       </span>kind<span class="p">:</span><span class="w"> </span>RedisCluster<span class="w">
+</span><span class="w">       </span>singular<span class="p">:</span><span class="w"> </span>rediscluster<span class="w">
+</span><span class="w">       </span>listKind<span class="p">:</span><span class="w"> </span>RedisClusterList<span class="w">
+</span><span class="w">       </span>plural<span class="p">:</span><span class="w"> </span>redisclusters<span class="w">
+</span><span class="w">       </span>shortNames<span class="p">:</span><span class="w">
+</span><span class="w">       </span>-<span class="w"> </span>rec<span class="w">
+</span><span class="w">       </span><span class="c"># 执行kubectl get all时会查到pod、service、该crd等属于all categories的资源对象</span><span class="w">
+</span><span class="w">       </span>categories<span class="p">:</span><span class="w">
+</span><span class="w">       </span>-<span class="w"> </span>all<span class="w">
+</span><span class="w">     </span>additionalPrinterColumns<span class="p">:</span><span class="w">
+</span><span class="w">     </span>-<span class="w"> </span>name<span class="p">:</span><span class="w"> </span>DESIRED<span class="w">
+</span><span class="w">       </span>type<span class="p">:</span><span class="w"> </span>integer<span class="w">
+</span><span class="w">       </span>description<span class="p">:</span><span class="w"> </span>The<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>statefulset<span class="w"> </span>managed<span class="w"> </span>by<span class="w"> </span>the<span class="w"> </span>this<span class="w"> </span>redisCluster<span class="w">
+</span><span class="w">       </span>JSONPath<span class="p">:</span><span class="w"> </span>.spec.replicas<span class="w">
+</span><span class="w">       </span><span class="c"># boolean,date,integer,number,string</span><span class="w">
+</span><span class="w">     </span>-<span class="w"> </span>name<span class="p">:</span><span class="w"> </span>PAUSE<span class="w">
+</span><span class="w">       </span>type<span class="p">:</span><span class="w"> </span>boolean<span class="w">
+</span><span class="w">       </span>description<span class="p">:</span><span class="w"> </span>Whether<span class="w"> </span>this<span class="w"> </span>redisCluster&#39;s<span class="w"> </span>grandson<span class="w"> </span>(pod)<span class="w"> </span>will<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>managed<span class="w"> </span>by<span class="w"> </span>statefulset<span class="w">
+</span><span class="w">       </span>JSONPath<span class="p">:</span><span class="w"> </span>.spec.pause</code></pre></td></tr></table>
+</div>
+</div>
+<ol>
+<li>创建 CustomResourceDefinition：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">   kubectl create -f redis-cluster-crd.yaml</pre></td></tr></table>
+</div>
+</div>
+<ol>
+<li><p>使用上面创建的 <code>redis-cluster-cr.yaml</code> 实例。</p></li>
+
+<li><p>调用服务器端打印：</p></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">   kubectl get rec --all-namespaces</pre></td></tr></table>
+</div>
+</div>
+<p>请注意 <code>NAME</code>、<code>NAMESPACE</code>, <code>DESIRED</code>、<code>PAUSE</code> 和 <code>AGE</code> 在输出列，并且都被转成了大写字母：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">   [root@master-192 redis-container]# kubectl get rec --all-namespaces
+   NAMESPACE     NAME                       DESIRED   PAUSE   AGE
+   kube-system   example000-redis-cluster   6         true    10h</pre></td></tr></table>
+</div>
+</div>
+<p><code>NAME</code>和<code>NAMESPACE</code> 列是隐含的，不需要在 CustomResourceDefinition 中定义。</p>
+
+<h2 id="operator中应用该特性">operator中应用该特性</h2>
+
+<p>在golang编写的operator代码中创建该结构体：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">//创建CRD
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">CreateRedisClusterCRD</span><span class="p">(</span><span class="nx">extensionCRClient</span> <span class="o">*</span><span class="nx">extensionsclient</span><span class="p">.</span><span class="nx">Clientset</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+    <span class="c1">//add CustomResourceValidation due to guarantee redis operator work normally
+</span><span class="c1"></span>    <span class="nx">labelSelectorPath</span> <span class="o">:=</span> <span class="s">&#34;.status.labelSelector&#34;</span>
+    <span class="nx">replicasMinimum</span> <span class="o">:=</span> <span class="nb">float64</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nx">replicasMaximum</span> <span class="o">:=</span> <span class="nb">float64</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+    <span class="nx">replicasMultipleOf</span> <span class="o">:=</span> <span class="nb">float64</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="nx">slotsMinimum</span> <span class="o">:=</span> <span class="nb">float64</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nx">slotsMaximum</span> <span class="o">:=</span> <span class="nb">float64</span><span class="p">(</span><span class="mi">16384</span><span class="p">)</span>
+    <span class="nx">assignStr</span> <span class="o">:=</span> <span class="s">&#34;AssignReceive&#34;</span>
+    <span class="nx">autoStr</span> <span class="o">:=</span> <span class="s">&#34;AutoReceive&#34;</span>
+    <span class="nx">assignJson</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">assignStr</span><span class="p">)</span>
+    <span class="nx">autoJson</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">autoStr</span><span class="p">)</span>
+
+    <span class="nx">crd</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">v1beta1</span><span class="p">.</span><span class="nx">CustomResourceDefinition</span><span class="p">{</span>
+        <span class="nx">ObjectMeta</span><span class="p">:</span> <span class="nx">metav1</span><span class="p">.</span><span class="nx">ObjectMeta</span><span class="p">{</span>
+            <span class="nx">Name</span><span class="p">:</span> <span class="s">&#34;redisclusters.&#34;</span> <span class="o">+</span> <span class="nx">v1alpha1</span><span class="p">.</span><span class="nx">SchemeGroupVersion</span><span class="p">.</span><span class="nx">Group</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="nx">Spec</span><span class="p">:</span> <span class="nx">v1beta1</span><span class="p">.</span><span class="nx">CustomResourceDefinitionSpec</span><span class="p">{</span>
+            <span class="nx">Group</span><span class="p">:</span>   <span class="nx">v1alpha1</span><span class="p">.</span><span class="nx">SchemeGroupVersion</span><span class="p">.</span><span class="nx">Group</span><span class="p">,</span>
+            <span class="nx">Versions</span><span class="p">:</span> <span class="p">[]</span><span class="nx">v1beta1</span><span class="p">.</span><span class="nx">CustomResourceDefinitionVersion</span> <span class="p">{</span>
+                <span class="p">{</span>
+                    <span class="c1">// Served is a flag enabling/disabling this version from being served via REST APIs
+</span><span class="c1"></span>                    <span class="nx">Served</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="nx">Name</span><span class="p">:</span> <span class="nx">v1alpha1</span><span class="p">.</span><span class="nx">SchemeGroupVersion</span><span class="p">.</span><span class="nx">Version</span><span class="p">,</span>
+                    <span class="c1">// Storage flags the version as storage version. There must be exactly one flagged as storage version
+</span><span class="c1"></span>                    <span class="nx">Storage</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="p">},</span>
+            <span class="p">},</span>
+            <span class="nx">Scope</span><span class="p">:</span>   <span class="nx">v1beta1</span><span class="p">.</span><span class="nx">NamespaceScoped</span><span class="p">,</span>
+            <span class="nx">Names</span><span class="p">:</span> <span class="nx">v1beta1</span><span class="p">.</span><span class="nx">CustomResourceDefinitionNames</span><span class="p">{</span>
+                <span class="nx">Kind</span><span class="p">:</span>       <span class="s">&#34;RedisCluster&#34;</span><span class="p">,</span>
+                <span class="nx">ListKind</span><span class="p">:</span>   <span class="s">&#34;RedisClusterList&#34;</span><span class="p">,</span>
+                <span class="nx">Plural</span><span class="p">:</span>     <span class="s">&#34;redisclusters&#34;</span><span class="p">,</span>
+                <span class="nx">Singular</span><span class="p">:</span>   <span class="s">&#34;rediscluster&#34;</span><span class="p">,</span>
+                <span class="nx">ShortNames</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;rec&#34;</span><span class="p">},</span>
+                <span class="nx">Categories</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;all&#34;</span><span class="p">},</span>
+            <span class="p">},</span>
+            <span class="nx">Subresources</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">v1beta1</span><span class="p">.</span><span class="nx">CustomResourceSubresources</span> <span class="p">{</span>
+                <span class="nx">Status</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">v1beta1</span><span class="p">.</span><span class="nx">CustomResourceSubresourceStatus</span> <span class="p">{},</span>
+                <span class="nx">Scale</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">v1beta1</span><span class="p">.</span><span class="nx">CustomResourceSubresourceScale</span> <span class="p">{</span>
+                    <span class="nx">SpecReplicasPath</span><span class="p">:</span> <span class="s">&#34;.spec.replicas&#34;</span><span class="p">,</span>
+                    <span class="nx">StatusReplicasPath</span><span class="p">:</span> <span class="s">&#34;.status.replicas&#34;</span><span class="p">,</span>
+                    <span class="nx">LabelSelectorPath</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">labelSelectorPath</span><span class="p">,</span>
+                <span class="p">},</span>
+            <span class="p">},</span>
+            <span class="nx">AdditionalPrinterColumns</span><span class="p">:</span> <span class="p">[]</span><span class="nx">v1beta1</span><span class="p">.</span><span class="nx">CustomResourceColumnDefinition</span><span class="p">{</span>
+                <span class="p">{</span>
+                    <span class="nx">Name</span><span class="p">:</span> <span class="s">&#34;DESIRED&#34;</span><span class="p">,</span>
+                    <span class="nx">Type</span><span class="p">:</span> <span class="s">&#34;integer&#34;</span><span class="p">,</span>
+                    <span class="nx">Description</span><span class="p">:</span> <span class="s">&#34;The number of statefulset managed by the this redisCluster&#34;</span><span class="p">,</span>
+                    <span class="nx">JSONPath</span><span class="p">:</span> <span class="s">&#34;.spec.replicas&#34;</span><span class="p">,</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="nx">Name</span><span class="p">:</span> <span class="s">&#34;PAUSE&#34;</span><span class="p">,</span>
+                    <span class="nx">Type</span><span class="p">:</span> <span class="s">&#34;boolean&#34;</span><span class="p">,</span>
+                    <span class="nx">Description</span><span class="p">:</span> <span class="s">&#34;Whether this redisCluster&#39;s grandson (pod) will not be managed by statefulset&#34;</span><span class="p">,</span>
+                    <span class="nx">JSONPath</span><span class="p">:</span> <span class="s">&#34;.spec.pause&#34;</span><span class="p">,</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="nx">Name</span><span class="p">:</span> <span class="s">&#34;AGE&#34;</span><span class="p">,</span>
+                    <span class="nx">Type</span><span class="p">:</span> <span class="s">&#34;date&#34;</span><span class="p">,</span>
+                    <span class="nx">JSONPath</span><span class="p">:</span> <span class="s">&#34;.metadata.creationTimestamp&#34;</span><span class="p">,</span>
+                <span class="p">},</span>
+            <span class="p">},</span>
+            <span class="nx">Validation</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">v1beta1</span><span class="p">.</span><span class="nx">CustomResourceValidation</span> <span class="p">{</span>
+                <span class="nx">OpenAPIV3Schema</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">v1beta1</span><span class="p">.</span><span class="nx">JSONSchemaProps</span> <span class="p">{</span>
+                    <span class="nx">Properties</span><span class="p">:</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">v1beta1</span><span class="p">.</span><span class="nx">JSONSchemaProps</span> <span class="p">{</span>
+                        <span class="s">&#34;spec&#34;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="nx">Required</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;replicas&#34;</span><span class="p">,</span> <span class="s">&#34;repository&#34;</span><span class="p">,</span> <span class="s">&#34;version&#34;</span><span class="p">},</span>
+                            <span class="nx">Properties</span><span class="p">:</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">v1beta1</span><span class="p">.</span><span class="nx">JSONSchemaProps</span><span class="p">{</span>
+                                <span class="s">&#34;pause&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="nx">Type</span><span class="p">:</span> <span class="s">&#34;boolean&#34;</span><span class="p">,</span>
+                                <span class="p">},</span>
+                                <span class="s">&#34;replicas&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="nx">Type</span><span class="p">:</span>       <span class="s">&#34;integer&#34;</span><span class="p">,</span>
+                                    <span class="nx">Minimum</span><span class="p">:</span>    <span class="o">&amp;</span><span class="nx">replicasMinimum</span><span class="p">,</span>
+                                    <span class="nx">Maximum</span><span class="p">:</span>    <span class="o">&amp;</span><span class="nx">replicasMaximum</span><span class="p">,</span>
+                                    <span class="nx">MultipleOf</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">replicasMultipleOf</span><span class="p">,</span>
+                                <span class="p">},</span>
+                                <span class="s">&#34;updateStrategy&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="nx">Type</span><span class="p">:</span> <span class="s">&#34;object&#34;</span><span class="p">,</span>
+                                    <span class="nx">Properties</span><span class="p">:</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">v1beta1</span><span class="p">.</span><span class="nx">JSONSchemaProps</span><span class="p">{</span>
+                                        <span class="s">&#34;type&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="nx">Type</span><span class="p">:</span> <span class="s">&#34;string&#34;</span><span class="p">,</span>
+                                            <span class="nx">Enum</span><span class="p">:</span> <span class="p">[]</span><span class="nx">v1beta1</span><span class="p">.</span><span class="nx">JSON</span> <span class="p">{</span>
+                                                <span class="p">{</span>
+                                                    <span class="c1">//这里必须是JSON格式的字符串
+</span><span class="c1"></span>                                                    <span class="nx">Raw</span><span class="p">:</span> <span class="nx">assignJson</span><span class="p">,</span>
+                                                <span class="p">},</span>
+                                                <span class="p">{</span>
+                                                    <span class="nx">Raw</span><span class="p">:</span> <span class="nx">autoJson</span><span class="p">,</span>
+                                                <span class="p">},</span>
+                                            <span class="p">},</span>
+                                        <span class="p">},</span>
+                                        <span class="s">&#34;pipeline&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="nx">Type</span><span class="p">:</span>    <span class="s">&#34;string&#34;</span><span class="p">,</span>
+                                            <span class="nx">Pattern</span><span class="p">:</span> <span class="s">`^([1-9][0-9]*){1,3}$`</span><span class="p">,</span>
+                                        <span class="p">},</span>
+                                        <span class="s">&#34;assignStrategies&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="nx">Type</span><span class="p">:</span> <span class="s">&#34;array&#34;</span><span class="p">,</span>
+                                            <span class="nx">Items</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">v1beta1</span><span class="p">.</span><span class="nx">JSONSchemaPropsOrArray</span><span class="p">{</span>
+                                                <span class="nx">Schema</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">v1beta1</span><span class="p">.</span><span class="nx">JSONSchemaProps</span><span class="p">{</span>
+                                                    <span class="nx">Type</span><span class="p">:</span> <span class="s">&#34;object&#34;</span><span class="p">,</span>
+                                                    <span class="nx">Properties</span><span class="p">:</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">v1beta1</span><span class="p">.</span><span class="nx">JSONSchemaProps</span><span class="p">{</span>
+                                                        <span class="s">&#34;slots&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                                            <span class="nx">Type</span><span class="p">:</span>    <span class="s">&#34;integer&#34;</span><span class="p">,</span>
+                                                            <span class="nx">Minimum</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">slotsMinimum</span><span class="p">,</span>
+                                                            <span class="nx">Maximum</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">slotsMaximum</span><span class="p">,</span>
+                                                        <span class="p">},</span>
+                                                        <span class="s">&#34;fromReplicas&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                                            <span class="nx">Type</span><span class="p">:</span>    <span class="s">&#34;string&#34;</span><span class="p">,</span>
+                                                            <span class="nx">Pattern</span><span class="p">:</span> <span class="s">`^[a-z0-9,]{3,}$`</span><span class="p">,</span>
+                                                        <span class="p">},</span>
+                                                    <span class="p">},</span>
+                                                <span class="p">},</span>
+                                            <span class="p">},</span>
+                                        <span class="p">},</span>
+                                    <span class="p">},</span>
+                                <span class="p">},</span>
+                            <span class="p">},</span>
+                        <span class="p">},</span>
+                        <span class="s">&#34;pod&#34;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="nx">Type</span><span class="p">:</span> <span class="s">&#34;array&#34;</span><span class="p">,</span>
+                            <span class="nx">Items</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">v1beta1</span><span class="p">.</span><span class="nx">JSONSchemaPropsOrArray</span> <span class="p">{</span>
+                                <span class="nx">Schema</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">v1beta1</span><span class="p">.</span><span class="nx">JSONSchemaProps</span> <span class="p">{</span>
+                                    <span class="nx">Type</span><span class="p">:</span> <span class="s">&#34;object&#34;</span><span class="p">,</span>
+                                    <span class="nx">Required</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;replicas&#34;</span><span class="p">,</span> <span class="s">&#34;repository&#34;</span><span class="p">,</span> <span class="s">&#34;version&#34;</span><span class="p">},</span>
+                                    <span class="nx">Properties</span><span class="p">:</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">v1beta1</span><span class="p">.</span><span class="nx">JSONSchemaProps</span><span class="p">{</span>
+                                        <span class="s">&#34;configmap&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="nx">Type</span><span class="p">:</span> <span class="s">&#34;string&#34;</span><span class="p">,</span>
+                                        <span class="p">},</span>
+                                        <span class="s">&#34;monitorImage&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="nx">Type</span><span class="p">:</span> <span class="s">&#34;string&#34;</span><span class="p">,</span>
+                                        <span class="p">},</span>
+                                        <span class="s">&#34;initImage&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="nx">Type</span><span class="p">:</span> <span class="s">&#34;string&#34;</span><span class="p">,</span>
+                                        <span class="p">},</span>
+                                        <span class="s">&#34;middlewareImage&#34;</span><span class="p">:</span> <span class="p">{</span>
+                                            <span class="nx">Type</span><span class="p">:</span> <span class="s">&#34;string&#34;</span><span class="p">,</span>
+                                        <span class="p">},</span>
+                                    <span class="p">},</span>
+                                <span class="p">},</span>
+                            <span class="p">},</span>
+                        <span class="p">},</span>
+                    <span class="p">},</span>
+                <span class="p">},</span>
+            <span class="p">},</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+    <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">extensionCRClient</span><span class="p">.</span><span class="nf">ApiextensionsV1beta1</span><span class="p">().</span><span class="nf">CustomResourceDefinitions</span><span class="p">().</span><span class="nf">Create</span><span class="p">(</span><span class="nx">crd</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">err</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="参考">参考</h2>
+
+<p>官方Extend the Kubernetes API with CustomResourceDefinitions：</p>
+
+<p><a href="https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/">https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/</a></p>
+
+<p>feature-gates参数说明：</p>
+
+<p><a href="https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates/">https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates/</a></p>
+
+<p>CustomResourceDefinition中文文档：</p>
+
+<p><a href="https://kubernetes.feisky.xyz/cha-jian-kuo-zhan/api/customresourcedefinition">https://kubernetes.feisky.xyz/cha-jian-kuo-zhan/api/customresourcedefinition</a></p>
+
+<p>swagger和openAPI: 数据类型：</p>
+
+<p><a href="https://www.breakyizhan.com/swagger/2969.html">https://www.breakyizhan.com/swagger/2969.html</a></p>
+
+<p>正则表达式：</p>
+
+<p><a href="https://www.cnblogs.com/afarmer/archive/2011/08/29/2158860.html">https://www.cnblogs.com/afarmer/archive/2011/08/29/2158860.html</a></p>
+
+                        </div>
+
+                        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://liabio.github.io">小碗汤</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://liabio.github.io/post/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/">https://liabio.github.io/post/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+                        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/">手把手教你搭建kubernetes集群.md</a></li>
+        
+        <li><a href="/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/">手把手教你搭建kubernetes集群1</a></li>
+        
+        <li><a href="/post/2019-05-14-%E6%90%AD%E5%BB%BAk8s%E7%8E%AF%E5%A2%83%E6%97%B6gcr.io%E5%92%8Cquay.io%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E5%A4%B1%E8%B4%A5/">搭建k8s环境时gcr.io和quay.io拉取镜像失败</a></li>
+        
+        <li><a href="/post/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">Hugo搭建博客教程</a></li>
+        
+        <li><a href="/about/">About</a></li>
+        
+    </ul>
+</div>
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            没有标签
+                            
+                        </div>
+                    </article>
+                    
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-liabio-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liabio/utteranc_comment"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liabio.github.io">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/" title="手把手教你搭建kubernetes集群.md">手把手教你搭建kubernetes集群.md</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/" title="手把手教你搭建kubernetes集群1">手把手教你搭建kubernetes集群1</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-05-14-%E6%90%AD%E5%BB%BAk8s%E7%8E%AF%E5%A2%83%E6%97%B6gcr.io%E5%92%8Cquay.io%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E5%A4%B1%E8%B4%A5/" title="搭建k8s环境时gcr.io和quay.io拉取镜像失败">搭建k8s环境时gcr.io和quay.io拉取镜像失败</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/" title="Hugo搭建博客教程">Hugo搭建博客教程</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-05-04-%E5%8D%9A%E5%AE%A2test/" title="博客test">博客test</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/" title="kube-scheduler调度扩展">kube-scheduler调度扩展</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="快速搭建个人博客">快速搭建个人博客</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/" title=""></a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-5-21-etcd%E6%93%8D%E4%BD%9C/" title=""></a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title" style="color:red">福利派送</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a href="https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=jdg9oj97" title="领取￥1888阿里云产品通用代金券" target="_blank" style="color:red">
+                
+                    领取￥1888阿里云产品通用代金券
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="https://promotion.aliyun.com/ntms/act/vmpt/aliyun-group/home.html?userCode=jdg9oj97" title="领取￥1888阿里云产品通用代金券" target="_blank" style="color:red">
+                
+                    <img src="https://img.alicdn.com/tfs/TB17qJhXpzqK1RjSZFvXXcB7VXa-200-126.jpg">
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="https://promotion.aliyun.com/ntms/act/enterprise-discount.html?userCode=jdg9oj97" title="领取￥1888阿里云产品通用代金券" target="_blank" style="color:red">
+                
+                    <img src="https://img.alicdn.com/tfs/TB1aDXhXpzqK1RjSZFvXXcB7VXa-259-194.jpg">
+                
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liabio.github.io/categories/Blog/">Blog(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/Kubernetes/">Kubernetes(4)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://liabio.github.io/tags/Blog/">Blog</a>
+    
+    <a href="https://liabio.github.io/tags/Golang/">Golang</a>
+    
+    <a href="https://liabio.github.io/tags/Hugo/">Hugo</a>
+    
+    <a href="https://liabio.github.io/tags/Kubernetes/">Kubernetes</a>
+    
+    <a href="https://liabio.github.io/tags/Scheduler/">Scheduler</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="http://yuedu.baidu.com/ebook/14a722970740be1e640e9a3e" title="Android Gradle权威指南">Android Gradle权威指南</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="http://mirrors.flysnow.org/" title="常用开发工具CDN镜像">常用开发工具CDN镜像</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liabio.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2019 <a href="https://liabio.github.io">小碗汤的博客 By 小碗汤</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    <script type="text/javascript">
+    
+    (function(){
+        $("pre code").parent().addClass("line-numbers")
+    }())
+
+    window.MathJax = {
+        tex2jax: {
+            inlineMath: [ ['$','$'] ],
+            processEscapes: true
+        }
+    };
+    </script>
+    <script type="text/javascript" src="/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-139517579-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+<script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+</body>
+</html>

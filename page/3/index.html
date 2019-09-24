@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.55.4" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>小碗汤的博客 | 专注于Java、Go语言(Golang)、Docker、Kubernetes、软件架构</title>
+    <meta property="og:title" content="小碗汤的博客 | 专注于Java、Go语言(Golang)、Docker、Kubernetes、软件架构">
+    <meta property="og:type" content="website">
+    <meta name="Keywords" content="golang,go语言,go语言笔记,小碗汤,docker,kubernetes,k8s,java,博客,python,软件架构,公众号,小程序,Hugo,theme,maupassant">
+    <meta name="description" content="专注于IT互联网，包括但不限于Go语言(golang)、Java、docker、kubernetes、Python、抖音分析、软件架构等">
+    <meta property="og:url" content="https://liabio.github.io/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="alternate" type="application/rss+xml+xml" href="https://liabio.github.io/index.xml" title="小碗汤的博客" />
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <h1>
+                        <a id="logo" href="https://liabio.github.io">
+                            小碗汤的博客
+                        </a>
+                    </h1>
+                
+                <p class="description">专注于Java、Go语言(Golang)、Docker、Kubernetes、软件架构</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liabio.github.io">首页</a>
+                    
+                    <a  href="https://liabio.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liabio.github.io/tools/" title="工具">工具</a>
+                    
+                    <a  href="https://liabio.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://liabio.github.io/post/2019-5-21-etcd%E6%93%8D%E4%BD%9C/" title="" ></a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                1年1月1日
+                            </date>
+                            
+                            <div class="post-content">
+                                etcd操作 etcdctl安装 下载并解压二进制文件
+1 2  curl -L https://github.com/coreos/etcd/releases/download/v3.3.2/etcd-v3.3.2-linux-amd64.tar.gz -o etcd-v3.3.2-linux-amd64.tar.gz tar zxf etcd-v3.3.2-linux-amd64.tar.gz   解压后是一些文档和两个二进制文件etcd和etcdctl。etcd是server端，etcdctl是客户端。
+将解压后的etcd和etcdctl移动到$GOPATH/bin目录下，可以直接使用etcd和etcdctl命令
+1  mv etcd-v3.3.2-linux-amd64/etcd* /usr/local/bin/   1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108  # 获取etcd节点成员列表 $ ETCDCTL_API=3 etcdctl --cacert=/etc/kubernetes/pki/etcd/ca.……
+                            </div>
+                            <p class="readmore"><a href="https://liabio.github.io/post/2019-5-21-etcd%E6%93%8D%E4%BD%9C/">阅读全文</a></p>
+                        </article>
+                    
+                    
+
+
+
+<ol class="page-navigator">
+    
+    <li class="prev">
+        <a href="https://liabio.github.io/page/2/">上一页</a>
+    </li>
+    
+
+    
+    <li >
+        <a href="https://liabio.github.io/">1</a>
+    </li>
+    
+    <li >
+        <a href="https://liabio.github.io/page/2/">2</a>
+    </li>
+    
+    <li  class="current">
+        <a href="https://liabio.github.io/page/3/">3</a>
+    </li>
+    
+
+    
+</ol>
+
+
+
+                </div>
+            </div>
+
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liabio.github.io">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/" title="手把手教你搭建kubernetes集群.md">手把手教你搭建kubernetes集群.md</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/" title="手把手教你搭建kubernetes集群1">手把手教你搭建kubernetes集群1</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-05-14-%E6%90%AD%E5%BB%BAk8s%E7%8E%AF%E5%A2%83%E6%97%B6gcr.io%E5%92%8Cquay.io%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E5%A4%B1%E8%B4%A5/" title="搭建k8s环境时gcr.io和quay.io拉取镜像失败">搭建k8s环境时gcr.io和quay.io拉取镜像失败</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/" title="Hugo搭建博客教程">Hugo搭建博客教程</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-05-04-%E5%8D%9A%E5%AE%A2test/" title="博客test">博客test</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/" title="kube-scheduler调度扩展">kube-scheduler调度扩展</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="快速搭建个人博客">快速搭建个人博客</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/" title=""></a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-5-21-etcd%E6%93%8D%E4%BD%9C/" title=""></a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title" style="color:red">福利派送</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a href="https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=jdg9oj97" title="领取￥1888阿里云产品通用代金券" target="_blank" style="color:red">
+                
+                    领取￥1888阿里云产品通用代金券
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="https://promotion.aliyun.com/ntms/act/vmpt/aliyun-group/home.html?userCode=jdg9oj97" title="领取￥1888阿里云产品通用代金券" target="_blank" style="color:red">
+                
+                    <img src="https://img.alicdn.com/tfs/TB17qJhXpzqK1RjSZFvXXcB7VXa-200-126.jpg">
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="https://promotion.aliyun.com/ntms/act/enterprise-discount.html?userCode=jdg9oj97" title="领取￥1888阿里云产品通用代金券" target="_blank" style="color:red">
+                
+                    <img src="https://img.alicdn.com/tfs/TB1aDXhXpzqK1RjSZFvXXcB7VXa-259-194.jpg">
+                
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liabio.github.io/categories/Blog/">Blog(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/Kubernetes/">Kubernetes(4)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://liabio.github.io/tags/Blog/">Blog</a>
+    
+    <a href="https://liabio.github.io/tags/Golang/">Golang</a>
+    
+    <a href="https://liabio.github.io/tags/Hugo/">Hugo</a>
+    
+    <a href="https://liabio.github.io/tags/Kubernetes/">Kubernetes</a>
+    
+    <a href="https://liabio.github.io/tags/Scheduler/">Scheduler</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="http://yuedu.baidu.com/ebook/14a722970740be1e640e9a3e" title="Android Gradle权威指南">Android Gradle权威指南</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="http://mirrors.flysnow.org/" title="常用开发工具CDN镜像">常用开发工具CDN镜像</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liabio.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2019 <a href="https://liabio.github.io">小碗汤的博客 By 小碗汤</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-139517579-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+<script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+
+</body>
+</html>
