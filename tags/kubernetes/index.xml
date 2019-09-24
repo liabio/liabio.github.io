@@ -53,7 +53,7 @@
       <pubDate>Thu, 02 May 2019 00:00:00 +0000</pubDate>
       
       <guid>https://liabio.github.io/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/</guid>
-      <description>Kubernetes 自带了一个默认调度器kube-scheduler，其内置了很多节点预选和优选的调度算法，一般调度场景下可以满足要求。但是在一些特殊场景下，默认调度器不能满足我们复杂的调度需求。我们就需要对调度器进行扩展，以达到调度适合业务场景的目的。 背景 中间件redis容器化后，需要两主不能在</description>
+      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注： 正文 Kubernetes 自</description>
     </item>
     
   </channel>

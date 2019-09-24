@@ -9,8 +9,138 @@
   
   <url>
     <loc>https://liabio.github.io/categories/</loc>
-    <lastmod>2019-05-14T23:44:21+08:00</lastmod>
+    <lastmod>2019-09-24T10:48:21+08:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/post/</loc>
+    <lastmod>2019-09-24T10:48:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/tags/</loc>
+    <lastmod>2019-09-24T10:48:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/categories/debug/</loc>
+    <lastmod>2019-09-24T10:48:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/categories/docker/</loc>
+    <lastmod>2019-09-24T10:48:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/tags/docker/</loc>
+    <lastmod>2019-09-24T10:48:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/post/2019-09-24-docker-image-essential-skills/</loc>
+    <lastmod>2019-09-24T10:48:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/post/2019-09-24-kubernetes-gc-GarbageCollector-Controller-source-one/</loc>
+    <lastmod>2019-09-24T10:48:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/categories/ingress-nginx/</loc>
+    <lastmod>2019-09-24T10:48:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/tags/ingress-nginx/</loc>
+    <lastmod>2019-09-24T10:48:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/categories/job/</loc>
+    <lastmod>2019-09-24T10:48:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/categories/k8s/</loc>
+    <lastmod>2019-09-24T10:48:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/post/2019-09-24-k8s-loadbalancer-ingress-nginx-deploy/</loc>
+    <lastmod>2019-09-24T10:48:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/post/2019-09-24-k8s-job-execute-fail-do-what/</loc>
+    <lastmod>2019-09-24T10:48:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/categories/kubernetes/</loc>
+    <lastmod>2019-09-24T10:48:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/tags/kubernetes/</loc>
+    <lastmod>2019-09-24T10:48:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/post/2019-09-24-docker-create-svc-in-cloudserver/</loc>
+    <lastmod>2019-09-24T10:48:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/post/2019-09-24-socket-error-debug/</loc>
+    <lastmod>2019-09-24T10:48:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/post/2019-09-24-docker-comprehensive-knowledge/</loc>
+    <lastmod>2019-09-24T10:48:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/tags/%E5%AE%B9%E5%99%A8/</loc>
+    <lastmod>2019-09-24T10:48:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/</loc>
+    <lastmod>2019-09-24T10:48:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/categories/%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2019-09-24T10:48:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/tags/%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2019-09-24T10:48:21+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/post/2019-09-24-k8s-domain-resolve-coredns-problem-debug/</loc>
+    <lastmod>2019-09-24T10:48:21+08:00</lastmod>
   </url>
   
   <url>
@@ -32,25 +162,7 @@
   </url>
   
   <url>
-    <loc>https://liabio.github.io/post/</loc>
-    <lastmod>2019-05-14T23:44:21+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://liabio.github.io/tags/Scheduler/</loc>
-    <lastmod>2019-05-14T23:44:21+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://liabio.github.io/tags/</loc>
-    <lastmod>2019-05-14T23:44:21+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://liabio.github.io/</loc>
     <lastmod>2019-05-14T23:44:21+08:00</lastmod>
     <priority>0</priority>
   </url>

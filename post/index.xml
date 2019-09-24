@@ -6,10 +6,82 @@
     <description>Recent content in Posts on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 14 May 2019 23:44:21 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 24 Sep 2019 10:48:21 +0800</lastBuildDate>
     
 	<atom:link href="https://liabio.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>docker镜像制作必备技能</title>
+      <link>https://liabio.github.io/post/2019-09-24-docker-image-essential-skills/</link>
+      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/post/2019-09-24-docker-image-essential-skills/</guid>
+      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注： 正文 使用</description>
+    </item>
+    
+    <item>
+      <title>docker镜像制作必备技能</title>
+      <link>https://liabio.github.io/post/2019-09-24-kubernetes-gc-GarbageCollector-Controller-source-one/</link>
+      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/post/2019-09-24-kubernetes-gc-GarbageCollector-Controller-source-one/</guid>
+      <description>kubernetes版本：1.13.2 背景 由于operator创建的redis集群，在kubernetes apiserver重启后，redis集群被异常删除（包括redis exporter statefulset、redis statefulset）。删除后operator将其重建，重新组建集群，</description>
+    </item>
+    
+    <item>
+      <title>k8s中负载均衡器【ingress-nginx】部署</title>
+      <link>https://liabio.github.io/post/2019-09-24-k8s-loadbalancer-ingress-nginx-deploy/</link>
+      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/post/2019-09-24-k8s-loadbalancer-ingress-nginx-deploy/</guid>
+      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注： 在Kub</description>
+    </item>
+    
+    <item>
+      <title>k8s使用Job执行任务失败了怎么办</title>
+      <link>https://liabio.github.io/post/2019-09-24-k8s-job-execute-fail-do-what/</link>
+      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/post/2019-09-24-k8s-job-execute-fail-do-what/</guid>
+      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注： Kubernetes 中使用</description>
+    </item>
+    
+    <item>
+      <title>一次socket.error: [Errno 99] Cannot assign requested address报错排查</title>
+      <link>https://liabio.github.io/post/2019-09-24-docker-create-svc-in-cloudserver/</link>
+      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/post/2019-09-24-docker-create-svc-in-cloudserver/</guid>
+      <description>今天在Ucloud国际版的机器上配置某个不可描述的服务时，遇到了 socket.error: [Errno 99] Cannot assign requested address 的错误，详细如下： 1 2 3 4 5 6 7 8 9 10 11 12 13 [root@liabio ~]# docker logs c0c34ba49967 2019-07-15 00:02:26 INFO loading libcrypto from libcrypto.so.1.0.0 2019-07-15 00:02:26 INFO starting server at 128.1.132.124:8002 Traceback (most recent call last): File &amp;#34;/usr/local/bin/ssserver&amp;#34;, line 11, in &amp;lt;module&amp;gt; sys.exit(main()) File &amp;#34;/usr/local/lib/python2.7/dist-packages/shadowsocks/server.py&amp;#34;, line 68, in main tcp_servers.append(tcprelay.TCPRelay(a_config, dns_resolver, False)) File &amp;#34;/usr/local/lib/python2.7/dist-packages/shadowsocks/tcprelay.py&amp;#34;, line 582, in __init__ server_socket.bind(sa) File &amp;#34;/usr/lib/python2.7/socket.py&amp;#34;, line 228, in meth return getattr(self._sock,name)(*args) socket.error: [Errno 99] Cannot assign requested address 原先以为是resolver的问题，</description>
+    </item>
+    
+    <item>
+      <title>云服务器使用docker搭建服务</title>
+      <link>https://liabio.github.io/post/2019-09-24-socket-error-debug/</link>
+      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/post/2019-09-24-socket-error-debug/</guid>
+      <description>前提：亚马逊云已经配置好启动。 安全组入站策略如下： 出站策略如下： 登陆EC2后，默认只能用ec2-user用户登陆，然后切换到root： 1 sudo su 用yum执行安装docker提示No package docker avaible 1 yum install docker -y 解决方法： 在/etc/yum.repos.d/下加CentOS7-Base-163.re</description>
+    </item>
+    
+    <item>
+      <title>史上最全docker基础知识汇总</title>
+      <link>https://liabio.github.io/post/2019-09-24-docker-comprehensive-knowledge/</link>
+      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/post/2019-09-24-docker-comprehensive-knowledge/</guid>
+      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注： 正文 Do</description>
+    </item>
+    
+    <item>
+      <title>采坑指南——k8s域名解析coredns问题排查过程</title>
+      <link>https://liabio.github.io/post/2019-09-24-k8s-domain-resolve-coredns-problem-debug/</link>
+      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/post/2019-09-24-k8s-domain-resolve-coredns-problem-debug/</guid>
+      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注： 正文 前几</description>
+    </item>
     
     <item>
       <title>手把手教你搭建kubernetes集群.md</title>
@@ -62,7 +134,7 @@
       <pubDate>Thu, 02 May 2019 00:00:00 +0000</pubDate>
       
       <guid>https://liabio.github.io/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/</guid>
-      <description>Kubernetes 自带了一个默认调度器kube-scheduler，其内置了很多节点预选和优选的调度算法，一般调度场景下可以满足要求。但是在一些特殊场景下，默认调度器不能满足我们复杂的调度需求。我们就需要对调度器进行扩展，以达到调度适合业务场景的目的。 背景 中间件redis容器化后，需要两主不能在</description>
+      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注： 正文 Kubernetes 自</description>
     </item>
     
     <item>

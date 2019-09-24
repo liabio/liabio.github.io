@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>容器 on 小碗汤的博客</title>
+    <link>https://liabio.github.io/tags/%E5%AE%B9%E5%99%A8/</link>
+    <description>Recent content in 容器 on 小碗汤的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 24 Sep 2019 10:48:21 +0800</lastBuildDate>
+    
+	<atom:link href="https://liabio.github.io/tags/%E5%AE%B9%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>docker镜像制作必备技能</title>
+      <link>https://liabio.github.io/post/2019-09-24-docker-image-essential-skills/</link>
+      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/post/2019-09-24-docker-image-essential-skills/</guid>
+      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注： 正文 使用</description>
+    </item>
+    
+    <item>
+      <title>docker镜像制作必备技能</title>
+      <link>https://liabio.github.io/post/2019-09-24-kubernetes-gc-GarbageCollector-Controller-source-one/</link>
+      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/post/2019-09-24-kubernetes-gc-GarbageCollector-Controller-source-one/</guid>
+      <description>kubernetes版本：1.13.2 背景 由于operator创建的redis集群，在kubernetes apiserver重启后，redis集群被异常删除（包括redis exporter statefulset、redis statefulset）。删除后operator将其重建，重新组建集群，</description>
+    </item>
+    
+    <item>
+      <title>史上最全docker基础知识汇总</title>
+      <link>https://liabio.github.io/post/2019-09-24-docker-comprehensive-knowledge/</link>
+      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/post/2019-09-24-docker-comprehensive-knowledge/</guid>
+      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注： 正文 Do</description>
+    </item>
+    
+    <item>
+      <title>采坑指南——k8s域名解析coredns问题排查过程</title>
+      <link>https://liabio.github.io/post/2019-09-24-k8s-domain-resolve-coredns-problem-debug/</link>
+      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/post/2019-09-24-k8s-domain-resolve-coredns-problem-debug/</guid>
+      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注： 正文 前几</description>
+    </item>
+    
+  </channel>
+</rss>

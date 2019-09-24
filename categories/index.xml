@@ -6,10 +6,73 @@
     <description>Recent content in Categories on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 14 May 2019 23:44:21 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 24 Sep 2019 10:48:21 +0800</lastBuildDate>
     
 	<atom:link href="https://liabio.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>debug</title>
+      <link>https://liabio.github.io/categories/debug/</link>
+      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/categories/debug/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>https://liabio.github.io/categories/docker/</link>
+      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/categories/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ingress-nginx</title>
+      <link>https://liabio.github.io/categories/ingress-nginx/</link>
+      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/categories/ingress-nginx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>job</title>
+      <link>https://liabio.github.io/categories/job/</link>
+      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/categories/job/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>k8s</title>
+      <link>https://liabio.github.io/categories/k8s/</link>
+      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/categories/k8s/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes</title>
+      <link>https://liabio.github.io/categories/kubernetes/</link>
+      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/categories/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>工具</title>
+      <link>https://liabio.github.io/categories/%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/categories/%E5%B7%A5%E5%85%B7/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Kubernetes</title>

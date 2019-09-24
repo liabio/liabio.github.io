@@ -1,0 +1,953 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.55.4" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>史上最全docker基础知识汇总 | 小碗汤的博客</title>
+    <meta property="og:title" content="史上最全docker基础知识汇总 - 小碗汤的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content="2019-09-24T10:48:21&#43;08:00">
+        
+        
+    <meta property="article:modified_time" content="2019-09-24T10:48:21&#43;08:00">
+        
+    <meta name="Keywords" content="golang,go语言,go语言笔记,小碗汤,docker,kubernetes,k8s,java,博客,python,软件架构,公众号,小程序,Hugo,theme,maupassant">
+    <meta name="description" content="史上最全docker基础知识汇总">
+        <meta name="author" content="Liabio">
+        
+    <meta property="og:url" content="https://liabio.github.io/post/2019-09-24-docker-comprehensive-knowledge/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+        <link rel="stylesheet" href="/css/prism.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liabio.github.io">
+                        小碗汤的博客
+                    </a>
+                
+                <p class="description">专注于Java、Go语言(Golang)、Docker、Kubernetes、软件架构</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liabio.github.io">首页</a>
+                    
+                    <a  href="https://liabio.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liabio.github.io/tools/" title="工具">工具</a>
+                    
+                    <a  href="https://liabio.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">史上最全docker基础知识汇总</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            2019年9月24日
+                        </date>
+                        
+                        <div class="post-meta">
+                            <span>|</span>
+                            
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/docker">docker</a></span>
+                            
+                        </div>
+                        
+                        
+                        <div class="post-meta">
+                            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span> 阅读</span></span>
+                        </div>
+                        
+                        
+                        <div class="clear">
+                            <div class="toc-article">
+                                <div class="toc-title">文章目录</div>
+                                <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#正文">正文</a></li>
+</ul></li>
+</ul>
+</nav>
+                            </div>
+                        </div>
+                        
+                        <div class="post-content">
+                            
+
+<h2 id="前言">前言</h2>
+
+<p>本文首发于公众号【我的小碗汤】<strong>本公众号</strong>免费<strong>提供csdn下载服务，海量IT学习资源，</strong>如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注：</p>
+
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLTYzZTRkMDc2OWM2MGUyODY?x-oss-process=image/format,png" alt="image" /></p>
+
+<h2 id="正文">正文</h2>
+
+<p><strong>Docker常用命令</strong></p>
+
+<p><strong>run</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">docker run [OPTIONS] IMAGE [COMMAND] [ARG...]</pre></td></tr></table>
+</div>
+</div>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLWIzNzE0OWVhODE1OTg4YmI?x-oss-process=image/format,png" alt="image" /></p>
+
+<p>-e设置环境变量；-e username=zhj</p>
+
+<p>&ndash;name为容器指定一个名称；&ndash;name=zhj</p>
+
+<p>-p指定端口映射，格式为：主机(宿主)端口:容器端口 -p 80:8080</p>
+
+<p>-t为容器重新分配一个伪输入终端，通常与 -i 同时使用；</p>
+
+<p>-i以交互模式运行容器，通常与 -t 同时使用；</p>
+
+<p>-d后台运行容器，并返回容器ID；</p>
+
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLWM5NTE5ZTg4YzU3ZjFjNjY?x-oss-process=image/format,png" alt="image" /></p>
+
+<p>-v宿主机目录:容器目录。将宿主机目录挂载到容器内。</p>
+
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLTE5OTY0YTVmMTkxNGY1ODUuZ2lm" alt="image.gif" /></p>
+
+<p><strong>docker cp</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">复制容器内的文件到宿主机</pre></td></tr></table>
+</div>
+</div>
+<p><strong>docker start</strong></p>
+
+<p>启动一个或多个已经被停止的容器</p>
+
+<p><strong>docker stop</strong></p>
+
+<p>停止一个运行中的容器</p>
+
+<p><strong>docker restart</strong></p>
+
+<p>重启容器</p>
+
+<p><strong>docker rm</strong></p>
+
+<p>删除容器</p>
+
+<p><strong>docker pause</strong></p>
+
+<p>暂停容器中所有的进程;</p>
+
+<p><strong>docker unpause</strong></p>
+
+<p>恢复容器中所有的进程;</p>
+
+<p><strong>docker exec ：</strong></p>
+
+<p>在运行的容器中执行命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">docker exec -it mynginx /bin/sh /root/runoob.sh</pre></td></tr></table>
+</div>
+</div>
+<p><strong>docker logs</strong></p>
+
+<p>获取容器的日志;</p>
+
+<p><strong>docker ps</strong></p>
+
+<p>列出UP的容器；docker ps -a列出所有容器。包括Exited等状态的容器；</p>
+
+<p><strong>docker top</strong></p>
+
+<p>查看容器中运行的进程信息，支持 ps 命令参数;</p>
+
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLTVlYjljZjI3YTg4M2Y3MjEuZ2lm" alt="image.gif" /></p>
+
+<p><strong>docker inspect</strong></p>
+
+<p>获取容器/镜像的元数据;</p>
+
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLWMyNWJmNjVmYzNjODcwMDM?x-oss-process=image/format,png" alt="image" /></p>
+
+<p><strong>docker login</strong></p>
+
+<p>登陆到一个Docker镜像仓库，如果未指定镜像仓库地址，默认为官方仓库 Docker Hub;</p>
+
+<p><strong>docker logout</strong></p>
+
+<p>登出一个Docker镜像仓库，如果未指定镜像仓库地址，默认为官方仓库 Docker Hub;</p>
+
+<p><strong>docker tag</strong></p>
+
+<p>标记本地镜像，将其归入某一仓库;</p>
+
+<p><strong>docker push</strong></p>
+
+<p>将本地的镜像上传到镜像仓库,要先登陆到镜像仓库;</p>
+
+<p><strong>docker pull</strong></p>
+
+<p>从镜像仓库中拉取或者更新指定镜像;</p>
+
+<p><strong>docker search</strong></p>
+
+<p>从Docker Hub查找镜像;</p>
+
+<p><strong>docker images</strong></p>
+
+<p>列出本地镜像;</p>
+
+<p><strong>docker rmi</strong></p>
+
+<p>删除本地一个或多少镜像;</p>
+
+<p><strong>docker build</strong></p>
+
+<p>命令用于使用 Dockerfile 创建镜像。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">docker build -t runoob/ubuntu:v1 .</pre></td></tr></table>
+</div>
+</div>
+<p>会默认使用当前目录的Dockerfile进行编译镜像，编译后的镜像名为runoob/ubuntu:v1</p>
+
+<p><strong>docker history</strong></p>
+
+<p>查看指定镜像的创建历史</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">docker history runoob/ubuntu:v3</pre></td></tr></table>
+</div>
+</div>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLTljYTliZjYyOTFmYmUzYmYuZ2lm" alt="image.gif" /></p>
+
+<p><strong>docker save</strong></p>
+
+<p>将指定镜像保存成 tar 归档文件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">docker save -o my_ubuntu_v3.tar runoob/ubuntu:v3</pre></td></tr></table>
+</div>
+</div>
+<p><strong>docker load</strong></p>
+
+<p>导入使用 docker save命令导出的镜像。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">docker load -i my_ubuntu_v3.tar</pre></td></tr></table>
+</div>
+</div>
+<p>-i参数指定输入的文件。</p>
+
+<p><strong>docker info</strong></p>
+
+<p>显示 Docker 系统信息，包括镜像和容器数。</p>
+
+<p><strong>docker version</strong></p>
+
+<p>显示 Docker 版本信息。</p>
+
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLTVkYzZiODEzY2UxZmY3Mzk?x-oss-process=image/format,png" alt="image" /></p>
+
+<p><strong>Docker的存储驱动</strong></p>
+
+<p>Docker支持AUFS、Btrfs、Device mapper、OverlayFS、ZFS五种存储驱动；</p>
+
+<p><strong>写时复制（CoW）</strong></p>
+
+<p>所有驱动都用到的技术——写时复制（CoW）。CoW就是copy-on-write，表示只在需要写时才去复制，这个是针对已有文件的修改场景。比如基于一个image启动多个Container，如果为每个Container都去分配一个image一样的文件系统，那么将会占用大量的磁盘空间。而CoW技术可以让所有的容器共享image的文件系统，所有数据都从image中读取，只有当要对文件进行写操作时，才从image里把要写的文件复制到自己的文件系统进行修改。写操作会在每个容器的文件系统里生成一个复本，每个容器修改的都是自己的复本，相互隔离，相互不影响。使用CoW可以有效的提高磁盘的利用率。</p>
+
+<p><strong>用时分配（allocate-on-demand）</strong></p>
+
+<p>而写时分配是用在原本没有这个文件的场景，只有在要新写入一个文件时才分配空间，这样可以提高存储资源的利用率。比如启动一个容器，并不会为这个容器预分配一些磁盘空间，而是当有新文件写入时，才按需分配新空间。</p>
+
+<p><strong>Overlay VS Device mapper</strong></p>
+
+<p>devicemapper将所有的镜像和容器存储在自己的虚拟块设备上，所有的操作都是直接对块进行操作，而不是文件。当要写入一个新文件时，在容器的镜像内为其分配新的块并写入数据，这个叫用时分配。当要修改已有文件时，再使用CoW为容器快照分配块空间，将要修改的数据复制到在容器快照中新的块里再进行修改。</p>
+
+<p>overlay是基于文件级的存储。只有两层：一个upper文件系统和一个lower文件系统，分别代表Docker的镜像层和容器层。当需要修改一个文件时，使用CoW将文件从只读的lower复制到可写的upper进行修改，结果也保存在upper层。</p>
+
+<p>Overlay是文件级存储，Device mapper是块级存储，当文件特别大而修改的内容很小，Overlay不管修改的内容大小都会复制整个文件，对大文件进行修改显示要比小文件要消耗更多的时间，而块级无论是大文件还是小文件都只复制需要修改的块，并不是整个文件，在这种场景下，显然device mapper要快一些。因为块级的是直接访问逻辑盘，适合IO密集的场景。而对于程序内部复杂，大并发但少IO的场景，Overlay的性能相对要强一些。</p>
+
+<p><strong>Overlay VS Overlay2</strong></p>
+
+<p>overlay驱动只工作在一个lower OverlayFS层之上，因此需要硬链接来实现多层镜像，但overlay2驱动原生地支持多层lowerOverlayFS镜像（最多128层）。因此overlay2驱动在合层相关的命令（如build和commit）中提供了更好的性能，与overlay驱动对比，消耗了更少的inode。</p>
+
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLWRkMzQ2MzI5ZWI5NTIyOGI?x-oss-process=image/format,png" alt="image" /></p>
+
+<p><strong>Docker的网络模式</strong></p>
+
+<p>可以看：[docker的五种网络模式总结]</p>
+
+<p><em><a href="https://blog.csdn.net/u010900754/article/details/78526443">https://blog.csdn.net/u010900754/article/details/78526443</a></em></p>
+
+<p>安装 Docker 时，它会自动创建 3 个网络。可以使用 docker network ls命令列出这些网络。</p>
+
+<p>这 3 个网络包含在 Docker 实现中。运行一个容器时，可以使用 the &ndash;net标志指定您希望在哪个网络上运行该容器。您仍然可以使用这 3 个网络。</p>
+
+<ul>
+<li><p>bridge 网络表示所有 Docker 安装中都存在的 docker0 网络。除非使用docker run &ndash;net=选项另行指定，否则 Docker 守护进程默认情况下会将容器连接到此网络。在主机上使用 ifconfig命令，可以看到此网桥是主机的网络堆栈的一部分。</p></li>
+
+<li><p>none 网络在一个特定于容器的网络堆栈上添加了一个容器。该容器缺少网络接口。</p></li>
+
+<li><p>host 网络在主机网络堆栈上添加一个容器。容器中的网络配置与主机相同。可以通过主机IP访问，端口也会使用主机端口。所以主机端口不能被占用，否则容器启动会有问题。</p></li>
+</ul>
+
+<p><strong>Dockerfile知识点</strong></p>
+
+<p><strong>ENV</strong></p>
+
+<p>设置环境变量指令，用法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">ENV WORKPATH /tmp</pre></td></tr></table>
+</div>
+</div>
+<p>也可以这样:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">ENV abc=bye def=$abc</pre></td></tr></table>
+</div>
+</div>
+<p>第一种用法用于设置单个变量(第一个空格前为key，之后都是value,包括后面的空格)，第二种用于同时设置多个变量(空格为分隔符，value中包含空格时可以用双引号把value括起来，或者在空格前加\反斜线)，当需要同时设置多个环境变量时推荐使用第二种格式。这些环境变量可以通过docker run命令的&ndash;env参数来进行修改。</p>
+
+<p>ENV用法如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">ENV myName John Doe
+ENV myDog Rex The Dog
+ENV myCat fluffy</pre></td></tr></table>
+</div>
+</div>
+<p><strong>FROM</strong></p>
+
+<p>设置基础镜像，一个有效的Dockerfile必须有一个FROM指令指定一个基础镜像，这个镜像可以是任何你可以从共用仓库获取到的镜像。执行命令格式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">FROM &lt;image&gt;</pre></td></tr></table>
+</div>
+</div>
+<p>或者</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">FROM &lt;image&gt;:&lt;tag&gt;</pre></td></tr></table>
+</div>
+</div>
+<p>或者</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">FROM &lt;image&gt;@&lt;digest&gt;</pre></td></tr></table>
+</div>
+</div>
+<p><strong>MAINTAINER</strong></p>
+
+<p>设置创建镜像的作者信息。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">MAINTAINER zhanghaojie@qq.com</pre></td></tr></table>
+</div>
+</div>
+<p><strong>RUN</strong></p>
+
+<p>这个指令有两种格式.</p>
+
+<p>第一种形式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">RUN chown user2:user2 /home/webapi (以shell形式执行命令，等同于/bin/sh -c);</pre></td></tr></table>
+</div>
+</div>
+<p>第二种形式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">RUN [&#34;executable&#34;,&#34;param1&#34;, &#34;param2&#34;]</pre></td></tr></table>
+</div>
+</div>
+<p>(等同于exec命令形式)，注意此处必须是双引号(&ldquo;)，因为这种格式被解析为JSON数组。</p>
+
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLWJhZjdhNmVmY2ZiYjA2MTM?x-oss-process=image/format,png" alt="image" /></p>
+
+<p><strong>ARG</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">ARG &lt;name&gt;[=&lt;default value&gt;]</pre></td></tr></table>
+</div>
+</div>
+<p>ARG指令设置一些创建镜像时的参数，这些参数可以在执行docker build命令时通过&ndash;build-arg <varname>=<value>设置，如果指定的创建参数在Dockerfile中没有指定，创建时会输出错误信息: One or more build-args were not consumed, failing build.</p>
+
+<p>Dockerfile 作者可以为ARG设置一个默认参数值，当创建镜像时如果没有传入参数就会使用默认值：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">FROM busybox</pre></td></tr></table>
+</div>
+</div>
+<p>我们可以使用ARG或者ENV指令来指定RUN指令使用的变量。我们可以使用ENV定义与ARG定义名称相同的变量来覆盖ARG定义的变量值。如下示例，我们执行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">docker build --build-arg CONT_IMG_VER=v2.0.1 Dockerfile</pre></td></tr></table>
+</div>
+</div>
+<p>后将获取到的CONTIMGVER变量值为v1.0.0:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">FROM ubuntu</pre></td></tr></table>
+</div>
+</div>
+<p><strong>WORKDIR</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">WORKDIR /path/to/workdir</pre></td></tr></table>
+</div>
+</div>
+<p>WORKDIR指令用来设置Dockerfile中任何使用目录的命令的当前工作目录，此目录如果不存在就会被自动创建，即使这个目录不被使用</p>
+
+<p><strong>VOLUME</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">VOLUME [&#34;/data&#34;]      (exec格式指令)</pre></td></tr></table>
+</div>
+</div>
+<p>VOLUME指令创建一个可以从本地主机或其他容器挂载的挂载点。经常用到的是</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">docker run -ti -v /data:/data nginx:1.12 bash</pre></td></tr></table>
+</div>
+</div>
+<p>时指定本地路径和容器内路径的映射。</p>
+
+<p><strong>COPY</strong></p>
+
+<p>COPY指令能够将构建命令所在的主机本地的文件或目录，复制到镜像文件系统。</p>
+
+<p>exec格式用法（推荐）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">COPY [&#34;&lt;src&gt;&#34;,... &#34;&lt;dest&gt;&#34;]</pre></td></tr></table>
+</div>
+</div>
+<p>特别适合路径中带有空格的情况。</p>
+
+<p>shell格式用法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">COPY &lt;src&gt;... &lt;dest&gt;</pre></td></tr></table>
+</div>
+</div>
+<p><strong>ADD</strong></p>
+
+<p>ADD指令不仅能够将构建命令所在的主机本地的文件或目录，而且能够将远程URL所对应的文件或目录，作为资源复制到镜像文件系统。</p>
+
+<p>所以，可以认为ADD是增强版的COPY，支持将远程URL的资源加入到镜像的文件系统。</p>
+
+<p>exec格式用法（推荐）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">ADD [&#34;&lt;src&gt;&#34;,... &#34;&lt;dest&gt;&#34;]</pre></td></tr></table>
+</div>
+</div>
+<p>特别适合路径中带有空格的情况。</p>
+
+<p>shell格式用法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">ADD &lt;src&gt;... &lt;dest&gt;</pre></td></tr></table>
+</div>
+</div>
+<p>说明，对于从远程URL获取资源的情况，由于ADD指令不支持认证，如果从远程获取资源需要认证，则只能使用RUN wget或RUN curl替代。</p>
+
+<p>另外，如果源路径的资源发生变化，则该ADD指令将使Docker Cache失效，Dockerfile中后续的所有指令都不能使用缓存。因此尽量将ADD指令放在Dockerfile的后面。</p>
+
+<p><strong>参考：</strong>Dockerfile中的COPY和ADD指令详解与比较</p>
+
+<p><em><a href="https://blog.csdn.net/taiyangdao/article/details/73222601">https://blog.csdn.net/taiyangdao/article/details/73222601</a></em></p>
+
+<p><strong>EXPOSE指令</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">EXPOSE &lt;端口&gt; [&lt;端口&gt;...]</pre></td></tr></table>
+</div>
+</div>
+<p>指令用于标明，这个镜像中的应用将会侦听某个端口，并且希望能将这个端口映射到主机的网络界面上。但是，为了安全，docker run命令如果没有带上响应的端口映射参数，docker并不会将端口映射到宿主机。</p>
+
+<p><strong>CMD 与 ENTRYPOINT</strong></p>
+
+<p>二者的区别看：[docker CMD ENTRYPOINT 区别 终极解读]</p>
+
+<p><em><a href="https://blog.csdn.net/u010900754/article/details/78526443">https://blog.csdn.net/u010900754/article/details/78526443</a></em></p>
+
+<p>从根本上说, ENTRYPOINT和CMD都是让用户指定一个可执行程序, 这个可执行程序在container启动后自动启动. 实际上, 如果你想让自己制作的镜像自动运行程序(不需要在docker run后面添加命令行指定运行的命令), 你必须在Dockerfile里面，使用ENTRYPOINT或者CMD命令。在命令行启动docker镜像时, 执行其他命令行参数，覆盖默认的CMD。和CMD类似, 默认的ENTRYPOINT也在docker run时, 也可以被覆盖. 在运行时, 用&ndash;entrypoint覆盖默认的ENTRYPOINT。</p>
+
+<p>dockerfile中的CMD命令被覆盖：</p>
+
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLTdkODczYzBmODg2NWFiMDA?x-oss-process=image/format,png" alt="image" /></p>
+
+<p><strong><em>CMD：</em></strong>提供了容器默认的执行命令。Dockerfile 只允许使用一次 CMD 指令。使用多个 CMD 会抵消之前所有的指令，只有最后一个指令生效。CMD 有三种形式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">CMD [&#34;executable&#34;,&#34;param1&#34;,&#34;param2&#34;] (exec form, thisis the preferred form)</pre></td></tr></table>
+</div>
+</div>
+<p><strong><em>ENTRYPOINT：</em></strong>配置给容器一个可执行的命令，这意味着在每次使用镜像创建容器时一个特定的应用程序可以被设置为默认程序。同时也意味着该镜像每次被调用时仅能运行指定的应用。类似于CMD，Docker只允许一个ENTRYPOINT，多个ENTRYPOINT会抵消之前所有的指令，只执行最后的ENTRYPOINT指令。语法如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">ENTRYPOINT [&#34;executable&#34;, &#34;param1&#34;,&#34;param2&#34;]</pre></td></tr></table>
+</div>
+</div>
+<hr />
+
+<hr />
+
+<p><strong>本公众号</strong>免费<strong>提供csdn下载服务，海量IT学习资源，</strong>如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。同时我们组建了一个技术交流群，里面有很多大佬，会不定时分享技术文章，如果你想来一起学习提高，可以公众号后台回复【<strong>2</strong>】，免费邀请加技术交流群互相学习提高，会不定期分享编程IT相关资源。</p>
+
+<hr />
+
+<p>扫码关注，精彩内容第一时间推给你</p>
+
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLTYzZTRkMDc2OWM2MGUyODY?x-oss-process=image/format,png" alt="image" /></p>
+
+                        </div>
+
+                        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://liabio.github.io">小碗汤</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://liabio.github.io/post/2019-09-24-docker-comprehensive-knowledge/">https://liabio.github.io/post/2019-09-24-docker-comprehensive-knowledge/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+                        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/2019-09-24-kubernetes-gc-GarbageCollector-Controller-source-one/">docker镜像制作必备技能</a></li>
+        
+        <li><a href="/post/2019-09-24-docker-image-essential-skills/">docker镜像制作必备技能</a></li>
+        
+        <li><a href="/post/2019-09-24-k8s-domain-resolve-coredns-problem-debug/">采坑指南——k8s域名解析coredns问题排查过程</a></li>
+        
+        <li><a href="/post/2019-09-24-k8s-job-execute-fail-do-what/">k8s使用Job执行任务失败了怎么办</a></li>
+        
+        <li><a href="/post/2019-09-24-socket-error-debug/">云服务器使用docker搭建服务</a></li>
+        
+    </ul>
+</div>
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            <ul class="clearfix">
+                                
+                                <li><a href="https://liabio.github.io/tags/docker">docker</a></li>
+                                
+                                <li><a href="https://liabio.github.io/tags/%E5%AE%B9%E5%99%A8">容器</a></li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </article>
+                    
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-liabio-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liabio/utteranc_comment"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liabio.github.io">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-09-24-docker-image-essential-skills/" title="docker镜像制作必备技能">docker镜像制作必备技能</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-09-24-kubernetes-gc-GarbageCollector-Controller-source-one/" title="docker镜像制作必备技能">docker镜像制作必备技能</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-09-24-k8s-loadbalancer-ingress-nginx-deploy/" title="k8s中负载均衡器【ingress-nginx】部署">k8s中负载均衡器【ingress-nginx】部署</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-09-24-k8s-job-execute-fail-do-what/" title="k8s使用Job执行任务失败了怎么办">k8s使用Job执行任务失败了怎么办</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-09-24-docker-create-svc-in-cloudserver/" title="一次socket.error: [Errno 99] Cannot assign requested address报错排查">一次socket.error: [Errno 99] Cannot assign requested address报错排查</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-09-24-socket-error-debug/" title="云服务器使用docker搭建服务">云服务器使用docker搭建服务</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-09-24-docker-comprehensive-knowledge/" title="史上最全docker基础知识汇总">史上最全docker基础知识汇总</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-09-24-k8s-domain-resolve-coredns-problem-debug/" title="采坑指南——k8s域名解析coredns问题排查过程">采坑指南——k8s域名解析coredns问题排查过程</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/" title="手把手教你搭建kubernetes集群.md">手把手教你搭建kubernetes集群.md</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/" title="手把手教你搭建kubernetes集群1">手把手教你搭建kubernetes集群1</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title" style="color:red">福利派送</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a href="https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=jdg9oj97" title="领取￥1888阿里云产品通用代金券" target="_blank" style="color:red">
+                
+                    领取￥1888阿里云产品通用代金券
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="https://promotion.aliyun.com/ntms/act/vmpt/aliyun-group/home.html?userCode=jdg9oj97" title="领取￥1888阿里云产品通用代金券" target="_blank" style="color:red">
+                
+                    <img src="https://img.alicdn.com/tfs/TB17qJhXpzqK1RjSZFvXXcB7VXa-200-126.jpg">
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="https://promotion.aliyun.com/ntms/act/enterprise-discount.html?userCode=jdg9oj97" title="领取￥1888阿里云产品通用代金券" target="_blank" style="color:red">
+                
+                    <img src="https://img.alicdn.com/tfs/TB1aDXhXpzqK1RjSZFvXXcB7VXa-259-194.jpg">
+                
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liabio.github.io/categories/Blog/">Blog(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/Kubernetes/">Kubernetes(4)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/debug/">debug(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/docker/">docker(6)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/ingress-nginx/">ingress-nginx(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/job/">job(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/k8s/">k8s(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(3)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/%E5%B7%A5%E5%85%B7/">工具(1)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://liabio.github.io/tags/Blog/">Blog</a>
+    
+    <a href="https://liabio.github.io/tags/Golang/">Golang</a>
+    
+    <a href="https://liabio.github.io/tags/Hugo/">Hugo</a>
+    
+    <a href="https://liabio.github.io/tags/Kubernetes/">Kubernetes</a>
+    
+    <a href="https://liabio.github.io/tags/Scheduler/">Scheduler</a>
+    
+    <a href="https://liabio.github.io/tags/docker/">docker</a>
+    
+    <a href="https://liabio.github.io/tags/ingress-nginx/">ingress-nginx</a>
+    
+    <a href="https://liabio.github.io/tags/kubernetes/">kubernetes</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%AE%B9%E5%99%A8/">容器</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="http://yuedu.baidu.com/ebook/14a722970740be1e640e9a3e" title="Android Gradle权威指南">Android Gradle权威指南</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="http://mirrors.flysnow.org/" title="常用开发工具CDN镜像">常用开发工具CDN镜像</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liabio.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2019 <a href="https://liabio.github.io">小碗汤的博客 By 小碗汤</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    <script type="text/javascript">
+    
+    (function(){
+        $("pre code").parent().addClass("line-numbers")
+    }())
+
+    window.MathJax = {
+        tex2jax: {
+            inlineMath: [ ['$','$'] ],
+            processEscapes: true
+        }
+    };
+    </script>
+    <script type="text/javascript" src="/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-139517579-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+<script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+</body>
+</html>

@@ -89,6 +89,14 @@
                         <div class="post-content">
                             
 
+<h2 id="前言">前言</h2>
+
+<p>本文首发于公众号【我的小碗汤】<strong>本公众号</strong>免费<strong>提供csdn下载服务，海量IT学习资源，</strong>如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注：</p>
+
+<h2 id="image-https-imgconvert-csdnimg-cn-ahr0chm6ly91cgxvywqtaw1hz2vzlmppyw5zahuuaw8vdxbsb2fkx2ltywdlcy85mtm0nzyzltyzztrkmdc2owm2mguyody"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLTYzZTRkMDc2OWM2MGUyODY" alt="image" /></h2>
+
+<h2 id="正文">正文</h2>
+
 <p>Kubernetes 自带了一个默认调度器kube-scheduler，其内置了很多节点预选和优选的调度算法，一般调度场景下可以满足要求。但是在一些特殊场景下，默认调度器不能满足我们复杂的调度需求。我们就需要对调度器进行扩展，以达到调度适合业务场景的目的。</p>
 
 <h2 id="背景">背景</h2>
@@ -101,7 +109,7 @@
 <li><p>参考kube-scheduler实现满足自己业务场景的调度程序，并编译镜像，将该程序作为独立的调度器运行到kubernetes集群内，需要用该调度器调度的pod实例，在spec.schedulerName里指定该调度器；</p></li>
 </ul>
 
-<p><img src="http://pqek9gnem.bkt.clouddn.com/20190426155726.png" alt="" /></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzkxMzQ3NjMtYTljZjZkYmVlMzI1Y2I3Ny5wbmc" alt="image" /></p>
 
 <ul>
 <li>实现“调度扩展程序“：默认调度器kube-scheduler在进行预选时会调用该扩展程序进行过滤节点；在优选时会调用该扩展程序进行给节点打分，或者在bind操作时，调用该扩展器进行bind操作。</li>
@@ -123,7 +131,7 @@
 
 <h2 id="整体架构">整体架构</h2>
 
-<p><img src="http://pqek9gnem.bkt.clouddn.com/20190426171921.png" alt="" /></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzkxMzQ3NjMtZGZhY2E4Mjk2ZDA4NTY2MC5wbmc" alt="image" /></p>
 
 <p>kube-scheduler在调度pod实例时，首先获取到Node1、Node2、Node3三个节点信息，进行默认的预选阶段，筛选满足要求的节点，其次再调用扩展程序中的预选算法，选出剩下的节点，假设预选阶段Node3上资源不足被过滤掉，预选结束后只剩Node1和Node2；Node1和Node2进入kube-scheduler默认的优选阶段进行节点打分，其次再调用扩展调度程序中的优选算法进行打分，kube-scheduler会将所有算法的打分结果进行加权求和，获得分数最高的节点作为pod最终bind节点，然后kube-scheduler调用apiserver进行bind操作。</p>
 
@@ -133,19 +141,19 @@
 
 <p>编写扩展调度器程序代码，根据实际业务调度场景编写预选逻辑、优选逻辑：</p>
 
-<p><img src="http://pqek9gnem.bkt.clouddn.com/20190427101526.png" alt="" /></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzkxMzQ3NjMtYmYwMTNhNDIyZDAxOGU2Ni5wbmc" alt="image" /></p>
 
 <p>实现预选接口，入参为schedulerapi.ExtenderArgs，出参为schedulerapi.ExtenderFilterResult：</p>
 
-<p><img src="http://pqek9gnem.bkt.clouddn.com/20190427100915.png" alt="" /></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzkxMzQ3NjMtYjY0MDg3NTY4MDhiMGNkYi5wbmc" alt="image" /></p>
 
 <p>实现优选接口，入参为schedulerapi.ExtenderArgs，出参为schedulerapi.HostPriorityList：</p>
 
-<p><img src="http://pqek9gnem.bkt.clouddn.com/20190427101929.png" alt="" /></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzkxMzQ3NjMtZWZiMmViN2Y5YTg2ZTk0Zi5wbmc" alt="image" /></p>
 
 <p>暴露http接口：</p>
 
-<p><img src="http://pqek9gnem.bkt.clouddn.com/20190427101845.png" alt="" /></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzkxMzQ3NjMtNGZlNmNhNDIyY2Q2Y2Q1Mi5wbmc" alt="image" /></p>
 
 <p><strong>参考：</strong></p>
 
@@ -278,23 +286,23 @@
 </div>
 <p>2、在my-kube-scheduler yaml文件中将configmaps：my-scheduler-config以文件的形式挂载到容器内/my-scheduler目录下，并在启动参数中指定&ndash;config=/my-scheduler/config.yaml，使用和默认调度器一样的镜像。</p>
 
-<p><img src="http://pqek9gnem.bkt.clouddn.com/20190426180012.png" alt="" /></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzkxMzQ3NjMtN2Q4NDdkYjMzNjMyNDAyNS5wbmc" alt="image" /></p>
 
 <p>增加挂载：</p>
 
-<p><img src="http://pqek9gnem.bkt.clouddn.com/20190426194520.png" alt="" /></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzkxMzQ3NjMtMDZhNTVmZGRiMzFjYTI5YS5wbmc" alt="image" /></p>
 
-<p><img src="http://pqek9gnem.bkt.clouddn.com/20190426194610.png" alt="" /></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzkxMzQ3NjMtNDIzZTg5NjkyYWRkNmQ0ZC5wbmc" alt="image" /></p>
 
 <h3 id="扩展调度器镜像制作和部署">扩展调度器镜像制作和部署</h3>
 
 <p>1、编译扩展调度程序my-scheduler-extender镜像，以下为Dockerfile：</p>
 
-<p><img src="http://pqek9gnem.bkt.clouddn.com/20190426200003.png" alt="" /></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzkxMzQ3NjMtZjI3YWVhNWIzM2U3MzkxMC5wbmc" alt="image" /></p>
 
 <p>推送my-scheduler-extender镜像到harbor：</p>
 
-<p><img src="http://pqek9gnem.bkt.clouddn.com/20190426200105.png" alt="" /></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzkxMzQ3NjMtZDNiYmYwYTRiZTI5YjY5MC5wbmc" alt="image" /></p>
 
 <p>2、创建外部扩展程序my-scheduler-extender的deployment，如下为yaml描述：</p>
 <div class="highlight"><div class="chroma">
@@ -369,17 +377,32 @@
 
 <p>查看my-kube-scheduler pod日志，加载到了policy里的extender信息，获取到了扩展调度器的接口地址：</p>
 
-<p><img src="http://pqek9gnem.bkt.clouddn.com/20190426200608.png" alt="" /></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzkxMzQ3NjMtZTFhNWYwNjlmZThjYmVhNC5wbmc" alt="image" /></p>
 
 <p>创建一个nginx的pod，指定schedulerName为my-kube-scheduler：</p>
 
-<p><img src="http://pqek9gnem.bkt.clouddn.com/20190426195151.png" alt="" /></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzkxMzQ3NjMtMTAyODgxMDk0NzgxZGY1YS5wbmc" alt="image" /></p>
 
 <p>查看扩展调度器pod日志，发现默认调度器会调用extender扩展调度器，如下为extender日志打印的入参、出参：</p>
 
-<p><img src="http://pqek9gnem.bkt.clouddn.com/20190426200413.png" alt="" /></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzkxMzQ3NjMtNmEyODkwMGExZWYzNDQ5YS5wbmc" alt="image" /></p>
 
 <p>从而可以通过编写扩展调度程序，对默认调度器的预选和优选算法进行扩展。</p>
+
+<p><strong>参考</strong>
+<a href="https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/scheduler_extender.md">https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/scheduler_extender.md</a></p>
+
+<p><a href="https://github.com/ll837448792/k8s-scheduler-extender-example">https://github.com/ll837448792/k8s-scheduler-extender-example</a></p>
+
+<hr />
+
+<p>最后，csdn资源，收集了海量学习资料，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端等资源。同时我们组建了一个技术交流群，里面有很多大佬，会不定时分享技术文章，如果你想来一起学习提高，可以关注以下公众号后回复【2】，获取。</p>
+
+<hr />
+
+<p><strong>我是小碗汤，我们一起学习，扫码关注，精彩内容第一时间推给你</strong></p>
+
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLWZlYWRmMWRkMGZlMjMxYWIucG5n" alt="长按扫码关注一起交流" /></p>
 
                         </div>
 
@@ -474,39 +497,43 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://liabio.github.io/post/2019-09-24-docker-image-essential-skills/" title="docker镜像制作必备技能">docker镜像制作必备技能</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-09-24-kubernetes-gc-GarbageCollector-Controller-source-one/" title="docker镜像制作必备技能">docker镜像制作必备技能</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-09-24-k8s-loadbalancer-ingress-nginx-deploy/" title="k8s中负载均衡器【ingress-nginx】部署">k8s中负载均衡器【ingress-nginx】部署</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-09-24-k8s-job-execute-fail-do-what/" title="k8s使用Job执行任务失败了怎么办">k8s使用Job执行任务失败了怎么办</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-09-24-docker-create-svc-in-cloudserver/" title="一次socket.error: [Errno 99] Cannot assign requested address报错排查">一次socket.error: [Errno 99] Cannot assign requested address报错排查</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-09-24-socket-error-debug/" title="云服务器使用docker搭建服务">云服务器使用docker搭建服务</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-09-24-docker-comprehensive-knowledge/" title="史上最全docker基础知识汇总">史上最全docker基础知识汇总</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/post/2019-09-24-k8s-domain-resolve-coredns-problem-debug/" title="采坑指南——k8s域名解析coredns问题排查过程">采坑指南——k8s域名解析coredns问题排查过程</a>
+    </li>
+    
+    <li>
         <a href="https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/" title="手把手教你搭建kubernetes集群.md">手把手教你搭建kubernetes集群.md</a>
     </li>
     
     <li>
         <a href="https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/" title="手把手教你搭建kubernetes集群1">手把手教你搭建kubernetes集群1</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/post/2019-05-14-%E6%90%AD%E5%BB%BAk8s%E7%8E%AF%E5%A2%83%E6%97%B6gcr.io%E5%92%8Cquay.io%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E5%A4%B1%E8%B4%A5/" title="搭建k8s环境时gcr.io和quay.io拉取镜像失败">搭建k8s环境时gcr.io和quay.io拉取镜像失败</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/post/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/" title="Hugo搭建博客教程">Hugo搭建博客教程</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/post/2019-05-04-%E5%8D%9A%E5%AE%A2test/" title="博客test">博客test</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/" title="kube-scheduler调度扩展">kube-scheduler调度扩展</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/post/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="快速搭建个人博客">快速搭建个人博客</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/post/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/" title=""></a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/post/2019-5-21-etcd%E6%93%8D%E4%BD%9C/" title=""></a>
     </li>
     
 </ul>
@@ -557,6 +584,34 @@
         <a href="https://liabio.github.io/categories/Kubernetes/">Kubernetes(4)</a>
     </li>
     
+    <li>
+        <a href="https://liabio.github.io/categories/debug/">debug(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/docker/">docker(6)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/ingress-nginx/">ingress-nginx(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/job/">job(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/k8s/">k8s(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(3)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/%E5%B7%A5%E5%85%B7/">工具(1)</a>
+    </li>
+    
 </ul>
     </section>
 
@@ -573,6 +628,16 @@
     <a href="https://liabio.github.io/tags/Kubernetes/">Kubernetes</a>
     
     <a href="https://liabio.github.io/tags/Scheduler/">Scheduler</a>
+    
+    <a href="https://liabio.github.io/tags/docker/">docker</a>
+    
+    <a href="https://liabio.github.io/tags/ingress-nginx/">ingress-nginx</a>
+    
+    <a href="https://liabio.github.io/tags/kubernetes/">kubernetes</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%AE%B9%E5%99%A8/">容器</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%B7%A5%E5%85%B7/">工具</a>
     
 </div>
     </section>

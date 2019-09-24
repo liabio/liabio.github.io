@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>k8s on 小碗汤的博客</title>
+    <link>https://liabio.github.io/categories/k8s/</link>
+    <description>Recent content in k8s on 小碗汤的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 24 Sep 2019 10:48:21 +0800</lastBuildDate>
+    
+	<atom:link href="https://liabio.github.io/categories/k8s/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>采坑指南——k8s域名解析coredns问题排查过程</title>
+      <link>https://liabio.github.io/post/2019-09-24-k8s-domain-resolve-coredns-problem-debug/</link>
+      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/post/2019-09-24-k8s-domain-resolve-coredns-problem-debug/</guid>
+      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注： 正文 前几</description>
+    </item>
+    
+  </channel>
+</rss>
