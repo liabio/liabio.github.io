@@ -1,282 +1,237 @@
-<!doctype html>
-<html lang="zh-cn">
-<head>
-
-    <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.55.4" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title> | 小碗汤的博客</title>
-    <meta property="og:title" content=" - 小碗汤的博客">
-    <meta property="og:type" content="article">
-        
-        
-    <meta name="Keywords" content="golang,go语言,go语言笔记,小碗汤,docker,kubernetes,k8s,java,博客,python,软件架构,公众号,小程序,Hugo,theme,maupassant">
-    <meta name="description" content="">
-        
-    <meta name="author" content="小碗汤">
-    <meta property="og:url" content="https://liabio.github.io/post/2019-5-21-etcd%E6%93%8D%E4%BD%9C/">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-
-    <link rel="stylesheet" href="/css/normalize.css">
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="liabio">
+  
+  
+  
+  
+  <link rel="next" href="https://example.com/post/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/" />
+  <link rel="canonical" href="https://example.com/post/2019-5-21-etcd%E6%93%8D%E4%BD%9C/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            | LeaveIt
+       
+  </title>
+  <meta name="title" content=" | LeaveIt">
     
-        <link rel="stylesheet" href="/css/prism.css">
-    
-    <link rel="stylesheet" href="/css/style.css">
-    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/font/jianshu/iconfont.css">
+  <link rel="stylesheet" href="/font/segmentfault/iconfont.css">
+  <link rel="stylesheet" href="/font/weixingongzhonghao/iconfont.css">
+  <link rel="stylesheet" href="/font/juejin/iconfont.css">
+  <link rel="stylesheet" href="/font/zhihu/iconfont.css">
+  <link rel="stylesheet" href="/font/cnblog/iconfont.css">
+  <link rel="stylesheet" href="/font/csdn/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
 
-    
 
+  
+  
+ 
 
-    
-    
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/example.com"
+    },
+    "articleSection" : "post",
+    "name" : "",
+    "headline" : "",
+    "description" : "etcd操作 etcdctl安装 下载并解压二进制文件\ncurl -L https:\/\/github.com\/coreos\/etcd\/releases\/download\/v3.3.2\/etcd-v3.3.2-linux-amd64.tar.gz -o etcd-v3.3.2-linux-amd64.tar.gz tar zxf etcd-v3.3.2-linux-amd64.tar.gz  解压后是一些文档和两个二进制文件etcd和etcdctl。etcd是server端，etcdctl是客户端。\n将解压后的etcd和etcdctl移动到$GOPATH\/bin目录下，可以直接使用etcd和etcdctl命令\nmv etcd-v3.3.2-linux-amd64\/etcd* \/usr\/local\/bin\/  # 获取etcd节点成员列表 $ ETCDCTL_API=3 etcdctl --cacert=\/etc\/kubernetes\/pki\/etcd\/ca.crt --cert=\/etc\/kubernetes\/pki\/etcd\/peer.crt --key=\/etc\/kubernetes\/pki\/etcd\/peer.key member list -w=json | jq . { \x26quot;header\x26quot;: { \x26quot;cluster_id\x26quot;: 16127964494473114000, \x26quot;member_id\x26quot;: 10756017414160822000, \x26quot;raft_term\x26quot;: 3 }, \x26quot;members\x26quot;: [ { \x26quot;ID\x26quot;: 10756017414160822000, \x26quot;name\x26quot;: \x26quot;master-192.168.1.103\x26quot;, \x26quot;peerURLs\x26quot;: [ \x26quot;https:\/\/192.168.1.103:2380\x26quot; ], \x26quot;clientURLs\x26quot;: [ \x26quot;https:\/\/192.168.1.103:2379\x26quot; ] } ] } # 获取所有的key $ ETCDCTL_API=3 etcdctl --cacert=\/etc\/kubernetes\/pki\/etcd\/ca.crt --cert=\/etc\/kubernetes\/pki\/etcd\/peer.crt --key=\/etc\/kubernetes\/pki\/etcd\/peer.key get \x26quot;\x26quot; --prefix=true -w=json | jq .",
+    "inLanguage" : "en-us",
+    "author" : "liabio",
+    "creator" : "liabio",
+    "publisher": "liabio",
+    "accountablePerson" : "liabio",
+    "copyrightHolder" : "liabio",
+    "copyrightYear" : "0001",
+    "datePublished": "0001-01-01 00:00:00 \x2b0000 UTC",
+    "dateModified" : "0001-01-01 00:00:00 \x2b0000 UTC",
+    "url" : "https:\/\/example.com\/post\/2019-5-21-etcd%E6%93%8D%E4%BD%9C\/",
+    "wordCount" : "910",
+    "keywords" : [  "LeaveIt"]
+}
+</script>
+
 </head>
 
-<body>
-<header id="header" class="clearfix">
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
     <div class="container">
-        <div class="col-group">
-            <div class="site-name ">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://example.com">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
                 
-                    <a id="logo" href="https://liabio.github.io">
-                        小碗汤的博客
-                    </a>
                 
-                <p class="description">专注于Java、Go语言(Golang)、Docker、Kubernetes、软件架构</p>
-            </div>
-            <div>
-                <nav id="nav-menu" class="clearfix">
-                    <a class="current" href="https://liabio.github.io">首页</a>
-                    
-                    <a  href="https://liabio.github.io/archives/" title="归档">归档</a>
-                    
-                    <a  href="https://liabio.github.io/tools/" title="工具">工具</a>
-                    
-                    <a  href="https://liabio.github.io/about/" title="关于">关于</a>
-                    
-                </nav>
-            </div>
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
         </div>
     </div>
-</header>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://example.com">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline"></h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://example.com" rel="author">liabio</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=0001-01-01 itemprop="datePublished">January 1, 0001</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
 
+        
+            
+        
 
-<div id="body">
-    <div class="container">
-        <div class="col-group">
+        
+        
+     
+          
+          
+          
 
-            <div class="col-8" id="main">
-                <div class="res-cons">
-                    <article class="post">
-                        <header>
-                            <h1 class="post-title"></h1>
-                        </header>
-                        <date class="post-meta meta-date">
-                            1年1月1日
-                        </date>
-                        
-                        
-                        <div class="post-meta">
-                            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span> 阅读</span></span>
-                        </div>
-                        
-                        
-                        <div class="post-content">
-                            
+          
+          
+          
+
+          
 
 <h1 id="etcd操作">etcd操作</h1>
 
 <p>etcdctl安装
 下载并解压二进制文件</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">curl -L https://github.com/coreos/etcd/releases/download/v3.3.2/etcd-v3.3.2-linux-amd64.tar.gz -o etcd-v3.3.2-linux-amd64.tar.gz
-tar zxf etcd-v3.3.2-linux-amd64.tar.gz</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>curl -L https://github.com/coreos/etcd/releases/download/v3.3.2/etcd-v3.3.2-linux-amd64.tar.gz -o etcd-v3.3.2-linux-amd64.tar.gz
+tar zxf etcd-v3.3.2-linux-amd64.tar.gz
+</code></pre>
+
 <p>解压后是一些文档和两个二进制文件etcd和etcdctl。etcd是server端，etcdctl是客户端。</p>
 
 <p>将解压后的etcd和etcdctl移动到$GOPATH/bin目录下，可以直接使用etcd和etcdctl命令</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">mv etcd-v3.3.2-linux-amd64/etcd* /usr/local/bin/</pre></td></tr></table>
-</div>
-</div>
-<p><img src="/img/etcd1.png" alt="" /></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">  1
-</span><span class="lnt">  2
-</span><span class="lnt">  3
-</span><span class="lnt">  4
-</span><span class="lnt">  5
-</span><span class="lnt">  6
-</span><span class="lnt">  7
-</span><span class="lnt">  8
-</span><span class="lnt">  9
-</span><span class="lnt"> 10
-</span><span class="lnt"> 11
-</span><span class="lnt"> 12
-</span><span class="lnt"> 13
-</span><span class="lnt"> 14
-</span><span class="lnt"> 15
-</span><span class="lnt"> 16
-</span><span class="lnt"> 17
-</span><span class="lnt"> 18
-</span><span class="lnt"> 19
-</span><span class="lnt"> 20
-</span><span class="lnt"> 21
-</span><span class="lnt"> 22
-</span><span class="lnt"> 23
-</span><span class="lnt"> 24
-</span><span class="lnt"> 25
-</span><span class="lnt"> 26
-</span><span class="lnt"> 27
-</span><span class="lnt"> 28
-</span><span class="lnt"> 29
-</span><span class="lnt"> 30
-</span><span class="lnt"> 31
-</span><span class="lnt"> 32
-</span><span class="lnt"> 33
-</span><span class="lnt"> 34
-</span><span class="lnt"> 35
-</span><span class="lnt"> 36
-</span><span class="lnt"> 37
-</span><span class="lnt"> 38
-</span><span class="lnt"> 39
-</span><span class="lnt"> 40
-</span><span class="lnt"> 41
-</span><span class="lnt"> 42
-</span><span class="lnt"> 43
-</span><span class="lnt"> 44
-</span><span class="lnt"> 45
-</span><span class="lnt"> 46
-</span><span class="lnt"> 47
-</span><span class="lnt"> 48
-</span><span class="lnt"> 49
-</span><span class="lnt"> 50
-</span><span class="lnt"> 51
-</span><span class="lnt"> 52
-</span><span class="lnt"> 53
-</span><span class="lnt"> 54
-</span><span class="lnt"> 55
-</span><span class="lnt"> 56
-</span><span class="lnt"> 57
-</span><span class="lnt"> 58
-</span><span class="lnt"> 59
-</span><span class="lnt"> 60
-</span><span class="lnt"> 61
-</span><span class="lnt"> 62
-</span><span class="lnt"> 63
-</span><span class="lnt"> 64
-</span><span class="lnt"> 65
-</span><span class="lnt"> 66
-</span><span class="lnt"> 67
-</span><span class="lnt"> 68
-</span><span class="lnt"> 69
-</span><span class="lnt"> 70
-</span><span class="lnt"> 71
-</span><span class="lnt"> 72
-</span><span class="lnt"> 73
-</span><span class="lnt"> 74
-</span><span class="lnt"> 75
-</span><span class="lnt"> 76
-</span><span class="lnt"> 77
-</span><span class="lnt"> 78
-</span><span class="lnt"> 79
-</span><span class="lnt"> 80
-</span><span class="lnt"> 81
-</span><span class="lnt"> 82
-</span><span class="lnt"> 83
-</span><span class="lnt"> 84
-</span><span class="lnt"> 85
-</span><span class="lnt"> 86
-</span><span class="lnt"> 87
-</span><span class="lnt"> 88
-</span><span class="lnt"> 89
-</span><span class="lnt"> 90
-</span><span class="lnt"> 91
-</span><span class="lnt"> 92
-</span><span class="lnt"> 93
-</span><span class="lnt"> 94
-</span><span class="lnt"> 95
-</span><span class="lnt"> 96
-</span><span class="lnt"> 97
-</span><span class="lnt"> 98
-</span><span class="lnt"> 99
-</span><span class="lnt">100
-</span><span class="lnt">101
-</span><span class="lnt">102
-</span><span class="lnt">103
-</span><span class="lnt">104
-</span><span class="lnt">105
-</span><span class="lnt">106
-</span><span class="lnt">107
-</span><span class="lnt">108
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma"># 获取etcd节点成员列表
+
+<pre><code>mv etcd-v3.3.2-linux-amd64/etcd* /usr/local/bin/
+</code></pre>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/img/etcd1.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+
+<pre><code># 获取etcd节点成员列表
 $ ETCDCTL_API=3 etcdctl --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/peer.crt --key=/etc/kubernetes/pki/etcd/peer.key  member list -w=json | jq .
 {
-  &#34;header&#34;: {
-    &#34;cluster_id&#34;: 16127964494473114000,
-    &#34;member_id&#34;: 10756017414160822000,
-    &#34;raft_term&#34;: 3
+  &quot;header&quot;: {
+    &quot;cluster_id&quot;: 16127964494473114000,
+    &quot;member_id&quot;: 10756017414160822000,
+    &quot;raft_term&quot;: 3
   },
-  &#34;members&#34;: [
+  &quot;members&quot;: [
     {
-      &#34;ID&#34;: 10756017414160822000,
-      &#34;name&#34;: &#34;master-192.168.1.103&#34;,
-      &#34;peerURLs&#34;: [
-        &#34;https://192.168.1.103:2380&#34;
+      &quot;ID&quot;: 10756017414160822000,
+      &quot;name&quot;: &quot;master-192.168.1.103&quot;,
+      &quot;peerURLs&quot;: [
+        &quot;https://192.168.1.103:2380&quot;
       ],
-      &#34;clientURLs&#34;: [
-        &#34;https://192.168.1.103:2379&#34;
+      &quot;clientURLs&quot;: [
+        &quot;https://192.168.1.103:2379&quot;
       ]
     }
   ]
 }
 
 # 获取所有的key
-$ ETCDCTL_API=3 etcdctl --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/peer.crt --key=/etc/kubernetes/pki/etcd/peer.key get &#34;&#34; --prefix=true  -w=json | jq .
+$ ETCDCTL_API=3 etcdctl --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/peer.crt --key=/etc/kubernetes/pki/etcd/peer.key get &quot;&quot; --prefix=true  -w=json | jq .
 
 # 获取前缀是/registry/namespaces/default的key：
 $ ETCDCTL_API=3 etcdctl --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/peer.crt --key=/etc/kubernetes/pki/etcd/peer.key get /registry/namespaces/default --prefix=true -w=json | jq .
 {
-  &#34;header&#34;: {
-    &#34;cluster_id&#34;: 16127964494473114000,
-    &#34;member_id&#34;: 10756017414160822000,
-    &#34;revision&#34;: 596049,
-    &#34;raft_term&#34;: 3
+  &quot;header&quot;: {
+    &quot;cluster_id&quot;: 16127964494473114000,
+    &quot;member_id&quot;: 10756017414160822000,
+    &quot;revision&quot;: 596049,
+    &quot;raft_term&quot;: 3
   },
-  &#34;kvs&#34;: [
+  &quot;kvs&quot;: [
     {
-      &#34;key&#34;: &#34;L3JlZ2lzdHJ5L25hbWVzcGFjZXMvZGVmYXVsdA==&#34;,
-      &#34;create_revision&#34;: 4,
-      &#34;mod_revision&#34;: 4,
-      &#34;version&#34;: 1,
-      &#34;value&#34;: &#34;azhzAAoPCgJ2MRIJTmFtZXNwYWNlEl8KRQoHZGVmYXVsdBIAGgAiACokYjQzYzRkYzgtNzYzMS0xMWU5LWI0NTctMDAwYzI5NWRiMzg5MgA4AEIICJqs6uYFEAB6ABIMCgprdWJlcm5ldGVzGggKBkFjdGl2ZRoAIgA=&#34;
+      &quot;key&quot;: &quot;L3JlZ2lzdHJ5L25hbWVzcGFjZXMvZGVmYXVsdA==&quot;,
+      &quot;create_revision&quot;: 4,
+      &quot;mod_revision&quot;: 4,
+      &quot;version&quot;: 1,
+      &quot;value&quot;: &quot;azhzAAoPCgJ2MRIJTmFtZXNwYWNlEl8KRQoHZGVmYXVsdBIAGgAiACokYjQzYzRkYzgtNzYzMS0xMWU5LWI0NTctMDAwYzI5NWRiMzg5MgA4AEIICJqs6uYFEAB6ABIMCgprdWJlcm5ldGVzGggKBkFjdGl2ZRoAIgA=&quot;
     }
   ],
-  &#34;count&#34;: 1
+  &quot;count&quot;: 1
 }
 
 # 设置liabuo1111的值为liabuo1111
 $ ETCDCTL_API=3 etcdctl --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/peer.crt --key=/etc/kubernetes/pki/etcd/peer.key put liabuo1111 libauo1111  -w=json | jq .
 {
-  &#34;header&#34;: {
-    &#34;cluster_id&#34;: 16127964494473114000,
-    &#34;member_id&#34;: 10756017414160822000,
-    &#34;revision&#34;: 597761,
-    &#34;raft_term&#34;: 3
+  &quot;header&quot;: {
+    &quot;cluster_id&quot;: 16127964494473114000,
+    &quot;member_id&quot;: 10756017414160822000,
+    &quot;revision&quot;: 597761,
+    &quot;raft_term&quot;: 3
   }
 }
 
@@ -286,561 +241,187 @@ $ ETCDCTL_API=3 etcdctl --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kub
 # 精确查询liabuo11
 $ ETCDCTL_API=3 etcdctl --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/peer.crt --key=/etc/kubernetes/pki/etcd/peer.key get liabuo11   -w=json | jq .
 {
-  &#34;header&#34;: {
-    &#34;cluster_id&#34;: 16127964494473114000,
-    &#34;member_id&#34;: 10756017414160822000,
-    &#34;revision&#34;: 597769,
-    &#34;raft_term&#34;: 3
+  &quot;header&quot;: {
+    &quot;cluster_id&quot;: 16127964494473114000,
+    &quot;member_id&quot;: 10756017414160822000,
+    &quot;revision&quot;: 597769,
+    &quot;raft_term&quot;: 3
   },
-  &#34;kvs&#34;: [
+  &quot;kvs&quot;: [
     {
-      &#34;key&#34;: &#34;bGlhYnVvMTE=&#34;,
-      &#34;create_revision&#34;: 597611,
-      &#34;mod_revision&#34;: 597611,
-      &#34;version&#34;: 1,
-      &#34;value&#34;: &#34;bGliYXVvMTE=&#34;
+      &quot;key&quot;: &quot;bGlhYnVvMTE=&quot;,
+      &quot;create_revision&quot;: 597611,
+      &quot;mod_revision&quot;: 597611,
+      &quot;version&quot;: 1,
+      &quot;value&quot;: &quot;bGliYXVvMTE=&quot;
     }
   ],
-  &#34;count&#34;: 1
+  &quot;count&quot;: 1
 }
 
 # 前缀查询liabuo11,会查到两个
 $ ETCDCTL_API=3 etcdctl --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/peer.crt --key=/etc/kubernetes/pki/etcd/peer.key get liabuo11 --prefix=true  -w=json | jq .
 {
-  &#34;header&#34;: {
-    &#34;cluster_id&#34;: 16127964494473114000,
-    &#34;member_id&#34;: 10756017414160822000,
-    &#34;revision&#34;: 597781,
-    &#34;raft_term&#34;: 3
+  &quot;header&quot;: {
+    &quot;cluster_id&quot;: 16127964494473114000,
+    &quot;member_id&quot;: 10756017414160822000,
+    &quot;revision&quot;: 597781,
+    &quot;raft_term&quot;: 3
   },
-  &#34;kvs&#34;: [
+  &quot;kvs&quot;: [
     {
-      &#34;key&#34;: &#34;bGlhYnVvMTE=&#34;,
-      &#34;create_revision&#34;: 597611,
-      &#34;mod_revision&#34;: 597611,
-      &#34;version&#34;: 1,
-      &#34;value&#34;: &#34;bGliYXVvMTE=&#34;
+      &quot;key&quot;: &quot;bGlhYnVvMTE=&quot;,
+      &quot;create_revision&quot;: 597611,
+      &quot;mod_revision&quot;: 597611,
+      &quot;version&quot;: 1,
+      &quot;value&quot;: &quot;bGliYXVvMTE=&quot;
     },
     {
-      &#34;key&#34;: &#34;bGlhYnVvMTExMQ==&#34;,
-      &#34;create_revision&#34;: 597761,
-      &#34;mod_revision&#34;: 597761,
-      &#34;version&#34;: 1,
-      &#34;value&#34;: &#34;bGliYXVvMTExMQ==&#34;
+      &quot;key&quot;: &quot;bGlhYnVvMTExMQ==&quot;,
+      &quot;create_revision&quot;: 597761,
+      &quot;mod_revision&quot;: 597761,
+      &quot;version&quot;: 1,
+      &quot;value&quot;: &quot;bGliYXVvMTExMQ==&quot;
     }
   ],
-  &#34;count&#34;: 2
-}</pre></td></tr></table>
-</div>
-</div>
+  &quot;count&quot;: 2
+}
+
+</code></pre>
+
 <h2 id="使用etcdctl访问kubernetes数据">使用etcdctl访问kubernetes数据</h2>
 
 <p>Kubenretes1.6中使用etcd V3版本的API，使用etcdctl直接ls的话只能看到/kube-centos一个路径。需要在命令前加上ETCDCTL_API=3这个环境变量才能看到kuberentes在etcd中保存的数据。</p>
 
 <p>ETCDCTL_API=3 etcdctl get /registry/namespaces/default -w=json|python -m json.tool
 如果是使用 kubeadm 创建的集群，在 Kubenretes 1.11 中，etcd 默认使用 tls ，这时你可以在 master 节点上使用以下命令来访问 etcd ：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">ETCDCTL_API=3 etcdctl --cacert=/etc/kubernetes/pki/etcd/ca.crt \
+
+<pre><code>ETCDCTL_API=3 etcdctl --cacert=/etc/kubernetes/pki/etcd/ca.crt \
 --cert=/etc/kubernetes/pki/etcd/peer.crt \
 --key=/etc/kubernetes/pki/etcd/peer.key \
-get /registry/namespaces/default -w=json | jq .</pre></td></tr></table>
-</div>
-</div>
+get /registry/namespaces/default -w=json | jq .
+</code></pre>
+
 <p>-w指定输出格式
 将得到这样的json的结果：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">{
-    &#34;count&#34;: 1,
-    &#34;header&#34;: {
-        &#34;cluster_id&#34;: 12091028579527406772,
-        &#34;member_id&#34;: 16557816780141026208,
-        &#34;raft_term&#34;: 36,
-        &#34;revision&#34;: 29253467
+
+<pre><code>{
+    &quot;count&quot;: 1,
+    &quot;header&quot;: {
+        &quot;cluster_id&quot;: 12091028579527406772,
+        &quot;member_id&quot;: 16557816780141026208,
+        &quot;raft_term&quot;: 36,
+        &quot;revision&quot;: 29253467
     },
-    &#34;kvs&#34;: [
+    &quot;kvs&quot;: [
         {
-            &#34;create_revision&#34;: 5,
-            &#34;key&#34;: &#34;L3JlZ2lzdHJ5L25hbWVzcGFjZXMvZGVmYXVsdA==&#34;,
-            &#34;mod_revision&#34;: 5,
-            &#34;value&#34;: &#34;azhzAAoPCgJ2MRIJTmFtZXNwYWNlEmIKSAoHZGVmYXVsdBIAGgAiACokZTU2YzMzMDgtMWVhOC0xMWU3LThjZDctZjRlOWQ0OWY4ZWQwMgA4AEILCIn4sscFEKOg9xd6ABIMCgprdWJlcm5ldGVzGggKBkFjdGl2ZRoAIgA=&#34;,
-            &#34;version&#34;: 1
+            &quot;create_revision&quot;: 5,
+            &quot;key&quot;: &quot;L3JlZ2lzdHJ5L25hbWVzcGFjZXMvZGVmYXVsdA==&quot;,
+            &quot;mod_revision&quot;: 5,
+            &quot;value&quot;: &quot;azhzAAoPCgJ2MRIJTmFtZXNwYWNlEmIKSAoHZGVmYXVsdBIAGgAiACokZTU2YzMzMDgtMWVhOC0xMWU3LThjZDctZjRlOWQ0OWY4ZWQwMgA4AEILCIn4sscFEKOg9xd6ABIMCgprdWJlcm5ldGVzGggKBkFjdGl2ZRoAIgA=&quot;,
+            &quot;version&quot;: 1
         }
     ]
-}</pre></td></tr></table>
-</div>
-</div>
+}
+</code></pre>
+
 <p>使用&ndash;prefix可以看到所有的子目录，如查看集群中的namespace：</p>
 
 <p>ETCDCTL_API=3 etcdctl get /registry/namespaces &ndash;prefix -w=json|python -m json.tool
 输出结果中可以看到所有的namespace。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span><span class="lnt">60
-</span><span class="lnt">61
-</span><span class="lnt">62
-</span><span class="lnt">63
-</span><span class="lnt">64
-</span><span class="lnt">65
-</span><span class="lnt">66
-</span><span class="lnt">67
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">{
-    &#34;count&#34;: 8,
-    &#34;header&#34;: {
-        &#34;cluster_id&#34;: 12091028579527406772,
-        &#34;member_id&#34;: 16557816780141026208,
-        &#34;raft_term&#34;: 36,
-        &#34;revision&#34;: 29253722
+
+<pre><code>{
+    &quot;count&quot;: 8,
+    &quot;header&quot;: {
+        &quot;cluster_id&quot;: 12091028579527406772,
+        &quot;member_id&quot;: 16557816780141026208,
+        &quot;raft_term&quot;: 36,
+        &quot;revision&quot;: 29253722
     },
-    &#34;kvs&#34;: [
+    &quot;kvs&quot;: [
         {
-            &#34;create_revision&#34;: 24310883,
-            &#34;key&#34;: &#34;L3JlZ2lzdHJ5L25hbWVzcGFjZXMvYXV0b21vZGVs&#34;,
-            &#34;mod_revision&#34;: 24310883,
-            &#34;value&#34;: &#34;azhzAAoPCgJ2MRIJTmFtZXNwYWNlEmQKSgoJYXV0b21vZGVsEgAaACIAKiQ1MjczOTU1ZC1iMzEyLTExZTctOTcwYy1mNGU5ZDQ5ZjhlZDAyADgAQgsI7fSWzwUQ6Jv1Z3oAEgwKCmt1YmVybmV0ZXMaCAoGQWN0aXZlGgAiAA==&#34;,
-            &#34;version&#34;: 1
+            &quot;create_revision&quot;: 24310883,
+            &quot;key&quot;: &quot;L3JlZ2lzdHJ5L25hbWVzcGFjZXMvYXV0b21vZGVs&quot;,
+            &quot;mod_revision&quot;: 24310883,
+            &quot;value&quot;: &quot;azhzAAoPCgJ2MRIJTmFtZXNwYWNlEmQKSgoJYXV0b21vZGVsEgAaACIAKiQ1MjczOTU1ZC1iMzEyLTExZTctOTcwYy1mNGU5ZDQ5ZjhlZDAyADgAQgsI7fSWzwUQ6Jv1Z3oAEgwKCmt1YmVybmV0ZXMaCAoGQWN0aXZlGgAiAA==&quot;,
+            &quot;version&quot;: 1
         },
         {
-            &#34;create_revision&#34;: 21387676,
-            &#34;key&#34;: &#34;L3JlZ2lzdHJ5L25hbWVzcGFjZXMvYnJhbmQ=&#34;,
-            &#34;mod_revision&#34;: 21387676,
-            &#34;value&#34;: &#34;azhzAAoPCgJ2MRIJTmFtZXNwYWNlEmEKRwoFYnJhbmQSABoAIgAqJGNkZmQ1Y2NmLWExYzktMTFlNy05NzBjLWY0ZTlkNDlmOGVkMDIAOABCDAjR9qLOBRDYn83XAXoAEgwKCmt1YmVybmV0ZXMaCAoGQWN0aXZlGgAiAA==&#34;,
-            &#34;version&#34;: 1
+            &quot;create_revision&quot;: 21387676,
+            &quot;key&quot;: &quot;L3JlZ2lzdHJ5L25hbWVzcGFjZXMvYnJhbmQ=&quot;,
+            &quot;mod_revision&quot;: 21387676,
+            &quot;value&quot;: &quot;azhzAAoPCgJ2MRIJTmFtZXNwYWNlEmEKRwoFYnJhbmQSABoAIgAqJGNkZmQ1Y2NmLWExYzktMTFlNy05NzBjLWY0ZTlkNDlmOGVkMDIAOABCDAjR9qLOBRDYn83XAXoAEgwKCmt1YmVybmV0ZXMaCAoGQWN0aXZlGgAiAA==&quot;,
+            &quot;version&quot;: 1
         },
         {
-            &#34;create_revision&#34;: 5,
-            &#34;key&#34;: &#34;L3JlZ2lzdHJ5L25hbWVzcGFjZXMvZGVmYXVsdA==&#34;,
-            &#34;mod_revision&#34;: 5,
-            &#34;value&#34;: &#34;azhzAAoPCgJ2MRIJTmFtZXNwYWNlEmIKSAoHZGVmYXVsdBIAGgAiACokZTU2YzMzMDgtMWVhOC0xMWU3LThjZDctZjRlOWQ0OWY4ZWQwMgA4AEILCIn4sscFEKOg9xd6ABIMCgprdWJlcm5ldGVzGggKBkFjdGl2ZRoAIgA=&#34;,
-            &#34;version&#34;: 1
+            &quot;create_revision&quot;: 5,
+            &quot;key&quot;: &quot;L3JlZ2lzdHJ5L25hbWVzcGFjZXMvZGVmYXVsdA==&quot;,
+            &quot;mod_revision&quot;: 5,
+            &quot;value&quot;: &quot;azhzAAoPCgJ2MRIJTmFtZXNwYWNlEmIKSAoHZGVmYXVsdBIAGgAiACokZTU2YzMzMDgtMWVhOC0xMWU3LThjZDctZjRlOWQ0OWY4ZWQwMgA4AEILCIn4sscFEKOg9xd6ABIMCgprdWJlcm5ldGVzGggKBkFjdGl2ZRoAIgA=&quot;,
+            &quot;version&quot;: 1
         },
         {
-            &#34;create_revision&#34;: 18504694,
-            &#34;key&#34;: &#34;L3JlZ2lzdHJ5L25hbWVzcGFjZXMvZGV2&#34;,
-            &#34;mod_revision&#34;: 24310213,
-            &#34;value&#34;: &#34;azhzAAoPCgJ2MRIJTmFtZXNwYWNlEmwKUgoDZGV2EgAaACIAKiQyOGRlMGVjNS04ZTEzLTExZTctOTcwYy1mNGU5ZDQ5ZjhlZDAyADgAQgwI89CezQUQ0v2fuQNaCwoEbmFtZRIDZGV2egASDAoKa3ViZXJuZXRlcxoICgZBY3RpdmUaACIA&#34;,
-            &#34;version&#34;: 4
+            &quot;create_revision&quot;: 18504694,
+            &quot;key&quot;: &quot;L3JlZ2lzdHJ5L25hbWVzcGFjZXMvZGV2&quot;,
+            &quot;mod_revision&quot;: 24310213,
+            &quot;value&quot;: &quot;azhzAAoPCgJ2MRIJTmFtZXNwYWNlEmwKUgoDZGV2EgAaACIAKiQyOGRlMGVjNS04ZTEzLTExZTctOTcwYy1mNGU5ZDQ5ZjhlZDAyADgAQgwI89CezQUQ0v2fuQNaCwoEbmFtZRIDZGV2egASDAoKa3ViZXJuZXRlcxoICgZBY3RpdmUaACIA&quot;,
+            &quot;version&quot;: 4
         },
         {
-            &#34;create_revision&#34;: 10,
-            &#34;key&#34;: &#34;L3JlZ2lzdHJ5L25hbWVzcGFjZXMva3ViZS1wdWJsaWM=&#34;,
-            &#34;mod_revision&#34;: 10,
-            &#34;value&#34;: &#34;azhzAAoPCgJ2MRIJTmFtZXNwYWNlEmcKTQoLa3ViZS1wdWJsaWMSABoAIgAqJGU1ZjhkY2I1LTFlYTgtMTFlNy04Y2Q3LWY0ZTlkNDlmOGVkMDIAOABCDAiJ+LLHBRDdrsDPA3oAEgwKCmt1YmVybmV0ZXMaCAoGQWN0aXZlGgAiAA==&#34;,
-            &#34;version&#34;: 1
+            &quot;create_revision&quot;: 10,
+            &quot;key&quot;: &quot;L3JlZ2lzdHJ5L25hbWVzcGFjZXMva3ViZS1wdWJsaWM=&quot;,
+            &quot;mod_revision&quot;: 10,
+            &quot;value&quot;: &quot;azhzAAoPCgJ2MRIJTmFtZXNwYWNlEmcKTQoLa3ViZS1wdWJsaWMSABoAIgAqJGU1ZjhkY2I1LTFlYTgtMTFlNy04Y2Q3LWY0ZTlkNDlmOGVkMDIAOABCDAiJ+LLHBRDdrsDPA3oAEgwKCmt1YmVybmV0ZXMaCAoGQWN0aXZlGgAiAA==&quot;,
+            &quot;version&quot;: 1
         },
         {
-            &#34;create_revision&#34;: 2,
-            &#34;key&#34;: &#34;L3JlZ2lzdHJ5L25hbWVzcGFjZXMva3ViZS1zeXN0ZW0=&#34;,
-            &#34;mod_revision&#34;: 2,
-            &#34;value&#34;: &#34;azhzAAoPCgJ2MRIJTmFtZXNwYWNlEmYKTAoLa3ViZS1zeXN0ZW0SABoAIgAqJGU1NmFhMDVkLTFlYTgtMTFlNy04Y2Q3LWY0ZTlkNDlmOGVkMDIAOABCCwiJ+LLHBRDoq9ASegASDAoKa3ViZXJuZXRlcxoICgZBY3RpdmUaACIA&#34;,
-            &#34;version&#34;: 1
+            &quot;create_revision&quot;: 2,
+            &quot;key&quot;: &quot;L3JlZ2lzdHJ5L25hbWVzcGFjZXMva3ViZS1zeXN0ZW0=&quot;,
+            &quot;mod_revision&quot;: 2,
+            &quot;value&quot;: &quot;azhzAAoPCgJ2MRIJTmFtZXNwYWNlEmYKTAoLa3ViZS1zeXN0ZW0SABoAIgAqJGU1NmFhMDVkLTFlYTgtMTFlNy04Y2Q3LWY0ZTlkNDlmOGVkMDIAOABCCwiJ+LLHBRDoq9ASegASDAoKa3ViZXJuZXRlcxoICgZBY3RpdmUaACIA&quot;,
+            &quot;version&quot;: 1
         },
         {
-            &#34;create_revision&#34;: 3774247,
-            &#34;key&#34;: &#34;L3JlZ2lzdHJ5L25hbWVzcGFjZXMvc3BhcmstY2x1c3Rlcg==&#34;,
-            &#34;mod_revision&#34;: 3774247,
-            &#34;value&#34;: &#34;azhzAAoPCgJ2MRIJTmFtZXNwYWNlEoABCmYKDXNwYXJrLWNsdXN0ZXISABoAIgAqJDMyNjY3ZDVjLTM0YWMtMTFlNy1iZmJkLThhZjFlM2E3YzViZDIAOABCDAiA1cbIBRDU3YuAAVoVCgRuYW1lEg1zcGFyay1jbHVzdGVyegASDAoKa3ViZXJuZXRlcxoICgZBY3RpdmUaACIA&#34;,
-            &#34;version&#34;: 1
+            &quot;create_revision&quot;: 3774247,
+            &quot;key&quot;: &quot;L3JlZ2lzdHJ5L25hbWVzcGFjZXMvc3BhcmstY2x1c3Rlcg==&quot;,
+            &quot;mod_revision&quot;: 3774247,
+            &quot;value&quot;: &quot;azhzAAoPCgJ2MRIJTmFtZXNwYWNlEoABCmYKDXNwYXJrLWNsdXN0ZXISABoAIgAqJDMyNjY3ZDVjLTM0YWMtMTFlNy1iZmJkLThhZjFlM2E3YzViZDIAOABCDAiA1cbIBRDU3YuAAVoVCgRuYW1lEg1zcGFyay1jbHVzdGVyegASDAoKa3ViZXJuZXRlcxoICgZBY3RpdmUaACIA&quot;,
+            &quot;version&quot;: 1
         },
         {
-            &#34;create_revision&#34;: 15212191,
-            &#34;key&#34;: &#34;L3JlZ2lzdHJ5L25hbWVzcGFjZXMveWFybi1jbHVzdGVy&#34;,
-            &#34;mod_revision&#34;: 15212191,
-            &#34;value&#34;: &#34;azhzAAoPCgJ2MRIJTmFtZXNwYWNlEn0KYwoMeWFybi1jbHVzdGVyEgAaACIAKiQ2YWNhNjk1Yi03N2Y5LTExZTctYmZiZC04YWYxZTNhN2M1YmQyADgAQgsI1qiKzAUQkoqxDloUCgRuYW1lEgx5YXJuLWNsdXN0ZXJ6ABIMCgprdWJlcm5ldGVzGggKBkFjdGl2ZRoAIgA=&#34;,
-            &#34;version&#34;: 1
+            &quot;create_revision&quot;: 15212191,
+            &quot;key&quot;: &quot;L3JlZ2lzdHJ5L25hbWVzcGFjZXMveWFybi1jbHVzdGVy&quot;,
+            &quot;mod_revision&quot;: 15212191,
+            &quot;value&quot;: &quot;azhzAAoPCgJ2MRIJTmFtZXNwYWNlEn0KYwoMeWFybi1jbHVzdGVyEgAaACIAKiQ2YWNhNjk1Yi03N2Y5LTExZTctYmZiZC04YWYxZTNhN2M1YmQyADgAQgsI1qiKzAUQkoqxDloUCgRuYW1lEgx5YXJuLWNsdXN0ZXJ6ABIMCgprdWJlcm5ldGVzGggKBkFjdGl2ZRoAIgA=&quot;,
+            &quot;version&quot;: 1
         }
     ]
-}</pre></td></tr></table>
-</div>
-</div>
+}
+</code></pre>
+
 <p>key的值是经过base64编码，需要解码后才能看到实际值，如：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">$ echo L3JlZ2lzdHJ5L25hbWVzcGFjZXMvYXV0b21vZGVs|base64 -d
-/registry/namespaces/automodel</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>$ echo L3JlZ2lzdHJ5L25hbWVzcGFjZXMvYXV0b21vZGVs|base64 -d
+/registry/namespaces/automodel
+</code></pre>
+
 <p>etcd中kubernetes的元数据
 我们使用kubectl命令获取的kubernetes的对象状态实际上是保存在etcd中的，使用下面的脚本可以获取etcd中的所有kubernetes对象的key：</p>
 
 <p>注意，我们使用了ETCD v3版本的客户端命令来访问etcd，以下etcd版本为3.2.24，k8s版本为1.13.2</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma"><span class="cp">#!/bin/bash
-</span><span class="cp"></span><span class="c1"># Get kubernetes keys from etcd</span>
-<span class="nb">export</span> <span class="nv">ETCDCTL_API</span><span class="o">=</span><span class="m">3</span>
-<span class="nv">keys</span><span class="o">=</span><span class="sb">`</span><span class="nv">ETCDCTL_API</span><span class="o">=</span><span class="m">3</span> etcdctl --cacert<span class="o">=</span>/etc/kubernetes/pki/etcd/ca.crt --cert<span class="o">=</span>/etc/kubernetes/pki/etcd/peer.crt --key<span class="o">=</span>/etc/kubernetes/pki/etcd/peer.key get /registry --prefix -w json<span class="p">|</span>jq .<span class="p">|</span>grep key<span class="p">|</span>cut -d <span class="s2">&#34;:&#34;</span> -f2<span class="p">|</span>tr -d <span class="s1">&#39;&#34;&#39;</span><span class="p">|</span>tr -d <span class="s2">&#34;,&#34;</span><span class="sb">`</span>
-<span class="k">for</span> x in <span class="nv">$keys</span><span class="p">;</span><span class="k">do</span>
-  <span class="nb">echo</span> <span class="nv">$x</span><span class="p">|</span>base64 -d<span class="p">|</span>sort
-<span class="k">done</span></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>#!/bin/bash
+# Get kubernetes keys from etcd
+export ETCDCTL_API=3
+keys=`ETCDCTL_API=3 etcdctl --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/peer.crt --key=/etc/kubernetes/pki/etcd/peer.key get /registry --prefix -w json|jq .|grep key|cut -d &quot;:&quot; -f2|tr -d '&quot;'|tr -d &quot;,&quot;`
+for x in $keys;do
+  echo $x|base64 -d|sort
+done
+</code></pre>
+
 <p>通过输出的结果我们可以看到kubernetes的原数据是按何种结构存储在etcd中的，输出结果如下所示：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">  1
-</span><span class="lnt">  2
-</span><span class="lnt">  3
-</span><span class="lnt">  4
-</span><span class="lnt">  5
-</span><span class="lnt">  6
-</span><span class="lnt">  7
-</span><span class="lnt">  8
-</span><span class="lnt">  9
-</span><span class="lnt"> 10
-</span><span class="lnt"> 11
-</span><span class="lnt"> 12
-</span><span class="lnt"> 13
-</span><span class="lnt"> 14
-</span><span class="lnt"> 15
-</span><span class="lnt"> 16
-</span><span class="lnt"> 17
-</span><span class="lnt"> 18
-</span><span class="lnt"> 19
-</span><span class="lnt"> 20
-</span><span class="lnt"> 21
-</span><span class="lnt"> 22
-</span><span class="lnt"> 23
-</span><span class="lnt"> 24
-</span><span class="lnt"> 25
-</span><span class="lnt"> 26
-</span><span class="lnt"> 27
-</span><span class="lnt"> 28
-</span><span class="lnt"> 29
-</span><span class="lnt"> 30
-</span><span class="lnt"> 31
-</span><span class="lnt"> 32
-</span><span class="lnt"> 33
-</span><span class="lnt"> 34
-</span><span class="lnt"> 35
-</span><span class="lnt"> 36
-</span><span class="lnt"> 37
-</span><span class="lnt"> 38
-</span><span class="lnt"> 39
-</span><span class="lnt"> 40
-</span><span class="lnt"> 41
-</span><span class="lnt"> 42
-</span><span class="lnt"> 43
-</span><span class="lnt"> 44
-</span><span class="lnt"> 45
-</span><span class="lnt"> 46
-</span><span class="lnt"> 47
-</span><span class="lnt"> 48
-</span><span class="lnt"> 49
-</span><span class="lnt"> 50
-</span><span class="lnt"> 51
-</span><span class="lnt"> 52
-</span><span class="lnt"> 53
-</span><span class="lnt"> 54
-</span><span class="lnt"> 55
-</span><span class="lnt"> 56
-</span><span class="lnt"> 57
-</span><span class="lnt"> 58
-</span><span class="lnt"> 59
-</span><span class="lnt"> 60
-</span><span class="lnt"> 61
-</span><span class="lnt"> 62
-</span><span class="lnt"> 63
-</span><span class="lnt"> 64
-</span><span class="lnt"> 65
-</span><span class="lnt"> 66
-</span><span class="lnt"> 67
-</span><span class="lnt"> 68
-</span><span class="lnt"> 69
-</span><span class="lnt"> 70
-</span><span class="lnt"> 71
-</span><span class="lnt"> 72
-</span><span class="lnt"> 73
-</span><span class="lnt"> 74
-</span><span class="lnt"> 75
-</span><span class="lnt"> 76
-</span><span class="lnt"> 77
-</span><span class="lnt"> 78
-</span><span class="lnt"> 79
-</span><span class="lnt"> 80
-</span><span class="lnt"> 81
-</span><span class="lnt"> 82
-</span><span class="lnt"> 83
-</span><span class="lnt"> 84
-</span><span class="lnt"> 85
-</span><span class="lnt"> 86
-</span><span class="lnt"> 87
-</span><span class="lnt"> 88
-</span><span class="lnt"> 89
-</span><span class="lnt"> 90
-</span><span class="lnt"> 91
-</span><span class="lnt"> 92
-</span><span class="lnt"> 93
-</span><span class="lnt"> 94
-</span><span class="lnt"> 95
-</span><span class="lnt"> 96
-</span><span class="lnt"> 97
-</span><span class="lnt"> 98
-</span><span class="lnt"> 99
-</span><span class="lnt">100
-</span><span class="lnt">101
-</span><span class="lnt">102
-</span><span class="lnt">103
-</span><span class="lnt">104
-</span><span class="lnt">105
-</span><span class="lnt">106
-</span><span class="lnt">107
-</span><span class="lnt">108
-</span><span class="lnt">109
-</span><span class="lnt">110
-</span><span class="lnt">111
-</span><span class="lnt">112
-</span><span class="lnt">113
-</span><span class="lnt">114
-</span><span class="lnt">115
-</span><span class="lnt">116
-</span><span class="lnt">117
-</span><span class="lnt">118
-</span><span class="lnt">119
-</span><span class="lnt">120
-</span><span class="lnt">121
-</span><span class="lnt">122
-</span><span class="lnt">123
-</span><span class="lnt">124
-</span><span class="lnt">125
-</span><span class="lnt">126
-</span><span class="lnt">127
-</span><span class="lnt">128
-</span><span class="lnt">129
-</span><span class="lnt">130
-</span><span class="lnt">131
-</span><span class="lnt">132
-</span><span class="lnt">133
-</span><span class="lnt">134
-</span><span class="lnt">135
-</span><span class="lnt">136
-</span><span class="lnt">137
-</span><span class="lnt">138
-</span><span class="lnt">139
-</span><span class="lnt">140
-</span><span class="lnt">141
-</span><span class="lnt">142
-</span><span class="lnt">143
-</span><span class="lnt">144
-</span><span class="lnt">145
-</span><span class="lnt">146
-</span><span class="lnt">147
-</span><span class="lnt">148
-</span><span class="lnt">149
-</span><span class="lnt">150
-</span><span class="lnt">151
-</span><span class="lnt">152
-</span><span class="lnt">153
-</span><span class="lnt">154
-</span><span class="lnt">155
-</span><span class="lnt">156
-</span><span class="lnt">157
-</span><span class="lnt">158
-</span><span class="lnt">159
-</span><span class="lnt">160
-</span><span class="lnt">161
-</span><span class="lnt">162
-</span><span class="lnt">163
-</span><span class="lnt">164
-</span><span class="lnt">165
-</span><span class="lnt">166
-</span><span class="lnt">167
-</span><span class="lnt">168
-</span><span class="lnt">169
-</span><span class="lnt">170
-</span><span class="lnt">171
-</span><span class="lnt">172
-</span><span class="lnt">173
-</span><span class="lnt">174
-</span><span class="lnt">175
-</span><span class="lnt">176
-</span><span class="lnt">177
-</span><span class="lnt">178
-</span><span class="lnt">179
-</span><span class="lnt">180
-</span><span class="lnt">181
-</span><span class="lnt">182
-</span><span class="lnt">183
-</span><span class="lnt">184
-</span><span class="lnt">185
-</span><span class="lnt">186
-</span><span class="lnt">187
-</span><span class="lnt">188
-</span><span class="lnt">189
-</span><span class="lnt">190
-</span><span class="lnt">191
-</span><span class="lnt">192
-</span><span class="lnt">193
-</span><span class="lnt">194
-</span><span class="lnt">195
-</span><span class="lnt">196
-</span><span class="lnt">197
-</span><span class="lnt">198
-</span><span class="lnt">199
-</span><span class="lnt">200
-</span><span class="lnt">201
-</span><span class="lnt">202
-</span><span class="lnt">203
-</span><span class="lnt">204
-</span><span class="lnt">205
-</span><span class="lnt">206
-</span><span class="lnt">207
-</span><span class="lnt">208
-</span><span class="lnt">209
-</span><span class="lnt">210
-</span><span class="lnt">211
-</span><span class="lnt">212
-</span><span class="lnt">213
-</span><span class="lnt">214
-</span><span class="lnt">215
-</span><span class="lnt">216
-</span><span class="lnt">217
-</span><span class="lnt">218
-</span><span class="lnt">219
-</span><span class="lnt">220
-</span><span class="lnt">221
-</span><span class="lnt">222
-</span><span class="lnt">223
-</span><span class="lnt">224
-</span><span class="lnt">225
-</span><span class="lnt">226
-</span><span class="lnt">227
-</span><span class="lnt">228
-</span><span class="lnt">229
-</span><span class="lnt">230
-</span><span class="lnt">231
-</span><span class="lnt">232
-</span><span class="lnt">233
-</span><span class="lnt">234
-</span><span class="lnt">235
-</span><span class="lnt">236
-</span><span class="lnt">237
-</span><span class="lnt">238
-</span><span class="lnt">239
-</span><span class="lnt">240
-</span><span class="lnt">241
-</span><span class="lnt">242
-</span><span class="lnt">243
-</span><span class="lnt">244
-</span><span class="lnt">245
-</span><span class="lnt">246
-</span><span class="lnt">247
-</span><span class="lnt">248
-</span><span class="lnt">249
-</span><span class="lnt">250
-</span><span class="lnt">251
-</span><span class="lnt">252
-</span><span class="lnt">253
-</span><span class="lnt">254
-</span><span class="lnt">255
-</span><span class="lnt">256
-</span><span class="lnt">257
-</span><span class="lnt">258
-</span><span class="lnt">259
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">/registry/apiextensions.k8s.io/customresourcedefinitions/redisclusters.redis.middleware.hc.cn
+
+<pre><code>/registry/apiextensions.k8s.io/customresourcedefinitions/redisclusters.redis.middleware.hc.cn
 /registry/apiregistration.k8s.io/apiservices/v1.
 /registry/apiregistration.k8s.io/apiservices/v1.apps
 /registry/apiregistration.k8s.io/apiservices/v1.authentication.k8s.io
@@ -1098,71 +679,24 @@ get /registry/namespaces/default -w=json | jq .</pre></td></tr></table>
 /registry/services/specs/default/kubernetes
 /registry/services/specs/kube-system/example000-redis-cluster
 /registry/services/specs/kube-system/kube-dns
-/registry/statefulsets/kube-system/example000-redis-cluster</pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma"># 获取ETCD中的所有数据
-# --prefix 表示获取所有key值头为某个字符串的数据， 由于传入的是&#34;&#34;，所以会匹配所有的值
+/registry/statefulsets/kube-system/example000-redis-cluster
+</code></pre>
+
+<pre><code># 获取ETCD中的所有数据
+# --prefix 表示获取所有key值头为某个字符串的数据， 由于传入的是&quot;&quot;，所以会匹配所有的值
 # --keys-only 表示只返回key而不返回value
 # 对输出的结果使用grep过滤掉空行
-/$ ETCDCTL_API=3 etcdctl --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/peer.crt --key=/etc/kubernetes/pki/etcd/peer.key get &#34;&#34; --prefix --keys-only |grep -Ev &#34;^$&#34;
+/$ ETCDCTL_API=3 etcdctl --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/peer.crt --key=/etc/kubernetes/pki/etcd/peer.key get &quot;&quot; --prefix --keys-only |grep -Ev &quot;^$&quot;
 
 # 总共有240条记录
-/$ ETCDCTL_API=3 etcdctl --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/peer.crt --key=/etc/kubernetes/pki/etcd/peer.key get &#34;&#34; --prefix --keys-only |grep -Ev &#34;^$&#34; |wc -l</pre></td></tr></table>
-</div>
-</div>
+/$ ETCDCTL_API=3 etcdctl --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/peer.crt --key=/etc/kubernetes/pki/etcd/peer.key get &quot;&quot; --prefix --keys-only |grep -Ev &quot;^$&quot; |wc -l
+</code></pre>
+
 <p>我们可以看到所有的Kuberentes的所有元数据都保存在/registry目录下，下一层就是API对象类型（复数形式），再下一层是namespace，最后一层是对象的名字。</p>
 
 <p>以下是etcd中存储的kubernetes所有的元数据类型：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">ThirdPartyResourceData
+
+<pre><code>ThirdPartyResourceData
 apiextensions.k8s.io
 apiregistration.k8s.io
 certificatesigningrequests
@@ -1194,9 +728,9 @@ serviceaccounts
 services
 statefulsets
 storageclasses
-thirdpartyresources</pre></td></tr></table>
-</div>
-</div>
+thirdpartyresources
+</code></pre>
+
 <p>restapi简单使用
 v2版本
 calico使用的是v2版本的api。</p>
@@ -1205,11 +739,11 @@ calico使用的是v2版本的api。</p>
 
 <p>获取etcd member列表：</p>
 
-<p>etcdctl &ndash;endpoints=<a href="https://10.142.233.80:2379">https://10.142.233.80:2379</a> &ndash;ca-file=/etc/ssl/etcd/ssl/ca.pem &ndash;cert-file=/etc/ssl/etcd/ssl/node-10.142.233.80.pem &ndash;key-file=/etc/ssl/etcd/ssl/node-10.142.233.80-key.pem member list</p>
+<p>etcdctl &ndash;endpoints=<a href="https://10.142.233.80:2379" rel="nofollow noreferrer" target="_blank">https://10.142.233.80:2379</a> &ndash;ca-file=/etc/ssl/etcd/ssl/ca.pem &ndash;cert-file=/etc/ssl/etcd/ssl/node-10.142.233.80.pem &ndash;key-file=/etc/ssl/etcd/ssl/node-10.142.233.80-key.pem member list</p>
 
 <p>查看 /calico节点</p>
 
-<p>ETCDCTL_API=2 etcdctl &ndash;endpoints=<a href="https://10.142.233.80:2379">https://10.142.233.80:2379</a> &ndash;ca-file=/etc/ssl/etcd/ssl/ca.pem &ndash;cert-file=/etc/ssl/etcd/ssl/node-10.142.233.80.pem &ndash;key-file=/etc/ssl/etcd/ssl/node-10.142.233.80-key.pem ls /calico</p>
+<p>ETCDCTL_API=2 etcdctl &ndash;endpoints=<a href="https://10.142.233.80:2379" rel="nofollow noreferrer" target="_blank">https://10.142.233.80:2379</a> &ndash;ca-file=/etc/ssl/etcd/ssl/ca.pem &ndash;cert-file=/etc/ssl/etcd/ssl/node-10.142.233.80.pem &ndash;key-file=/etc/ssl/etcd/ssl/node-10.142.233.80-key.pem ls /calico</p>
 
 <p>v3版本
 k8s会使用etcd v3版本的API记录数据。而默认etcdctl是使用v2版本的API，查看不到v3的数据。设置环境变量ETCDCTL_API=3后就OK了：</p>
@@ -1218,333 +752,109 @@ k8s会使用etcd v3版本的API记录数据。而默认etcdctl是使用v2版本�
 
 <p>获取etcd member列表：</p>
 
-<p>etcdctl &ndash;endpoints=<a href="https://10.142.233.80:2379">https://10.142.233.80:2379</a> &ndash;cacert=/etc/ssl/etcd/ssl/ca.pem &ndash;cert=/etc/ssl/etcd/ssl/node-10.142.233.80.pem &ndash;key=/etc/ssl/etcd/ssl/node-10.142.233.80-key.pem member list</p>
+<p>etcdctl &ndash;endpoints=<a href="https://10.142.233.80:2379" rel="nofollow noreferrer" target="_blank">https://10.142.233.80:2379</a> &ndash;cacert=/etc/ssl/etcd/ssl/ca.pem &ndash;cert=/etc/ssl/etcd/ssl/node-10.142.233.80.pem &ndash;key=/etc/ssl/etcd/ssl/node-10.142.233.80-key.pem member list</p>
 
 <p>获取所有key：</p>
 
-<p>etcdctl &ndash;endpoints=<a href="https://10.142.233.80:2379">https://10.142.233.80:2379</a> &ndash;cacert=/etc/ssl/etcd/ssl/ca.pem &ndash;cert=/etc/ssl/etcd/ssl/node-10.142.233.80.pem &ndash;key=/etc/ssl/etcd/ssl/node-10.142.233.80-key.pem get &ldquo;&rdquo; &ndash;prefix=true</p>
+<p>etcdctl &ndash;endpoints=<a href="https://10.142.233.80:2379" rel="nofollow noreferrer" target="_blank">https://10.142.233.80:2379</a> &ndash;cacert=/etc/ssl/etcd/ssl/ca.pem &ndash;cert=/etc/ssl/etcd/ssl/node-10.142.233.80.pem &ndash;key=/etc/ssl/etcd/ssl/node-10.142.233.80-key.pem get &ldquo;&rdquo; &ndash;prefix=true</p>
 
 <p>获取前缀是/registry/pods/kube-system/prometheus的key：</p>
 
-<p>etcdctl &ndash;endpoints=<a href="https://10.142.233.80:2379">https://10.142.233.80:2379</a> &ndash;cacert=/etc/ssl/etcd/ssl/ca.pem &ndash;cert=/etc/ssl/etcd/ssl/node-10.142.233.80.pem &ndash;key=/etc/ssl/etcd/ssl/node-10.142.233.80-key.pem get /registry/pods/kube-system/prometheus &ndash;prefix=true</p>
+<p>etcdctl &ndash;endpoints=<a href="https://10.142.233.80:2379" rel="nofollow noreferrer" target="_blank">https://10.142.233.80:2379</a> &ndash;cacert=/etc/ssl/etcd/ssl/ca.pem &ndash;cert=/etc/ssl/etcd/ssl/node-10.142.233.80.pem &ndash;key=/etc/ssl/etcd/ssl/node-10.142.233.80-key.pem get /registry/pods/kube-system/prometheus &ndash;prefix=true</p>
 
 <p>获取具体key:</p>
 
-<p>etcdctl &ndash;endpoints=<a href="https://10.142.233.80:2379">https://10.142.233.80:2379</a> &ndash;cacert=/etc/ssl/etcd/ssl/ca.pem &ndash;cert=/etc/ssl/etcd/ssl/node-10.142.233.80.pem &ndash;key=/etc/ssl/etcd/ssl/node-10.142.233.80-key.pem get /registry/pods/kube-system/prometheus-c78dbd66d-hkfcf （&ndash;prefix=true）</p>
+<p>etcdctl &ndash;endpoints=<a href="https://10.142.233.80:2379" rel="nofollow noreferrer" target="_blank">https://10.142.233.80:2379</a> &ndash;cacert=/etc/ssl/etcd/ssl/ca.pem &ndash;cert=/etc/ssl/etcd/ssl/node-10.142.233.80.pem &ndash;key=/etc/ssl/etcd/ssl/node-10.142.233.80-key.pem get /registry/pods/kube-system/prometheus-c78dbd66d-hkfcf （&ndash;prefix=true）</p>
 
 <p>删除具体key:</p>
 
-<p>etcdctl &ndash;endpoints=<a href="https://10.142.233.80:2379">https://10.142.233.80:2379</a> &ndash;cacert=/etc/ssl/etcd/ssl/ca.pem &ndash;cert=/etc/ssl/etcd/ssl/node-10.142.233.80.pem &ndash;key=/etc/ssl/etcd/ssl/node-10.142.233.80-key.pem del /registry/pods/kube-system/prometheus-c78dbd66d-hkfcf</p>
+<p>etcdctl &ndash;endpoints=<a href="https://10.142.233.80:2379" rel="nofollow noreferrer" target="_blank">https://10.142.233.80:2379</a> &ndash;cacert=/etc/ssl/etcd/ssl/ca.pem &ndash;cert=/etc/ssl/etcd/ssl/node-10.142.233.80.pem &ndash;key=/etc/ssl/etcd/ssl/node-10.142.233.80-key.pem del /registry/pods/kube-system/prometheus-c78dbd66d-hkfcf</p>
 
-                        </div>
-
-                        
-<div class="post-archive">
-    <ul class="post-copyright">
-        <li><strong>原文作者：</strong><a rel="author" href="https://liabio.github.io">小碗汤</a></li>
-        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://liabio.github.io/post/2019-5-21-etcd%E6%93%8D%E4%BD%9C/">https://liabio.github.io/post/2019-5-21-etcd%E6%93%8D%E4%BD%9C/</a></li>
-        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
-    </ul>
-</div>
-<br/>
-
-
-
-                        
-
-<div class="post-archive">
-    <h2>See Also</h2>
-    <ul class="listing">
-        
-        <li><a href="/post/2019-09-24-docker-image-essential-skills/">docker镜像制作必备技能</a></li>
-        
-        <li><a href="/post/2019-09-24-kubernetes-gc-GarbageCollector-Controller-source-one/">docker镜像制作必备技能</a></li>
-        
-        <li><a href="/post/2019-09-24-k8s-loadbalancer-ingress-nginx-deploy/">k8s中负载均衡器【ingress-nginx】部署</a></li>
-        
-        <li><a href="/post/2019-09-24-k8s-job-execute-fail-do-what/">k8s使用Job执行任务失败了怎么办</a></li>
-        
-        <li><a href="/post/2019-09-24-docker-create-svc-in-cloudserver/">一次socket.error: [Errno 99] Cannot assign requested address报错排查</a></li>
-        
-    </ul>
-</div>
-
-
-                        <div class="post-meta meta-tags">
-                            
-                            没有标签
-                            
-                        </div>
-                    </article>
-                    
-    <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "https-liabio-github-io" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-    
-    
-    <div class="post bg-white">
-      <script src="https://utteranc.es/client.js"
-            repo= "liabio/utteranc_comment"
-            issue-term="pathname"
-            theme="github-light"
-            crossorigin="anonymous"
-            async>
-      </script>
     </div>
-    
-                </div>
-            </div>
-            <div id="secondary">
-    <section class="widget">
-        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
-      
-      <input type="text" name="q" maxlength="20" placeholder="Search">
-      <input type="hidden" name="sitesearch" value="https://liabio.github.io">
-      <button type="submit" class="submit icon-search"></button>
-</form>
-    </section>
-    
-    <section class="widget">
-        <h3 class="widget-title">最近文章</h3>
-<ul class="widget-list">
-    
-    <li>
-        <a href="https://liabio.github.io/post/2019-09-24-docker-image-essential-skills/" title="docker镜像制作必备技能">docker镜像制作必备技能</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/post/2019-09-24-kubernetes-gc-GarbageCollector-Controller-source-one/" title="docker镜像制作必备技能">docker镜像制作必备技能</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/post/2019-09-24-k8s-loadbalancer-ingress-nginx-deploy/" title="k8s中负载均衡器【ingress-nginx】部署">k8s中负载均衡器【ingress-nginx】部署</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/post/2019-09-24-k8s-job-execute-fail-do-what/" title="k8s使用Job执行任务失败了怎么办">k8s使用Job执行任务失败了怎么办</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/post/2019-09-24-docker-create-svc-in-cloudserver/" title="一次socket.error: [Errno 99] Cannot assign requested address报错排查">一次socket.error: [Errno 99] Cannot assign requested address报错排查</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/post/2019-09-24-socket-error-debug/" title="云服务器使用docker搭建服务">云服务器使用docker搭建服务</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/post/2019-09-24-docker-comprehensive-knowledge/" title="史上最全docker基础知识汇总">史上最全docker基础知识汇总</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/post/2019-09-24-k8s-domain-resolve-coredns-problem-debug/" title="采坑指南——k8s域名解析coredns问题排查过程">采坑指南——k8s域名解析coredns问题排查过程</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/" title="手把手教你搭建kubernetes集群.md">手把手教你搭建kubernetes集群.md</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/" title="手把手教你搭建kubernetes集群1">手把手教你搭建kubernetes集群1</a>
-    </li>
-    
-</ul>
-    </section>
 
-    
-<section class="widget">
-    <h3 class="widget-title" style="color:red">福利派送</h3>
-    <ul class="widget-list">
-        
-        <li>
-            <a href="https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=jdg9oj97" title="领取￥1888阿里云产品通用代金券" target="_blank" style="color:red">
-                
-                    领取￥1888阿里云产品通用代金券
-                
-            </a>
-        </li>
-        
-        <li>
-            <a href="https://promotion.aliyun.com/ntms/act/vmpt/aliyun-group/home.html?userCode=jdg9oj97" title="领取￥1888阿里云产品通用代金券" target="_blank" style="color:red">
-                
-                    <img src="https://img.alicdn.com/tfs/TB17qJhXpzqK1RjSZFvXXcB7VXa-200-126.jpg">
-                
-            </a>
-        </li>
-        
-        <li>
-            <a href="https://promotion.aliyun.com/ntms/act/enterprise-discount.html?userCode=jdg9oj97" title="领取￥1888阿里云产品通用代金券" target="_blank" style="color:red">
-                
-                    <img src="https://img.alicdn.com/tfs/TB1aDXhXpzqK1RjSZFvXXcB7VXa-259-194.jpg">
-                
-            </a>
-        </li>
-        
-    </ul>
-</section>
-
-
-    <section class="widget">
-        <h3 class="widget-title">分类</h3>
-<ul class="widget-list">
-    
-    <li>
-        <a href="https://liabio.github.io/categories/Blog/">Blog(1)</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/categories/Kubernetes/">Kubernetes(4)</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/categories/debug/">debug(1)</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/categories/docker/">docker(6)</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/categories/ingress-nginx/">ingress-nginx(1)</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/categories/job/">job(2)</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/categories/k8s/">k8s(1)</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(3)</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/categories/%E5%B7%A5%E5%85%B7/">工具(1)</a>
-    </li>
-    
-</ul>
-    </section>
-
-    <section class="widget">
-        <h3 class="widget-title">标签</h3>
-<div class="tagcloud">
-    
-    <a href="https://liabio.github.io/tags/Blog/">Blog</a>
-    
-    <a href="https://liabio.github.io/tags/Golang/">Golang</a>
-    
-    <a href="https://liabio.github.io/tags/Hugo/">Hugo</a>
-    
-    <a href="https://liabio.github.io/tags/Kubernetes/">Kubernetes</a>
-    
-    <a href="https://liabio.github.io/tags/Scheduler/">Scheduler</a>
-    
-    <a href="https://liabio.github.io/tags/docker/">docker</a>
-    
-    <a href="https://liabio.github.io/tags/ingress-nginx/">ingress-nginx</a>
-    
-    <a href="https://liabio.github.io/tags/kubernetes/">kubernetes</a>
-    
-    <a href="https://liabio.github.io/tags/%E5%AE%B9%E5%99%A8/">容器</a>
-    
-    <a href="https://liabio.github.io/tags/%E5%B7%A5%E5%85%B7/">工具</a>
-    
-</div>
-    </section>
-
-    
-<section class="widget">
-    <h3 class="widget-title">友情链接</h3>
-    <ul class="widget-list">
-        
-        <li>
-            <a target="_blank" href="http://yuedu.baidu.com/ebook/14a722970740be1e640e9a3e" title="Android Gradle权威指南">Android Gradle权威指南</a>
-        </li>
-        
-        <li>
-            <a target="_blank" href="http://mirrors.flysnow.org/" title="常用开发工具CDN镜像">常用开发工具CDN镜像</a>
-        </li>
-        
-    </ul>
-</section>
-
-
-    <section class="widget">
-        <h3 class="widget-title">其它</h3>
-        <ul class="widget-list">
-            <li><a href="https://liabio.github.io/index.xml">文章 RSS</a></li>
-        </ul>
-    </section>
-</div>
-        </div>
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>liabio </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://example.com/post/2019-5-21-etcd%E6%93%8D%E4%BD%9C/>https://example.com/post/2019-5-21-etcd%E6%93%8D%E4%BD%9C/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
     </div>
-</div>
-<footer id="footer">
-    <div class="container">
-        &copy; 2019 <a href="https://liabio.github.io">小碗汤的博客 By 小碗汤</a>.
-        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
-        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+
+  
+    <div class="post-tags">
         
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://example.com">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+         
+        
+        <a href="https://example.com/post/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/" class="next" rel="next" title="">&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2011 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://example.com">liabio</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
     </div>
 </footer>
 
 
-    <script type="text/javascript">
+
+
+
+
+
+
+
+
+
+
     
-    (function(){
-        $("pre code").parent().addClass("line-numbers")
-    }())
-
-    window.MathJax = {
-        tex2jax: {
-            inlineMath: [ ['$','$'] ],
-            processEscapes: true
-        }
-    };
-    </script>
-    <script type="text/javascript" src="/js/prism.js" async="true"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
-
-<a id="rocket" href="#top"></a>
-<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-139517579-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
 
 
 
-<script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
-
-
-
-
-</body>
+     </div>
+  </body>
 </html>

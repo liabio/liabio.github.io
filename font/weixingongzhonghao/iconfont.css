@@ -1,0 +1,20 @@
+@font-face {font-family: "iconfont weixingongzhonghao";
+  src: url('iconfont.eot?t=1569404502210'); /* IE9 */
+  src: url('iconfont.eot?t=1569404502210#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAS8AAsAAAAACRgAAARtAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDBgqFcIR7ATYCJAMMCwgABCAFhG0HRxvSB8geIXMyk9PTk9NItXh4WvvfuTOz+8U1OWbRNBHxEqgkfqPhpVsjiobiodDe8e+m90I1aR3ZPFWBiipUbMgLBAs2UQOm5l8i+meIg9sZSyWSA/U/x0yXPsD8q3TJiOejvQGOBzSg7IuiSBzINZ0dkN8wdnmRZxNoNSkWOlVa3QweCn1aIO6zajl4JKxKRWNoFuqCtUXsgavm9JC4DuCR9/PxDyTxIKkyfe75myUqyP/p+2YPb9z/cTodBMiGc4NtImMdKMSNQu91vCC7jqdV1rpUV9aKkIZK/P+PJ1X09UL/8RJR07XtELusSQcls1gEP/dIoM7x/5YaLfhPnBrgBlTKFOm9lezlNR4utduF6NGjlgjh0Yce34MH0nH30/lhi2BR+cz9+83gG18fyniBOEdcLo5FNDPsqOHBIuHWvWjdo7KZ1MzFS5z8/ff7rTiTslggMGlgMX7HmflkqzIYV9J/xiRiTUW6g8YLhXYRciCRQ2QedOgcWvkw1b50mYOi3j8IGrc7ki/AtwyLS458OKv5/gTpg9ktjyaaFq3fuHXpMpHjwJZxUufmg1v7kujx+D5rH5ZuDF20MVe9bTDzA2mrAYuc6zcK7X3Hrxsw0fEdPM+nyFdbV26LcFwquVDxoEFwR7onaM39nYGrH5NVyDRsnyY64o8xWiZG7cOGtBLtxNChqE0cJRvzJ0ITPWwvMld5Pllds2wisWsXMVFsFNsiv99EYkgxam9HRajYURdTcSSGIngkRej1auoLlQkNF6aUhV1Y1jqS9invOMXjtfwoWjN/mySfcr03QJwEqI/vQuQkOf2BqBMMGgmNB8jH1HXqCZkJjcIr1vHRnU4EVUpZpD5/CB7fkWGkOH/k2vlFVzzd90o6qCCdZunF8rD6KdBwgHpCwc5/WLHYaeIWr3Aqgrczac+SqRuDtazzi+lxxHU/ekFolB+CNCrZVFenVcnPzryUGXwGWSf4VBYWVvpOOODb91mLdOqXUBQ4nK9btUovsCcCCi82mqB/pG9tKw4q8cd00YatViIf8gEanwrkjd/mb7wrCRD0+Gb/9qAK+LGnReZNaIwrkB8AaL6pvuAnkTVsKYpCt+UiSS2pVsiecH0FYijmAhqgB3s96a4faFxPaDYQQdJkArJm88iCXYdKmy2oNTsKrdaUbW7Tx4InSgtWTQYQuu2CpNNryLrdQBbsY6gM+gy17vCg1dUI3LPNYliyyILlNqyiFcNpVskZGdNhI/3GRqwerJdb4goPL8MWK5ugxfGJ6UIZNmLLEAusQ9QSm42hGQtnoEvB+bBez9EmC6fFSlu8xmYzZSYkMEUPFK/kDEA6yQKTs8FUaArD0VhKHCPG6WxDZr6/EaY2mJ6cpaKpLCyDWVixvdPE4iU2QJZpjY2aLmWw1RBqEjY2DJ7EsOAY0EqhG9MbWQ7NVDxKC1OyiafpkDbJlIDaMU218dPrDfe3C1rp83OkyFH0HmaHsUY1Z5pHaOwlGjnnoeB0ePhguREAAAAA') format('woff2'),
+  url('iconfont.woff?t=1569404502210') format('woff'),
+  url('iconfont.ttf?t=1569404502210') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1569404502210#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.weixingongzhonghao-iconfont {
+  font-family: "iconfont weixingongzhonghao" !important;
+  font-size: 38px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-weixingongzhonghao:before {
+  content: "\e60f";
+}

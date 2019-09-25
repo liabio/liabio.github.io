@@ -1,197 +1,73 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>小碗汤的博客</title>
-    <link>https://liabio.github.io/</link>
-    <description>Recent content on 小碗汤的博客</description>
+    <title>LeaveIt on LeaveIt</title>
+    <link>https://example.com/</link>
+    <description>Recent content in LeaveIt on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
+    <language>en-us</language>
     <lastBuildDate>Tue, 24 Sep 2019 10:48:21 +0800</lastBuildDate>
-    
-	<atom:link href="https://liabio.github.io/index.xml" rel="self" type="application/rss+xml" />
-    
+    <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
       <title>About</title>
-      <link>https://liabio.github.io/about/</link>
+      <link>https://example.com/about/</link>
       <pubDate>Fri, 03 May 2019 01:38:43 +0800</pubDate>
       
-      <guid>https://liabio.github.io/about/</guid>
-      <description>冰冻三尺 非一日之寒 积土成山 非斯须之作 Hey，我是小碗汤，一只程序猿，主要从事Java、Golang、Docker、Kubernetes开发工作，现在郑州工作。 工作、学习之余，我还是一个健身爱好者，同时也非常喜欢跑步、音乐。 这是我的利用 GitHub Pages 与 Jekyll 搭建的 个人博客。我在GitHub主页👉</description>
+      <guid>https://example.com/about/</guid>
+      <description>&lt;div class=&#34;zh post-container&#34;&gt;
+
+    &lt;!--copied from markdown --&gt;
+    &lt;blockquote&gt;&lt;p&gt;冰冻三尺 非一日之寒&lt;br&gt;
+    积土成山 非斯须之作&lt;/p&gt;&lt;/blockquote&gt;
+
+    &lt;p&gt;Hey，我是&lt;strong&gt;小碗汤&lt;/strong&gt;，一只程序猿，主要从事Java、Golang、Docker、Kubernetes开发工作，现在郑州工作。&lt;/p&gt;
+
+    &lt;p&gt;工作、学习之余，我还是一个健身爱好者，同时也非常喜欢跑步、音乐。&lt;/p&gt;
+
+    &lt;p&gt;这是我的利用 &lt;a href=&#34;https://pages.github.com/&#34;&gt;GitHub Pages&lt;/a&gt; 与 &lt;a href=&#34;http://jekyll.com.cn/&#34;&gt;Jekyll&lt;/a&gt; 搭建的 个人博客。我在GitHub主页&lt;a href=&#34;https://github.com/liabio&#34;&gt;👉GitHub·liabio&lt;/a&gt; 与 简书主页&lt;a href=&#34;https://http://www.jianshu.com/u/33c582f040ae&#34;&gt;👉Liabio&lt;/a&gt;。如果有什么问题，欢迎提出探讨！~&lt;/p&gt;
+
+    &lt;p&gt;&lt;strong&gt;欢迎扫描下方二维码关注我的微信公众号，期待与你一起成长！&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&#34;https://example.com/img/weixin-gongzhonghao.png&#34; style=&#34;align-content: center;&#34;&gt;&lt;p&gt;
+
+    &lt;p&gt;&lt;/p&gt;
+    
+    &lt;h3&gt;Talks&lt;/h3&gt;
+
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;https://github.com/liabio&#34;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;https://www.facebook.com/liang.li.96592836&#34;&gt;Facebook&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;https://www.zhihu.com/people/li-liang-45-48&#34;&gt;知乎&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;https://www.jianshu.com/u/33c582f040ae&#34;&gt;简书&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;https://mp.weixin.qq.com/s/04i5paoaWlbY9-v6qv_COQ&#34;&gt;微信公众号&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;https://segmentfault.com/u/smallsoup/articles&#34;&gt;segmentfault&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;https://juejin.im/user/5b0c1a17f265da08df28648c&#34;&gt;掘金&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;https://me.csdn.net/ll837448792&#34;&gt;CSDN&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/liabio/&#34;&gt;博客园&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
-      <title>docker镜像制作必备技能</title>
-      <link>https://liabio.github.io/post/2019-09-24-docker-image-essential-skills/</link>
+      <title>Posts</title>
+      <link>https://example.com/post/</link>
       <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
       
-      <guid>https://liabio.github.io/post/2019-09-24-docker-image-essential-skills/</guid>
-      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注： 正文 使用</description>
-    </item>
-    
-    <item>
-      <title>docker镜像制作必备技能</title>
-      <link>https://liabio.github.io/post/2019-09-24-kubernetes-gc-GarbageCollector-Controller-source-one/</link>
-      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
-      
-      <guid>https://liabio.github.io/post/2019-09-24-kubernetes-gc-GarbageCollector-Controller-source-one/</guid>
-      <description>kubernetes版本：1.13.2 背景 由于operator创建的redis集群，在kubernetes apiserver重启后，redis集群被异常删除（包括redis exporter statefulset、redis statefulset）。删除后operator将其重建，重新组建集群，</description>
-    </item>
-    
-    <item>
-      <title>k8s中负载均衡器【ingress-nginx】部署</title>
-      <link>https://liabio.github.io/post/2019-09-24-k8s-loadbalancer-ingress-nginx-deploy/</link>
-      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
-      
-      <guid>https://liabio.github.io/post/2019-09-24-k8s-loadbalancer-ingress-nginx-deploy/</guid>
-      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注： 在Kub</description>
-    </item>
-    
-    <item>
-      <title>k8s使用Job执行任务失败了怎么办</title>
-      <link>https://liabio.github.io/post/2019-09-24-k8s-job-execute-fail-do-what/</link>
-      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
-      
-      <guid>https://liabio.github.io/post/2019-09-24-k8s-job-execute-fail-do-what/</guid>
-      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注： Kubernetes 中使用</description>
-    </item>
-    
-    <item>
-      <title>一次socket.error: [Errno 99] Cannot assign requested address报错排查</title>
-      <link>https://liabio.github.io/post/2019-09-24-docker-create-svc-in-cloudserver/</link>
-      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
-      
-      <guid>https://liabio.github.io/post/2019-09-24-docker-create-svc-in-cloudserver/</guid>
-      <description>今天在Ucloud国际版的机器上配置某个不可描述的服务时，遇到了 socket.error: [Errno 99] Cannot assign requested address 的错误，详细如下： 1 2 3 4 5 6 7 8 9 10 11 12 13 [root@liabio ~]# docker logs c0c34ba49967 2019-07-15 00:02:26 INFO loading libcrypto from libcrypto.so.1.0.0 2019-07-15 00:02:26 INFO starting server at 128.1.132.124:8002 Traceback (most recent call last): File &amp;#34;/usr/local/bin/ssserver&amp;#34;, line 11, in &amp;lt;module&amp;gt; sys.exit(main()) File &amp;#34;/usr/local/lib/python2.7/dist-packages/shadowsocks/server.py&amp;#34;, line 68, in main tcp_servers.append(tcprelay.TCPRelay(a_config, dns_resolver, False)) File &amp;#34;/usr/local/lib/python2.7/dist-packages/shadowsocks/tcprelay.py&amp;#34;, line 582, in __init__ server_socket.bind(sa) File &amp;#34;/usr/lib/python2.7/socket.py&amp;#34;, line 228, in meth return getattr(self._sock,name)(*args) socket.error: [Errno 99] Cannot assign requested address 原先以为是resolver的问题，</description>
-    </item>
-    
-    <item>
-      <title>云服务器使用docker搭建服务</title>
-      <link>https://liabio.github.io/post/2019-09-24-socket-error-debug/</link>
-      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
-      
-      <guid>https://liabio.github.io/post/2019-09-24-socket-error-debug/</guid>
-      <description>前提：亚马逊云已经配置好启动。 安全组入站策略如下： 出站策略如下： 登陆EC2后，默认只能用ec2-user用户登陆，然后切换到root： 1 sudo su 用yum执行安装docker提示No package docker avaible 1 yum install docker -y 解决方法： 在/etc/yum.repos.d/下加CentOS7-Base-163.re</description>
-    </item>
-    
-    <item>
-      <title>史上最全docker基础知识汇总</title>
-      <link>https://liabio.github.io/post/2019-09-24-docker-comprehensive-knowledge/</link>
-      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
-      
-      <guid>https://liabio.github.io/post/2019-09-24-docker-comprehensive-knowledge/</guid>
-      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注： 正文 Do</description>
-    </item>
-    
-    <item>
-      <title>采坑指南——k8s域名解析coredns问题排查过程</title>
-      <link>https://liabio.github.io/post/2019-09-24-k8s-domain-resolve-coredns-problem-debug/</link>
-      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
-      
-      <guid>https://liabio.github.io/post/2019-09-24-k8s-domain-resolve-coredns-problem-debug/</guid>
-      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注： 正文 前几</description>
-    </item>
-    
-    <item>
-      <title>手把手教你搭建kubernetes集群.md</title>
-      <link>https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/</link>
-      <pubDate>Tue, 14 May 2019 23:44:21 +0800</pubDate>
-      
-      <guid>https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/</guid>
-      <description>1 2 3 4 5 6 7 8 9 cat &amp;gt; /etc/yum.repos.d/kubernetes.repo &amp;lt;&amp;lt; EOF [kubernetes] name=Kubernetes baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/ enabled=1 gpgcheck=0 repo_gpgcheck=1 gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg EOF 安装kubeadm、kubectl、kubelet 1 yum install -y kubeadm kubelet kubectl 如果在云服务器上搭建时，IP-18.219.28.143是公网IP 1 kubeadm init --kubernetes-version=v1.14.1 --pod-network-cidr=10.244.0.0/16 --service-cidr=10.96.0.0/12 --apiserver-advertise-address=18.219.28.143 --ignore-preflight-errors=Swap,NumCPU 1 init的时候可能会： [kubelet-check] Initial timeout of 40s passed 1 2 3 4 5 6 7 8 9 ![](/img/2019-05-</description>
-    </item>
-    
-    <item>
-      <title>手把手教你搭建kubernetes集群1</title>
-      <link>https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/</link>
-      <pubDate>Tue, 14 May 2019 23:44:21 +0800</pubDate>
-      
-      <guid>https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/</guid>
-      <description>部署 以CentOS7为基础，搭建一个Master主机和三个Node主机，各个Node主机的配置方式基本相同。 OS: CentOS 7.5 x86_64 Container runtime: Docker 18.06.ce Kubernetes: 1.13 IP 地址 主机名 角色 192.168.50.71 master, master.kubernetes.io master 192.168.50.72 node01, node01.kubernetes.io node 192.168.50.73 node02, node02.kubernetes.io node 192.168.50.74 node03, node03.kubernetes.io node 这里需要使用常规的域名格式，因为后面需要为集群配置Kubernetes Dashboard要求有SSL数字</description>
-    </item>
-    
-    <item>
-      <title>搭建k8s环境时gcr.io和quay.io拉取镜像失败</title>
-      <link>https://liabio.github.io/post/2019-05-14-%E6%90%AD%E5%BB%BAk8s%E7%8E%AF%E5%A2%83%E6%97%B6gcr.io%E5%92%8Cquay.io%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E5%A4%B1%E8%B4%A5/</link>
-      <pubDate>Tue, 14 May 2019 23:44:21 +0800</pubDate>
-      
-      <guid>https://liabio.github.io/post/2019-05-14-%E6%90%AD%E5%BB%BAk8s%E7%8E%AF%E5%A2%83%E6%97%B6gcr.io%E5%92%8Cquay.io%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E5%A4%B1%E8%B4%A5/</guid>
-      <description>k8s在使用编排（manifest）工具进行yaml文件启动pod时，会遇到官方所给例子中spec.containers.image包含： 1 2 quay.io/coreos/example_ gcr.io/google_containers/example_ 也就是说，从quay.io和gcr.io进行镜像拉取，我们知道，国内访问外网是被屏蔽了的。可以将其替换为 quay-mirror.qiniu.com 和 registry.aliyuncs.com 例如 下拉镜像：quay.</description>
-    </item>
-    
-    <item>
-      <title>Hugo搭建博客教程</title>
-      <link>https://liabio.github.io/post/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</link>
-      <pubDate>Fri, 03 May 2019 10:48:21 +0800</pubDate>
-      
-      <guid>https://liabio.github.io/post/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</guid>
-      <description>在编译时报错如下： 1 2 3 4 5 Building sites … ERROR 2019/05/03 10:36:45 Failed to read Git log: fatal: Not a git repository (or any of the parent d irectories): .git Building sites … ERROR 2019/05/03 10:45:16 Failed to read Git log: fatal: your current branch &amp;#39;master&amp;#39; does not have a ny commits yet 需要先在站点根目录执行以下命令： 1 2 3 git init git add . git commit -m &amp;#39;test&amp;#39; config.toml中的baseUrl为http://liabio.github.io 不修改，调试时</description>
-    </item>
-    
-    <item>
-      <title>博客test</title>
-      <link>https://liabio.github.io/post/2019-05-04-%E5%8D%9A%E5%AE%A2test/</link>
-      <pubDate>Thu, 02 May 2019 23:44:21 +0800</pubDate>
-      
-      <guid>https://liabio.github.io/post/2019-05-04-%E5%8D%9A%E5%AE%A2test/</guid>
-      <description>asssssssssssssss</description>
-    </item>
-    
-    <item>
-      <title>kube-scheduler调度扩展</title>
-      <link>https://liabio.github.io/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/</link>
-      <pubDate>Thu, 02 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://liabio.github.io/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/</guid>
-      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注： 正文 Kubernetes 自</description>
-    </item>
-    
-    <item>
-      <title>快速搭建个人博客</title>
-      <link>https://liabio.github.io/post/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
-      <pubDate>Mon, 06 Feb 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://liabio.github.io/post/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
-      <description>正所谓前人栽树，后人乘凉。 感谢Huxpro提供的博客模板 我的的博客 前言 从 Jekyll 到 GitHub Pages 中间踩了许多坑，终于把我的个人博客BY Blog搭建出来了。。。 本教程针对的是不懂技术又想搭建个人博客的小白，操作简单暴力且快速。当然懂技术那就更好了。 看看看博客的主页样式： 在手机上的布局： 废话不多说了</description>
+      <guid>https://example.com/post/</guid>
+      <description></description>
     </item>
     
     <item>
       <title></title>
-      <link>https://liabio.github.io/archives/</link>
+      <link>https://example.com/archives/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://liabio.github.io/archives/</guid>
-      <description>title: &amp;ldquo;2019&amp;rdquo; description: &amp;ldquo;aaaaaaaaaaaaaa&amp;rdquo; type: archives</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://liabio.github.io/post/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://liabio.github.io/post/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/</guid>
-      <description>kubernetes自定义资源对象高级功能 kubernetes自定义资源对象再极大程度提高了API Server的可扩展性，让企业能够根据业务需求通过CRD编写controller或者operator来实现生产中各种特殊场景。随着k8s的版本升级，CRD的功能也越来越完善，下面对其中几点进行说明。
-以下验证kubernetes版本为1.13.2，docker版本：18.09.5
-Validation（验证） 在项目中用自定义资源对象时，如果创建自定义资源时某些字段不符合要求，会导致监听该资源对象的controller或者operator出现异常，解析结构体报错，所以Validation这个功能非常实用，在创建时就进行校验，减少后面的排错和异常处理的麻烦。
-可以通过 OpenAPI v3 schema验证自定义对象是否符合标准 。此外，以下限制适用于 schema：
- 字段default、nullable、discriminator、readOnly、writeOnly、xml、 deprecated 和 $ref 不能设置。 该字段 uniqueItems 不能设置为 true。 该字段 additionalProperties 不能设置为 false。  可以使用 kube-apiserverCustomResourceValidation 上的功能门（feature gate）禁用此功能：
-1  --feature-gates=CustomResourceValidation=false   从以下特性门参数说明地址，可以看到Validation功能在k8s 1.8版本就已经有了，但是CustomResourceValidation特性门是默认false，1.9Beta之后版本默认为true
-https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates/
-以下示例将大概对该功能进行应用和说明，在以下示例中，CustomResourceDefinition 对自定义对象应用以下验证：
- spec.replicas 为必填项，类型为integer，值为大于等于0小于50的偶数（2的倍数）； spec.repository 为必填项； spec.version为必填项； spec.pause为boolean类型； spec.updateStrategy为object类型，该object中有type、pipeline、assignStrategies属性； spec.updateStrategy.type为string类型，而且只能为&amp;rdquo;AssignReceive&amp;rdquo;, &amp;ldquo;AutoReceive&amp;rdquo;两个枚举值； spec.updateStrategy.pipeline为string类型，而且为正整数的字符串，符合正则表达式^([1-9][0-9]*){1,3}$; spec.updateStrategy.assignStrategies为array类型，其元素为object类型（包含slots和fromReplicas属性）； spec.updateStrategy.assignStrategies.slots为1-16384的正整数； spec.updateStrategy.assignStrategies.fromReplicas为字符串，符合正则表达式^[a-z0-9,]{3,}$，即至少匹配3位a-z或者0-9或者逗号的字符串； spec.pod为array类型，其元素为object类型（包含configmap、monitorImage、initImage、middlewareImage字段）； spec.pod.configmap、spec.pod.monitorImage、spec.pod.initImage 、spec.pod.middlewareImage为string类型；且用required指定configmap、initImage、middlewareImage字段为必填项。  将以下内容保存到 redis-cluster-crd.yaml：
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75  apiVersion:apiextensions.k8s.io/v1beta1kind:CustomResourceDefinitionmetadata:name:redisclusters.redis.middleware.hc.cnspec:group:redis.middleware.hc.cnversions:-name:v1alpha1# Each version can be enabled/disabled by Served flag.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://liabio.github.io/post/2019-5-21-etcd%E6%93%8D%E4%BD%9C/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://liabio.github.io/post/2019-5-21-etcd%E6%93%8D%E4%BD%9C/</guid>
-      <description>etcd操作 etcdctl安装 下载并解压二进制文件
-1 2  curl -L https://github.com/coreos/etcd/releases/download/v3.3.2/etcd-v3.3.2-linux-amd64.tar.gz -o etcd-v3.3.2-linux-amd64.tar.gz tar zxf etcd-v3.3.2-linux-amd64.tar.gz   解压后是一些文档和两个二进制文件etcd和etcdctl。etcd是server端，etcdctl是客户端。
-将解压后的etcd和etcdctl移动到$GOPATH/bin目录下，可以直接使用etcd和etcdctl命令
-1  mv etcd-v3.3.2-linux-amd64/etcd* /usr/local/bin/   1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108  # 获取etcd节点成员列表 $ ETCDCTL_API=3 etcdctl --cacert=/etc/kubernetes/pki/etcd/ca.</description>
+      <guid>https://example.com/archives/</guid>
+      <description>&lt;p&gt;title: &amp;ldquo;2019&amp;rdquo;
+description: &amp;ldquo;aaaaaaaaaaaaaa&amp;rdquo;
+type: archives&lt;/p&gt;
+</description>
     </item>
     
   </channel>

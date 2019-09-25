@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>debug on 小碗汤的博客</title>
-    <link>https://liabio.github.io/categories/debug/</link>
-    <description>Recent content in debug on 小碗汤的博客</description>
+    <title>debug on LeaveIt</title>
+    <link>https://example.com/categories/debug/</link>
+    <description>Recent content in debug on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
+    <language>en-us</language>
     <lastBuildDate>Tue, 24 Sep 2019 10:48:21 +0800</lastBuildDate>
     
-	<atom:link href="https://liabio.github.io/categories/debug/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://example.com/categories/debug/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>一次socket.error: [Errno 99] Cannot assign requested address报错排查</title>
-      <link>https://liabio.github.io/post/2019-09-24-docker-create-svc-in-cloudserver/</link>
+      <link>https://example.com/post/2019-09-24-docker-create-svc-in-cloudserver/</link>
       <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
       
-      <guid>https://liabio.github.io/post/2019-09-24-docker-create-svc-in-cloudserver/</guid>
-      <description>今天在Ucloud国际版的机器上配置某个不可描述的服务时，遇到了 socket.error: [Errno 99] Cannot assign requested address 的错误，详细如下： 1 2 3 4 5 6 7 8 9 10 11 12 13 [root@liabio ~]# docker logs c0c34ba49967 2019-07-15 00:02:26 INFO loading libcrypto from libcrypto.so.1.0.0 2019-07-15 00:02:26 INFO starting server at 128.1.132.124:8002 Traceback (most recent call last): File &amp;#34;/usr/local/bin/ssserver&amp;#34;, line 11, in &amp;lt;module&amp;gt; sys.exit(main()) File &amp;#34;/usr/local/lib/python2.7/dist-packages/shadowsocks/server.py&amp;#34;, line 68, in main tcp_servers.append(tcprelay.TCPRelay(a_config, dns_resolver, False)) File &amp;#34;/usr/local/lib/python2.7/dist-packages/shadowsocks/tcprelay.py&amp;#34;, line 582, in __init__ server_socket.bind(sa) File &amp;#34;/usr/lib/python2.7/socket.py&amp;#34;, line 228, in meth return getattr(self._sock,name)(*args) socket.error: [Errno 99] Cannot assign requested address 原先以为是resolver的问题，</description>
+      <guid>https://example.com/post/2019-09-24-docker-create-svc-in-cloudserver/</guid>
+      <description>今天在Ucloud国际版的机器上配置某个不可描述的服务时，遇到了 socket.error: [Errno 99] Cannot assign requested address 的错误，详细如下： [root@liabio ~]# docker logs c0c34ba49967 2019-07-15 00:02:26 INFO loading libcrypto from libcrypto.so.1.0.0 2019-07-15 00:02:26 INFO starting server at 128.1.132.124:8002 Traceback (most recent call last): File &amp;quot;/usr/local/bin/ssserver&amp;quot;, line 11, in &amp;lt;module&amp;gt; sys.exit(main()) File &amp;quot;/usr/local/lib/python2.7/dist-packages/shadowsocks/server.py&amp;quot;, line 68, in main tcp_servers.append(tcprelay.TCPRelay(a_config, dns_resolver, False)) File &amp;quot;/usr/local/lib/python2.7/dist-packages/shadowsocks/tcprelay.py&amp;quot;, line 582, in __init__ server_socket.bind(sa) File &amp;quot;/usr/lib/python2.7/socket.py&amp;quot;, line 228, in meth return getattr(self._sock,name)(*args) socket.error: [Errno 99] Cannot assign requested address  原先以为是resolver的问题，但是指定了Google的nameservers仍然无解，于是想到可能是服务器IP地址设置的问题，因为阿里云默认给网卡绑定的是内网IP地址。</description>
     </item>
     
   </channel>

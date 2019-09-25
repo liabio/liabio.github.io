@@ -1,107 +1,168 @@
-<!doctype html>
-<html lang="zh-cn">
-<head>
-
-    <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.55.4" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>手把手教你搭建kubernetes集群1 | 小碗汤的博客</title>
-    <meta property="og:title" content="手把手教你搭建kubernetes集群1 - 小碗汤的博客">
-    <meta property="og:type" content="article">
-        
-    <meta property="article:published_time" content="2019-05-14T23:44:21&#43;08:00">
-        
-        
-    <meta property="article:modified_time" content="2019-05-14T23:44:21&#43;08:00">
-        
-    <meta name="Keywords" content="golang,go语言,go语言笔记,小碗汤,docker,kubernetes,k8s,java,博客,python,软件架构,公众号,小程序,Hugo,theme,maupassant">
-    <meta name="description" content="手把手教你搭建kubernetes集群1">
-        <meta name="author" content="Liabio">
-        
-    <meta property="og:url" content="https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-
-    <link rel="stylesheet" href="/css/normalize.css">
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="liabio">
+  
+  
+  
+  <link rel="prev" href="https://example.com/post/2019-05-14-%E6%90%AD%E5%BB%BAk8s%E7%8E%AF%E5%A2%83%E6%97%B6gcr.io%E5%92%8Cquay.io%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E5%A4%B1%E8%B4%A5/" />
+  <link rel="next" href="https://example.com/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/" />
+  <link rel="canonical" href="https://example.com/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           手把手教你搭建kubernetes集群1 | LeaveIt
+       
+  </title>
+  <meta name="title" content="手把手教你搭建kubernetes集群1 | LeaveIt">
     
-        <link rel="stylesheet" href="/css/prism.css">
-    
-    <link rel="stylesheet" href="/css/style.css">
-    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  
+  
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/font/jianshu/iconfont.css">
+  <link rel="stylesheet" href="/font/segmentfault/iconfont.css">
+  <link rel="stylesheet" href="/font/weixingongzhonghao/iconfont.css">
+  <link rel="stylesheet" href="/font/juejin/iconfont.css">
+  <link rel="stylesheet" href="/font/zhihu/iconfont.css">
+  <link rel="stylesheet" href="/font/cnblog/iconfont.css">
+  <link rel="stylesheet" href="/font/csdn/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
 
-    
 
+  
+  
+ 
 
-    
-    
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/example.com"
+    },
+    "articleSection" : "post",
+    "name" : "手把手教你搭建kubernetes集群1",
+    "headline" : "手把手教你搭建kubernetes集群1",
+    "description" : "部署 以CentOS7为基础，搭建一个Master主机和三个Node主机，各个Node主机的配置方式基本相同。\nOS: CentOS 7.5 x86_64 Container runtime: Docker 18.06.ce Kubernetes: 1.13 IP 地址 主机名 角色 192.168.50.71 master, master.kubernetes.io master 192.168.50.72 node01, node01.kubernetes.io node 192.168.50.73 node02, node02.kubernetes.io node 192.168.50.74 node03, node03.kubernetes.io node 这里需要使用常规的域名格式，因为后面需要为集群配置Kubernetes Dashboard要求有SSL数字签名。\n系统配置 配置host，\ncat \/etc\/hosts 192.168.50.71\tmaster\tmaster.kubernetes.io 192.168.50.72\tnode1\tnode01.kubernetes.io 192.168.50.73\tnode2\tnode02.kubernetes.io 192.168.50.74\tnode3\tnode03.kubernetes.io  关闭防火墙，选择iptable加入端口或禁用防火墙服务两种方式。这里简单起见，禁用防火墙：\nsudo systemctl stop firewalld sudo systemctl disable firewalld  禁用SELINUX(安全增强型 Linux Security-Enhanced Linux, SELinux 主要作用就是最大限度地减小系统中服务进程可访问的资源[最小权限原则])，\nsudo setenforce 0 sudo vi \/etc\/selinux\/config SELINUX=disabled  所有节点关闭交换分区，",
+    "inLanguage" : "en-us",
+    "author" : "Liabio",
+    "creator" : "Liabio",
+    "publisher": "Liabio",
+    "accountablePerson" : "Liabio",
+    "copyrightHolder" : "Liabio",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-05-14 23:44:21 \x2b0800 CST",
+    "dateModified" : "2019-05-14 23:44:21 \x2b0800 CST",
+    "url" : "https:\/\/example.com\/post\/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41\/",
+    "wordCount" : "1158",
+    "keywords" : [ "Kubernetes","Scheduler","Golang", "LeaveIt"]
+}
+</script>
+
 </head>
 
-<body>
-<header id="header" class="clearfix">
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
     <div class="container">
-        <div class="col-group">
-            <div class="site-name ">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://example.com">LeaveIt</a>
+        </div>
+        <div class="menu navbar-right">
                 
-                    <a id="logo" href="https://liabio.github.io">
-                        小碗汤的博客
-                    </a>
                 
-                <p class="description">专注于Java、Go语言(Golang)、Docker、Kubernetes、软件架构</p>
-            </div>
-            <div>
-                <nav id="nav-menu" class="clearfix">
-                    <a class="current" href="https://liabio.github.io">首页</a>
-                    
-                    <a  href="https://liabio.github.io/archives/" title="归档">归档</a>
-                    
-                    <a  href="https://liabio.github.io/tools/" title="工具">工具</a>
-                    
-                    <a  href="https://liabio.github.io/about/" title="关于">关于</a>
-                    
-                </nav>
-            </div>
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
         </div>
     </div>
-</header>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://example.com">LeaveIt</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">手把手教你搭建kubernetes集群1</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://example.com" rel="author">Liabio</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-05-14 itemprop="datePublished">May 14, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://example.com/categories/kubernetes/"> Kubernetes </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
 
+        
+            
+        
 
-<div id="body">
-    <div class="container">
-        <div class="col-group">
+        
+        
+     
+          
+          
+          
 
-            <div class="col-8" id="main">
-                <div class="res-cons">
-                    <article class="post">
-                        <header>
-                            <h1 class="post-title">手把手教你搭建kubernetes集群1</h1>
-                        </header>
-                        <date class="post-meta meta-date">
-                            2019年5月14日
-                        </date>
-                        
-                        <div class="post-meta">
-                            <span>|</span>
-                            
-                                <span class="meta-category"><a href="https://liabio.github.io/categories/Kubernetes">Kubernetes</a></span>
-                            
-                        </div>
-                        
-                        
-                        <div class="post-meta">
-                            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span> 阅读</span></span>
-                        </div>
-                        
-                        
-                        <div class="clear">
-                            <div class="toc-article">
-                                <div class="toc-title">文章目录</div>
-                                
-                            </div>
-                        </div>
-                        
-                        <div class="post-content">
-                            <p>部署
+          
+          
+          
+
+          <p>部署
 以CentOS7为基础，搭建一个Master主机和三个Node主机，各个Node主机的配置方式基本相同。</p>
 
 <p>OS: CentOS 7.5 x86_64
@@ -116,93 +177,50 @@ IP 地址   主机名 角色
 
 <p>系统配置
 配置host，</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">cat /etc/hosts
-192.168.50.71   master  master.kubernetes.io
-192.168.50.72   node1   node01.kubernetes.io
-192.168.50.73   node2   node02.kubernetes.io
-192.168.50.74   node3   node03.kubernetes.io</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>cat /etc/hosts
+192.168.50.71	master	master.kubernetes.io
+192.168.50.72	node1	node01.kubernetes.io
+192.168.50.73	node2	node02.kubernetes.io
+192.168.50.74	node3	node03.kubernetes.io
+</code></pre>
+
 <p>关闭防火墙，选择iptable加入端口或禁用防火墙服务两种方式。这里简单起见，禁用防火墙：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">sudo systemctl stop firewalld
-sudo systemctl disable firewalld</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>sudo systemctl stop firewalld
+sudo systemctl disable firewalld
+</code></pre>
+
 <p>禁用SELINUX(安全增强型 Linux Security-Enhanced Linux, SELinux 主要作用就是最大限度地减小系统中服务进程可访问的资源[最小权限原则])，</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">sudo setenforce 0
+
+<pre><code>sudo setenforce 0
 sudo vi /etc/selinux/config
-SELINUX=disabled</pre></td></tr></table>
-</div>
-</div>
+SELINUX=disabled
+</code></pre>
+
 <p>所有节点关闭交换分区，</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">sudo swapoff -a
-sudo vi /etc/fstab</pre></td></tr></table>
-</div>
-</div>
-<p><img src="/img/2019-05-14-手把手教你搭建kubernetes集群install_kubernetes_cluster10.png" alt="" />
+
+<pre><code>sudo swapoff -a
+sudo vi /etc/fstab
+</code></pre>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/img/2019-05-14-手把手教你搭建kubernetes集群install_kubernetes_cluster10.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure>
 将交换区注释掉，使用free -m查看交换分区是否关闭。</p>
 
-<p><img src="/img/2019-05-14-手把手教你搭建kubernetes集群use_bridge_netfilter.png" alt="" />
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/img/2019-05-14-手把手教你搭建kubernetes集群use_bridge_netfilter.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure>
 创建/etc/sysctl.d/k8s.conf文件，添加如下内容，</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">cat &gt; /etc/sysctl.d/k8s.conf &lt;&lt; EOF
+
+<pre><code>cat &gt; /etc/sysctl.d/k8s.conf &lt;&lt; EOF
 net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables = 1
-EOF</pre></td></tr></table>
-</div>
-</div>
+EOF
+</code></pre>
+
 <p>然后执行： sysctl &ndash;system</p>
 
 <p>设置yum源:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">cat &gt; /etc/yum.repos.d/kubernetes.repo &lt;&lt; EOF
+
+<pre><code>cat &gt; /etc/yum.repos.d/kubernetes.repo &lt;&lt; EOF
 [kubernetes]
 name=Kubernetes
 baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/
@@ -210,586 +228,47 @@ enabled=1
 gpgcheck=0
 repo_gpgcheck=1
 gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
-EOF</pre></td></tr></table>
-</div>
-</div>
+EOF
+</code></pre>
+
 <p>安装kubeadm、kubectl、kubelet</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">yum install -y kubeadm-1.13.2 kubelet-1.13.2 kubectl-1.13.2</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>yum install -y kubeadm-1.13.2 kubelet-1.13.2 kubectl-1.13.2
+</code></pre>
+
 <p>初始化集群：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">kubeadm init --kubernetes-version=v1.13.2 --pod-network-cidr=10.244.0.0/16 --service-cidr=10.96.0.0/12 --image-repository registry.aliyuncs.com/google_containers --apiserver-advertise-address=192.168.1.103 --ignore-preflight-errors=Swap,NumCPU</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>kubeadm init --kubernetes-version=v1.13.2 --pod-network-cidr=10.244.0.0/16 --service-cidr=10.96.0.0/12 --image-repository registry.aliyuncs.com/google_containers --apiserver-advertise-address=192.168.1.103 --ignore-preflight-errors=Swap,NumCPU
+</code></pre>
+
 <p>会很慢下载镜像：
-<img src="/img/2019-05-14-手把手教你搭建kubernetes集群install_kubernetes_cluster11.png" alt="" /></p>
+<figure><img src="/images/ring.svg" data-sizes="auto" data-src="/img/2019-05-14-手把手教你搭建kubernetes集群install_kubernetes_cluster11.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 
 <p>最后：
-<img src="/img/2019-05-14-手把手教你搭建kubernetes集群install_kubernetes_cluster12.png" alt="" /></p>
+<figure><img src="/images/ring.svg" data-sizes="auto" data-src="/img/2019-05-14-手把手教你搭建kubernetes集群install_kubernetes_cluster12.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 
 <p>此时的kubectl get node看到node是NotReady状态，kubelet的日志报错，coredns pod起不来（一直不是Running），需要安装网络插件：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">docker: network plugin is not ready: cni config uninitialized</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>docker: network plugin is not ready: cni config uninitialized
+</code></pre>
+
 <p>为Kubernetes提供的Pod网络插件非常多，目前流行的有flannel和Calico。flannel运行为Kubernetes集群的附件，它以Pod的形式部署运行与每个集群节点上以接受Kubernetes集群管理。事实上，flannel也可以以守护进程方式运行在各个节点，即以非托管的方式运行。部署命令使kubectl apply或kubectl create，下面是使用在线的方式进行flannel部署：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+
+<pre><code>kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 
 执行后可能会报错：
-![](/img/2019-05-14-手把手教你搭建kubernetes集群\install_kubernetes_cluster14.png)</pre></td></tr></table>
-</div>
-</div>
+![](/img/2019-05-14-手把手教你搭建kubernetes集群\install_kubernetes_cluster14.png)
+
+
+
+</code></pre>
+
 <p>即文件,修改点为：改了原来的镜像quay.io/coreos/flannel:v0.11.0-amd64改为了quay-mirror.qiniu.com/coreos/flannel:v0.11.0-amd64，由于国内下载镜像慢，你懂得！
 同时需要删除nodeSelector</p>
 
 <p>kube-flannel.yml</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">  1
-</span><span class="lnt">  2
-</span><span class="lnt">  3
-</span><span class="lnt">  4
-</span><span class="lnt">  5
-</span><span class="lnt">  6
-</span><span class="lnt">  7
-</span><span class="lnt">  8
-</span><span class="lnt">  9
-</span><span class="lnt"> 10
-</span><span class="lnt"> 11
-</span><span class="lnt"> 12
-</span><span class="lnt"> 13
-</span><span class="lnt"> 14
-</span><span class="lnt"> 15
-</span><span class="lnt"> 16
-</span><span class="lnt"> 17
-</span><span class="lnt"> 18
-</span><span class="lnt"> 19
-</span><span class="lnt"> 20
-</span><span class="lnt"> 21
-</span><span class="lnt"> 22
-</span><span class="lnt"> 23
-</span><span class="lnt"> 24
-</span><span class="lnt"> 25
-</span><span class="lnt"> 26
-</span><span class="lnt"> 27
-</span><span class="lnt"> 28
-</span><span class="lnt"> 29
-</span><span class="lnt"> 30
-</span><span class="lnt"> 31
-</span><span class="lnt"> 32
-</span><span class="lnt"> 33
-</span><span class="lnt"> 34
-</span><span class="lnt"> 35
-</span><span class="lnt"> 36
-</span><span class="lnt"> 37
-</span><span class="lnt"> 38
-</span><span class="lnt"> 39
-</span><span class="lnt"> 40
-</span><span class="lnt"> 41
-</span><span class="lnt"> 42
-</span><span class="lnt"> 43
-</span><span class="lnt"> 44
-</span><span class="lnt"> 45
-</span><span class="lnt"> 46
-</span><span class="lnt"> 47
-</span><span class="lnt"> 48
-</span><span class="lnt"> 49
-</span><span class="lnt"> 50
-</span><span class="lnt"> 51
-</span><span class="lnt"> 52
-</span><span class="lnt"> 53
-</span><span class="lnt"> 54
-</span><span class="lnt"> 55
-</span><span class="lnt"> 56
-</span><span class="lnt"> 57
-</span><span class="lnt"> 58
-</span><span class="lnt"> 59
-</span><span class="lnt"> 60
-</span><span class="lnt"> 61
-</span><span class="lnt"> 62
-</span><span class="lnt"> 63
-</span><span class="lnt"> 64
-</span><span class="lnt"> 65
-</span><span class="lnt"> 66
-</span><span class="lnt"> 67
-</span><span class="lnt"> 68
-</span><span class="lnt"> 69
-</span><span class="lnt"> 70
-</span><span class="lnt"> 71
-</span><span class="lnt"> 72
-</span><span class="lnt"> 73
-</span><span class="lnt"> 74
-</span><span class="lnt"> 75
-</span><span class="lnt"> 76
-</span><span class="lnt"> 77
-</span><span class="lnt"> 78
-</span><span class="lnt"> 79
-</span><span class="lnt"> 80
-</span><span class="lnt"> 81
-</span><span class="lnt"> 82
-</span><span class="lnt"> 83
-</span><span class="lnt"> 84
-</span><span class="lnt"> 85
-</span><span class="lnt"> 86
-</span><span class="lnt"> 87
-</span><span class="lnt"> 88
-</span><span class="lnt"> 89
-</span><span class="lnt"> 90
-</span><span class="lnt"> 91
-</span><span class="lnt"> 92
-</span><span class="lnt"> 93
-</span><span class="lnt"> 94
-</span><span class="lnt"> 95
-</span><span class="lnt"> 96
-</span><span class="lnt"> 97
-</span><span class="lnt"> 98
-</span><span class="lnt"> 99
-</span><span class="lnt">100
-</span><span class="lnt">101
-</span><span class="lnt">102
-</span><span class="lnt">103
-</span><span class="lnt">104
-</span><span class="lnt">105
-</span><span class="lnt">106
-</span><span class="lnt">107
-</span><span class="lnt">108
-</span><span class="lnt">109
-</span><span class="lnt">110
-</span><span class="lnt">111
-</span><span class="lnt">112
-</span><span class="lnt">113
-</span><span class="lnt">114
-</span><span class="lnt">115
-</span><span class="lnt">116
-</span><span class="lnt">117
-</span><span class="lnt">118
-</span><span class="lnt">119
-</span><span class="lnt">120
-</span><span class="lnt">121
-</span><span class="lnt">122
-</span><span class="lnt">123
-</span><span class="lnt">124
-</span><span class="lnt">125
-</span><span class="lnt">126
-</span><span class="lnt">127
-</span><span class="lnt">128
-</span><span class="lnt">129
-</span><span class="lnt">130
-</span><span class="lnt">131
-</span><span class="lnt">132
-</span><span class="lnt">133
-</span><span class="lnt">134
-</span><span class="lnt">135
-</span><span class="lnt">136
-</span><span class="lnt">137
-</span><span class="lnt">138
-</span><span class="lnt">139
-</span><span class="lnt">140
-</span><span class="lnt">141
-</span><span class="lnt">142
-</span><span class="lnt">143
-</span><span class="lnt">144
-</span><span class="lnt">145
-</span><span class="lnt">146
-</span><span class="lnt">147
-</span><span class="lnt">148
-</span><span class="lnt">149
-</span><span class="lnt">150
-</span><span class="lnt">151
-</span><span class="lnt">152
-</span><span class="lnt">153
-</span><span class="lnt">154
-</span><span class="lnt">155
-</span><span class="lnt">156
-</span><span class="lnt">157
-</span><span class="lnt">158
-</span><span class="lnt">159
-</span><span class="lnt">160
-</span><span class="lnt">161
-</span><span class="lnt">162
-</span><span class="lnt">163
-</span><span class="lnt">164
-</span><span class="lnt">165
-</span><span class="lnt">166
-</span><span class="lnt">167
-</span><span class="lnt">168
-</span><span class="lnt">169
-</span><span class="lnt">170
-</span><span class="lnt">171
-</span><span class="lnt">172
-</span><span class="lnt">173
-</span><span class="lnt">174
-</span><span class="lnt">175
-</span><span class="lnt">176
-</span><span class="lnt">177
-</span><span class="lnt">178
-</span><span class="lnt">179
-</span><span class="lnt">180
-</span><span class="lnt">181
-</span><span class="lnt">182
-</span><span class="lnt">183
-</span><span class="lnt">184
-</span><span class="lnt">185
-</span><span class="lnt">186
-</span><span class="lnt">187
-</span><span class="lnt">188
-</span><span class="lnt">189
-</span><span class="lnt">190
-</span><span class="lnt">191
-</span><span class="lnt">192
-</span><span class="lnt">193
-</span><span class="lnt">194
-</span><span class="lnt">195
-</span><span class="lnt">196
-</span><span class="lnt">197
-</span><span class="lnt">198
-</span><span class="lnt">199
-</span><span class="lnt">200
-</span><span class="lnt">201
-</span><span class="lnt">202
-</span><span class="lnt">203
-</span><span class="lnt">204
-</span><span class="lnt">205
-</span><span class="lnt">206
-</span><span class="lnt">207
-</span><span class="lnt">208
-</span><span class="lnt">209
-</span><span class="lnt">210
-</span><span class="lnt">211
-</span><span class="lnt">212
-</span><span class="lnt">213
-</span><span class="lnt">214
-</span><span class="lnt">215
-</span><span class="lnt">216
-</span><span class="lnt">217
-</span><span class="lnt">218
-</span><span class="lnt">219
-</span><span class="lnt">220
-</span><span class="lnt">221
-</span><span class="lnt">222
-</span><span class="lnt">223
-</span><span class="lnt">224
-</span><span class="lnt">225
-</span><span class="lnt">226
-</span><span class="lnt">227
-</span><span class="lnt">228
-</span><span class="lnt">229
-</span><span class="lnt">230
-</span><span class="lnt">231
-</span><span class="lnt">232
-</span><span class="lnt">233
-</span><span class="lnt">234
-</span><span class="lnt">235
-</span><span class="lnt">236
-</span><span class="lnt">237
-</span><span class="lnt">238
-</span><span class="lnt">239
-</span><span class="lnt">240
-</span><span class="lnt">241
-</span><span class="lnt">242
-</span><span class="lnt">243
-</span><span class="lnt">244
-</span><span class="lnt">245
-</span><span class="lnt">246
-</span><span class="lnt">247
-</span><span class="lnt">248
-</span><span class="lnt">249
-</span><span class="lnt">250
-</span><span class="lnt">251
-</span><span class="lnt">252
-</span><span class="lnt">253
-</span><span class="lnt">254
-</span><span class="lnt">255
-</span><span class="lnt">256
-</span><span class="lnt">257
-</span><span class="lnt">258
-</span><span class="lnt">259
-</span><span class="lnt">260
-</span><span class="lnt">261
-</span><span class="lnt">262
-</span><span class="lnt">263
-</span><span class="lnt">264
-</span><span class="lnt">265
-</span><span class="lnt">266
-</span><span class="lnt">267
-</span><span class="lnt">268
-</span><span class="lnt">269
-</span><span class="lnt">270
-</span><span class="lnt">271
-</span><span class="lnt">272
-</span><span class="lnt">273
-</span><span class="lnt">274
-</span><span class="lnt">275
-</span><span class="lnt">276
-</span><span class="lnt">277
-</span><span class="lnt">278
-</span><span class="lnt">279
-</span><span class="lnt">280
-</span><span class="lnt">281
-</span><span class="lnt">282
-</span><span class="lnt">283
-</span><span class="lnt">284
-</span><span class="lnt">285
-</span><span class="lnt">286
-</span><span class="lnt">287
-</span><span class="lnt">288
-</span><span class="lnt">289
-</span><span class="lnt">290
-</span><span class="lnt">291
-</span><span class="lnt">292
-</span><span class="lnt">293
-</span><span class="lnt">294
-</span><span class="lnt">295
-</span><span class="lnt">296
-</span><span class="lnt">297
-</span><span class="lnt">298
-</span><span class="lnt">299
-</span><span class="lnt">300
-</span><span class="lnt">301
-</span><span class="lnt">302
-</span><span class="lnt">303
-</span><span class="lnt">304
-</span><span class="lnt">305
-</span><span class="lnt">306
-</span><span class="lnt">307
-</span><span class="lnt">308
-</span><span class="lnt">309
-</span><span class="lnt">310
-</span><span class="lnt">311
-</span><span class="lnt">312
-</span><span class="lnt">313
-</span><span class="lnt">314
-</span><span class="lnt">315
-</span><span class="lnt">316
-</span><span class="lnt">317
-</span><span class="lnt">318
-</span><span class="lnt">319
-</span><span class="lnt">320
-</span><span class="lnt">321
-</span><span class="lnt">322
-</span><span class="lnt">323
-</span><span class="lnt">324
-</span><span class="lnt">325
-</span><span class="lnt">326
-</span><span class="lnt">327
-</span><span class="lnt">328
-</span><span class="lnt">329
-</span><span class="lnt">330
-</span><span class="lnt">331
-</span><span class="lnt">332
-</span><span class="lnt">333
-</span><span class="lnt">334
-</span><span class="lnt">335
-</span><span class="lnt">336
-</span><span class="lnt">337
-</span><span class="lnt">338
-</span><span class="lnt">339
-</span><span class="lnt">340
-</span><span class="lnt">341
-</span><span class="lnt">342
-</span><span class="lnt">343
-</span><span class="lnt">344
-</span><span class="lnt">345
-</span><span class="lnt">346
-</span><span class="lnt">347
-</span><span class="lnt">348
-</span><span class="lnt">349
-</span><span class="lnt">350
-</span><span class="lnt">351
-</span><span class="lnt">352
-</span><span class="lnt">353
-</span><span class="lnt">354
-</span><span class="lnt">355
-</span><span class="lnt">356
-</span><span class="lnt">357
-</span><span class="lnt">358
-</span><span class="lnt">359
-</span><span class="lnt">360
-</span><span class="lnt">361
-</span><span class="lnt">362
-</span><span class="lnt">363
-</span><span class="lnt">364
-</span><span class="lnt">365
-</span><span class="lnt">366
-</span><span class="lnt">367
-</span><span class="lnt">368
-</span><span class="lnt">369
-</span><span class="lnt">370
-</span><span class="lnt">371
-</span><span class="lnt">372
-</span><span class="lnt">373
-</span><span class="lnt">374
-</span><span class="lnt">375
-</span><span class="lnt">376
-</span><span class="lnt">377
-</span><span class="lnt">378
-</span><span class="lnt">379
-</span><span class="lnt">380
-</span><span class="lnt">381
-</span><span class="lnt">382
-</span><span class="lnt">383
-</span><span class="lnt">384
-</span><span class="lnt">385
-</span><span class="lnt">386
-</span><span class="lnt">387
-</span><span class="lnt">388
-</span><span class="lnt">389
-</span><span class="lnt">390
-</span><span class="lnt">391
-</span><span class="lnt">392
-</span><span class="lnt">393
-</span><span class="lnt">394
-</span><span class="lnt">395
-</span><span class="lnt">396
-</span><span class="lnt">397
-</span><span class="lnt">398
-</span><span class="lnt">399
-</span><span class="lnt">400
-</span><span class="lnt">401
-</span><span class="lnt">402
-</span><span class="lnt">403
-</span><span class="lnt">404
-</span><span class="lnt">405
-</span><span class="lnt">406
-</span><span class="lnt">407
-</span><span class="lnt">408
-</span><span class="lnt">409
-</span><span class="lnt">410
-</span><span class="lnt">411
-</span><span class="lnt">412
-</span><span class="lnt">413
-</span><span class="lnt">414
-</span><span class="lnt">415
-</span><span class="lnt">416
-</span><span class="lnt">417
-</span><span class="lnt">418
-</span><span class="lnt">419
-</span><span class="lnt">420
-</span><span class="lnt">421
-</span><span class="lnt">422
-</span><span class="lnt">423
-</span><span class="lnt">424
-</span><span class="lnt">425
-</span><span class="lnt">426
-</span><span class="lnt">427
-</span><span class="lnt">428
-</span><span class="lnt">429
-</span><span class="lnt">430
-</span><span class="lnt">431
-</span><span class="lnt">432
-</span><span class="lnt">433
-</span><span class="lnt">434
-</span><span class="lnt">435
-</span><span class="lnt">436
-</span><span class="lnt">437
-</span><span class="lnt">438
-</span><span class="lnt">439
-</span><span class="lnt">440
-</span><span class="lnt">441
-</span><span class="lnt">442
-</span><span class="lnt">443
-</span><span class="lnt">444
-</span><span class="lnt">445
-</span><span class="lnt">446
-</span><span class="lnt">447
-</span><span class="lnt">448
-</span><span class="lnt">449
-</span><span class="lnt">450
-</span><span class="lnt">451
-</span><span class="lnt">452
-</span><span class="lnt">453
-</span><span class="lnt">454
-</span><span class="lnt">455
-</span><span class="lnt">456
-</span><span class="lnt">457
-</span><span class="lnt">458
-</span><span class="lnt">459
-</span><span class="lnt">460
-</span><span class="lnt">461
-</span><span class="lnt">462
-</span><span class="lnt">463
-</span><span class="lnt">464
-</span><span class="lnt">465
-</span><span class="lnt">466
-</span><span class="lnt">467
-</span><span class="lnt">468
-</span><span class="lnt">469
-</span><span class="lnt">470
-</span><span class="lnt">471
-</span><span class="lnt">472
-</span><span class="lnt">473
-</span><span class="lnt">474
-</span><span class="lnt">475
-</span><span class="lnt">476
-</span><span class="lnt">477
-</span><span class="lnt">478
-</span><span class="lnt">479
-</span><span class="lnt">480
-</span><span class="lnt">481
-</span><span class="lnt">482
-</span><span class="lnt">483
-</span><span class="lnt">484
-</span><span class="lnt">485
-</span><span class="lnt">486
-</span><span class="lnt">487
-</span><span class="lnt">488
-</span><span class="lnt">489
-</span><span class="lnt">490
-</span><span class="lnt">491
-</span><span class="lnt">492
-</span><span class="lnt">493
-</span><span class="lnt">494
-</span><span class="lnt">495
-</span><span class="lnt">496
-</span><span class="lnt">497
-</span><span class="lnt">498
-</span><span class="lnt">499
-</span><span class="lnt">500
-</span><span class="lnt">501
-</span><span class="lnt">502
-</span><span class="lnt">503
-</span><span class="lnt">504
-</span><span class="lnt">505
-</span><span class="lnt">506
-</span><span class="lnt">507
-</span><span class="lnt">508
-</span><span class="lnt">509
-</span><span class="lnt">510
-</span><span class="lnt">511
-</span><span class="lnt">512
-</span><span class="lnt">513
-</span><span class="lnt">514
-</span><span class="lnt">515
-</span><span class="lnt">516
-</span><span class="lnt">517
-</span><span class="lnt">518
-</span><span class="lnt">519
-</span><span class="lnt">520
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">apiVersion: extensions/v1beta1
+
+<pre><code>apiVersion: extensions/v1beta1
 kind: PodSecurityPolicy
 metadata:
   name: psp.flannel.unprivileged
@@ -806,9 +285,9 @@ spec:
     - emptyDir
     - hostPath
   allowedHostPaths:
-    - pathPrefix: &#34;/etc/cni/net.d&#34;
-    - pathPrefix: &#34;/etc/kube-flannel&#34;
-    - pathPrefix: &#34;/run/flannel&#34;
+    - pathPrefix: &quot;/etc/cni/net.d&quot;
+    - pathPrefix: &quot;/etc/kube-flannel&quot;
+    - pathPrefix: &quot;/run/flannel&quot;
   readOnlyRootFilesystem: false
   # Users and groups
   runAsUser:
@@ -821,7 +300,7 @@ spec:
   allowPrivilegeEscalation: false
   defaultAllowPrivilegeEscalation: false
   # Capabilities
-  allowedCapabilities: [&#39;NET_ADMIN&#39;]
+  allowedCapabilities: ['NET_ADMIN']
   defaultAddCapabilities: []
   requiredDropCapabilities: []
   # Host namespaces
@@ -834,32 +313,32 @@ spec:
   # SELinux
   seLinux:
     # SELinux is unsed in CaaSP
-    rule: &#39;RunAsAny&#39;
+    rule: 'RunAsAny'
 ---
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1beta1
 metadata:
   name: flannel
 rules:
-  - apiGroups: [&#39;extensions&#39;]
-    resources: [&#39;podsecuritypolicies&#39;]
-    verbs: [&#39;use&#39;]
-    resourceNames: [&#39;psp.flannel.unprivileged&#39;]
+  - apiGroups: ['extensions']
+    resources: ['podsecuritypolicies']
+    verbs: ['use']
+    resourceNames: ['psp.flannel.unprivileged']
   - apiGroups:
-      - &#34;&#34;
+      - &quot;&quot;
     resources:
       - pods
     verbs:
       - get
   - apiGroups:
-      - &#34;&#34;
+      - &quot;&quot;
     resources:
       - nodes
     verbs:
       - list
       - watch
   - apiGroups:
-      - &#34;&#34;
+      - &quot;&quot;
     resources:
       - nodes/status
     verbs:
@@ -895,28 +374,28 @@ metadata:
 data:
   cni-conf.json: |
     {
-      &#34;name&#34;: &#34;cbr0&#34;,
-      &#34;plugins&#34;: [
+      &quot;name&quot;: &quot;cbr0&quot;,
+      &quot;plugins&quot;: [
         {
-          &#34;type&#34;: &#34;flannel&#34;,
-          &#34;delegate&#34;: {
-            &#34;hairpinMode&#34;: true,
-            &#34;isDefaultGateway&#34;: true
+          &quot;type&quot;: &quot;flannel&quot;,
+          &quot;delegate&quot;: {
+            &quot;hairpinMode&quot;: true,
+            &quot;isDefaultGateway&quot;: true
           }
         },
         {
-          &#34;type&#34;: &#34;portmap&#34;,
-          &#34;capabilities&#34;: {
-            &#34;portMappings&#34;: true
+          &quot;type&quot;: &quot;portmap&quot;,
+          &quot;capabilities&quot;: {
+            &quot;portMappings&quot;: true
           }
         }
       ]
     }
   net-conf.json: |
     {
-      &#34;Network&#34;: &#34;10.244.0.0/16&#34;,
-      &#34;Backend&#34;: {
-        &#34;Type&#34;: &#34;vxlan&#34;
+      &quot;Network&quot;: &quot;10.244.0.0/16&quot;,
+      &quot;Backend&quot;: {
+        &quot;Type&quot;: &quot;vxlan&quot;
       }
     }
 ---
@@ -964,15 +443,15 @@ spec:
         - --kube-subnet-mgr
         resources:
           requests:
-            cpu: &#34;100m&#34;
-            memory: &#34;50Mi&#34;
+            cpu: &quot;100m&quot;
+            memory: &quot;50Mi&quot;
           limits:
-            cpu: &#34;100m&#34;
-            memory: &#34;50Mi&#34;
+            cpu: &quot;100m&quot;
+            memory: &quot;50Mi&quot;
         securityContext:
           privileged: false
           capabilities:
-             add: [&#34;NET_ADMIN&#34;]
+             add: [&quot;NET_ADMIN&quot;]
         env:
         - name: POD_NAME
           valueFrom:
@@ -1042,15 +521,15 @@ spec:
         - --kube-subnet-mgr
         resources:
           requests:
-            cpu: &#34;100m&#34;
-            memory: &#34;50Mi&#34;
+            cpu: &quot;100m&quot;
+            memory: &quot;50Mi&quot;
           limits:
-            cpu: &#34;100m&#34;
-            memory: &#34;50Mi&#34;
+            cpu: &quot;100m&quot;
+            memory: &quot;50Mi&quot;
         securityContext:
           privileged: false
           capabilities:
-             add: [&#34;NET_ADMIN&#34;]
+             add: [&quot;NET_ADMIN&quot;]
         env:
         - name: POD_NAME
           valueFrom:
@@ -1120,15 +599,15 @@ spec:
         - --kube-subnet-mgr
         resources:
           requests:
-            cpu: &#34;100m&#34;
-            memory: &#34;50Mi&#34;
+            cpu: &quot;100m&quot;
+            memory: &quot;50Mi&quot;
           limits:
-            cpu: &#34;100m&#34;
-            memory: &#34;50Mi&#34;
+            cpu: &quot;100m&quot;
+            memory: &quot;50Mi&quot;
         securityContext:
           privileged: false
           capabilities:
-             add: [&#34;NET_ADMIN&#34;]
+             add: [&quot;NET_ADMIN&quot;]
         env:
         - name: POD_NAME
           valueFrom:
@@ -1198,15 +677,15 @@ spec:
         - --kube-subnet-mgr
         resources:
           requests:
-            cpu: &#34;100m&#34;
-            memory: &#34;50Mi&#34;
+            cpu: &quot;100m&quot;
+            memory: &quot;50Mi&quot;
           limits:
-            cpu: &#34;100m&#34;
-            memory: &#34;50Mi&#34;
+            cpu: &quot;100m&quot;
+            memory: &quot;50Mi&quot;
         securityContext:
           privileged: false
           capabilities:
-             add: [&#34;NET_ADMIN&#34;]
+             add: [&quot;NET_ADMIN&quot;]
         env:
         - name: POD_NAME
           valueFrom:
@@ -1276,15 +755,15 @@ spec:
         - --kube-subnet-mgr
         resources:
           requests:
-            cpu: &#34;100m&#34;
-            memory: &#34;50Mi&#34;
+            cpu: &quot;100m&quot;
+            memory: &quot;50Mi&quot;
           limits:
-            cpu: &#34;100m&#34;
-            memory: &#34;50Mi&#34;
+            cpu: &quot;100m&quot;
+            memory: &quot;50Mi&quot;
         securityContext:
           privileged: false
           capabilities:
-             add: [&#34;NET_ADMIN&#34;]
+             add: [&quot;NET_ADMIN&quot;]
         env:
         - name: POD_NAME
           valueFrom:
@@ -1308,25 +787,21 @@ spec:
             path: /etc/cni/net.d
         - name: flannel-cfg
           configMap:
-            name: kube-flannel-cfg</pre></td></tr></table>
-</div>
-</div>
+            name: kube-flannel-cfg
+</code></pre>
+
 <p>修改镜像地址后，重新apply：
-<img src="/img/2019-05-14-手把手教你搭建kubernetes集群install_kubernetes_cluster16.png" alt="" />
+<figure><img src="/images/ring.svg" data-sizes="auto" data-src="/img/2019-05-14-手把手教你搭建kubernetes集群install_kubernetes_cluster16.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure>
 可以看到镜像都已下载好，同时kube-flannel-ds-amd64这个daemonset也启动正常，coredns也变为Running状态：
-<img src="/img/2019-05-14-手把手教你搭建kubernetes集群install_kubernetes_cluster17.png" alt="" /></p>
+<figure><img src="/images/ring.svg" data-sizes="auto" data-src="/img/2019-05-14-手把手教你搭建kubernetes集群install_kubernetes_cluster17.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 
 <p>异常的arm、arm64、ppc64le、s390x都可以删除掉。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt">1
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma">kubectl delete ds -n kube-system kube-flannel-ds-arm kube-flannel-ds-arm64 kube-flannel-ds-ppc64le  kube-flannel-ds-s390x</pre></td></tr></table>
-</div>
-</div>
+
+<pre><code>kubectl delete ds -n kube-system kube-flannel-ds-arm kube-flannel-ds-arm64 kube-flannel-ds-ppc64le  kube-flannel-ds-s390x
+</code></pre>
+
 <p>所有组件都Running：
-<img src="/img/2019-05-14-手把手教你搭建kubernetes集群install_kubernetes_cluster18.png" alt="" /></p>
+<figure><img src="/images/ring.svg" data-sizes="auto" data-src="/img/2019-05-14-手把手教你搭建kubernetes集群install_kubernetes_cluster18.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 
 <p>执行命令使修改生效，</p>
 
@@ -1372,323 +847,107 @@ sudo chmod +x /etc/sysconfig/modules/ipvs.modules
 sudo /etc/sysconfig/modules/ipvs.modules
 注意该步骤不是必须的，因为ipvs仅负责负载均衡相关任务，它无法完成kube-proxy中的包过滤机SNAT等功能，这些仍需要由iptables实现。也就是说，如果条件不满足，即使kube-proxy开启了ipvs模式，也会回退到iptables模式。</p>
 
-                        </div>
-
-                        
-<div class="post-archive">
-    <ul class="post-copyright">
-        <li><strong>原文作者：</strong><a rel="author" href="https://liabio.github.io">小碗汤</a></li>
-        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/">https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/</a></li>
-        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
-    </ul>
-</div>
-<br/>
-
-
-
-                        
-
-<div class="post-archive">
-    <h2>See Also</h2>
-    <ul class="listing">
-        
-        <li><a href="/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/">手把手教你搭建kubernetes集群.md</a></li>
-        
-        <li><a href="/post/2019-05-14-%E6%90%AD%E5%BB%BAk8s%E7%8E%AF%E5%A2%83%E6%97%B6gcr.io%E5%92%8Cquay.io%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E5%A4%B1%E8%B4%A5/">搭建k8s环境时gcr.io和quay.io拉取镜像失败</a></li>
-        
-        <li><a href="/post/2019-05-04-%E5%8D%9A%E5%AE%A2test/">博客test</a></li>
-        
-        <li><a href="/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/">kube-scheduler调度扩展</a></li>
-        
-        <li><a href="/post/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">Hugo搭建博客教程</a></li>
-        
-    </ul>
-</div>
-
-
-                        <div class="post-meta meta-tags">
-                            
-                            <ul class="clearfix">
-                                
-                                <li><a href="https://liabio.github.io/tags/Kubernetes">Kubernetes</a></li>
-                                
-                                <li><a href="https://liabio.github.io/tags/Scheduler">Scheduler</a></li>
-                                
-                                <li><a href="https://liabio.github.io/tags/Golang">Golang</a></li>
-                                
-                            </ul>
-                            
-                        </div>
-                    </article>
-                    
-    <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "https-liabio-github-io" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-    
-    
-    <div class="post bg-white">
-      <script src="https://utteranc.es/client.js"
-            repo= "liabio/utteranc_comment"
-            issue-term="pathname"
-            theme="github-light"
-            crossorigin="anonymous"
-            async>
-      </script>
     </div>
-    
-                </div>
-            </div>
-            <div id="secondary">
-    <section class="widget">
-        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
-      
-      <input type="text" name="q" maxlength="20" placeholder="Search">
-      <input type="hidden" name="sitesearch" value="https://liabio.github.io">
-      <button type="submit" class="submit icon-search"></button>
-</form>
-    </section>
-    
-    <section class="widget">
-        <h3 class="widget-title">最近文章</h3>
-<ul class="widget-list">
-    
-    <li>
-        <a href="https://liabio.github.io/post/2019-09-24-docker-image-essential-skills/" title="docker镜像制作必备技能">docker镜像制作必备技能</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/post/2019-09-24-kubernetes-gc-GarbageCollector-Controller-source-one/" title="docker镜像制作必备技能">docker镜像制作必备技能</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/post/2019-09-24-k8s-loadbalancer-ingress-nginx-deploy/" title="k8s中负载均衡器【ingress-nginx】部署">k8s中负载均衡器【ingress-nginx】部署</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/post/2019-09-24-k8s-job-execute-fail-do-what/" title="k8s使用Job执行任务失败了怎么办">k8s使用Job执行任务失败了怎么办</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/post/2019-09-24-docker-create-svc-in-cloudserver/" title="一次socket.error: [Errno 99] Cannot assign requested address报错排查">一次socket.error: [Errno 99] Cannot assign requested address报错排查</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/post/2019-09-24-socket-error-debug/" title="云服务器使用docker搭建服务">云服务器使用docker搭建服务</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/post/2019-09-24-docker-comprehensive-knowledge/" title="史上最全docker基础知识汇总">史上最全docker基础知识汇总</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/post/2019-09-24-k8s-domain-resolve-coredns-problem-debug/" title="采坑指南——k8s域名解析coredns问题排查过程">采坑指南——k8s域名解析coredns问题排查过程</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/" title="手把手教你搭建kubernetes集群.md">手把手教你搭建kubernetes集群.md</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/" title="手把手教你搭建kubernetes集群1">手把手教你搭建kubernetes集群1</a>
-    </li>
-    
-</ul>
-    </section>
 
-    
-<section class="widget">
-    <h3 class="widget-title" style="color:red">福利派送</h3>
-    <ul class="widget-list">
-        
-        <li>
-            <a href="https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=jdg9oj97" title="领取￥1888阿里云产品通用代金券" target="_blank" style="color:red">
-                
-                    领取￥1888阿里云产品通用代金券
-                
-            </a>
-        </li>
-        
-        <li>
-            <a href="https://promotion.aliyun.com/ntms/act/vmpt/aliyun-group/home.html?userCode=jdg9oj97" title="领取￥1888阿里云产品通用代金券" target="_blank" style="color:red">
-                
-                    <img src="https://img.alicdn.com/tfs/TB17qJhXpzqK1RjSZFvXXcB7VXa-200-126.jpg">
-                
-            </a>
-        </li>
-        
-        <li>
-            <a href="https://promotion.aliyun.com/ntms/act/enterprise-discount.html?userCode=jdg9oj97" title="领取￥1888阿里云产品通用代金券" target="_blank" style="color:red">
-                
-                    <img src="https://img.alicdn.com/tfs/TB1aDXhXpzqK1RjSZFvXXcB7VXa-259-194.jpg">
-                
-            </a>
-        </li>
-        
-    </ul>
-</section>
-
-
-    <section class="widget">
-        <h3 class="widget-title">分类</h3>
-<ul class="widget-list">
-    
-    <li>
-        <a href="https://liabio.github.io/categories/Blog/">Blog(1)</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/categories/Kubernetes/">Kubernetes(4)</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/categories/debug/">debug(1)</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/categories/docker/">docker(6)</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/categories/ingress-nginx/">ingress-nginx(1)</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/categories/job/">job(2)</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/categories/k8s/">k8s(1)</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(3)</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/categories/%E5%B7%A5%E5%85%B7/">工具(1)</a>
-    </li>
-    
-</ul>
-    </section>
-
-    <section class="widget">
-        <h3 class="widget-title">标签</h3>
-<div class="tagcloud">
-    
-    <a href="https://liabio.github.io/tags/Blog/">Blog</a>
-    
-    <a href="https://liabio.github.io/tags/Golang/">Golang</a>
-    
-    <a href="https://liabio.github.io/tags/Hugo/">Hugo</a>
-    
-    <a href="https://liabio.github.io/tags/Kubernetes/">Kubernetes</a>
-    
-    <a href="https://liabio.github.io/tags/Scheduler/">Scheduler</a>
-    
-    <a href="https://liabio.github.io/tags/docker/">docker</a>
-    
-    <a href="https://liabio.github.io/tags/ingress-nginx/">ingress-nginx</a>
-    
-    <a href="https://liabio.github.io/tags/kubernetes/">kubernetes</a>
-    
-    <a href="https://liabio.github.io/tags/%E5%AE%B9%E5%99%A8/">容器</a>
-    
-    <a href="https://liabio.github.io/tags/%E5%B7%A5%E5%85%B7/">工具</a>
-    
-</div>
-    </section>
-
-    
-<section class="widget">
-    <h3 class="widget-title">友情链接</h3>
-    <ul class="widget-list">
-        
-        <li>
-            <a target="_blank" href="http://yuedu.baidu.com/ebook/14a722970740be1e640e9a3e" title="Android Gradle权威指南">Android Gradle权威指南</a>
-        </li>
-        
-        <li>
-            <a target="_blank" href="http://mirrors.flysnow.org/" title="常用开发工具CDN镜像">常用开发工具CDN镜像</a>
-        </li>
-        
-    </ul>
-</section>
-
-
-    <section class="widget">
-        <h3 class="widget-title">其它</h3>
-        <ul class="widget-list">
-            <li><a href="https://liabio.github.io/index.xml">文章 RSS</a></li>
-        </ul>
-    </section>
-</div>
-        </div>
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>liabio </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://example.com/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/>https://example.com/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
     </div>
-</div>
-<footer id="footer">
-    <div class="container">
-        &copy; 2019 <a href="https://liabio.github.io">小碗汤的博客 By 小碗汤</a>.
-        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
-        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+
+  
+    <div class="post-tags">
         
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://example.com/tags/kubernetes/">
+                    #Kubernetes</a></span>
+            
+            <span class="tag"><a href="https://example.com/tags/scheduler/">
+                    #Scheduler</a></span>
+            
+            <span class="tag"><a href="https://example.com/tags/golang/">
+                    #Golang</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://example.com">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://example.com/post/2019-05-14-%E6%90%AD%E5%BB%BAk8s%E7%8E%AF%E5%A2%83%E6%97%B6gcr.io%E5%92%8Cquay.io%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E5%A4%B1%E8%B4%A5/" class="prev" rel="prev" title="搭建k8s环境时gcr.io和quay.io拉取镜像失败"><i class="iconfont icon-left"></i>&nbsp;搭建k8s环境时gcr.io和quay.io拉取镜像失败</a>
+         
+        
+        <a href="https://example.com/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/" class="next" rel="next" title="手把手教你搭建kubernetes集群.md">手把手教你搭建kubernetes集群.md&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2011 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://example.com">liabio</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
     </div>
 </footer>
 
 
-    <script type="text/javascript">
+
+
+
+
+
+
+
+
+
+
     
-    (function(){
-        $("pre code").parent().addClass("line-numbers")
-    }())
-
-    window.MathJax = {
-        tex2jax: {
-            inlineMath: [ ['$','$'] ],
-            processEscapes: true
-        }
-    };
-    </script>
-    <script type="text/javascript" src="/js/prism.js" async="true"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
-
-<a id="rocket" href="#top"></a>
-<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-139517579-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
 
 
 
-<script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
-
-
-
-
-</body>
+     </div>
+  </body>
 </html>

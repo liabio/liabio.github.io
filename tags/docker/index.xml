@@ -1,68 +1,138 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>docker on 小碗汤的博客</title>
-    <link>https://liabio.github.io/tags/docker/</link>
-    <description>Recent content in docker on 小碗汤的博客</description>
+    <title>docker on LeaveIt</title>
+    <link>https://example.com/tags/docker/</link>
+    <description>Recent content in docker on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
+    <language>en-us</language>
     <lastBuildDate>Tue, 24 Sep 2019 10:48:21 +0800</lastBuildDate>
     
-	<atom:link href="https://liabio.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://example.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>docker镜像制作必备技能</title>
-      <link>https://liabio.github.io/post/2019-09-24-docker-image-essential-skills/</link>
+      <link>https://example.com/post/2019-09-24-docker-image-essential-skills/</link>
       <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
       
-      <guid>https://liabio.github.io/post/2019-09-24-docker-image-essential-skills/</guid>
-      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注： 正文 使用</description>
+      <guid>https://example.com/post/2019-09-24-docker-image-essential-skills/</guid>
+      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注：
+正文 使用过docker的都知道dockerfile，其用于定义制作镜像的流程，由一系列命令和参数构成的脚本，这些命令应用于基础镜像并最终创建一个新的镜像。可参考往期文章学习：docker基础知识整理
+有时候，我们想在原有镜像基础上修改、增加文件，由于国内网络原因，重新制作镜像会很慢，甚至失败；或者根本不知道镜像的dockerfile长什么样。改动很小情况下，可以用以下方式制作镜像。
+拿k8s负载均衡器组件ingress-nginx:0.24.1版本为例： 如果我们修改了其源码，并编译生成nginx-ingress-controller二进制文件，可以用以下方式进行制作新镜像。
+首先用命令：
+docker run -ti --rm k8s-deploy/nginx-ingress-controller:0.24.1 bash  将镜像运行起来。其中-ti表示打开一个交互输入终端；&amp;ndash;rm表示运行停止后自动清理。
+运行后可以看到默认用户为www-data，a298fe62a4f9表示容器id 我们可以在容器里创建目录： 重新打开一个shell窗口，用于给容器内复制一个测试文件：
+docker cp ingressgroup-upstream.tmpl a298fe62a4f9:/etc/nginx/conf.d/include-server-map/  复制进去后，当要将其移动到其他位置时，报Permission denied权限不足，因为默认为www-data用户，复制到容器内的ingressgroup-upstream.tmpl属主:属组也是root，如果不把root修改为www-data，肯定会报没权限的错。
+通过以下命令重新运行镜像：
+docker run -ti --rm -u 0 k8s-deploy/nginx-ingress-controller:0.24.1 bash  -u 0代表用root用户运行容器，而不是dockerfile里指定的用户，这样运行后可以看到用户为root，记录容器id:ffdc80f3cce7
+重新执行复制操作：
+此时就可以随意移动和修改文件的权限、属组、属主了。
+修改完毕后，执行以下命令将镜像commit到本地仓库：
+docker commit ffdc80f3cce7 k8s-deploy/nginx-ingress-controller:0.24.1-temp  commit后跟的是容器id，最后跟的是新镜像名称。push命令将新镜像推到远程harbor仓库。
+运行新制作的镜像，可以看到我们修改的文件。
+这种方式一般用于测试，弊端是可能会导致镜像越来越大。
+本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。同时我们组建了一个技术交流群，里面有很多大佬，会不定时分享技术文章，如果你想来一起学习提高，可以公众号后台回复【2】，免费邀请加技术交流群互相学习提高，会不定期分享编程IT相关资源。
+扫码关注，精彩内容第一时间推给你</description>
     </item>
     
     <item>
       <title>docker镜像制作必备技能</title>
-      <link>https://liabio.github.io/post/2019-09-24-kubernetes-gc-GarbageCollector-Controller-source-one/</link>
+      <link>https://example.com/post/2019-09-24-kubernetes-gc-garbagecollector-controller-source-one/</link>
       <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
       
-      <guid>https://liabio.github.io/post/2019-09-24-kubernetes-gc-GarbageCollector-Controller-source-one/</guid>
-      <description>kubernetes版本：1.13.2 背景 由于operator创建的redis集群，在kubernetes apiserver重启后，redis集群被异常删除（包括redis exporter statefulset、redis statefulset）。删除后operator将其重建，重新组建集群，</description>
+      <guid>https://example.com/post/2019-09-24-kubernetes-gc-garbagecollector-controller-source-one/</guid>
+      <description>kubernetes版本：1.13.2
+ 背景 由于operator创建的redis集群，在kubernetes apiserver重启后，redis集群被异常删除（包括redis exporter statefulset、redis statefulset）。删除后operator将其重建，重新组建集群，实例IP发生变更（中间件容器化，我们开发了固定IP，当statefulset删除后，IP会被回收），导致创建集群失败，最终集群不可用。
+经多次复现，apiserver重启后，通过查询redis operator日志，并没有发现主动去删除redis集群（redis statefulset）、监控实例（redis exporter）。进一步去查看kube-controller-manager的日志，将其日志级别设置&amp;ndash;v=5，继续复现，最终在kube-controller-manager日志中发现如下日志： 可以看到是garbage collector触发删除操作的。这个问题在apiserver正常的时候是不存在，要想弄其究竟，就得看看kube-controller-manager内置组件garbage collector这个控制器的逻辑。
+由于内容偏长，分为多节来讲： ①、monitors作为生产者将变化的资源放入graphChanges队列；同时restMapper定期检测集群内资源类型，刷新monitors ②、runProcessGraphChanges从graphChanges队列中取出变化的item，根据情况放入attemptToDelete队列；runAttemptToDeleteWorker取出处理垃圾资源； ③、runProcessGraphChanges从graphChanges队列中取出变化的item，根据情况放入attemptToOrphan队列；runAttemptToOrphanWorker取出处理该该孤立的资源； 正文 想要启用GC，需要在kube-apiserver和kube-controller-manager的启动参数中都设置--enable-garbage-collector为true,1.13.2版本中默认开启GC。
+需要注意：两组件该参数必须保持同步。
+kube-controller-manager启动入口，app.NewControllerManagerCommand()中加载controller manager默认启动参数，创建* cobra.Command对象：
+func main() { rand.Seed(time.Now().UnixNano()) //加载controller manager默认启动参数，创建* cobra.Command对象 command := app.NewControllerManagerCommand() //......省略....... //执行cobra.command，并启动controller-manager if err := command.Execute(); err != nil { fmt.Fprintf(os.Stderr, &amp;quot;%v\n&amp;quot;, err) os.Exit(1) } }  以下代码处去启动kube-controller-manager： NewDefaultComponentConfig(ports.InsecureKubeControllerManagerPort)加载各个控制器的配置：
+//NewKubeControllerManagerOptions使用默认配置创建一个新的KubeControllerManagerOptions func NewKubeControllerManagerOptions() (*KubeControllerManagerOptions, error) { //加载各个控制器的默认配置 componentConfig, err := NewDefaultComponentConfig(ports.InsecureKubeControllerManagerPort) if err != nil { return nil, err } s := KubeControllerManagerOptions{ Generic: cmoptions.</description>
     </item>
     
     <item>
       <title>k8s使用Job执行任务失败了怎么办</title>
-      <link>https://liabio.github.io/post/2019-09-24-k8s-job-execute-fail-do-what/</link>
+      <link>https://example.com/post/2019-09-24-k8s-job-execute-fail-do-what/</link>
       <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
       
-      <guid>https://liabio.github.io/post/2019-09-24-k8s-job-execute-fail-do-what/</guid>
-      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注： Kubernetes 中使用</description>
+      <guid>https://example.com/post/2019-09-24-k8s-job-execute-fail-do-what/</guid>
+      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注：
+Kubernetes 中使用 Job 和 CronJob 两个资源分别提供了一次性任务和定时任务的特性，这两种对象也使用控制器模型来实现资源的管理，我们在这篇文章来介绍Job执行如果失败了会怎么样呢？
+修改job-fail.yaml，故意引入一个错误： Never 如果将 restartPolicy 设置为 Never 会怎么样？下面我们实践一下，修改job-fail.yaml后重新启动。
+运行 Job 并查看状态，可以看到Never策略的job，pod失败后，重新创建： 直到重新创建7个（spec.backoffLimit默认为6，即重试6次，共7个pod）pod都失败后，认为失败，job的status里会更新为Failed 当前 Completion 的数量为 0 查看 Pod 的状态：
+可以看到有多个 Pod，状态均不正常。kubectl describe pod 查看某个 Pod 的启动日志：
+日志显示没有可执行程序，符合我们的预期。
+为什么 kubectl get pod 会看到这么多个失败的 Pod？
+原因是：当第一个 Pod 启动时，容器失败退出，根据 restartPolicy: Never，此失败容器不会被重启，但 Job DESIRED 的 Pod 是 1，目前 SUCCESSFUL 为 0，不满足，所以 Job controller 会启动新的 Pod，直到 SUCCESSFUL 为 1。对于我们这个例子，SUCCESSFUL 永远也到不了 1，所以 Job controller 会一直创建新的 Pod，直到设置的数量，失败后pod不会自动被删除，为了终止这个行为，只能删除 Job，pod也会被同时删掉。</description>
     </item>
     
     <item>
       <title>云服务器使用docker搭建服务</title>
-      <link>https://liabio.github.io/post/2019-09-24-socket-error-debug/</link>
+      <link>https://example.com/post/2019-09-24-socket-error-debug/</link>
       <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
       
-      <guid>https://liabio.github.io/post/2019-09-24-socket-error-debug/</guid>
-      <description>前提：亚马逊云已经配置好启动。 安全组入站策略如下： 出站策略如下： 登陆EC2后，默认只能用ec2-user用户登陆，然后切换到root： 1 sudo su 用yum执行安装docker提示No package docker avaible 1 yum install docker -y 解决方法： 在/etc/yum.repos.d/下加CentOS7-Base-163.re</description>
+      <guid>https://example.com/post/2019-09-24-socket-error-debug/</guid>
+      <description>前提：亚马逊云已经配置好启动。
+安全组入站策略如下：
+出站策略如下： 登陆EC2后，默认只能用ec2-user用户登陆，然后切换到root：
+sudo su  用yum执行安装docker提示No package docker avaible
+yum install docker -y  解决方法： 在/etc/yum.repos.d/下加CentOS7-Base-163.repo文件：
+vi CentOS7-Base-163.repo  # CentOS-Base.repo # # The mirror system uses the connecting IP address of the client and the # update status of each mirror to pick mirrors that are updated to and # geographically close to the client. You should use this for CentOS updates # unless you are manually picking other mirrors.</description>
     </item>
     
     <item>
       <title>史上最全docker基础知识汇总</title>
-      <link>https://liabio.github.io/post/2019-09-24-docker-comprehensive-knowledge/</link>
+      <link>https://example.com/post/2019-09-24-docker-comprehensive-knowledge/</link>
       <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
       
-      <guid>https://liabio.github.io/post/2019-09-24-docker-comprehensive-knowledge/</guid>
-      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注： 正文 Do</description>
+      <guid>https://example.com/post/2019-09-24-docker-comprehensive-knowledge/</guid>
+      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注：
+正文 Docker常用命令
+run
+docker run [OPTIONS] IMAGE [COMMAND] [ARG...]  -e设置环境变量；-e username=zhj
+&amp;ndash;name为容器指定一个名称；&amp;ndash;name=zhj
+-p指定端口映射，格式为：主机(宿主)端口:容器端口 -p 80:8080
+-t为容器重新分配一个伪输入终端，通常与 -i 同时使用；
+-i以交互模式运行容器，通常与 -t 同时使用；
+-d后台运行容器，并返回容器ID；
+-v宿主机目录:容器目录。将宿主机目录挂载到容器内。
+docker cp
+复制容器内的文件到宿主机  docker start
+启动一个或多个已经被停止的容器
+docker stop
+停止一个运行中的容器
+docker restart
+重启容器
+docker rm
+删除容器
+docker pause
+暂停容器中所有的进程;
+docker unpause
+恢复容器中所有的进程;
+docker exec ：
+在运行的容器中执行命令
+docker exec -it mynginx /bin/sh /root/runoob.sh  docker logs
+获取容器的日志;
+docker ps
+列出UP的容器；docker ps -a列出所有容器。包括Exited等状态的容器；</description>
     </item>
     
     <item>
       <title>采坑指南——k8s域名解析coredns问题排查过程</title>
-      <link>https://liabio.github.io/post/2019-09-24-k8s-domain-resolve-coredns-problem-debug/</link>
+      <link>https://example.com/post/2019-09-24-k8s-domain-resolve-coredns-problem-debug/</link>
       <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
       
-      <guid>https://liabio.github.io/post/2019-09-24-k8s-domain-resolve-coredns-problem-debug/</guid>
-      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注： 正文 前几</description>
+      <guid>https://example.com/post/2019-09-24-k8s-domain-resolve-coredns-problem-debug/</guid>
+      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注：
+正文 前几天，在ucloud上搭建的k8s集群（搭建教程后续会发出）。今天发现域名解析不了。
+组件版本：k8s 1.15.0，coredns：1.3.1
+过程是这样的： 首先用以下yaml文件创建了一个nginx服务
+apiVersion: v1 kind: Service metadata: name: nginx-svc-old labels: app: nginx-svc spec: selector: app: nginx ports: - protocol: TCP port: 80 targetPort: 80 --- apiVersion: apps/v1beta1 kind: Deployment metadata: name: nginx-old spec: replicas: 1 template: metadata: labels: app: nginx spec: containers: - name: nginx image: nginx ports: - containerPort: 80  创建好之后： 因只部署了一个master节点。在master宿主机上直接执行以下命令：
+nslookup nginx-svc-old.default.svc  发现不能解析域名。事先也在宿主机上/etc/resolv.conf里配置了nameserver {coredns的podIP} 这样一来，就以为可能是coredns有问题。。
+然后用以下yaml创建了一个busybox作为调试工具：</description>
     </item>
     
   </channel>

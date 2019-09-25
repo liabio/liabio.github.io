@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on LeaveIt</title>
+    <link>https://example.com/categories/git/</link>
+    <description>Recent content in git on LeaveIt</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 24 Sep 2019 10:48:21 +0800</lastBuildDate>
+    
+	<atom:link href="https://example.com/categories/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>git常用操作</title>
+      <link>https://example.com/post/2019-09-24-git-operator-command/</link>
+      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      
+      <guid>https://example.com/post/2019-09-24-git-operator-command/</guid>
+      <description> 解决git pull/push每次都需要输入密码问题 git config --global credential.helper store  git输入正确密码后还是提示错误解决 git config --system --unset credential.helper  </description>
+    </item>
+    
+  </channel>
+</rss>
