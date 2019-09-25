@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>job on LeaveIt</title>
-    <link>https://example.com/categories/job/</link>
+    <link>https://liabio.github.io/categories/job/</link>
     <description>Recent content in job on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 24 Sep 2019 10:48:21 +0800</lastBuildDate>
     
-	<atom:link href="https://example.com/categories/job/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://liabio.github.io/categories/job/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>k8s使用Job执行任务失败了怎么办</title>
-      <link>https://example.com/post/2019-09-24-k8s-job-execute-fail-do-what/</link>
+      <link>https://liabio.github.io/post/2019-09-24-k8s-job-execute-fail-do-what/</link>
       <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
       
-      <guid>https://example.com/post/2019-09-24-k8s-job-execute-fail-do-what/</guid>
+      <guid>https://liabio.github.io/post/2019-09-24-k8s-job-execute-fail-do-what/</guid>
       <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注：
 Kubernetes 中使用 Job 和 CronJob 两个资源分别提供了一次性任务和定时任务的特性，这两种对象也使用控制器模型来实现资源的管理，我们在这篇文章来介绍Job执行如果失败了会怎么样呢？
 修改job-fail.yaml，故意引入一个错误： Never 如果将 restartPolicy 设置为 Never 会怎么样？下面我们实践一下，修改job-fail.yaml后重新启动。
@@ -29,10 +29,10 @@ Kubernetes 中使用 Job 和 CronJob 两个资源分别提供了一次性任务�
     
     <item>
       <title>云服务器使用docker搭建服务</title>
-      <link>https://example.com/post/2019-09-24-socket-error-debug/</link>
+      <link>https://liabio.github.io/post/2019-09-24-socket-error-debug/</link>
       <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
       
-      <guid>https://example.com/post/2019-09-24-socket-error-debug/</guid>
+      <guid>https://liabio.github.io/post/2019-09-24-socket-error-debug/</guid>
       <description>前提：亚马逊云已经配置好启动。
 安全组入站策略如下：
 出站策略如下： 登陆EC2后，默认只能用ec2-user用户登陆，然后切换到root：

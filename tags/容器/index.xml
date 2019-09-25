@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>容器 on LeaveIt</title>
-    <link>https://example.com/tags/%E5%AE%B9%E5%99%A8/</link>
+    <link>https://liabio.github.io/tags/%E5%AE%B9%E5%99%A8/</link>
     <description>Recent content in 容器 on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 24 Sep 2019 10:48:21 +0800</lastBuildDate>
     
-	<atom:link href="https://example.com/tags/%E5%AE%B9%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://liabio.github.io/tags/%E5%AE%B9%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>docker镜像制作必备技能</title>
-      <link>https://example.com/post/2019-09-24-docker-image-essential-skills/</link>
+      <link>https://liabio.github.io/post/2019-09-24-docker-image-essential-skills/</link>
       <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
       
-      <guid>https://example.com/post/2019-09-24-docker-image-essential-skills/</guid>
+      <guid>https://liabio.github.io/post/2019-09-24-docker-image-essential-skills/</guid>
       <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注：
 正文 使用过docker的都知道dockerfile，其用于定义制作镜像的流程，由一系列命令和参数构成的脚本，这些命令应用于基础镜像并最终创建一个新的镜像。可参考往期文章学习：docker基础知识整理
 有时候，我们想在原有镜像基础上修改、增加文件，由于国内网络原因，重新制作镜像会很慢，甚至失败；或者根本不知道镜像的dockerfile长什么样。改动很小情况下，可以用以下方式制作镜像。
@@ -39,10 +39,10 @@ docker commit ffdc80f3cce7 k8s-deploy/nginx-ingress-controller:0.24.1-temp  comm
     
     <item>
       <title>docker镜像制作必备技能</title>
-      <link>https://example.com/post/2019-09-24-kubernetes-gc-garbagecollector-controller-source-one/</link>
+      <link>https://liabio.github.io/post/2019-09-24-kubernetes-gc-garbagecollector-controller-source-one/</link>
       <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
       
-      <guid>https://example.com/post/2019-09-24-kubernetes-gc-garbagecollector-controller-source-one/</guid>
+      <guid>https://liabio.github.io/post/2019-09-24-kubernetes-gc-garbagecollector-controller-source-one/</guid>
       <description>kubernetes版本：1.13.2
  背景 由于operator创建的redis集群，在kubernetes apiserver重启后，redis集群被异常删除（包括redis exporter statefulset、redis statefulset）。删除后operator将其重建，重新组建集群，实例IP发生变更（中间件容器化，我们开发了固定IP，当statefulset删除后，IP会被回收），导致创建集群失败，最终集群不可用。
 经多次复现，apiserver重启后，通过查询redis operator日志，并没有发现主动去删除redis集群（redis statefulset）、监控实例（redis exporter）。进一步去查看kube-controller-manager的日志，将其日志级别设置&amp;ndash;v=5，继续复现，最终在kube-controller-manager日志中发现如下日志： 可以看到是garbage collector触发删除操作的。这个问题在apiserver正常的时候是不存在，要想弄其究竟，就得看看kube-controller-manager内置组件garbage collector这个控制器的逻辑。
@@ -55,10 +55,10 @@ func main() { rand.Seed(time.Now().UnixNano()) //加载controller manager默认�
     
     <item>
       <title>史上最全docker基础知识汇总</title>
-      <link>https://example.com/post/2019-09-24-docker-comprehensive-knowledge/</link>
+      <link>https://liabio.github.io/post/2019-09-24-docker-comprehensive-knowledge/</link>
       <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
       
-      <guid>https://example.com/post/2019-09-24-docker-comprehensive-knowledge/</guid>
+      <guid>https://liabio.github.io/post/2019-09-24-docker-comprehensive-knowledge/</guid>
       <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注：
 正文 Docker常用命令
 run
@@ -92,10 +92,10 @@ docker ps
     
     <item>
       <title>采坑指南——k8s域名解析coredns问题排查过程</title>
-      <link>https://example.com/post/2019-09-24-k8s-domain-resolve-coredns-problem-debug/</link>
+      <link>https://liabio.github.io/post/2019-09-24-k8s-domain-resolve-coredns-problem-debug/</link>
       <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
       
-      <guid>https://example.com/post/2019-09-24-k8s-domain-resolve-coredns-problem-debug/</guid>
+      <guid>https://liabio.github.io/post/2019-09-24-k8s-domain-resolve-coredns-problem-debug/</guid>
       <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注：
 正文 前几天，在ucloud上搭建的k8s集群（搭建教程后续会发出）。今天发现域名解析不了。
 组件版本：k8s 1.15.0，coredns：1.3.1

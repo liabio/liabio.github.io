@@ -2,93 +2,93 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on LeaveIt</title>
-    <link>https://example.com/categories/</link>
+    <link>https://liabio.github.io/categories/</link>
     <description>Recent content in Categories on LeaveIt</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 24 Sep 2019 10:48:21 +0800</lastBuildDate>
     
-	<atom:link href="https://example.com/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://liabio.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>debug</title>
-      <link>https://example.com/categories/debug/</link>
+      <link>https://liabio.github.io/categories/debug/</link>
       <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
       
-      <guid>https://example.com/categories/debug/</guid>
+      <guid>https://liabio.github.io/categories/debug/</guid>
       <description></description>
     </item>
     
     <item>
       <title>docker</title>
-      <link>https://example.com/categories/docker/</link>
+      <link>https://liabio.github.io/categories/docker/</link>
       <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
       
-      <guid>https://example.com/categories/docker/</guid>
+      <guid>https://liabio.github.io/categories/docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>git</title>
-      <link>https://example.com/categories/git/</link>
+      <link>https://liabio.github.io/categories/git/</link>
       <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
       
-      <guid>https://example.com/categories/git/</guid>
+      <guid>https://liabio.github.io/categories/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ingress-nginx</title>
-      <link>https://example.com/categories/ingress-nginx/</link>
+      <link>https://liabio.github.io/categories/ingress-nginx/</link>
       <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
       
-      <guid>https://example.com/categories/ingress-nginx/</guid>
+      <guid>https://liabio.github.io/categories/ingress-nginx/</guid>
       <description></description>
     </item>
     
     <item>
       <title>job</title>
-      <link>https://example.com/categories/job/</link>
+      <link>https://liabio.github.io/categories/job/</link>
       <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
       
-      <guid>https://example.com/categories/job/</guid>
+      <guid>https://liabio.github.io/categories/job/</guid>
       <description></description>
     </item>
     
     <item>
       <title>k8s</title>
-      <link>https://example.com/categories/k8s/</link>
+      <link>https://liabio.github.io/categories/k8s/</link>
       <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
       
-      <guid>https://example.com/categories/k8s/</guid>
+      <guid>https://liabio.github.io/categories/k8s/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Kubernetes</title>
-      <link>https://example.com/categories/kubernetes/</link>
+      <link>https://liabio.github.io/categories/kubernetes/</link>
       <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
       
-      <guid>https://example.com/categories/kubernetes/</guid>
+      <guid>https://liabio.github.io/categories/kubernetes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>工具</title>
-      <link>https://example.com/categories/%E5%B7%A5%E5%85%B7/</link>
+      <link>https://liabio.github.io/categories/%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
       
-      <guid>https://example.com/categories/%E5%B7%A5%E5%85%B7/</guid>
+      <guid>https://liabio.github.io/categories/%E5%B7%A5%E5%85%B7/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Blog</title>
-      <link>https://example.com/categories/blog/</link>
+      <link>https://liabio.github.io/categories/blog/</link>
       <pubDate>Fri, 03 May 2019 10:48:21 +0800</pubDate>
       
-      <guid>https://example.com/categories/blog/</guid>
+      <guid>https://liabio.github.io/categories/blog/</guid>
       <description></description>
     </item>
     
