@@ -603,6 +603,23 @@ spec:
 
     </div>
 
+    <div style="padding: 10px 0; margin: 20px auto; width: 100%; font-size:16px; text-align: center;">
+  <button id="rewardButton" disable="enable" onclick="let qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span></button>
+  <div id="QR" style="display: none;">
+    
+    <div id="wechat" style="display: inline-block">
+      <a class="fancybox" rel="group">
+        <img id="wechat_qr" src="/img/wechat-qr-code.png" alt="WeChat Pay"></a>
+      <p>微信打赏</p>
+    </div>
+    <div id="alipay" style="display: inline-block">
+      <a class="fancybox" rel="group">
+        <img id="alipay_qr" src="/img/alipay-qr-code.png" alt="Alipay"></a>
+      <p>支付宝打赏</p>
+    </div>
+  </div>
+</div>
     <div class="post-copyright">
              
             <p class="copyright-item">
@@ -614,7 +631,7 @@ spec:
              
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=https://liabio.github.io/post/2019-09-24-k8s-loadbalancer-ingress-nginx-deploy/>https://liabio.github.io/post/2019-09-24-k8s-loadbalancer-ingress-nginx-deploy/</span>
+                    <a href=https://liabio.github.io/post/2019-09-24-k8s-loadbalancer-ingress-nginx-deploy/>https://liabio.github.io/post/2019-09-24-k8s-loadbalancer-ingress-nginx-deploy/</a>
             </p>
             
              
@@ -624,7 +641,7 @@ spec:
             
     </div>
 
-  
+    
     <div class="post-tags">
         
             <section>
@@ -644,6 +661,7 @@ spec:
         </section>
     </div>
 
+    
     <div class="post-nav">
         
         <a href="https://liabio.github.io/post/2019-09-24-k8s-job-execute-fail-do-what/" class="prev" rel="prev" title="k8s使用Job执行任务失败了怎么办"><i class="iconfont icon-left"></i>&nbsp;k8s使用Job执行任务失败了怎么办</a>
@@ -653,6 +671,7 @@ spec:
         
     </div>
 
+        
     <div class="post-comment">
           
                  
