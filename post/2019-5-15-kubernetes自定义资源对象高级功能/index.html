@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noodp"/>
-  <meta name="author" content="liabio">
+  <meta name="author" content="小碗汤">
   
   
   
@@ -22,10 +22,10 @@
   <title>
        
        
-            | LeaveIt
+            | 小碗汤的博客
        
   </title>
-  <meta name="title" content=" | LeaveIt">
+  <meta name="title" content=" | 小碗汤的博客">
     
   
   
@@ -62,17 +62,17 @@
     "headline" : "",
     "description" : "kubernetes自定义资源对象高级功能 kubernetes自定义资源对象再极大程度提高了API Server的可扩展性，让企业能够根据业务需求通过CRD编写controller或者operator来实现生产中各种特殊场景。随着k8s的版本升级，CRD的功能也越来越完善，下面对其中几点进行说明。\n以下验证kubernetes版本为1.13.2，docker版本：18.09.5\nValidation（验证） 在项目中用自定义资源对象时，如果创建自定义资源时某些字段不符合要求，会导致监听该资源对象的controller或者operator出现异常，解析结构体报错，所以Validation这个功能非常实用，在创建时就进行校验，减少后面的排错和异常处理的麻烦。\n可以通过 OpenAPI v3 schema验证自定义对象是否符合标准 。此外，以下限制适用于 schema：\n 字段default、nullable、discriminator、readOnly、writeOnly、xml、 deprecated 和 $ref 不能设置。 该字段 uniqueItems 不能设置为 true。 该字段 additionalProperties 不能设置为 false。  可以使用 kube-apiserverCustomResourceValidation 上的功能门（feature gate）禁用此功能：\n--feature-gates=CustomResourceValidation=false  从以下特性门参数说明地址，可以看到Validation功能在k8s 1.8版本就已经有了，但是CustomResourceValidation特性门是默认false，1.9Beta之后版本默认为true\nhttps:\/\/kubernetes.io\/docs\/reference\/command-line-tools-reference\/feature-gates\/\n以下示例将大概对该功能进行应用和说明，在以下示例中，CustomResourceDefinition 对自定义对象应用以下验证：\n spec.replicas 为必填项，类型为integer，值为大于等于0小于50的偶数（2的倍数）； spec.repository 为必填项； spec.version为必填项； spec.pause为boolean类型； spec.updateStrategy为object类型，该object中有type、pipeline、assignStrategies属性； spec.updateStrategy.type为string类型，而且只能为\x26rdquo;AssignReceive\x26rdquo;, \x26ldquo;AutoReceive\x26rdquo;两个枚举值； spec.updateStrategy.pipeline为string类型，而且为正整数的字符串，符合正则表达式^([1-9][0-9]*){1,3}$; spec.updateStrategy.assignStrategies为array类型，其元素为object类型（包含slots和fromReplicas属性）； spec.updateStrategy.assignStrategies.slots为1-16384的正整数； spec.updateStrategy.assignStrategies.fromReplicas为字符串，符合正则表达式^[a-z0-9,]{3,}$，即至少匹配3位a-z或者0-9或者逗号的字符串； spec.pod为array类型，其元素为object类型（包含configmap、monitorImage、initImage、middlewareImage字段）； spec.pod.configmap、spec.pod.monitorImage、spec.pod.initImage 、spec.pod.middlewareImage为string类型；且用required指定configmap、initImage、middlewareImage字段为必填项。  将以下内容保存到 redis-cluster-crd.yaml：\napiVersion: apiextensions.k8s.io\/v1beta1 kind: CustomResourceDefinition metadata: name: redisclusters.redis.middleware.hc.cn spec: group: redis.middleware.hc.cn versions: - name: v1alpha1 # Each version can be enabled\/disabled by Served flag.",
     "inLanguage" : "en-us",
-    "author" : "liabio",
-    "creator" : "liabio",
-    "publisher": "liabio",
-    "accountablePerson" : "liabio",
-    "copyrightHolder" : "liabio",
+    "author" : "小碗汤",
+    "creator" : "小碗汤",
+    "publisher": "小碗汤",
+    "accountablePerson" : "小碗汤",
+    "copyrightHolder" : "小碗汤",
     "copyrightYear" : "0001",
     "datePublished": "0001-01-01 00:00:00 \x2b0000 UTC",
     "dateModified" : "0001-01-01 00:00:00 \x2b0000 UTC",
     "url" : "https:\/\/liabio.github.io\/post\/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD\/",
     "wordCount" : "1514",
-    "keywords" : [  "LeaveIt"]
+    "keywords" : [  "小碗汤的博客"]
 }
 </script>
 
@@ -86,7 +86,7 @@
         <nav class="navbar">
     <div class="container">
         <div class="navbar-header header-logo">
-        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://liabio.github.io">LeaveIt</a>
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://liabio.github.io">小碗汤的博客</a>
         </div>
         <div class="menu navbar-right">
                 
@@ -99,13 +99,15 @@
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
+                <a class="menu-item" href="/gitbook/" title="">GitBook</a>
+                
         </div>
     </div>
 </nav>
 <nav class="navbar-mobile" id="nav-mobile" style="display: none">
      <div class="container">
         <div class="navbar-header">
-            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://liabio.github.io">LeaveIt</a></div>
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://liabio.github.io">小碗汤的博客</a></div>
             <div class="menu-toggle">
                 <span></span><span></span><span></span>
             </div>
@@ -122,6 +124,8 @@
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
+                <a class="menu-item" href="/gitbook/" title="">GitBook</a>
+                
         </div>
     </div>
 </nav>
@@ -132,7 +136,7 @@
     <header class="post-header">
         <h1 class="post-title" itemprop="name headline"></h1>
         <div class="post-meta">
-                Written by <a itemprop="name" href="https://liabio.github.io" rel="author">liabio</a> with ♥ 
+                Written by <a itemprop="name" href="https://liabio.github.io" rel="author">小碗汤</a> with ♥ 
                 <span class="post-time">
                 on <time datetime=0001-01-01 itemprop="datePublished">January 1, 0001</time>
                 </span>
@@ -889,7 +893,7 @@ func CreateRedisClusterCRD(extensionCRClient *extensionsclient.Clientset) error 
              
             <p class="copyright-item">
                 <span>Author:</span>
-                <span>liabio </span>
+                <span>小碗汤 </span>
                 </p>
             
            
@@ -927,6 +931,27 @@ func CreateRedisClusterCRD(extensionCRClient *extensionsclient.Clientset) error 
     <div class="post-comment">
           
                  
+                     <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-liabio-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                 
           
     </div>
 </article>
@@ -942,7 +967,7 @@ func CreateRedisClusterCRD(extensionCRClient *extensionsclient.Clientset) error 
     	 <i class="iconfont icon-love"></i> 
          </span>
          
-            <span class="author" itemprop="copyrightHolder"><a href="https://liabio.github.io">liabio</a> | </span> 
+            <span class="author" itemprop="copyrightHolder"><a href="https://liabio.github.io">小碗汤</a> | </span> 
          
 
          

@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>LeaveIt on LeaveIt</title>
+    <title>小碗汤的博客 on 小碗汤的博客</title>
     <link>https://liabio.github.io/</link>
-    <description>Recent content in LeaveIt on LeaveIt</description>
+    <description>Recent content in 小碗汤的博客 on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 24 Sep 2019 10:48:21 +0800</lastBuildDate>
@@ -17,18 +17,18 @@
       <description>&lt;div class=&#34;zh post-container&#34;&gt;
 
     &lt;!--copied from markdown --&gt;
-    &lt;blockquote&gt;&lt;p&gt;冰冻三尺 非一日之寒&lt;br&gt;
-    积土成山 非斯须之作&lt;/p&gt;&lt;/blockquote&gt;
+   &lt;!-- &lt;blockquote&gt;&lt;p&gt;冰冻三尺 非一日之寒&lt;br&gt;
+    积土成山 非斯须之作&lt;/p&gt;&lt;/blockquote&gt;--&gt;
 
     &lt;p&gt;Hey，我是&lt;strong&gt;小碗汤&lt;/strong&gt;，一只程序猿，主要从事Java、Golang、Docker、Kubernetes开发工作，现在郑州工作。&lt;/p&gt;
 
     &lt;p&gt;工作、学习之余，我还是一个健身爱好者，同时也非常喜欢跑步、音乐。&lt;/p&gt;
 
-    &lt;p&gt;这是我的利用 &lt;a href=&#34;https://pages.github.com/&#34;&gt;GitHub Pages&lt;/a&gt; 与 &lt;a href=&#34;http://jekyll.com.cn/&#34;&gt;Jekyll&lt;/a&gt; 搭建的 个人博客。我在GitHub主页&lt;a href=&#34;https://github.com/liabio&#34;&gt;👉GitHub·liabio&lt;/a&gt; 与 简书主页&lt;a href=&#34;https://http://www.jianshu.com/u/33c582f040ae&#34;&gt;👉Liabio&lt;/a&gt;。如果有什么问题，欢迎提出探讨！~&lt;/p&gt;
+    &lt;p&gt;这是我的利用 &lt;a href=&#34;https://pages.github.com/&#34;&gt;GitHub Pages&lt;/a&gt; 与 &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; 搭建的 个人博客。我在GitHub主页&lt;a href=&#34;https://github.com/liabio&#34;&gt;👉GitHub·liabio&lt;/a&gt; 与 简书主页&lt;a href=&#34;https://http://www.jianshu.com/u/33c582f040ae&#34;&gt;👉Liabio&lt;/a&gt;。如果有什么问题，欢迎提出探讨！~&lt;/p&gt;
 
     &lt;p&gt;&lt;strong&gt;欢迎扫描下方二维码关注我的微信公众号，期待与你一起成长！&lt;/strong&gt;&lt;/p&gt;
 
-    &lt;p&gt;&lt;img src=&#34;https://liabio.github.io/img/weixin-gongzhonghao.png&#34; style=&#34;align-content: center;&#34;&gt;&lt;p&gt;
+    &lt;p&gt;&lt;img src=&#34;https://liabio.github.io/images/me/gongzhonghao-ercode.jpg&#34; style=&#34;align-content: center;&#34;&gt;&lt;p&gt;
 
     &lt;p&gt;&lt;/p&gt;
     

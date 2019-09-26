@@ -102,7 +102,7 @@
     </url>
   
     <url>
-      <loc>https://liabio.github.io/tags/ingress-nginx/</loc>
+      <loc>https://liabio.github.io/categories/ingress-nginx/</loc>
       
       <lastmod>2019-09-24T10:48:21+08:00</lastmod>
       
@@ -112,7 +112,7 @@
     </url>
   
     <url>
-      <loc>https://liabio.github.io/categories/ingress-nginx/</loc>
+      <loc>https://liabio.github.io/tags/ingress-nginx/</loc>
       
       <lastmod>2019-09-24T10:48:21+08:00</lastmod>
       
@@ -162,16 +162,6 @@
     </url>
   
     <url>
-      <loc>https://liabio.github.io/categories/kubernetes/</loc>
-      
-      <lastmod>2019-09-24T10:48:21+08:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
       <loc>https://liabio.github.io/tags/kubernetes/</loc>
       
       <lastmod>2019-09-24T10:48:21+08:00</lastmod>
@@ -182,7 +172,7 @@
     </url>
   
     <url>
-      <loc>https://liabio.github.io/</loc>
+      <loc>https://liabio.github.io/categories/kubernetes/</loc>
       
       <lastmod>2019-09-24T10:48:21+08:00</lastmod>
       
@@ -243,6 +233,16 @@
   
     <url>
       <loc>https://liabio.github.io/tags/%E5%AE%B9%E5%99%A8/</loc>
+      
+      <lastmod>2019-09-24T10:48:21+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://liabio.github.io/</loc>
       
       <lastmod>2019-09-24T10:48:21+08:00</lastmod>
       
