@@ -1,58 +1,32 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blog on 小碗汤的博客</title>
+    <title>blog on 小碗汤的博客</title>
     <link>https://liabio.github.io/tags/blog/</link>
-    <description>Recent content in Blog on 小碗汤的博客</description>
+    <description>Recent content in blog on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 03 May 2019 10:48:21 +0800</lastBuildDate>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 03 May 2019 09:59:46 +0800</lastBuildDate>
     
 	<atom:link href="https://liabio.github.io/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hugo搭建博客教程</title>
-      <link>https://liabio.github.io/post/2019-05-03-hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</link>
-      <pubDate>Fri, 03 May 2019 10:48:21 +0800</pubDate>
+      <link>https://liabio.github.io/posts/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Fri, 03 May 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/post/2019-05-03-hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</guid>
-      <description>在编译时报错如下：
-Building sites … ERROR 2019/05/03 10:36:45 Failed to read Git log: fatal: Not a git repository (or any of the parent d irectories): .git Building sites … ERROR 2019/05/03 10:45:16 Failed to read Git log: fatal: your current branch &#39;master&#39; does not have a ny commits yet  需要先在站点根目录执行以下命令：
-git init git add . git commit -m &#39;test&#39;  config.toml中的baseUrl为http://liabio.github.io 不修改，调试时使用命令行参数指定baseUrl：为 http://localhost:1313/
-hugo server -D -t even --baseUrl=&amp;quot;http://localhost:1313/&amp;quot;  在网站https://analytics.</description>
+      <guid>https://liabio.github.io/posts/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</guid>
+      <description>在编译时报错如下： Building sites … ERROR 2019/05/03 10:36:45 Failed to read Git log: fatal: Not a git repository (or any of the parent d irectories): .git Building sites … ERROR 2019/05/03 10:45:16 Failed to read Git log: fatal: your current branch &#39;master&#39; does not have a ny commits yet 需要先在站点根目录执行以下命令： git init git add . git commit -m &#39;test&#39; config.toml中的baseUrl为http://liabio.github.io 不修改，调试时使用命令行参数指</description>
     </item>
     
     <item>
       <title>快速搭建个人博客</title>
-      <link>https://liabio.github.io/post/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
-      <pubDate>Mon, 06 Feb 2017 00:00:00 +0000</pubDate>
+      <link>https://liabio.github.io/posts/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Mon, 06 Feb 2017 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/post/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
-      <description>正所谓前人栽树，后人乘凉。
-感谢Huxpro提供的博客模板
-我的的博客
- 前言 从 Jekyll 到 GitHub Pages 中间踩了许多坑，终于把我的个人博客BY Blog搭建出来了。。。
-本教程针对的是不懂技术又想搭建个人博客的小白，操作简单暴力且快速。当然懂技术那就更好了。
-看看看博客的主页样式：
-
-在手机上的布局：
-
-废话不多说了，开始进入正文。
-快速开始 从注册一个Github账号开始 我采用的搭建博客的方式是使用 GitHub Pages + jekyll 的方式。
-要使用 GitHub Pages，首先你要注册一个GitHub账号，GitHub 是全球最大的同性交友网站(吐槽下程序员~)，你值得拥有。
-拉取我的博客模板 注册完成后搜索 qiubaiying.github.io 进入我的仓库
-点击右上角的 Fork 将我的仓库拉倒你的账号下
-稍等一下，点击刷新，你会看到Fork了成功的页面
-修改仓库名 点击settings进入设置
-修改仓库名为 你的Github账号名.github.io，然后 Rename
-这时你在在浏览器中输入 你的Github账号名.github.io 例如:baiyingqiu.github.io
-你将会看到如下界面
-说明已经成功一半了😀。。。当然，还需要修改博客的配置才能变成你的博客。
-若是出现
-则需要 检查一下你的仓库名是否正确
-整个网站结构 修改Blog前我们来看看Jekyll 网站的基础结构，当然我们的网站比这个复杂。
-├── _config.yml ├── _drafts | ├── begin-with-the-crazy-ideas.textile | └── on-simplicity-in-technology.markdown ├── _includes | ├── footer.</description>
+      <guid>https://liabio.github.io/posts/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description>正所谓前人栽树，后人乘凉。 感谢Huxpro提供的博客模板 我的的博客 前言 从 Jekyll 到 GitHub Pages 中间踩了许多坑，终于把我的个人博客BY Blog搭建出来了。。。 本教程针对的是不懂技术又想搭建个人博客的小白，操作简单暴力且快速。当然懂技术那就更好了。 看看看博客的主页样式： 在手机上的布局： 废话不多说了</description>
     </item>
     
   </channel>

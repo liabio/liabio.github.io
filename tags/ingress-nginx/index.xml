@@ -5,35 +5,19 @@
     <link>https://liabio.github.io/tags/ingress-nginx/</link>
     <description>Recent content in ingress-nginx on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 24 Sep 2019 10:48:21 +0800</lastBuildDate>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 24 Sep 2019 09:59:46 +0800</lastBuildDate>
     
 	<atom:link href="https://liabio.github.io/tags/ingress-nginx/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>k8s中负载均衡器【ingress-nginx】部署</title>
-      <link>https://liabio.github.io/post/2019-09-24-k8s-loadbalancer-ingress-nginx-deploy/</link>
-      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      <link>https://liabio.github.io/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/</link>
+      <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/post/2019-09-24-k8s-loadbalancer-ingress-nginx-deploy/</guid>
-      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注：
- 在Kubernetes中，服务和Pod的IP地址仅可以在集群网络内部使用，对于集群外的应用是不可见的。为了使外部的应用能够访问集群内的服务，在Kubernetes 目前 提供了以下几种方案：
- NodePort
- LoadBalancer
- Ingress
-  本节主要就ingress和ingress控制器ingress-nginx-controller的部署作简单介绍和记录。
-以下系统组件版本：
-云服务器：centos版本7.6.1810、k8s版本1.15.0、docker版本18.06.1-ce、ingress-nginx-controller版本0.25.0
-Ingress
-Ingress 组成？  将Nginx的配置抽象成一个Ingress对象，每添加一个新的服务只需写一个新的Ingress的yaml文件即可
- 将新加入的Ingress转化成Nginx的配置文件并使之生效
- ingress controller
- ingress服务
-  Ingress 工作原理?  ingress controller通过和kubernetes api交互，动态的去感知集群中ingress规则变化， 然后读取它，按照自定义的规则，规则就是写明了哪个域名对应哪个service，生成一段nginx配置， 再写到nginx-ingress-controller的pod里，这个Ingress controller的pod里运行着一个Nginx服务，控制器会把生成的nginx配置写入/etc/nginx.conf文件中， 然后reload一下使配置生效。以此达到域名分配置和动态更新的问题。  Ingress 可以解决什么问题？ 动态配置服务 如果按照传统方式, 当新增加一个服务时, 我们可能需要在流量入口加一个反向代理指向我们新的服务. 而如果用了Ingress, 只需要配置好这个服务, 当服务启动时, 会自动注册到Ingress的中, 不需要而外的操作.
-减少不必要的端口暴露 配置过k8s的都清楚, 第一步是要关闭防火墙的, 主要原因是k8s的很多服务会以NodePort方式映射出去, 这样就相当于给宿主机打了很多孔, 既不安全也不优雅. 而Ingress可以避免这个问题, 除了Ingress自身服务可能需要映射出去, 其他服务都不要用NodePort方式
-Ingress当前的实现方式？ ingress-nginx-controller 目前最新版本的ingress-nginx-controller，用lua实现了当upstream变化时不用reload，大大减少了生产环境中由于服务的重启、升级引起的IP变化导致的nginx reload。
-以下就ingress-nginx-controller的部署做简单记录：</description>
+      <guid>https://liabio.github.io/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/</guid>
+      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注： 在Kub</description>
     </item>
     
   </channel>

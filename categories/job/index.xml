@@ -5,40 +5,28 @@
     <link>https://liabio.github.io/categories/job/</link>
     <description>Recent content in job on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 24 Sep 2019 10:48:21 +0800</lastBuildDate>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 24 Sep 2019 09:59:46 +0800</lastBuildDate>
     
 	<atom:link href="https://liabio.github.io/categories/job/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>k8s使用Job执行任务失败了怎么办</title>
-      <link>https://liabio.github.io/post/2019-09-24-k8s-job-execute-fail-do-what/</link>
-      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      <link>https://liabio.github.io/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/</link>
+      <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/post/2019-09-24-k8s-job-execute-fail-do-what/</guid>
-      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注：
-Kubernetes 中使用 Job 和 CronJob 两个资源分别提供了一次性任务和定时任务的特性，这两种对象也使用控制器模型来实现资源的管理，我们在这篇文章来介绍Job执行如果失败了会怎么样呢？
-修改job-fail.yaml，故意引入一个错误： Never 如果将 restartPolicy 设置为 Never 会怎么样？下面我们实践一下，修改job-fail.yaml后重新启动。
-运行 Job 并查看状态，可以看到Never策略的job，pod失败后，重新创建： 直到重新创建7个（spec.backoffLimit默认为6，即重试6次，共7个pod）pod都失败后，认为失败，job的status里会更新为Failed 当前 Completion 的数量为 0 查看 Pod 的状态：
-可以看到有多个 Pod，状态均不正常。kubectl describe pod 查看某个 Pod 的启动日志：
-日志显示没有可执行程序，符合我们的预期。
-为什么 kubectl get pod 会看到这么多个失败的 Pod？
-原因是：当第一个 Pod 启动时，容器失败退出，根据 restartPolicy: Never，此失败容器不会被重启，但 Job DESIRED 的 Pod 是 1，目前 SUCCESSFUL 为 0，不满足，所以 Job controller 会启动新的 Pod，直到 SUCCESSFUL 为 1。对于我们这个例子，SUCCESSFUL 永远也到不了 1，所以 Job controller 会一直创建新的 Pod，直到设置的数量，失败后pod不会自动被删除，为了终止这个行为，只能删除 Job，pod也会被同时删掉。</description>
+      <guid>https://liabio.github.io/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/</guid>
+      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注： Kubernetes 中使用</description>
     </item>
     
     <item>
       <title>云服务器使用docker搭建服务</title>
-      <link>https://liabio.github.io/post/2019-09-24-socket-error-debug/</link>
-      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      <link>https://liabio.github.io/posts/2019-09-21-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/</link>
+      <pubDate>Sat, 21 Sep 2019 10:48:21 +0800</pubDate>
       
-      <guid>https://liabio.github.io/post/2019-09-24-socket-error-debug/</guid>
-      <description>前提：亚马逊云已经配置好启动。
-安全组入站策略如下：
-出站策略如下： 登陆EC2后，默认只能用ec2-user用户登陆，然后切换到root：
-sudo su  用yum执行安装docker提示No package docker avaible
-yum install docker -y  解决方法： 在/etc/yum.repos.d/下加CentOS7-Base-163.repo文件：
-vi CentOS7-Base-163.repo  # CentOS-Base.repo # # The mirror system uses the connecting IP address of the client and the # update status of each mirror to pick mirrors that are updated to and # geographically close to the client. You should use this for CentOS updates # unless you are manually picking other mirrors.</description>
+      <guid>https://liabio.github.io/posts/2019-09-21-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/</guid>
+      <description>前提：亚马逊云已经配置好启动。 安全组入站策略如下： 出站策略如下： 登陆EC2后，默认只能用ec2-user用户登陆，然后切换到root： sudo su 用yum执行安装docker提示No package docker avaible yum install docker -y 解决方法： 在/etc/yum.repos.d/下加CentOS7-Base-163.repo</description>
     </item>
     
   </channel>

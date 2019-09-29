@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>garbageCollector on 小碗汤的博客</title>
+    <link>https://liabio.github.io/tags/garbageCollector/</link>
+    <description>Recent content in garbageCollector on 小碗汤的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 24 Sep 2019 09:59:46 +0800</lastBuildDate>
+    
+	<atom:link href="https://liabio.github.io/tags/garbageCollector/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>kubernetes垃圾回收器GarbageCollector Controller源码分析（一）</title>
+      <link>https://liabio.github.io/posts/2019-09-24-kubernetes-gc-GarbageCollector-Controller-source-one/</link>
+      <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/posts/2019-09-24-kubernetes-gc-GarbageCollector-Controller-source-one/</guid>
+      <description>kubernetes版本：1.13.2 背景 由于operator创建的redis集群，在kubernetes apiserver重启后，redis集群被异常删除（包括redis exporter statefulset、redis statefulset）。删除后operator将其重建，重新组建集群，</description>
+    </item>
+    
+  </channel>
+</rss>

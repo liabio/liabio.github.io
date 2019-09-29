@@ -5,43 +5,43 @@
     <link>https://liabio.github.io/tags/</link>
     <description>Recent content in Tags on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 24 Sep 2019 10:48:21 +0800</lastBuildDate>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 27 Sep 2019 09:59:46 +0800</lastBuildDate>
     
 	<atom:link href="https://liabio.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>crd</title>
+      <link>https://liabio.github.io/tags/crd/</link>
+      <pubDate>Fri, 27 Sep 2019 09:59:46 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/tags/crd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>docker</title>
       <link>https://liabio.github.io/tags/docker/</link>
-      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      <pubDate>Fri, 27 Sep 2019 09:59:46 +0800</pubDate>
       
       <guid>https://liabio.github.io/tags/docker/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>git</title>
-      <link>https://liabio.github.io/tags/git/</link>
-      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      <title>etcd</title>
+      <link>https://liabio.github.io/tags/etcd/</link>
+      <pubDate>Fri, 27 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/git/</guid>
+      <guid>https://liabio.github.io/tags/etcd/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>ingress-nginx</title>
-      <link>https://liabio.github.io/tags/ingress-nginx/</link>
-      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
-      
-      <guid>https://liabio.github.io/tags/ingress-nginx/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Kubernetes</title>
+      <title>kubernetes</title>
       <link>https://liabio.github.io/tags/kubernetes/</link>
-      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      <pubDate>Fri, 27 Sep 2019 09:59:46 +0800</pubDate>
       
       <guid>https://liabio.github.io/tags/kubernetes/</guid>
       <description></description>
@@ -50,52 +50,79 @@
     <item>
       <title>容器</title>
       <link>https://liabio.github.io/tags/%E5%AE%B9%E5%99%A8/</link>
-      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      <pubDate>Fri, 27 Sep 2019 09:59:46 +0800</pubDate>
       
       <guid>https://liabio.github.io/tags/%E5%AE%B9%E5%99%A8/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>garbageCollector</title>
+      <link>https://liabio.github.io/tags/garbageCollector/</link>
+      <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/tags/garbageCollector/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://liabio.github.io/tags/git/</link>
+      <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ingress-nginx</title>
+      <link>https://liabio.github.io/tags/ingress-nginx/</link>
+      <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/tags/ingress-nginx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>job</title>
+      <link>https://liabio.github.io/tags/job/</link>
+      <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/tags/job/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>垃圾回收器</title>
+      <link>https://liabio.github.io/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/</link>
+      <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>工具</title>
       <link>https://liabio.github.io/tags/%E5%B7%A5%E5%85%B7/</link>
-      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
       <guid>https://liabio.github.io/tags/%E5%B7%A5%E5%85%B7/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Golang</title>
-      <link>https://liabio.github.io/tags/golang/</link>
-      <pubDate>Tue, 14 May 2019 23:44:21 +0800</pubDate>
-      
-      <guid>https://liabio.github.io/tags/golang/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Scheduler</title>
-      <link>https://liabio.github.io/tags/scheduler/</link>
-      <pubDate>Tue, 14 May 2019 23:44:21 +0800</pubDate>
-      
-      <guid>https://liabio.github.io/tags/scheduler/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Blog</title>
+      <title>blog</title>
       <link>https://liabio.github.io/tags/blog/</link>
-      <pubDate>Fri, 03 May 2019 10:48:21 +0800</pubDate>
+      <pubDate>Fri, 03 May 2019 09:59:46 +0800</pubDate>
       
       <guid>https://liabio.github.io/tags/blog/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Hugo</title>
+      <title>hugo</title>
       <link>https://liabio.github.io/tags/hugo/</link>
-      <pubDate>Fri, 03 May 2019 10:48:21 +0800</pubDate>
+      <pubDate>Fri, 03 May 2019 09:59:46 +0800</pubDate>
       
       <guid>https://liabio.github.io/tags/hugo/</guid>
       <description></description>

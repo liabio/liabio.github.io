@@ -1,149 +1,104 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Kubernetes on 小碗汤的博客</title>
+    <title>kubernetes on 小碗汤的博客</title>
     <link>https://liabio.github.io/tags/kubernetes/</link>
-    <description>Recent content in Kubernetes on 小碗汤的博客</description>
+    <description>Recent content in kubernetes on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 24 Sep 2019 10:48:21 +0800</lastBuildDate>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 27 Sep 2019 09:59:46 +0800</lastBuildDate>
     
 	<atom:link href="https://liabio.github.io/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>k8s中负载均衡器【ingress-nginx】部署</title>
-      <link>https://liabio.github.io/post/2019-09-24-k8s-loadbalancer-ingress-nginx-deploy/</link>
-      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      <title>etcd操作</title>
+      <link>https://liabio.github.io/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Fri, 27 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/post/2019-09-24-k8s-loadbalancer-ingress-nginx-deploy/</guid>
-      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注：
- 在Kubernetes中，服务和Pod的IP地址仅可以在集群网络内部使用，对于集群外的应用是不可见的。为了使外部的应用能够访问集群内的服务，在Kubernetes 目前 提供了以下几种方案：
- NodePort
- LoadBalancer
- Ingress
-  本节主要就ingress和ingress控制器ingress-nginx-controller的部署作简单介绍和记录。
-以下系统组件版本：
-云服务器：centos版本7.6.1810、k8s版本1.15.0、docker版本18.06.1-ce、ingress-nginx-controller版本0.25.0
-Ingress
-Ingress 组成？  将Nginx的配置抽象成一个Ingress对象，每添加一个新的服务只需写一个新的Ingress的yaml文件即可
- 将新加入的Ingress转化成Nginx的配置文件并使之生效
- ingress controller
- ingress服务
-  Ingress 工作原理?  ingress controller通过和kubernetes api交互，动态的去感知集群中ingress规则变化， 然后读取它，按照自定义的规则，规则就是写明了哪个域名对应哪个service，生成一段nginx配置， 再写到nginx-ingress-controller的pod里，这个Ingress controller的pod里运行着一个Nginx服务，控制器会把生成的nginx配置写入/etc/nginx.conf文件中， 然后reload一下使配置生效。以此达到域名分配置和动态更新的问题。  Ingress 可以解决什么问题？ 动态配置服务 如果按照传统方式, 当新增加一个服务时, 我们可能需要在流量入口加一个反向代理指向我们新的服务. 而如果用了Ingress, 只需要配置好这个服务, 当服务启动时, 会自动注册到Ingress的中, 不需要而外的操作.
-减少不必要的端口暴露 配置过k8s的都清楚, 第一步是要关闭防火墙的, 主要原因是k8s的很多服务会以NodePort方式映射出去, 这样就相当于给宿主机打了很多孔, 既不安全也不优雅. 而Ingress可以避免这个问题, 除了Ingress自身服务可能需要映射出去, 其他服务都不要用NodePort方式
-Ingress当前的实现方式？ ingress-nginx-controller 目前最新版本的ingress-nginx-controller，用lua实现了当upstream变化时不用reload，大大减少了生产环境中由于服务的重启、升级引起的IP变化导致的nginx reload。
-以下就ingress-nginx-controller的部署做简单记录：</description>
+      <guid>https://liabio.github.io/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/</guid>
+      <description>etcd操作 etcdctl安装 下载并解压二进制文件 curl -L https://github.com/coreos/etcd/releases/download/v3.3.2/etcd-v3.3.2-linux-amd64.tar.gz -o etcd-v3.3.2-linux-amd64.tar.gz tar zxf etcd-v3.3.2-linux-amd64.tar.gz 解压后是一些文档和两个二进制文件etcd和etcdctl。etcd是server端，etcdctl是客户端。 将解压后的etcd和etcdctl移动到$GOPATH/bin目录下，可以直接使用etcd和etcdctl</description>
+    </item>
+    
+    <item>
+      <title>kubernetes自定义资源对象高级功能</title>
+      <link>https://liabio.github.io/posts/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/</link>
+      <pubDate>Fri, 27 Sep 2019 09:59:46 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/posts/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/</guid>
+      <description>kubernetes自定义资源对象再极大程度提高了API Server的可扩展性，让企业能够根据业务需求通过CRD编写controller或者operator来实现生产中各种特殊场景。随着k8s的版本升级，CRD的功能也越来越完善，下面对其中几点进行说明。 以下验证kubernete</description>
+    </item>
+    
+    <item>
+      <title>k8s中负载均衡器【ingress-nginx】部署</title>
+      <link>https://liabio.github.io/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/</link>
+      <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/</guid>
+      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注： 在Kub</description>
     </item>
     
     <item>
       <title>k8s使用Job执行任务失败了怎么办</title>
-      <link>https://liabio.github.io/post/2019-09-24-k8s-job-execute-fail-do-what/</link>
-      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      <link>https://liabio.github.io/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/</link>
+      <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/post/2019-09-24-k8s-job-execute-fail-do-what/</guid>
-      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注：
-Kubernetes 中使用 Job 和 CronJob 两个资源分别提供了一次性任务和定时任务的特性，这两种对象也使用控制器模型来实现资源的管理，我们在这篇文章来介绍Job执行如果失败了会怎么样呢？
-修改job-fail.yaml，故意引入一个错误： Never 如果将 restartPolicy 设置为 Never 会怎么样？下面我们实践一下，修改job-fail.yaml后重新启动。
-运行 Job 并查看状态，可以看到Never策略的job，pod失败后，重新创建： 直到重新创建7个（spec.backoffLimit默认为6，即重试6次，共7个pod）pod都失败后，认为失败，job的status里会更新为Failed 当前 Completion 的数量为 0 查看 Pod 的状态：
-可以看到有多个 Pod，状态均不正常。kubectl describe pod 查看某个 Pod 的启动日志：
-日志显示没有可执行程序，符合我们的预期。
-为什么 kubectl get pod 会看到这么多个失败的 Pod？
-原因是：当第一个 Pod 启动时，容器失败退出，根据 restartPolicy: Never，此失败容器不会被重启，但 Job DESIRED 的 Pod 是 1，目前 SUCCESSFUL 为 0，不满足，所以 Job controller 会启动新的 Pod，直到 SUCCESSFUL 为 1。对于我们这个例子，SUCCESSFUL 永远也到不了 1，所以 Job controller 会一直创建新的 Pod，直到设置的数量，失败后pod不会自动被删除，为了终止这个行为，只能删除 Job，pod也会被同时删掉。</description>
+      <guid>https://liabio.github.io/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/</guid>
+      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注： Kubernetes 中使用</description>
+    </item>
+    
+    <item>
+      <title>kubernetes垃圾回收器GarbageCollector Controller源码分析（一）</title>
+      <link>https://liabio.github.io/posts/2019-09-24-kubernetes-gc-GarbageCollector-Controller-source-one/</link>
+      <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/posts/2019-09-24-kubernetes-gc-GarbageCollector-Controller-source-one/</guid>
+      <description>kubernetes版本：1.13.2 背景 由于operator创建的redis集群，在kubernetes apiserver重启后，redis集群被异常删除（包括redis exporter statefulset、redis statefulset）。删除后operator将其重建，重新组建集群，</description>
     </item>
     
     <item>
       <title>采坑指南——k8s域名解析coredns问题排查过程</title>
-      <link>https://liabio.github.io/post/2019-09-24-k8s-domain-resolve-coredns-problem-debug/</link>
-      <pubDate>Tue, 24 Sep 2019 10:48:21 +0800</pubDate>
+      <link>https://liabio.github.io/posts/2019-09-24-%E9%87%87%E5%9D%91%E6%8C%87%E5%8D%97-k8s%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90coredns%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/</link>
+      <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/post/2019-09-24-k8s-domain-resolve-coredns-problem-debug/</guid>
-      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注：
-正文 前几天，在ucloud上搭建的k8s集群（搭建教程后续会发出）。今天发现域名解析不了。
-组件版本：k8s 1.15.0，coredns：1.3.1
-过程是这样的： 首先用以下yaml文件创建了一个nginx服务
-apiVersion: v1 kind: Service metadata: name: nginx-svc-old labels: app: nginx-svc spec: selector: app: nginx ports: - protocol: TCP port: 80 targetPort: 80 --- apiVersion: apps/v1beta1 kind: Deployment metadata: name: nginx-old spec: replicas: 1 template: metadata: labels: app: nginx spec: containers: - name: nginx image: nginx ports: - containerPort: 80  创建好之后： 因只部署了一个master节点。在master宿主机上直接执行以下命令：
-nslookup nginx-svc-old.default.svc  发现不能解析域名。事先也在宿主机上/etc/resolv.conf里配置了nameserver {coredns的podIP} 这样一来，就以为可能是coredns有问题。。
-然后用以下yaml创建了一个busybox作为调试工具：</description>
+      <guid>https://liabio.github.io/posts/2019-09-24-%E9%87%87%E5%9D%91%E6%8C%87%E5%8D%97-k8s%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90coredns%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/</guid>
+      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注： 正文 前几</description>
     </item>
     
     <item>
       <title>手把手教你搭建kubernetes集群.md</title>
-      <link>https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/</link>
-      <pubDate>Tue, 14 May 2019 23:44:21 +0800</pubDate>
+      <link>https://liabio.github.io/posts/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/</link>
+      <pubDate>Tue, 14 May 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/</guid>
-      <description>cat &amp;gt; /etc/yum.repos.d/kubernetes.repo &amp;lt;&amp;lt; EOF [kubernetes] name=Kubernetes baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/ enabled=1 gpgcheck=0 repo_gpgcheck=1 gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg EOF  安装kubeadm、kubectl、kubelet
-yum install -y kubeadm kubelet kubectl  如果在云服务器上搭建时，IP-18.219.28.143是公网IP
-kubeadm init --kubernetes-version=v1.14.1 --pod-network-cidr=10.244.0.0/16 --service-cidr=10.96.0.0/12 --apiserver-advertise-address=18.219.28.143 --ignore-preflight-errors=Swap,NumCPU   init的时候可能会：  [kubelet-check] Initial timeout of 40s passed
-![](/img/2019-05-14-手把手教你搭建kubernetes集群\install_kubernetes_cluster2.png) 需要把/etc/kubernetes/manifests/etcd.yaml文件里的IP修改为127.0.0.1 ![](/img/2019-05-14-手把手教你搭建kubernetes集群\install_kubernetes_cluster3.png) yum list kubeadm --showduplicates |sort -r yum list kubectl --showduplicates |sort -r yum list kubelet --showduplicates |sort -r yum list kubernets-cni --showduplicates |sort -r  init之后记录join命令：</description>
+      <guid>https://liabio.github.io/posts/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/</guid>
+      <description>cat &amp;gt; /etc/yum.repos.d/kubernetes.repo &amp;lt;&amp;lt; EOF [kubernetes] name=Kubernetes baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/ enabled=1 gpgcheck=0 repo_gpgcheck=1 gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg EOF 安装kubeadm、kubectl、kubelet yum install -y kubeadm kubelet kubectl 如果在云服务器上搭建时，IP-18.219.28.143是公网IP kubeadm init --kubernetes-version=v1.14.1 --pod-network-cidr=10.244.0.0/16 --service-cidr=10.96.0.0/12 --apiserver-advertise-address=18.219.28.143 --ignore-preflight-errors=Swap,NumCPU init的时候可能会： [kubelet-check] Initial timeout of 40s passed ![](/img/2019-05-14-手把手教你搭建kubernetes集</description>
     </item>
     
     <item>
       <title>手把手教你搭建kubernetes集群1</title>
-      <link>https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/</link>
-      <pubDate>Tue, 14 May 2019 23:44:21 +0800</pubDate>
+      <link>https://liabio.github.io/posts/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/</link>
+      <pubDate>Tue, 14 May 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/post/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/</guid>
-      <description>部署 以CentOS7为基础，搭建一个Master主机和三个Node主机，各个Node主机的配置方式基本相同。
-OS: CentOS 7.5 x86_64 Container runtime: Docker 18.06.ce Kubernetes: 1.13 IP 地址 主机名 角色 192.168.50.71 master, master.kubernetes.io master 192.168.50.72 node01, node01.kubernetes.io node 192.168.50.73 node02, node02.kubernetes.io node 192.168.50.74 node03, node03.kubernetes.io node 这里需要使用常规的域名格式，因为后面需要为集群配置Kubernetes Dashboard要求有SSL数字签名。
-系统配置 配置host，
-cat /etc/hosts 192.168.50.71	master	master.kubernetes.io 192.168.50.72	node1	node01.kubernetes.io 192.168.50.73	node2	node02.kubernetes.io 192.168.50.74	node3	node03.kubernetes.io  关闭防火墙，选择iptable加入端口或禁用防火墙服务两种方式。这里简单起见，禁用防火墙：
-sudo systemctl stop firewalld sudo systemctl disable firewalld  禁用SELINUX(安全增强型 Linux Security-Enhanced Linux, SELinux 主要作用就是最大限度地减小系统中服务进程可访问的资源[最小权限原则])，
-sudo setenforce 0 sudo vi /etc/selinux/config SELINUX=disabled  所有节点关闭交换分区，</description>
+      <guid>https://liabio.github.io/posts/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/</guid>
+      <description>部署 以CentOS7为基础，搭建一个Master主机和三个Node主机，各个Node主机的配置方式基本相同。 OS: CentOS 7.5 x86_64 Container runtime: Docker 18.06.ce Kubernetes: 1.13 IP 地址 主机名 角色 192.168.50.71 master, master.kubernetes.io master 192.168.50.72 node01, node01.kubernetes.io node 192.168.50.73 node02, node02.kubernetes.io node 192.168.50.74 node03, node03.kubernetes.io node 这里需要使用常规的域名格式，因为后面需要为集群配置Kubernetes Dashboard要求有SSL数字</description>
     </item>
     
     <item>
       <title>搭建k8s环境时gcr.io和quay.io拉取镜像失败</title>
-      <link>https://liabio.github.io/post/2019-05-14-%E6%90%AD%E5%BB%BAk8s%E7%8E%AF%E5%A2%83%E6%97%B6gcr.io%E5%92%8Cquay.io%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E5%A4%B1%E8%B4%A5/</link>
-      <pubDate>Tue, 14 May 2019 23:44:21 +0800</pubDate>
+      <link>https://liabio.github.io/posts/2019-05-14-%E6%90%AD%E5%BB%BAk8s%E7%8E%AF%E5%A2%83%E6%97%B6gcr.io%E5%92%8Cquay.io%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E5%A4%B1%E8%B4%A5/</link>
+      <pubDate>Tue, 14 May 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/post/2019-05-14-%E6%90%AD%E5%BB%BAk8s%E7%8E%AF%E5%A2%83%E6%97%B6gcr.io%E5%92%8Cquay.io%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E5%A4%B1%E8%B4%A5/</guid>
-      <description>k8s在使用编排（manifest）工具进行yaml文件启动pod时，会遇到官方所给例子中spec.containers.image包含：
-quay.io/coreos/example_ gcr.io/google_containers/example_  也就是说，从quay.io和gcr.io进行镜像拉取，我们知道，国内访问外网是被屏蔽了的。可以将其替换为 quay-mirror.qiniu.com 和 registry.aliyuncs.com
-例如 下拉镜像：quay.io/coreos/flannel:v0.10.0-s390x 如果拉取较慢，可以改为：quay-mirror.qiniu.com/coreos/flannel:v0.10.0-s390x
-下拉镜像：gcr.io/google_containers/kube-proxy 可以改为： registry.aliyuncs.com/google_containers/kube-proxy</description>
-    </item>
-    
-    <item>
-      <title>博客test</title>
-      <link>https://liabio.github.io/post/2019-05-04-%E5%8D%9A%E5%AE%A2test/</link>
-      <pubDate>Thu, 02 May 2019 23:44:21 +0800</pubDate>
-      
-      <guid>https://liabio.github.io/post/2019-05-04-%E5%8D%9A%E5%AE%A2test/</guid>
-      <description>asssssssssssssss</description>
+      <guid>https://liabio.github.io/posts/2019-05-14-%E6%90%AD%E5%BB%BAk8s%E7%8E%AF%E5%A2%83%E6%97%B6gcr.io%E5%92%8Cquay.io%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E5%A4%B1%E8%B4%A5/</guid>
+      <description>k8s在使用编排（manifest）工具进行yaml文件启动pod时，会遇到官方所给例子中spec.containers.image包含： quay.io/coreos/example_ gcr.io/google_containers/example_ 也就是说，从quay.io和gcr.io进行镜像拉取，我们知道，国内访问外网是被屏蔽了的。可以将其替换为 quay-mirror.qiniu.com 和 registry.aliyuncs.com 例如 下拉镜像：quay.io</description>
     </item>
     
     <item>
       <title>kube-scheduler调度扩展</title>
-      <link>https://liabio.github.io/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/</link>
-      <pubDate>Thu, 02 May 2019 00:00:00 +0000</pubDate>
+      <link>https://liabio.github.io/posts/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/</link>
+      <pubDate>Wed, 01 May 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/post/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/</guid>
-      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注：
- 正文 Kubernetes 自带了一个默认调度器kube-scheduler，其内置了很多节点预选和优选的调度算法，一般调度场景下可以满足要求。但是在一些特殊场景下，默认调度器不能满足我们复杂的调度需求。我们就需要对调度器进行扩展，以达到调度适合业务场景的目的。
-背景 中间件redis容器化后，需要两主不能在同一个节点上，一对主从不能在同一节点上；elasticsearch容器化后，两个data实例不能在同一节点上。在这类场景下，默认调度器内置的预选、优选算法不能满足需求，我们有以下三种选择：
- 将新的调度算法添加到默认调度程序中，并重新编译镜像，最终该镜像运行的实例作为kubernetes集群调度器；
- 参考kube-scheduler实现满足自己业务场景的调度程序，并编译镜像，将该程序作为独立的调度器运行到kubernetes集群内，需要用该调度器调度的pod实例，在spec.schedulerName里指定该调度器；
-   实现“调度扩展程序“：默认调度器kube-scheduler在进行预选时会调用该扩展程序进行过滤节点；在优选时会调用该扩展程序进行给节点打分，或者在bind操作时，调用该扩展器进行bind操作。  对上述三种方式进行评估：
-第一种：将自己的调度算法添加到默认调度器kube-scheduler中，对原生代码侵入性较高，而且随着kubernetes版本升级，维护成本也较高；
-第二种：默认调度器里内置了很多优秀调度算法，如：检查节点资源是否充足；端口是否占用；volume是否被其他pod挂载；亲和性；均衡节点资源利用等，如果完全使用自己开发的调度器程序，可能在达到了实际场景调度需求同时，失去更佳的调度方案，除非集成默认调度器中的算法到自己独立调度程序中，但这无疑是不现实的；
-第三种：通过启动参数的policy配置，选用某些默认调度器中的预选、优选调度算法的同时，也可以调用外部扩展调度程序的算法，计算得到最优的调度节点，无需修改kube-scheduler代码，只需要在启动参数中增加配置文件即可将默认调度程序和扩展调度程序相互关联。
-可以参考：
-https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/scheduler_extender.md
-故采用第三种：实现扩展调度程序的方案。
-整体架构 kube-scheduler在调度pod实例时，首先获取到Node1、Node2、Node3三个节点信息，进行默认的预选阶段，筛选满足要求的节点，其次再调用扩展程序中的预选算法，选出剩下的节点，假设预选阶段Node3上资源不足被过滤掉，预选结束后只剩Node1和Node2；Node1和Node2进入kube-scheduler默认的优选阶段进行节点打分，其次再调用扩展调度程序中的优选算法进行打分，kube-scheduler会将所有算法的打分结果进行加权求和，获得分数最高的节点作为pod最终bind节点，然后kube-scheduler调用apiserver进行bind操作。
-实现步骤 实现扩展调度程序代码 编写扩展调度器程序代码，根据实际业务调度场景编写预选逻辑、优选逻辑：
-实现预选接口，入参为schedulerapi.ExtenderArgs，出参为schedulerapi.ExtenderFilterResult：
-实现优选接口，入参为schedulerapi.ExtenderArgs，出参为schedulerapi.HostPriorityList：
-暴露http接口：
-参考：
-https://github.com/ll837448792/k8s-scheduler-extender-example
-默认调度器部署 由于kubernetes集群内已经有了一个名为default-scheduler的默认调度器，为了不影响集群正常调度功能，下面会创建一个名为my-kube-scheduler的调度器，这个调度器和default-scheduler除了启动参数不一样外，镜像无差别。
-1、创建一个名为my-scheduler-config的configmaps，data下的config.yaml文件指定了调度器的一些参数，包括leader选举，调度算法策略的选择（指定另一个configmaps），以及指定调度器的名称为my-kube-scheduler。
-相应的创建一个my-scheduler-policy的configmaps，里面指定了选择哪些预选、优选策略，以及外部扩展调度程序的urlPrefix、扩展预选URI、扩展优选URI、扩展pod优先级抢占URI、扩展bind URI、扩展优选算法的权重等。
-以保证my-kube-scheduler和扩展调度程序的通信。
-apiVersion: v1 kind: ConfigMap metadata: name: my-scheduler-config namespace: kube-system data: config.yaml: | apiVersion: kubescheduler.config.k8s.io/v1alpha1 kind: KubeSchedulerConfiguration schedulerName: my-kube-scheduler algorithmSource: policy: configMap: namespace: kube-system name: my-scheduler-policy leaderElection: leaderElect: false lockObjectName: my-kube-scheduler lockObjectNamespace: kube-system --- apiVersion: v1 kind: ConfigMap metadata: name: my-scheduler-policy namespace: kube-system data: policy.</description>
+      <guid>https://liabio.github.io/posts/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/</guid>
+      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注： 正文 Kubernetes 自</description>
     </item>
     
   </channel>

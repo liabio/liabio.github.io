@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.58.3" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>采坑指南——k8s域名解析coredns问题排查过程 | 小碗汤的博客</title>
+    <meta property="og:title" content="采坑指南——k8s域名解析coredns问题排查过程 - 小碗汤的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content="2019-09-24T09:59:46&#43;08:00">
+        
+        
+    <meta property="article:modified_time" content="2019-09-24T09:59:46&#43;08:00">
+        
+    <meta name="Keywords" content="golang,go语言,go语言笔记,小碗汤,docker,kubernetes,k8s,java,博客,python,软件架构,公众号,小程序,Hugo,theme,maupassant">
+    <meta name="description" content="采坑指南——k8s域名解析coredns问题排查过程">
+        <meta name="author" content="liabio">
+        
+    <meta property="og:url" content="https://liabio.github.io/posts/2019-09-24-%E9%87%87%E5%9D%91%E6%8C%87%E5%8D%97-k8s%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90coredns%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+        <link rel="stylesheet" href="/css/prism.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liabio.github.io">
+                        小碗汤的博客
+                    </a>
+                
+                <p class="description">专注于Java、Go语言(Golang)、Docker、Kubernetes、软件架构</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://liabio.github.io">首页</a>
+                    
+                    <a  href="https://liabio.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liabio.github.io/tools/" title="工具">工具</a>
+                    
+                    <a  href="https://liabio.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+        
+        <div id="virtual_toc_list" style="display: none">
+            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#正文">正文</a>
+<ul>
+<li><a href="#过程是这样的">过程是这样的：</a>
+<ul>
+<li><a href="#issues1">issues1：</a></li>
+<li><a href="#issues2">issues2：</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#参考">参考</a></li>
+<li><a href="#历史文章">历史文章</a></li>
+</ul></li>
+</ul>
+</nav>
+        </div>
+        <div id="float_toc_div" style="margin: 10px;border: 1px solid gray;z-index:99999;display: none;">
+            <header style="background-color: #f3f3f3;color: black;border-bottom: 1px solid gray;padding: 10px 10px 10px 10px;">
+                <strong id="toc_btn_open" style="color: black;font-size: large;">目录</strong>
+                <strong id="toc_btn_close" style="color: black;font-size: large;float: right">╳</strong>
+            </header>
+            <div id="toc_list" style="background-color: #f3f3f3;color: black;padding: 10px;">
+        
+            </div>
+        </div>
+        <style type="text/css">
+            #float_toc_div {
+                position: fixed;
+                display: none;
+                 
+                height: auto;
+                font-size: 13px;
+            }
+        
+            #toc_list a:hover,
+            #toc_list a:active {
+                color: #ba3925;
+            }
+        </style>
+        <script>
+            window.onload = function () {
+                let tocNavElem = document.getElementById("TableOfContents");
+                let floatTocDivElem = document.getElementById("float_toc_div");
+                let tocListElem = floatTocDivElem.getElementsByTagName('div')[0];
+                let colGroupElem = document.getElementById("body").getElementsByClassName("col-group")[0]
+                let floatTocWidth = (document.body.clientWidth - colGroupElem.offsetWidth) / 2 - 16;
+                var useFloatToc = false;
+
+                if (floatTocWidth >= 100) {
+                    useFloatToc = true;
+                    document.getElementById("toc_list").appendChild(tocNavElem);
+                    floatTocDivElem.style.display = 'block';
+                    floatTocDivElem.style.width = floatTocWidth + 'px';
+                    top();
+                    floatTocDivElem.style.left = '0px';
+
+                    function top() {
+                        if (document.getElementsByClassName('container')[0].offsetWidth <= 720) {
+                            floatTocDivElem.style.top = '0px';
+                        } else {
+                            floatTocDivElem.style.top = window.innerHeight / 9 + 'px';
+                        }
+                    }
+
+                    function ishide() {
+                        if (document.getElementsByClassName('container')[0].offsetWidth <= 720) {
+                            floatTocDivElem.style.top = '0px';
+                        } else {
+                            floatTocDivElem.style.display = 'block';
+                        }
+                    }
+
+                    window.onscroll = function () {
+                        ishide();
+                        if ((document.documentElement.scrollTop != 0) && (floatTocDivElem.style.display == 'block')) {
+                            top();
+                        }
+                    };
+
+                    window.onresize = function () {
+                        ishide();
+                    }
+
+                    document.getElementById("toc_btn_open").addEventListener('click', function () {
+                        switch (tocListElem.style.display) {
+                            case "none":
+                                document.getElementById("toc_btn_close").style.display = "";
+                                tocListElem.style.display = "";
+                                floatTocDivElem.getElementsByTagName("header")[0].style.borderBottom = "1px solid gray";
+                                break;
+                            default:
+                                break;
+                        }
+                    }, false);
+
+                    document.getElementById("toc_btn_close").addEventListener('click', function () {
+                        switch (tocListElem.style.display) {
+                            case "":
+                                document.getElementById("toc_btn_close").style.display = "none";
+                                tocListElem.style.display = "none";
+                                floatTocDivElem.getElementsByTagName("header")[0].style.borderBottom = "";
+                                break;
+                            default:
+                                break;
+                        }
+                    }, false);
+                } else {
+                    let fixedTocElem = document.getElementsByClassName("toc-article")[0];
+                    fixedTocElem.appendChild(tocNavElem);
+                    fixedTocElem.parentElement.style.display = "";
+                }
+                document.getElementById("virtual_toc_list").remove();
+            };   
+        </script>
+        
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">采坑指南——k8s域名解析coredns问题排查过程</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            2019年9月24日
+                        </date>
+                        
+                        <div class="post-meta">
+                            <span>|</span>
+                            
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/docker">docker</a></span>
+                            
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/kubernetes">kubernetes</a></span>
+                            
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/k8s">k8s</a></span>
+                            
+                        </div>
+                        
+                        
+                        
+                        <div class="post-meta">
+                            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span> 阅读</span></span>
+                        </div>
+                        
+                        
+                        
+                        <div class="clear" style="display: none">
+                            <div class="toc-article">
+                                <div class="toc-title">文章目录</div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="post-content">
+                            
+
+<h2 id="前言">前言</h2>
+
+<p>本文首发于公众号【我的小碗汤】<strong>本公众号</strong>免费<strong>提供csdn下载服务，海量IT学习资源，</strong>如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。扫码关注：</p>
+
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLTYzZTRkMDc2OWM2MGUyODY" alt="image" /></p>
+
+<h2 id="正文">正文</h2>
+
+<p>前几天，在ucloud上搭建的k8s集群（搭建教程后续会发出）。今天发现域名解析不了。</p>
+
+<p><strong>组件版本：k8s 1.15.0，coredns：1.3.1</strong></p>
+
+<h3 id="过程是这样的">过程是这样的：</h3>
+
+<p>首先用以下yaml文件创建了一个nginx服务</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-svc-old
+  labels:
+    app: nginx-svc
+spec:
+  selector:
+    app: nginx
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: nginx-old
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+</code></pre>
+
+<p>创建好之后：
+<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLTRjYTk3NjgyODBhMTBhMDEucG5n" alt="image.png" />
+因只部署了一个master节点。在master宿主机上直接执行以下命令：</p>
+
+<pre><code class="language-yaml">nslookup nginx-svc-old.default.svc
+</code></pre>
+
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLWQ0YmNmMWU3NGNlMmEwZjcucG5n" alt="image.png" />
+发现不能解析域名。事先也在宿主机上/etc/resolv.conf里配置了nameserver {coredns的podIP}
+<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLWRhMTVjYmRjNmZhYTU1ZjEucG5n" alt="image.png" />
+这样一来，就以为可能是coredns有问题。。</p>
+
+<p>然后用以下yaml创建了一个busybox作为调试工具：</p>
+
+<pre><code class="language-yaml">apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: busybox-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: busybox
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: busybox
+        command:
+        - sleep
+        - &quot;3600&quot;
+        image: busybox
+</code></pre>
+
+<p>这里用的是截止2019/07/20，busybox的最新镜像。创建好之后，exec进入容器，执行测试命令
+<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLTRmMTE2MDk5ZGI2NWViYmQucG5n" alt="image.png" />
+发现解析不了:</p>
+
+<pre><code class="language-shell">/ # nslookup nginx-svc-old.default.svc
+Server:    10.96.0.10
+Address:  10.96.0.10:53
+
+** server can't find nginx-svc-old.default.svc: NXDOMAIN
+
+*** Can't find nginx-svc-old.default.svc: No answer
+</code></pre>
+
+<p>根据coredns解析集群内域名原理可知：</p>
+
+<p>服务 a 访问服务 b，对于同一个 Namespace下，可以直接在 pod 中，通过 curl b 来访问。对于跨 Namespace 的情况，服务名后边对应 Namespace即可，比如 curl b.default。DNS 如何解析，依赖容器内 resolv 文件的配置。</p>
+
+<p>查看busybox容器内的resolve.conf文件：</p>
+
+<pre><code class="language-shell">
+[root@liabio nginx]# kubectl exec -ti busybox-deployment-59755c8c6d-rmrfq sh
+/ # nslookup nginx-svc-old.default.svc
+Server:    10.96.0.10
+Address:  10.96.0.10:53
+
+** server can't find nginx-svc-old.default.svc: NXDOMAIN
+
+*** Can't find nginx-svc-old.default.svc: No answer
+
+/ # cat /etc/resolv.conf 
+nameserver 10.96.0.10
+search default.svc.cluster.local svc.cluster.local cluster.local
+options ndots:5
+/ #
+</code></pre>
+
+<p>这个文件中，配置的 DNS Server，一般就是 K8S 中，kubedns 的 Service 的 ClusterIP，这个IP是虚拟IP，无法ping，但可以访问。
+<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLTEyYWViMjg3MTA2ZmMxMWMucG5n" alt="image.png" />
+在容器内发请求时，会根据 /etc/resolv.conf 进行解析流程。选择 nameserver 10.96.0.10 进行解析，然后用nginx-svc-old ，依次带入 /etc/resolve.conf 中的 search 域，进行DNS查找，分别是：</p>
+
+<p>search 内容类似如下（不同的pod，第一个域会有所不同）</p>
+
+<pre><code class="language-shell">search default.svc.cluster.local svc.cluster.local cluster.local
+</code></pre>
+
+<pre><code class="language-shell">nginx-svc-old.default.svc.cluster.local -&gt; nginx-svc-old.svc.cluster.local -&gt; nginx-svc-old.cluster.local 
+</code></pre>
+
+<p>直到找到为止。所以，我们执行 ping nginx-svc-old，或者执行 ping nginx-svc-old.default，都可以完成DNS请求，这2个不同的操作，会分别进行不同的DNS查找步骤。</p>
+
+<p>根据以上原理，查看到busybox内的域名/etc/resolv.conf没有问题，nameserver指向正确的kube-dns的service clusterIP。</p>
+
+<p>这下更加怀疑core-dns有问题了。</p>
+
+<p>但查看coredns日志，可以看到并没有报错：
+<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLWM1MTVmYThlMjYzNWMxOTMucG5n" alt="image.png" />
+那就说明不是coredns问题了。。</p>
+
+<p>把busybox里报的错误，进行搜索google</p>
+
+<pre><code class="language-shell">*** Can't find nginx-svc-old.default.svc: No answer
+</code></pre>
+
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLWY3ZTE4MDBmYmMxYjA0ZmUucG5n" alt="image.png" /></p>
+
+<p>查到了以下两个issue：</p>
+
+<h4 id="issues1">issues1：</h4>
+
+<p><a href="https://github.com/kubernetes/kubernetes/issues/66924">https://github.com/kubernetes/kubernetes/issues/66924</a>
+<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLTVlMzJhZDVhZmY2ZmM2NjMucG5n" alt="image.png" /></p>
+
+<h4 id="issues2">issues2：</h4>
+
+<p><a href="https://github.com/easzlab/kubeasz/issues/260">https://github.com/easzlab/kubeasz/issues/260</a>
+<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLWU4Yzk5NTQzNTA1ZjVkMDQucG5n" alt="image.png" />
+发现都说是busybox镜像的问题，从1.28.4以后的镜像都存在这问题。把镜像换成1.28.4试试？修改yaml版本号：</p>
+
+<pre><code class="language-yaml">apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: busybox-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: busybox
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: busybox
+        command:
+        - sleep
+        - &quot;3600&quot;
+        image: busybox:1.28.4
+</code></pre>
+
+<p>重新apply后，进入容器：
+<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLTc3MmZiODRmNjMxYmQxNzUucG5n" alt="image.png" /></p>
+
+<p>确实可以成功解析域名了。</p>
+
+<p>那为什么宿主机上直接执行测试命令，域名不能解析呢？
+<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLWY4Y2UxZGQ3ODk0YmMwNGQucG5n" alt="image.png" /></p>
+
+<p>继续google，知道resolver域名解析器：</p>
+
+<p>nameserver关键字，如果没指定nameserver就找不到DNS服务器，其它关键字是可选的。nameserver表示解析域名时使用该地址指定的主机为域名服务器。其中域名服务器是按照文件中出现的顺序来查询的，且只有当第一个nameserver没有反应时才查询下面的nameserver，一般不要指定超过3个服务器。
+而我在宿主上/etc/resolv.conf中nameserver如下：
+<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLWEzNmFiNDBjNTA4YzY1YjAucG5n" alt="image.png" />
+且前三个域名解析服务器后可以通。</p>
+
+<p>现在试着把coredns的其中一个podIP：192.168.155.73放到第一个nameserver：
+<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLTVmZTU3ODNmNTQ0ZDQzN2UucG5n" alt="image.png" />
+可以看到现在可以解析了。</p>
+
+<p>其实最好把kube-dns service的clusterIP放到/etc/resolv.conf中，这样pod重启后也可以解析。
+<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLTZiYjU0NDkzNTM1Mjc3YzMucG5n" alt="image.png" /></p>
+
+<h2 id="参考">参考</h2>
+
+<p>Linux中/etc/resolv.conf文件简析
+<a href="https://blog.csdn.net/lcr_happy/article/details/54867510">https://blog.csdn.net/lcr_happy/article/details/54867510</a></p>
+
+<p>CoreDNS系列1：Kubernetes内部域名解析原理、弊端及优化方式</p>
+
+<p><a href="https://hansedong.github.io/2018/11/20/9/">https://hansedong.github.io/2018/11/20/9/</a></p>
+
+<h2 id="历史文章">历史文章</h2>
+
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5MzU5NDYwNA==&amp;mid=2247485274&amp;idx=1&amp;sn=41942eb118d7c60ac6883fae29420230&amp;chksm=a695ead991e263cf85487254cd598637116f591f05ec41ab73a5b17746c70f471b5d5969906e&amp;scene=21#wechat_redirect">k8s中负载均衡器【ingress-nginx】部署</a></p>
+
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5MzU5NDYwNA==&amp;mid=2247485298&amp;idx=1&amp;sn=5fb1e07f6248cf0248c3ec8c6d3ef571&amp;chksm=a695eaf191e263e7bb2722a66b52265d448234cf62b121dfe131af7344bb098450d438365e6f&amp;scene=21#wechat_redirect">k8s使用Job执行任务失败怎么办</a></p>
+
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5MzU5NDYwNA==&amp;mid=2247485247&amp;idx=1&amp;sn=b483cead6ddaa7d20cd640b71eb424b8&amp;chksm=a695eabc91e263aa9c3eda029dc92fa78817f42c7467edce52b86f4f87c283d8592528e73a8d&amp;scene=21#wechat_redirect">从外部访问Kubernetes中的Pod</a></p>
+
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5MzU5NDYwNA==&amp;mid=2247485253&amp;idx=1&amp;sn=e0633227a59b1edb7f51adad5fed078b&amp;chksm=a695eac691e263d07d7d730de54762d28fdb706c59278a90e08e2257784339644b59b4964698&amp;scene=21#wechat_redirect">k8s负载均衡器配置请求重定向</a></p>
+
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5MzU5NDYwNA==&amp;mid=2247485239&amp;idx=1&amp;sn=5ee60c3eb22e70f91ed9d27b727140b8&amp;chksm=a695eab491e263a231978cbfcc44b038d17ff6ebde2dc7b4dd4970a4a3e5b58b2f8964b4415e&amp;scene=21#wechat_redirect">教你轻松获取k8s镜像和安装包</a></p>
+
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5MzU5NDYwNA==&amp;mid=2247485209&amp;idx=1&amp;sn=f971334625bfc9302204d07f2135ca86&amp;chksm=a695ea9a91e2638c24ada9ff8586645f30f5ef133d0f2b0cf7cfd0577ac822baf6234d2042f3&amp;scene=21#wechat_redirect">k8s必学必会知识梳理</a></p>
+
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5MzU5NDYwNA==&amp;mid=2247485187&amp;idx=1&amp;sn=5c2e6c350695f3efa94a78075985672b&amp;chksm=a695ea8091e26396277a79189d0ec3e70e3a868c004d775f286ad0d43dfda571403dbf761e0d&amp;scene=21#wechat_redirect">docker基础知识整理</a></p>
+
+<hr />
+
+<hr />
+
+<p><strong>本公众号</strong>免费<strong>提供csdn下载服务，海量IT学习资源，</strong>如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端 等资源。同时我们组建了一个技术交流群，里面有很多大佬，会不定时分享技术文章，如果你想来一起学习提高，可以公众号后台回复【<strong>2</strong>】，免费邀请加技术交流群互相学习提高，会不定期分享编程IT相关资源。</p>
+
+<hr />
+
+<p>扫码关注，精彩内容第一时间推给你</p>
+
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy85MTM0NzYzLTYzZTRkMDc2OWM2MGUyODY" alt="image" /></p>
+
+                        </div>
+
+                        
+                        
+
+<div style="padding: 10px 0; margin: 20px auto; width: 100%; font-size:16px; text-align: center;">
+  <button id="rewardButton" disable="enable" onclick="let qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+  <span>打赏</span></button>
+  <div id="QR" style="display: none;">
+    
+    <div style="display: inline-block">
+      <a class="fancybox" rel="group"><img src="/img/wechat-zhifubao-QR.png"></a>
+    </div>
+  </div>
+</div>
+
+                        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://liabio.github.io">小碗汤</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://liabio.github.io/posts/2019-09-24-%E9%87%87%E5%9D%91%E6%8C%87%E5%8D%97-k8s%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90coredns%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/">https://liabio.github.io/posts/2019-09-24-%E9%87%87%E5%9D%91%E6%8C%87%E5%8D%97-k8s%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90coredns%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+                        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/">docker镜像制作必备技能</a></li>
+        
+        <li><a href="/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/">k8s使用Job执行任务失败了怎么办</a></li>
+        
+        <li><a href="/posts/2019-09-24-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/">史上最全docker基础知识汇总</a></li>
+        
+        <li><a href="/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/">k8s中负载均衡器【ingress-nginx】部署</a></li>
+        
+        <li><a href="/posts/2019-09-24-kubernetes-gc-GarbageCollector-Controller-source-one/">kubernetes垃圾回收器GarbageCollector Controller源码分析（一）</a></li>
+        
+    </ul>
+</div>
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            <ul class="clearfix">
+                                
+                                <li><a href="https://liabio.github.io/tags/docker">docker</a></li>
+                                
+                                <li><a href="https://liabio.github.io/tags/%E5%AE%B9%E5%99%A8">容器</a></li>
+                                
+                                <li><a href="https://liabio.github.io/tags/kubernetes">kubernetes</a></li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </article>
+                    
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-liabio-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liabio/utteranc_comment"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liabio.github.io">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/" title="etcd操作">etcd操作</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/" title="kubernetes自定义资源对象高级功能">kubernetes自定义资源对象高级功能</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/" title="docker镜像制作必备技能">docker镜像制作必备技能</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" title="git常用操作">git常用操作</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/" title="k8s中负载均衡器【ingress-nginx】部署">k8s中负载均衡器【ingress-nginx】部署</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/" title="k8s使用Job执行任务失败了怎么办">k8s使用Job执行任务失败了怎么办</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-kubernetes-gc-GarbageCollector-Controller-source-one/" title="kubernetes垃圾回收器GarbageCollector Controller源码分析（一）">kubernetes垃圾回收器GarbageCollector Controller源码分析（一）</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/" title="一次socket.error: [Errno 99] Cannot assign requested address报错排查">一次socket.error: [Errno 99] Cannot assign requested address报错排查</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/" title="云服务器使用docker搭建服务">云服务器使用docker搭建服务</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/" title="史上最全docker基础知识汇总">史上最全docker基础知识汇总</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liabio.github.io/categories/blog/">blog(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/debug/">debug(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/docker/">docker(6)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/etcd/">etcd(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/git/">git(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/ingress-nginx/">ingress-nginx(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/job/">job(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/k8s/">k8s(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(8)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/%E5%B7%A5%E5%85%B7/">工具(1)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://liabio.github.io/tags/blog/">blog</a>
+    
+    <a href="https://liabio.github.io/tags/crd/">crd</a>
+    
+    <a href="https://liabio.github.io/tags/docker/">docker</a>
+    
+    <a href="https://liabio.github.io/tags/etcd/">etcd</a>
+    
+    <a href="https://liabio.github.io/tags/garbageCollector/">garbageCollector</a>
+    
+    <a href="https://liabio.github.io/tags/git/">git</a>
+    
+    <a href="https://liabio.github.io/tags/hugo/">hugo</a>
+    
+    <a href="https://liabio.github.io/tags/ingress-nginx/">ingress-nginx</a>
+    
+    <a href="https://liabio.github.io/tags/job/">job</a>
+    
+    <a href="https://liabio.github.io/tags/kubernetes/">kubernetes</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/">垃圾回收器</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%AE%B9%E5%99%A8/">容器</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liabio.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2019 <a href="https://liabio.github.io">小碗汤的博客 By 小碗汤</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.2.8/raphael.min.js" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/flowchart/1.12.2/flowchart.min.js" crossorigin="anonymous"></script>
+        <script>(function () {
+                if (!window.flowchart) return;
+                const blocks = document.querySelectorAll('pre code.language-flowchart, pre code.language-flow');
+                for (let i = 0; i < blocks.length; i++) {
+                    const block = blocks[i];
+                    const rootElement = block.parentNode;
+                    const container = document.createElement('div');
+                    const id = `js-flowchart-diagrams-${i}`;
+                    container.id = id;
+                    container.className = 'align-center';
+                    container.setAttribute("style", "overFlow-x:auto");
+                    rootElement.parentNode.replaceChild(container, rootElement);
+                    const diagram = flowchart.parse(block.childNodes[0].nodeValue);
+                    diagram.drawSVG(id, window.flowchartDiagramsOptions ? window.flowchartDiagramsOptions : {});
+                }
+            })();
+        </script>
+    <script type="text/javascript">
+        
+        (function () {
+            $("pre code").parent().addClass("line-numbers")
+        }());
+
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script type="text/javascript" src="/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-139517579-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+</body>
+</html>
