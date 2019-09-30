@@ -607,8 +607,9 @@ textarea.textarea {
     padding: 5px; 
 }
 #footer {
-    padding:.8em 0 3.6em;
-    line-height:1.5;
+    background: #c0dff7;
+    padding: 1px 0 1px;
+    line-height: 1.5;
     color:#999;
 }
 .error-page {
@@ -814,7 +815,7 @@ img.alignright {
         padding:15px 0 0;
     }
     #footer {
-        padding-top:10px;
+        padding-top:100px;
     }
     .page-navigator a {
         padding:0 6px;

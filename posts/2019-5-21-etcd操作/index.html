@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="zh-cn">
 <head>
-
     <meta charset="utf-8">
     <meta name="generator" content="Hugo 0.58.3" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,11 +15,12 @@
         
     <meta property="article:modified_time" content="2019-09-27T09:59:46&#43;08:00">
         
+
     <meta name="Keywords" content="golang,go语言,go语言笔记,小碗汤,docker,kubernetes,k8s,java,博客,python,软件架构,公众号,小程序,Hugo,theme,maupassant">
     <meta name="description" content="etcd操作">
         <meta name="author" content="liabio">
         
-    <meta property="og:url" content="https://liabio.github.io/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/">
+    <meta property="og:url" content="http://localhost:1313/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="/css/normalize.css">
@@ -42,22 +42,22 @@
     <div class="container">
         <div class="col-group">
             <div class="site-name ">
-                
-                    <a id="logo" href="https://liabio.github.io">
-                        小碗汤的博客
-                    </a>
-                
+                    <h1>
+                        <a id="logo" href="http://localhost:1313/">
+                            小碗汤的博客
+                        </a>
+                    </h1>
                 <p class="description">专注于Java、Go语言(Golang)、Docker、Kubernetes、软件架构</p>
             </div>
             <div>
                 <nav id="nav-menu" class="clearfix">
-                    <a class="" href="https://liabio.github.io">首页</a>
+                    <a class="" href="http://localhost:1313/">首页</a>
                     
-                    <a  href="https://liabio.github.io/archives/" title="归档">归档</a>
+                    <a  href="http://localhost:1313/archives/" title="归档">归档</a>
                     
-                    <a  href="https://liabio.github.io/tools/" title="工具">工具</a>
+                    <a  href="http://localhost:1313/tools/" title="工具">工具</a>
                     
-                    <a  href="https://liabio.github.io/about/" title="关于">关于</a>
+                    <a  href="http://localhost:1313/about/" title="关于">关于</a>
                     
                 </nav>
             </div>
@@ -71,7 +71,7 @@
         <div id="virtual_toc_list" style="display: none">
             <nav id="TableOfContents">
 <ul>
-<li><a href="#etcd操作">etcd操作</a>
+<li>
 <ul>
 <li><a href="#使用etcdctl访问kubernetes数据">使用etcdctl访问kubernetes数据</a></li>
 </ul></li>
@@ -193,7 +193,7 @@
                         <div class="post-meta">
                             <span>|</span>
                             
-                                <span class="meta-category"><a href="https://liabio.github.io/categories/etcd">etcd</a></span>
+                                <span class="meta-category"><a href="http://localhost:1313/categories/etcd">etcd</a></span>
                             
                         </div>
                         
@@ -214,8 +214,6 @@
                         
                         <div class="post-content">
                             
-
-<h1 id="etcd操作">etcd操作</h1>
 
 <p>etcdctl安装
 下载并解压二进制文件</p>
@@ -794,36 +792,44 @@ calico使用的是v2版本的api。</p>
 
 <p>获取etcd member列表：</p>
 
-<p>etcdctl &ndash;endpoints=<a href="https://10.142.233.80:2379">https://10.142.233.80:2379</a> &ndash;ca-file=/etc/ssl/etcd/ssl/ca.pem &ndash;cert-file=/etc/ssl/etcd/ssl/node-10.142.233.80.pem &ndash;key-file=/etc/ssl/etcd/ssl/node-10.142.233.80-key.pem member list</p>
+<pre><code class="language-shell">etcdctl --endpoints=https://10.142.233.80:2379 --ca-file=/etc/ssl/etcd/ssl/ca.pem --cert-file=/etc/ssl/etcd/ssl/node-10.142.233.80.pem --key-file=/etc/ssl/etcd/ssl/node-10.142.233.80-key.pem member list
+</code></pre>
 
 <p>查看 /calico节点</p>
 
-<p>ETCDCTL_API=2 etcdctl &ndash;endpoints=<a href="https://10.142.233.80:2379">https://10.142.233.80:2379</a> &ndash;ca-file=/etc/ssl/etcd/ssl/ca.pem &ndash;cert-file=/etc/ssl/etcd/ssl/node-10.142.233.80.pem &ndash;key-file=/etc/ssl/etcd/ssl/node-10.142.233.80-key.pem ls /calico</p>
+<pre><code class="language-shell">ETCDCTL_API=2 etcdctl --endpoints=https://10.142.233.80:2379 --ca-file=/etc/ssl/etcd/ssl/ca.pem --cert-file=/etc/ssl/etcd/ssl/node-10.142.233.80.pem --key-file=/etc/ssl/etcd/ssl/node-10.142.233.80-key.pem ls /calico 
+</code></pre>
 
 <p>v3版本
 k8s会使用etcd v3版本的API记录数据。而默认etcdctl是使用v2版本的API，查看不到v3的数据。设置环境变量ETCDCTL_API=3后就OK了：</p>
 
-<p>export ETCDCTL_API=3       #或者在etcdctl前面加上这个</p>
+<pre><code class="language-shell">export ETCDCTL_API=3       #或者在etcdctl前面加上这个
+</code></pre>
 
 <p>获取etcd member列表：</p>
 
-<p>etcdctl &ndash;endpoints=<a href="https://10.142.233.80:2379">https://10.142.233.80:2379</a> &ndash;cacert=/etc/ssl/etcd/ssl/ca.pem &ndash;cert=/etc/ssl/etcd/ssl/node-10.142.233.80.pem &ndash;key=/etc/ssl/etcd/ssl/node-10.142.233.80-key.pem member list</p>
+<pre><code class="language-shell">etcdctl --endpoints=https://10.142.233.80:2379 --cacert=/etc/ssl/etcd/ssl/ca.pem --cert=/etc/ssl/etcd/ssl/node-10.142.233.80.pem --key=/etc/ssl/etcd/ssl/node-10.142.233.80-key.pem member list
+</code></pre>
 
 <p>获取所有key：</p>
 
 <p>etcdctl &ndash;endpoints=<a href="https://10.142.233.80:2379">https://10.142.233.80:2379</a> &ndash;cacert=/etc/ssl/etcd/ssl/ca.pem &ndash;cert=/etc/ssl/etcd/ssl/node-10.142.233.80.pem &ndash;key=/etc/ssl/etcd/ssl/node-10.142.233.80-key.pem get &ldquo;&rdquo; &ndash;prefix=true</p>
 
-<p>获取前缀是/registry/pods/kube-system/prometheus的key：</p>
+<pre><code>
+获取前缀是/registry/pods/kube-system/prometheus的key：
 
-<p>etcdctl &ndash;endpoints=<a href="https://10.142.233.80:2379">https://10.142.233.80:2379</a> &ndash;cacert=/etc/ssl/etcd/ssl/ca.pem &ndash;cert=/etc/ssl/etcd/ssl/node-10.142.233.80.pem &ndash;key=/etc/ssl/etcd/ssl/node-10.142.233.80-key.pem get /registry/pods/kube-system/prometheus &ndash;prefix=true</p>
+etcdctl --endpoints=https://10.142.233.80:2379 --cacert=/etc/ssl/etcd/ssl/ca.pem --cert=/etc/ssl/etcd/ssl/node-10.142.233.80.pem --key=/etc/ssl/etcd/ssl/node-10.142.233.80-key.pem get /registry/pods/kube-system/prometheus --prefix=true
+</code></pre>
 
 <p>获取具体key:</p>
 
-<p>etcdctl &ndash;endpoints=<a href="https://10.142.233.80:2379">https://10.142.233.80:2379</a> &ndash;cacert=/etc/ssl/etcd/ssl/ca.pem &ndash;cert=/etc/ssl/etcd/ssl/node-10.142.233.80.pem &ndash;key=/etc/ssl/etcd/ssl/node-10.142.233.80-key.pem get /registry/pods/kube-system/prometheus-c78dbd66d-hkfcf （&ndash;prefix=true）</p>
+<pre><code class="language-shell">etcdctl --endpoints=https://10.142.233.80:2379 --cacert=/etc/ssl/etcd/ssl/ca.pem --cert=/etc/ssl/etcd/ssl/node-10.142.233.80.pem --key=/etc/ssl/etcd/ssl/node-10.142.233.80-key.pem get /registry/pods/kube-system/prometheus-c78dbd66d-hkfcf （--prefix=true）
+</code></pre>
 
 <p>删除具体key:</p>
 
-<p>etcdctl &ndash;endpoints=<a href="https://10.142.233.80:2379">https://10.142.233.80:2379</a> &ndash;cacert=/etc/ssl/etcd/ssl/ca.pem &ndash;cert=/etc/ssl/etcd/ssl/node-10.142.233.80.pem &ndash;key=/etc/ssl/etcd/ssl/node-10.142.233.80-key.pem del /registry/pods/kube-system/prometheus-c78dbd66d-hkfcf</p>
+<pre><code class="language-shell">etcdctl --endpoints=https://10.142.233.80:2379 --cacert=/etc/ssl/etcd/ssl/ca.pem --cert=/etc/ssl/etcd/ssl/node-10.142.233.80.pem --key=/etc/ssl/etcd/ssl/node-10.142.233.80-key.pem del /registry/pods/kube-system/prometheus-c78dbd66d-hkfcf
+</code></pre>
 
                         </div>
 
@@ -844,8 +850,8 @@ k8s会使用etcd v3版本的API记录数据。而默认etcdctl是使用v2版本�
                         
 <div class="post-archive">
     <ul class="post-copyright">
-        <li><strong>原文作者：</strong><a rel="author" href="https://liabio.github.io">小碗汤</a></li>
-        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://liabio.github.io/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/">https://liabio.github.io/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/</a></li>
+        <li><strong>原文作者：</strong><a rel="author" href="http://localhost:1313/">小碗汤</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="http://localhost:1313/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/">http://localhost:1313/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/</a></li>
         <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
     </ul>
 </div>
@@ -877,51 +883,22 @@ k8s会使用etcd v3版本的API记录数据。而默认etcdctl是使用v2版本�
                             
                             <ul class="clearfix">
                                 
-                                <li><a href="https://liabio.github.io/tags/docker">docker</a></li>
+                                <li><a href="http://localhost:1313/tags/docker">docker</a></li>
                                 
-                                <li><a href="https://liabio.github.io/tags/%E5%AE%B9%E5%99%A8">容器</a></li>
+                                <li><a href="http://localhost:1313/tags/%E5%AE%B9%E5%99%A8">容器</a></li>
                                 
-                                <li><a href="https://liabio.github.io/tags/etcd">etcd</a></li>
+                                <li><a href="http://localhost:1313/tags/etcd">etcd</a></li>
                                 
-                                <li><a href="https://liabio.github.io/tags/kubernetes">kubernetes</a></li>
+                                <li><a href="http://localhost:1313/tags/kubernetes">kubernetes</a></li>
                                 
                             </ul>
                             
                         </div>
                     </article>
                     
-    <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
     
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "https-liabio-github-io" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
     
-    
-    <div class="post bg-white">
-      <script src="https://utteranc.es/client.js"
-            repo= "liabio/utteranc_comment"
-            issue-term="pathname"
-            theme="github-light"
-            crossorigin="anonymous"
-            async>
-      </script>
-    </div>
     
                 </div>
             </div>
@@ -930,7 +907,7 @@ k8s会使用etcd v3版本的API记录数据。而默认etcdctl是使用v2版本�
         <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
       
       <input type="text" name="q" maxlength="20" placeholder="Search">
-      <input type="hidden" name="sitesearch" value="https://liabio.github.io">
+      <input type="hidden" name="sitesearch" value="http://localhost:1313/">
       <button type="submit" class="submit icon-search"></button>
 </form>
     </section>
@@ -940,92 +917,123 @@ k8s会使用etcd v3版本的API记录数据。而默认etcdctl是使用v2版本�
 <ul class="widget-list">
     
     <li>
-        <a href="https://liabio.github.io/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/" title="etcd操作">etcd操作</a>
+        <a href="http://localhost:1313/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/" title="etcd操作">etcd操作</a>
     </li>
     
     <li>
-        <a href="https://liabio.github.io/posts/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/" title="kubernetes自定义资源对象高级功能">kubernetes自定义资源对象高级功能</a>
+        <a href="http://localhost:1313/posts/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/" title="kubernetes自定义资源对象高级功能">kubernetes自定义资源对象高级功能</a>
     </li>
     
     <li>
-        <a href="https://liabio.github.io/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/" title="docker镜像制作必备技能">docker镜像制作必备技能</a>
+        <a href="http://localhost:1313/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/" title="docker镜像制作必备技能">docker镜像制作必备技能</a>
     </li>
     
     <li>
-        <a href="https://liabio.github.io/posts/2019-09-24-git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" title="git常用操作">git常用操作</a>
+        <a href="http://localhost:1313/posts/2019-09-24-git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" title="git常用操作">git常用操作</a>
     </li>
     
     <li>
-        <a href="https://liabio.github.io/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/" title="k8s中负载均衡器【ingress-nginx】部署">k8s中负载均衡器【ingress-nginx】部署</a>
+        <a href="http://localhost:1313/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/" title="k8s中部署负载均衡器ingress-nginx">k8s中部署负载均衡器ingress-nginx</a>
     </li>
     
     <li>
-        <a href="https://liabio.github.io/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/" title="k8s使用Job执行任务失败了怎么办">k8s使用Job执行任务失败了怎么办</a>
+        <a href="http://localhost:1313/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/" title="k8s使用Job执行任务失败了怎么办">k8s使用Job执行任务失败了怎么办</a>
     </li>
     
     <li>
-        <a href="https://liabio.github.io/posts/2019-09-24-kubernetes-gc-GarbageCollector-Controller-source-one/" title="kubernetes垃圾回收器GarbageCollector Controller源码分析（一）">kubernetes垃圾回收器GarbageCollector Controller源码分析（一）</a>
+        <a href="http://localhost:1313/posts/2019-09-24-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%901/" title="kubernetes垃圾回收器GarbageCollector Controller源码分析（一）">kubernetes垃圾回收器GarbageCollector Controller源码分析（一）</a>
     </li>
     
     <li>
-        <a href="https://liabio.github.io/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/" title="一次socket.error: [Errno 99] Cannot assign requested address报错排查">一次socket.error: [Errno 99] Cannot assign requested address报错排查</a>
+        <a href="http://localhost:1313/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/" title="一次socket.error: [Errno 99] Cannot assign requested address报错排查">一次socket.error: [Errno 99] Cannot assign requested address报错排查</a>
     </li>
     
     <li>
-        <a href="https://liabio.github.io/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/" title="云服务器使用docker搭建服务">云服务器使用docker搭建服务</a>
+        <a href="http://localhost:1313/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/" title="云服务器使用docker搭建服务">云服务器使用docker搭建服务</a>
     </li>
     
     <li>
-        <a href="https://liabio.github.io/posts/2019-09-24-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/" title="史上最全docker基础知识汇总">史上最全docker基础知识汇总</a>
+        <a href="http://localhost:1313/posts/2019-09-24-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/" title="史上最全docker基础知识汇总">史上最全docker基础知识汇总</a>
     </li>
     
 </ul>
     </section>
 
     
+<section class="widget">
+    <h3 class="widget-title" style="color:red">福利派送</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a href="https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=3iiljysb" title="高性能云服务器2折起" target="_blank" style="color:red">
+                
+                    <img src="/img/aliyun600x300.png">
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="https://www.aliyun.com/acts/hotsale?userCode=3iiljysb" title="主机爆款特惠3折起" target="_blank" style="color:red">
+                
+                    <img src="/img/zhujibaokuan3zhe.png">
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=3iiljysb" title="2000元全场红包领取" target="_blank" style="color:red">
+                
+                    <img src="/img/getalluse2000yuan.png">
+                
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
 
     <section class="widget">
         <h3 class="widget-title">分类</h3>
 <ul class="widget-list">
     
     <li>
-        <a href="https://liabio.github.io/categories/blog/">blog(2)</a>
+        <a href="http://localhost:1313/categories/blog/">blog(2)</a>
     </li>
     
     <li>
-        <a href="https://liabio.github.io/categories/debug/">debug(1)</a>
+        <a href="http://localhost:1313/categories/debug/">debug(1)</a>
     </li>
     
     <li>
-        <a href="https://liabio.github.io/categories/docker/">docker(6)</a>
+        <a href="http://localhost:1313/categories/docker/">docker(6)</a>
     </li>
     
     <li>
-        <a href="https://liabio.github.io/categories/etcd/">etcd(1)</a>
+        <a href="http://localhost:1313/categories/etcd/">etcd(1)</a>
     </li>
     
     <li>
-        <a href="https://liabio.github.io/categories/git/">git(1)</a>
+        <a href="http://localhost:1313/categories/git/">git(1)</a>
     </li>
     
     <li>
-        <a href="https://liabio.github.io/categories/ingress-nginx/">ingress-nginx(1)</a>
+        <a href="http://localhost:1313/categories/ingress-nginx/">ingress-nginx(1)</a>
     </li>
     
     <li>
-        <a href="https://liabio.github.io/categories/job/">job(2)</a>
+        <a href="http://localhost:1313/categories/job/">job(2)</a>
     </li>
     
     <li>
-        <a href="https://liabio.github.io/categories/k8s/">k8s(1)</a>
+        <a href="http://localhost:1313/categories/k8s/">k8s(1)</a>
     </li>
     
     <li>
-        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(8)</a>
+        <a href="http://localhost:1313/categories/kubernetes/">kubernetes(8)</a>
     </li>
     
     <li>
-        <a href="https://liabio.github.io/categories/%E5%B7%A5%E5%85%B7/">工具(1)</a>
+        <a href="http://localhost:1313/categories/%E5%B7%A5%E5%85%B7/">工具(1)</a>
     </li>
     
 </ul>
@@ -1035,31 +1043,31 @@ k8s会使用etcd v3版本的API记录数据。而默认etcdctl是使用v2版本�
         <h3 class="widget-title">标签</h3>
 <div class="tagcloud">
     
-    <a href="https://liabio.github.io/tags/blog/">blog</a>
+    <a href="http://localhost:1313/tags/blog/">blog</a>
     
-    <a href="https://liabio.github.io/tags/crd/">crd</a>
+    <a href="http://localhost:1313/tags/crd/">crd</a>
     
-    <a href="https://liabio.github.io/tags/docker/">docker</a>
+    <a href="http://localhost:1313/tags/docker/">docker</a>
     
-    <a href="https://liabio.github.io/tags/etcd/">etcd</a>
+    <a href="http://localhost:1313/tags/etcd/">etcd</a>
     
-    <a href="https://liabio.github.io/tags/garbageCollector/">garbageCollector</a>
+    <a href="http://localhost:1313/tags/garbageCollector/">garbageCollector</a>
     
-    <a href="https://liabio.github.io/tags/git/">git</a>
+    <a href="http://localhost:1313/tags/git/">git</a>
     
-    <a href="https://liabio.github.io/tags/hugo/">hugo</a>
+    <a href="http://localhost:1313/tags/hugo/">hugo</a>
     
-    <a href="https://liabio.github.io/tags/ingress-nginx/">ingress-nginx</a>
+    <a href="http://localhost:1313/tags/ingress-nginx/">ingress-nginx</a>
     
-    <a href="https://liabio.github.io/tags/job/">job</a>
+    <a href="http://localhost:1313/tags/job/">job</a>
     
-    <a href="https://liabio.github.io/tags/kubernetes/">kubernetes</a>
+    <a href="http://localhost:1313/tags/kubernetes/">kubernetes</a>
     
-    <a href="https://liabio.github.io/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/">垃圾回收器</a>
+    <a href="http://localhost:1313/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/">垃圾回收器</a>
     
-    <a href="https://liabio.github.io/tags/%E5%AE%B9%E5%99%A8/">容器</a>
+    <a href="http://localhost:1313/tags/%E5%AE%B9%E5%99%A8/">容器</a>
     
-    <a href="https://liabio.github.io/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+    <a href="http://localhost:1313/tags/%E5%B7%A5%E5%85%B7/">工具</a>
     
 </div>
     </section>
@@ -1069,7 +1077,7 @@ k8s会使用etcd v3版本的API记录数据。而默认etcdctl是使用v2版本�
     <section class="widget">
         <h3 class="widget-title">其它</h3>
         <ul class="widget-list">
-            <li><a href="https://liabio.github.io/index.xml">文章 RSS</a></li>
+            <li><a href="http://localhost:1313/index.xml">文章 RSS</a></li>
         </ul>
     </section>
 </div>
@@ -1077,8 +1085,83 @@ k8s会使用etcd v3版本的API记录数据。而默认etcdctl是使用v2版本�
     </div>
 </div>
 <footer id="footer">
-    <div class="container">
-        &copy; 2019 <a href="https://liabio.github.io">小碗汤的博客 By 小碗汤</a>.
+    <div class="social-links" style="text-align: center; padding-top: 10px">
+          
+  
+  
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/font/jianshu/iconfont.css">
+  <link rel="stylesheet" href="/font/segmentfault/iconfont.css">
+  <link rel="stylesheet" href="/font/weixingongzhonghao/iconfont.css">
+  <link rel="stylesheet" href="/font/juejin/iconfont.css">
+  <link rel="stylesheet" href="/font/zhihu/iconfont.css">
+  <link rel="stylesheet" href="/font/cnblog/iconfont.css">
+  <link rel="stylesheet" href="/font/csdn/iconfont.css">
+  <link rel="stylesheet" href="/scss/main.min.49aaf4284ea697cea9958ae76b5c552c1802fe84051ec9372cfbe7bf2db0d599.css">
+
+
+
+<a href="https://github.com/liabio" target="_blank" rel="me noopener"><i class="iconfont icon-github"></i></a>
+
+
+
+<a href="https://twitter.com/ll837448792" target="_blank" rel="me noopener"><i class="iconfont icon-twitter"></i></a>
+
+
+<a href="https://www.instagram.com/liabio0418/" target="_blank" rel="me noopener"><i class="iconfont icon-instagram"></i></a> 
+ 
+
+<a href="javascript:void(0);" target="_blank" rel="me noopener" onclick="document.getElementById('lightbox').style.display='inline';"><i class="iconfont icon-wechat"></i></a> 
+
+
+<a href="mailto:837448792@qq.com" rel="me noopener"><i class="iconfont icon-mail01"></i></a>
+
+
+
+
+
+
+<a href="https://medium.com/@ll837448792" rel="me noopener"><i class="iconfont icon-medium-circle-fill"></i></a>
+
+
+
+<a href="https://www.zhihu.com/people/liabio/posts" rel="me noopener"><i class="zhihu-iconfont icon-zhihu"></i></a>
+
+
+
+<a href="https://www.jianshu.com/u/33c582f040ae" rel="me noopener"><i class="jianshu-iconfont icon-jianshu"></i></a>
+
+
+
+<a href="https://blog.csdn.net/ll837448792" rel="me noopener"><i class="csdn-iconfont icon-csdn"></i></a>
+
+
+
+<a href="https://segmentfault.com/u/smallsoup" rel="me noopener"><i class="segmentfault-iconfont icon-sf"></i></a>
+
+
+
+<a href="https://juejin.im/user/5b0c1a17f265da08df28648c" rel="me noopener"><i class="juejin-iconfont icon-juejin"></i></a>
+
+
+
+<a href="https://www.cnblogs.com/liabio" rel="me noopener"><i class="cnblog-iconfont icon-bokeyuan"></i></a>
+
+
+
+<a href="javascript:void(0);" target="_blank" rel="me noopener" onclick="document.getElementById('gongzhonghaolightbox').style.display='inline';"><i class="weixingongzhonghao-iconfont icon-weixingongzhonghao"></i></a>
+
+
+
+    </div>
+    <div class="container" style="text-align: center; padding-top: 3px">
+        &copy; 2019 <a href="http://localhost:1313/">小碗汤的博客 By 小碗汤</a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
         <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
         

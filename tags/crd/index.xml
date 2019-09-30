@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>crd on 小碗汤的博客</title>
-    <link>https://liabio.github.io/tags/crd/</link>
+    <link>http://localhost:1313/tags/crd/</link>
     <description>Recent content in crd on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 27 Sep 2019 09:59:46 +0800</lastBuildDate>
     
-	<atom:link href="https://liabio.github.io/tags/crd/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost:1313/tags/crd/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>kubernetes自定义资源对象高级功能</title>
-      <link>https://liabio.github.io/posts/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/</link>
+      <link>http://localhost:1313/posts/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/</link>
       <pubDate>Fri, 27 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/</guid>
-      <description>kubernetes自定义资源对象再极大程度提高了API Server的可扩展性，让企业能够根据业务需求通过CRD编写controller或者operator来实现生产中各种特殊场景。随着k8s的版本升级，CRD的功能也越来越完善，下面对其中几点进行说明。 以下验证kubernete</description>
+      <guid>http://localhost:1313/posts/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/</guid>
+      <description>kubernetes自定义资源对象再极大程度提高了API Server的可扩展性，让企业能够根据业务需求通过CRD编写controller或者operator来实现生产中各种特殊场景。随着k8s的版本升级，CRD的功能也越来越完善，下面对其中</description>
     </item>
     
   </channel>

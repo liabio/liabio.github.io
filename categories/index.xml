@@ -2,102 +2,102 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on 小碗汤的博客</title>
-    <link>https://liabio.github.io/categories/</link>
+    <link>http://localhost:1313/categories/</link>
     <description>Recent content in Categories on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 27 Sep 2019 09:59:46 +0800</lastBuildDate>
     
-	<atom:link href="https://liabio.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>etcd</title>
-      <link>https://liabio.github.io/categories/etcd/</link>
+      <link>http://localhost:1313/categories/etcd/</link>
       <pubDate>Fri, 27 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/categories/etcd/</guid>
+      <guid>http://localhost:1313/categories/etcd/</guid>
       <description></description>
     </item>
     
     <item>
       <title>kubernetes</title>
-      <link>https://liabio.github.io/categories/kubernetes/</link>
+      <link>http://localhost:1313/categories/kubernetes/</link>
       <pubDate>Fri, 27 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/categories/kubernetes/</guid>
+      <guid>http://localhost:1313/categories/kubernetes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>debug</title>
-      <link>https://liabio.github.io/categories/debug/</link>
+      <link>http://localhost:1313/categories/debug/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/categories/debug/</guid>
+      <guid>http://localhost:1313/categories/debug/</guid>
       <description></description>
     </item>
     
     <item>
       <title>docker</title>
-      <link>https://liabio.github.io/categories/docker/</link>
+      <link>http://localhost:1313/categories/docker/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/categories/docker/</guid>
+      <guid>http://localhost:1313/categories/docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>git</title>
-      <link>https://liabio.github.io/categories/git/</link>
+      <link>http://localhost:1313/categories/git/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/categories/git/</guid>
+      <guid>http://localhost:1313/categories/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ingress-nginx</title>
-      <link>https://liabio.github.io/categories/ingress-nginx/</link>
+      <link>http://localhost:1313/categories/ingress-nginx/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/categories/ingress-nginx/</guid>
+      <guid>http://localhost:1313/categories/ingress-nginx/</guid>
       <description></description>
     </item>
     
     <item>
       <title>job</title>
-      <link>https://liabio.github.io/categories/job/</link>
+      <link>http://localhost:1313/categories/job/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/categories/job/</guid>
+      <guid>http://localhost:1313/categories/job/</guid>
       <description></description>
     </item>
     
     <item>
       <title>k8s</title>
-      <link>https://liabio.github.io/categories/k8s/</link>
+      <link>http://localhost:1313/categories/k8s/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/categories/k8s/</guid>
+      <guid>http://localhost:1313/categories/k8s/</guid>
       <description></description>
     </item>
     
     <item>
       <title>工具</title>
-      <link>https://liabio.github.io/categories/%E5%B7%A5%E5%85%B7/</link>
+      <link>http://localhost:1313/categories/%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/categories/%E5%B7%A5%E5%85%B7/</guid>
+      <guid>http://localhost:1313/categories/%E5%B7%A5%E5%85%B7/</guid>
       <description></description>
     </item>
     
     <item>
       <title>blog</title>
-      <link>https://liabio.github.io/categories/blog/</link>
+      <link>http://localhost:1313/categories/blog/</link>
       <pubDate>Fri, 03 May 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/categories/blog/</guid>
+      <guid>http://localhost:1313/categories/blog/</guid>
       <description></description>
     </item>
     

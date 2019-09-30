@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>blog on 小碗汤的博客</title>
-    <link>https://liabio.github.io/categories/blog/</link>
+    <link>http://localhost:1313/categories/blog/</link>
     <description>Recent content in blog on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 03 May 2019 09:59:46 +0800</lastBuildDate>
     
-	<atom:link href="https://liabio.github.io/categories/blog/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost:1313/categories/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hugo搭建博客教程</title>
-      <link>https://liabio.github.io/posts/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</link>
+      <link>http://localhost:1313/posts/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</link>
       <pubDate>Fri, 03 May 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</guid>
-      <description>在编译时报错如下： Building sites … ERROR 2019/05/03 10:36:45 Failed to read Git log: fatal: Not a git repository (or any of the parent d irectories): .git Building sites … ERROR 2019/05/03 10:45:16 Failed to read Git log: fatal: your current branch &#39;master&#39; does not have a ny commits yet 需要先在站点根目录执行以下命令： git init git add . git commit -m &#39;test&#39; config.toml中的baseUrl为http://liabio.github.io 不修改，调试时使用命令行参数指</description>
+      <guid>http://localhost:1313/posts/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</guid>
+      <description>在编译时报错如下： Building sites … ERROR 2019/05/03 10:36:45 Failed to read Git log: fatal: Not a git repository (or any of the parent d irectories): .git Building sites … ERROR 2019/05/03 10:45:16 Failed to read Git log: fatal: your current branch &#39;master&#39; does not have a ny commits yet 需要先在站点根目录执行以下命令： git init git add . git commit -m &#39;test&#39; config.toml中的baseUrl为http://liabio.gith</description>
     </item>
     
     <item>
       <title>快速搭建个人博客</title>
-      <link>https://liabio.github.io/posts/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+      <link>http://localhost:1313/posts/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
       <pubDate>Mon, 06 Feb 2017 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
-      <description>正所谓前人栽树，后人乘凉。 感谢Huxpro提供的博客模板 我的的博客 前言 从 Jekyll 到 GitHub Pages 中间踩了许多坑，终于把我的个人博客BY Blog搭建出来了。。。 本教程针对的是不懂技术又想搭建个人博客的小白，操作简单暴力且快速。当然懂技术那就更好了。 看看看博客的主页样式： 在手机上的布局： 废话不多说了</description>
+      <guid>http://localhost:1313/posts/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description>正所谓前人栽树，后人乘凉。 感谢Huxpro提供的博客模板 我的的博客 前言 从 Jekyll 到 GitHub Pages 中间踩了许多坑，终于把我的个人博客BY Blog搭建出来了。。。 本教程针对的是不懂技术又想搭建个人博客的小白，操作简单暴力且快速。当然懂技术那就更好了。 看看看博客</description>
     </item>
     
   </channel>
