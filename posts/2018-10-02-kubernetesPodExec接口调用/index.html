@@ -1,0 +1,1029 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.58.3" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Kubernetes Pod Exec接口调用 | 小碗汤的博客</title>
+    <meta property="og:title" content="Kubernetes Pod Exec接口调用 - 小碗汤的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content="2018-10-02T15:12:59&#43;08:00">
+        
+        
+    <meta property="article:modified_time" content="2018-10-02T15:12:59&#43;08:00">
+        
+
+    <meta name="Keywords" content="golang,go语言,go语言笔记,小碗汤,docker,kubernetes,k8s,java,博客,python,软件架构,公众号,小程序,Hugo,theme,maupassant">
+    <meta name="description" content="Kubernetes Pod Exec接口调用">
+        <meta name="author" content="小碗汤">
+        
+    <meta property="og:url" content="https://liabio.github.io/posts/2018-10-02-kubernetesPodExec%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+        <link rel="stylesheet" href="/css/prism.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <link rel="stylesheet" href="/css/reward.css">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name">
+                    <h1>
+                        <a id="logo" href="https://liabio.github.io">
+                            小碗汤的博客
+                        </a>
+                    </h1>
+                <p class="description">专注于Java、Go语言(Golang)、Docker、Kubernetes、软件架构</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://liabio.github.io">首页</a>
+                    
+                    <a  href="https://liabio.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liabio.github.io/tools/" title="工具">工具</a>
+                    
+                    <a  href="https://liabio.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+        
+        <div id="virtual_toc_list" style="display: none">
+            
+        </div>
+        <div id="float_toc_div" style="margin: 10px;border: 1px solid gray;z-index:99999;display: none;">
+            <header style="background-color: #f3f3f3;color: black;border-bottom: 1px solid gray;padding: 10px 10px 10px 10px;">
+                <strong id="toc_btn_open" style="color: black;font-size: large;">目录</strong>
+                <strong id="toc_btn_close" style="color: black;font-size: large;float: right">╳</strong>
+            </header>
+            <div id="toc_list" style="background-color: #f3f3f3;color: black;padding: 10px;">
+        
+            </div>
+        </div>
+        <style type="text/css">
+            #float_toc_div {
+                position: fixed;
+                display: none;
+                 
+                height: auto;
+                font-size: 13px;
+            }
+        
+            #toc_list a:hover,
+            #toc_list a:active {
+                color: #ba3925;
+            }
+        </style>
+        <script>
+            window.onload = function () {
+                let tocNavElem = document.getElementById("TableOfContents");
+                let floatTocDivElem = document.getElementById("float_toc_div");
+                let tocListElem = floatTocDivElem.getElementsByTagName('div')[0];
+                let colGroupElem = document.getElementById("body").getElementsByClassName("col-group")[0]
+                let floatTocWidth = (document.body.clientWidth - colGroupElem.offsetWidth) / 2 - 16;
+                var useFloatToc = false;
+
+                if (floatTocWidth >= 100) {
+                    useFloatToc = true;
+                    document.getElementById("toc_list").appendChild(tocNavElem);
+                    floatTocDivElem.style.display = 'block';
+                    floatTocDivElem.style.width = floatTocWidth + 'px';
+                    top();
+                    floatTocDivElem.style.left = '0px';
+
+                    function top() {
+                        if (document.getElementsByClassName('container')[0].offsetWidth <= 720) {
+                            floatTocDivElem.style.top = '0px';
+                        } else {
+                            floatTocDivElem.style.top = window.innerHeight / 9 + 'px';
+                        }
+                    }
+
+                    function ishide() {
+                        if (document.getElementsByClassName('container')[0].offsetWidth <= 720) {
+                            floatTocDivElem.style.top = '0px';
+                        } else {
+                            floatTocDivElem.style.display = 'block';
+                        }
+                    }
+
+                    window.onscroll = function () {
+                        ishide();
+                        if ((document.documentElement.scrollTop != 0) && (floatTocDivElem.style.display == 'block')) {
+                            top();
+                        }
+                    };
+
+                    window.onresize = function () {
+                        ishide();
+                    }
+
+                    document.getElementById("toc_btn_open").addEventListener('click', function () {
+                        switch (tocListElem.style.display) {
+                            case "none":
+                                document.getElementById("toc_btn_close").style.display = "";
+                                tocListElem.style.display = "";
+                                floatTocDivElem.getElementsByTagName("header")[0].style.borderBottom = "1px solid gray";
+                                break;
+                            default:
+                                break;
+                        }
+                    }, false);
+
+                    document.getElementById("toc_btn_close").addEventListener('click', function () {
+                        switch (tocListElem.style.display) {
+                            case "":
+                                document.getElementById("toc_btn_close").style.display = "none";
+                                tocListElem.style.display = "none";
+                                floatTocDivElem.getElementsByTagName("header")[0].style.borderBottom = "";
+                                break;
+                            default:
+                                break;
+                        }
+                    }, false);
+                } else {
+                    let fixedTocElem = document.getElementsByClassName("toc-article")[0];
+                    fixedTocElem.appendChild(tocNavElem);
+                    fixedTocElem.parentElement.style.display = "";
+                }
+                document.getElementById("virtual_toc_list").remove();
+            };   
+        </script>
+        
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">Kubernetes Pod Exec接口调用</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            2018年10月2日
+                        </date>
+                        
+                        <div class="post-meta">
+                            <span>|</span>
+                            
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/kubernetes">kubernetes</a></span>
+                            
+                        </div>
+                        
+                        
+                        
+                        <div class="post-meta">
+                            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span> 阅读</span></span>
+                        </div>
+                        
+                        
+                        
+                        <div class="clear" style="display: none">
+                            <div class="toc-article">
+                                <div class="toc-title">文章目录</div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="post-content">
+                            <p>一般生产环境上由于网络安全策略，大多数端口是不能为集群外部访问的。多个集群之间一般都是通过k8s的ApiServer组件提供的接口通信，如<a href="https://192.168.1.101:6443。所以在做云平台时，集群管理平台（雅称：观云台）需要操作其他集群的资源对象时，必然也得通过ApiServer。">https://192.168.1.101:6443。所以在做云平台时，集群管理平台（雅称：观云台）需要操作其他集群的资源对象时，必然也得通过ApiServer。</a></p>
+
+<p>k8s负载均衡器组件ingress-nginx-controller中集成的nginx，当集群ingress、tcp configmaps、udp configmaps等资源发生变化时，ingress-nginx-controller会根据这些资源最新配置，并根据提前设定好的nginx.tmpl模板（nginx配置文件nginx.conf由该模板生成）生成最新的nginx.conf配置，并自动进行nginx -s reload操作。
+最近做的一个需求，部分负载均衡器可以在页面上由运维人员自动配置，通过nginx的server、map配置。根据请求头的不同将流量分配到不同的服务。可以参考<a href="https://www.jianshu.com/p/0897e16f7ea2">nginx map配置根据请求头不同分配流量到不同后端服务</a></p>
+
+<p>配置后需要在观云台上手动reload负载均衡器，以使配置生效。这就涉及到从观云台去操作多集群的负载均衡器。</p>
+
+<p>通过修改ingress-nginx-controller源码提供接口reload方案，由于网络规则限制肯定行不通；
+只有6443端口可以走。能不能像操作集群内资源一样去操作其他集群资源？</p>
+
+<p>1、kubectl命令其实对应的就是调用apiserver去操作资源，在集群内我们都知道可以用以下命令：</p>
+
+<pre><code class="language-sh">kubectl exec -ti ingress-nginx-abab121 -nkube-system -- nginx -s reload
+</code></pre>
+
+<p>那么从A集群去操作B集群，假设B的ApiServer地址为：<a href="https://192.168.1.101:6443，Bearer">https://192.168.1.101:6443，Bearer</a> token为212k1jj1jak12k1kjaeeba，则命令如下：</p>
+
+<pre><code class="language-sh">kubectl exec -ti ingress-nginx-abab121 -nkube-system --server=https://192.168.1.101:6443 --token=212k1jj1jak12k1kjaeeba --insecure-skip-tls-verify=true -- nginx -s reload
+</code></pre>
+
+<p>通过查看kubelet的源代码，可以发现$GOPATH\src\k8s.io\kubernetes\pkg\kubelet\server\server.go的InstallDebuggingHandlers方法中注册了exec、attach、portForward等接口，同时kubelet的内部接口通过api server对外提供服务，所以对API server的这些接口调用，可以直接访问到kubelet，即client &ndash;&gt;&gt; API server &ndash;&gt; kubelet</p>
+
+<p>2、可以用curl命令调用如下：</p>
+
+<pre><code class="language-sh">curl -k \
+     -H &quot;Connection: Upgrade&quot; \
+	 -H &quot;Authorization: Bearer 212k1jj1jak12k1kjaeeba&quot; \
+	 -H &quot;Upgrade: websocket&quot; \
+	 -H &quot;Sec-Websocket-Key: x3JJHMbDL1EzLkh9GBhXDw==&quot; \
+	 -H &quot;Sec-Websocket-Version: 13&quot; \
+&quot;https://192.168.26.19:6443/api/v1/namespaces/liano/pods/nginx/exec?command=ls&amp;stdin=true&amp;stout=true&amp;tty=true&quot;
+</code></pre>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/9134763-bdc875ed68c9cfe1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" /></p>
+
+<p>3、kubernetes开源社区维护了各种语言版本与k8s apiserver交互的client库，比如java库地址如下：
+<a href="https://github.com/kubernetes-client/java">https://github.com/kubernetes-client/java</a>
+其中提供了调用pod的exec接口代码示例：
+<a href="https://github.com/kubernetes-client/java/blob/master/examples/src/main/java/io/kubernetes/client/examples/ExecExample.java">https://github.com/kubernetes-client/java/blob/master/examples/src/main/java/io/kubernetes/client/examples/ExecExample.java</a>
+需要先依赖：</p>
+
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;io.kubernetes&lt;/groupId&gt;
+    &lt;artifactId&gt;client-java&lt;/artifactId&gt;
+    &lt;version&gt;4.0.0&lt;/version&gt;
+    &lt;scope&gt;compile&lt;/scope&gt;
+&lt;/dependency&gt;
+````
+然后根据apiserver地址和Bearer token构建client，到访问pod exec接口进行nginx -s reload代码示例如下：
+</code></pre>
+
+<p>java
+package com.liano.api.test;</p>
+
+<p>import com.alibaba.fastjson.JSONObject;
+import com.google.common.base.Preconditions;
+import io.kubernetes.client.ApiClient;
+import io.kubernetes.client.ApiException;
+import io.kubernetes.client.Configuration;
+import io.kubernetes.client.Exec;
+import io.kubernetes.client.util.ClientBuilder;
+import io.kubernetes.client.util.credentials.AccessTokenAuthentication;</p>
+
+<p>import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;</p>
+
+<p>/**
+ * @program: k8s-mars
+ * @description: ExecKubelet
+ * @author: liano
+ * @create: 2019-03-06 15:10
+ **/</p>
+
+<p>public class ExecKubeletDemo {
+    public static void main(String[] args) throws IOException, ApiException, InterruptedException {
+        new ExecKubeletDemo().execNginxReload();
+    }</p>
+
+<pre><code>private void execNginxReload() throws InterruptedException, ApiException, IOException {
+
+    //apiServer地址和Bbearer token方式认证
+    ApiClient client = new ClientBuilder().setBasePath(&quot;https://10.10.101.60:6443&quot;).setVerifyingSsl(false)
+            .setAuthentication(new AccessTokenAuthentication(&quot;33095a7b86a7a3462ea45a1410624b&quot;)).build();
+</code></pre>
+
+<p>//        client.setDebugging(true);</p>
+
+<pre><code>    Configuration.setDefaultApiClient(client);
+
+    JSONObject res = process(&quot;nginx-97ccd777-xk9pw&quot;, &quot;kube-system&quot;);
+    System.out.println(JSONObject.toJSONString(res));
+}
+
+private JSONObject process(String podName, String namespace) throws IOException, ApiException, InterruptedException {
+    Exec exec = new Exec();
+    // final Process proc = exec.exec(&quot;default&quot;, &quot;nginx-4217019353-k5sn9&quot;, new String[]
+    //   {&quot;sh&quot;, &quot;-c&quot;, &quot;echo foo&quot;}, true, tty);
+    String[] commands = new String[]{&quot;nginx&quot;, &quot;-s&quot;, &quot;reload&quot;};
+    final Process proc = exec.exec(namespace, podName, commands, true, true);
+
+    JSONObject res = new JSONObject();
+
+    Thread out = new Thread(
+            new Runnable() {
+                public void run() {
+                    String copy = copy(proc.getInputStream());
+                    res.put(&quot;data&quot;, copy);
+                }
+            });
+    out.start();
+
+    proc.waitFor();
+
+    out.join();
+
+    proc.destroy();
+
+    if (proc.exitValue() != 0) {
+        res.put(&quot;success&quot;, false);
+    } else {
+        res.put(&quot;success&quot;, true);
+    }
+
+    return res;
+}
+
+private String copy(InputStream from) {
+    Preconditions.checkNotNull(from);
+    BufferedReader in = null;
+    Reader reader = null;
+    StringBuilder sb = new StringBuilder();
+    try {
+        reader = new InputStreamReader(from);
+        in = new BufferedReader(reader);
+        String line;
+        while ((line = in.readLine()) != null) {
+            sb.append(line);
+        }
+    } catch (Exception e) {
+        System.out.println(e);
+    } finally {
+        try {
+            if (from != null) {
+                from.close();
+            }
+
+            if (reader != null) {
+                reader.close();
+            }
+
+            if (in != null) {
+                in.close();
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    return sb.toString();
+}
+</code></pre>
+
+<p>}</p>
+
+<pre><code>从io.kubernetes.client.Exec源码中可以看到，需求通过 HTTP/1.1 协议的101状态码进行握手进一步建立websocket。websocket是一种在单个TCP连接上进行全双工通信的协议， 是独立的、创建在 TCP 上的协议。为了创建Websocket连接，需要通过客户端发出请求，之后服务器进行回应，这个过程通常称为“握手”（handshaking）。
+
+一个典型的Websocket握手请求如下：
+
+</code></pre>
+
+<p>sh
+GET / HTTP/1.1
+Upgrade: websocket
+Connection: Upgrade
+Host: example.com
+Origin: <a href="http://example.com">http://example.com</a>
+Sec-WebSocket-Key: sN9cRrP/n9NdMgdcy2VJFQ==
+Sec-WebSocket-Version: 13</p>
+
+<pre><code>
+服务器回应
+</code></pre>
+
+<p>sh
+HTTP/1.1 101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: fFBooB7FAkLlXgRSz0BT3v4hq5s=
+Sec-WebSocket-Location: ws://example.com/</p>
+
+<pre><code>
+字段说明
+</code></pre>
+
+<p>sh
+Connection必须设置Upgrade，表示客户端希望连接升级。
+Upgrade字段必须设置Websocket，表示希望升级到Websocket协议。
+Sec-WebSocket-Key是随机的字符串，服务器端会用这些数据来构造出一个SHA-1的信息摘要。把“Sec-WebSocket-Key”加上一个特殊字符串“258EAFA5-E914-47DA-95CA-C5AB0DC85B11”，然后计算SHA-1摘要，之后进行BASE-64编码，将结果做为“Sec-WebSocket-Accept”头的值，返回给客户端。如此操作，可以尽量避免普通HTTP请求被误认为Websocket协议。
+Sec-WebSocket-Version 表示支持的Websocket版本。RFC6455要求使用的版本是13，之前草案的版本均应当弃用。
+Origin字段是可选的，通常用来表示在浏览器中发起此Websocket连接所在的页面，类似于Referer。但是，与Referer不同的是，Origin只包含了协议和主机名称。
+其他一些定义在HTTP协议中的字段，如Cookie等，也可以在Websocket中使用。
+```</p>
+
+                        </div>
+
+                        
+                        
+
+<div style="padding: 10px 0; margin: 20px auto; width: 100%; font-size:20px; text-align: center;">
+  <button id="rewardButton" disable="enable" onclick="let qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+  <span>打赏</span></button>
+  <div id="QR" style="display: none;">
+    
+    <div style="display: inline-block">
+      <a class="fancybox" rel="group"><img src="/img/wechat-zhifubao-QR.png"></a>
+    </div>
+  </div>
+</div>
+
+                        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://liabio.github.io">小碗汤</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://liabio.github.io/posts/2018-10-02-kubernetesPodExec%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8/">https://liabio.github.io/posts/2018-10-02-kubernetesPodExec%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+                        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/2018-03-11-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8k8s%E5%BF%85%E5%AD%A6%E5%BF%85%E4%BC%9A%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">史上最全k8s必学必会知识梳理</a></li>
+        
+        <li><a href="/posts/2018-09-02-RedisCluster%E4%BB%8B%E7%BB%8D%E4%B8%8Edocker%E5%AE%B9%E5%99%A8%E6%96%B9%E5%BC%8F%E6%90%AD%E5%BB%BA/">Redis Cluster介绍与docker容器方式搭建</a></li>
+        
+        <li><a href="/posts/2018-08-02-Docker%E5%8D%87%E7%BA%A7%E5%88%B0%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC/">Docker升级到最新版本</a></li>
+        
+        <li><a href="/posts/2018-07-02-%E8%BF%9E%E4%B8%8A%E5%85%AC%E5%8F%B8%E7%9A%84vpn%E5%90%8E%E7%94%B5%E8%84%91%E4%B8%8A%E4%B8%8D%E4%BA%86%E5%A4%96%E7%BD%91%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">连上公司的vpn后电脑上不了外网解决办法</a></li>
+        
+        <li><a href="/posts/2018-06-02-ExtendingKubernetes-CreateControllersForCoreAndCustomResources/">Extending Kubernetes: Create Controllers For Core And Custom Resources</a></li>
+        
+    </ul>
+</div>
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            <ul class="clearfix">
+                                
+                                <li><a href="https://liabio.github.io/tags/kubernetes">kubernetes</a></li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liabio.github.io">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-01-03-yum%E6%BA%90%E9%85%8D%E7%BD%AE/" title="2019 01 03 Yum源配置">2019 01 03 Yum源配置</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-30-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/" title="Kubernetes自定义资源对象高级功能">Kubernetes自定义资源对象高级功能</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/" title="etcd操作">etcd操作</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/" title="docker镜像制作必备技能">docker镜像制作必备技能</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" title="git常用操作">git常用操作</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/" title="k8s中部署负载均衡器ingress-nginx">k8s中部署负载均衡器ingress-nginx</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/" title="k8s使用Job执行任务失败了怎么办">k8s使用Job执行任务失败了怎么办</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%901/" title="kubernetes垃圾回收器GarbageCollector Controller源码分析（一）">kubernetes垃圾回收器GarbageCollector Controller源码分析（一）</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/" title="一次socket.error: [Errno 99] Cannot assign requested address报错排查">一次socket.error: [Errno 99] Cannot assign requested address报错排查</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/" title="云服务器使用docker搭建服务">云服务器使用docker搭建服务</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title" style="color:red">福利派送</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a href="https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=3iiljysb" title="高性能云服务器2折起" target="_blank" style="color:red">
+                
+                    <img src="/img/aliyun600x300.png">
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="https://www.aliyun.com/acts/hotsale?userCode=3iiljysb" title="主机爆款特惠3折起" target="_blank" style="color:red">
+                
+                    <img src="/img/zhujibaokuan3zhe.png">
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=3iiljysb" title="2000元全场红包领取" target="_blank" style="color:red">
+                
+                    <img src="/img/getalluse2000yuan.png">
+                
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liabio.github.io/categories//">(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/anyListen/">anyListen(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/blog/">blog(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/centos/">centos(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/debug/">debug(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/ditto/">ditto(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/docker/">docker(10)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/elasticsearch/">elasticsearch(3)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/etcd/">etcd(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/git/">git(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/golang/">golang(10)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/http/">http(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/idea/">idea(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/ingress-nginx/">ingress-nginx(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/java/">java(11)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/job/">job(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/k8s/">k8s(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(15)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/linux/">linux(3)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/mysql/">mysql(6)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/nginx/">nginx(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/openresty/">openresty(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/redis/">redis(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/shell/">shell(3)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/springmvc/">springmvc(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/vmware/">vmware(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/windows/">windows(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/xyplorer/">xyplorer(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/zookeeper/">zookeeper(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/%E5%B7%A5%E5%85%B7/">工具(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务(1)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://liabio.github.io/tags//"></a>
+    
+    <a href="https://liabio.github.io/tags/blog/">blog</a>
+    
+    <a href="https://liabio.github.io/tags/chocolate/">chocolate</a>
+    
+    <a href="https://liabio.github.io/tags/controller/">controller</a>
+    
+    <a href="https://liabio.github.io/tags/crd/">crd</a>
+    
+    <a href="https://liabio.github.io/tags/csdn/">csdn</a>
+    
+    <a href="https://liabio.github.io/tags/docker/">docker</a>
+    
+    <a href="https://liabio.github.io/tags/email/">email</a>
+    
+    <a href="https://liabio.github.io/tags/etcd/">etcd</a>
+    
+    <a href="https://liabio.github.io/tags/garbageCollector/">garbageCollector</a>
+    
+    <a href="https://liabio.github.io/tags/git/">git</a>
+    
+    <a href="https://liabio.github.io/tags/http/">http</a>
+    
+    <a href="https://liabio.github.io/tags/hugo/">hugo</a>
+    
+    <a href="https://liabio.github.io/tags/ingress-nginx/">ingress-nginx</a>
+    
+    <a href="https://liabio.github.io/tags/java/">java</a>
+    
+    <a href="https://liabio.github.io/tags/job/">job</a>
+    
+    <a href="https://liabio.github.io/tags/kubernetes/">kubernetes</a>
+    
+    <a href="https://liabio.github.io/tags/mysql/">mysql</a>
+    
+    <a href="https://liabio.github.io/tags/nginx/">nginx</a>
+    
+    <a href="https://liabio.github.io/tags/operator/">operator</a>
+    
+    <a href="https://liabio.github.io/tags/redis%E9%9B%86%E7%BE%A4/">redis集群</a>
+    
+    <a href="https://liabio.github.io/tags/shell/">shell</a>
+    
+    <a href="https://liabio.github.io/tags/telnet/">telnet</a>
+    
+    <a href="https://liabio.github.io/tags/thrift/">thrift</a>
+    
+    <a href="https://liabio.github.io/tags/%E4%B8%8A%E7%BD%91/">上网</a>
+    
+    <a href="https://liabio.github.io/tags/%E4%BB%A3%E7%90%86/">代理</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%8C%85%E7%AE%A1%E7%90%86/">包管理</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%9B%BD%E9%99%85%E5%8C%96/">国际化</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%9D%91/">坑</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/">垃圾回收器</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/">存储过程</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%AE%B9%E5%99%A8/">容器</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/">效率工具</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%95%99%E7%A8%8B/">教程</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%97%A5%E5%BF%97%E8%BD%AC%E5%82%A8/">日志转储</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E5%85%A8/">服务器安全</a>
+    
+    <a href="https://liabio.github.io/tags/%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/">灰度发布</a>
+    
+    <a href="https://liabio.github.io/tags/%E7%88%AC%E8%99%AB/">爬虫</a>
+    
+    <a href="https://liabio.github.io/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/">虚拟机</a>
+    
+    <a href="https://liabio.github.io/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/">解决问题</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%85%8D%E7%BD%AE/">配置</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%95%9C%E5%83%8F/">镜像</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%97%AE%E9%A2%98/">问题</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">问题解决</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/">验证码</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liabio.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="social-links" style="text-align: center; padding-top: 10px">
+          
+  
+  
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/font/jianshu/iconfont.css">
+  <link rel="stylesheet" href="/font/segmentfault/iconfont.css">
+  <link rel="stylesheet" href="/font/weixingongzhonghao/iconfont.css">
+  <link rel="stylesheet" href="/font/juejin/iconfont.css">
+  <link rel="stylesheet" href="/font/zhihu/iconfont.css">
+  <link rel="stylesheet" href="/font/cnblog/iconfont.css">
+  <link rel="stylesheet" href="/font/csdn/iconfont.css">
+  <link rel="stylesheet" href="/scss/main.min.49aaf4284ea697cea9958ae76b5c552c1802fe84051ec9372cfbe7bf2db0d599.css">
+
+
+
+
+
+<style type="text/css">
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .8);
+}
+
+.center {
+    width: 220px;
+    height: 220px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -110px;
+}
+
+.center img {
+    width: 220px;
+}
+
+.center i {
+    color: #fff;
+    font-size: 1.5em;
+    position: relative;
+    float: right;
+    top: 0px;
+    right: -20px;
+    cursor: pointer;
+}
+</style>
+
+
+<div id="lightbox" style="display: none" class="lightbox" onclick="document.getElementById('lightbox').style.display='none';">
+    <div class="center">
+        
+        <i class="iconfont icon-close"></i>
+        
+        <img src="/img/me/wechat.png">
+    </div>
+</div>
+
+
+
+
+
+<style type="text/css">
+.gongzhonghaolightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .8);
+}
+</style>
+
+
+<div id="gongzhonghaolightbox" style="display: none" class="gongzhonghaolightbox" onclick="document.getElementById('gongzhonghaolightbox').style.display='none';">
+    <div class="center">
+        <i class="iconfont icon-close"></i>
+        <img src="/img/me/gongzhonghao-ercode.jpg">
+    </div>
+</div>
+
+
+
+<a href="https://github.com/liabio" target="_blank" rel="me noopener"><i class="iconfont icon-github"></i></a>
+
+
+
+<a href="https://twitter.com/ll837448792" target="_blank" rel="me noopener"><i class="iconfont icon-twitter"></i></a>
+
+
+<a href="https://www.instagram.com/liabio0418/" target="_blank" rel="me noopener"><i class="iconfont icon-instagram"></i></a> 
+ 
+
+<a href="javascript:void(0);" rel="me noopener" onclick="document.getElementById('lightbox').style.display='inline';"><i class="iconfont icon-wechat"></i></a>
+
+
+<a href="mailto:837448792@qq.com" rel="me noopener"><i class="iconfont icon-mail01"></i></a>
+
+
+
+
+
+
+<a href="https://medium.com/@ll837448792" rel="me noopener"><i class="iconfont icon-medium-circle-fill"></i></a>
+
+
+
+<a href="https://www.zhihu.com/people/liabio/posts" rel="me noopener"><i class="zhihu-iconfont icon-zhihu"></i></a>
+
+
+
+<a href="https://www.jianshu.com/u/33c582f040ae" rel="me noopener"><i class="jianshu-iconfont icon-jianshu"></i></a>
+
+
+
+<a href="https://blog.csdn.net/ll837448792" rel="me noopener"><i class="csdn-iconfont icon-csdn"></i></a>
+
+
+
+<a href="https://segmentfault.com/u/smallsoup" rel="me noopener"><i class="segmentfault-iconfont icon-sf"></i></a>
+
+
+
+<a href="https://juejin.im/user/5b0c1a17f265da08df28648c" rel="me noopener"><i class="juejin-iconfont icon-juejin"></i></a>
+
+
+
+<a href="https://www.cnblogs.com/liabio" rel="me noopener"><i class="cnblog-iconfont icon-bokeyuan"></i></a>
+
+
+
+<a href="javascript:void(0);" rel="me noopener" onclick="document.getElementById('gongzhonghaolightbox').style.display='inline';"><i class="weixingongzhonghao-iconfont icon-weixingongzhonghao"></i></a>
+
+
+
+
+    </div>
+    <div class="container" style="text-align: center; padding-top: 3px">
+        &copy; 2019 <a href="https://liabio.github.io">小碗汤的博客 By 小碗汤</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.2.8/raphael.min.js" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/flowchart/1.12.2/flowchart.min.js" crossorigin="anonymous"></script>
+        <script>(function () {
+                if (!window.flowchart) return;
+                const blocks = document.querySelectorAll('pre code.language-flowchart, pre code.language-flow');
+                for (let i = 0; i < blocks.length; i++) {
+                    const block = blocks[i];
+                    const rootElement = block.parentNode;
+                    const container = document.createElement('div');
+                    const id = `js-flowchart-diagrams-${i}`;
+                    container.id = id;
+                    container.className = 'align-center';
+                    container.setAttribute("style", "overFlow-x:auto");
+                    rootElement.parentNode.replaceChild(container, rootElement);
+                    const diagram = flowchart.parse(block.childNodes[0].nodeValue);
+                    diagram.drawSVG(id, window.flowchartDiagramsOptions ? window.flowchartDiagramsOptions : {});
+                }
+            })();
+        </script>
+    <script type="text/javascript">
+        
+        (function () {
+            $("pre code").parent().addClass("line-numbers")
+        }());
+
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script type="text/javascript" src="/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-139517579-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+</body>
+</html>

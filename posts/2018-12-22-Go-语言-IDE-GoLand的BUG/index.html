@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.58.3" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Go 语言 IDE GoLand的BUG | 小碗汤的博客</title>
+    <meta property="og:title" content="Go 语言 IDE GoLand的BUG - 小碗汤的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content="2018-12-22T17:23:16&#43;08:00">
+        
+        
+    <meta property="article:modified_time" content="2018-12-22T17:23:16&#43;08:00">
+        
+
+    <meta name="Keywords" content="golang,go语言,go语言笔记,小碗汤,docker,kubernetes,k8s,java,博客,python,软件架构,公众号,小程序,Hugo,theme,maupassant">
+    <meta name="description" content="Go 语言 IDE GoLand的BUG">
+        <meta name="author" content="小碗汤">
+        
+    <meta property="og:url" content="https://liabio.github.io/posts/2018-12-22-Go-%E8%AF%AD%E8%A8%80-IDE-GoLand%E7%9A%84BUG/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+        <link rel="stylesheet" href="/css/prism.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <link rel="stylesheet" href="/css/reward.css">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name">
+                    <h1>
+                        <a id="logo" href="https://liabio.github.io">
+                            小碗汤的博客
+                        </a>
+                    </h1>
+                <p class="description">专注于Java、Go语言(Golang)、Docker、Kubernetes、软件架构</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://liabio.github.io">首页</a>
+                    
+                    <a  href="https://liabio.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liabio.github.io/tools/" title="工具">工具</a>
+                    
+                    <a  href="https://liabio.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+        
+        <div id="virtual_toc_list" style="display: none">
+            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#结束语">结束语</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+        </div>
+        <div id="float_toc_div" style="margin: 10px;border: 1px solid gray;z-index:99999;display: none;">
+            <header style="background-color: #f3f3f3;color: black;border-bottom: 1px solid gray;padding: 10px 10px 10px 10px;">
+                <strong id="toc_btn_open" style="color: black;font-size: large;">目录</strong>
+                <strong id="toc_btn_close" style="color: black;font-size: large;float: right">╳</strong>
+            </header>
+            <div id="toc_list" style="background-color: #f3f3f3;color: black;padding: 10px;">
+        
+            </div>
+        </div>
+        <style type="text/css">
+            #float_toc_div {
+                position: fixed;
+                display: none;
+                 
+                height: auto;
+                font-size: 13px;
+            }
+        
+            #toc_list a:hover,
+            #toc_list a:active {
+                color: #ba3925;
+            }
+        </style>
+        <script>
+            window.onload = function () {
+                let tocNavElem = document.getElementById("TableOfContents");
+                let floatTocDivElem = document.getElementById("float_toc_div");
+                let tocListElem = floatTocDivElem.getElementsByTagName('div')[0];
+                let colGroupElem = document.getElementById("body").getElementsByClassName("col-group")[0]
+                let floatTocWidth = (document.body.clientWidth - colGroupElem.offsetWidth) / 2 - 16;
+                var useFloatToc = false;
+
+                if (floatTocWidth >= 100) {
+                    useFloatToc = true;
+                    document.getElementById("toc_list").appendChild(tocNavElem);
+                    floatTocDivElem.style.display = 'block';
+                    floatTocDivElem.style.width = floatTocWidth + 'px';
+                    top();
+                    floatTocDivElem.style.left = '0px';
+
+                    function top() {
+                        if (document.getElementsByClassName('container')[0].offsetWidth <= 720) {
+                            floatTocDivElem.style.top = '0px';
+                        } else {
+                            floatTocDivElem.style.top = window.innerHeight / 9 + 'px';
+                        }
+                    }
+
+                    function ishide() {
+                        if (document.getElementsByClassName('container')[0].offsetWidth <= 720) {
+                            floatTocDivElem.style.top = '0px';
+                        } else {
+                            floatTocDivElem.style.display = 'block';
+                        }
+                    }
+
+                    window.onscroll = function () {
+                        ishide();
+                        if ((document.documentElement.scrollTop != 0) && (floatTocDivElem.style.display == 'block')) {
+                            top();
+                        }
+                    };
+
+                    window.onresize = function () {
+                        ishide();
+                    }
+
+                    document.getElementById("toc_btn_open").addEventListener('click', function () {
+                        switch (tocListElem.style.display) {
+                            case "none":
+                                document.getElementById("toc_btn_close").style.display = "";
+                                tocListElem.style.display = "";
+                                floatTocDivElem.getElementsByTagName("header")[0].style.borderBottom = "1px solid gray";
+                                break;
+                            default:
+                                break;
+                        }
+                    }, false);
+
+                    document.getElementById("toc_btn_close").addEventListener('click', function () {
+                        switch (tocListElem.style.display) {
+                            case "":
+                                document.getElementById("toc_btn_close").style.display = "none";
+                                tocListElem.style.display = "none";
+                                floatTocDivElem.getElementsByTagName("header")[0].style.borderBottom = "";
+                                break;
+                            default:
+                                break;
+                        }
+                    }, false);
+                } else {
+                    let fixedTocElem = document.getElementsByClassName("toc-article")[0];
+                    fixedTocElem.appendChild(tocNavElem);
+                    fixedTocElem.parentElement.style.display = "";
+                }
+                document.getElementById("virtual_toc_list").remove();
+            };   
+        </script>
+        
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">Go 语言 IDE GoLand的BUG</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            2018年12月22日
+                        </date>
+                        
+                        <div class="post-meta">
+                            <span>|</span>
+                            
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/golang">golang</a></span>
+                            
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/idea">idea</a></span>
+                            
+                        </div>
+                        
+                        
+                        
+                        <div class="post-meta">
+                            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span> 阅读</span></span>
+                        </div>
+                        
+                        
+                        
+                        <div class="clear" style="display: none">
+                            <div class="toc-article">
+                                <div class="toc-title">文章目录</div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="post-content">
+                            
+
+<h4 id="前言">前言</h4>
+
+<p>GoLand 是 Jetbrains 推出的 Golang IDE，在内侧阶段我就开始使用了，刚出的时候我还在博客中发表过文章（看了下日期是 16 年年底）。</p>
+
+<p>那时候它还不是很完善，BUG 很多。准确的说也不算 BUG，主要是语法提示上的各种不足，重构功能也很弱。后来我有一段时间没有写 Go 代码，直到它更新为正式版我才差不多又抽出机会继续写 Go 代码了。虽然它已经很完善了，但还是发现它的一个很小但又很明显的 BUG，不过这个 BUG 却恰好给我造成了麻烦，所以我才想发文描述一下。</p>
+
+<p>####有关零值
+&gt;When storage is allocated for a variable, either through a declaration or a call of new, or when a new value is created, either through a composite literal or a call of make, and no explicit initialization is provided, the variable or value is given a default value. Each element of such a variable or value is set to the zero value for its type: false for booleans, 0 for numeric types, “” for strings, and nil for pointers, functions, interfaces, slices, channels, and maps. This initialization is done recursively, so for instance each element of an array of structs will have its fields zeroed if no value is specified.</p>
+
+<p>官方文档中明确指出，Slice（切片）的零值是 nil，在没有明确初始化的情况下这是显而易见的，任何 Go 开发者应该都知道才对。</p>
+
+<p>但是对于 GoLand 而言，声明并直接初始化的空 Slice 和声明不初始化 Slice 是一回事。为什么这么说呢？如果你在 GoLand 中写入以下两句代码：</p>
+
+<pre><code class="language-go">var sliceNoInit []string
+sliceInit := []string{}
+</code></pre>
+
+<p>第二行代码的等号右边会有波浪线，提示这种写法可以被 Cleanup。如果你根据 IDE 提示按 Alt +Enter 那么第二行代码会被重构成：</p>
+
+<pre><code class="language-go">var sliceInit []string 
+</code></pre>
+
+<p>你没有看错，GoLand 将一个初始化过的 Slice 重构为了未初始化的的 Slice…… GoLand 认为前者是冗余的写法。的确，大部分函数对于 nil Slice 和 empty Slice 而言，都是一样的，例如它们的长度都是 0。不过</p>
+
+<blockquote>
+<p>nil Slice 的长度为 0，所以长度为 0 的都可以转变 nil Slice</p>
+</blockquote>
+
+<p>这样考虑就有问题了。这有什么问题吗？它们两个长度不都是零么？当然有问题，在 len 函数的注释清晰的写了这么一句话：
+&gt;if v is nil, len(v) is zero
+这是什么意思呢？就是说 len 函数允许参数为 nil，但只要参数为 nil 不管任何类型都会返回 0。所以 nil Slice 的长度为零是一种不严禁的说法，应该说调用 len 函数的结果为零。</p>
+
+<p>所以，初始化后空的 Slice 是绝对不等同于没有初始化的 nil Slice 的。最直接的，它们对 slice == nil 的结果就相反。</p>
+
+<p>####带来的麻烦
+在使用某些 JSON 框架的时候，nil Slice 会被解析为 null 而不是 []，如果你有 web 开发经验就知道这是个多么严重的小问题了。而我恰好就是遇到这个问题了，最后追查原因原来是我手动初始化的空 Slice 被重构成了未初始化 nil Slice，直接导致了这个转换为 null 的结果。</p>
+
+<p>我们用伪代码举例（不涉及具体框架）：</p>
+
+<pre><code class="language-go">var list []string
+if err,result := QueryAll();err== nil{
+	list = result.Rows
+}
+ToJson(map[string]interface{}{
+	&quot;list&quot;: list,
+})
+</code></pre>
+
+<p>有没有看出什么问题？如果 QueryAll 返回错误的话，那么 list 永远不会被初始化，则很有可能在转换时被解析为 null 而不是 []。</p>
+
+<p>如下代码：</p>
+
+<pre><code class="language-go">package main
+
+import (
+	&quot;encoding/json&quot;
+	&quot;github.com/pkg/errors&quot;
+	&quot;fmt&quot;
+)
+
+type result struct {
+	Rows []string
+	Columes []string
+}
+
+func main() {
+	//1、var list []string
+
+	//2、list := make([]string, 0)
+	list := make([]string, 0)
+
+	//3、list := []string{}
+
+	if err, result := QueryAll(); err == nil {
+		list = result.Rows
+	}
+	ss, err := json.Marshal(map[string]interface{}{
+		&quot;list&quot;: list,
+	})
+
+	fmt.Printf(&quot;ss:%s, error:%v&quot;, string(ss), err)
+}
+
+func QueryAll() (error, result) {
+	return errors.New(&quot;error&quot;), result{}
+}
+</code></pre>
+
+<p><br></p>
+
+<p><strong>如果用第一种方式初始化：</strong></p>
+
+<pre><code class="language-go">var list []string
+</code></pre>
+
+<p>结果为：</p>
+
+<pre><code class="language-go">ss:{&quot;list&quot;:null}, error:&lt;nil&gt;
+</code></pre>
+
+<p><br></p>
+
+<p><strong>用第二种和第三种方式初始化：</strong>*</p>
+
+<pre><code class="language-go">list := make([]string, 0)
+list := []string{}
+</code></pre>
+
+<p>结果为：</p>
+
+<pre><code class="language-go">ss:{&quot;list&quot;:[]}, error:&lt;nil&gt;
+</code></pre>
+
+<p><br></p>
+
+<p>如果你想这么写解决这个弊端：
+&gt; list := []string{}</p>
+
+<p>那么你会被 GoLand 活活纠正成上面那样…… 然后带来错误的结果。</p>
+
+<p>####真实细节
+在 GoLand 的博客中有一篇文章提到了关于 Slice 的零值，他们是这么认为的：</p>
+
+<blockquote>
+<p>a nil slice is functionally equivalent to a zero-length slice, even though it points to nothing</p>
+</blockquote>
+
+<p>原文在这里：<a href="https://link.zhihu.com/?target=https%3A//blog.golang.org/slices">https://blog.golang.org/slices</a></p>
+
+<p>而造成 gin 的 JSON 方法将 nil Slice 转换 null 的原因是 json.Marshal() 就是这么处理的，也就是说几乎任何涉及到 JSON 处理的地方都有可能因为 GoLand 团队认为二者在功能上完全等价而造成问题。</p>
+
+<p>####解决办法</p>
+
+<ul>
+<li>进入 Settings -&gt; Editor - Inspections</li>
+<li>展开 Go - Declaration redundancy</li>
+<li>将 Empty slice declared via literal 右边的勾去掉
+这么做可以关掉 GoLand 对直接初始化的空 Slice 的冗余检查。</li>
+</ul>
+
+<p>不过有意思的是还有一种以代码的方式杜绝这种提示，那就是使用 make 函数：</p>
+
+<pre><code class="language-go">list := make([]string, 0)
+</code></pre>
+
+<p>实际上使用 make 创建一个长度为 0 的 empty Slice 和不插入一个值的直接初始化这两者才是等价的…… 但是 GoLand 却不会将 make 函数这种初始化方式算做“冗余”写法。</p>
+
+<h4 id="结束语">结束语</h4>
+
+<p>本文来自知乎：<a href="https://zhuanlan.zhihu.com/p/35777565">https://zhuanlan.zhihu.com/p/35777565</a>
+刚好今天遇到这个goland警告，顺便学习记录下，侵删！</p>
+
+                        </div>
+
+                        
+                        
+
+<div style="padding: 10px 0; margin: 20px auto; width: 100%; font-size:20px; text-align: center;">
+  <button id="rewardButton" disable="enable" onclick="let qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+  <span>打赏</span></button>
+  <div id="QR" style="display: none;">
+    
+    <div style="display: inline-block">
+      <a class="fancybox" rel="group"><img src="/img/wechat-zhifubao-QR.png"></a>
+    </div>
+  </div>
+</div>
+
+                        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://liabio.github.io">小碗汤</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://liabio.github.io/posts/2018-12-22-Go-%E8%AF%AD%E8%A8%80-IDE-GoLand%E7%9A%84BUG/">https://liabio.github.io/posts/2018-12-22-Go-%E8%AF%AD%E8%A8%80-IDE-GoLand%E7%9A%84BUG/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+                        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/2018-12-21-mysql%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BAgolang%E5%AE%9E%E7%8E%B0/">Mysql数据导出golang实现</a></li>
+        
+        <li><a href="/posts/2018-12-21-%E8%BF%90%E8%A1%8Celasticsearch%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/">运行elasticsearch报错解决</a></li>
+        
+        <li><a href="/posts/2018-12-20-elasticsearch6-2-4%E6%8F%92%E4%BB%B6head%E5%AE%89%E8%A3%85/">Elasticsearch6.2.4插件head安装</a></li>
+        
+        <li><a href="/posts/2018-12-19-CentosLinux%E4%BD%BF%E7%94%A8Yum%E5%AE%89%E8%A3%85Go%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/">Centos Linux使用Yum安装Go和配置环境</a></li>
+        
+        <li><a href="/posts/2018-12-19-%E4%BD%BF%E7%94%A8Chocolate%E9%80%9A%E8%BF%87%E8%84%9A%E6%9C%AC%E7%AE%A1%E7%90%86Windows%E5%BA%94%E7%94%A8/">使用Chocolate通过脚本管理Windows应用</a></li>
+        
+    </ul>
+</div>
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            <ul class="clearfix">
+                                
+                                <li><a href="https://liabio.github.io/tags/%E5%9D%91">坑</a></li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liabio.github.io">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-01-03-yum%E6%BA%90%E9%85%8D%E7%BD%AE/" title="2019 01 03 Yum源配置">2019 01 03 Yum源配置</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-30-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/" title="Kubernetes自定义资源对象高级功能">Kubernetes自定义资源对象高级功能</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/" title="etcd操作">etcd操作</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/" title="docker镜像制作必备技能">docker镜像制作必备技能</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" title="git常用操作">git常用操作</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/" title="k8s中部署负载均衡器ingress-nginx">k8s中部署负载均衡器ingress-nginx</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/" title="k8s使用Job执行任务失败了怎么办">k8s使用Job执行任务失败了怎么办</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%901/" title="kubernetes垃圾回收器GarbageCollector Controller源码分析（一）">kubernetes垃圾回收器GarbageCollector Controller源码分析（一）</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/" title="一次socket.error: [Errno 99] Cannot assign requested address报错排查">一次socket.error: [Errno 99] Cannot assign requested address报错排查</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/" title="云服务器使用docker搭建服务">云服务器使用docker搭建服务</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title" style="color:red">福利派送</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a href="https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=3iiljysb" title="高性能云服务器2折起" target="_blank" style="color:red">
+                
+                    <img src="/img/aliyun600x300.png">
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="https://www.aliyun.com/acts/hotsale?userCode=3iiljysb" title="主机爆款特惠3折起" target="_blank" style="color:red">
+                
+                    <img src="/img/zhujibaokuan3zhe.png">
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=3iiljysb" title="2000元全场红包领取" target="_blank" style="color:red">
+                
+                    <img src="/img/getalluse2000yuan.png">
+                
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liabio.github.io/categories//">(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/anyListen/">anyListen(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/blog/">blog(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/centos/">centos(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/debug/">debug(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/ditto/">ditto(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/docker/">docker(10)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/elasticsearch/">elasticsearch(3)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/etcd/">etcd(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/git/">git(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/golang/">golang(10)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/http/">http(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/idea/">idea(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/ingress-nginx/">ingress-nginx(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/java/">java(11)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/job/">job(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/k8s/">k8s(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(15)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/linux/">linux(3)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/mysql/">mysql(6)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/nginx/">nginx(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/openresty/">openresty(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/redis/">redis(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/shell/">shell(3)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/springmvc/">springmvc(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/vmware/">vmware(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/windows/">windows(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/xyplorer/">xyplorer(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/zookeeper/">zookeeper(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/%E5%B7%A5%E5%85%B7/">工具(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务(1)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://liabio.github.io/tags//"></a>
+    
+    <a href="https://liabio.github.io/tags/blog/">blog</a>
+    
+    <a href="https://liabio.github.io/tags/chocolate/">chocolate</a>
+    
+    <a href="https://liabio.github.io/tags/controller/">controller</a>
+    
+    <a href="https://liabio.github.io/tags/crd/">crd</a>
+    
+    <a href="https://liabio.github.io/tags/csdn/">csdn</a>
+    
+    <a href="https://liabio.github.io/tags/docker/">docker</a>
+    
+    <a href="https://liabio.github.io/tags/email/">email</a>
+    
+    <a href="https://liabio.github.io/tags/etcd/">etcd</a>
+    
+    <a href="https://liabio.github.io/tags/garbageCollector/">garbageCollector</a>
+    
+    <a href="https://liabio.github.io/tags/git/">git</a>
+    
+    <a href="https://liabio.github.io/tags/http/">http</a>
+    
+    <a href="https://liabio.github.io/tags/hugo/">hugo</a>
+    
+    <a href="https://liabio.github.io/tags/ingress-nginx/">ingress-nginx</a>
+    
+    <a href="https://liabio.github.io/tags/java/">java</a>
+    
+    <a href="https://liabio.github.io/tags/job/">job</a>
+    
+    <a href="https://liabio.github.io/tags/kubernetes/">kubernetes</a>
+    
+    <a href="https://liabio.github.io/tags/mysql/">mysql</a>
+    
+    <a href="https://liabio.github.io/tags/nginx/">nginx</a>
+    
+    <a href="https://liabio.github.io/tags/operator/">operator</a>
+    
+    <a href="https://liabio.github.io/tags/redis%E9%9B%86%E7%BE%A4/">redis集群</a>
+    
+    <a href="https://liabio.github.io/tags/shell/">shell</a>
+    
+    <a href="https://liabio.github.io/tags/telnet/">telnet</a>
+    
+    <a href="https://liabio.github.io/tags/thrift/">thrift</a>
+    
+    <a href="https://liabio.github.io/tags/%E4%B8%8A%E7%BD%91/">上网</a>
+    
+    <a href="https://liabio.github.io/tags/%E4%BB%A3%E7%90%86/">代理</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%8C%85%E7%AE%A1%E7%90%86/">包管理</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%9B%BD%E9%99%85%E5%8C%96/">国际化</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%9D%91/">坑</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/">垃圾回收器</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/">存储过程</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%AE%B9%E5%99%A8/">容器</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/">效率工具</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%95%99%E7%A8%8B/">教程</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%97%A5%E5%BF%97%E8%BD%AC%E5%82%A8/">日志转储</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E5%85%A8/">服务器安全</a>
+    
+    <a href="https://liabio.github.io/tags/%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/">灰度发布</a>
+    
+    <a href="https://liabio.github.io/tags/%E7%88%AC%E8%99%AB/">爬虫</a>
+    
+    <a href="https://liabio.github.io/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/">虚拟机</a>
+    
+    <a href="https://liabio.github.io/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/">解决问题</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%85%8D%E7%BD%AE/">配置</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%95%9C%E5%83%8F/">镜像</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%97%AE%E9%A2%98/">问题</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">问题解决</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/">验证码</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liabio.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="social-links" style="text-align: center; padding-top: 10px">
+          
+  
+  
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/font/jianshu/iconfont.css">
+  <link rel="stylesheet" href="/font/segmentfault/iconfont.css">
+  <link rel="stylesheet" href="/font/weixingongzhonghao/iconfont.css">
+  <link rel="stylesheet" href="/font/juejin/iconfont.css">
+  <link rel="stylesheet" href="/font/zhihu/iconfont.css">
+  <link rel="stylesheet" href="/font/cnblog/iconfont.css">
+  <link rel="stylesheet" href="/font/csdn/iconfont.css">
+  <link rel="stylesheet" href="/scss/main.min.49aaf4284ea697cea9958ae76b5c552c1802fe84051ec9372cfbe7bf2db0d599.css">
+
+
+
+
+
+<style type="text/css">
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .8);
+}
+
+.center {
+    width: 220px;
+    height: 220px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -110px;
+}
+
+.center img {
+    width: 220px;
+}
+
+.center i {
+    color: #fff;
+    font-size: 1.5em;
+    position: relative;
+    float: right;
+    top: 0px;
+    right: -20px;
+    cursor: pointer;
+}
+</style>
+
+
+<div id="lightbox" style="display: none" class="lightbox" onclick="document.getElementById('lightbox').style.display='none';">
+    <div class="center">
+        
+        <i class="iconfont icon-close"></i>
+        
+        <img src="/img/me/wechat.png">
+    </div>
+</div>
+
+
+
+
+
+<style type="text/css">
+.gongzhonghaolightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .8);
+}
+</style>
+
+
+<div id="gongzhonghaolightbox" style="display: none" class="gongzhonghaolightbox" onclick="document.getElementById('gongzhonghaolightbox').style.display='none';">
+    <div class="center">
+        <i class="iconfont icon-close"></i>
+        <img src="/img/me/gongzhonghao-ercode.jpg">
+    </div>
+</div>
+
+
+
+<a href="https://github.com/liabio" target="_blank" rel="me noopener"><i class="iconfont icon-github"></i></a>
+
+
+
+<a href="https://twitter.com/ll837448792" target="_blank" rel="me noopener"><i class="iconfont icon-twitter"></i></a>
+
+
+<a href="https://www.instagram.com/liabio0418/" target="_blank" rel="me noopener"><i class="iconfont icon-instagram"></i></a> 
+ 
+
+<a href="javascript:void(0);" rel="me noopener" onclick="document.getElementById('lightbox').style.display='inline';"><i class="iconfont icon-wechat"></i></a>
+
+
+<a href="mailto:837448792@qq.com" rel="me noopener"><i class="iconfont icon-mail01"></i></a>
+
+
+
+
+
+
+<a href="https://medium.com/@ll837448792" rel="me noopener"><i class="iconfont icon-medium-circle-fill"></i></a>
+
+
+
+<a href="https://www.zhihu.com/people/liabio/posts" rel="me noopener"><i class="zhihu-iconfont icon-zhihu"></i></a>
+
+
+
+<a href="https://www.jianshu.com/u/33c582f040ae" rel="me noopener"><i class="jianshu-iconfont icon-jianshu"></i></a>
+
+
+
+<a href="https://blog.csdn.net/ll837448792" rel="me noopener"><i class="csdn-iconfont icon-csdn"></i></a>
+
+
+
+<a href="https://segmentfault.com/u/smallsoup" rel="me noopener"><i class="segmentfault-iconfont icon-sf"></i></a>
+
+
+
+<a href="https://juejin.im/user/5b0c1a17f265da08df28648c" rel="me noopener"><i class="juejin-iconfont icon-juejin"></i></a>
+
+
+
+<a href="https://www.cnblogs.com/liabio" rel="me noopener"><i class="cnblog-iconfont icon-bokeyuan"></i></a>
+
+
+
+<a href="javascript:void(0);" rel="me noopener" onclick="document.getElementById('gongzhonghaolightbox').style.display='inline';"><i class="weixingongzhonghao-iconfont icon-weixingongzhonghao"></i></a>
+
+
+
+
+    </div>
+    <div class="container" style="text-align: center; padding-top: 3px">
+        &copy; 2019 <a href="https://liabio.github.io">小碗汤的博客 By 小碗汤</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.2.8/raphael.min.js" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/flowchart/1.12.2/flowchart.min.js" crossorigin="anonymous"></script>
+        <script>(function () {
+                if (!window.flowchart) return;
+                const blocks = document.querySelectorAll('pre code.language-flowchart, pre code.language-flow');
+                for (let i = 0; i < blocks.length; i++) {
+                    const block = blocks[i];
+                    const rootElement = block.parentNode;
+                    const container = document.createElement('div');
+                    const id = `js-flowchart-diagrams-${i}`;
+                    container.id = id;
+                    container.className = 'align-center';
+                    container.setAttribute("style", "overFlow-x:auto");
+                    rootElement.parentNode.replaceChild(container, rootElement);
+                    const diagram = flowchart.parse(block.childNodes[0].nodeValue);
+                    diagram.drawSVG(id, window.flowchartDiagramsOptions ? window.flowchartDiagramsOptions : {});
+                }
+            })();
+        </script>
+    <script type="text/javascript">
+        
+        (function () {
+            $("pre code").parent().addClass("line-numbers")
+        }());
+
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script type="text/javascript" src="/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-139517579-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+</body>
+</html>

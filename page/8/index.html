@@ -1,0 +1,796 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.58.3" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>小碗汤的博客 | 专注于Java、Go语言(Golang)、Docker、Kubernetes、软件架构</title>
+    <meta property="og:title" content="小碗汤的博客 | 专注于Java、Go语言(Golang)、Docker、Kubernetes、软件架构">
+    <meta property="og:type" content="website">
+    <meta name="Keywords" content="golang,go语言,go语言笔记,小碗汤,docker,kubernetes,k8s,java,博客,python,软件架构,公众号,小程序,Hugo,theme,maupassant">
+    <meta name="description" content="专注于IT互联网，包括但不限于Go语言(golang)、Java、docker、kubernetes、Python、抖音分析、软件架构等">
+    <meta property="og:url" content="https://liabio.github.io/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <link rel="stylesheet" href="/css/reward.css">
+    <link rel="alternate" type="application/rss+xml+xml" href="https://liabio.github.io/index.xml" title="小碗汤的博客" />
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name">
+                    <h1>
+                        <a id="logo" href="https://liabio.github.io">
+                            小碗汤的博客
+                        </a>
+                    </h1>
+                <p class="description">专注于Java、Go语言(Golang)、Docker、Kubernetes、软件架构</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liabio.github.io">首页</a>
+                    
+                    <a  href="https://liabio.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liabio.github.io/tools/" title="工具">工具</a>
+                    
+                    <a  href="https://liabio.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://liabio.github.io/posts/2018-12-27-java%E5%9B%BE%E5%BD%A2%E9%AA%8C%E8%AF%81%E7%A0%81%E5%AE%9E%E7%8E%B0/" title="Java图形验证码实现" >Java图形验证码实现</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2018年12月27日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/java">java</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                今天来学习下图形验证码的生成，首先依赖开源组件： &lt;dependency&gt; &lt;groupId&gt;com.github.penggle&lt;/groupId&gt; &lt;artifactId&gt;kaptcha&lt;/artifactId&gt; &lt;version&gt;2.3.2&lt;/version&gt; &lt;/dependency&gt; 在web.xml中配置名为Kaptcha的servlet： &lt;servlet&gt; &lt;!-- 生成图片的Servlet --&gt; &lt;servlet-name&gt;Kaptcha&lt;/servlet-name&gt; &lt;servlet-class&gt;com.google.code.kaptcha.servlet.KaptchaServlet&lt;/servlet-class&gt; &lt;!-- 是否有边框 --&gt; &lt;init-param&gt; &lt;param-name&gt;kaptcha.border&lt;/param-name&gt; &lt;param-value&gt;no&lt;/param-value&gt; &lt;/init-param&gt; &lt;!-- 字体颜色 --&gt; &lt;init-param&gt; &lt;param-name&gt;kaptcha.textproducer.font.color&lt;/param-name&gt; &lt;param-value&gt;red&lt;/param-value&gt; &lt;/init-param&gt; &lt;!-- 图片宽度 --&gt; &lt;init-param&gt; &lt;param-name&gt;kaptcha.image.width&lt;/param-name&gt; &lt;param-value&gt;135&lt;/param-value&gt; &lt;/init-param&gt; &lt;!-- 使用哪些字符生成验证码 --&gt; &lt;init-param&gt;……
+                            </div>
+                            <p class="readmore"><a href="https://liabio.github.io/posts/2018-12-27-java%E5%9B%BE%E5%BD%A2%E9%AA%8C%E8%AF%81%E7%A0%81%E5%AE%9E%E7%8E%B0/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://liabio.github.io/posts/2018-12-26-java%E8%BF%99%E4%B8%AA404%E4%BD%A0%E8%83%BD%E8%A7%A3%E5%86%B3%E5%90%97/" title="Java这个404你能解决吗？" >Java这个404你能解决吗？</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2018年12月26日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/java">java</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                今天在tomcat里部署运行了一个小工程，工程结构如下： 运行tomcat服务器后，访问index.html，发现报404： 但是后台接口是正常返回的： 去看webapps里工程目录下，index.html文件是有的，见鬼了，是哪儿出了问题？ 然后……
+                            </div>
+                            <p class="readmore"><a href="https://liabio.github.io/posts/2018-12-26-java%E8%BF%99%E4%B8%AA404%E4%BD%A0%E8%83%BD%E8%A7%A3%E5%86%B3%E5%90%97/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://liabio.github.io/posts/2018-12-26-java%E5%8F%91%E9%80%81%E6%89%8B%E6%9C%BA%E9%AA%8C%E8%AF%81%E7%A0%81%E5%AE%9E%E7%8E%B0/" title="Java发送手机验证码实现" >Java发送手机验证码实现</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2018年12月26日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/java">java</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                正文 今天来用java实现手机验证码的发送。 短信平台有很多，中国网建提供的SMS短信通，注册免费5条短信，3条彩信， http://sms.webchinese.cn/ 但是刚才试了，第一次用官方提供的demo发送成功，然后整合到自己项目中，调试时由于参数配置错误导致发送了几次失败后，5次就用……
+                            </div>
+                            <p class="readmore"><a href="https://liabio.github.io/posts/2018-12-26-java%E5%8F%91%E9%80%81%E6%89%8B%E6%9C%BA%E9%AA%8C%E8%AF%81%E7%A0%81%E5%AE%9E%E7%8E%B0/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://liabio.github.io/posts/2018-12-25-SpringMVC%E5%AE%9E%E7%8E%B0%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/" title="SpringMVC实现发送邮件" >SpringMVC实现发送邮件</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2018年12月25日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/java">java</a></span>
+                                
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/springmvc">springmvc</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                今天来试着用SpringMVC发送邮件，主要需要依赖以下两个包； &lt;!--spring发送邮件依赖spring.version=4.3.8.RELEASE--&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework&lt;/groupId&gt; &lt;artifactId&gt;spring-context-support&lt;/artifactId&gt; &lt;version&gt;${spring.version}&lt;/version&gt; &lt;/dependency&gt; &lt;!-- Javamail API --&gt; &lt;dependency&gt; &lt;groupId&gt;javax.mail&lt;/groupId&gt; &lt;artifactId&gt;mail&lt;/artifactId&gt; &lt;version&gt;1.4.5&lt;/version&gt; &lt;/dependency&gt; spring-mail.xml配置文件如下……
+                            </div>
+                            <p class="readmore"><a href="https://liabio.github.io/posts/2018-12-25-SpringMVC%E5%AE%9E%E7%8E%B0%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://liabio.github.io/posts/2018-12-25-golang-%E8%AE%BE%E7%BD%AE-http-response-%E5%93%8D%E5%BA%94%E5%A4%B4%E4%B8%8E%E5%9D%91/" title="Golang 设置 Http Response 响应头与坑" >Golang 设置 Http Response 响应头与坑</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2018年12月25日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/golang">golang</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                1、 设置WriteHeader的顺序问题 之前遇到个问题，在一段代码中这样设置WriteHeader,最后在header中取Name时怎么也取不到。 w.WriteHeader(201) w.Header().Set(&quot;Name&quot;, &quot;my name is smallsoup&quot;) 用 golang 写 http server 时，可以很方便可通过 w.Header.Set(k, v) 来设置 http response 中 header 的内容。但是需要特别注意的是：某些……
+                            </div>
+                            <p class="readmore"><a href="https://liabio.github.io/posts/2018-12-25-golang-%E8%AE%BE%E7%BD%AE-http-response-%E5%93%8D%E5%BA%94%E5%A4%B4%E4%B8%8E%E5%9D%91/">阅读全文</a></p>
+                        </article>
+                    
+                    
+
+
+
+<ol class="page-navigator">
+    
+    <li class="prev">
+        <a href="https://liabio.github.io/page/7/">上一页</a>
+    </li>
+    
+
+    
+
+    
+        
+        
+    
+    
+
+    
+        
+        
+        <li >
+            <a href="https://liabio.github.io/">1</a>
+        </li>
+        
+    
+        
+        <li>
+            <span>...</span>
+        </li>
+        
+    
+        
+        
+        <li >
+            <a href="https://liabio.github.io/page/6/">6</a>
+        </li>
+        
+    
+        
+        
+        <li >
+            <a href="https://liabio.github.io/page/7/">7</a>
+        </li>
+        
+    
+        
+        
+        <li  class="current">
+            <a href="https://liabio.github.io/page/8/">8</a>
+        </li>
+        
+    
+        
+        
+        <li >
+            <a href="https://liabio.github.io/page/9/">9</a>
+        </li>
+        
+    
+        
+        
+        <li >
+            <a href="https://liabio.github.io/page/10/">10</a>
+        </li>
+        
+    
+        
+        <li>
+            <span>...</span>
+        </li>
+        
+    
+        
+        
+        <li >
+            <a href="https://liabio.github.io/page/17/">17</a>
+        </li>
+        
+    
+
+    
+    
+
+    <li class="next">
+        <a href="https://liabio.github.io/page/9/">下一页</a>
+    </li>
+    
+</ol>
+
+
+
+
+                </div>
+            </div>
+
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liabio.github.io">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-01-03-yum%E6%BA%90%E9%85%8D%E7%BD%AE/" title="2019 01 03 Yum源配置">2019 01 03 Yum源配置</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-30-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/" title="Kubernetes自定义资源对象高级功能">Kubernetes自定义资源对象高级功能</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/" title="etcd操作">etcd操作</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/" title="docker镜像制作必备技能">docker镜像制作必备技能</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" title="git常用操作">git常用操作</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/" title="k8s中部署负载均衡器ingress-nginx">k8s中部署负载均衡器ingress-nginx</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/" title="k8s使用Job执行任务失败了怎么办">k8s使用Job执行任务失败了怎么办</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%901/" title="kubernetes垃圾回收器GarbageCollector Controller源码分析（一）">kubernetes垃圾回收器GarbageCollector Controller源码分析（一）</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/" title="一次socket.error: [Errno 99] Cannot assign requested address报错排查">一次socket.error: [Errno 99] Cannot assign requested address报错排查</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/" title="云服务器使用docker搭建服务">云服务器使用docker搭建服务</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title" style="color:red">福利派送</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a href="https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=3iiljysb" title="高性能云服务器2折起" target="_blank" style="color:red">
+                
+                    <img src="/img/aliyun600x300.png">
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="https://www.aliyun.com/acts/hotsale?userCode=3iiljysb" title="主机爆款特惠3折起" target="_blank" style="color:red">
+                
+                    <img src="/img/zhujibaokuan3zhe.png">
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=3iiljysb" title="2000元全场红包领取" target="_blank" style="color:red">
+                
+                    <img src="/img/getalluse2000yuan.png">
+                
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liabio.github.io/categories//">(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/anyListen/">anyListen(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/blog/">blog(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/centos/">centos(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/debug/">debug(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/ditto/">ditto(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/docker/">docker(10)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/elasticsearch/">elasticsearch(3)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/etcd/">etcd(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/git/">git(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/golang/">golang(10)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/http/">http(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/idea/">idea(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/ingress-nginx/">ingress-nginx(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/java/">java(11)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/job/">job(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/k8s/">k8s(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(15)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/linux/">linux(3)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/mysql/">mysql(6)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/nginx/">nginx(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/openresty/">openresty(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/redis/">redis(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/shell/">shell(3)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/springmvc/">springmvc(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/vmware/">vmware(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/windows/">windows(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/xyplorer/">xyplorer(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/zookeeper/">zookeeper(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/%E5%B7%A5%E5%85%B7/">工具(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务(1)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://liabio.github.io/tags//"></a>
+    
+    <a href="https://liabio.github.io/tags/blog/">blog</a>
+    
+    <a href="https://liabio.github.io/tags/chocolate/">chocolate</a>
+    
+    <a href="https://liabio.github.io/tags/controller/">controller</a>
+    
+    <a href="https://liabio.github.io/tags/crd/">crd</a>
+    
+    <a href="https://liabio.github.io/tags/csdn/">csdn</a>
+    
+    <a href="https://liabio.github.io/tags/docker/">docker</a>
+    
+    <a href="https://liabio.github.io/tags/email/">email</a>
+    
+    <a href="https://liabio.github.io/tags/etcd/">etcd</a>
+    
+    <a href="https://liabio.github.io/tags/garbageCollector/">garbageCollector</a>
+    
+    <a href="https://liabio.github.io/tags/git/">git</a>
+    
+    <a href="https://liabio.github.io/tags/http/">http</a>
+    
+    <a href="https://liabio.github.io/tags/hugo/">hugo</a>
+    
+    <a href="https://liabio.github.io/tags/ingress-nginx/">ingress-nginx</a>
+    
+    <a href="https://liabio.github.io/tags/java/">java</a>
+    
+    <a href="https://liabio.github.io/tags/job/">job</a>
+    
+    <a href="https://liabio.github.io/tags/kubernetes/">kubernetes</a>
+    
+    <a href="https://liabio.github.io/tags/mysql/">mysql</a>
+    
+    <a href="https://liabio.github.io/tags/nginx/">nginx</a>
+    
+    <a href="https://liabio.github.io/tags/operator/">operator</a>
+    
+    <a href="https://liabio.github.io/tags/redis%E9%9B%86%E7%BE%A4/">redis集群</a>
+    
+    <a href="https://liabio.github.io/tags/shell/">shell</a>
+    
+    <a href="https://liabio.github.io/tags/telnet/">telnet</a>
+    
+    <a href="https://liabio.github.io/tags/thrift/">thrift</a>
+    
+    <a href="https://liabio.github.io/tags/%E4%B8%8A%E7%BD%91/">上网</a>
+    
+    <a href="https://liabio.github.io/tags/%E4%BB%A3%E7%90%86/">代理</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%8C%85%E7%AE%A1%E7%90%86/">包管理</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%9B%BD%E9%99%85%E5%8C%96/">国际化</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%9D%91/">坑</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/">垃圾回收器</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/">存储过程</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%AE%B9%E5%99%A8/">容器</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/">效率工具</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%95%99%E7%A8%8B/">教程</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%97%A5%E5%BF%97%E8%BD%AC%E5%82%A8/">日志转储</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E5%85%A8/">服务器安全</a>
+    
+    <a href="https://liabio.github.io/tags/%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/">灰度发布</a>
+    
+    <a href="https://liabio.github.io/tags/%E7%88%AC%E8%99%AB/">爬虫</a>
+    
+    <a href="https://liabio.github.io/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/">虚拟机</a>
+    
+    <a href="https://liabio.github.io/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/">解决问题</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%85%8D%E7%BD%AE/">配置</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%95%9C%E5%83%8F/">镜像</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%97%AE%E9%A2%98/">问题</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">问题解决</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/">验证码</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liabio.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="social-links" style="text-align: center; padding-top: 10px">
+          
+  
+  
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/font/jianshu/iconfont.css">
+  <link rel="stylesheet" href="/font/segmentfault/iconfont.css">
+  <link rel="stylesheet" href="/font/weixingongzhonghao/iconfont.css">
+  <link rel="stylesheet" href="/font/juejin/iconfont.css">
+  <link rel="stylesheet" href="/font/zhihu/iconfont.css">
+  <link rel="stylesheet" href="/font/cnblog/iconfont.css">
+  <link rel="stylesheet" href="/font/csdn/iconfont.css">
+  <link rel="stylesheet" href="/scss/main.min.49aaf4284ea697cea9958ae76b5c552c1802fe84051ec9372cfbe7bf2db0d599.css">
+
+
+
+
+
+<style type="text/css">
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .8);
+}
+
+.center {
+    width: 220px;
+    height: 220px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -110px;
+}
+
+.center img {
+    width: 220px;
+}
+
+.center i {
+    color: #fff;
+    font-size: 1.5em;
+    position: relative;
+    float: right;
+    top: 0px;
+    right: -20px;
+    cursor: pointer;
+}
+</style>
+
+
+<div id="lightbox" style="display: none" class="lightbox" onclick="document.getElementById('lightbox').style.display='none';">
+    <div class="center">
+        
+        <i class="iconfont icon-close"></i>
+        
+        <img src="/img/me/wechat.png">
+    </div>
+</div>
+
+
+
+
+
+<style type="text/css">
+.gongzhonghaolightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .8);
+}
+</style>
+
+
+<div id="gongzhonghaolightbox" style="display: none" class="gongzhonghaolightbox" onclick="document.getElementById('gongzhonghaolightbox').style.display='none';">
+    <div class="center">
+        <i class="iconfont icon-close"></i>
+        <img src="/img/me/gongzhonghao-ercode.jpg">
+    </div>
+</div>
+
+
+
+<a href="https://github.com/liabio" target="_blank" rel="me noopener"><i class="iconfont icon-github"></i></a>
+
+
+
+<a href="https://twitter.com/ll837448792" target="_blank" rel="me noopener"><i class="iconfont icon-twitter"></i></a>
+
+
+<a href="https://www.instagram.com/liabio0418/" target="_blank" rel="me noopener"><i class="iconfont icon-instagram"></i></a> 
+ 
+
+<a href="javascript:void(0);" rel="me noopener" onclick="document.getElementById('lightbox').style.display='inline';"><i class="iconfont icon-wechat"></i></a>
+
+
+<a href="mailto:837448792@qq.com" rel="me noopener"><i class="iconfont icon-mail01"></i></a>
+
+
+
+
+
+
+<a href="https://medium.com/@ll837448792" rel="me noopener"><i class="iconfont icon-medium-circle-fill"></i></a>
+
+
+
+<a href="https://www.zhihu.com/people/liabio/posts" rel="me noopener"><i class="zhihu-iconfont icon-zhihu"></i></a>
+
+
+
+<a href="https://www.jianshu.com/u/33c582f040ae" rel="me noopener"><i class="jianshu-iconfont icon-jianshu"></i></a>
+
+
+
+<a href="https://blog.csdn.net/ll837448792" rel="me noopener"><i class="csdn-iconfont icon-csdn"></i></a>
+
+
+
+<a href="https://segmentfault.com/u/smallsoup" rel="me noopener"><i class="segmentfault-iconfont icon-sf"></i></a>
+
+
+
+<a href="https://juejin.im/user/5b0c1a17f265da08df28648c" rel="me noopener"><i class="juejin-iconfont icon-juejin"></i></a>
+
+
+
+<a href="https://www.cnblogs.com/liabio" rel="me noopener"><i class="cnblog-iconfont icon-bokeyuan"></i></a>
+
+
+
+<a href="javascript:void(0);" rel="me noopener" onclick="document.getElementById('gongzhonghaolightbox').style.display='inline';"><i class="weixingongzhonghao-iconfont icon-weixingongzhonghao"></i></a>
+
+
+
+
+    </div>
+    <div class="container" style="text-align: center; padding-top: 3px">
+        &copy; 2019 <a href="https://liabio.github.io">小碗汤的博客 By 小碗汤</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-139517579-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+
+</body>
+</html>

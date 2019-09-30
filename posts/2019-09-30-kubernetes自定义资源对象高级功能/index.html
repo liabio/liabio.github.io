@@ -1,0 +1,1576 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.58.3" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Kubernetes自定义资源对象高级功能 | 小碗汤的博客</title>
+    <meta property="og:title" content="Kubernetes自定义资源对象高级功能 - 小碗汤的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content="2019-09-30T14:41:33&#43;08:00">
+        
+        
+    <meta property="article:modified_time" content="2019-09-30T14:41:33&#43;08:00">
+        
+
+    <meta name="Keywords" content="golang,go语言,go语言笔记,小碗汤,docker,kubernetes,k8s,java,博客,python,软件架构,公众号,小程序,Hugo,theme,maupassant">
+    <meta name="description" content="Kubernetes自定义资源对象高级功能">
+        <meta name="author" content="小碗汤">
+        
+    <meta property="og:url" content="https://liabio.github.io/posts/2019-09-30-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+        <link rel="stylesheet" href="/css/prism.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <link rel="stylesheet" href="/css/reward.css">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name">
+                    <h1>
+                        <a id="logo" href="https://liabio.github.io">
+                            小碗汤的博客
+                        </a>
+                    </h1>
+                <p class="description">专注于Java、Go语言(Golang)、Docker、Kubernetes、软件架构</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://liabio.github.io">首页</a>
+                    
+                    <a  href="https://liabio.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liabio.github.io/tools/" title="工具">工具</a>
+                    
+                    <a  href="https://liabio.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+        
+        <div id="virtual_toc_list" style="display: none">
+            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#validation-验证">Validation（验证）</a>
+<ul>
+<li><a href="#category-分类">Category（分类）</a></li>
+</ul></li>
+<li><a href="#子资源">子资源</a>
+<ul>
+<li><a href="#status子资源">status子资源</a></li>
+<li><a href="#scale子资源">scale子资源</a></li>
+</ul></li>
+<li><a href="#打印其他列">打印其他列</a></li>
+<li><a href="#operator中应用该特性">operator中应用该特性</a></li>
+<li><a href="#参考">参考</a></li>
+</ul></li>
+</ul>
+</nav>
+        </div>
+        <div id="float_toc_div" style="margin: 10px;border: 1px solid gray;z-index:99999;display: none;">
+            <header style="background-color: #f3f3f3;color: black;border-bottom: 1px solid gray;padding: 10px 10px 10px 10px;">
+                <strong id="toc_btn_open" style="color: black;font-size: large;">目录</strong>
+                <strong id="toc_btn_close" style="color: black;font-size: large;float: right">╳</strong>
+            </header>
+            <div id="toc_list" style="background-color: #f3f3f3;color: black;padding: 10px;">
+        
+            </div>
+        </div>
+        <style type="text/css">
+            #float_toc_div {
+                position: fixed;
+                display: none;
+                 
+                height: auto;
+                font-size: 13px;
+            }
+        
+            #toc_list a:hover,
+            #toc_list a:active {
+                color: #ba3925;
+            }
+        </style>
+        <script>
+            window.onload = function () {
+                let tocNavElem = document.getElementById("TableOfContents");
+                let floatTocDivElem = document.getElementById("float_toc_div");
+                let tocListElem = floatTocDivElem.getElementsByTagName('div')[0];
+                let colGroupElem = document.getElementById("body").getElementsByClassName("col-group")[0]
+                let floatTocWidth = (document.body.clientWidth - colGroupElem.offsetWidth) / 2 - 16;
+                var useFloatToc = false;
+
+                if (floatTocWidth >= 100) {
+                    useFloatToc = true;
+                    document.getElementById("toc_list").appendChild(tocNavElem);
+                    floatTocDivElem.style.display = 'block';
+                    floatTocDivElem.style.width = floatTocWidth + 'px';
+                    top();
+                    floatTocDivElem.style.left = '0px';
+
+                    function top() {
+                        if (document.getElementsByClassName('container')[0].offsetWidth <= 720) {
+                            floatTocDivElem.style.top = '0px';
+                        } else {
+                            floatTocDivElem.style.top = window.innerHeight / 9 + 'px';
+                        }
+                    }
+
+                    function ishide() {
+                        if (document.getElementsByClassName('container')[0].offsetWidth <= 720) {
+                            floatTocDivElem.style.top = '0px';
+                        } else {
+                            floatTocDivElem.style.display = 'block';
+                        }
+                    }
+
+                    window.onscroll = function () {
+                        ishide();
+                        if ((document.documentElement.scrollTop != 0) && (floatTocDivElem.style.display == 'block')) {
+                            top();
+                        }
+                    };
+
+                    window.onresize = function () {
+                        ishide();
+                    }
+
+                    document.getElementById("toc_btn_open").addEventListener('click', function () {
+                        switch (tocListElem.style.display) {
+                            case "none":
+                                document.getElementById("toc_btn_close").style.display = "";
+                                tocListElem.style.display = "";
+                                floatTocDivElem.getElementsByTagName("header")[0].style.borderBottom = "1px solid gray";
+                                break;
+                            default:
+                                break;
+                        }
+                    }, false);
+
+                    document.getElementById("toc_btn_close").addEventListener('click', function () {
+                        switch (tocListElem.style.display) {
+                            case "":
+                                document.getElementById("toc_btn_close").style.display = "none";
+                                tocListElem.style.display = "none";
+                                floatTocDivElem.getElementsByTagName("header")[0].style.borderBottom = "";
+                                break;
+                            default:
+                                break;
+                        }
+                    }, false);
+                } else {
+                    let fixedTocElem = document.getElementsByClassName("toc-article")[0];
+                    fixedTocElem.appendChild(tocNavElem);
+                    fixedTocElem.parentElement.style.display = "";
+                }
+                document.getElementById("virtual_toc_list").remove();
+            };   
+        </script>
+        
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">Kubernetes自定义资源对象高级功能</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            2019年9月30日
+                        </date>
+                        
+                        <div class="post-meta">
+                            <span>|</span>
+                            
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/kubernetes">kubernetes</a></span>
+                            
+                        </div>
+                        
+                        
+                        
+                        <div class="post-meta">
+                            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span> 阅读</span></span>
+                        </div>
+                        
+                        
+                        
+                        <div class="clear" style="display: none">
+                            <div class="toc-article">
+                                <div class="toc-title">文章目录</div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="post-content">
+                            
+
+<p>kubernetes自定义资源对象再极大程度提高了API Server的可扩展性，让企业能够根据业务需求通过CRD编写controller或者operator来实现生产中各种特殊场景。随着k8s的版本升级，CRD的功能也越来越完善，下面对其中几点进行说明。</p>
+
+<p>以下验证kubernetes版本为1.13.2，docker版本：18.09.5</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/9134763-96757a7c4423498d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" /></p>
+
+<h2 id="validation-验证">Validation（验证）</h2>
+
+<p>在项目中用自定义资源对象时，如果创建自定义资源时某些字段不符合要求，会导致监听该资源对象的controller或者operator出现异常，解析结构体报错，所以Validation这个功能非常实用，在创建时就进行校验，减少后面的排错和异常处理的麻烦。</p>
+
+<p>可以通过 <a href="https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#schemaObject">OpenAPI v3 schema</a>验证自定义对象是否符合标准 。此外，以下限制适用于 schema：</p>
+
+<ul>
+<li>字段<code>default</code>、<code>nullable</code>、<code>discriminator</code>、<code>readOnly</code>、<code>writeOnly</code>、<code>xml</code>、 <code>deprecated</code> 和 <code>$ref</code> 不能设置。</li>
+<li>该字段 <code>uniqueItems</code> 不能设置为 true。</li>
+<li>该字段 <code>additionalProperties</code> 不能设置为 false。</li>
+</ul>
+
+<p>可以使用 kube-apiserver<code>CustomResourceValidation</code> 上的功能门（feature gate）禁用此功能：</p>
+
+<pre><code class="language-shell">--feature-gates=CustomResourceValidation=false
+</code></pre>
+
+<p>从以下特性门参数说明地址，可以看到Validation功能在k8s 1.8版本就已经有了，但是CustomResourceValidation特性门是默认false，1.9Beta之后版本默认为true</p>
+
+<p><a href="https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates/">https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates/</a></p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/9134763-2d95c32853ad0566.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" /></p>
+
+<p>以下示例将大概对该功能进行应用和说明，在以下示例中，CustomResourceDefinition 对自定义对象应用以下验证：</p>
+
+<ul>
+<li><code>spec.replicas</code> 为必填项，类型为integer，值为大于等于0小于50的偶数（2的倍数）；</li>
+<li><code>spec.repository</code> 为必填项；</li>
+<li><code>spec.version</code>为必填项；</li>
+<li><code>spec.pause</code>为boolean类型；</li>
+<li><code>spec.updateStrategy</code>为object类型，该object中有type、pipeline、assignStrategies属性；</li>
+<li><code>spec.updateStrategy.type</code>为string类型，而且只能为&rdquo;AssignReceive&rdquo;, &ldquo;AutoReceive&rdquo;两个枚举值；</li>
+<li><code>spec.updateStrategy.pipeline</code>为string类型，而且为正整数的字符串，符合正则表达式<code>^([1-9][0-9]*){1,3}$</code>;</li>
+<li><code>spec.updateStrategy.assignStrategies</code>为array类型，其元素为object类型（包含slots和fromReplicas属性）；</li>
+<li><code>spec.updateStrategy.assignStrategies.slots</code>为1-16384的正整数；</li>
+<li><code>spec.updateStrategy.assignStrategies.fromReplicas</code>为字符串，符合正则表达式<code>^[a-z0-9,]{3,}$</code>，即至少匹配3位a-z或者0-9或者逗号的字符串；</li>
+<li><code>spec.pod</code>为array类型，其元素为object类型（包含configmap、monitorImage、initImage、middlewareImage字段）；</li>
+<li><code>spec.pod.configmap</code>、<code>spec.pod.monitorImage</code>、<code>spec.pod.initImage</code> 、<code>spec.pod.middlewareImage</code>为string类型；且用required指定configmap、initImage、middlewareImage字段为必填项。</li>
+</ul>
+
+<p>将以下内容保存到 <code>redis-cluster-crd.yaml</code>：</p>
+
+<pre><code class="language-yaml">apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: redisclusters.redis.middleware.hc.cn
+spec:
+  group: redis.middleware.hc.cn
+  versions:
+    - name: v1alpha1
+      # Each version can be enabled/disabled by Served flag.
+      served: true
+      # One and only one version must be marked as the storage version.
+      storage: true
+  scope: Namespaced
+  names:
+    kind: RedisCluster
+    singular: rediscluster
+    listKind: RedisClusterList
+    plural: redisclusters
+    shortNames:
+    - rec
+    # 执行kubectl get all时会查到pod、service、该crd等属于all categories的资源对象
+    categories:
+    - all
+  validation:
+    # openAPIV3Schema 适用于验证自定义对象的 schema。
+    openAPIV3Schema:
+      properties:
+        spec:
+          required: [&quot;replicas&quot;, &quot;repository&quot;, &quot;version&quot;]
+          properties:
+            pause:
+              type: boolean
+            replicas:
+              type: integer
+              minimum: 0
+              maximum: 50
+              # 偶数
+              multipleOf: 2
+            updateStrategy:
+              type: object
+              properties:
+                type:
+                  type: string
+                  # 枚举
+                  enum: [&quot;AssignReceive&quot;, &quot;AutoReceive&quot;]
+                pipeline:
+                  type: string
+                  pattern: '^([1-9][0-9]*){1,3}$'
+                assignStrategies:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      slots:
+                        type: integer
+                        minimum: 1
+                        maximum: 16384
+                      fromReplicas:
+                        type: string
+                        # 至少匹配3位,a-z或者0-9或者,
+                        pattern: '^[a-z0-9,]{3,}$'
+            pod:
+              type: array
+              items:
+                type: object
+                required: [&quot;configmap&quot;, &quot;middlewareImage&quot;, &quot;initImage&quot;]
+                properties:
+                  configmap:
+                    type: string
+                  monitorImage:
+                    type: string
+                  initImage:
+                    type: string
+                  middlewareImage:
+                    type: string
+</code></pre>
+
+<p>创建它：</p>
+
+<pre><code>kubectl create -f redis-cluster-crd.yaml
+</code></pre>
+
+<p>默认不加validation时，在创建自定义资源对象时，不会校验，有些字段没有了（如<code>spec.replicas</code>）都可以正常被创建，为了减少排错的难度和operator、controller的麻烦的检验，所以在创建自定义资源定义时，就把validation加上。以上的检验应该覆盖到了常见的检验场景，其他场景可以自己摸索。具体还可以参考kubernetes源码，1.13.2版本kubernetes源码位于types.go第327行CustomResourceValidation结构体：</p>
+
+<pre><code>$GOPATH/src/k8s.io/kubernetes/staging/src/k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/types.go
+</code></pre>
+
+<p>将以下YAML保存到<code>redis-cluster-cr.yaml</code>：</p>
+
+<pre><code class="language-yaml">apiVersion: redis.middleware.hc.cn/v1alpha1
+kind: RedisCluster
+metadata: 
+  name: example000-redis-cluster
+  namespace: kube-system
+spec:
+  # 代表redis集群的个数
+  replicas: 3
+  # 代表是否进入维修状态
+  pause: true
+  repository: library/redis
+  # 镜像版本，便于后续多版本特化支持
+  version: 3.2.6
+  #redis集群升级策略
+  updateStrategy:
+    # 升级类型为AutoReceive（自动分配,不用AssignStrategies）, AssignReceive（指定值分配，需要用AssignStrategies）
+    type: AssignReceive1
+    pipeline: &quot;100a&quot;
+    assignStrategies:
+       - 
+        slots: 0
+        fromReplicas: nodeId1
+       - 
+        # 从nodeId3,nodeId4一共分配1000个卡槽
+        slots: 1000 
+        # 多个nodeId用逗号分隔
+        fromReplicas: nodeId3,nodeId4
+  # redis 实例配置详情
+  pod:
+    # 配置文件模板名
+  - configmap: example000-redis-cluster-config
+    # 监控镜像
+    monitorImage: redis-exporter:v1
+    # 初始化镜像
+    #initImage: redis-init:v1
+    # 中间件容器镜像
+    middlewareImage: redis-trib:3.2.6
+</code></pre>
+
+<p>并创建它：</p>
+
+<pre><code class="language-shell">kubectl create -f redis-cluster-cr.yaml
+</code></pre>
+
+<p>会发现报以下错误：</p>
+
+<pre><code class="language-shell"># kubectl apply -f redis-cluster-cr.yaml 
+The RedisCluster &quot;example000-redis-cluster&quot; is invalid: []: Invalid value: map[string]interface {}{&quot;apiVersion&quot;:&quot;redis.middleware.hc.cn/v1alpha1&quot;, &quot;kind&quot;:&quot;RedisCluster&quot;, &quot;metadata&quot;:map[string]interface {}{&quot;namespace&quot;:&quot;kube-system&quot;, &quot;uid&quot;:&quot;b0946031-766b-11e9-b457-000c295db389&quot;, &quot;resourceVersion&quot;:&quot;44231&quot;, &quot;generation&quot;:19, &quot;creationTimestamp&quot;:&quot;2019-05-14T17:14:10Z&quot;, &quot;annotations&quot;:map[string]interface {}{&quot;kubectl.kubernetes.io/last-applied-configuration&quot;:&quot;{\&quot;apiVersion\&quot;:\&quot;redis.middleware.hc.cn/v1alpha1\&quot;,\&quot;kind\&quot;:\&quot;RedisCluster\&quot;,\&quot;metadata\&quot;:{\&quot;annotations\&quot;:{},\&quot;name\&quot;:\&quot;example000-redis-cluster\&quot;,\&quot;namespace\&quot;:\&quot;kube-system\&quot;},\&quot;spec\&quot;:{\&quot;pause\&quot;:true,\&quot;pod\&quot;:[{\&quot;configmap\&quot;:\&quot;example000-redis-cluster-config\&quot;,\&quot;middlewareImage\&quot;:\&quot;redis-trib:3.2.6\&quot;,\&quot;monitorImage\&quot;:\&quot;redis-exporter:v1\&quot;}],\&quot;replicas\&quot;:3,\&quot;repository\&quot;:\&quot;library/redis\&quot;,\&quot;updateStrategy\&quot;:{\&quot;assignStrategies\&quot;:[{\&quot;fromReplicas\&quot;:\&quot;nodeId1\&quot;,\&quot;slots\&quot;:0},{\&quot;fromReplicas\&quot;:\&quot;nodeId3,nodeId4\&quot;,\&quot;slots\&quot;:1000}],\&quot;pipeline\&quot;:\&quot;100a\&quot;,\&quot;type\&quot;:\&quot;AssignReceive1\&quot;},\&quot;version\&quot;:\&quot;3.2.6\&quot;}}\n&quot;}, &quot;name&quot;:&quot;example000-redis-cluster&quot;}, &quot;spec&quot;:map[string]interface {}{&quot;version&quot;:&quot;3.2.6&quot;, &quot;pause&quot;:true, &quot;pod&quot;:[]interface {}{map[string]interface {}{&quot;middlewareImage&quot;:&quot;redis-trib:3.2.6&quot;, &quot;monitorImage&quot;:&quot;redis-exporter:v1&quot;, &quot;configmap&quot;:&quot;example000-redis-cluster-config&quot;}}, &quot;replicas&quot;:3, &quot;repository&quot;:&quot;library/redis&quot;, &quot;updateStrategy&quot;:map[string]interface {}{&quot;assignStrategies&quot;:[]interface {}{map[string]interface {}{&quot;fromReplicas&quot;:&quot;nodeId1&quot;, &quot;slots&quot;:0}, map[string]interface {}{&quot;fromReplicas&quot;:&quot;nodeId3,nodeId4&quot;, &quot;slots&quot;:1000}}, &quot;pipeline&quot;:&quot;100a&quot;, &quot;type&quot;:&quot;AssignReceive1&quot;}}}: validation failure list:
+spec.updateStrategy.assignStrategies.fromReplicas in body should match '^[a-z0-9,]{3,}$'
+spec.updateStrategy.assignStrategies.slots in body should be greater than or equal to 1
+spec.updateStrategy.pipeline in body should match '^([1-9][0-9]*){1,3}$'
+spec.updateStrategy.type in body should be one of [AssignReceive AutoReceive]
+spec.pod.initImage in body is required
+spec.replicas in body should be a multiple of 2
+</code></pre>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/9134763-27e0731313ecb2c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" /></p>
+
+<p>如果所有字段都符合校验逻辑，才可以创建对象。</p>
+
+<p>将以下 YAML 保存到 <code>redis-cluster-cr.yaml</code>：</p>
+
+<pre><code class="language-yaml">apiVersion: redis.middleware.hc.cn/v1alpha1
+kind: RedisCluster
+metadata: 
+  name: example000-redis-cluster
+  namespace: kube-system
+spec:
+  # 代表redis集群的个数
+  replicas: 6
+  # 代表是否进入维修状态
+  pause: true
+  repository: library/redis
+  # 镜像版本，便于后续多版本特化支持
+  version: 3.2.6
+  #redis集群升级策略
+  updateStrategy:
+    # 升级类型为AutoReceive（自动分配,不用AssignStrategies）, AssignReceive（指定值分配，需要用AssignStrategies）
+    type: AssignReceive
+    pipeline: &quot;100&quot;
+    assignStrategies:
+       - 
+        slots: 1
+        fromReplicas: all
+       - 
+        # 从nodeId3,nodeId4一共分配1000个卡槽
+        slots: 1000 
+        # 多个nodeId用逗号分隔
+        fromReplicas: node1,node2
+  # redis 实例配置详情
+  pod:
+    # 配置文件模板名
+  - configmap: example000-redis-cluster-config
+    # 监控镜像
+    monitorImage: redis-exporter:v1
+    # 初始化镜像
+    initImage: redis-init:v1
+    # 中间件容器镜像
+    middlewareImage: redis-trib:3.2.6
+</code></pre>
+
+<p>并创建它，发现才可以创建：</p>
+
+<pre><code class="language-shell"># kubectl apply -f redis-cluster-cr.yaml 
+rediscluster.redis.middleware.hc.cn/example000-redis-cluster configured
+</code></pre>
+
+<h3 id="category-分类">Category（分类）</h3>
+
+<p>类别是自定义资源所属的分组资源的列表（例如 <code>all</code>）。您可以使用 <code>kubectl get &lt;category-name&gt;</code> 列出属于该类别的资源。此功能可用于 v1.10 及以上k8s版本自定义资源。</p>
+
+<p>以下示例添加 <code>all</code> CustomResourceDefinition 中的类别列表，并说明如何使用 <code>kubectl get all</code> 输出自定义资源 。</p>
+
+<p>将以下 内容保存到 <code>redis-cluster-crd.yaml</code>中执行<code>kubectl apply -f redis-cluster-crd.yaml</code>：</p>
+
+<pre><code class="language-yaml">apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: redisclusters.redis.middleware.hc.cn
+spec:
+  group: redis.middleware.hc.cn
+  versions:
+    - name: v1alpha1
+      # Each version can be enabled/disabled by Served flag.
+      served: true
+      # One and only one version must be marked as the storage version.
+      storage: true
+  scope: Namespaced
+  names:
+    kind: RedisCluster
+    singular: rediscluster
+    listKind: RedisClusterList
+    plural: redisclusters
+    shortNames:
+    - rec
+    # 执行kubectl get all时会查到pod、service、该crd等属于all categories的资源对象
+    categories:
+    - all
+</code></pre>
+
+<p>将以下内容保存到<code>redis-cluster-cr.yaml</code>中执行<code>kubectl apply -f redis-cluster-cr.yaml</code>：</p>
+
+<pre><code class="language-yaml">apiVersion: redis.middleware.hc.cn/v1alpha1
+kind: RedisCluster
+metadata: 
+  name: example000-redis-cluster
+  namespace: kube-system
+spec:
+  # 代表redis集群的个数
+  replicas: 6
+  # 代表是否进入维修状态
+  pause: true
+  repository: library/redis
+  # 镜像版本，便于后续多版本特化支持
+  version: 3.2.6
+  #redis集群升级策略
+  updateStrategy:
+    # 升级类型为AutoReceive（自动分配,不用AssignStrategies）, AssignReceive（指定值分配，需要用AssignStrategies）
+    type: AssignReceive
+    pipeline: &quot;100&quot;
+    assignStrategies:
+       - 
+        slots: 2000
+        fromReplicas: nodeId1
+       - 
+        # 从nodeId3,nodeId4一共分配1000个卡槽
+        slots: 1000 
+        # 多个nodeId用逗号分隔
+        fromReplicas: nodeId3,nodeId4
+  # redis 实例配置详情
+  pod:
+    # 配置文件模板名
+  - configmap: example000-redis-cluster-config
+    # 监控镜像
+    monitorImage: redis-exporter:v1
+    # 初始化镜像
+    initImage: redis-init:v1
+    # 中间件容器镜像
+    middlewareImage: redis-trib:3.2.6
+</code></pre>
+
+<p>执行kubectl get all时会查到pod、service、该crd等属于all categories的资源对象。（这个可能得等几分钟才能生效）</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/9134763-7fa806fd9d87ae04.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" /></p>
+
+<h2 id="子资源">子资源</h2>
+
+<h3 id="status子资源">status子资源</h3>
+
+<p>启用状态子资源后，将公开自定义资源的子资源 <code>/status</code>。</p>
+
+<ul>
+<li>状态和规范节分别由自定义资源内的 <code>.status</code> 和 <code>.spec</code> JSONPath 表示。</li>
+<li><code>PUT /status</code> 对子资源的请求采用自定义资源对象，并忽略除状态节之外的任何更改。</li>
+<li><code>PUT /status</code> 对子资源的请求仅验证自定义资源的状态节。</li>
+<li><code>PUT/ POST/ PATCH</code> 请求自定义资源忽略更改状态节。</li>
+<li>对 spec 节的任何更改都会增加 <code>.metadata.generation</code> 的值。</li>
+</ul>
+
+<p>在code-generator生成代码时会生成，如下方法：</p>
+
+<pre><code class="language-go">// RedisClusterInterface has methods to work with RedisCluster resources.
+type RedisClusterInterface interface {
+	Create(*v1alpha1.RedisCluster) (*v1alpha1.RedisCluster, error)
+	Update(*v1alpha1.RedisCluster) (*v1alpha1.RedisCluster, error)
+	UpdateStatus(*v1alpha1.RedisCluster) (*v1alpha1.RedisCluster, error)
+    ......
+}
+</code></pre>
+
+<h3 id="scale子资源">scale子资源</h3>
+
+<p>启用 scale 子资源后，将公开自定义资源的子资源 <code>/scale</code>。该 autoscaling/v1.Scale 对象作为有效负载发送 /scale。</p>
+
+<p>要启用 scale 子资源，CustomResourceDefinition 中需要定义以下值。</p>
+
+<ul>
+<li><p>SpecReplicasPath 在与之对应的自定义资源中定义 JSONPath Scale.Spec.Replicas。这是一个必需的值。.spec 只允许使用带点符号的 JSONPaths 。如果 SpecReplicasPath 自定义资源中没有值，则 /scale 子资源将在GET上返回错误。</p></li>
+
+<li><p>StatusReplicasPath 在与之对应的自定义资源中定义 JSONPath Scale.Status.Replicas。这是一个必需的值。.stutus 只允许使用带点符号的 JSONPaths 。如果 StatusReplicasPath 自定义资源中没有值，则子资源 /scale 中的状态副本值将默认为 0。</p></li>
+
+<li><p>LabelSelectorPath在与之对应的自定义资源中定义 JSONPath Scale.Status.Selector。这是一个可选值。必须将其设置为与 HPA 一起使用。.status 只允许使用带点符号的 JSONPaths 。如果 LabelSelectorPath 自定义资源中没有值，则子资源 /scale 中的状态选择器值将默认为空字符串。</p></li>
+</ul>
+
+<p>在以下示例中，启用了status 和 scale 子资源。</p>
+
+<p>将以下内容保存到<code>redis-cluster-crd.yaml</code>并创建 <code>kubectl apply -f redis-cluster-crd.yaml</code>：</p>
+
+<pre><code class="language-yaml">apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: redisclusters.redis.middleware.hc.cn
+spec:
+  group: redis.middleware.hc.cn
+  versions:
+    - name: v1alpha1
+      # Each version can be enabled/disabled by Served flag.
+      served: true
+      # One and only one version must be marked as the storage version.
+      storage: true
+  scope: Namespaced
+  names:
+    kind: RedisCluster
+    singular: rediscluster
+    listKind: RedisClusterList
+    plural: redisclusters
+    shortNames:
+    - rec
+    # 执行kubectl get all时会查到pod、service、该crd等属于all categories的资源对象
+    categories:
+    - all
+  subresources:
+    # status enables the status subresource.
+    status: {}
+    scale:
+      # specReplicasPath defines the JSONPath inside of a custom resource that corresponds to Scale.Spec.Replicas.
+      specReplicasPath: .spec.replicas
+      # statusReplicasPath defines the JSONPath inside of a custom resource that corresponds to Scale.Status.Replicas.
+      statusReplicasPath: .status.replicas
+      # labelSelectorPath defines the JSONPath inside of a custom resource that corresponds to Scale.Status.Selector.
+      labelSelectorPath: .status.labelSelector
+</code></pre>
+
+<p>创建 CustomResourceDefinition 对象后，您可以创建自定义对象。</p>
+
+<p>如果您将以下 YAML 保存到 <code>redis-cluster-cr.yaml</code>：</p>
+
+<pre><code class="language-yaml">apiVersion: redis.middleware.hc.cn/v1alpha1
+kind: RedisCluster
+metadata: 
+  name: example000-redis-cluster
+  namespace: kube-system
+spec:
+  # 代表redis集群的个数
+  replicas: 6
+  # 代表是否进入维修状态
+  pause: true
+  repository: library/redis
+  # 镜像版本，便于后续多版本特化支持
+  version: 3.2.6
+  #redis集群升级策略
+  updateStrategy:
+    # 升级类型为AutoReceive（自动分配,不用AssignStrategies）, AssignReceive（指定值分配，需要用AssignStrategies）
+    type: AssignReceive
+    pipeline: &quot;100&quot;
+    assignStrategies:
+       - 
+        slots: 2000
+        fromReplicas: nodeId1
+       - 
+        # 从nodeId3,nodeId4一共分配1000个卡槽
+        slots: 1000 
+        # 多个nodeId用逗号分隔
+        fromReplicas: nodeId3,nodeId4
+  # redis 实例配置详情
+  pod:
+    # 配置文件模板名
+  - configmap: example000-redis-cluster-config
+    # 监控镜像
+    monitorImage: redis-exporter:v1
+    # 初始化镜像
+    initImage: redis-init:v1
+    # 中间件容器镜像
+    middlewareImage: redis-trib:3.2.6
+</code></pre>
+
+<p>并创建它：</p>
+
+<pre><code class="language-shell">kubectl create -f redis-cluster-cr.yaml
+</code></pre>
+
+<p>然后在以下位置创建新的命名空间 RESTful API 端点：</p>
+
+<pre><code>/apis/redis.middleware.hc.cn/v1alpha1/namespaces/kube-system/redisclusters/example000-redis-cluster/status
+</code></pre>
+
+<p>和</p>
+
+<pre><code class="language-shell">/apis/redis.middleware.hc.cn/v1alpha1/namespaces/kube-system/redisclusters/example000-redis-cluster/scale
+</code></pre>
+
+<p>可以使用该 <code>kubectl scale</code> 命令缩放自定义资源。例如，以上创建的自定义资源的的 <code>.spec.replicas</code> 设置为 10：</p>
+
+<pre><code class="language-shell"># kubectl get rec --all-namespaces
+NAMESPACE     NAME                       DESIRED   PAUSE   AGE
+kube-system   example000-redis-cluster   6         true    10h
+
+# kubectl scale --replicas=10 rec/example000-redis-cluster -nkube-system
+rediscluster.redis.middleware.hc.cn/example000-redis-cluster scaled
+
+# kubectl get rec --all-namespaces
+NAMESPACE     NAME                       DESIRED   PAUSE   AGE
+kube-system   example000-redis-cluster   10        true    10h
+
+# kubectl get rec example000-redis-cluster -n kube-system -o jsonpath='{.spec.replicas}'
+10
+</code></pre>
+
+<h2 id="打印其他列">打印其他列</h2>
+
+<p>从 Kubernetes 1.11 开始，kubectl 使用服务器端打印。服务器决定 <code>kubectl get</code> 命令显示哪些列。您可以使用 CustomResourceDefinition 自定义这些列。下面的示例将输出 <code>Spec</code>、<code>Replicas</code> 和 <code>Age</code> 列。</p>
+
+<ol>
+<li><p>将 CustomResourceDefinition保存到 <code>redis-cluster-crd.yaml</code>。</p>
+
+<pre><code class="language-yaml">apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+ name: redisclusters.redis.middleware.hc.cn
+spec:
+ group: redis.middleware.hc.cn
+ versions:
+   - name: v1alpha1
+     # Each version can be enabled/disabled by Served flag.
+     served: true
+     # One and only one version must be marked as the storage version.
+     storage: true
+ scope: Namespaced
+ names:
+   kind: RedisCluster
+   singular: rediscluster
+   listKind: RedisClusterList
+   plural: redisclusters
+   shortNames:
+   - rec
+   # 执行kubectl get all时会查到pod、service、该crd等属于all categories的资源对象
+   categories:
+   - all
+ additionalPrinterColumns:
+ - name: DESIRED
+   type: integer
+   description: The number of statefulset managed by the this redisCluster
+   JSONPath: .spec.replicas
+   # boolean,date,integer,number,string
+ - name: PAUSE
+   type: boolean
+   description: Whether this redisCluster's grandson (pod) will not be managed by statefulset
+   JSONPath: .spec.pause
+</code></pre></li>
+
+<li><p>创建 CustomResourceDefinition：</p>
+
+<pre><code>kubectl create -f redis-cluster-crd.yaml
+</code></pre></li>
+
+<li><p>使用上面创建的 <code>redis-cluster-cr.yaml</code> 实例。</p></li>
+
+<li><p>调用服务器端打印：</p>
+
+<pre><code>kubectl get rec --all-namespaces
+</code></pre></li>
+</ol>
+
+<p>请注意 <code>NAME</code>、<code>NAMESPACE</code>, <code>DESIRED</code>、<code>PAUSE</code> 和 <code>AGE</code> 在输出列，并且都被转成了大写字母：</p>
+
+<pre><code>   [root@master-192 redis-container]# kubectl get rec --all-namespaces
+   NAMESPACE     NAME                       DESIRED   PAUSE   AGE
+   kube-system   example000-redis-cluster   6         true    10h
+</code></pre>
+
+<p><code>NAME</code>和<code>NAMESPACE</code> 列是隐含的，不需要在 CustomResourceDefinition 中定义。</p>
+
+<h2 id="operator中应用该特性">operator中应用该特性</h2>
+
+<p>在golang编写的operator代码中创建该结构体：</p>
+
+<pre><code class="language-go">//创建CRD
+func CreateRedisClusterCRD(extensionCRClient *extensionsclient.Clientset) error {
+	//add CustomResourceValidation due to guarantee redis operator work normally
+	labelSelectorPath := &quot;.status.labelSelector&quot;
+	replicasMinimum := float64(0)
+	replicasMaximum := float64(50)
+	replicasMultipleOf := float64(2)
+	slotsMinimum := float64(1)
+	slotsMaximum := float64(16384)
+	assignStr := &quot;AssignReceive&quot;
+	autoStr := &quot;AutoReceive&quot;
+	assignJson, _ := json.Marshal(assignStr)
+	autoJson, _ := json.Marshal(autoStr)
+
+	crd := &amp;v1beta1.CustomResourceDefinition{
+		ObjectMeta: metav1.ObjectMeta{
+			Name: &quot;redisclusters.&quot; + v1alpha1.SchemeGroupVersion.Group,
+		},
+		Spec: v1beta1.CustomResourceDefinitionSpec{
+			Group:   v1alpha1.SchemeGroupVersion.Group,
+			Versions: []v1beta1.CustomResourceDefinitionVersion {
+				{
+					// Served is a flag enabling/disabling this version from being served via REST APIs
+					Served: true,
+					Name: v1alpha1.SchemeGroupVersion.Version,
+					// Storage flags the version as storage version. There must be exactly one flagged as storage version
+					Storage: true,
+				},
+			},
+			Scope:   v1beta1.NamespaceScoped,
+			Names: v1beta1.CustomResourceDefinitionNames{
+				Kind:       &quot;RedisCluster&quot;,
+				ListKind:   &quot;RedisClusterList&quot;,
+				Plural:     &quot;redisclusters&quot;,
+				Singular:   &quot;rediscluster&quot;,
+				ShortNames: []string{&quot;rec&quot;},
+				Categories: []string{&quot;all&quot;},
+			},
+			Subresources: &amp;v1beta1.CustomResourceSubresources {
+				Status: &amp;v1beta1.CustomResourceSubresourceStatus {},
+				Scale: &amp;v1beta1.CustomResourceSubresourceScale {
+					SpecReplicasPath: &quot;.spec.replicas&quot;,
+					StatusReplicasPath: &quot;.status.replicas&quot;,
+					LabelSelectorPath: &amp;labelSelectorPath,
+				},
+			},
+			AdditionalPrinterColumns: []v1beta1.CustomResourceColumnDefinition{
+				{
+					Name: &quot;DESIRED&quot;,
+					Type: &quot;integer&quot;,
+					Description: &quot;The number of statefulset managed by the this redisCluster&quot;,
+					JSONPath: &quot;.spec.replicas&quot;,
+				},
+				{
+					Name: &quot;PAUSE&quot;,
+					Type: &quot;boolean&quot;,
+					Description: &quot;Whether this redisCluster's grandson (pod) will not be managed by statefulset&quot;,
+					JSONPath: &quot;.spec.pause&quot;,
+				},
+				{
+					Name: &quot;AGE&quot;,
+					Type: &quot;date&quot;,
+					JSONPath: &quot;.metadata.creationTimestamp&quot;,
+				},
+			},
+			Validation: &amp;v1beta1.CustomResourceValidation {
+				OpenAPIV3Schema: &amp;v1beta1.JSONSchemaProps {
+					Properties: map[string]v1beta1.JSONSchemaProps {
+						&quot;spec&quot;: {
+							Required: []string{&quot;replicas&quot;, &quot;repository&quot;, &quot;version&quot;},
+							Properties: map[string]v1beta1.JSONSchemaProps{
+								&quot;pause&quot;: {
+									Type: &quot;boolean&quot;,
+								},
+								&quot;replicas&quot;: {
+									Type:       &quot;integer&quot;,
+									Minimum:    &amp;replicasMinimum,
+									Maximum:    &amp;replicasMaximum,
+									MultipleOf: &amp;replicasMultipleOf,
+								},
+								&quot;updateStrategy&quot;: {
+									Type: &quot;object&quot;,
+									Properties: map[string]v1beta1.JSONSchemaProps{
+										&quot;type&quot;: {
+											Type: &quot;string&quot;,
+											Enum: []v1beta1.JSON {
+												{
+                                                    //这里必须是JSON格式的字符串
+													Raw: assignJson,
+												},
+												{
+													Raw: autoJson,
+												},
+											},
+										},
+										&quot;pipeline&quot;: {
+											Type:    &quot;string&quot;,
+											Pattern: `^([1-9][0-9]*){1,3}$`,
+										},
+										&quot;assignStrategies&quot;: {
+											Type: &quot;array&quot;,
+											Items: &amp;v1beta1.JSONSchemaPropsOrArray{
+												Schema: &amp;v1beta1.JSONSchemaProps{
+													Type: &quot;object&quot;,
+													Properties: map[string]v1beta1.JSONSchemaProps{
+														&quot;slots&quot;: {
+															Type:    &quot;integer&quot;,
+															Minimum: &amp;slotsMinimum,
+															Maximum: &amp;slotsMaximum,
+														},
+														&quot;fromReplicas&quot;: {
+															Type:    &quot;string&quot;,
+															Pattern: `^[a-z0-9,]{3,}$`,
+														},
+													},
+												},
+											},
+										},
+									},
+								},
+							},
+						},
+						&quot;pod&quot;: {
+							Type: &quot;array&quot;,
+							Items: &amp;v1beta1.JSONSchemaPropsOrArray {
+								Schema: &amp;v1beta1.JSONSchemaProps {
+									Type: &quot;object&quot;,
+									Required: []string{&quot;replicas&quot;, &quot;repository&quot;, &quot;version&quot;},
+									Properties: map[string]v1beta1.JSONSchemaProps{
+										&quot;configmap&quot;: {
+											Type: &quot;string&quot;,
+										},
+										&quot;monitorImage&quot;: {
+											Type: &quot;string&quot;,
+										},
+										&quot;initImage&quot;: {
+											Type: &quot;string&quot;,
+										},
+										&quot;middlewareImage&quot;: {
+											Type: &quot;string&quot;,
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+	}
+	_, err := extensionCRClient.ApiextensionsV1beta1().CustomResourceDefinitions().Create(crd)
+	return err
+}
+
+</code></pre>
+
+<h2 id="参考">参考</h2>
+
+<p>官方Extend the Kubernetes API with CustomResourceDefinitions：</p>
+
+<p><a href="https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/">https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/</a></p>
+
+<p>feature-gates参数说明：</p>
+
+<p><a href="https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates/">https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates/</a></p>
+
+<p>CustomResourceDefinition中文文档：</p>
+
+<p><a href="https://kubernetes.feisky.xyz/cha-jian-kuo-zhan/api/customresourcedefinition">https://kubernetes.feisky.xyz/cha-jian-kuo-zhan/api/customresourcedefinition</a></p>
+
+<p>swagger和openAPI: 数据类型：</p>
+
+<p><a href="https://www.breakyizhan.com/swagger/2969.html">https://www.breakyizhan.com/swagger/2969.html</a></p>
+
+<p>正则表达式：</p>
+
+<p><a href="https://www.cnblogs.com/afarmer/archive/2011/08/29/2158860.html">https://www.cnblogs.com/afarmer/archive/2011/08/29/2158860.html</a></p>
+
+<hr />
+
+<p>最后，csdn资源，收集了海量学习资料，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括java、go、python、springcloud、elk、嵌入式 、大数据、面试资料、前端等资源。同时我们组建了一个技术交流群，里面有很多大佬，会不定时分享技术文章，如果你想来一起学习提高，可以关注以下公众号后回复【2】，获取。</p>
+
+<hr />
+
+<p><strong>我是小碗汤，我们一起学习，扫码关注，精彩内容第一时间推给你</strong></p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/9134763-feadf1dd0fe231ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/258/format/webp" alt="扫码关注我，一起交流" /></p>
+
+                        </div>
+
+                        
+                        
+
+<div style="padding: 10px 0; margin: 20px auto; width: 100%; font-size:20px; text-align: center;">
+  <button id="rewardButton" disable="enable" onclick="let qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+  <span>打赏</span></button>
+  <div id="QR" style="display: none;">
+    
+    <div style="display: inline-block">
+      <a class="fancybox" rel="group"><img src="/img/wechat-zhifubao-QR.png"></a>
+    </div>
+  </div>
+</div>
+
+                        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://liabio.github.io">小碗汤</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://liabio.github.io/posts/2019-09-30-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/">https://liabio.github.io/posts/2019-09-30-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+                        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/">etcd操作</a></li>
+        
+        <li><a href="/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/">k8s中部署负载均衡器ingress-nginx</a></li>
+        
+        <li><a href="/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/">k8s使用Job执行任务失败了怎么办</a></li>
+        
+        <li><a href="/posts/2019-09-24-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%901/">kubernetes垃圾回收器GarbageCollector Controller源码分析（一）</a></li>
+        
+        <li><a href="/posts/2019-09-24-%E9%87%87%E5%9D%91%E6%8C%87%E5%8D%97-k8s%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90coredns%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/">采坑指南——k8s域名解析coredns问题排查过程</a></li>
+        
+    </ul>
+</div>
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            <ul class="clearfix">
+                                
+                                <li><a href="https://liabio.github.io/tags/kubernetes">kubernetes</a></li>
+                                
+                                <li><a href="https://liabio.github.io/tags/crd">crd</a></li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liabio.github.io">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-01-03-yum%E6%BA%90%E9%85%8D%E7%BD%AE/" title="2019 01 03 Yum源配置">2019 01 03 Yum源配置</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-30-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/" title="Kubernetes自定义资源对象高级功能">Kubernetes自定义资源对象高级功能</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/" title="etcd操作">etcd操作</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/" title="docker镜像制作必备技能">docker镜像制作必备技能</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" title="git常用操作">git常用操作</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/" title="k8s中部署负载均衡器ingress-nginx">k8s中部署负载均衡器ingress-nginx</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/" title="k8s使用Job执行任务失败了怎么办">k8s使用Job执行任务失败了怎么办</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%901/" title="kubernetes垃圾回收器GarbageCollector Controller源码分析（一）">kubernetes垃圾回收器GarbageCollector Controller源码分析（一）</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/" title="一次socket.error: [Errno 99] Cannot assign requested address报错排查">一次socket.error: [Errno 99] Cannot assign requested address报错排查</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/" title="云服务器使用docker搭建服务">云服务器使用docker搭建服务</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title" style="color:red">福利派送</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a href="https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=3iiljysb" title="高性能云服务器2折起" target="_blank" style="color:red">
+                
+                    <img src="/img/aliyun600x300.png">
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="https://www.aliyun.com/acts/hotsale?userCode=3iiljysb" title="主机爆款特惠3折起" target="_blank" style="color:red">
+                
+                    <img src="/img/zhujibaokuan3zhe.png">
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=3iiljysb" title="2000元全场红包领取" target="_blank" style="color:red">
+                
+                    <img src="/img/getalluse2000yuan.png">
+                
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liabio.github.io/categories//">(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/anyListen/">anyListen(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/blog/">blog(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/centos/">centos(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/debug/">debug(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/ditto/">ditto(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/docker/">docker(10)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/elasticsearch/">elasticsearch(3)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/etcd/">etcd(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/git/">git(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/golang/">golang(10)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/http/">http(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/idea/">idea(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/ingress-nginx/">ingress-nginx(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/java/">java(11)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/job/">job(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/k8s/">k8s(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(15)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/linux/">linux(3)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/mysql/">mysql(6)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/nginx/">nginx(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/openresty/">openresty(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/redis/">redis(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/shell/">shell(3)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/springmvc/">springmvc(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/vmware/">vmware(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/windows/">windows(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/xyplorer/">xyplorer(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/zookeeper/">zookeeper(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/%E5%B7%A5%E5%85%B7/">工具(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务(1)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://liabio.github.io/tags//"></a>
+    
+    <a href="https://liabio.github.io/tags/blog/">blog</a>
+    
+    <a href="https://liabio.github.io/tags/chocolate/">chocolate</a>
+    
+    <a href="https://liabio.github.io/tags/controller/">controller</a>
+    
+    <a href="https://liabio.github.io/tags/crd/">crd</a>
+    
+    <a href="https://liabio.github.io/tags/csdn/">csdn</a>
+    
+    <a href="https://liabio.github.io/tags/docker/">docker</a>
+    
+    <a href="https://liabio.github.io/tags/email/">email</a>
+    
+    <a href="https://liabio.github.io/tags/etcd/">etcd</a>
+    
+    <a href="https://liabio.github.io/tags/garbageCollector/">garbageCollector</a>
+    
+    <a href="https://liabio.github.io/tags/git/">git</a>
+    
+    <a href="https://liabio.github.io/tags/http/">http</a>
+    
+    <a href="https://liabio.github.io/tags/hugo/">hugo</a>
+    
+    <a href="https://liabio.github.io/tags/ingress-nginx/">ingress-nginx</a>
+    
+    <a href="https://liabio.github.io/tags/java/">java</a>
+    
+    <a href="https://liabio.github.io/tags/job/">job</a>
+    
+    <a href="https://liabio.github.io/tags/kubernetes/">kubernetes</a>
+    
+    <a href="https://liabio.github.io/tags/mysql/">mysql</a>
+    
+    <a href="https://liabio.github.io/tags/nginx/">nginx</a>
+    
+    <a href="https://liabio.github.io/tags/operator/">operator</a>
+    
+    <a href="https://liabio.github.io/tags/redis%E9%9B%86%E7%BE%A4/">redis集群</a>
+    
+    <a href="https://liabio.github.io/tags/shell/">shell</a>
+    
+    <a href="https://liabio.github.io/tags/telnet/">telnet</a>
+    
+    <a href="https://liabio.github.io/tags/thrift/">thrift</a>
+    
+    <a href="https://liabio.github.io/tags/%E4%B8%8A%E7%BD%91/">上网</a>
+    
+    <a href="https://liabio.github.io/tags/%E4%BB%A3%E7%90%86/">代理</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%8C%85%E7%AE%A1%E7%90%86/">包管理</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%9B%BD%E9%99%85%E5%8C%96/">国际化</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%9D%91/">坑</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/">垃圾回收器</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/">存储过程</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%AE%B9%E5%99%A8/">容器</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/">效率工具</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%95%99%E7%A8%8B/">教程</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%97%A5%E5%BF%97%E8%BD%AC%E5%82%A8/">日志转储</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E5%85%A8/">服务器安全</a>
+    
+    <a href="https://liabio.github.io/tags/%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/">灰度发布</a>
+    
+    <a href="https://liabio.github.io/tags/%E7%88%AC%E8%99%AB/">爬虫</a>
+    
+    <a href="https://liabio.github.io/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/">虚拟机</a>
+    
+    <a href="https://liabio.github.io/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/">解决问题</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%85%8D%E7%BD%AE/">配置</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%95%9C%E5%83%8F/">镜像</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%97%AE%E9%A2%98/">问题</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">问题解决</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/">验证码</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liabio.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="social-links" style="text-align: center; padding-top: 10px">
+          
+  
+  
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/font/jianshu/iconfont.css">
+  <link rel="stylesheet" href="/font/segmentfault/iconfont.css">
+  <link rel="stylesheet" href="/font/weixingongzhonghao/iconfont.css">
+  <link rel="stylesheet" href="/font/juejin/iconfont.css">
+  <link rel="stylesheet" href="/font/zhihu/iconfont.css">
+  <link rel="stylesheet" href="/font/cnblog/iconfont.css">
+  <link rel="stylesheet" href="/font/csdn/iconfont.css">
+  <link rel="stylesheet" href="/scss/main.min.49aaf4284ea697cea9958ae76b5c552c1802fe84051ec9372cfbe7bf2db0d599.css">
+
+
+
+
+
+<style type="text/css">
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .8);
+}
+
+.center {
+    width: 220px;
+    height: 220px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -110px;
+}
+
+.center img {
+    width: 220px;
+}
+
+.center i {
+    color: #fff;
+    font-size: 1.5em;
+    position: relative;
+    float: right;
+    top: 0px;
+    right: -20px;
+    cursor: pointer;
+}
+</style>
+
+
+<div id="lightbox" style="display: none" class="lightbox" onclick="document.getElementById('lightbox').style.display='none';">
+    <div class="center">
+        
+        <i class="iconfont icon-close"></i>
+        
+        <img src="/img/me/wechat.png">
+    </div>
+</div>
+
+
+
+
+
+<style type="text/css">
+.gongzhonghaolightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .8);
+}
+</style>
+
+
+<div id="gongzhonghaolightbox" style="display: none" class="gongzhonghaolightbox" onclick="document.getElementById('gongzhonghaolightbox').style.display='none';">
+    <div class="center">
+        <i class="iconfont icon-close"></i>
+        <img src="/img/me/gongzhonghao-ercode.jpg">
+    </div>
+</div>
+
+
+
+<a href="https://github.com/liabio" target="_blank" rel="me noopener"><i class="iconfont icon-github"></i></a>
+
+
+
+<a href="https://twitter.com/ll837448792" target="_blank" rel="me noopener"><i class="iconfont icon-twitter"></i></a>
+
+
+<a href="https://www.instagram.com/liabio0418/" target="_blank" rel="me noopener"><i class="iconfont icon-instagram"></i></a> 
+ 
+
+<a href="javascript:void(0);" rel="me noopener" onclick="document.getElementById('lightbox').style.display='inline';"><i class="iconfont icon-wechat"></i></a>
+
+
+<a href="mailto:837448792@qq.com" rel="me noopener"><i class="iconfont icon-mail01"></i></a>
+
+
+
+
+
+
+<a href="https://medium.com/@ll837448792" rel="me noopener"><i class="iconfont icon-medium-circle-fill"></i></a>
+
+
+
+<a href="https://www.zhihu.com/people/liabio/posts" rel="me noopener"><i class="zhihu-iconfont icon-zhihu"></i></a>
+
+
+
+<a href="https://www.jianshu.com/u/33c582f040ae" rel="me noopener"><i class="jianshu-iconfont icon-jianshu"></i></a>
+
+
+
+<a href="https://blog.csdn.net/ll837448792" rel="me noopener"><i class="csdn-iconfont icon-csdn"></i></a>
+
+
+
+<a href="https://segmentfault.com/u/smallsoup" rel="me noopener"><i class="segmentfault-iconfont icon-sf"></i></a>
+
+
+
+<a href="https://juejin.im/user/5b0c1a17f265da08df28648c" rel="me noopener"><i class="juejin-iconfont icon-juejin"></i></a>
+
+
+
+<a href="https://www.cnblogs.com/liabio" rel="me noopener"><i class="cnblog-iconfont icon-bokeyuan"></i></a>
+
+
+
+<a href="javascript:void(0);" rel="me noopener" onclick="document.getElementById('gongzhonghaolightbox').style.display='inline';"><i class="weixingongzhonghao-iconfont icon-weixingongzhonghao"></i></a>
+
+
+
+
+    </div>
+    <div class="container" style="text-align: center; padding-top: 3px">
+        &copy; 2019 <a href="https://liabio.github.io">小碗汤的博客 By 小碗汤</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.2.8/raphael.min.js" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/flowchart/1.12.2/flowchart.min.js" crossorigin="anonymous"></script>
+        <script>(function () {
+                if (!window.flowchart) return;
+                const blocks = document.querySelectorAll('pre code.language-flowchart, pre code.language-flow');
+                for (let i = 0; i < blocks.length; i++) {
+                    const block = blocks[i];
+                    const rootElement = block.parentNode;
+                    const container = document.createElement('div');
+                    const id = `js-flowchart-diagrams-${i}`;
+                    container.id = id;
+                    container.className = 'align-center';
+                    container.setAttribute("style", "overFlow-x:auto");
+                    rootElement.parentNode.replaceChild(container, rootElement);
+                    const diagram = flowchart.parse(block.childNodes[0].nodeValue);
+                    diagram.drawSVG(id, window.flowchartDiagramsOptions ? window.flowchartDiagramsOptions : {});
+                }
+            })();
+        </script>
+    <script type="text/javascript">
+        
+        (function () {
+            $("pre code").parent().addClass("line-numbers")
+        }());
+
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script type="text/javascript" src="/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-139517579-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+</body>
+</html>

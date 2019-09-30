@@ -1,0 +1,1393 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.58.3" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>GolangFlag包使用笔记 | 小碗汤的博客</title>
+    <meta property="og:title" content="GolangFlag包使用笔记 - 小碗汤的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content="2019-06-20T17:50:36&#43;08:00">
+        
+        
+    <meta property="article:modified_time" content="2019-06-20T17:50:36&#43;08:00">
+        
+
+    <meta name="Keywords" content="golang,go语言,go语言笔记,小碗汤,docker,kubernetes,k8s,java,博客,python,软件架构,公众号,小程序,Hugo,theme,maupassant">
+    <meta name="description" content="GolangFlag包使用笔记">
+        <meta name="author" content="小碗汤">
+        
+    <meta property="og:url" content="https://liabio.github.io/posts/2019-06-20-golangFlag%E5%8C%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+        <link rel="stylesheet" href="/css/prism.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <link rel="stylesheet" href="/css/reward.css">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name">
+                    <h1>
+                        <a id="logo" href="https://liabio.github.io">
+                            小碗汤的博客
+                        </a>
+                    </h1>
+                <p class="description">专注于Java、Go语言(Golang)、Docker、Kubernetes、软件架构</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://liabio.github.io">首页</a>
+                    
+                    <a  href="https://liabio.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liabio.github.io/tools/" title="工具">工具</a>
+                    
+                    <a  href="https://liabio.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+        
+        <div id="virtual_toc_list" style="display: none">
+            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#1-1-使用示例">1.1 使用示例：</a></li>
+<li><a href="#1-2-flag-包概述">1.2 flag 包概述</a>
+<ul>
+<li><a href="#1-2-1-定义-flags-有两种方式">1.2.1 定义 flags 有两种方式</a></li>
+<li><a href="#1-2-2-自定义-value">1.2.2  自定义 Value</a></li>
+<li><a href="#1-2-3-解析-flag">1.2.3 解析 flag</a></li>
+</ul></li>
+<li><a href="#1-3-类型和函数">1.3 类型和函数</a>
+<ul>
+<li><a href="#1-3-1-函数">1.3.1 函数</a></li>
+<li><a href="#1-3-2-类型-数据结构">1.3.2 类型（数据结构）</a></li>
+</ul></li>
+<li><a href="#1-4-主要类型的方法-包括类型实例化">1.4 主要类型的方法（包括类型实例化）</a>
+<ul>
+<li><a href="#1-4-1-实例化方式">1.4.1 实例化方式</a></li>
+<li><a href="#1-4-2-定义-flag-参数的方法">1.4.2  定义 flag 参数的方法</a></li>
+<li><a href="#1-4-3-解析参数-parse">1.4.3 解析参数（Parse）</a></li>
+<li><a href="#1-4-4-arg-i-int-和-args-narg-nflag">1.4.4 Arg(i int) 和 Args()、NArg()、NFlag()</a></li>
+<li><a href="#1-4-5-visit-visitall">1.4.5 Visit/VisitAll</a></li>
+<li><a href="#1-4-6-printdefaults">1.4.6 PrintDefaults()</a></li>
+<li><a href="#1-4-7-set-name-value-string">1.4.7 Set(name, value string)</a></li>
+</ul></li>
+<li><a href="#1-5-总结">1.5 总结</a></li>
+</ul></li>
+</ul>
+</nav>
+        </div>
+        <div id="float_toc_div" style="margin: 10px;border: 1px solid gray;z-index:99999;display: none;">
+            <header style="background-color: #f3f3f3;color: black;border-bottom: 1px solid gray;padding: 10px 10px 10px 10px;">
+                <strong id="toc_btn_open" style="color: black;font-size: large;">目录</strong>
+                <strong id="toc_btn_close" style="color: black;font-size: large;float: right">╳</strong>
+            </header>
+            <div id="toc_list" style="background-color: #f3f3f3;color: black;padding: 10px;">
+        
+            </div>
+        </div>
+        <style type="text/css">
+            #float_toc_div {
+                position: fixed;
+                display: none;
+                 
+                height: auto;
+                font-size: 13px;
+            }
+        
+            #toc_list a:hover,
+            #toc_list a:active {
+                color: #ba3925;
+            }
+        </style>
+        <script>
+            window.onload = function () {
+                let tocNavElem = document.getElementById("TableOfContents");
+                let floatTocDivElem = document.getElementById("float_toc_div");
+                let tocListElem = floatTocDivElem.getElementsByTagName('div')[0];
+                let colGroupElem = document.getElementById("body").getElementsByClassName("col-group")[0]
+                let floatTocWidth = (document.body.clientWidth - colGroupElem.offsetWidth) / 2 - 16;
+                var useFloatToc = false;
+
+                if (floatTocWidth >= 100) {
+                    useFloatToc = true;
+                    document.getElementById("toc_list").appendChild(tocNavElem);
+                    floatTocDivElem.style.display = 'block';
+                    floatTocDivElem.style.width = floatTocWidth + 'px';
+                    top();
+                    floatTocDivElem.style.left = '0px';
+
+                    function top() {
+                        if (document.getElementsByClassName('container')[0].offsetWidth <= 720) {
+                            floatTocDivElem.style.top = '0px';
+                        } else {
+                            floatTocDivElem.style.top = window.innerHeight / 9 + 'px';
+                        }
+                    }
+
+                    function ishide() {
+                        if (document.getElementsByClassName('container')[0].offsetWidth <= 720) {
+                            floatTocDivElem.style.top = '0px';
+                        } else {
+                            floatTocDivElem.style.display = 'block';
+                        }
+                    }
+
+                    window.onscroll = function () {
+                        ishide();
+                        if ((document.documentElement.scrollTop != 0) && (floatTocDivElem.style.display == 'block')) {
+                            top();
+                        }
+                    };
+
+                    window.onresize = function () {
+                        ishide();
+                    }
+
+                    document.getElementById("toc_btn_open").addEventListener('click', function () {
+                        switch (tocListElem.style.display) {
+                            case "none":
+                                document.getElementById("toc_btn_close").style.display = "";
+                                tocListElem.style.display = "";
+                                floatTocDivElem.getElementsByTagName("header")[0].style.borderBottom = "1px solid gray";
+                                break;
+                            default:
+                                break;
+                        }
+                    }, false);
+
+                    document.getElementById("toc_btn_close").addEventListener('click', function () {
+                        switch (tocListElem.style.display) {
+                            case "":
+                                document.getElementById("toc_btn_close").style.display = "none";
+                                tocListElem.style.display = "none";
+                                floatTocDivElem.getElementsByTagName("header")[0].style.borderBottom = "";
+                                break;
+                            default:
+                                break;
+                        }
+                    }, false);
+                } else {
+                    let fixedTocElem = document.getElementsByClassName("toc-article")[0];
+                    fixedTocElem.appendChild(tocNavElem);
+                    fixedTocElem.parentElement.style.display = "";
+                }
+                document.getElementById("virtual_toc_list").remove();
+            };   
+        </script>
+        
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">GolangFlag包使用笔记</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            2019年6月20日
+                        </date>
+                        
+                        <div class="post-meta">
+                            <span>|</span>
+                            
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/golang">golang</a></span>
+                            
+                        </div>
+                        
+                        
+                        
+                        <div class="post-meta">
+                            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span> 阅读</span></span>
+                        </div>
+                        
+                        
+                        
+                        <div class="clear" style="display: none">
+                            <div class="toc-article">
+                                <div class="toc-title">文章目录</div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="post-content">
+                            
+
+<p>本文原文地址：<a href="https://books.studygolang.com/The-Golang-Standard-Library-by-Example/chapter13/13.1.html">flag - 命令行参数解析</a></p>
+
+<p>在写命令行程序（工具、server）时，对命令参数进行解析是常见的需求。各种语言一般都会提供解析命令行参数的方法或库，以方便程序员使用。如果命令行参数纯粹自己写代码来解析，对于比较复杂的，还是挺费劲的。在 go 标准库中提供了一个包：flag，方便进行命令行解析。</p>
+
+<p>首先，我们看<code>flag</code>包可以做什么，它具有什么样的能力。</p>
+
+<h2 id="1-1-使用示例">1.1 使用示例：</h2>
+
+<ul>
+<li><p>我们以 <code>nginx</code> 为例，执行 <code>nginx -h</code>，输出如下：</p>
+
+<pre><code class="language-shell">nginx version: nginx/1.10.0
+Usage: nginx [-?hvVtTq] [-s signal] [-c filename] [-p prefix] [-g directives]
+
+Options:
+-?,-h         : this help
+-v            : show version and exit
+-V            : show version and configure options then exit
+-t            : test configuration and exit
+-T            : test configuration, dump it and exit
+-q            : suppress non-error messages during configuration testing
+-s signal     : send signal to a master process: stop, quit, reopen, reload
+-p prefix     : set prefix path (default: /usr/local/nginx/)
+-c filename   : set configuration file (default: conf/nginx.conf)
+-g directives : set global directives out of configuration file
+</code></pre></li>
+</ul>
+
+<p>后续我们会利用flag包实现一个并发测试接口的程序。
+现在我们来利用flag包简单实现一下<code>nginx -h</code>这个功能：</p>
+
+<pre><code class="language-go">package main
+
+import (
+	&quot;flag&quot;
+	&quot;fmt&quot;
+	&quot;os&quot;
+)
+
+// 实际中应该用更好的变量名
+var (
+	h bool
+
+	v, V bool
+	t, T bool
+	q    *bool
+
+	s string
+	p string
+	c string
+	g string
+)
+
+func init() {
+	flag.BoolVar(&amp;h, &quot;h&quot;, false, &quot;this help&quot;)
+
+	flag.BoolVar(&amp;v, &quot;v&quot;, false, &quot;show version and exit&quot;)
+	flag.BoolVar(&amp;V, &quot;V&quot;, false, &quot;show version and configure options then exit&quot;)
+
+	flag.BoolVar(&amp;t, &quot;t&quot;, false, &quot;test configuration and exit&quot;)
+	flag.BoolVar(&amp;T, &quot;T&quot;, false, &quot;test configuration, dump it and exit&quot;)
+
+	// 另一种绑定方式
+	q = flag.Bool(&quot;q&quot;, false, &quot;suppress non-error messages during configuration testing&quot;)
+
+	// 注意 `signal`。默认是 -s string，有了 `signal` 之后，变为 -s signal
+	flag.StringVar(&amp;s, &quot;s&quot;, &quot;&quot;, &quot;send `signal` to a master process: stop, quit, reopen, reload&quot;)
+	flag.StringVar(&amp;p, &quot;p&quot;, &quot;/usr/local/nginx/&quot;, &quot;set `prefix` path&quot;)
+	flag.StringVar(&amp;c, &quot;c&quot;, &quot;conf/nginx.conf&quot;, &quot;set configuration `file`&quot;)
+	flag.StringVar(&amp;g, &quot;g&quot;, &quot;conf/nginx.conf&quot;, &quot;set global `directives` out of configuration file&quot;)
+
+	// 改变默认的 Usage，flag包中的Usage 其实是一个函数类型。这里是覆盖默认函数实现，具体见后面Usage部分的分析
+	flag.Usage = usage
+}
+
+func main() {
+	flag.Parse()
+
+	if h {
+		flag.Usage()
+	}
+}
+
+func usage() {
+	fmt.Fprintf(os.Stderr, `nginx version: nginx/1.10.0
+Usage: nginx [-hvVtTq] [-s signal] [-c filename] [-p prefix] [-g directives]
+
+Options:
+`)
+	flag.PrintDefaults()
+}
+</code></pre>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/9134763-b1def46581e3fc45.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="nginx功能用go实现结果" /></p>
+
+<p>看不懂以上的代码实现没关系，先明确flag的能力，看完下面的讲解回过头来看就可以看懂了。</p>
+
+<h2 id="1-2-flag-包概述">1.2 flag 包概述</h2>
+
+<p>flag 包实现了命令行参数的解析。</p>
+
+<h3 id="1-2-1-定义-flags-有两种方式">1.2.1 定义 flags 有两种方式</h3>
+
+<p>1）flag.Xxx()，其中 Xxx 可以是 Int、String，Bool 等；返回一个相应类型的指针，如：
+<code>var ip = flag.Int(&quot;flagname&quot;, 1234, &quot;help message for flagname&quot;)</code></p>
+
+<ul>
+<li>第一个参数 ：flag名称为flagname</li>
+<li>第二个参数 ：flagname默认值为1234</li>
+<li>第三个参数 ：flagname的提示信息</li>
+</ul>
+
+<p>返回的ip是指针类型，所以这种方式获取ip的值应该<code>fmt.Println(*ip)</code></p>
+
+<p>2）flag.XxxVar()，将 flag 绑定到一个变量上，如：</p>
+
+<pre><code class="language-go">var flagValue int
+flag.IntVar(&amp;flagValue, &quot;flagname&quot;, 1234, &quot;help message for flagname&quot;)
+</code></pre>
+
+<ul>
+<li>第一个参数 ：接收flagname的实际值的</li>
+<li>第二个参数 ：flag名称为flagname</li>
+<li>第三个参数 ：flagname默认值为1234</li>
+<li>第四个参数 ：flagname的提示信息
+这种方式获取ip的值<code>fmt.Println(ip)</code>就可以了：</li>
+</ul>
+
+<h3 id="1-2-2-自定义-value">1.2.2  自定义 Value</h3>
+
+<p>另外，还可以创建自定义 flag，只要实现 flag.Value 接口即可（要求 <code>receiver</code> 是指针），这时候可以通过如下方式定义该 flag：</p>
+
+<pre><code class="language-go">flag.Var(&amp;flagVal, &quot;name&quot;, &quot;help message for flagname&quot;)
+</code></pre>
+
+<p>例如，解析我喜欢的编程语言，我们希望直接解析到 slice 中，我们可以定义如下 sliceValue类型，然后实现Value接口：</p>
+
+<pre><code class="language-go">package main
+
+import (
+	&quot;flag&quot;
+	&quot;fmt&quot;
+	&quot;strings&quot;
+)
+
+//定义一个类型，用于增加该类型方法
+type sliceValue []string
+
+//new一个存放命令行参数值的slice
+func newSliceValue(vals []string, p *[]string) *sliceValue {
+	*p = vals
+	return (*sliceValue)(p)
+}
+
+/*
+Value接口：
+type Value interface {
+	String() string
+	Set(string) error
+}
+实现flag包中的Value接口，将命令行接收到的值用,分隔存到slice里
+*/
+func (s *sliceValue) Set(val string) error {
+	*s = sliceValue(strings.Split(val, &quot;,&quot;))
+	return nil
+}
+
+//flag为slice的默认值default is me,和return返回值没有关系
+func (s *sliceValue) String() string {
+	*s = sliceValue(strings.Split(&quot;default is me&quot;, &quot;,&quot;))
+	return &quot;It's none of my business&quot;
+}
+
+/*
+可执行文件名 -slice=&quot;java,go&quot;  最后将输出[java,go]
+可执行文件名 最后将输出[default is me]
+ */
+func main(){
+	var languages []string
+	flag.Var(newSliceValue([]string{}, &amp;languages), &quot;slice&quot;, &quot;I like programming `languages`&quot;)
+	flag.Parse()
+
+	//打印结果slice接收到的值
+	fmt.Println(languages)
+}
+</code></pre>
+
+<p>这样通过 <code>-slice &quot;go,php&quot;</code> 这样的形式传递参数，<code>languages</code> 得到的就是 <code>[go, php]</code>。如果不加<code>-slice</code>参数则打印默认值<code>[default is me]</code></p>
+
+<p>flag 中对 <code>Duration</code> 这种非基本类型的支持，使用的就是类似这样的方式，即同样实现了<code>Value</code>接口。</p>
+
+<h3 id="1-2-3-解析-flag">1.2.3 解析 flag</h3>
+
+<p>在所有的 flag 定义完成之后，可以通过调用 <code>flag.Parse()</code> 进行解析。</p>
+
+<p>命令行 flag 的语法有如下三种形式：</p>
+
+<pre><code class="language-shell">-flag // 只支持bool类型
+-flag=x
+-flag x // 只支持非bool类型
+</code></pre>
+
+<p>以上语法对于一个或两个‘－’号，效果是一样的，但是要注意对于第三种情况，只能用于非 bool 类型的 flag。原因是：如果支持，那么对于这样的命令 cmd -x *，如果有一个文件名字是：0或false等，则命令的原意会改变（bool 类型可以和其他类型一样处理，其次 bool 类型支持 <code>-flag</code> 这种形式，因为Parse()中，对 bool 类型进行了特殊处理）。默认的，提供了 <code>-flag</code>，则对应的值为 true，否则为 <code>flag.Bool/BoolVar</code> 中指定的默认值；如果希望显示设置为 false 则使用 <code>-flag=false</code>。</p>
+
+<p>int 类型可以是十进制、十六进制、八进制甚至是负数；bool 类型可以是1, 0, t, f, true, false, TRUE, FALSE, True, False。Duration 可以接受任何 time.ParseDuration 能解析的类型。</p>
+
+<ul>
+<li>注：如果bool类型的参数在命令行中用了<code>-flag false</code>这种形式时，其后的参数都会被当做非flag（non-flag）参数，non-flag 参数后面解释。</li>
+</ul>
+
+<h2 id="1-3-类型和函数">1.3 类型和函数</h2>
+
+<p>在看类型和函数之前，先看一下变量。</p>
+
+<p>ErrHelp：该错误类型用于当命令行指定了 ·-help` 参数但没有定义时。</p>
+
+<p>例如1.2.2例子中：如果执行时用了<code>-help</code>或者<code>-h</code>时就会输出help message：</p>
+
+<pre><code class="language-go">Usage of myflag.exe:
+  -slice languages
+        I like programming languages
+</code></pre>
+
+<p>Usage：这是一个函数，用于输出所有定义了的命令行参数和帮助信息（usage message）。一般，当命令行参数解析出错时，该函数会被调用。我们可以指定自己的 Usage 函数，即：<code>flag.Usage = func(){}</code></p>
+
+<p>例如1.1示例中：如果执行时用了<code>-help</code>时就会输出和<code>-h</code>一样的usage message。</p>
+
+<h3 id="1-3-1-函数">1.3.1 函数</h3>
+
+<p>go标准库中，经常这么做：</p>
+
+<blockquote>
+<p>定义了一个类型，提供了很多方法；为了方便使用，会实例化一个该类型的实例（通用），这样便可以直接使用该实例调用方法。比如：encoding/base64 中提供了 StdEncoding 和 URLEncoding 实例，使用时：base64.StdEncoding.Encode()</p>
+</blockquote>
+
+<p>在 flag 包使用了有类似的方法，比如 CommandLine 变量，只不过 flag 进行了进一步封装：将 FlagSet 的方法都重新定义了一遍，也就是提供了一系列函数，而函数中只是简单的调用已经实例化好了的 FlagSet 实例：CommandLine 的方法。这样，使用者是这么调用：flag.Parse() 而不是 flag. CommandLine.Parse()。（Go 1.2 起，将 CommandLine 导出，之前是非导出的）</p>
+
+<p>这里不详细介绍各个函数，其他函数介绍可以参考<a href="https://github.com/astaxie/gopkg/blob/master/flag">astaxie的gopkg——flag章节。</a></p>
+
+<h3 id="1-3-2-类型-数据结构">1.3.2 类型（数据结构）</h3>
+
+<p>1）ErrorHandling</p>
+
+<pre><code class="language-go">type ErrorHandling int
+
+</code></pre>
+
+<p>该类型定义了在参数解析出错时错误处理方式。定义了三个该类型的常量：</p>
+
+<pre><code class="language-go">const (
+    ContinueOnError ErrorHandling = iota
+    ExitOnError
+    PanicOnError
+)
+
+</code></pre>
+
+<p>三个常量在源码的 FlagSet 的方法 parseOne() 中使用了。</p>
+
+<p>2）Flag</p>
+
+<pre><code class="language-go">// A Flag represents the state of a flag.
+type Flag struct {
+    Name     string // name as it appears on command line
+    Usage    string // help message
+    Value    Value  // value as set
+    DefValue string // default value (as text); for usage message
+}
+
+</code></pre>
+
+<p>Flag 类型代表一个 flag 的状态。</p>
+
+<p>比如，对于命令：<code>./nginx -c /etc/nginx.conf</code>，相应代码是：</p>
+
+<pre><code class="language-go">flag.StringVar(&amp;c, &quot;c&quot;, &quot;conf/nginx.conf&quot;, &quot;set configuration `file`&quot;)
+
+</code></pre>
+
+<p>则该 Flag 实例（可以通过 <code>flag.Lookup(&quot;c&quot;)</code> 获得）相应各个字段的值为：</p>
+
+<pre><code class="language-go">&amp;Flag{
+    Name: c,
+    Usage: set configuration file,
+    Value: /etc/nginx.conf,
+    DefValue: conf/nginx.conf,
+}
+</code></pre>
+
+<p>Lookup函数：获取flag集合中名称为name值的flag指针，如果对应的flag不存在，返回nil
+<strong>示例：</strong></p>
+
+<pre><code class="language-go">package main
+
+import (
+	&quot;flag&quot;
+	&quot;fmt&quot;
+)
+
+//定义一个全局变量的命令行接收参数
+var testFlag = flag.String(&quot;test&quot;, &quot;default value&quot;, &quot;help message.&quot;)
+
+//打印值的函数
+func print(f *flag.Flag) {
+	if f != nil {
+		fmt.Println(f.Value)
+	} else {
+		fmt.Println(nil)
+	}
+}
+
+func main() {
+	//没有用flag.Parse()解析前
+	fmt.Print(&quot;test:&quot;)
+	print(flag.Lookup(&quot;test&quot;))
+	fmt.Print(&quot;test1:&quot;)
+	print(flag.Lookup(&quot;test1&quot;))
+
+	//用flag.Parse()解析后
+	flag.Parse()
+	fmt.Print(&quot;test:&quot;)
+	print(flag.Lookup(&quot;test&quot;))
+	fmt.Print(&quot;test1:&quot;)
+	print(flag.Lookup(&quot;test1&quot;))
+}
+</code></pre>
+
+<p>运行结果：</p>
+
+<pre><code class="language-go">//  ./testlookup -test &quot;12345&quot;      
+test:default value
+test1:&lt;nil&gt;
+test:12345
+test1:&lt;nil&gt;
+</code></pre>
+
+<p>3）FlagSet</p>
+
+<pre><code class="language-go">// A FlagSet represents a set of defined flags.
+type FlagSet struct {
+    // Usage is the function called when an error occurs while parsing flags.
+    // The field is a function (not a method) that may be changed to point to
+    // a custom error handler.
+    Usage func()
+
+    name string // FlagSet的名字。CommandLine 给的是 os.Args[0]
+    parsed bool // 是否执行过Parse()
+    actual map[string]*Flag // 存放实际传递了的参数（即命令行参数）
+    formal map[string]*Flag // 存放所有已定义命令行参数
+    args []string // arguments after flags // 开始存放所有参数，最后保留 非flag（non-flag）参数
+    exitOnError bool // does the program exit if there's an error?
+    errorHandling ErrorHandling // 当解析出错时，处理错误的方式
+    output io.Writer // nil means stderr; use out() accessor
+}
+
+</code></pre>
+
+<p>4）Value 接口</p>
+
+<pre><code class="language-go">// Value is the interface to the dynamic value stored in a flag.
+// (The default value is represented as a string.)
+type Value interface {
+    String() string
+    Set(string) error
+}
+</code></pre>
+
+<p>所有参数类型需要实现 Value 接口，flag 包中，为int、float、bool等实现了该接口。借助该接口，我们可以自定义flag。（上文已经给了具体的例子）</p>
+
+<h2 id="1-4-主要类型的方法-包括类型实例化">1.4 主要类型的方法（包括类型实例化）</h2>
+
+<p>flag 包中主要是 FlagSet 类型。</p>
+
+<h3 id="1-4-1-实例化方式">1.4.1 实例化方式</h3>
+
+<p><code>NewFlagSet()</code> 用于实例化 FlagSet。预定义的 FlagSet 实例 <code>CommandLine</code> 的定义方式：</p>
+
+<pre><code class="language-go">// The default set of command-line flags, parsed from os.Args.
+var CommandLine = NewFlagSet(os.Args[0], ExitOnError)
+</code></pre>
+
+<p>可见，默认的 FlagSet 实例在解析出错时会退出程序。</p>
+
+<p>由于 FlagSet 中的字段没有 export，其他方式获得 FlagSet实例后，比如：FlagSet{} 或 new(FlagSet)，应该调用Init() 方法，以初始化 name 和 errorHandling，否则 name 为空，errorHandling 为 ContinueOnError（errorHandling默认为0）。</p>
+
+<h3 id="1-4-2-定义-flag-参数的方法">1.4.2  定义 flag 参数的方法</h3>
+
+<p>这一系列的方法都有两种形式，在一开始已经说了两种方式的区别。这些方法用于定义某一类型的 flag 参数。</p>
+
+<h3 id="1-4-3-解析参数-parse">1.4.3 解析参数（Parse）</h3>
+
+<pre><code class="language-go">func (f *FlagSet) Parse(arguments []string) error
+</code></pre>
+
+<p>从参数列表中解析定义的 flag。方法参数 arguments 不包括命令名，即应该是os.Args[1:]。事实上，<code>flag.Parse()</code> 函数就是这么做的：</p>
+
+<pre><code class="language-go">// Parse parses the command-line flags from os.Args[1:].  Must be called
+// after all flags are defined and before flags are accessed by the program.
+func Parse() {
+    // Ignore errors; CommandLine is set for ExitOnError.
+    CommandLine.Parse(os.Args[1:])
+}
+
+</code></pre>
+
+<p>该方法应该在 flag 参数定义后而具体参数值被访问前调用。</p>
+
+<p>如果提供了 <code>-help</code> 参数（命令中给了）但没有定义（代码中没有），该方法返回 <code>ErrHelp</code> 错误。默认的 CommandLine，在 Parse 出错时会退出程序（ExitOnError）。</p>
+
+<p>为了更深入的理解，我们看一下 <code>Parse(arguments []string)</code> 的源码：</p>
+
+<pre><code class="language-go">func (f *FlagSet) Parse(arguments []string) error {
+    f.parsed = true
+    f.args = arguments
+    for {
+        seen, err := f.parseOne()
+        if seen {
+            continue
+        }
+        if err == nil {
+            break
+        }
+        switch f.errorHandling {
+        case ContinueOnError:
+            return err
+        case ExitOnError:
+            os.Exit(2)
+        case PanicOnError:
+            panic(err)
+        }
+    }
+    return nil
+}
+</code></pre>
+
+<p>真正解析参数的方法是非导出方法 <code>parseOne</code>。</p>
+
+<p>结合 <code>parseOne</code> 方法，我们来解释 <code>non-flag</code> 以及包文档中的这句话：</p>
+
+<blockquote>
+<p>Flag parsing stops just before the first non-flag argument (&ldquo;-&rdquo; is a non-flag argument) or after the terminator &ldquo;&ndash;&rdquo;.</p>
+</blockquote>
+
+<p>我们需要了解解析什么时候停止。</p>
+
+<p>根据 Parse() 中 for 循环终止的条件（不考虑解析出错），我们知道，当 parseOne 返回 <code>false, nil</code> 时，Parse 解析终止。正常解析完成我们不考虑。看一下 parseOne 的源码发现，有三处会返回 <code>false, nil</code>。
+在这里先说一下non-flag命令行参数是指不满足命令行语法的参数，如命令行参数为cmd -flag=true abc则第一个非flag命令行参数为“abc”</p>
+
+<p>1）参数列表长度为0</p>
+
+<pre><code class="language-go">if len(f.args) == 0 {
+		return false, nil
+}
+</code></pre>
+
+<p>2）第一个 non-flag 参数</p>
+
+<pre><code class="language-go">s := f.args[0]
+if len(s) == 0 || s[0] != '-' || len(s) == 1 {
+    return false, nil
+}
+
+</code></pre>
+
+<p>也就是，当遇到单独的一个&rdquo;-&ldquo;或不是&rdquo;-&ldquo;开始时，会停止解析。比如：</p>
+
+<blockquote>
+<p>./nginx - 或 ./nginx ba或者./nginx</p>
+</blockquote>
+
+<p>这两种情况，<code>-c</code> 都不会被正确解析。像该例子中的&rdquo;-&ldquo;或ba（以及之后的参数），我们称之为 <code>non-flag</code>参数。</p>
+
+<p>3）两个连续的&rdquo;&ndash;&rdquo;</p>
+
+<pre><code class="language-go">if s[1] == '-' {
+    num_minuses++
+    if len(s) == 2 { // &quot;--&quot; terminates the flags
+        f.args = f.args[1:]
+        return false, nil
+    }
+}
+
+</code></pre>
+
+<p>也就是，当遇到连续的两个&rdquo;-&ldquo;时，解析停止。如：
+&gt; ./nginx &ndash;</p>
+
+<p>*下面这种情况是可以正常解析的：</p>
+
+<blockquote>
+<p>./nginx  -c  &ndash;</p>
+</blockquote>
+
+<p>这里的&rdquo;&ndash;&ldquo;会被当成是 <code>c</code> 的值</p>
+
+<p>parseOne 方法中接下来是处理 <code>-flag=x</code> 这种形式，然后是 <code>-flag</code> 这种形式（bool类型）（这里对bool进行了特殊处理），接着是 <code>-flag x</code> 这种形式，最后，将解析成功的 Flag 实例存入 FlagSet 的 actual map 中。</p>
+
+<p>另外，在 parseOne 中有这么一句：</p>
+
+<pre><code class="language-go">f.args = f.args[1:]
+</code></pre>
+
+<p>也就是说，每执行成功一次 parseOne，f.args 会少一个。所以，FlagSet 中的 args 最后留下来的就是所有 <code>non-flag</code> 参数。</p>
+
+<h3 id="1-4-4-arg-i-int-和-args-narg-nflag">1.4.4 Arg(i int) 和 Args()、NArg()、NFlag()</h3>
+
+<p>Arg(i int) 和 Args() 这两个方法就是获取 <code>non-flag</code> 参数的；NArg()获得 <code>non-flag</code> 的个数；NFlag() 获得 FlagSet 中 actual 长度（即被设置了的参数个数）。</p>
+
+<h3 id="1-4-5-visit-visitall">1.4.5 Visit/VisitAll</h3>
+
+<p>这两个函数分别用于访问 FlatSet 的 actual（存放参数值实际Flag的map） 和 formal（存放参数名默认Flag的map） 中的 Flag，而具体的访问方式由调用者决定。</p>
+
+<p>具体使用demo见:
+<a href="https://github.com/astaxie/gopkg/blob/master/flag/FlagSetVisit.md">func (f *FlagSet) Visit(fn func(*Flag))</a>
+<a href="https://github.com/astaxie/gopkg/blob/master/flag/FlagSetVisitAll.md">func (f *FlagSet) VisitAll(fn func(*Flag))</a></p>
+
+<h3 id="1-4-6-printdefaults">1.4.6 PrintDefaults()</h3>
+
+<p>打印所有已定义参数的默认值（调用 VisitAll 实现），默认输出到标准错误，除非指定了 FlagSet 的 output（通过SetOutput() 设置）。
+<strong>在1.1示例中有使用。还可以参考:</strong>
+<a href="https://github.com/astaxie/gopkg/blob/master/flag/PrintDefaults.md">func PrintDefaults()</a></p>
+
+<h3 id="1-4-7-set-name-value-string">1.4.7 Set(name, value string)</h3>
+
+<p>将名称为name的flag的值设置为value, 成功返回nil。
+<strong>demo请见：</strong>
+<a href="https://github.com/astaxie/gopkg/blob/master/flag/Set.md">func Set(name, value string) error</a></p>
+
+<h2 id="1-5-总结">1.5 总结</h2>
+
+<p>使用建议：虽然上面讲了那么多，一般来说，我们只简单的定义flag，然后 parse，就如同开始的例子一样。</p>
+
+<p>如果项目需要复杂或更高级的命令行解析方式，可以使用 <a href="https://github.com/urfave/cli">https://github.com/urfave/cli</a> 或者 <a href="https://github.com/spf13/cobra">https://github.com/spf13/cobra</a> 这两个强大的库。</p>
+
+<p><strong>我是小碗汤，我们一起学习。</strong>
+<img src="https://upload-images.jianshu.io/upload_images/9134763-175aeab9a946bdea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/9134763-fa5ca503c18dc4d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="欢饮扫码关注微信公众号，精彩文章第一时间推送给你" /></p>
+
+                        </div>
+
+                        
+                        
+
+<div style="padding: 10px 0; margin: 20px auto; width: 100%; font-size:20px; text-align: center;">
+  <button id="rewardButton" disable="enable" onclick="let qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+  <span>打赏</span></button>
+  <div id="QR" style="display: none;">
+    
+    <div style="display: inline-block">
+      <a class="fancybox" rel="group"><img src="/img/wechat-zhifubao-QR.png"></a>
+    </div>
+  </div>
+</div>
+
+                        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://liabio.github.io">小碗汤</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://liabio.github.io/posts/2019-06-20-golangFlag%E5%8C%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">https://liabio.github.io/posts/2019-06-20-golangFlag%E5%8C%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+                        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/2019-01-08-mysql%E5%A4%A7%E5%B0%8F%E5%86%99%E6%95%8F%E6%84%9F%E4%B8%8E%E6%A0%A1%E5%AF%B9%E8%A7%84%E5%88%99/">Mysql大小写敏感与校对规则</a></li>
+        
+        <li><a href="/posts/2019-01-01-vmware%E4%B8%8A%E5%AE%89%E8%A3%85linux%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/">Vmware上安装linux过程记录</a></li>
+        
+        <li><a href="/posts/2018-12-24-mysql%E6%94%AF%E6%8C%81%E5%8E%9F%E7%94%9Fjson%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/">Mysql支持原生json使用说明</a></li>
+        
+        <li><a href="/posts/2018-12-20-elasticsearch6-2-4%E6%8F%92%E4%BB%B6head%E5%AE%89%E8%A3%85/">Elasticsearch6.2.4插件head安装</a></li>
+        
+        <li><a href="/posts/2018-12-19-CentosLinux%E4%BD%BF%E7%94%A8Yum%E5%AE%89%E8%A3%85Go%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/">Centos Linux使用Yum安装Go和配置环境</a></li>
+        
+    </ul>
+</div>
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            <ul class="clearfix">
+                                
+                                <li><a href="https://liabio.github.io/tags/%E6%95%99%E7%A8%8B">教程</a></li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liabio.github.io">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-01-03-yum%E6%BA%90%E9%85%8D%E7%BD%AE/" title="2019 01 03 Yum源配置">2019 01 03 Yum源配置</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-30-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/" title="Kubernetes自定义资源对象高级功能">Kubernetes自定义资源对象高级功能</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/" title="etcd操作">etcd操作</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/" title="docker镜像制作必备技能">docker镜像制作必备技能</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" title="git常用操作">git常用操作</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/" title="k8s中部署负载均衡器ingress-nginx">k8s中部署负载均衡器ingress-nginx</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/" title="k8s使用Job执行任务失败了怎么办">k8s使用Job执行任务失败了怎么办</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%901/" title="kubernetes垃圾回收器GarbageCollector Controller源码分析（一）">kubernetes垃圾回收器GarbageCollector Controller源码分析（一）</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/" title="一次socket.error: [Errno 99] Cannot assign requested address报错排查">一次socket.error: [Errno 99] Cannot assign requested address报错排查</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/" title="云服务器使用docker搭建服务">云服务器使用docker搭建服务</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title" style="color:red">福利派送</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a href="https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=3iiljysb" title="高性能云服务器2折起" target="_blank" style="color:red">
+                
+                    <img src="/img/aliyun600x300.png">
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="https://www.aliyun.com/acts/hotsale?userCode=3iiljysb" title="主机爆款特惠3折起" target="_blank" style="color:red">
+                
+                    <img src="/img/zhujibaokuan3zhe.png">
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=3iiljysb" title="2000元全场红包领取" target="_blank" style="color:red">
+                
+                    <img src="/img/getalluse2000yuan.png">
+                
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liabio.github.io/categories//">(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/anyListen/">anyListen(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/blog/">blog(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/centos/">centos(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/debug/">debug(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/ditto/">ditto(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/docker/">docker(10)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/elasticsearch/">elasticsearch(3)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/etcd/">etcd(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/git/">git(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/golang/">golang(10)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/http/">http(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/idea/">idea(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/ingress-nginx/">ingress-nginx(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/java/">java(11)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/job/">job(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/k8s/">k8s(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(15)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/linux/">linux(3)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/mysql/">mysql(6)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/nginx/">nginx(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/openresty/">openresty(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/redis/">redis(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/shell/">shell(3)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/springmvc/">springmvc(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/vmware/">vmware(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/windows/">windows(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/xyplorer/">xyplorer(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/zookeeper/">zookeeper(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/%E5%B7%A5%E5%85%B7/">工具(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务(1)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://liabio.github.io/tags//"></a>
+    
+    <a href="https://liabio.github.io/tags/blog/">blog</a>
+    
+    <a href="https://liabio.github.io/tags/chocolate/">chocolate</a>
+    
+    <a href="https://liabio.github.io/tags/controller/">controller</a>
+    
+    <a href="https://liabio.github.io/tags/crd/">crd</a>
+    
+    <a href="https://liabio.github.io/tags/csdn/">csdn</a>
+    
+    <a href="https://liabio.github.io/tags/docker/">docker</a>
+    
+    <a href="https://liabio.github.io/tags/email/">email</a>
+    
+    <a href="https://liabio.github.io/tags/etcd/">etcd</a>
+    
+    <a href="https://liabio.github.io/tags/garbageCollector/">garbageCollector</a>
+    
+    <a href="https://liabio.github.io/tags/git/">git</a>
+    
+    <a href="https://liabio.github.io/tags/http/">http</a>
+    
+    <a href="https://liabio.github.io/tags/hugo/">hugo</a>
+    
+    <a href="https://liabio.github.io/tags/ingress-nginx/">ingress-nginx</a>
+    
+    <a href="https://liabio.github.io/tags/java/">java</a>
+    
+    <a href="https://liabio.github.io/tags/job/">job</a>
+    
+    <a href="https://liabio.github.io/tags/kubernetes/">kubernetes</a>
+    
+    <a href="https://liabio.github.io/tags/mysql/">mysql</a>
+    
+    <a href="https://liabio.github.io/tags/nginx/">nginx</a>
+    
+    <a href="https://liabio.github.io/tags/operator/">operator</a>
+    
+    <a href="https://liabio.github.io/tags/redis%E9%9B%86%E7%BE%A4/">redis集群</a>
+    
+    <a href="https://liabio.github.io/tags/shell/">shell</a>
+    
+    <a href="https://liabio.github.io/tags/telnet/">telnet</a>
+    
+    <a href="https://liabio.github.io/tags/thrift/">thrift</a>
+    
+    <a href="https://liabio.github.io/tags/%E4%B8%8A%E7%BD%91/">上网</a>
+    
+    <a href="https://liabio.github.io/tags/%E4%BB%A3%E7%90%86/">代理</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%8C%85%E7%AE%A1%E7%90%86/">包管理</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%9B%BD%E9%99%85%E5%8C%96/">国际化</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%9D%91/">坑</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/">垃圾回收器</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/">存储过程</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%AE%B9%E5%99%A8/">容器</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/">效率工具</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%95%99%E7%A8%8B/">教程</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%97%A5%E5%BF%97%E8%BD%AC%E5%82%A8/">日志转储</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E5%85%A8/">服务器安全</a>
+    
+    <a href="https://liabio.github.io/tags/%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/">灰度发布</a>
+    
+    <a href="https://liabio.github.io/tags/%E7%88%AC%E8%99%AB/">爬虫</a>
+    
+    <a href="https://liabio.github.io/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/">虚拟机</a>
+    
+    <a href="https://liabio.github.io/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/">解决问题</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%85%8D%E7%BD%AE/">配置</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%95%9C%E5%83%8F/">镜像</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%97%AE%E9%A2%98/">问题</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">问题解决</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/">验证码</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liabio.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="social-links" style="text-align: center; padding-top: 10px">
+          
+  
+  
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/font/jianshu/iconfont.css">
+  <link rel="stylesheet" href="/font/segmentfault/iconfont.css">
+  <link rel="stylesheet" href="/font/weixingongzhonghao/iconfont.css">
+  <link rel="stylesheet" href="/font/juejin/iconfont.css">
+  <link rel="stylesheet" href="/font/zhihu/iconfont.css">
+  <link rel="stylesheet" href="/font/cnblog/iconfont.css">
+  <link rel="stylesheet" href="/font/csdn/iconfont.css">
+  <link rel="stylesheet" href="/scss/main.min.49aaf4284ea697cea9958ae76b5c552c1802fe84051ec9372cfbe7bf2db0d599.css">
+
+
+
+
+
+<style type="text/css">
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .8);
+}
+
+.center {
+    width: 220px;
+    height: 220px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -110px;
+}
+
+.center img {
+    width: 220px;
+}
+
+.center i {
+    color: #fff;
+    font-size: 1.5em;
+    position: relative;
+    float: right;
+    top: 0px;
+    right: -20px;
+    cursor: pointer;
+}
+</style>
+
+
+<div id="lightbox" style="display: none" class="lightbox" onclick="document.getElementById('lightbox').style.display='none';">
+    <div class="center">
+        
+        <i class="iconfont icon-close"></i>
+        
+        <img src="/img/me/wechat.png">
+    </div>
+</div>
+
+
+
+
+
+<style type="text/css">
+.gongzhonghaolightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .8);
+}
+</style>
+
+
+<div id="gongzhonghaolightbox" style="display: none" class="gongzhonghaolightbox" onclick="document.getElementById('gongzhonghaolightbox').style.display='none';">
+    <div class="center">
+        <i class="iconfont icon-close"></i>
+        <img src="/img/me/gongzhonghao-ercode.jpg">
+    </div>
+</div>
+
+
+
+<a href="https://github.com/liabio" target="_blank" rel="me noopener"><i class="iconfont icon-github"></i></a>
+
+
+
+<a href="https://twitter.com/ll837448792" target="_blank" rel="me noopener"><i class="iconfont icon-twitter"></i></a>
+
+
+<a href="https://www.instagram.com/liabio0418/" target="_blank" rel="me noopener"><i class="iconfont icon-instagram"></i></a> 
+ 
+
+<a href="javascript:void(0);" rel="me noopener" onclick="document.getElementById('lightbox').style.display='inline';"><i class="iconfont icon-wechat"></i></a>
+
+
+<a href="mailto:837448792@qq.com" rel="me noopener"><i class="iconfont icon-mail01"></i></a>
+
+
+
+
+
+
+<a href="https://medium.com/@ll837448792" rel="me noopener"><i class="iconfont icon-medium-circle-fill"></i></a>
+
+
+
+<a href="https://www.zhihu.com/people/liabio/posts" rel="me noopener"><i class="zhihu-iconfont icon-zhihu"></i></a>
+
+
+
+<a href="https://www.jianshu.com/u/33c582f040ae" rel="me noopener"><i class="jianshu-iconfont icon-jianshu"></i></a>
+
+
+
+<a href="https://blog.csdn.net/ll837448792" rel="me noopener"><i class="csdn-iconfont icon-csdn"></i></a>
+
+
+
+<a href="https://segmentfault.com/u/smallsoup" rel="me noopener"><i class="segmentfault-iconfont icon-sf"></i></a>
+
+
+
+<a href="https://juejin.im/user/5b0c1a17f265da08df28648c" rel="me noopener"><i class="juejin-iconfont icon-juejin"></i></a>
+
+
+
+<a href="https://www.cnblogs.com/liabio" rel="me noopener"><i class="cnblog-iconfont icon-bokeyuan"></i></a>
+
+
+
+<a href="javascript:void(0);" rel="me noopener" onclick="document.getElementById('gongzhonghaolightbox').style.display='inline';"><i class="weixingongzhonghao-iconfont icon-weixingongzhonghao"></i></a>
+
+
+
+
+    </div>
+    <div class="container" style="text-align: center; padding-top: 3px">
+        &copy; 2019 <a href="https://liabio.github.io">小碗汤的博客 By 小碗汤</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.2.8/raphael.min.js" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/flowchart/1.12.2/flowchart.min.js" crossorigin="anonymous"></script>
+        <script>(function () {
+                if (!window.flowchart) return;
+                const blocks = document.querySelectorAll('pre code.language-flowchart, pre code.language-flow');
+                for (let i = 0; i < blocks.length; i++) {
+                    const block = blocks[i];
+                    const rootElement = block.parentNode;
+                    const container = document.createElement('div');
+                    const id = `js-flowchart-diagrams-${i}`;
+                    container.id = id;
+                    container.className = 'align-center';
+                    container.setAttribute("style", "overFlow-x:auto");
+                    rootElement.parentNode.replaceChild(container, rootElement);
+                    const diagram = flowchart.parse(block.childNodes[0].nodeValue);
+                    diagram.drawSVG(id, window.flowchartDiagramsOptions ? window.flowchartDiagramsOptions : {});
+                }
+            })();
+        </script>
+    <script type="text/javascript">
+        
+        (function () {
+            $("pre code").parent().addClass("line-numbers")
+        }());
+
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script type="text/javascript" src="/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-139517579-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+</body>
+</html>

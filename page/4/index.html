@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/css/normalize.css">
     
     <link rel="stylesheet" href="/css/style.css">
+    
     <link rel="stylesheet" href="/css/reward.css">
     <link rel="alternate" type="application/rss+xml+xml" href="https://liabio.github.io/index.xml" title="小碗汤的博客" />
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -33,7 +34,7 @@
 <header id="header" class="clearfix">
     <div class="container">
         <div class="col-group">
-            <div class="site-name ">
+            <div class="site-name">
                     <h1>
                         <a id="logo" href="https://liabio.github.io">
                             小碗汤的博客
@@ -68,95 +69,116 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
-                                    <a href="https://liabio.github.io/posts/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/" title="Hugo搭建博客教程" >Hugo搭建博客教程</a>
+                                    <a href="https://liabio.github.io/posts/2019-07-20-linux%E9%80%9A%E8%BF%87VMware%E5%92%8C%E4%B8%BB%E6%9C%BA%E7%9B%B8%E8%BF%9E%E8%BF%9E%E6%8E%A5%E4%BA%92%E8%81%94%E7%BD%91/" title="Linux通过VMware和主机相连连接互联网" >Linux通过VMware和主机相连连接互联网</a>
                                 </h1>
                             </header>
                             <date class="post-meta meta-date">
-                                2019年5月3日
+                                2019年7月20日
                             </date>
                             
                             <div class="post-meta">
                                 <span>|</span>
                                 
-                                <span class="meta-category"><a href="https://liabio.github.io/categories/blog">blog</a></span>
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/linux">linux</a></span>
                                 
                             </div>
                             
                             <div class="post-content">
-                                在编译时报错如下： Building sites … ERROR 2019/05/03 10:36:45 Failed to read Git log: fatal: Not a git repository (or any of the parent d irectories): .git Building sites … ERROR 2019/05/03 10:45:16 Failed to read Git log: fatal: your current branch 'master' does not have a ny commits yet 需要先在站点根目录执行以下命令： git init git add . git commit -m 'test' config.toml中的baseUrl为http://liabio.gith……
+                                1.&emsp;VM8 使用固定IP： 2.&emsp; 这里使用NAT模式： 3.&emsp;VM中依次：编辑——&gt;虚拟网络编辑器，点VMnet8 把使用本 地DHCP的勾去掉，子网IP和主机VM8的IP同网段，然后点NAT设置。 网关IP和刚才的IP也是同一个网段。 4.&emsp;vim /etc/sysconfig/network-scripts/ifcfg-eno16777736 增加这些……
                             </div>
-                            <p class="readmore"><a href="https://liabio.github.io/posts/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">阅读全文</a></p>
+                            <p class="readmore"><a href="https://liabio.github.io/posts/2019-07-20-linux%E9%80%9A%E8%BF%87VMware%E5%92%8C%E4%B8%BB%E6%9C%BA%E7%9B%B8%E8%BF%9E%E8%BF%9E%E6%8E%A5%E4%BA%92%E8%81%94%E7%BD%91/">阅读全文</a></p>
                         </article>
                     
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
-                                    <a href="https://liabio.github.io/posts/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/" title="kube-scheduler调度扩展" >kube-scheduler调度扩展</a>
+                                    <a href="https://liabio.github.io/posts/2019-06-20-shell%E8%84%9A%E6%9C%AC%E6%89%B9%E9%87%8F%E8%B0%83%E7%94%A8%E6%8E%A5%E5%8F%A3/" title="Shell脚本批量调用接口" >Shell脚本批量调用接口</a>
                                 </h1>
                             </header>
                             <date class="post-meta meta-date">
-                                2019年5月1日
-                            </date>
-                            
-                            <div class="post-content">
-                                正文 Kubernetes 自带了一个默认调度器kube-scheduler，其内置了很多节点预选和优选的调度算法，一般调度场景下可以满足要求。但是在一些特殊场景下，默认调度器不能满足我们复杂的调度需求。我们就需要对调度器进行扩展，以达到调度适合业务场景的目的。……
-                            </div>
-                            <p class="readmore"><a href="https://liabio.github.io/posts/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://liabio.github.io/posts/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="快速搭建个人博客" >快速搭建个人博客</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2017年2月6日
+                                2019年6月20日
                             </date>
                             
                             <div class="post-meta">
                                 <span>|</span>
                                 
-                                <span class="meta-category"><a href="https://liabio.github.io/categories/blog">blog</a></span>
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/shell">shell</a></span>
                                 
                             </div>
                             
                             <div class="post-content">
-                                正所谓前人栽树，后人乘凉。 感谢Huxpro提供的博客模板 我的的博客 前言 从 Jekyll 到 GitHub Pages 中间踩了许多坑，终于把我的个人博客BY Blog搭建出来了。。。 本教程针对的是不懂技术又想搭建个人博客的小白，操作简单暴力且快速。当然懂技术那就更好了。 看看看博客……
+                                &emsp;&emsp;要求在页面查询到5000条数据，为了方便插入，用shell脚本写curl命令调用自己写的代码接口； 脚本如下： #!/bin/bash a=0 while [ $a -le 10 ]; do # length of ts is 13 required,Through the following way like this ts=`date +%s%N` ts=${ts:0:13} json='{&quot;name&quot; : &quot;'$1$a'&quot;, &quot;age&quot; : '$2', &quot;ts&quot; : '$ts'}' a=$((a+1)) curl -k -H 'Content-Type:application/json;charset=utf-8' http://192.168.2.5:8080 -X POST -d &quot;'$json'&quot; done 执行脚本 **执行结果……
                             </div>
-                            <p class="readmore"><a href="https://liabio.github.io/posts/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">阅读全文</a></p>
+                            <p class="readmore"><a href="https://liabio.github.io/posts/2019-06-20-shell%E8%84%9A%E6%9C%AC%E6%89%B9%E9%87%8F%E8%B0%83%E7%94%A8%E6%8E%A5%E5%8F%A3/">阅读全文</a></p>
                         </article>
                     
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
-                                    <a href="https://liabio.github.io/about/" title="关于" >关于</a>
+                                    <a href="https://liabio.github.io/posts/2019-06-20-golangFlag%E5%8C%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" title="GolangFlag包使用笔记" >GolangFlag包使用笔记</a>
                                 </h1>
                             </header>
                             <date class="post-meta meta-date">
-                                1年1月1日
+                                2019年6月20日
                             </date>
                             
-                            <div class="post-content">
-                                ……
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/golang">golang</a></span>
+                                
                             </div>
-                            <p class="readmore"><a href="https://liabio.github.io/about/">阅读全文</a></p>
+                            
+                            <div class="post-content">
+                                本文原文地址：flag - 命令行参数解析 在写命令行程序（工具、server）时，对命令参数进行解析是常见的需求。各种语言一般都会提供解析命令行参数的方法或库，以方便程序员使用。如果命令行参数纯粹自己写代码来解析，对于比较复杂的，还是挺费劲的。……
+                            </div>
+                            <p class="readmore"><a href="https://liabio.github.io/posts/2019-06-20-golangFlag%E5%8C%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">阅读全文</a></p>
                         </article>
                     
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
-                                    <a href="https://liabio.github.io/tools/" title="工具" >工具</a>
+                                    <a href="https://liabio.github.io/posts/2019-05-20-java%E5%AD%90%E7%B1%BB%E8%B0%83%E7%94%A8%E7%88%B6%E7%B1%BB%E6%9E%84%E9%80%A0%E5%99%A8%E5%87%BD%E6%95%B0/" title="Java子类调用父类构造器函数" >Java子类调用父类构造器函数</a>
                                 </h1>
                             </header>
                             <date class="post-meta meta-date">
-                                1年1月1日
+                                2019年5月20日
                             </date>
                             
-                            <div class="post-content">
-                                ……
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/java">java</a></span>
+                                
                             </div>
-                            <p class="readmore"><a href="https://liabio.github.io/tools/">阅读全文</a></p>
+                            
+                            <div class="post-content">
+                                class FatherClass{ public FatherClass(){ System.out.println(&quot;父类 无参 构造函数&quot;); } public FatherClass(int i){ System.out.println(&quot;父类 一个参数构造函数super = &quot;+i); } public FatherClass(int i,String j){ System.out.println(&quot……
+                            </div>
+                            <p class="readmore"><a href="https://liabio.github.io/posts/2019-05-20-java%E5%AD%90%E7%B1%BB%E8%B0%83%E7%94%A8%E7%88%B6%E7%B1%BB%E6%9E%84%E9%80%A0%E5%99%A8%E5%87%BD%E6%95%B0/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://liabio.github.io/posts/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/" title="手把手教你搭建kubernetes集群" >手把手教你搭建kubernetes集群</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年5月14日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/kubernetes">kubernetes</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                cat &gt; /etc/yum.repos.d/kubernetes.repo &lt;&lt; EOF [kubernetes] name=Kubernetes baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/ enabled=1 gpgcheck=0 repo_gpgcheck=1 gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg EOF 安装kubeadm、kubectl、kubelet yum install -y kubeadm kubelet kubectl 如果在云服务器上搭建时，IP-18.219.28.143是公网IP kubeadm init --kubernetes-version=v1.14.1 --pod-network-cidr=10.244.0.0/16 --service-cidr=10.96.0.0/12 --apiserver-advertise-address=18.219.28.143 --ignore-preflight-errors=Swap,NumCPU init的时候可能会： [kubelet-check] Initial timeout of 40s passed ![](/img/build-kubernetes-cluster-learning/install_kubernetes_cluster2.png) 需要把/etc/kubernete……
+                            </div>
+                            <p class="readmore"><a href="https://liabio.github.io/posts/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/">阅读全文</a></p>
                         </article>
                     
                     
@@ -171,33 +193,85 @@
     
 
     
-    <li >
-        <a href="https://liabio.github.io/">1</a>
-    </li>
+
     
-    <li >
-        <a href="https://liabio.github.io/page/2/">2</a>
-    </li>
+        
+        
     
-    <li >
-        <a href="https://liabio.github.io/page/3/">3</a>
-    </li>
-    
-    <li  class="current">
-        <a href="https://liabio.github.io/page/4/">4</a>
-    </li>
-    
-    <li >
-        <a href="https://liabio.github.io/page/5/">5</a>
-    </li>
     
 
     
+        
+        
+        <li >
+            <a href="https://liabio.github.io/">1</a>
+        </li>
+        
+    
+        
+        <li>
+            <span>...</span>
+        </li>
+        
+    
+        
+        
+        <li >
+            <a href="https://liabio.github.io/page/2/">2</a>
+        </li>
+        
+    
+        
+        
+        <li >
+            <a href="https://liabio.github.io/page/3/">3</a>
+        </li>
+        
+    
+        
+        
+        <li  class="current">
+            <a href="https://liabio.github.io/page/4/">4</a>
+        </li>
+        
+    
+        
+        
+        <li >
+            <a href="https://liabio.github.io/page/5/">5</a>
+        </li>
+        
+    
+        
+        
+        <li >
+            <a href="https://liabio.github.io/page/6/">6</a>
+        </li>
+        
+    
+        
+        <li>
+            <span>...</span>
+        </li>
+        
+    
+        
+        
+        <li >
+            <a href="https://liabio.github.io/page/17/">17</a>
+        </li>
+        
+    
+
+    
+    
+
     <li class="next">
         <a href="https://liabio.github.io/page/5/">下一页</a>
     </li>
     
 </ol>
+
 
 
 
@@ -219,11 +293,15 @@
 <ul class="widget-list">
     
     <li>
-        <a href="https://liabio.github.io/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/" title="etcd操作">etcd操作</a>
+        <a href="https://liabio.github.io/posts/2019-01-03-yum%E6%BA%90%E9%85%8D%E7%BD%AE/" title="2019 01 03 Yum源配置">2019 01 03 Yum源配置</a>
     </li>
     
     <li>
-        <a href="https://liabio.github.io/posts/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/" title="kubernetes自定义资源对象高级功能">kubernetes自定义资源对象高级功能</a>
+        <a href="https://liabio.github.io/posts/2019-09-30-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/" title="Kubernetes自定义资源对象高级功能">Kubernetes自定义资源对象高级功能</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/" title="etcd操作">etcd操作</a>
     </li>
     
     <li>
@@ -252,10 +330,6 @@
     
     <li>
         <a href="https://liabio.github.io/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/" title="云服务器使用docker搭建服务">云服务器使用docker搭建服务</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/posts/2019-09-24-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/" title="史上最全docker基础知识汇总">史上最全docker基础知识汇总</a>
     </li>
     
 </ul>
@@ -299,7 +373,19 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://liabio.github.io/categories//">(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/anyListen/">anyListen(1)</a>
+    </li>
+    
+    <li>
         <a href="https://liabio.github.io/categories/blog/">blog(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/centos/">centos(2)</a>
     </li>
     
     <li>
@@ -307,7 +393,15 @@
     </li>
     
     <li>
-        <a href="https://liabio.github.io/categories/docker/">docker(6)</a>
+        <a href="https://liabio.github.io/categories/ditto/">ditto(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/docker/">docker(10)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/elasticsearch/">elasticsearch(3)</a>
     </li>
     
     <li>
@@ -319,7 +413,23 @@
     </li>
     
     <li>
+        <a href="https://liabio.github.io/categories/golang/">golang(10)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/http/">http(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/idea/">idea(2)</a>
+    </li>
+    
+    <li>
         <a href="https://liabio.github.io/categories/ingress-nginx/">ingress-nginx(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/java/">java(11)</a>
     </li>
     
     <li>
@@ -331,11 +441,59 @@
     </li>
     
     <li>
-        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(8)</a>
+        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(15)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/linux/">linux(3)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/mysql/">mysql(6)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/nginx/">nginx(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/openresty/">openresty(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/redis/">redis(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/shell/">shell(3)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/springmvc/">springmvc(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/vmware/">vmware(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/windows/">windows(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/xyplorer/">xyplorer(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/zookeeper/">zookeeper(1)</a>
     </li>
     
     <li>
         <a href="https://liabio.github.io/categories/%E5%B7%A5%E5%85%B7/">工具(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务(1)</a>
     </li>
     
 </ul>
@@ -345,11 +503,21 @@
         <h3 class="widget-title">标签</h3>
 <div class="tagcloud">
     
+    <a href="https://liabio.github.io/tags//"></a>
+    
     <a href="https://liabio.github.io/tags/blog/">blog</a>
+    
+    <a href="https://liabio.github.io/tags/chocolate/">chocolate</a>
+    
+    <a href="https://liabio.github.io/tags/controller/">controller</a>
     
     <a href="https://liabio.github.io/tags/crd/">crd</a>
     
+    <a href="https://liabio.github.io/tags/csdn/">csdn</a>
+    
     <a href="https://liabio.github.io/tags/docker/">docker</a>
+    
+    <a href="https://liabio.github.io/tags/email/">email</a>
     
     <a href="https://liabio.github.io/tags/etcd/">etcd</a>
     
@@ -357,19 +525,75 @@
     
     <a href="https://liabio.github.io/tags/git/">git</a>
     
+    <a href="https://liabio.github.io/tags/http/">http</a>
+    
     <a href="https://liabio.github.io/tags/hugo/">hugo</a>
     
     <a href="https://liabio.github.io/tags/ingress-nginx/">ingress-nginx</a>
+    
+    <a href="https://liabio.github.io/tags/java/">java</a>
     
     <a href="https://liabio.github.io/tags/job/">job</a>
     
     <a href="https://liabio.github.io/tags/kubernetes/">kubernetes</a>
     
+    <a href="https://liabio.github.io/tags/mysql/">mysql</a>
+    
+    <a href="https://liabio.github.io/tags/nginx/">nginx</a>
+    
+    <a href="https://liabio.github.io/tags/operator/">operator</a>
+    
+    <a href="https://liabio.github.io/tags/redis%E9%9B%86%E7%BE%A4/">redis集群</a>
+    
+    <a href="https://liabio.github.io/tags/shell/">shell</a>
+    
+    <a href="https://liabio.github.io/tags/telnet/">telnet</a>
+    
+    <a href="https://liabio.github.io/tags/thrift/">thrift</a>
+    
+    <a href="https://liabio.github.io/tags/%E4%B8%8A%E7%BD%91/">上网</a>
+    
+    <a href="https://liabio.github.io/tags/%E4%BB%A3%E7%90%86/">代理</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%8C%85%E7%AE%A1%E7%90%86/">包管理</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%9B%BD%E9%99%85%E5%8C%96/">国际化</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%9D%91/">坑</a>
+    
     <a href="https://liabio.github.io/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/">垃圾回收器</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/">存储过程</a>
     
     <a href="https://liabio.github.io/tags/%E5%AE%B9%E5%99%A8/">容器</a>
     
     <a href="https://liabio.github.io/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/">效率工具</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%95%99%E7%A8%8B/">教程</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%97%A5%E5%BF%97%E8%BD%AC%E5%82%A8/">日志转储</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E5%85%A8/">服务器安全</a>
+    
+    <a href="https://liabio.github.io/tags/%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/">灰度发布</a>
+    
+    <a href="https://liabio.github.io/tags/%E7%88%AC%E8%99%AB/">爬虫</a>
+    
+    <a href="https://liabio.github.io/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/">虚拟机</a>
+    
+    <a href="https://liabio.github.io/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/">解决问题</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%85%8D%E7%BD%AE/">配置</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%95%9C%E5%83%8F/">镜像</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%97%AE%E9%A2%98/">问题</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">问题解决</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/">验证码</a>
     
 </div>
     </section>

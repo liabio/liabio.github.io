@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>elasticsearch on 小碗汤的博客</title>
+    <link>https://liabio.github.io/categories/elasticsearch/</link>
+    <description>Recent content in elasticsearch on 小碗汤的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 21 Dec 2018 17:20:27 +0800</lastBuildDate>
+    
+	<atom:link href="https://liabio.github.io/categories/elasticsearch/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>运行elasticsearch报错解决</title>
+      <link>https://liabio.github.io/posts/2018-12-21-%E8%BF%90%E8%A1%8Celasticsearch%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/</link>
+      <pubDate>Fri, 21 Dec 2018 17:20:27 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/posts/2018-12-21-%E8%BF%90%E8%A1%8Celasticsearch%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/</guid>
+      <description>docker 运行elasticsearch6.2.4时报错： ERROR: [1] bootstrap checks failed [1]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144] 解决： 查看 sysctl vm.max_map_count 设置： sysctl -w vm.max_map_count=262144</description>
+    </item>
+    
+    <item>
+      <title>Elasticsearch6.2.4插件head安装</title>
+      <link>https://liabio.github.io/posts/2018-12-20-elasticsearch6-2-4%E6%8F%92%E4%BB%B6head%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Thu, 20 Dec 2018 17:18:27 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/posts/2018-12-20-elasticsearch6-2-4%E6%8F%92%E4%BB%B6head%E5%AE%89%E8%A3%85/</guid>
+      <description>安装nodejs： https://nodejs.org/en/download/current/ 以windows64为例，下载msi文件： 安装时，安装目录选择D盘，一路下一步即可。 安装完成，在cmd里执行node -v，成功回显版本号表示nodejs安装成功： 安装grunt： npm install -g grunt-cli grunt -version 开始安装head 在https:</description>
+    </item>
+    
+    <item>
+      <title>听说你还没掌握Normalizer的使用方法</title>
+      <link>https://liabio.github.io/posts/2018-11-19-%E5%90%AC%E8%AF%B4%E4%BD%A0%E8%BF%98%E6%B2%A1%E6%8E%8C%E6%8F%A1Normalizer%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Mon, 19 Nov 2018 17:14:22 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/posts/2018-11-19-%E5%90%AC%E8%AF%B4%E4%BD%A0%E8%BF%98%E6%B2%A1%E6%8E%8C%E6%8F%A1Normalizer%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</guid>
+      <description>在 Elasticsearch 中处理字符串类型的数据时，如果我们想把整个字符串作为一个完整的 term 存储，我们通常会将其类型 type 设定为 keyword。但有时这种设定又会给我们带来麻烦，比如同一个数据再写入时由于没有做好清洗，导致大小写不一致，比如 apple、Apple两个实</description>
+    </item>
+    
+  </channel>
+</rss>

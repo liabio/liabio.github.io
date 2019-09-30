@@ -1,0 +1,1963 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.58.3" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>搭建k8s集群遇到的问题 | 小碗汤的博客</title>
+    <meta property="og:title" content="搭建k8s集群遇到的问题 - 小碗汤的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content="2018-11-14T16:57:38&#43;08:00">
+        
+        
+    <meta property="article:modified_time" content="2018-11-14T16:57:38&#43;08:00">
+        
+
+    <meta name="Keywords" content="golang,go语言,go语言笔记,小碗汤,docker,kubernetes,k8s,java,博客,python,软件架构,公众号,小程序,Hugo,theme,maupassant">
+    <meta name="description" content="搭建k8s集群遇到的问题">
+        <meta name="author" content="小碗汤">
+        
+    <meta property="og:url" content="https://liabio.github.io/posts/2018-11-14-%E6%90%AD%E5%BB%BAk8s%E9%9B%86%E7%BE%A4%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+        <link rel="stylesheet" href="/css/prism.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <link rel="stylesheet" href="/css/reward.css">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name">
+                    <h1>
+                        <a id="logo" href="https://liabio.github.io">
+                            小碗汤的博客
+                        </a>
+                    </h1>
+                <p class="description">专注于Java、Go语言(Golang)、Docker、Kubernetes、软件架构</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://liabio.github.io">首页</a>
+                    
+                    <a  href="https://liabio.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liabio.github.io/tools/" title="工具">工具</a>
+                    
+                    <a  href="https://liabio.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+        
+        <div id="virtual_toc_list" style="display: none">
+            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#遗留问题">遗留问题：</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+        </div>
+        <div id="float_toc_div" style="margin: 10px;border: 1px solid gray;z-index:99999;display: none;">
+            <header style="background-color: #f3f3f3;color: black;border-bottom: 1px solid gray;padding: 10px 10px 10px 10px;">
+                <strong id="toc_btn_open" style="color: black;font-size: large;">目录</strong>
+                <strong id="toc_btn_close" style="color: black;font-size: large;float: right">╳</strong>
+            </header>
+            <div id="toc_list" style="background-color: #f3f3f3;color: black;padding: 10px;">
+        
+            </div>
+        </div>
+        <style type="text/css">
+            #float_toc_div {
+                position: fixed;
+                display: none;
+                 
+                height: auto;
+                font-size: 13px;
+            }
+        
+            #toc_list a:hover,
+            #toc_list a:active {
+                color: #ba3925;
+            }
+        </style>
+        <script>
+            window.onload = function () {
+                let tocNavElem = document.getElementById("TableOfContents");
+                let floatTocDivElem = document.getElementById("float_toc_div");
+                let tocListElem = floatTocDivElem.getElementsByTagName('div')[0];
+                let colGroupElem = document.getElementById("body").getElementsByClassName("col-group")[0]
+                let floatTocWidth = (document.body.clientWidth - colGroupElem.offsetWidth) / 2 - 16;
+                var useFloatToc = false;
+
+                if (floatTocWidth >= 100) {
+                    useFloatToc = true;
+                    document.getElementById("toc_list").appendChild(tocNavElem);
+                    floatTocDivElem.style.display = 'block';
+                    floatTocDivElem.style.width = floatTocWidth + 'px';
+                    top();
+                    floatTocDivElem.style.left = '0px';
+
+                    function top() {
+                        if (document.getElementsByClassName('container')[0].offsetWidth <= 720) {
+                            floatTocDivElem.style.top = '0px';
+                        } else {
+                            floatTocDivElem.style.top = window.innerHeight / 9 + 'px';
+                        }
+                    }
+
+                    function ishide() {
+                        if (document.getElementsByClassName('container')[0].offsetWidth <= 720) {
+                            floatTocDivElem.style.top = '0px';
+                        } else {
+                            floatTocDivElem.style.display = 'block';
+                        }
+                    }
+
+                    window.onscroll = function () {
+                        ishide();
+                        if ((document.documentElement.scrollTop != 0) && (floatTocDivElem.style.display == 'block')) {
+                            top();
+                        }
+                    };
+
+                    window.onresize = function () {
+                        ishide();
+                    }
+
+                    document.getElementById("toc_btn_open").addEventListener('click', function () {
+                        switch (tocListElem.style.display) {
+                            case "none":
+                                document.getElementById("toc_btn_close").style.display = "";
+                                tocListElem.style.display = "";
+                                floatTocDivElem.getElementsByTagName("header")[0].style.borderBottom = "1px solid gray";
+                                break;
+                            default:
+                                break;
+                        }
+                    }, false);
+
+                    document.getElementById("toc_btn_close").addEventListener('click', function () {
+                        switch (tocListElem.style.display) {
+                            case "":
+                                document.getElementById("toc_btn_close").style.display = "none";
+                                tocListElem.style.display = "none";
+                                floatTocDivElem.getElementsByTagName("header")[0].style.borderBottom = "";
+                                break;
+                            default:
+                                break;
+                        }
+                    }, false);
+                } else {
+                    let fixedTocElem = document.getElementsByClassName("toc-article")[0];
+                    fixedTocElem.appendChild(tocNavElem);
+                    fixedTocElem.parentElement.style.display = "";
+                }
+                document.getElementById("virtual_toc_list").remove();
+            };   
+        </script>
+        
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">搭建k8s集群遇到的问题</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            2018年11月14日
+                        </date>
+                        
+                        <div class="post-meta">
+                            <span>|</span>
+                            
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/kubernetes">kubernetes</a></span>
+                            
+                        </div>
+                        
+                        
+                        
+                        <div class="post-meta">
+                            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span> 阅读</span></span>
+                        </div>
+                        
+                        
+                        
+                        <div class="clear" style="display: none">
+                            <div class="toc-article">
+                                <div class="toc-title">文章目录</div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="post-content">
+                            
+
+<p>部署CalicoNode（所有节点）报错：</p>
+
+<pre><code class="language-shell">Oct 10 21:04:55 smallsoup docker[76907]: bird: BGP: Unexpected connect from unknown address 192.168.1.104 (port 58153)
+Oct 10 21:04:59 smallsoup docker[76907]: bird: BGP: Unexpected connect from unknown address 192.168.1.104 (port 40415)
+Oct 10 21:05:00 smallsoup docker[76907]: 2018-10-10 13:05:00.213 [INFO][87] int_dataplane.go 690: Applying dataplane updates
+Oct 10 21:05:00 smallsoup docker[76907]: 2018-10-10 13:05:00.213 [INFO][87] ipsets.go 224: Asked to resync with the dataplane on next update. family=&quot;inet&quot;
+Oct 10 21:05:00 smallsoup docker[76907]: 2018-10-10 13:05:00.213 [INFO][87] ipsets.go 255: Resyncing ipsets with dataplane. family=&quot;inet&quot;
+Oct 10 21:05:00 smallsoup docker[76907]: 2018-10-10 13:05:00.218 [INFO][87] ipsets.go 297: Finished resync family=&quot;inet&quot; numInconsistenciesFound=0 resyncDuration=4.542824ms
+Oct 10 21:05:00 smallsoup docker[76907]: 2018-10-10 13:05:00.218 [INFO][87] int_dataplane.go 705: Finished applying updates to dataplane. msecToApply=5.302726
+</code></pre>
+
+<p>查看节点运行情况，</p>
+
+<pre><code class="language-shell">$ calicoctl node status
+Calico process is running.
+
+IPv4 BGP status
++---------------+-------------------+-------+----------+--------------------------------+
+| PEER ADDRESS  |     PEER TYPE     | STATE |  SINCE   |              INFO              |
++---------------+-------------------+-------+----------+--------------------------------+
+| 192.168.1.103 | node-to-node mesh | start | 00:01:41 | Active Socket: Connection      |
+|               |                   |       |          | closed                         |
++---------------+-------------------+-------+----------+--------------------------------+
+
+IPv6 BGP status
+No IPv6 peers found.
+</code></pre>
+
+<p>节点信息如下：</p>
+
+<pre><code class="language-shell">系统类型	    IP地址	   节点角色	    CPU	    Memory	    Hostname
+Centos7.2	192.168.1.103	master	      1	      2G	     server01
+Centos7.2	192.168.1.102	worker        1	      2G	     server02
+Centos7.2	192.168.1.104   worker        1       2G	     server03
+</code></pre>
+
+<p>是因为/lib/systemd/system/kube-calico.service没ExecStart后面没加&ndash;IP参数，值为当前节点IP，应该是这样：</p>
+
+<pre><code class="language-shell">[Unit]
+Description=calico node
+After=docker.service
+Requires=docker.service
+
+[Service]
+User=root
+PermissionsStartOnly=true
+ExecStart=/usr/bin/docker run --net=host --privileged --name=calico-node \
+  -e ETCD_ENDPOINTS=http://192.168.1.103:2379 \
+  -e CALICO_LIBNETWORK_ENABLED=true \
+  -e CALICO_NETWORKING_BACKEND=bird \
+  -e CALICO_DISABLE_FILE_LOGGING=true \
+  -e CALICO_IPV4POOL_CIDR=172.20.0.0/16 \
+  -e CALICO_IPV4POOL_IPIP=off \
+  -e FELIX_DEFAULTENDPOINTTOHOSTACTION=ACCEPT \
+  -e FELIX_IPV6SUPPORT=false \
+  -e FELIX_LOGSEVERITYSCREEN=info \
+  -e FELIX_IPINIPMTU=1440 \
+  -e FELIX_HEALTHENABLED=true \
+  -e IP=192.168.1.103 \
+  -v /var/run/calico:/var/run/calico \
+  -v /lib/modules:/lib/modules \
+  -v /run/docker/plugins:/run/docker/plugins \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /var/log/calico:/var/log/calico \
+  registry.cn-hangzhou.aliyuncs.com/imooc/calico-node:v2.6.2
+ExecStop=/usr/bin/docker rm -f calico-node
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+
+<p>结果：</p>
+
+<pre><code class="language-shell">[root@Server02 kubernetes-starter]# calicoctl node status
+Calico process is running.
+
+IPv4 BGP status
++---------------+-------------------+-------+----------+-------------+
+| PEER ADDRESS  |     PEER TYPE     | STATE |  SINCE   |    INFO     |
++---------------+-------------------+-------+----------+-------------+
+| 192.168.1.102 | node-to-node mesh | up    | 13:05:42 | Established |
+| 192.168.1.103 | node-to-node mesh | up    | 13:10:56 | Established |
++---------------+-------------------+-------+----------+-------------+
+
+IPv6 BGP status
+No IPv6 peers found.
+</code></pre>
+
+<p>参考：<a href="https://segmentfault.com/a/1190000011352966">Kubernetes集成Calico + 遇到的问题</a></p>
+
+<p>k8s集群搭建好以后，小试牛刀：</p>
+
+<pre><code class="language-shell">[root@smallsoup net.d]# kubectl run kubernetes-bootcamp --image=jocatalin/kubernetes-bootcamp:v1 --port=8080
+deployment &quot;kubernetes-bootcamp&quot; created
+[root@smallsoup net.d]# 
+[root@smallsoup net.d]# kubectl get deployments
+
+NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+kubernetes-bootcamp   1         1         1            1           4m
+[root@smallsoup net.d]# 
+[root@smallsoup net.d]# 
+[root@smallsoup net.d]# kubectl get pods
+NAME                                   READY     STATUS    RESTARTS   AGE
+kubernetes-bootcamp-6b7849c495-vrcc2   1/1       Running   0          6m
+[root@smallsoup net.d]# kubectl get pods -o wide 
+NAME                                   READY     STATUS    RESTARTS   AGE       IP               NODE
+kubernetes-bootcamp-6b7849c495-vrcc2   1/1       Running   0          6m        172.20.173.192   192.168.1.103
+[root@smallsoup net.d]# docker ps -a
+CONTAINER ID        IMAGE                                                        COMMAND                  CREATED             STATUS              PORTS               NAMES
+56165c91587d        jocatalin/kubernetes-bootcamp                                &quot;/bin/sh -c 'node se…&quot;   5 minutes ago       Up 5 minutes                            k8s_kubernetes-bootcamp_kubernetes-bootcamp-6b7849c495-vrcc2_default_878e7b6f-cc92-11e8-bd34-000c295db389_0
+73ece5042794        registry.cn-hangzhou.aliyuncs.com/imooc/pause-amd64:3.0      &quot;/pause&quot;                 7 minutes ago       Up 7 minutes                            k8s_POD_kubernetes-bootcamp-6b7849c495-vrcc2_default_878e7b6f-cc92-11e8-bd34-000c295db389_0
+a9b502648a37        registry.cn-hangzhou.aliyuncs.com/imooc/calico-node:v2.6.2   &quot;start_runit&quot;            41 minutes ago      Up 40 minutes                           calico-node
+[root@smallsoup net.d]#
+[root@smallsoup net.d]# kubectl proxy
+Starting to serve on 127.0.0.1:8001
+
+[root@smallsoup ~]# curl http://127.0.0.1:8001/api/v1/proxy/namespaces/default/pods/kubernetes-bootcamp-6b7849c495-vrcc2/
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-6b7849c495-vrcc2 | v=1
+[root@smallsoup ~]#
+
+[root@smallsoup ~]# kubectl scale deploy kubernetes-bootcamp --replicas=4
+deployment &quot;kubernetes-bootcamp&quot; scaled
+[root@smallsoup ~]# kubectl get pods -o wide
+NAME                                   READY     STATUS    RESTARTS   AGE       IP               NODE
+kubernetes-bootcamp-6b7849c495-mpp5k   1/1       Running   0          4m        172.20.173.193   192.168.1.103
+kubernetes-bootcamp-6b7849c495-nbbk5   1/1       Running   0          4m        172.20.0.192     192.168.1.102
+kubernetes-bootcamp-6b7849c495-tgscr   1/1       Running   0          4m        172.20.0.128     192.168.1.102
+kubernetes-bootcamp-6b7849c495-vrcc2   1/1       Running   0          32m       172.20.173.192   192.168.1.103
+[root@smallsoup ~]# 
+[root@smallsoup ~]# kubectl get deploy 
+NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+kubernetes-bootcamp   4         4         4            4           32m
+
+[root@smallsoup ~]# kubectl scale deploy kubernetes-bootcamp --replicas=2
+deployment &quot;kubernetes-bootcamp&quot; scaled
+[root@smallsoup ~]# kubectl get pods -o wide
+NAME                                   READY     STATUS        RESTARTS   AGE       IP               NODE
+kubernetes-bootcamp-6b7849c495-mpp5k   1/1       Running       0          5m        172.20.173.193   192.168.1.103
+kubernetes-bootcamp-6b7849c495-nbbk5   1/1       Terminating   0          5m        172.20.0.192     192.168.1.102
+kubernetes-bootcamp-6b7849c495-tgscr   1/1       Terminating   0          5m        172.20.0.128     192.168.1.102
+kubernetes-bootcamp-6b7849c495-vrcc2   1/1       Running       0          34m       172.20.173.192   192.168.1.103
+[root@smallsoup ~]#
+
+[root@smallsoup ~]# kubectl describe deploy 
+Name:                   kubernetes-bootcamp
+Namespace:              default
+CreationTimestamp:      Wed, 10 Oct 2018 21:43:52 +0800
+Labels:                 run=kubernetes-bootcamp
+Annotations:            deployment.kubernetes.io/revision=1
+Selector:               run=kubernetes-bootcamp
+Replicas:               2 desired | 2 updated | 2 total | 2 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  1 max unavailable, 1 max surge
+Pod Template:
+  Labels:  run=kubernetes-bootcamp
+  Containers:
+   kubernetes-bootcamp:
+    Image:        jocatalin/kubernetes-bootcamp:v1
+    Port:         8080/TCP
+    Environment:  &lt;none&gt;
+    Mounts:       &lt;none&gt;
+  Volumes:        &lt;none&gt;
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+OldReplicaSets:  &lt;none&gt;
+NewReplicaSet:   kubernetes-bootcamp-6b7849c495 (2/2 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  38m   deployment-controller  Scaled up replica set kubernetes-bootcamp-6b7849c495 to 1
+  Normal  ScalingReplicaSet  10m   deployment-controller  Scaled up replica set kubernetes-bootcamp-6b7849c495 to 4
+  Normal  ScalingReplicaSet  4m    deployment-controller  Scaled down replica set kubernetes-bootcamp-6b7849c495 to 2
+[root@smallsoup ~]# 
+[root@smallsoup ~]# kubectl set image deploy kubernetes-bootcamp kubernetes-bootcamp=jocatalin/kubernetes-bootcamp:v2
+deployment &quot;kubernetes-bootcamp&quot; image updated
+[root@smallsoup ~]# kubectl rollout status deploy kubernetes-bootcamp
+Waiting for rollout to finish: 1 old replicas are pending termination...
+Waiting for rollout to finish: 1 old replicas are pending termination...
+Waiting for rollout to finish: 1 old replicas are pending termination...
+Waiting for rollout to finish: 1 of 2 updated replicas are available...
+^C[root@smallsoup ~]# 
+[root@smallsoup ~]# kubectl rollout status deploy kubernetes-bootcamp
+Waiting for rollout to finish: 1 of 2 updated replicas are available...
+[root@smallsoup ~]# kubectl  describe deploy 
+Name:                   kubernetes-bootcamp
+Namespace:              default
+CreationTimestamp:      Wed, 10 Oct 2018 21:43:52 +0800
+Labels:                 run=kubernetes-bootcamp
+Annotations:            deployment.kubernetes.io/revision=2
+Selector:               run=kubernetes-bootcamp
+Replicas:               2 desired | 2 updated | 2 total | 2 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  1 max unavailable, 1 max surge
+Pod Template:
+  Labels:  run=kubernetes-bootcamp
+  Containers:
+   kubernetes-bootcamp:
+    Image:        jocatalin/kubernetes-bootcamp:v2
+    Port:         8080/TCP
+    Environment:  &lt;none&gt;
+    Mounts:       &lt;none&gt;
+  Volumes:        &lt;none&gt;
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+OldReplicaSets:  &lt;none&gt;
+NewReplicaSet:   kubernetes-bootcamp-7689dc585d (2/2 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  41m   deployment-controller  Scaled up replica set kubernetes-bootcamp-6b7849c495 to 1
+  Normal  ScalingReplicaSet  13m   deployment-controller  Scaled up replica set kubernetes-bootcamp-6b7849c495 to 4
+  Normal  ScalingReplicaSet  7m    deployment-controller  Scaled down replica set kubernetes-bootcamp-6b7849c495 to 2
+  Normal  ScalingReplicaSet  2m    deployment-controller  Scaled up replica set kubernetes-bootcamp-7689dc585d to 1
+  Normal  ScalingReplicaSet  2m    deployment-controller  Scaled down replica set kubernetes-bootcamp-6b7849c495 to 1
+  Normal  ScalingReplicaSet  2m    deployment-controller  Scaled up replica set kubernetes-bootcamp-7689dc585d to 2
+  Normal  ScalingReplicaSet  1m    deployment-controller  Scaled down replica set kubernetes-bootcamp-6b7849c495 to 0
+[root@smallsoup ~]# 
+[root@smallsoup ~]# kubectl rollout status deploy kubernetes-bootcamp
+deployment &quot;kubernetes-bootcamp&quot; successfully rolled out
+[root@smallsoup ~]#
+
+#如果一不小心版本写错了，可以回滚：
+[root@smallsoup ~]# kubectl set image deploy kubernetes-bootcamp kubernetes-bootcamp=jocatalin/kubernetes-bootcamp:v20deployment &quot;kubernetes-bootcamp&quot; image updated
+[root@smallsoup ~]# 
+[root@smallsoup ~]# kubectl rollout status deploy kubernetes-bootcamp
+Waiting for rollout to finish: 1 old replicas are pending termination...
+^C[root@smallsoup ~]# kubectl rollout undo deploy kubernetes-bootcamp
+deployment &quot;kubernetes-bootcamp&quot; 
+[root@smallsoup ~]#
+
+[root@smallsoup services]# vim nginx-pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+   - name: nginx
+     image: nginx:1.7.9
+     ports:
+     - containerPort: 80
+
+[root@smallsoup services]# kubectl create -f nginx-pod.yaml 
+pod &quot;nginx&quot; created
+[root@smallsoup services]# kubectl get pods
+NAME                                   READY     STATUS              RESTARTS   AGE
+kubernetes-bootcamp-7689dc585d-45w6d   1/1       Running             0          5m
+kubernetes-bootcamp-7689dc585d-zxxdf   1/1       Running             0          10m
+nginx                                  0/1       ContainerCreating   0          5s
+
+[root@smallsoup services]# kubectl get deploy
+NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+kubernetes-bootcamp   2         2         2            2           49m
+
+[root@smallsoup services]# kubectl get pods
+NAME                                   READY     STATUS    RESTARTS   AGE
+kubernetes-bootcamp-7689dc585d-45w6d   1/1       Running   0          12m
+kubernetes-bootcamp-7689dc585d-zxxdf   1/1       Running   0          16m
+nginx                                  1/1       Running   0          6m
+
+[root@smallsoup net.d]# kubectl proxy
+Starting to serve on 127.0.0.1:8001
+
+[root@smallsoup services]# curl http://127.0.0.1:8001/api/v1/proxy/namespaces/default/pods/nginx/
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+&lt;style&gt;
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
+&lt;p&gt;If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.&lt;/p&gt;
+
+&lt;p&gt;For online documentation and support please refer to
+&lt;a href=&quot;http://nginx.org/&quot;&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
+Commercial support is available at
+&lt;a href=&quot;http://nginx.com/&quot;&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Thank you for using nginx.&lt;/em&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+创建deployment：
+[root@smallsoup services]# vim nginx-deployments.yaml
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+         app: nginx
+    spec:
+      containers:
+       - name: nginx
+         image: nginx:1.7.9
+         ports:
+           - containerPort: 80
+[root@smallsoup services]# kubectl create -f nginx-deployments.yaml 
+deployment &quot;nginx-deployment&quot; created
+[root@smallsoup services]# kubectl get deploy
+NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+kubernetes-bootcamp   2         2         2            2           1h
+nginx-deployment      2         2         2            2           3m
+[root@smallsoup services]# kubectl get pods -owide
+NAME                                   READY     STATUS    RESTARTS   AGE       IP               NODE
+kubernetes-bootcamp-7689dc585d-45w6d   1/1       Running   0          23m       172.20.173.197   192.168.1.103
+kubernetes-bootcamp-7689dc585d-zxxdf   1/1       Running   0          27m       172.20.0.129     192.168.1.102
+nginx                                  1/1       Running   0          17m       172.20.0.132     192.168.1.102
+nginx-deployment-6c54bd5869-94bgh      1/1       Running   0          3m        172.20.0.133     192.168.1.102
+nginx-deployment-6c54bd5869-js2r8      1/1       Running   0          3m        172.20.173.198   192.168.1.103
+[root@smallsoup services]# kubectl get pods -o wide -l app=nginx
+NAME                                READY     STATUS    RESTARTS   AGE       IP               NODE
+nginx-deployment-6c54bd5869-94bgh   1/1       Running   0          4m        172.20.0.133     192.168.1.102
+nginx-deployment-6c54bd5869-js2r8   1/1       Running   0          4m        172.20.173.198   192.168.1.103
+
+#Services
+[root@smallsoup kubernetes-starter]# kubectl expose deploy kubernetes-bootcamp --type=&quot;NodePort&quot; --target-port=8080 --port=80
+service &quot;kubernetes-bootcamp&quot; exposed
+[root@smallsoup kubernetes-starter]# kubectl get services
+NAME                  TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
+kubernetes            ClusterIP   10.68.0.1      &lt;none&gt;        443/TCP        15h
+kubernetes-bootcamp   NodePort    10.68.194.69   &lt;none&gt;        80:27543/TCP   16s
+[root@smallsoup kubernetes-starter]# 
+[root@smallsoup kubernetes-starter]# netstat -ntlp | grep 27543
+tcp6       0      0 :::27543                :::*                    LISTEN      90067/kube-proxy
+
+[root@smallsoup kubernetes-starter]# curl 192.168.1.103:27543
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-7689dc585d-45w6d | v=2
+[root@smallsoup kubernetes-starter]# curl 192.168.1.102:27543
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-7689dc585d-45w6d | v=2
+[root@smallsoup kubernetes-starter]# curl 192.168.1.104:27543
+curl: (7) Failed connect to 192.168.1.104:27543; Connection refused
+
+[root@smallsoup kubernetes-starter]# kubectl get pods -o wide
+NAME                                   READY     STATUS    RESTARTS   AGE       IP               NODE
+kubernetes-bootcamp-7689dc585d-45w6d   1/1       Running   0          52m       172.20.173.197   192.168.1.103
+kubernetes-bootcamp-7689dc585d-zxxdf   1/1       Running   0          57m       172.20.0.129     192.168.1.102
+nginx                                  1/1       Running   0          47m       172.20.0.132     192.168.1.102
+nginx-deployment-6c54bd5869-94bgh      1/1       Running   0          33m       172.20.0.133     192.168.1.102
+nginx-deployment-6c54bd5869-js2r8      1/1       Running   0          33m       172.20.173.198   192.168.1.103
+[root@smallsoup kubernetes-starter]# docker ps -a|grep bootcamp
+230582f46c49        jocatalin/kubernetes-bootcamp                                &quot;/bin/sh -c 'node se…&quot;   About an hour ago   Up About an hour                        k8s_kubernetes-bootcamp_kubernetes-bootcamp-7689dc585d-45w6d_default_a7c9c95c-cc98-11e8-bd34-000c295db389_0
+48c8ca188409        registry.cn-hangzhou.aliyuncs.com/imooc/pause-amd64:3.0      &quot;/pause&quot;                 About an hour ago   Up About an hour                        k8s_POD_kubernetes-bootcamp-7689dc585d-45w6d_default_a7c9c95c-cc98-11e8-bd34-000c295db389_0
+[root@smallsoup kubernetes-starter]# docker exec -ti  230582f46c49 bash
+root@kubernetes-bootcamp-7689dc585d-45w6d:/# curl 10.68.194.69
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-7689dc585d-45w6d | v=2
+root@kubernetes-bootcamp-7689dc585d-45w6d:/#
+
+[root@smallsoup services]# vim nginx-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+   name: nginx-service
+spec:
+  ports:
+    - port: 8080
+      targetPort: 80
+      nodePort: 20000
+  selector:
+    app: nginx
+  type: NodePort
+[root@smallsoup services]# kubectl create -f nginx-service.yaml 
+service &quot;nginx-service&quot; created
+
+[root@smallsoup services]# kubectl get svc
+NAME                  TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+kubernetes            ClusterIP   10.68.0.1      &lt;none&gt;        443/TCP          15h
+kubernetes-bootcamp   NodePort    10.68.194.69   &lt;none&gt;        80:27543/TCP     10m
+nginx-service         NodePort    10.68.80.238   &lt;none&gt;        8080:20000/TCP   2m
+[root@smallsoup services]# curl 10.68.80.238:8080
+[root@smallsoup services]# curl 192.168.1.103:20000
+[root@smallsoup services]# curl 192.168.1.102:20000
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+&lt;style&gt;
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
+&lt;p&gt;If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.&lt;/p&gt;
+
+&lt;p&gt;For online documentation and support please refer to
+&lt;a href=&quot;http://nginx.org/&quot;&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
+Commercial support is available at
+&lt;a href=&quot;http://nginx.com/&quot;&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Thank you for using nginx.&lt;/em&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+dns服务：
+[root@smallsoup kubernetes-starter]# kubectl create -f target/services/kube-dns.yaml
+configmap &quot;kube-dns&quot; created
+serviceaccount &quot;kube-dns&quot; created
+service &quot;kube-dns&quot; created
+deployment &quot;kube-dns&quot; created
+[root@smallsoup kubernetes-starter]# 
+[root@smallsoup kubernetes-starter]# kubectl -n kube-system get svc
+NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)         AGE
+kube-dns   ClusterIP   10.68.0.2    &lt;none&gt;        53/UDP,53/TCP   48s
+[root@smallsoup kubernetes-starter]# 
+[root@smallsoup kubernetes-starter]# kubectl -n kube-system get deploy
+NAME       DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+kube-dns   1         1         1            1           1m
+[root@smallsoup kubernetes-starter]# kubectl -n kube-system get pods
+NAME                      READY     STATUS    RESTARTS   AGE
+kube-dns-74cdd9c8-smtld   3/3       Running   0          1m
+[root@smallsoup kubernetes-starter]# kubectl -n kube-system get pods -owide
+NAME                      READY     STATUS    RESTARTS   AGE       IP               NODE
+kube-dns-74cdd9c8-smtld   3/3       Running   0          1m        172.20.173.199   192.168.1.103
+
+验证域名解析：
+root@kubernetes-bootcamp-7689dc585d-45w6d:/# 
+root@kubernetes-bootcamp-7689dc585d-45w6d:/# 
+root@kubernetes-bootcamp-7689dc585d-45w6d:/# cat /etc/resolv.conf 
+nameserver 10.68.0.2
+search default.svc.cluster.local. svc.cluster.local. cluster.local. DHCP HOST
+options ndots:5
+root@kubernetes-bootcamp-7689dc585d-45w6d:/# 
+root@kubernetes-bootcamp-7689dc585d-45w6d:/# curl nginx-service:8080
+</code></pre>
+
+<p>再试牛刀：</p>
+
+<pre><code class="language-shell">[root@smallsoup kubernetes-starter]# kubectl run kubernetes-bootcamp --image=jocatalin/kubernetes-bootcamp:v1 --port=8080
+deployment &quot;kubernetes-bootcamp&quot; created
+[root@smallsoup kubernetes-starter]# kubectl get deployments
+kubectl get pods
+NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+kubernetes-bootcamp   1         1         1            0           20s
+[root@smallsoup kubernetes-starter]# kubectl get pods
+NAME                                   READY     STATUS              RESTARTS   AGE
+kubernetes-bootcamp-6b7849c495-vbdml   0/1       ContainerCreating   0          22s
+[root@smallsoup kubernetes-starter]# kubectl get pods
+NAME                                   READY     STATUS              RESTARTS   AGE
+kubernetes-bootcamp-6b7849c495-vbdml   0/1       ContainerCreating   0          31s
+[root@smallsoup kubernetes-starter]# kubectl -n kube-system get pods
+NAME                        READY     STATUS    RESTARTS   AGE
+kube-dns-795f5f6f9c-w54p5   2/3       Running   3          4m
+[root@smallsoup kubernetes-starter]# 
+[root@smallsoup kubernetes-starter]# kubectl -n kube-system get pods
+
+NAME                        READY     STATUS    RESTARTS   AGE
+kube-dns-795f5f6f9c-w54p5   2/3       Running   3          4m
+[root@smallsoup kubernetes-starter]# 
+[root@smallsoup kubernetes-starter]# kubectl -n kube-system get pods
+
+^[[ANAME                        READY     STATUS    RESTARTS   AGE
+kube-dns-795f5f6f9c-w54p5   2/3       Running   3          4m
+[root@smallsoup kubernetes-starter]# 
+[root@smallsoup kubernetes-starter]# kubectl -n kube-system get pods
+
+
+^[[ANAME                        READY     STATUS    RESTARTS   AGE
+kube-dns-795f5f6f9c-w54p5   2/3       Running   3          4m
+[root@smallsoup kubernetes-starter]# 
+[root@smallsoup kubernetes-starter]# 
+[root@smallsoup kubernetes-starter]# kubectl -n kube-system get pods
+NAME                        READY     STATUS    RESTARTS   AGE
+kube-dns-795f5f6f9c-w54p5   2/3       Running   3          4m
+[root@smallsoup kubernetes-starter]# 
+[root@smallsoup kubernetes-starter]# kubectl get pods
+NAME                                   READY     STATUS    RESTARTS   AGE
+kubernetes-bootcamp-6b7849c495-vbdml   1/1       Running   0          1m
+[root@smallsoup kubernetes-starter]# kubectl logs kubernetes-bootcamp-6b7849c495-vbdml
+Kubernetes Bootcamp App Started At: 2018-10-13T15:17:02.167Z | Running On:  kubernetes-bootcamp-6b7849c495-vbdml 
+
+[root@smallsoup kubernetes-starter]# kubectl logs kubernetes-bootcamp-6b7849c495-vbdml -f
+Kubernetes Bootcamp App Started At: 2018-10-13T15:17:02.167Z | Running On:  kubernetes-bootcamp-6b7849c495-vbdml 
+
+
+^C
+[root@smallsoup kubernetes-starter]# kubectl describe pods kubernetes-bootcamp-6b7849c495-vbdml 
+Name:           kubernetes-bootcamp-6b7849c495-vbdml
+Namespace:      default
+Node:           192.168.1.103/192.168.1.103
+Start Time:     Sat, 13 Oct 2018 23:16:31 +0800
+Labels:         pod-template-hash=2634057051
+                run=kubernetes-bootcamp
+Annotations:    &lt;none&gt;
+Status:         Running
+IP:             172.20.173.192
+Controlled By:  ReplicaSet/kubernetes-bootcamp-6b7849c495
+Containers:
+  kubernetes-bootcamp:
+    Container ID:   docker://ab8400c442503ac3caf7cd82e3a7bfd7b62e60679cfb5d9c6caf2bf0028ce413
+    Image:          jocatalin/kubernetes-bootcamp:v1
+    Image ID:       docker-pullable://jocatalin/kubernetes-bootcamp@sha256:0d6b8ee63bb57c5f5b6156f446b3bc3b3c143d233037f3a2f00e279c8fcc64af
+    Port:           8080/TCP
+    State:          Running
+      Started:      Sat, 13 Oct 2018 23:17:00 +0800
+    Ready:          True
+    Restart Count:  0
+    Environment:    &lt;none&gt;
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-2mjqs (ro)
+Conditions:
+  Type           Status
+  Initialized    True 
+  Ready          True 
+  PodScheduled   True 
+Volumes:
+  default-token-2mjqs:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-2mjqs
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  &lt;none&gt;
+Tolerations:     &lt;none&gt;
+Events:
+  Type    Reason                 Age   From                    Message
+  ----    ------                 ----  ----                    -------
+  Normal  Scheduled              2m    default-scheduler       Successfully assigned kubernetes-bootcamp-6b7849c495-vbdml to 192.168.1.103
+  Normal  SuccessfulMountVolume  2m    kubelet, 192.168.1.103  MountVolume.SetUp succeeded for volume &quot;default-token-2mjqs&quot;
+  Normal  Pulled                 1m    kubelet, 192.168.1.103  Container image &quot;jocatalin/kubernetes-bootcamp:v1&quot; already present on machine
+  Normal  Created                1m    kubelet, 192.168.1.103  Created container
+  Normal  Started                1m    kubelet, 192.168.1.103  Started container
+[root@smallsoup kubernetes-starter]# 
+[root@smallsoup kubernetes-starter]# kubectl exec -ti kubernetes-bootcamp-6b7849c495-vbdml bash
+root@kubernetes-bootcamp-6b7849c495-vbdml:/# cd /var/run/secrets/kubernetes.io/serviceaccount
+root@kubernetes-bootcamp-6b7849c495-vbdml:/var/run/secrets/kubernetes.io/serviceaccount# 
+root@kubernetes-bootcamp-6b7849c495-vbdml:/var/run/secrets/kubernetes.io/serviceaccount# ll
+bash: ll: command not found
+root@kubernetes-bootcamp-6b7849c495-vbdml:/var/run/secrets/kubernetes.io/serviceaccount# ls -l
+total 0
+lrwxrwxrwx. 1 root root 13 Oct 13 15:16 ca.crt -&gt; ..data/ca.crt
+lrwxrwxrwx. 1 root root 16 Oct 13 15:16 namespace -&gt; ..data/namespace
+lrwxrwxrwx. 1 root root 12 Oct 13 15:16 token -&gt; ..data/token
+root@kubernetes-bootcamp-6b7849c495-vbdml:/var/run/secrets/kubernetes.io/serviceaccount# cat ca.crt 
+-----BEGIN CERTIFICATE-----
+MIIDtDCCApygAwIBAgIUdHZJbFydm91fCGCzCxAkg+sGAWUwDQYJKoZIhvcNAQEL
+BQAwYDELMAkGA1UEBhMCQ04xEDAOBgNVBAgTB0JlaWppbmcxCzAJBgNVBAcTAlhT
+MQwwCgYDVQQKEwNrOHMxDzANBgNVBAsTBlN5c3RlbTETMBEGA1UEAxMKa3ViZXJu
+ZXRlczAeFw0xODEwMTExMjI1MDBaFw0yMzEwMTAxMjI1MDBaMGAxCzAJBgNVBAYT
+AkNOMRAwDgYDVQQIEwdCZWlqaW5nMQswCQYDVQQHEwJYUzEMMAoGA1UEChMDazhz
+MQ8wDQYDVQQLEwZTeXN0ZW0xEzARBgNVBAMTCmt1YmVybmV0ZXMwggEiMA0GCSqG
+SIb3DQEBAQUAA4IBDwAwggEKAoIBAQCzkx4Ls2lZqNFQ5qU+0p65tdQSMr5NF5AY
+0Sh87XrXeC49okZtNkhbu3WwYy8Ro73Cs/CwwGfqaUHewaZdsrU2XZor4YL12Yje
+ozgKOJhMYSJ9PST+QgwSKlGlL+8l0iSMmT9a5nAJspm8EiAGvkpwEmTAX8VQccHB
+FL8N4c7LM6m57ou+TJyZpUiMOPeEGNovTJJFc7zuhjNPoqqjmx22bzkBvNvHHj8M
+JRHwmQWlDaRcq5XbCYYQZdshqs6Sa9Ai2733f7HLy4gpiYPIchkcKtolrdt0mii5
+93u52nFQm0se86wY2D8pwDZaYtzkMqY40SRk0DeJ98rEBitAGnxrAgMBAAGjZjBk
+MA4GA1UdDwEB/wQEAwIBBjASBgNVHRMBAf8ECDAGAQH/AgECMB0GA1UdDgQWBBTm
+lUgb3q4b0JLTAR4riGwYALZiwDAfBgNVHSMEGDAWgBTmlUgb3q4b0JLTAR4riGwY
+ALZiwDANBgkqhkiG9w0BAQsFAAOCAQEAPxFOsbPzfMtt3FYi9J5W9PSkJ36x85AX
+u6siY24tTot8lnExkNbqvhjw2eYPB6SWAUOiAU8B7pUd6C0v+rE8BmkUpVoMm/xl
+0qRQfR5HJf5RaOE9juWLENuAdUUIxqgqsZBOsDgpUo2lXaDmRd4i9xkAD6wE2Lm9
+21p/3zR11pHswLHSAgdGHCoUs8yC1HDkjzlHMrkZtWULy687/oe9lNFEw7gkxU+2
+MV5N2XWoHOKcAjtCEQxCz3XsoNGL/1tHv3b0YkpnhQQsD4ovLEGBkbW+IIupVjrp
+XJKrobVx/PNyDKpp/8zPlZDyj+94t/yzQL+lAoDWkHiPZroBqPkRRg==
+-----END CERTIFICATE-----
+root@kubernetes-bootcamp-6b7849c495-vbdml:/var/run/secrets/kubernetes.io/serviceaccount# ls -l
+total 0
+lrwxrwxrwx. 1 root root 13 Oct 13 15:16 ca.crt -&gt; ..data/ca.crt
+lrwxrwxrwx. 1 root root 16 Oct 13 15:16 namespace -&gt; ..data/namespace
+lrwxrwxrwx. 1 root root 12 Oct 13 15:16 token -&gt; ..data/token
+root@kubernetes-bootcamp-6b7849c495-vbdml:/var/run/secrets/kubernetes.io/serviceaccount# cat namespace 
+defaultroot@kubernetes-bootcamp-6b7849c495-vbdml:/var/run/secrets/kubernetes.io/serviceaccount# 
+root@kubernetes-bootcamp-6b7849c495-vbdml:/var/run/secrets/kubernetes.io/serviceaccount# cat token 
+eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJkZWZhdWx0Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6ImRlZmF1bHQtdG9rZW4tMm1qcXMiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiZGVmYXVsdCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjY2YzU4YjhjLWNkNmYtMTFlOC04Y2Q0LTAwMGMyOTVkYjM4OSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRlZmF1bHQifQ.mxH9zD0rjvU5fTjIGmlr6fIcFuznXwLOjUB3n80Fokvk4uz4fQEJ4wFWDbr5d6UvF0IMtWKip1teaC3hWD6CKNtw2yxZfPqh6Xn2b_gtfxTKTXuSx7LQ9nZ-wL2jpERbFkyWVhGbi15jyd2r1ZzkAMJbijZdqChN8d7mr1qeTL4qNvUJrvK84q_SjYjI2j_vzdJPdfnNhfyL2rX-GOneWpaGRijcp8_sUjOOSsrEcIn9mqVEpC5o3ElP7ekbm873clUn-eqbQAsT58wlOb8GqLjaDax1Q4siLYqSgvysVKCd1piJnw7-DwxWcpRb0OiPIqwvqGINsZcWumnHr-fTAQroot@kubernetes-bootcamp-6b7849c495-vbdml:/var/run/secrets/kubernetes.io/serviceaccount# 
+root@kubernetes-bootcamp-6b7849c495-vbdml:/var/run/secrets/kubernetes.io/serviceaccount#
+
+[root@smallsoup kubernetes-starter]# kubectl get serviceaccount
+NAME      SECRETS   AGE
+default   1         1d
+[root@smallsoup kubernetes-starter]# kubectl get sa
+NAME      SECRETS   AGE
+default   1         1d
+[root@smallsoup kubernetes-starter]# kubectl get sa -oyaml 
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: ServiceAccount
+  metadata:
+    creationTimestamp: 2018-10-11T16:04:58Z
+    name: default
+    namespace: default
+    resourceVersion: &quot;143&quot;
+    selfLink: /api/v1/namespaces/default/serviceaccounts/default
+    uid: 66c58b8c-cd6f-11e8-8cd4-000c295db389
+  secrets:
+  - name: default-token-2mjqs
+kind: List
+metadata:
+  resourceVersion: &quot;&quot;
+  selfLink: &quot;&quot;
+[root@smallsoup kubernetes-starter]# kubectl get sa -o json
+{
+    &quot;apiVersion&quot;: &quot;v1&quot;,
+    &quot;items&quot;: [
+        {
+            &quot;apiVersion&quot;: &quot;v1&quot;,
+            &quot;kind&quot;: &quot;ServiceAccount&quot;,
+            &quot;metadata&quot;: {
+                &quot;creationTimestamp&quot;: &quot;2018-10-11T16:04:58Z&quot;,
+                &quot;name&quot;: &quot;default&quot;,
+                &quot;namespace&quot;: &quot;default&quot;,
+                &quot;resourceVersion&quot;: &quot;143&quot;,
+                &quot;selfLink&quot;: &quot;/api/v1/namespaces/default/serviceaccounts/default&quot;,
+                &quot;uid&quot;: &quot;66c58b8c-cd6f-11e8-8cd4-000c295db389&quot;
+            },
+            &quot;secrets&quot;: [
+                {
+                    &quot;name&quot;: &quot;default-token-2mjqs&quot;
+                }
+            ]
+        }
+    ],
+    &quot;kind&quot;: &quot;List&quot;,
+    &quot;metadata&quot;: {
+        &quot;resourceVersion&quot;: &quot;&quot;,
+        &quot;selfLink&quot;: &quot;&quot;
+    }
+}
+[root@smallsoup kubernetes-starter]#
+
+[root@smallsoup kubernetes-starter]# kubectl get secret
+NAME                  TYPE                                  DATA      AGE
+default-token-2mjqs   kubernetes.io/service-account-token   3         1d
+[root@smallsoup kubernetes-starter]# kubectl get secret -oyaml
+apiVersion: v1
+items:
+- apiVersion: v1
+  data:
+    ca.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUR0RENDQXB5Z0F3SUJBZ0lVZEhaSmJGeWRtOTFmQ0dDekN4QWtnK3NHQVdVd0RRWUpLb1pJaHZjTkFRRUwKQlFBd1lERUxNQWtHQTFVRUJoTUNRMDR4RURBT0JnTlZCQWdUQjBKbGFXcHBibWN4Q3pBSkJnTlZCQWNUQWxoVApNUXd3Q2dZRFZRUUtFd05yT0hNeER6QU5CZ05WQkFzVEJsTjVjM1JsYlRFVE1CRUdBMVVFQXhNS2EzVmlaWEp1ClpYUmxjekFlRncweE9ERXdNVEV4TWpJMU1EQmFGdzB5TXpFd01UQXhNakkxTURCYU1HQXhDekFKQmdOVkJBWVQKQWtOT01SQXdEZ1lEVlFRSUV3ZENaV2xxYVc1bk1Rc3dDUVlEVlFRSEV3SllVekVNTUFvR0ExVUVDaE1EYXpoegpNUTh3RFFZRFZRUUxFd1pUZVhOMFpXMHhFekFSQmdOVkJBTVRDbXQxWW1WeWJtVjBaWE13Z2dFaU1BMEdDU3FHClNJYjNEUUVCQVFVQUE0SUJEd0F3Z2dFS0FvSUJBUUN6a3g0THMybFpxTkZRNXFVKzBwNjV0ZFFTTXI1TkY1QVkKMFNoODdYclhlQzQ5b2tadE5raGJ1M1d3WXk4Um83M0NzL0N3d0dmcWFVSGV3YVpkc3JVMlhab3I0WUwxMllqZQpvemdLT0poTVlTSjlQU1QrUWd3U0tsR2xMKzhsMGlTTW1UOWE1bkFKc3BtOEVpQUd2a3B3RW1UQVg4VlFjY0hCCkZMOE40YzdMTTZtNTdvdStUSnlacFVpTU9QZUVHTm92VEpKRmM3enVoak5Qb3Fxam14MjJiemtCdk52SEhqOE0KSlJId21RV2xEYVJjcTVYYkNZWVFaZHNocXM2U2E5QWkyNzMzZjdITHk0Z3BpWVBJY2hrY0t0b2xyZHQwbWlpNQo5M3U1Mm5GUW0wc2U4NndZMkQ4cHdEWmFZdHprTXFZNDBTUmswRGVKOThyRUJpdEFHbnhyQWdNQkFBR2paakJrCk1BNEdBMVVkRHdFQi93UUVBd0lCQmpBU0JnTlZIUk1CQWY4RUNEQUdBUUgvQWdFQ01CMEdBMVVkRGdRV0JCVG0KbFVnYjNxNGIwSkxUQVI0cmlHd1lBTFppd0RBZkJnTlZIU01FR0RBV2dCVG1sVWdiM3E0YjBKTFRBUjRyaUd3WQpBTFppd0RBTkJna3Foa2lHOXcwQkFRc0ZBQU9DQVFFQVB4Rk9zYlB6Zk10dDNGWWk5SjVXOVBTa0ozNng4NUFYCnU2c2lZMjR0VG90OGxuRXhrTmJxdmhqdzJlWVBCNlNXQVVPaUFVOEI3cFVkNkMwdityRThCbWtVcFZvTW0veGwKMHFSUWZSNUhKZjVSYU9FOWp1V0xFTnVBZFVVSXhxZ3FzWkJPc0RncFVvMmxYYURtUmQ0aTl4a0FENndFMkxtOQoyMXAvM3pSMTFwSHN3TEhTQWdkR0hDb1VzOHlDMUhEa2p6bEhNcmtadFdVTHk2ODcvb2U5bE5GRXc3Z2t4VSsyCk1WNU4yWFdvSE9LY0FqdENFUXhDejNYc29OR0wvMXRIdjNiMFlrcG5oUVFzRDRvdkxFR0JrYlcrSUl1cFZqcnAKWEpLcm9iVngvUE55REtwcC84elBsWkR5ais5NHQveXpRTCtsQW9EV2tIaVBacm9CcVBrUlJnPT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+    namespace: ZGVmYXVsdA==
+    token: ZXlKaGJHY2lPaUpTVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SnBjM01pT2lKcmRXSmxjbTVsZEdWekwzTmxjblpwWTJWaFkyTnZkVzUwSWl3aWEzVmlaWEp1WlhSbGN5NXBieTl6WlhKMmFXTmxZV05qYjNWdWRDOXVZVzFsYzNCaFkyVWlPaUprWldaaGRXeDBJaXdpYTNWaVpYSnVaWFJsY3k1cGJ5OXpaWEoyYVdObFlXTmpiM1Z1ZEM5elpXTnlaWFF1Ym1GdFpTSTZJbVJsWm1GMWJIUXRkRzlyWlc0dE1tMXFjWE1pTENKcmRXSmxjbTVsZEdWekxtbHZMM05sY25acFkyVmhZMk52ZFc1MEwzTmxjblpwWTJVdFlXTmpiM1Z1ZEM1dVlXMWxJam9pWkdWbVlYVnNkQ0lzSW10MVltVnlibVYwWlhNdWFXOHZjMlZ5ZG1salpXRmpZMjkxYm5RdmMyVnlkbWxqWlMxaFkyTnZkVzUwTG5WcFpDSTZJalkyWXpVNFlqaGpMV05rTm1ZdE1URmxPQzA0WTJRMExUQXdNR015T1RWa1lqTTRPU0lzSW5OMVlpSTZJbk41YzNSbGJUcHpaWEoyYVdObFlXTmpiM1Z1ZERwa1pXWmhkV3gwT21SbFptRjFiSFFpZlEubXhIOXpEMHJqdlU1ZlRqSUdtbHI2ZkljRnV6blh3TE9qVUIzbjgwRm9rdms0dXo0ZlFFSjR3RldEYnI1ZDZVdkYwSU10V0tpcDF0ZWFDM2hXRDZDS050dzJ5eFpmUHFoNlhuMmJfZ3RmeFRLVFh1U3g3TFE5blotd0wyanBFUmJGa3lXVmhHYmkxNWp5ZDJyMVp6a0FNSmJpalpkcUNoTjhkN21yMXFlVEw0cU52VUpydks4NHFfU2pZakkyal92emRKUGRmbk5oZnlMMnJYLUdPbmVXcGFHUmlqY3A4X3NVak9PU3NyRWNJbjltcVZFcEM1bzNFbFA3ZWtibTg3M2NsVW4tZXFiUUFzVDU4d2xPYjhHcUxqYURheDFRNHNpTFlxU2d2eXNWS0NkMXBpSm53Ny1Ed3hXY3BSYjBPaVBJcXd2cUdJTnNaY1d1bW5Ici1mVEFR
+  kind: Secret
+  metadata:
+    annotations:
+      kubernetes.io/service-account.name: default
+      kubernetes.io/service-account.uid: 66c58b8c-cd6f-11e8-8cd4-000c295db389
+    creationTimestamp: 2018-10-11T16:04:58Z
+    name: default-token-2mjqs
+    namespace: default
+    resourceVersion: &quot;141&quot;
+    selfLink: /api/v1/namespaces/default/secrets/default-token-2mjqs
+    uid: 6708ddb1-cd6f-11e8-8cd4-000c295db389
+  type: kubernetes.io/service-account-token
+kind: List
+metadata:
+  resourceVersion: &quot;&quot;
+  selfLink: &quot;&quot;
+[root@smallsoup kubernetes-starter]#
+
+[root@smallsoup ~]# cd services/
+[root@smallsoup services]# ll
+total 12
+-rw-r--r--. 1 root root 290 Oct 10 22:47 nginx-deployments.yaml
+-rw-r--r--. 1 root root 148 Oct 10 22:33 nginx-pod.yaml
+-rw-r--r--. 1 root root 181 Oct 10 23:26 nginx-service.yaml
+[root@smallsoup services]# kubectl apply -f nginx-pod.yaml 
+pod &quot;nginx&quot; created
+[root@smallsoup services]# kubectl get pods
+NAME                                   READY     STATUS              RESTARTS   AGE
+kubernetes-bootcamp-6b7849c495-vbdml   1/1       Running             0          9m
+nginx                                  0/1       ContainerCreating   0          17s
+[root@smallsoup services]# kubectl describe pods nginx
+Name:         nginx
+Namespace:    default
+Node:         192.168.1.104/192.168.1.104
+Start Time:   Sat, 13 Oct 2018 23:25:21 +0800
+Labels:       &lt;none&gt;
+Annotations:  kubectl.kubernetes.io/last-applied-configuration={&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;Pod&quot;,&quot;metadata&quot;:{&quot;annotations&quot;:{},&quot;name&quot;:&quot;nginx&quot;,&quot;namespace&quot;:&quot;default&quot;},&quot;spec&quot;:{&quot;containers&quot;:[{&quot;image&quot;:&quot;nginx:1.7.9&quot;,&quot;name&quot;:...
+Status:       Pending
+IP:           
+Containers:
+  nginx:
+    Container ID:   
+    Image:          nginx:1.7.9
+    Image ID:       
+    Port:           80/TCP
+    State:          Waiting
+      Reason:       ContainerCreating
+    Ready:          False
+    Restart Count:  0
+    Environment:    &lt;none&gt;
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-2mjqs (ro)
+Conditions:
+  Type           Status
+  Initialized    True 
+  Ready          False 
+  PodScheduled   True 
+Volumes:
+  default-token-2mjqs:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-2mjqs
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  &lt;none&gt;
+Tolerations:     &lt;none&gt;
+Events:
+  Type    Reason                 Age   From                    Message
+  ----    ------                 ----  ----                    -------
+  Normal  Scheduled              31s   default-scheduler       Successfully assigned nginx to 192.168.1.104
+  Normal  SuccessfulMountVolume  31s   kubelet, 192.168.1.104  MountVolume.SetUp succeeded for volume &quot;default-token-2mjqs&quot;
+  Normal  Pulling                21s   kubelet, 192.168.1.104  pulling image &quot;nginx:1.7.9&quot;
+[root@smallsoup services]#
+[root@smallsoup services]# kubectl get pods nginx -oyaml
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;Pod&quot;,&quot;metadata&quot;:{&quot;annotations&quot;:{},&quot;name&quot;:&quot;nginx&quot;,&quot;namespace&quot;:&quot;default&quot;},&quot;spec&quot;:{&quot;containers&quot;:[{&quot;image&quot;:&quot;nginx:1.7.9&quot;,&quot;name&quot;:&quot;nginx&quot;,&quot;ports&quot;:[{&quot;containerPort&quot;:80}]}]}}
+  creationTimestamp: 2018-10-13T15:25:21Z
+  name: nginx
+  namespace: default
+  resourceVersion: &quot;181517&quot;
+  selfLink: /api/v1/namespaces/default/pods/nginx
+  uid: 32936acc-cefc-11e8-8cd4-000c295db389
+spec:
+  containers:
+  - image: nginx:1.7.9
+    imagePullPolicy: IfNotPresent
+    name: nginx
+    ports:
+    - containerPort: 80
+      protocol: TCP
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-2mjqs
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  nodeName: 192.168.1.104
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  volumes:
+  - name: default-token-2mjqs
+    secret:
+      defaultMode: 420
+      secretName: default-token-2mjqs
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: 2018-10-13T15:25:21Z
+    status: &quot;True&quot;
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: 2018-10-13T15:25:21Z
+    message: 'containers with unready status: [nginx]'
+    reason: ContainersNotReady
+    status: &quot;False&quot;
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: 2018-10-13T15:25:21Z
+    status: &quot;True&quot;
+    type: PodScheduled
+  containerStatuses:
+  - image: nginx:1.7.9
+    imageID: &quot;&quot;
+    lastState: {}
+    name: nginx
+    ready: false
+    restartCount: 0
+    state:
+      waiting:
+        reason: ContainerCreating
+  hostIP: 192.168.1.104
+  phase: Pending
+  qosClass: BestEffort
+  startTime: 2018-10-13T15:25:21Z
+[root@smallsoup services]#
+
+[root@smallsoup services]# vim nginx-pod.yaml 
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+   - name: nginx
+     image: nginx:1.13
+     ports:
+     - containerPort: 80
+[root@smallsoup services]# 
+[root@smallsoup services]# 
+[root@smallsoup services]# 
+[root@smallsoup services]# kubectl apply -f nginx-pod.yaml 
+pod &quot;nginx&quot; configured
+[root@smallsoup services]# kubectl get pods nginx -oyaml
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {&quot;apiVersion&quot;:&quot;v1&quot;,&quot;kind&quot;:&quot;Pod&quot;,&quot;metadata&quot;:{&quot;annotations&quot;:{},&quot;name&quot;:&quot;nginx&quot;,&quot;namespace&quot;:&quot;default&quot;},&quot;spec&quot;:{&quot;containers&quot;:[{&quot;image&quot;:&quot;nginx:1.13&quot;,&quot;name&quot;:&quot;nginx&quot;,&quot;ports&quot;:[{&quot;containerPort&quot;:80}]}]}}
+  creationTimestamp: 2018-10-13T15:25:21Z
+  name: nginx
+  namespace: default
+  resourceVersion: &quot;181807&quot;
+  selfLink: /api/v1/namespaces/default/pods/nginx
+  uid: 32936acc-cefc-11e8-8cd4-000c295db389
+spec:
+  containers:
+  - image: nginx:1.13
+    imagePullPolicy: IfNotPresent
+    name: nginx
+    ports:
+    - containerPort: 80
+      protocol: TCP
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-2mjqs
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  nodeName: 192.168.1.104
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  volumes:
+  - name: default-token-2mjqs
+    secret:
+      defaultMode: 420
+      secretName: default-token-2mjqs
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: 2018-10-13T15:25:21Z
+    status: &quot;True&quot;
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: 2018-10-13T15:27:35Z
+    status: &quot;True&quot;
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: 2018-10-13T15:25:21Z
+    status: &quot;True&quot;
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://0c65b5b11aa4abbae984996d5fc163c39891c9824d568860d4b16beaed7b5286
+    image: nginx:1.7.9
+    imageID: docker-pullable://nginx@sha256:e3456c851a152494c3e4ff5fcc26f240206abac0c9d794affb40e0714846c451
+    lastState: {}
+    name: nginx
+    ready: true
+    restartCount: 0
+    state:
+      running:
+        startedAt: 2018-10-13T15:27:33Z
+  hostIP: 192.168.1.104
+  phase: Running
+  podIP: 172.20.129.129
+  qosClass: BestEffort
+  startTime: 2018-10-13T15:25:21Z
+[root@smallsoup services]#
+
+[root@smallsoup services]# kubectl set image pods nginx nginx=nginx:1.7.9
+pod &quot;nginx&quot; image updated
+[root@smallsoup services]# kubectl get pods nginx -o json
+{
+    &quot;apiVersion&quot;: &quot;v1&quot;,
+    &quot;kind&quot;: &quot;Pod&quot;,
+    &quot;metadata&quot;: {
+        &quot;annotations&quot;: {
+            &quot;kubectl.kubernetes.io/last-applied-configuration&quot;: &quot;{\&quot;apiVersion\&quot;:\&quot;v1\&quot;,\&quot;kind\&quot;:\&quot;Pod\&quot;,\&quot;metadata\&quot;:{\&quot;annotations\&quot;:{},\&quot;name\&quot;:\&quot;nginx\&quot;,\&quot;namespace\&quot;:\&quot;default\&quot;},\&quot;spec\&quot;:{\&quot;containers\&quot;:[{\&quot;image\&quot;:\&quot;nginx:1.13\&quot;,\&quot;name\&quot;:\&quot;nginx\&quot;,\&quot;ports\&quot;:[{\&quot;containerPort\&quot;:80}]}]}}\n&quot;
+        },
+        &quot;creationTimestamp&quot;: &quot;2018-10-13T15:25:21Z&quot;,
+        &quot;name&quot;: &quot;nginx&quot;,
+        &quot;namespace&quot;: &quot;default&quot;,
+        &quot;resourceVersion&quot;: &quot;182041&quot;,
+        &quot;selfLink&quot;: &quot;/api/v1/namespaces/default/pods/nginx&quot;,
+        &quot;uid&quot;: &quot;32936acc-cefc-11e8-8cd4-000c295db389&quot;
+    },
+    &quot;spec&quot;: {
+        &quot;containers&quot;: [
+            {
+                &quot;image&quot;: &quot;nginx:1.7.9&quot;,
+                &quot;imagePullPolicy&quot;: &quot;IfNotPresent&quot;,
+                &quot;name&quot;: &quot;nginx&quot;,
+                &quot;ports&quot;: [
+                    {
+                        &quot;containerPort&quot;: 80,
+                        &quot;protocol&quot;: &quot;TCP&quot;
+                    }
+                ],
+                &quot;resources&quot;: {},
+                &quot;terminationMessagePath&quot;: &quot;/dev/termination-log&quot;,
+                &quot;terminationMessagePolicy&quot;: &quot;File&quot;,
+                &quot;volumeMounts&quot;: [
+                    {
+                        &quot;mountPath&quot;: &quot;/var/run/secrets/kubernetes.io/serviceaccount&quot;,
+                        &quot;name&quot;: &quot;default-token-2mjqs&quot;,
+                        &quot;readOnly&quot;: true
+                    }
+                ]
+            }
+        ],
+        &quot;dnsPolicy&quot;: &quot;ClusterFirst&quot;,
+        &quot;nodeName&quot;: &quot;192.168.1.104&quot;,
+        &quot;restartPolicy&quot;: &quot;Always&quot;,
+        &quot;schedulerName&quot;: &quot;default-scheduler&quot;,
+        &quot;securityContext&quot;: {},
+        &quot;serviceAccount&quot;: &quot;default&quot;,
+        &quot;serviceAccountName&quot;: &quot;default&quot;,
+        &quot;terminationGracePeriodSeconds&quot;: 30,
+        &quot;volumes&quot;: [
+            {
+                &quot;name&quot;: &quot;default-token-2mjqs&quot;,
+                &quot;secret&quot;: {
+                    &quot;defaultMode&quot;: 420,
+                    &quot;secretName&quot;: &quot;default-token-2mjqs&quot;
+                }
+            }
+        ]
+    },
+    &quot;status&quot;: {
+        &quot;conditions&quot;: [
+            {
+                &quot;lastProbeTime&quot;: null,
+                &quot;lastTransitionTime&quot;: &quot;2018-10-13T15:25:21Z&quot;,
+                &quot;status&quot;: &quot;True&quot;,
+                &quot;type&quot;: &quot;Initialized&quot;
+            },
+            {
+                &quot;lastProbeTime&quot;: null,
+                &quot;lastTransitionTime&quot;: &quot;2018-10-13T15:27:35Z&quot;,
+                &quot;status&quot;: &quot;True&quot;,
+                &quot;type&quot;: &quot;Ready&quot;
+            },
+            {
+                &quot;lastProbeTime&quot;: null,
+                &quot;lastTransitionTime&quot;: &quot;2018-10-13T15:25:21Z&quot;,
+                &quot;status&quot;: &quot;True&quot;,
+                &quot;type&quot;: &quot;PodScheduled&quot;
+            }
+        ],
+        &quot;containerStatuses&quot;: [
+            {
+                &quot;containerID&quot;: &quot;docker://0c65b5b11aa4abbae984996d5fc163c39891c9824d568860d4b16beaed7b5286&quot;,
+                &quot;image&quot;: &quot;nginx:1.7.9&quot;,
+                &quot;imageID&quot;: &quot;docker-pullable://nginx@sha256:e3456c851a152494c3e4ff5fcc26f240206abac0c9d794affb40e0714846c451&quot;,
+                &quot;lastState&quot;: {},
+                &quot;name&quot;: &quot;nginx&quot;,
+                &quot;ready&quot;: true,
+                &quot;restartCount&quot;: 0,
+                &quot;state&quot;: {
+                    &quot;running&quot;: {
+                        &quot;startedAt&quot;: &quot;2018-10-13T15:27:33Z&quot;
+                    }
+                }
+            }
+        ],
+        &quot;hostIP&quot;: &quot;192.168.1.104&quot;,
+        &quot;phase&quot;: &quot;Running&quot;,
+        &quot;podIP&quot;: &quot;172.20.129.129&quot;,
+        &quot;qosClass&quot;: &quot;BestEffort&quot;,
+        &quot;startTime&quot;: &quot;2018-10-13T15:25:21Z&quot;
+    }
+}
+
+
+[root@smallsoup services]# kubectl apply -f nginx-deployments.yaml 
+deployment &quot;nginx-deployment&quot; created
+[root@smallsoup services]# vim nginx-deployments.yaml 
+[root@smallsoup services]# 
+[root@smallsoup services]# kubectl apply -f nginx-service.yaml 
+service &quot;nginx-service&quot; created
+[root@smallsoup services]# vim nginx-service.yaml 
+[root@smallsoup services]# 
+[root@smallsoup services]# curl 192.168.1.103:20000
+
+[root@smallsoup ~]# kubectl get svc
+NAME            TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+kubernetes      ClusterIP   10.68.0.1       &lt;none&gt;        443/TCP          1d
+nginx-service   NodePort    10.68.239.180   &lt;none&gt;        8080:20000/TCP   16m
+
+[root@smallsoup services]# kubectl run busybox --rm=true --image=busybox --restart=Never --tty -i
+If you don't see a command prompt, try pressing enter.
+/ # ls -l
+total 16
+drwxr-xr-x    2 root     root          8192 Oct  1 22:37 bin
+drwxr-xr-x    5 root     root           380 Oct 13 15:50 dev
+drwxr-xr-x    3 root     root          4096 Oct 13 15:50 etc
+drwxr-xr-x    2 nobody   nogroup          6 Oct  1 22:37 home
+dr-xr-xr-x  459 root     root             0 Oct 13 15:50 proc
+drwx------    2 root     root            25 Oct 13 15:51 root
+dr-xr-xr-x   13 root     root             0 Oct  8 14:58 sys
+drwxrwxrwt    2 root     root             6 Oct  1 22:37 tmp
+drwxr-xr-x    3 root     root            17 Oct  1 22:37 usr
+drwxr-xr-x    5 root     root            38 Oct 13 15:50 var
+/ # wget -qO - nginx-service:8080
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+&lt;style&gt;
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
+&lt;p&gt;If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.&lt;/p&gt;
+
+&lt;p&gt;For online documentation and support please refer to
+&lt;a href=&quot;http://nginx.org/&quot;&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
+Commercial support is available at
+&lt;a href=&quot;http://nginx.com/&quot;&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Thank you for using nginx.&lt;/em&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+/ # 
+/ # wget -qO - 10.68.239.180:8080
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+&lt;style&gt;
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
+&lt;p&gt;If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.&lt;/p&gt;
+
+&lt;p&gt;For online documentation and support please refer to
+&lt;a href=&quot;http://nginx.org/&quot;&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
+Commercial support is available at
+&lt;a href=&quot;http://nginx.com/&quot;&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Thank you for using nginx.&lt;/em&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+/ #
+</code></pre>
+
+<p>启动harbor报错：</p>
+
+<pre><code class="language-shell">[Step 3]: starting Harbor ...
+Creating network &quot;harbor_harbor&quot; with the default driver
+ERROR: Failed to Setup IP tables: Unable to enable SKIP DNAT rule:  (iptables failed: iptables --wait -t nat -I DOCKER -i br-9bd0e8683b85 -j RETURN: iptables: No chain/target/match by that name.
+ (exit status 1))
+</code></pre>
+
+<p>需要重启docker daemon</p>
+
+<pre><code class="language-shell">systemctl restart docker
+</code></pre>
+
+<hr />
+
+<h3 id="遗留问题">遗留问题：</h3>
+
+<p>docker pull可以拉镜像成功，但是kubectl apply -f api-gateway.yaml创建时，报错：</p>
+
+<pre><code class="language-shell">Warning  Failed                 27m (x2 over 28m)  kubelet, 192.168.1.102  Failed to pull image &quot;192.168.1.103:80/micro-service/api-gateway-zuul:latest&quot;: rpc error: code = Unknown desc = Error response from daemon: pull access denied for 192.168.1.103:80/micro-service/api-gateway, repository does not exist or may require 'docker login'
+</code></pre>
+
+<pre><code class="language-yaml">[root@Server02 service-config]# vim api-gateway.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: api-gateway
+  name: api-gateway
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8080
+    nodePort: 80
+  selector:
+    app: api-gateway
+  type: NodePort
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: api-gateway-deployment
+spec:
+  replicas: 1
+</code></pre>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/9134763-319feaa8495e3fa1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" /></p>
+
+                        </div>
+
+                        
+                        
+
+<div style="padding: 10px 0; margin: 20px auto; width: 100%; font-size:20px; text-align: center;">
+  <button id="rewardButton" disable="enable" onclick="let qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+  <span>打赏</span></button>
+  <div id="QR" style="display: none;">
+    
+    <div style="display: inline-block">
+      <a class="fancybox" rel="group"><img src="/img/wechat-zhifubao-QR.png"></a>
+    </div>
+  </div>
+</div>
+
+                        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://liabio.github.io">小碗汤</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://liabio.github.io/posts/2018-11-14-%E6%90%AD%E5%BB%BAk8s%E9%9B%86%E7%BE%A4%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">https://liabio.github.io/posts/2018-11-14-%E6%90%AD%E5%BB%BAk8s%E9%9B%86%E7%BE%A4%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+                        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/2018-10-02-kubernetesPodExec%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8/">Kubernetes Pod Exec接口调用</a></li>
+        
+        <li><a href="/posts/2018-03-11-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8k8s%E5%BF%85%E5%AD%A6%E5%BF%85%E4%BC%9A%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">史上最全k8s必学必会知识梳理</a></li>
+        
+        <li><a href="/posts/2018-11-13-%E5%AD%A6%E4%B9%A0openresty%E6%97%B6nginx%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/">学习openresty时nginx的一个坑</a></li>
+        
+        <li><a href="/posts/2018-11-12-DockerCE%E9%95%9C%E5%83%8F%E6%BA%90%E7%AB%99/">Docker CE镜像源站</a></li>
+        
+        <li><a href="/posts/2018-11-11-DockerMulti-stageBuild%E6%9C%BA%E5%88%B6/">Docker multi stage build机制</a></li>
+        
+    </ul>
+</div>
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            <ul class="clearfix">
+                                
+                                <li><a href="https://liabio.github.io/tags/kubernetes">kubernetes</a></li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liabio.github.io">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-01-03-yum%E6%BA%90%E9%85%8D%E7%BD%AE/" title="2019 01 03 Yum源配置">2019 01 03 Yum源配置</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-30-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/" title="Kubernetes自定义资源对象高级功能">Kubernetes自定义资源对象高级功能</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/" title="etcd操作">etcd操作</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/" title="docker镜像制作必备技能">docker镜像制作必备技能</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" title="git常用操作">git常用操作</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/" title="k8s中部署负载均衡器ingress-nginx">k8s中部署负载均衡器ingress-nginx</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/" title="k8s使用Job执行任务失败了怎么办">k8s使用Job执行任务失败了怎么办</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%901/" title="kubernetes垃圾回收器GarbageCollector Controller源码分析（一）">kubernetes垃圾回收器GarbageCollector Controller源码分析（一）</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/" title="一次socket.error: [Errno 99] Cannot assign requested address报错排查">一次socket.error: [Errno 99] Cannot assign requested address报错排查</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/" title="云服务器使用docker搭建服务">云服务器使用docker搭建服务</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title" style="color:red">福利派送</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a href="https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=3iiljysb" title="高性能云服务器2折起" target="_blank" style="color:red">
+                
+                    <img src="/img/aliyun600x300.png">
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="https://www.aliyun.com/acts/hotsale?userCode=3iiljysb" title="主机爆款特惠3折起" target="_blank" style="color:red">
+                
+                    <img src="/img/zhujibaokuan3zhe.png">
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=3iiljysb" title="2000元全场红包领取" target="_blank" style="color:red">
+                
+                    <img src="/img/getalluse2000yuan.png">
+                
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liabio.github.io/categories//">(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/anyListen/">anyListen(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/blog/">blog(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/centos/">centos(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/debug/">debug(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/ditto/">ditto(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/docker/">docker(10)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/elasticsearch/">elasticsearch(3)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/etcd/">etcd(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/git/">git(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/golang/">golang(10)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/http/">http(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/idea/">idea(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/ingress-nginx/">ingress-nginx(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/java/">java(11)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/job/">job(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/k8s/">k8s(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(15)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/linux/">linux(3)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/mysql/">mysql(6)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/nginx/">nginx(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/openresty/">openresty(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/redis/">redis(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/shell/">shell(3)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/springmvc/">springmvc(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/vmware/">vmware(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/windows/">windows(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/xyplorer/">xyplorer(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/zookeeper/">zookeeper(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/%E5%B7%A5%E5%85%B7/">工具(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务(1)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://liabio.github.io/tags//"></a>
+    
+    <a href="https://liabio.github.io/tags/blog/">blog</a>
+    
+    <a href="https://liabio.github.io/tags/chocolate/">chocolate</a>
+    
+    <a href="https://liabio.github.io/tags/controller/">controller</a>
+    
+    <a href="https://liabio.github.io/tags/crd/">crd</a>
+    
+    <a href="https://liabio.github.io/tags/csdn/">csdn</a>
+    
+    <a href="https://liabio.github.io/tags/docker/">docker</a>
+    
+    <a href="https://liabio.github.io/tags/email/">email</a>
+    
+    <a href="https://liabio.github.io/tags/etcd/">etcd</a>
+    
+    <a href="https://liabio.github.io/tags/garbageCollector/">garbageCollector</a>
+    
+    <a href="https://liabio.github.io/tags/git/">git</a>
+    
+    <a href="https://liabio.github.io/tags/http/">http</a>
+    
+    <a href="https://liabio.github.io/tags/hugo/">hugo</a>
+    
+    <a href="https://liabio.github.io/tags/ingress-nginx/">ingress-nginx</a>
+    
+    <a href="https://liabio.github.io/tags/java/">java</a>
+    
+    <a href="https://liabio.github.io/tags/job/">job</a>
+    
+    <a href="https://liabio.github.io/tags/kubernetes/">kubernetes</a>
+    
+    <a href="https://liabio.github.io/tags/mysql/">mysql</a>
+    
+    <a href="https://liabio.github.io/tags/nginx/">nginx</a>
+    
+    <a href="https://liabio.github.io/tags/operator/">operator</a>
+    
+    <a href="https://liabio.github.io/tags/redis%E9%9B%86%E7%BE%A4/">redis集群</a>
+    
+    <a href="https://liabio.github.io/tags/shell/">shell</a>
+    
+    <a href="https://liabio.github.io/tags/telnet/">telnet</a>
+    
+    <a href="https://liabio.github.io/tags/thrift/">thrift</a>
+    
+    <a href="https://liabio.github.io/tags/%E4%B8%8A%E7%BD%91/">上网</a>
+    
+    <a href="https://liabio.github.io/tags/%E4%BB%A3%E7%90%86/">代理</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%8C%85%E7%AE%A1%E7%90%86/">包管理</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%9B%BD%E9%99%85%E5%8C%96/">国际化</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%9D%91/">坑</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/">垃圾回收器</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/">存储过程</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%AE%B9%E5%99%A8/">容器</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/">效率工具</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%95%99%E7%A8%8B/">教程</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%97%A5%E5%BF%97%E8%BD%AC%E5%82%A8/">日志转储</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E5%85%A8/">服务器安全</a>
+    
+    <a href="https://liabio.github.io/tags/%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/">灰度发布</a>
+    
+    <a href="https://liabio.github.io/tags/%E7%88%AC%E8%99%AB/">爬虫</a>
+    
+    <a href="https://liabio.github.io/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/">虚拟机</a>
+    
+    <a href="https://liabio.github.io/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/">解决问题</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%85%8D%E7%BD%AE/">配置</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%95%9C%E5%83%8F/">镜像</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%97%AE%E9%A2%98/">问题</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">问题解决</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/">验证码</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liabio.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="social-links" style="text-align: center; padding-top: 10px">
+          
+  
+  
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/font/jianshu/iconfont.css">
+  <link rel="stylesheet" href="/font/segmentfault/iconfont.css">
+  <link rel="stylesheet" href="/font/weixingongzhonghao/iconfont.css">
+  <link rel="stylesheet" href="/font/juejin/iconfont.css">
+  <link rel="stylesheet" href="/font/zhihu/iconfont.css">
+  <link rel="stylesheet" href="/font/cnblog/iconfont.css">
+  <link rel="stylesheet" href="/font/csdn/iconfont.css">
+  <link rel="stylesheet" href="/scss/main.min.49aaf4284ea697cea9958ae76b5c552c1802fe84051ec9372cfbe7bf2db0d599.css">
+
+
+
+
+
+<style type="text/css">
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .8);
+}
+
+.center {
+    width: 220px;
+    height: 220px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -110px;
+}
+
+.center img {
+    width: 220px;
+}
+
+.center i {
+    color: #fff;
+    font-size: 1.5em;
+    position: relative;
+    float: right;
+    top: 0px;
+    right: -20px;
+    cursor: pointer;
+}
+</style>
+
+
+<div id="lightbox" style="display: none" class="lightbox" onclick="document.getElementById('lightbox').style.display='none';">
+    <div class="center">
+        
+        <i class="iconfont icon-close"></i>
+        
+        <img src="/img/me/wechat.png">
+    </div>
+</div>
+
+
+
+
+
+<style type="text/css">
+.gongzhonghaolightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .8);
+}
+</style>
+
+
+<div id="gongzhonghaolightbox" style="display: none" class="gongzhonghaolightbox" onclick="document.getElementById('gongzhonghaolightbox').style.display='none';">
+    <div class="center">
+        <i class="iconfont icon-close"></i>
+        <img src="/img/me/gongzhonghao-ercode.jpg">
+    </div>
+</div>
+
+
+
+<a href="https://github.com/liabio" target="_blank" rel="me noopener"><i class="iconfont icon-github"></i></a>
+
+
+
+<a href="https://twitter.com/ll837448792" target="_blank" rel="me noopener"><i class="iconfont icon-twitter"></i></a>
+
+
+<a href="https://www.instagram.com/liabio0418/" target="_blank" rel="me noopener"><i class="iconfont icon-instagram"></i></a> 
+ 
+
+<a href="javascript:void(0);" rel="me noopener" onclick="document.getElementById('lightbox').style.display='inline';"><i class="iconfont icon-wechat"></i></a>
+
+
+<a href="mailto:837448792@qq.com" rel="me noopener"><i class="iconfont icon-mail01"></i></a>
+
+
+
+
+
+
+<a href="https://medium.com/@ll837448792" rel="me noopener"><i class="iconfont icon-medium-circle-fill"></i></a>
+
+
+
+<a href="https://www.zhihu.com/people/liabio/posts" rel="me noopener"><i class="zhihu-iconfont icon-zhihu"></i></a>
+
+
+
+<a href="https://www.jianshu.com/u/33c582f040ae" rel="me noopener"><i class="jianshu-iconfont icon-jianshu"></i></a>
+
+
+
+<a href="https://blog.csdn.net/ll837448792" rel="me noopener"><i class="csdn-iconfont icon-csdn"></i></a>
+
+
+
+<a href="https://segmentfault.com/u/smallsoup" rel="me noopener"><i class="segmentfault-iconfont icon-sf"></i></a>
+
+
+
+<a href="https://juejin.im/user/5b0c1a17f265da08df28648c" rel="me noopener"><i class="juejin-iconfont icon-juejin"></i></a>
+
+
+
+<a href="https://www.cnblogs.com/liabio" rel="me noopener"><i class="cnblog-iconfont icon-bokeyuan"></i></a>
+
+
+
+<a href="javascript:void(0);" rel="me noopener" onclick="document.getElementById('gongzhonghaolightbox').style.display='inline';"><i class="weixingongzhonghao-iconfont icon-weixingongzhonghao"></i></a>
+
+
+
+
+    </div>
+    <div class="container" style="text-align: center; padding-top: 3px">
+        &copy; 2019 <a href="https://liabio.github.io">小碗汤的博客 By 小碗汤</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.2.8/raphael.min.js" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/flowchart/1.12.2/flowchart.min.js" crossorigin="anonymous"></script>
+        <script>(function () {
+                if (!window.flowchart) return;
+                const blocks = document.querySelectorAll('pre code.language-flowchart, pre code.language-flow');
+                for (let i = 0; i < blocks.length; i++) {
+                    const block = blocks[i];
+                    const rootElement = block.parentNode;
+                    const container = document.createElement('div');
+                    const id = `js-flowchart-diagrams-${i}`;
+                    container.id = id;
+                    container.className = 'align-center';
+                    container.setAttribute("style", "overFlow-x:auto");
+                    rootElement.parentNode.replaceChild(container, rootElement);
+                    const diagram = flowchart.parse(block.childNodes[0].nodeValue);
+                    diagram.drawSVG(id, window.flowchartDiagramsOptions ? window.flowchartDiagramsOptions : {});
+                }
+            })();
+        </script>
+    <script type="text/javascript">
+        
+        (function () {
+            $("pre code").parent().addClass("line-numbers")
+        }());
+
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script type="text/javascript" src="/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-139517579-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+</body>
+</html>

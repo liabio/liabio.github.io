@@ -6,17 +6,17 @@
     <description>Recent content in kubernetes on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 27 Sep 2019 09:59:46 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 30 Sep 2019 14:41:33 +0800</lastBuildDate>
     
 	<atom:link href="https://liabio.github.io/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>kubernetes自定义资源对象高级功能</title>
-      <link>https://liabio.github.io/posts/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/</link>
-      <pubDate>Fri, 27 Sep 2019 09:59:46 +0800</pubDate>
+      <title>Kubernetes自定义资源对象高级功能</title>
+      <link>https://liabio.github.io/posts/2019-09-30-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/</link>
+      <pubDate>Mon, 30 Sep 2019 14:41:33 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/</guid>
+      <guid>https://liabio.github.io/posts/2019-09-30-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/</guid>
       <description>kubernetes自定义资源对象再极大程度提高了API Server的可扩展性，让企业能够根据业务需求通过CRD编写controller或者operator来实现生产中各种特殊场景。随着k8s的版本升级，CRD的功能也越来越完善，下面对其中</description>
     </item>
     
@@ -62,7 +62,7 @@
       <pubDate>Tue, 14 May 2019 09:59:46 +0800</pubDate>
       
       <guid>https://liabio.github.io/posts/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/</guid>
-      <description>cat &amp;gt; /etc/yum.repos.d/kubernetes.repo &amp;lt;&amp;lt; EOF [kubernetes] name=Kubernetes baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/ enabled=1 gpgcheck=0 repo_gpgcheck=1 gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg EOF 安装kubeadm、kubectl、kubelet yum install -y kubeadm kubelet kubectl 如果在云服务器上搭建时，IP-18.219.28.143是公网IP kubeadm init --kubernetes-version=v1.14.1 --pod-network-cidr=10.244.0.0/16 --service-cidr=10.96.0.0/12 --apiserver-advertise-address=18.219.28.143 --ignore-preflight-errors=Swap,NumCPU init的时候可能会： [kubelet-check] Initial timeout of 40s passed ![](/img/2019-05-1</description>
+      <description>cat &amp;gt; /etc/yum.repos.d/kubernetes.repo &amp;lt;&amp;lt; EOF [kubernetes] name=Kubernetes baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/ enabled=1 gpgcheck=0 repo_gpgcheck=1 gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg EOF 安装kubeadm、kubectl、kubelet yum install -y kubeadm kubelet kubectl 如果在云服务器上搭建时，IP-18.219.28.143是公网IP kubeadm init --kubernetes-version=v1.14.1 --pod-network-cidr=10.244.0.0/16 --service-cidr=10.96.0.0/12 --apiserver-advertise-address=18.219.28.143 --ignore-preflight-errors=Swap,NumCPU init的时候可能会： [kubelet-check] Initial timeout of 40s passed ![](/img/build-kubernetes-cluster-learning/install_kubernetes_cluster2.png) 需要把/etc/kubernete</description>
     </item>
     
     <item>
@@ -81,6 +81,69 @@
       
       <guid>https://liabio.github.io/posts/2019-05-14-%E6%90%AD%E5%BB%BAk8s%E7%8E%AF%E5%A2%83%E6%97%B6gcr.io%E5%92%8Cquay.io%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E5%A4%B1%E8%B4%A5/</guid>
       <description>k8s在使用编排（manifest）工具进行yaml文件启动pod时，会遇到官方所给例子中spec.containers.image包含： quay.io/coreos/example_ gcr.io/google_containers/example_ 也就是说，从quay.io和gcr.io进行镜像拉取，我们知道，国内访问外网是被屏蔽了的。可以将其</description>
+    </item>
+    
+    <item>
+      <title>Pod调度到集群中某node节点失败</title>
+      <link>https://liabio.github.io/posts/2018-12-13-pod%E8%B0%83%E5%BA%A6%E5%88%B0%E9%9B%86%E7%BE%A4%E4%B8%AD%E6%9F%90node%E8%8A%82%E7%82%B9%E5%A4%B1%E8%B4%A5/</link>
+      <pubDate>Thu, 13 Dec 2018 16:43:35 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/posts/2018-12-13-pod%E8%B0%83%E5%BA%A6%E5%88%B0%E9%9B%86%E7%BE%A4%E4%B8%AD%E6%9F%90node%E8%8A%82%E7%82%B9%E5%A4%B1%E8%B4%A5/</guid>
+      <description>Fixing rpc.statd is not running but is required for remote locking If you come across this error while attempting to mount an NFS filesystem it means that the statd process is not running. mount -a -t nfs mount.nfs: rpc.statd is not running but is required for remote locking. mount.nfs: Either use &#39;-o nolock&#39; to keep locks local, or start statd. mount.nfs: an incorrect mount option was specified Here’s how to fix the rpc.statd is not running error on el6 First, ensure that rpcbind is running and that it is set to start on boot /etc/init.d/rpcbind start Starting rpcbind: [ OK ] chkconfig rpcbind on Then, start the nfslock service /etc/init.d/nfslock start Starting NFS statd: [</description>
+    </item>
+    
+    <item>
+      <title>搭建k8s集群遇到的问题</title>
+      <link>https://liabio.github.io/posts/2018-11-14-%E6%90%AD%E5%BB%BAk8s%E9%9B%86%E7%BE%A4%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Wed, 14 Nov 2018 16:57:38 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/posts/2018-11-14-%E6%90%AD%E5%BB%BAk8s%E9%9B%86%E7%BE%A4%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
+      <description>部署CalicoNode（所有节点）报错： Oct 10 21:04:55 smallsoup docker[76907]: bird: BGP: Unexpected connect from unknown address 192.168.1.104 (port 58153) Oct 10 21:04:59 smallsoup docker[76907]: bird: BGP: Unexpected connect from unknown address 192.168.1.104 (port 40415) Oct 10 21:05:00 smallsoup docker[76907]: 2018-10-10 13:05:00.213 [INFO][87] int_dataplane.go 690: Applying dataplane updates Oct 10 21:05:00 smallsoup docker[76907]: 2018-10-10 13:05:00.213 [INFO][87] ipsets.go 224: Asked to resync with the dataplane on next update. family=&amp;quot;inet&amp;quot; Oct 10 21:05:00 smallsoup docker[76907]: 2018-10-10 13:05:00.213 [INFO][87] ipsets.go 255: Resyncing ipsets with dataplane. family=&amp;quot;inet&amp;quot; Oct 10 21:05:00 smallsoup docker[76907]: 2018-10-10 13:05:00.218 [INFO][87] ipsets.go 297: Finished resync family=&amp;quot;inet&amp;quot; numInconsistenciesFound=0 resyncDuration=4.542824ms Oct 10 21:05:00 smallsoup docker[76907]: 2018-10-10</description>
+    </item>
+    
+    <item>
+      <title>kubernetes自定义资源类型代码自动生成</title>
+      <link>https://liabio.github.io/posts/2018-11-02-k8s%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E7%B1%BB%E5%9E%8B%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90/</link>
+      <pubDate>Fri, 02 Nov 2018 15:14:14 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/posts/2018-11-02-k8s%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E7%B1%BB%E5%9E%8B%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90/</guid>
+      <description>用以下命令生成代码： ./generate-groups.sh all &amp;quot;github.com/openshift-evangelist/crd-code-generation/pkg/client&amp;quot; &amp;quot;github.com/openshift-evangelist/crd-code-generation/pkg/apis&amp;quot; &amp;quot;ingressgroup:v1&amp;quot; 第一个报错 生成代码报错： Generating deepcopy funcs F0910 19:18:35.552948 12153 main.go:82] Error: Failed making a parser: unable to add directory &amp;quot;github.com/openshift-evangelist/crd-code-generation/pkg/client&amp;quot;: unable to import &amp;quot;github.com/asdfsx/getkubeconfig/pkg/apis/example/v1&amp;quot;: cannot find package &amp;quot;github.com/openshift-evangelist/crd-code-generation/pkg/client&amp;quot; in any of: D:/Program Files/Go/go103/src/github.com/openshift-evangelist/crd-code-generation/pkg/client (from $GOROOT) D:/SoftwareAndProgram/program/Go/Development/src/github.com/openshift-evangelist/crd-code-generation/pkg/client (from $GOPATH) 这个问题可以参考issue 可以参考这个文章： https://medium.com/@trstringer/create-kubernetes-controllers-for-core-and-custom-resources-62fc35ad64a3 由于该链接国内访问比较困难，故转载到了这里： https://www.jianshu.com/p/dcfe6eac4152 第二个报错： Generating deepcopy funcs F1104 02:57:44.419529 35</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes Pod Exec接口调用</title>
+      <link>https://liabio.github.io/posts/2018-10-02-kubernetesPodExec%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8/</link>
+      <pubDate>Tue, 02 Oct 2018 15:12:59 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/posts/2018-10-02-kubernetesPodExec%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8/</guid>
+      <description>一般生产环境上由于网络安全策略，大多数端口是不能为集群外部访问的。多个集群之间一般都是通过k8s的ApiServer组件提供的接口通信，如https://192.168.1.101:6443。所以在做云平台时，集群管理平台（雅称：观云台）需</description>
+    </item>
+    
+    <item>
+      <title>Extending Kubernetes: Create Controllers For Core And Custom Resources</title>
+      <link>https://liabio.github.io/posts/2018-06-02-ExtendingKubernetes-CreateControllersForCoreAndCustomResources/</link>
+      <pubDate>Sat, 02 Jun 2018 15:04:35 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/posts/2018-06-02-ExtendingKubernetes-CreateControllersForCoreAndCustomResources/</guid>
+      <description>原文地址：https://medium.com/@trstringer/create-kubernetes-controllers-for-core-and-custom-resources-62fc35ad64a3 感谢原作者的输出。由于原</description>
+    </item>
+    
+    <item>
+      <title>开发一个operator扩展kubernetes的能力</title>
+      <link>https://liabio.github.io/posts/2018-05-02-%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AAoperator%E6%89%A9%E5%B1%95kubernetes%E7%9A%84%E8%83%BD%E5%8A%9B/</link>
+      <pubDate>Wed, 02 May 2018 15:01:15 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/posts/2018-05-02-%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AAoperator%E6%89%A9%E5%B1%95kubernetes%E7%9A%84%E8%83%BD%E5%8A%9B/</guid>
+      <description>Operator 是 CoreOS 推出的旨在简化复杂有状态应用管理，它是一个感知应用状态的控制器，通过扩展 Kubernetes API 来自动创建、管理和配置应用实例。 Operator 基于 CRD 扩展资源对象，并通过控制器来保证应用处于预期状态。 通过 Kubernetes API 观察集群的当前状态； 分析当前状态与期望状态的差别； 调用k8s</description>
+    </item>
+    
+    <item>
+      <title>史上最全k8s必学必会知识梳理</title>
+      <link>https://liabio.github.io/posts/2018-03-11-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8k8s%E5%BF%85%E5%AD%A6%E5%BF%85%E4%BC%9A%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/</link>
+      <pubDate>Sun, 11 Mar 2018 14:56:02 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/posts/2018-03-11-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8k8s%E5%BF%85%E5%AD%A6%E5%BF%85%E4%BC%9A%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/</guid>
+      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、</description>
     </item>
     
   </channel>

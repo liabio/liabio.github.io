@@ -6,18 +6,36 @@
     <description>Recent content in crd on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 27 Sep 2019 09:59:46 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 30 Sep 2019 14:41:33 +0800</lastBuildDate>
     
 	<atom:link href="https://liabio.github.io/tags/crd/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>kubernetes自定义资源对象高级功能</title>
-      <link>https://liabio.github.io/posts/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/</link>
-      <pubDate>Fri, 27 Sep 2019 09:59:46 +0800</pubDate>
+      <title>Kubernetes自定义资源对象高级功能</title>
+      <link>https://liabio.github.io/posts/2019-09-30-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/</link>
+      <pubDate>Mon, 30 Sep 2019 14:41:33 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2019-5-15-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/</guid>
+      <guid>https://liabio.github.io/posts/2019-09-30-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/</guid>
       <description>kubernetes自定义资源对象再极大程度提高了API Server的可扩展性，让企业能够根据业务需求通过CRD编写controller或者operator来实现生产中各种特殊场景。随着k8s的版本升级，CRD的功能也越来越完善，下面对其中</description>
+    </item>
+    
+    <item>
+      <title>kubernetes自定义资源类型代码自动生成</title>
+      <link>https://liabio.github.io/posts/2018-11-02-k8s%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E7%B1%BB%E5%9E%8B%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90/</link>
+      <pubDate>Fri, 02 Nov 2018 15:14:14 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/posts/2018-11-02-k8s%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E7%B1%BB%E5%9E%8B%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90/</guid>
+      <description>用以下命令生成代码： ./generate-groups.sh all &amp;quot;github.com/openshift-evangelist/crd-code-generation/pkg/client&amp;quot; &amp;quot;github.com/openshift-evangelist/crd-code-generation/pkg/apis&amp;quot; &amp;quot;ingressgroup:v1&amp;quot; 第一个报错 生成代码报错： Generating deepcopy funcs F0910 19:18:35.552948 12153 main.go:82] Error: Failed making a parser: unable to add directory &amp;quot;github.com/openshift-evangelist/crd-code-generation/pkg/client&amp;quot;: unable to import &amp;quot;github.com/asdfsx/getkubeconfig/pkg/apis/example/v1&amp;quot;: cannot find package &amp;quot;github.com/openshift-evangelist/crd-code-generation/pkg/client&amp;quot; in any of: D:/Program Files/Go/go103/src/github.com/openshift-evangelist/crd-code-generation/pkg/client (from $GOROOT) D:/SoftwareAndProgram/program/Go/Development/src/github.com/openshift-evangelist/crd-code-generation/pkg/client (from $GOPATH) 这个问题可以参考issue 可以参考这个文章： https://medium.com/@trstringer/create-kubernetes-controllers-for-core-and-custom-resources-62fc35ad64a3 由于该链接国内访问比较困难，故转载到了这里： https://www.jianshu.com/p/dcfe6eac4152 第二个报错： Generating deepcopy funcs F1104 02:57:44.419529 35</description>
+    </item>
+    
+    <item>
+      <title>Extending Kubernetes: Create Controllers For Core And Custom Resources</title>
+      <link>https://liabio.github.io/posts/2018-06-02-ExtendingKubernetes-CreateControllersForCoreAndCustomResources/</link>
+      <pubDate>Sat, 02 Jun 2018 15:04:35 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/posts/2018-06-02-ExtendingKubernetes-CreateControllersForCoreAndCustomResources/</guid>
+      <description>原文地址：https://medium.com/@trstringer/create-kubernetes-controllers-for-core-and-custom-resources-62fc35ad64a3 感谢原作者的输出。由于原</description>
     </item>
     
   </channel>

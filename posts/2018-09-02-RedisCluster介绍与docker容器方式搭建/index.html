@@ -1,0 +1,1211 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.58.3" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Redis Cluster介绍与docker容器方式搭建 | 小碗汤的博客</title>
+    <meta property="og:title" content="Redis Cluster介绍与docker容器方式搭建 - 小碗汤的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content="2018-09-02T15:10:53&#43;08:00">
+        
+        
+    <meta property="article:modified_time" content="2018-09-02T15:10:53&#43;08:00">
+        
+
+    <meta name="Keywords" content="golang,go语言,go语言笔记,小碗汤,docker,kubernetes,k8s,java,博客,python,软件架构,公众号,小程序,Hugo,theme,maupassant">
+    <meta name="description" content="Redis Cluster介绍与docker容器方式搭建">
+        <meta name="author" content="小碗汤">
+        
+    <meta property="og:url" content="https://liabio.github.io/posts/2018-09-02-RedisCluster%E4%BB%8B%E7%BB%8D%E4%B8%8Edocker%E5%AE%B9%E5%99%A8%E6%96%B9%E5%BC%8F%E6%90%AD%E5%BB%BA/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+        <link rel="stylesheet" href="/css/prism.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <link rel="stylesheet" href="/css/reward.css">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name">
+                    <h1>
+                        <a id="logo" href="https://liabio.github.io">
+                            小碗汤的博客
+                        </a>
+                    </h1>
+                <p class="description">专注于Java、Go语言(Golang)、Docker、Kubernetes、软件架构</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://liabio.github.io">首页</a>
+                    
+                    <a  href="https://liabio.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liabio.github.io/tools/" title="工具">工具</a>
+                    
+                    <a  href="https://liabio.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+        
+        <div id="virtual_toc_list" style="display: none">
+            <nav id="TableOfContents">
+<ul>
+<li><a href="#1-redis-cluster介绍">1. Redis Cluster介绍</a>
+<ul>
+<li><a href="#1-1-数据分布理论">1.1 数据分布理论</a></li>
+<li><a href="#1-2-redis-数据分区">1.2 Redis 数据分区</a></li>
+<li><a href="#1-3-redis-集群功能限制">1.3 Redis 集群功能限制</a></li>
+<li><a href="#2-docker容器方式搭建-redis-cluster">2. docker容器方式搭建 Redis Cluster</a></li>
+</ul></li>
+<li><a href="#2-1-打包生成redis的镜像">2.1 打包生成redis的镜像</a>
+<ul>
+<li><a href="#2-2-创建redis容器">2.2 创建Redis容器</a></li>
+<li><a href="#2-3-节点握手">2.3 节点握手</a></li>
+<li><a href="#2-4-分配槽">2.4 分配槽</a></li>
+<li><a href="#遇到的问题">遇到的问题：</a></li>
+<li><a href="#原因">原因</a></li>
+<li><a href="#解决方案">解决方案</a></li>
+<li><a href="#测试ok">测试OK</a></li>
+<li><a href="#参考">参考：</a></li>
+</ul></li>
+</ul>
+</nav>
+        </div>
+        <div id="float_toc_div" style="margin: 10px;border: 1px solid gray;z-index:99999;display: none;">
+            <header style="background-color: #f3f3f3;color: black;border-bottom: 1px solid gray;padding: 10px 10px 10px 10px;">
+                <strong id="toc_btn_open" style="color: black;font-size: large;">目录</strong>
+                <strong id="toc_btn_close" style="color: black;font-size: large;float: right">╳</strong>
+            </header>
+            <div id="toc_list" style="background-color: #f3f3f3;color: black;padding: 10px;">
+        
+            </div>
+        </div>
+        <style type="text/css">
+            #float_toc_div {
+                position: fixed;
+                display: none;
+                 
+                height: auto;
+                font-size: 13px;
+            }
+        
+            #toc_list a:hover,
+            #toc_list a:active {
+                color: #ba3925;
+            }
+        </style>
+        <script>
+            window.onload = function () {
+                let tocNavElem = document.getElementById("TableOfContents");
+                let floatTocDivElem = document.getElementById("float_toc_div");
+                let tocListElem = floatTocDivElem.getElementsByTagName('div')[0];
+                let colGroupElem = document.getElementById("body").getElementsByClassName("col-group")[0]
+                let floatTocWidth = (document.body.clientWidth - colGroupElem.offsetWidth) / 2 - 16;
+                var useFloatToc = false;
+
+                if (floatTocWidth >= 100) {
+                    useFloatToc = true;
+                    document.getElementById("toc_list").appendChild(tocNavElem);
+                    floatTocDivElem.style.display = 'block';
+                    floatTocDivElem.style.width = floatTocWidth + 'px';
+                    top();
+                    floatTocDivElem.style.left = '0px';
+
+                    function top() {
+                        if (document.getElementsByClassName('container')[0].offsetWidth <= 720) {
+                            floatTocDivElem.style.top = '0px';
+                        } else {
+                            floatTocDivElem.style.top = window.innerHeight / 9 + 'px';
+                        }
+                    }
+
+                    function ishide() {
+                        if (document.getElementsByClassName('container')[0].offsetWidth <= 720) {
+                            floatTocDivElem.style.top = '0px';
+                        } else {
+                            floatTocDivElem.style.display = 'block';
+                        }
+                    }
+
+                    window.onscroll = function () {
+                        ishide();
+                        if ((document.documentElement.scrollTop != 0) && (floatTocDivElem.style.display == 'block')) {
+                            top();
+                        }
+                    };
+
+                    window.onresize = function () {
+                        ishide();
+                    }
+
+                    document.getElementById("toc_btn_open").addEventListener('click', function () {
+                        switch (tocListElem.style.display) {
+                            case "none":
+                                document.getElementById("toc_btn_close").style.display = "";
+                                tocListElem.style.display = "";
+                                floatTocDivElem.getElementsByTagName("header")[0].style.borderBottom = "1px solid gray";
+                                break;
+                            default:
+                                break;
+                        }
+                    }, false);
+
+                    document.getElementById("toc_btn_close").addEventListener('click', function () {
+                        switch (tocListElem.style.display) {
+                            case "":
+                                document.getElementById("toc_btn_close").style.display = "none";
+                                tocListElem.style.display = "none";
+                                floatTocDivElem.getElementsByTagName("header")[0].style.borderBottom = "";
+                                break;
+                            default:
+                                break;
+                        }
+                    }, false);
+                } else {
+                    let fixedTocElem = document.getElementsByClassName("toc-article")[0];
+                    fixedTocElem.appendChild(tocNavElem);
+                    fixedTocElem.parentElement.style.display = "";
+                }
+                document.getElementById("virtual_toc_list").remove();
+            };   
+        </script>
+        
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">Redis Cluster介绍与docker容器方式搭建</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            2018年9月2日
+                        </date>
+                        
+                        <div class="post-meta">
+                            <span>|</span>
+                            
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/redis">redis</a></span>
+                            
+                        </div>
+                        
+                        
+                        
+                        <div class="post-meta">
+                            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span> 阅读</span></span>
+                        </div>
+                        
+                        
+                        
+                        <div class="clear" style="display: none">
+                            <div class="toc-article">
+                                <div class="toc-title">文章目录</div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="post-content">
+                            
+
+<h1 id="1-redis-cluster介绍">1. Redis Cluster介绍</h1>
+
+<p>Redis Cluster是Redis的分布式解决方案，在Redis 3.0版本正式推出的，有效解决了Redis分布式方面的需求。当遇到单机内存、并发、流量等瓶颈时，可以采用Cluster架构达到负载均衡的目的。</p>
+
+<h2 id="1-1-数据分布理论">1.1 数据分布理论</h2>
+
+<p>分布式数据库首要解决把整个数据集按照分区规则映射到多个节点的问题，即把数据集划分到多个节点上，每个节点负责整个数据的一个子集。常见的分区规则有哈希分区和顺序分区。Redis Cluster采用哈希分区规则，因此接下来会讨论哈希分区规则。常见的哈希分区有以下几种：</p>
+
+<ul>
+<li>节点取余分区</li>
+<li>一致性哈希分区</li>
+<li>虚拟槽分区</li>
+</ul>
+
+<p>Redis Cluster采用虚拟槽分区，因此先介绍一下虚拟槽分区。</p>
+
+<p>虚拟槽分区巧妙地使用了哈希空间，使用分散度良好的哈希函数把所有的数据映射到一个固定范围内的整数集合，整数定义为槽（slot）。比如Redis Cluster槽的范围是0 ～ 16383。槽是集群内数据管理和迁移的基本单位。采用大范围的槽的主要目的是为了方便数据的拆分和集群的扩展，每个节点负责一定数量的槽。</p>
+
+<h2 id="1-2-redis-数据分区">1.2 Redis 数据分区</h2>
+
+<p>Redis Cluster采用虚拟槽分区，所有的键根据哈希函数映射到0 ～ 16383，计算公式：slot = CRC16(key)&amp;16383。每一个节点负责维护一部分槽以及槽所映射的键值数据。</p>
+
+<p>下图展现一个五个节点构成的集群，每个节点平均大约负责3276个槽，以及通过计算公式映射到对应节点的对应槽的过程。</p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/9134763-1e9f87209409383b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" /></p>
+
+<p>Redis虚拟槽分区的特定：</p>
+
+<ul>
+<li>解耦数据和节点之间的关系，简化了节点扩容和收缩难度。</li>
+<li>节点自身维护槽的映射关系，不需要客户端或者代理服务维护槽分区元数据。</li>
+<li>支持节点、槽、键之间的映射查询，用于数据路由、在线伸缩等场景。</li>
+</ul>
+
+<h2 id="1-3-redis-集群功能限制">1.3 Redis 集群功能限制</h2>
+
+<p>Redis集群相对单机在功能上有一定限制。</p>
+
+<ul>
+<li>key批量操作支持有限。如：MSET``MGET，目前只支持具有相同slot值的key执行批量操作。</li>
+<li>key事务操作支持有限。支持多key在同一节点上的事务操作，不支持分布在多个节点的事务功能。</li>
+<li>key作为数据分区的最小粒度，因此不能将一个大的键值对象映射到不同的节点。如：hash、list。</li>
+<li>不支持多数据库空间。单机下Redis支持16个数据库，集群模式下只能使用一个数据库空间，即db 0。</li>
+
+<li><p>复制结构只支持一层，不支持嵌套树状复制结构。</p>
+
+<h2 id="2-docker容器方式搭建-redis-cluster">2. docker容器方式搭建 Redis Cluster</h2>
+
+<p>搭建集群工作分为三步：</p></li>
+
+<li><p>打包生成redis的镜像</p></li>
+
+<li><p>创建Redis容器</p></li>
+
+<li><p>节点握手</p></li>
+
+<li><p>分配槽</p></li>
+</ul>
+
+<h1 id="2-1-打包生成redis的镜像">2.1 打包生成redis的镜像</h1>
+
+<p>Redis 集群一般由多个节点组成，用docker运行即为多个容器组成。节点或者容器数量为6个才能保证组成完整高可用的集群。下面打包redis的镜像的Dockerfile文件：</p>
+
+<pre><code class="language-sh"># Redis
+# Version 3.2.6
+ 
+FROM redis:3.2.6
+
+# MAINTAINER_INFO
+MAINTAINER liano 837448792@qq.com
+
+RUN mkdir -p /config
+RUN mkdir -p /log
+ENV REDIS_CONFIG /config
+ENV REDIS_BIN /bin
+
+ADD redis.conf $REDIS_CONFIG
+
+RUN cp /usr/local/bin/redis-server  $REDIS_BIN
+
+WORKDIR /data
+ 
+VOLUME [&quot;/log&quot;,&quot;/data&quot;]
+
+EXPOSE 8000
+ 
+ENTRYPOINT [&quot;/bin/redis-server&quot;, &quot;/config/redis.conf&quot;]
+</code></pre>
+
+<p>这里使用了8000端口，暂且没有使用6379端口，这个可以自行指定。其中用到的redis.conf定义如下：</p>
+
+<pre><code class="language-conf">#设置为守护进程
+daemonize no
+#Redis运行的进程pid文件
+pidfile /log/redis-8000.pid 
+#Redis服务端口号
+port 8000    
+#Redis服务绑定ip
+#bind 192.168.100.144
+bind 0.0.0.0
+#最大内存
+maxmemory 8gb
+#开启集群模式
+cluster-enabled yes   
+#节点配置文件
+cluster-config-file nodes-8000.conf
+#集群节点超时时间（单位：毫秒)
+cluster-node-timeout 15000
+#集群是否需要所有的slot都分配给在线节点，才能正常访问
+cluster-require-full-coverage no
+#工作目录（aof、rdb、日志文件)
+dir /data
+#tcp-backlog
+tcp-backlog 511
+#客户端闲置多少秒后关闭连接（单位：秒）
+timeout 300
+#检测TCP连接活性的周期（单位：秒）
+tcp-keepalive 60
+#日志级别
+loglevel verbose
+#日志记录目录
+logfile &quot;/log/redis-8000.log&quot;
+#可用的数据库数
+databases 16
+#RDB保存条件
+save 900 1
+save 300 10
+save 60 10000
+#bgsave执行错误，是否停止Redis接受请求
+stop-writes-on-bgsave-error no
+#RDB文件是否压缩
+rdbcompression yes
+#RDB文件是否使用校验和
+rdbchecksum yes
+#RDB文件名
+dbfilename dump-8000.rdb
+#当从节点与主节点连接中断时，如果此参数值设置为“yes”，从节点可以继续处理客户端的
+#请求。否则除info和slaveof命令之外，拒绝的所有请求并统一回复&quot;SYNC with master in #progress&quot;
+slave-serve-stale-data yes
+#从节点是否开启只读模式，集群架构下从节点默认读写都不可用，需要调用readyonly命令#开启只读模式
+slave-read-only yes
+#是否开启无盘复制
+repl-diskless-sync no
+#开启无盘复制后，需要延迟多少秒后进行创建RDB操作，一般用于同时加入多个从节点时，#保证多个从节点可共享RDB
+repl-diskless-sync-delay 5
+#是否开启主从复制socket的NO_DELAY选项：yes:Redis会合并小的TCP包来节省带宽，但##是这样增加同步延迟，造成主#从数据不一致；no:主节点会立即发送同步数据，没有延迟
+repl-disable-tcp-nodelay no
+#从节点的优先级
+slave-priority 100
+#是否开启AOF持久化模式
+appendonly no
+#Lua脚本“超时时间”（单位：毫秒）
+lua-time-limit 5000
+#慢查询被记录的阀值（单位微秒）
+slowlog-log-slower-than 10000
+#最多记录慢查询的条数
+slowlog-max-len 1000
+#Redis服务内存延迟监控
+latency-monitor-threshold 0
+notify-keyspace-events &quot;&quot;
+hash-max-ziplist-entries 512
+hash-max-ziplist-value 64
+list-max-ziplist-entries 512
+list-max-ziplist-value 64
+set-max-intset-entries 512
+zset-max-ziplist-entries 128
+zset-max-ziplist-value 64
+hll-sparse-max-bytes 3000
+#是否激活重置哈希
+activerehashing yes
+#客户端输出缓冲区限制
+client-output-buffer-limit normal 0 0 0
+client-output-buffer-limit slave 512mb 128mb 60
+client-output-buffer-limit pubsub 32mb 8mb 60
+#复制积压缓存区大小
+repl-backlog-size 256mb
+#redis server执行后台任务的频率,默认为10
+hz 10
+#最大客户端连接数
+maxclients 15000
+</code></pre>
+
+<p>也可以直接pull我打好的镜像：</p>
+
+<pre><code class="language-sh">docker pull registry.cn-hangzhou.aliyuncs.com/smallsoup/node-redis:0.4
+</code></pre>
+
+<p>由于是容器方式运行，所以redis.conf配置可以完全一样：</p>
+
+<pre><code class="language-sh">#设置为守护进程
+daemonize no
+#Redis运行的进程pid文件
+pidfile /log/redis-8000.pid 
+#Redis服务端口号
+port 8000    
+#Redis服务绑定ip
+#bind 192.168.100.144
+bind 0.0.0.0
+#最大内存
+maxmemory 8gb
+#开启集群模式
+cluster-enabled yes   
+#节点配置文件
+cluster-config-file nodes-8000.conf
+#集群节点超时时间（单位：毫秒)
+cluster-node-timeout 15000
+#集群是否需要所有的slot都分配给在线节点，才能正常访问
+cluster-require-full-coverage no
+</code></pre>
+
+<h2 id="2-2-创建redis容器">2.2 创建Redis容器</h2>
+
+<p>创建Redis容器只需要使用第一步下载好的Redis镜像，调用Docker的run命令即可：</p>
+
+<pre><code class="language-sh">docker run -it -d --name redis-master1 registry.cn-hangzhou.aliyuncs.com/smallsoup/node-redis:0.4
+docker run -it -d --name redis-master2 registry.cn-hangzhou.aliyuncs.com/smallsoup/node-redis:0.4
+docker run -it -d --name redis-master3 registry.cn-hangzhou.aliyuncs.com/smallsoup/node-redis:0.4
+docker run -it -d --name redis-slave1 registry.cn-hangzhou.aliyuncs.com/smallsoup/node-redis:0.4
+docker run -it -d --name redis-slave2 registry.cn-hangzhou.aliyuncs.com/smallsoup/node-redis:0.4
+docker run -it -d --name redis-slave3  registry.cn-hangzhou.aliyuncs.com/smallsoup/node-redis:0.4
+</code></pre>
+
+<p>容器启动完毕后，可以运行docker ps -a查看容器启动状态：
+<img src="https://upload-images.jianshu.io/upload_images/9134763-e4acf800627dde93.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" /></p>
+
+<p>可以查看日志文件：</p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/9134763-2251e1c622e3ce96.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" /></p>
+
+<p>有日志文件可得，节点已经启动成功。这个日志文件是Redis服务器普通的日志文件，在集群模式下，第一次也会自动创建一个日志文件，由配置文件cluster-config-file指定文件。</p>
+
+<p>集群配置文件的作用：当集群内节点发生信息变化时，如添加节点、节点下线、故障转移等。节点会自动保存集群的状态到配置文件中。该配置文件由Redis自行维护，不要手动修改，防止节点重启时产生集群信息错乱。</p>
+
+<p>我们来查看一下，集群模式的日志文件：(以下截图是3主3从搭建好之后的截图。容器刚创建后进入容器看到的会有不同)</p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/9134763-3da7c9369c66c967.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" />
+也可以通过客户端连接该节点，通过命令CLUSTER NODES来查看：
+<img src="https://upload-images.jianshu.io/upload_images/9134763-435af09c9dea9d16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" /></p>
+
+<h2 id="2-3-节点握手">2.3 节点握手</h2>
+
+<p>节点握手是指一批运行在集群模式的节点通过Gossip协议彼此通信，达到感知对方的过程。节点握手是集群彼此通信的第一步，由客户端发起命令：cluster meet <ip> <port>，可以使用docker inpect &lt;容器id&gt;查看所有容器的IP地址：</p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/9134763-36ce37f6a3546d15.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" /></p>
+
+<p>在master1（容器IP为 172.17.0.2）的容器内执行以下命令，使得master1和master2、master3、salve1、salve2、salve3通信：</p>
+
+<pre><code class="language-sh">root@c121ba5c04c7:/data# redis-cli -h 127.0.0.1 -p 8000
+127.0.0.1:8000&gt; CLUSTER MEET 172.17.0.4 8000
+OK
+127.0.0.1:8000&gt; CLUSTER MEET 172.17.0.3 8000
+OK
+127.0.0.1:8000&gt; CLUSTER MEET 172.17.0.5 8000
+OK
+127.0.0.1:8000&gt; CLUSTER MEET 172.17.0.6 8000
+OK
+127.0.0.1:8000&gt; CLUSTER MEET 172.17.0.7 8000
+OK
+</code></pre>
+
+<p>这样可以让所有的节点都互相感知。可以通过cluster nodes命令查看。</p>
+
+<h2 id="2-4-分配槽">2.4 分配槽</h2>
+
+<p>可以看一下8000端口的槽个数</p>
+
+<pre><code class="language-sh">127.0.0.1:8000&gt; CLUSTER INFO
+cluster_state:fail
+cluster_slots_assigned:0            // 被分配槽的个数为0
+cluster_slots_ok:0
+cluster_slots_pfail:0
+cluster_slots_fail:0
+cluster_known_nodes:6
+cluster_size:0
+cluster_current_epoch:5
+cluster_my_epoch:1
+cluster_stats_messages_sent:479
+cluster_stats_messages_received:479
+</code></pre>
+
+<p>接下来为节点分配槽空间。通过cluster addslots命令，可在master1容器内执行：</p>
+
+<pre><code class="language-sh">root@c121ba5c04c7:/data# redis-cli -h 127.0.0.1 -p 8000 cluster addslots {0..5461}
+OK
+root@c121ba5c04c7:/data# redis-cli -h 172.17.0.3 -p 8000 cluster addslots {5462..10922}
+OK
+root@c121ba5c04c7:/data# redis-cli -h 172.17.0.4 -p 8000 cluster addslots {10923..16383}
+</code></pre>
+
+<p>我们将16383个槽平均分配给master1、master2、master3的节点（容器）。再次执行CLUSTER INFO查看一下集群的状态：</p>
+
+<pre><code class="language-sh">127.0.0.1:6379&gt; CLUSTER INFO
+cluster_state:ok                // 集群状态OK
+cluster_slots_assigned:16384    // 已经分配了所有的槽
+cluster_slots_ok:16384
+cluster_slots_pfail:0
+cluster_slots_fail:0
+cluster_known_nodes:6
+cluster_size:3
+cluster_current_epoch:5
+cluster_my_epoch:1
+cluster_stats_messages_sent:1212
+cluster_stats_messages_received:1212
+</code></pre>
+
+<p>可以通过CLUSTER NODES来查看分配情况。</p>
+
+<pre><code class="language-sh">127.0.0.1:8000&gt; cluster nodes
+31a8fc4031f74ea131632369406d257a60eff668 172.17.0.4:8000 master - 0 1552396086679 2 connected 10923-16383
+c0404f497843cfd886f1c56f44759d74dac4fe36 172.17.0.5:8000 master - 0 1552396089697 0 connected
+bd1086a2b9812492bd10031981df27f792d59073 172.17.0.2:8000 myself,master - 0 0 4 connected 0-5461
+bd894d71f720098abc8c2c63675daa45a879f09e 172.17.0.6:8000 master - 0 1552396090704 5 connected
+55f3c9e85ae393efd83551f69db2f05f1f8c7060 172.17.0.7:8000 master - 0 1552396087685 3 connected
+4b61235b5ad5139e9a39f2b3608c64951b200c6f 172.17.0.3:8000 master - 0 1552396088689 1 connected 5462-10922
+</code></pre>
+
+<p>目前还有三个节点（容器）没有使用，作为一个完整的集群，每个负责处理槽的节点应该具有从节点，保证当主节点出现故障时，可以自动进行故障转移。集群模式下，首次启动的节点和被分配槽的节点都是主节点，从节点负责复制主节点槽的信息和相关数据。</p>
+
+<p>使用cluster replicate <nodeid>在从节点（容器）上执行，在slave1、salve2、savle3上分别执行：</p>
+
+<pre><code class="language-sh">#salve1容器内执行
+redis-cli -h 127.0.0.1 -p 8000 cluster replicate bd1086a2b9812492bd10031981df27f792d59073
+#salve2容器内执行
+redis-cli -h 127.0.0.1 -p 8000 cluster replicate 31a8fc4031f74ea131632369406d257a60eff668
+#salve3容器内执行
+redis-cli -h 127.0.0.1 -p 8000 cluster replicate 4b61235b5ad5139e9a39f2b3608c64951b200c6f
+</code></pre>
+
+<p>这样就完成了一个3主3从的Redis集群搭建。如下图所示：</p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/9134763-9590e260d8e9a629.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" /></p>
+
+<h2 id="遇到的问题">遇到的问题：</h2>
+
+<p>搭建完成后，验证主从复制，在容器内执行get、set操作有问题，报错：
+（error）MOVED 15495 172.17.0.4::8000
+<img src="https://upload-images.jianshu.io/upload_images/9134763-e5608bc574200ece.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" /></p>
+
+<h2 id="原因">原因</h2>
+
+<p>这种情况一般是因为启动redis-cli时没有设置集群模式所导致。</p>
+
+<h2 id="解决方案">解决方案</h2>
+
+<p>启动时使用-c参数来启动集群模式，命令如下：</p>
+
+<pre><code class="language-sh">redis-cli -c -h 172.17.0.2 -p 8000
+</code></pre>
+
+<h2 id="测试ok">测试OK</h2>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/9134763-f511b34422c737e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" /></p>
+
+<p>可以看到，测试主从复制成功。在master容器中输入set a b命令，在其他容器内可以get到。</p>
+
+<h2 id="参考">参考：</h2>
+
+<p><a href="https://blog.csdn.net/men_wen/article/details/72853078">Redis 学习笔记（十四）Redis Cluster介绍与搭建</a></p>
+
+<p><a href="https://blog.csdn.net/liu0808/article/details/80098568">(error) MOVED 原因和解决方案</a></p>
+
+<p><a href="https://lw900925.github.io/docker/docker-redis-cluster.html">Docker：创建Redis集群</a></p>
+
+                        </div>
+
+                        
+                        
+
+<div style="padding: 10px 0; margin: 20px auto; width: 100%; font-size:20px; text-align: center;">
+  <button id="rewardButton" disable="enable" onclick="let qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+  <span>打赏</span></button>
+  <div id="QR" style="display: none;">
+    
+    <div style="display: inline-block">
+      <a class="fancybox" rel="group"><img src="/img/wechat-zhifubao-QR.png"></a>
+    </div>
+  </div>
+</div>
+
+                        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://liabio.github.io">小碗汤</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://liabio.github.io/posts/2018-09-02-RedisCluster%E4%BB%8B%E7%BB%8D%E4%B8%8Edocker%E5%AE%B9%E5%99%A8%E6%96%B9%E5%BC%8F%E6%90%AD%E5%BB%BA/">https://liabio.github.io/posts/2018-09-02-RedisCluster%E4%BB%8B%E7%BB%8D%E4%B8%8Edocker%E5%AE%B9%E5%99%A8%E6%96%B9%E5%BC%8F%E6%90%AD%E5%BB%BA/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+                        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/2018-08-02-Docker%E5%8D%87%E7%BA%A7%E5%88%B0%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC/">Docker升级到最新版本</a></li>
+        
+        <li><a href="/posts/2018-07-02-%E8%BF%9E%E4%B8%8A%E5%85%AC%E5%8F%B8%E7%9A%84vpn%E5%90%8E%E7%94%B5%E8%84%91%E4%B8%8A%E4%B8%8D%E4%BA%86%E5%A4%96%E7%BD%91%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">连上公司的vpn后电脑上不了外网解决办法</a></li>
+        
+        <li><a href="/posts/2018-06-02-ExtendingKubernetes-CreateControllersForCoreAndCustomResources/">Extending Kubernetes: Create Controllers For Core And Custom Resources</a></li>
+        
+        <li><a href="/posts/2018-05-02-%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AAoperator%E6%89%A9%E5%B1%95kubernetes%E7%9A%84%E8%83%BD%E5%8A%9B/">开发一个operator扩展kubernetes的能力</a></li>
+        
+        <li><a href="/posts/2018-04-02-%E4%B8%80%E6%AC%A1%E5%86%99shell%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BB%8F%E5%8E%86%E8%AE%B0%E5%BD%95%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E6%83%B9%E7%9A%84%E7%A5%B8/">一次写shell脚本的经历记录——特殊字符惹的祸</a></li>
+        
+    </ul>
+</div>
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            <ul class="clearfix">
+                                
+                                <li><a href="https://liabio.github.io/tags/redis%E9%9B%86%E7%BE%A4">redis集群</a></li>
+                                
+                                <li><a href="https://liabio.github.io/tags/docker">docker</a></li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liabio.github.io">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-01-03-yum%E6%BA%90%E9%85%8D%E7%BD%AE/" title="2019 01 03 Yum源配置">2019 01 03 Yum源配置</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-30-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/" title="Kubernetes自定义资源对象高级功能">Kubernetes自定义资源对象高级功能</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/" title="etcd操作">etcd操作</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/" title="docker镜像制作必备技能">docker镜像制作必备技能</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" title="git常用操作">git常用操作</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/" title="k8s中部署负载均衡器ingress-nginx">k8s中部署负载均衡器ingress-nginx</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/" title="k8s使用Job执行任务失败了怎么办">k8s使用Job执行任务失败了怎么办</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%901/" title="kubernetes垃圾回收器GarbageCollector Controller源码分析（一）">kubernetes垃圾回收器GarbageCollector Controller源码分析（一）</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/" title="一次socket.error: [Errno 99] Cannot assign requested address报错排查">一次socket.error: [Errno 99] Cannot assign requested address报错排查</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/" title="云服务器使用docker搭建服务">云服务器使用docker搭建服务</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title" style="color:red">福利派送</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a href="https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=3iiljysb" title="高性能云服务器2折起" target="_blank" style="color:red">
+                
+                    <img src="/img/aliyun600x300.png">
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="https://www.aliyun.com/acts/hotsale?userCode=3iiljysb" title="主机爆款特惠3折起" target="_blank" style="color:red">
+                
+                    <img src="/img/zhujibaokuan3zhe.png">
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=3iiljysb" title="2000元全场红包领取" target="_blank" style="color:red">
+                
+                    <img src="/img/getalluse2000yuan.png">
+                
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liabio.github.io/categories//">(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/anyListen/">anyListen(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/blog/">blog(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/centos/">centos(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/debug/">debug(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/ditto/">ditto(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/docker/">docker(10)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/elasticsearch/">elasticsearch(3)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/etcd/">etcd(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/git/">git(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/golang/">golang(10)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/http/">http(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/idea/">idea(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/ingress-nginx/">ingress-nginx(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/java/">java(11)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/job/">job(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/k8s/">k8s(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(15)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/linux/">linux(3)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/mysql/">mysql(6)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/nginx/">nginx(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/openresty/">openresty(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/redis/">redis(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/shell/">shell(3)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/springmvc/">springmvc(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/vmware/">vmware(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/windows/">windows(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/xyplorer/">xyplorer(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/zookeeper/">zookeeper(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/%E5%B7%A5%E5%85%B7/">工具(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务(1)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://liabio.github.io/tags//"></a>
+    
+    <a href="https://liabio.github.io/tags/blog/">blog</a>
+    
+    <a href="https://liabio.github.io/tags/chocolate/">chocolate</a>
+    
+    <a href="https://liabio.github.io/tags/controller/">controller</a>
+    
+    <a href="https://liabio.github.io/tags/crd/">crd</a>
+    
+    <a href="https://liabio.github.io/tags/csdn/">csdn</a>
+    
+    <a href="https://liabio.github.io/tags/docker/">docker</a>
+    
+    <a href="https://liabio.github.io/tags/email/">email</a>
+    
+    <a href="https://liabio.github.io/tags/etcd/">etcd</a>
+    
+    <a href="https://liabio.github.io/tags/garbageCollector/">garbageCollector</a>
+    
+    <a href="https://liabio.github.io/tags/git/">git</a>
+    
+    <a href="https://liabio.github.io/tags/http/">http</a>
+    
+    <a href="https://liabio.github.io/tags/hugo/">hugo</a>
+    
+    <a href="https://liabio.github.io/tags/ingress-nginx/">ingress-nginx</a>
+    
+    <a href="https://liabio.github.io/tags/java/">java</a>
+    
+    <a href="https://liabio.github.io/tags/job/">job</a>
+    
+    <a href="https://liabio.github.io/tags/kubernetes/">kubernetes</a>
+    
+    <a href="https://liabio.github.io/tags/mysql/">mysql</a>
+    
+    <a href="https://liabio.github.io/tags/nginx/">nginx</a>
+    
+    <a href="https://liabio.github.io/tags/operator/">operator</a>
+    
+    <a href="https://liabio.github.io/tags/redis%E9%9B%86%E7%BE%A4/">redis集群</a>
+    
+    <a href="https://liabio.github.io/tags/shell/">shell</a>
+    
+    <a href="https://liabio.github.io/tags/telnet/">telnet</a>
+    
+    <a href="https://liabio.github.io/tags/thrift/">thrift</a>
+    
+    <a href="https://liabio.github.io/tags/%E4%B8%8A%E7%BD%91/">上网</a>
+    
+    <a href="https://liabio.github.io/tags/%E4%BB%A3%E7%90%86/">代理</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%8C%85%E7%AE%A1%E7%90%86/">包管理</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%9B%BD%E9%99%85%E5%8C%96/">国际化</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%9D%91/">坑</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/">垃圾回收器</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/">存储过程</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%AE%B9%E5%99%A8/">容器</a>
+    
+    <a href="https://liabio.github.io/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/">效率工具</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%95%99%E7%A8%8B/">教程</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%97%A5%E5%BF%97%E8%BD%AC%E5%82%A8/">日志转储</a>
+    
+    <a href="https://liabio.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E5%85%A8/">服务器安全</a>
+    
+    <a href="https://liabio.github.io/tags/%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/">灰度发布</a>
+    
+    <a href="https://liabio.github.io/tags/%E7%88%AC%E8%99%AB/">爬虫</a>
+    
+    <a href="https://liabio.github.io/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/">虚拟机</a>
+    
+    <a href="https://liabio.github.io/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/">解决问题</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%85%8D%E7%BD%AE/">配置</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%95%9C%E5%83%8F/">镜像</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%97%AE%E9%A2%98/">问题</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">问题解决</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/">验证码</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liabio.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="social-links" style="text-align: center; padding-top: 10px">
+          
+  
+  
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/font/jianshu/iconfont.css">
+  <link rel="stylesheet" href="/font/segmentfault/iconfont.css">
+  <link rel="stylesheet" href="/font/weixingongzhonghao/iconfont.css">
+  <link rel="stylesheet" href="/font/juejin/iconfont.css">
+  <link rel="stylesheet" href="/font/zhihu/iconfont.css">
+  <link rel="stylesheet" href="/font/cnblog/iconfont.css">
+  <link rel="stylesheet" href="/font/csdn/iconfont.css">
+  <link rel="stylesheet" href="/scss/main.min.49aaf4284ea697cea9958ae76b5c552c1802fe84051ec9372cfbe7bf2db0d599.css">
+
+
+
+
+
+<style type="text/css">
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .8);
+}
+
+.center {
+    width: 220px;
+    height: 220px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -110px;
+}
+
+.center img {
+    width: 220px;
+}
+
+.center i {
+    color: #fff;
+    font-size: 1.5em;
+    position: relative;
+    float: right;
+    top: 0px;
+    right: -20px;
+    cursor: pointer;
+}
+</style>
+
+
+<div id="lightbox" style="display: none" class="lightbox" onclick="document.getElementById('lightbox').style.display='none';">
+    <div class="center">
+        
+        <i class="iconfont icon-close"></i>
+        
+        <img src="/img/me/wechat.png">
+    </div>
+</div>
+
+
+
+
+
+<style type="text/css">
+.gongzhonghaolightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .8);
+}
+</style>
+
+
+<div id="gongzhonghaolightbox" style="display: none" class="gongzhonghaolightbox" onclick="document.getElementById('gongzhonghaolightbox').style.display='none';">
+    <div class="center">
+        <i class="iconfont icon-close"></i>
+        <img src="/img/me/gongzhonghao-ercode.jpg">
+    </div>
+</div>
+
+
+
+<a href="https://github.com/liabio" target="_blank" rel="me noopener"><i class="iconfont icon-github"></i></a>
+
+
+
+<a href="https://twitter.com/ll837448792" target="_blank" rel="me noopener"><i class="iconfont icon-twitter"></i></a>
+
+
+<a href="https://www.instagram.com/liabio0418/" target="_blank" rel="me noopener"><i class="iconfont icon-instagram"></i></a> 
+ 
+
+<a href="javascript:void(0);" rel="me noopener" onclick="document.getElementById('lightbox').style.display='inline';"><i class="iconfont icon-wechat"></i></a>
+
+
+<a href="mailto:837448792@qq.com" rel="me noopener"><i class="iconfont icon-mail01"></i></a>
+
+
+
+
+
+
+<a href="https://medium.com/@ll837448792" rel="me noopener"><i class="iconfont icon-medium-circle-fill"></i></a>
+
+
+
+<a href="https://www.zhihu.com/people/liabio/posts" rel="me noopener"><i class="zhihu-iconfont icon-zhihu"></i></a>
+
+
+
+<a href="https://www.jianshu.com/u/33c582f040ae" rel="me noopener"><i class="jianshu-iconfont icon-jianshu"></i></a>
+
+
+
+<a href="https://blog.csdn.net/ll837448792" rel="me noopener"><i class="csdn-iconfont icon-csdn"></i></a>
+
+
+
+<a href="https://segmentfault.com/u/smallsoup" rel="me noopener"><i class="segmentfault-iconfont icon-sf"></i></a>
+
+
+
+<a href="https://juejin.im/user/5b0c1a17f265da08df28648c" rel="me noopener"><i class="juejin-iconfont icon-juejin"></i></a>
+
+
+
+<a href="https://www.cnblogs.com/liabio" rel="me noopener"><i class="cnblog-iconfont icon-bokeyuan"></i></a>
+
+
+
+<a href="javascript:void(0);" rel="me noopener" onclick="document.getElementById('gongzhonghaolightbox').style.display='inline';"><i class="weixingongzhonghao-iconfont icon-weixingongzhonghao"></i></a>
+
+
+
+
+    </div>
+    <div class="container" style="text-align: center; padding-top: 3px">
+        &copy; 2019 <a href="https://liabio.github.io">小碗汤的博客 By 小碗汤</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.2.8/raphael.min.js" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/flowchart/1.12.2/flowchart.min.js" crossorigin="anonymous"></script>
+        <script>(function () {
+                if (!window.flowchart) return;
+                const blocks = document.querySelectorAll('pre code.language-flowchart, pre code.language-flow');
+                for (let i = 0; i < blocks.length; i++) {
+                    const block = blocks[i];
+                    const rootElement = block.parentNode;
+                    const container = document.createElement('div');
+                    const id = `js-flowchart-diagrams-${i}`;
+                    container.id = id;
+                    container.className = 'align-center';
+                    container.setAttribute("style", "overFlow-x:auto");
+                    rootElement.parentNode.replaceChild(container, rootElement);
+                    const diagram = flowchart.parse(block.childNodes[0].nodeValue);
+                    diagram.drawSVG(id, window.flowchartDiagramsOptions ? window.flowchartDiagramsOptions : {});
+                }
+            })();
+        </script>
+    <script type="text/javascript">
+        
+        (function () {
+            $("pre code").parent().addClass("line-numbers")
+        }());
+
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script type="text/javascript" src="/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-139517579-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+</body>
+</html>
