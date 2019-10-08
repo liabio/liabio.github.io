@@ -69,29 +69,6 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
-                                    <a href="https://liabio.github.io/posts/2019-07-20-linux%E9%80%9A%E8%BF%87VMware%E5%92%8C%E4%B8%BB%E6%9C%BA%E7%9B%B8%E8%BF%9E%E8%BF%9E%E6%8E%A5%E4%BA%92%E8%81%94%E7%BD%91/" title="Linux通过VMware和主机相连连接互联网" >Linux通过VMware和主机相连连接互联网</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年7月20日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://liabio.github.io/categories/linux">linux</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                1.&emsp;VM8 使用固定IP： 2.&emsp; 这里使用NAT模式： 3.&emsp;VM中依次：编辑——&gt;虚拟网络编辑器，点VMnet8 把使用本 地DHCP的勾去掉，子网IP和主机VM8的IP同网段，然后点NAT设置。 网关IP和刚才的IP也是同一个网段。 4.&emsp;vim /etc/sysconfig/network-scripts/ifcfg-eno16777736 增加这些……
-                            </div>
-                            <p class="readmore"><a href="https://liabio.github.io/posts/2019-07-20-linux%E9%80%9A%E8%BF%87VMware%E5%92%8C%E4%B8%BB%E6%9C%BA%E7%9B%B8%E8%BF%9E%E8%BF%9E%E6%8E%A5%E4%BA%92%E8%81%94%E7%BD%91/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
                                     <a href="https://liabio.github.io/posts/2019-06-20-shell%E8%84%9A%E6%9C%AC%E6%89%B9%E9%87%8F%E8%B0%83%E7%94%A8%E6%8E%A5%E5%8F%A3/" title="Shell脚本批量调用接口" >Shell脚本批量调用接口</a>
                                 </h1>
                             </header>
@@ -179,6 +156,29 @@
                                 cat &gt; /etc/yum.repos.d/kubernetes.repo &lt;&lt; EOF [kubernetes] name=Kubernetes baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/ enabled=1 gpgcheck=0 repo_gpgcheck=1 gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg EOF 安装kubeadm、kubectl、kubelet yum install -y kubeadm kubelet kubectl 如果在云服务器上搭建时，IP-18.219.28.143是公网IP kubeadm init --kubernetes-version=v1.14.1 --pod-network-cidr=10.244.0.0/16 --service-cidr=10.96.0.0/12 --apiserver-advertise-address=18.219.28.143 --ignore-preflight-errors=Swap,NumCPU init的时候可能会： [kubelet-check] Initial timeout of 40s passed ![](/img/build-kubernetes-cluster-learning/install_kubernetes_cluster2.png) 需要把/etc/kubernete……
                             </div>
                             <p class="readmore"><a href="https://liabio.github.io/posts/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://liabio.github.io/posts/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/" title="手把手教你搭建kubernetes集群1" >手把手教你搭建kubernetes集群1</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年5月14日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/kubernetes">kubernetes</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                部署 以CentOS7为基础，搭建一个Master主机和三个Node主机，各个Node主机的配置方式基本相同。 OS: CentOS 7.5 x86_64 Container runtime: Docker 18.06.ce Kubernetes: 1.13 IP 地址 主机名 角色 192.168.50.71 master, master.kubernetes.io master 192.168.50.72 node01, node01.kubernetes.io node 192.168.50.73 node02, node02.kubernetes.io node 192.168.50.74 node03, node03.kubernetes.io node 这里需要使用常规的域名格式，因为后面需要为集群配置Kuberne……
+                            </div>
+                            <p class="readmore"><a href="https://liabio.github.io/posts/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/">阅读全文</a></p>
                         </article>
                     
                     
@@ -293,11 +293,7 @@
 <ul class="widget-list">
     
     <li>
-        <a href="https://liabio.github.io/posts/2019-01-03-yum%E6%BA%90%E9%85%8D%E7%BD%AE/" title="2019 01 03 Yum源配置">2019 01 03 Yum源配置</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/posts/2019-09-30-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/" title="Kubernetes自定义资源对象高级功能">Kubernetes自定义资源对象高级功能</a>
+        <a href="https://liabio.github.io/posts/2019-09-30-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/" title="kubernetes自定义资源对象高级功能">kubernetes自定义资源对象高级功能</a>
     </li>
     
     <li>
@@ -330,6 +326,10 @@
     
     <li>
         <a href="https://liabio.github.io/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/" title="云服务器使用docker搭建服务">云服务器使用docker搭建服务</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-09-24-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/" title="史上最全docker基础知识汇总">史上最全docker基础知识汇总</a>
     </li>
     
 </ul>
@@ -371,10 +371,6 @@
     <section class="widget">
         <h3 class="widget-title">分类</h3>
 <ul class="widget-list">
-    
-    <li>
-        <a href="https://liabio.github.io/categories//">(1)</a>
-    </li>
     
     <li>
         <a href="https://liabio.github.io/categories/anyListen/">anyListen(1)</a>
@@ -485,6 +481,10 @@
     </li>
     
     <li>
+        <a href="https://liabio.github.io/categories/yum/">yum(1)</a>
+    </li>
+    
+    <li>
         <a href="https://liabio.github.io/categories/zookeeper/">zookeeper(1)</a>
     </li>
     
@@ -502,8 +502,6 @@
     <section class="widget">
         <h3 class="widget-title">标签</h3>
 <div class="tagcloud">
-    
-    <a href="https://liabio.github.io/tags//"></a>
     
     <a href="https://liabio.github.io/tags/blog/">blog</a>
     
@@ -536,6 +534,8 @@
     <a href="https://liabio.github.io/tags/job/">job</a>
     
     <a href="https://liabio.github.io/tags/kubernetes/">kubernetes</a>
+    
+    <a href="https://liabio.github.io/tags/linux/">linux</a>
     
     <a href="https://liabio.github.io/tags/mysql/">mysql</a>
     
@@ -588,10 +588,6 @@
     <a href="https://liabio.github.io/tags/%E9%85%8D%E7%BD%AE/">配置</a>
     
     <a href="https://liabio.github.io/tags/%E9%95%9C%E5%83%8F/">镜像</a>
-    
-    <a href="https://liabio.github.io/tags/%E9%97%AE%E9%A2%98/">问题</a>
-    
-    <a href="https://liabio.github.io/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">问题解决</a>
     
     <a href="https://liabio.github.io/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/">验证码</a>
     

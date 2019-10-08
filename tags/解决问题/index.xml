@@ -6,10 +6,28 @@
     <description>Recent content in 解决问题 on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 19 Nov 2018 17:08:46 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 26 Dec 2018 17:32:26 +0800</lastBuildDate>
     
 	<atom:link href="https://liabio.github.io/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Java这个404你能解决吗？</title>
+      <link>https://liabio.github.io/posts/2018-12-26-java%E8%BF%99%E4%B8%AA404%E4%BD%A0%E8%83%BD%E8%A7%A3%E5%86%B3%E5%90%97/</link>
+      <pubDate>Wed, 26 Dec 2018 17:32:26 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/posts/2018-12-26-java%E8%BF%99%E4%B8%AA404%E4%BD%A0%E8%83%BD%E8%A7%A3%E5%86%B3%E5%90%97/</guid>
+      <description>今天在tomcat里部署运行了一个小工程，工程结构如下： 运行tomcat服务器后，访问index.html，发现报404： 但是后台接口是正常返回的： 去看webapps里工程目录下，index.html文件是有的，见鬼了，是哪儿出了问题？ 然后</description>
+    </item>
+    
+    <item>
+      <title>运行elasticsearch报错解决</title>
+      <link>https://liabio.github.io/posts/2018-12-21-%E8%BF%90%E8%A1%8Celasticsearch%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/</link>
+      <pubDate>Fri, 21 Dec 2018 17:20:27 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/posts/2018-12-21-%E8%BF%90%E8%A1%8Celasticsearch%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/</guid>
+      <description>docker 运行elasticsearch6.2.4时报错： ERROR: [1] bootstrap checks failed [1]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144] 解决： 查看 sysctl vm.max_map_count 设置： sysctl -w vm.max_map_count=262144</description>
+    </item>
     
     <item>
       <title>2018 11 19 Go语言中Select与for结合使用时可能会遇到的坑</title>

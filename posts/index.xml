@@ -6,22 +6,13 @@
     <description>Recent content in Posts on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 30 Sep 2019 17:39:30 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 30 Sep 2019 14:41:33 +0800</lastBuildDate>
     
 	<atom:link href="https://liabio.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>2019 01 03 Yum源配置</title>
-      <link>https://liabio.github.io/posts/2019-01-03-yum%E6%BA%90%E9%85%8D%E7%BD%AE/</link>
-      <pubDate>Mon, 30 Sep 2019 17:39:30 +0800</pubDate>
-      
-      <guid>https://liabio.github.io/posts/2019-01-03-yum%E6%BA%90%E9%85%8D%E7%BD%AE/</guid>
-      <description>在配置yum前首先得说说rpm，在redhat和centos linux系统上，rpm作为软件包管理工具，可以方便的安装、查询、卸载软件包。常见命令如下： #安装： rpm -ivh jdk-7u25-linux-x64.rpm #卸载： rpm -e jdk-7u25-linux-x64.rpm #升级： rpm -Uvh jdk-7u25-linux-x64.rpm #查询软件的安装路径： rpm -ql yum-3.4.3-118.el7.noarch #查询所有安装的包</description>
-    </item>
-    
-    <item>
-      <title>Kubernetes自定义资源对象高级功能</title>
+      <title>kubernetes自定义资源对象高级功能</title>
       <link>https://liabio.github.io/posts/2019-09-30-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/</link>
       <pubDate>Mon, 30 Sep 2019 14:41:33 +0800</pubDate>
       
@@ -306,6 +297,15 @@
       
       <guid>https://liabio.github.io/posts/2019-01-04-%E8%87%AA%E5%8A%A8%E8%AF%84%E8%AE%BAcsdn%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%AE%9E%E7%8E%B0/</guid>
       <description>我们来用java代码爬取csdn博客网站，然后自动评论，这一波操作可以说是相当风骚了，话不多说，咱上代码。 第一步是登录代码，这个网上一大把，代码中用到了jsoup依赖包，用于解析html获取相应元素，相当于css选择器，很强大的三方件。 /** *</description>
+    </item>
+    
+    <item>
+      <title>Yum源配置</title>
+      <link>https://liabio.github.io/posts/2019-01-03-yum%E6%BA%90%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Thu, 03 Jan 2019 17:39:30 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/posts/2019-01-03-yum%E6%BA%90%E9%85%8D%E7%BD%AE/</guid>
+      <description>在配置yum前首先得说说rpm，在redhat和centos linux系统上，rpm作为软件包管理工具，可以方便的安装、查询、卸载软件包。常见命令如下： #安装： rpm -ivh jdk-7u25-linux-x64.rpm #卸载： rpm -e jdk-7u25-linux-x64.rpm #升级： rpm -Uvh jdk-7u25-linux-x64.rpm #查询软件的安装路径： rpm -ql yum-3.4.3-118.el7.noarch #查询所有安装的包</description>
     </item>
     
     <item>
@@ -683,7 +683,7 @@
       <pubDate>Sun, 11 Mar 2018 14:56:02 +0800</pubDate>
       
       <guid>https://liabio.github.io/posts/2018-03-11-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8k8s%E5%BF%85%E5%AD%A6%E5%BF%85%E4%BC%9A%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/</guid>
-      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、</description>
+      <description>正文 kube-apiserver 对外暴露了Kubernetes API。它是的 Kubernetes 核心控制层。它被设计为水平扩展，即通过部署更多实例来横向扩展。API Server 负责和 etcd 交互（其他组件不会直接操作 etcd，只有 API Server 这么做），是整个 kubernetes 集群的数据中心，所有的交互都是以 API Server 为核心的。A</description>
     </item>
     
     <item>

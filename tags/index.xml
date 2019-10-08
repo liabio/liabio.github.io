@@ -6,7 +6,7 @@
     <description>Recent content in Tags on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 30 Sep 2019 17:39:30 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 30 Sep 2019 14:41:33 +0800</lastBuildDate>
     
 	<atom:link href="https://liabio.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -219,6 +219,15 @@
     </item>
     
     <item>
+      <title>linux</title>
+      <link>https://liabio.github.io/tags/linux/</link>
+      <pubDate>Thu, 03 Jan 2019 17:39:30 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>email</title>
       <link>https://liabio.github.io/tags/email/</link>
       <pubDate>Wed, 02 Jan 2019 17:38:10 +0800</pubDate>
@@ -237,11 +246,11 @@
     </item>
     
     <item>
-      <title>问题</title>
-      <link>https://liabio.github.io/tags/%E9%97%AE%E9%A2%98/</link>
+      <title>解决问题</title>
+      <link>https://liabio.github.io/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/</link>
       <pubDate>Wed, 26 Dec 2018 17:32:26 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/%E9%97%AE%E9%A2%98/</guid>
+      <guid>https://liabio.github.io/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/</guid>
       <description></description>
     </item>
     
@@ -269,15 +278,6 @@
       <pubDate>Fri, 21 Dec 2018 17:21:38 +0800</pubDate>
       
       <guid>https://liabio.github.io/tags/mysql/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>问题解决</title>
-      <link>https://liabio.github.io/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</link>
-      <pubDate>Fri, 21 Dec 2018 17:20:27 +0800</pubDate>
-      
-      <guid>https://liabio.github.io/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</guid>
       <description></description>
     </item>
     
@@ -323,15 +323,6 @@
       <pubDate>Mon, 19 Nov 2018 17:10:29 +0800</pubDate>
       
       <guid>https://liabio.github.io/tags/thrift/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>解决问题</title>
-      <link>https://liabio.github.io/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/</link>
-      <pubDate>Mon, 19 Nov 2018 17:08:46 +0800</pubDate>
-      
-      <guid>https://liabio.github.io/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/</guid>
       <description></description>
     </item>
     

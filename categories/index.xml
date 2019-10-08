@@ -6,7 +6,7 @@
     <description>Recent content in Categories on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 30 Sep 2019 17:39:30 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 30 Sep 2019 14:41:33 +0800</lastBuildDate>
     
 	<atom:link href="https://liabio.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -179,6 +179,15 @@
       <pubDate>Sat, 05 Jan 2019 17:42:39 +0800</pubDate>
       
       <guid>https://liabio.github.io/categories/ditto/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>yum</title>
+      <link>https://liabio.github.io/categories/yum/</link>
+      <pubDate>Thu, 03 Jan 2019 17:39:30 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/categories/yum/</guid>
       <description></description>
     </item>
     

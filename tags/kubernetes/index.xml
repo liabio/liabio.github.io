@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>Kubernetes自定义资源对象高级功能</title>
+      <title>kubernetes自定义资源对象高级功能</title>
       <link>https://liabio.github.io/posts/2019-09-30-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/</link>
       <pubDate>Mon, 30 Sep 2019 14:41:33 +0800</pubDate>
       
@@ -134,7 +134,7 @@
       <pubDate>Sun, 11 Mar 2018 14:56:02 +0800</pubDate>
       
       <guid>https://liabio.github.io/posts/2018-03-11-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8k8s%E5%BF%85%E5%AD%A6%E5%BF%85%E4%BC%9A%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/</guid>
-      <description>前言 本文首发于公众号【我的小碗汤】本公众号免费提供csdn下载服务，海量IT学习资源，如果你准备入IT坑，励志成为优秀的程序猿，那么这些资源很适合你，包括但不限于java、go、python、springcloud、elk、嵌入式 、大数据、</description>
+      <description>正文 kube-apiserver 对外暴露了Kubernetes API。它是的 Kubernetes 核心控制层。它被设计为水平扩展，即通过部署更多实例来横向扩展。API Server 负责和 etcd 交互（其他组件不会直接操作 etcd，只有 API Server 这么做），是整个 kubernetes 集群的数据中心，所有的交互都是以 API Server 为核心的。A</description>
     </item>
     
   </channel>
