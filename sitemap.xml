@@ -48,12 +48,12 @@
   </url>
   
   <url>
-    <loc>https://liabio.github.io/categories/etcd/</loc>
+    <loc>https://liabio.github.io/tags/etcd/</loc>
     <lastmod>2019-09-27T09:59:46+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liabio.github.io/tags/etcd/</loc>
+    <loc>https://liabio.github.io/categories/etcd/</loc>
     <lastmod>2019-09-27T09:59:46+08:00</lastmod>
   </url>
   
@@ -88,12 +88,12 @@
   </url>
   
   <url>
-    <loc>https://liabio.github.io/tags/git/</loc>
+    <loc>https://liabio.github.io/categories/git/</loc>
     <lastmod>2019-09-24T09:59:46+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liabio.github.io/categories/git/</loc>
+    <loc>https://liabio.github.io/tags/git/</loc>
     <lastmod>2019-09-24T09:59:46+08:00</lastmod>
   </url>
   
@@ -103,22 +103,22 @@
   </url>
   
   <url>
-    <loc>https://liabio.github.io/categories/ingress-nginx/</loc>
-    <lastmod>2019-09-24T09:59:46+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://liabio.github.io/tags/ingress-nginx/</loc>
     <lastmod>2019-09-24T09:59:46+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liabio.github.io/tags/job/</loc>
+    <loc>https://liabio.github.io/categories/ingress-nginx/</loc>
     <lastmod>2019-09-24T09:59:46+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liabio.github.io/categories/job/</loc>
+    <lastmod>2019-09-24T09:59:46+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/tags/job/</loc>
     <lastmod>2019-09-24T09:59:46+08:00</lastmod>
   </url>
   
@@ -163,12 +163,12 @@
   </url>
   
   <url>
-    <loc>https://liabio.github.io/categories/%E5%B7%A5%E5%85%B7/</loc>
+    <loc>https://liabio.github.io/tags/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2019-09-24T09:59:46+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liabio.github.io/tags/%E5%B7%A5%E5%85%B7/</loc>
+    <loc>https://liabio.github.io/categories/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2019-09-24T09:59:46+08:00</lastmod>
   </url>
   
