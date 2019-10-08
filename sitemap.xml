@@ -113,12 +113,12 @@
   </url>
   
   <url>
-    <loc>https://liabio.github.io/categories/job/</loc>
+    <loc>https://liabio.github.io/tags/job/</loc>
     <lastmod>2019-09-24T09:59:46+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liabio.github.io/tags/job/</loc>
+    <loc>https://liabio.github.io/categories/job/</loc>
     <lastmod>2019-09-24T09:59:46+08:00</lastmod>
   </url>
   
@@ -163,12 +163,12 @@
   </url>
   
   <url>
-    <loc>https://liabio.github.io/tags/%E5%B7%A5%E5%85%B7/</loc>
+    <loc>https://liabio.github.io/categories/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2019-09-24T09:59:46+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liabio.github.io/categories/%E5%B7%A5%E5%85%B7/</loc>
+    <loc>https://liabio.github.io/tags/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2019-09-24T09:59:46+08:00</lastmod>
   </url>
   
@@ -218,12 +218,12 @@
   </url>
   
   <url>
-    <loc>https://liabio.github.io/tags/shell/</loc>
+    <loc>https://liabio.github.io/categories/shell/</loc>
     <lastmod>2019-06-20T17:50:45+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liabio.github.io/categories/shell/</loc>
+    <loc>https://liabio.github.io/tags/shell/</loc>
     <lastmod>2019-06-20T17:50:45+08:00</lastmod>
   </url>
   
@@ -308,12 +308,12 @@
   </url>
   
   <url>
-    <loc>https://liabio.github.io/categories/http/</loc>
+    <loc>https://liabio.github.io/tags/http/</loc>
     <lastmod>2019-03-20T17:49:52+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liabio.github.io/tags/http/</loc>
+    <loc>https://liabio.github.io/categories/http/</loc>
     <lastmod>2019-03-20T17:49:52+08:00</lastmod>
   </url>
   
@@ -783,6 +783,11 @@
   </url>
   
   <url>
+    <loc>https://liabio.github.io/tools/</loc>
+    <lastmod>2017-07-29T20:54:37+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://liabio.github.io/about/</loc>
     <lastmod>2017-07-28T20:54:37+08:00</lastmod>
   </url>
@@ -790,10 +795,6 @@
   <url>
     <loc>https://liabio.github.io/posts/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2017-02-06T09:59:46+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liabio.github.io/tools/</loc>
   </url>
   
   <url>

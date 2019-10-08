@@ -705,12 +705,21 @@
     </item>
     
     <item>
+      <title>工具</title>
+      <link>https://liabio.github.io/tools/</link>
+      <pubDate>Sat, 29 Jul 2017 20:54:37 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/tools/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>关于</title>
       <link>https://liabio.github.io/about/</link>
       <pubDate>Fri, 28 Jul 2017 20:54:37 +0800</pubDate>
       
       <guid>https://liabio.github.io/about/</guid>
-      <description>das</description>
+      <description>Hey，我是小碗汤，主要从事Java、Golang、Docker、Kubernetes开发工作，平时喜欢写博客，分享技术文章和记录编程中遇到的问题及解决方案，工作中提高效率的工具，推送原创优秀文章等！ 如果博客中有图片失效的情况，可以转移到其</description>
     </item>
     
     <item>
@@ -720,15 +729,6 @@
       
       <guid>https://liabio.github.io/posts/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
       <description>正所谓前人栽树，后人乘凉。 感谢Huxpro提供的博客模板 我的的博客 前言 从 Jekyll 到 GitHub Pages 中间踩了许多坑，终于把我的个人博客BY Blog搭建出来了。。。 本教程针对的是不懂技术又想搭建个人博客的小白，操作简单暴力且快速。当然懂技术那就更好了。 看看看博客</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://liabio.github.io/tools/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://liabio.github.io/tools/</guid>
-      <description></description>
     </item>
     
     <item>
