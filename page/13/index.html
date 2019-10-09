@@ -68,6 +68,29 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
+                                    <a href="https://liabio.github.io/posts/2018-11-17-IntelliJ-IDEA%E8%87%AA%E5%8A%A8%E5%AF%BC%E5%85%A5%E5%8C%85%E5%8E%BB%E9%99%A4%E6%98%9F%E5%8F%B7/" title="IntelliJ IDEA自动导入包去除星号" >IntelliJ IDEA自动导入包去除星号</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2018年11月17日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/idea">idea</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                打开设置&gt;Editor&gt;Code Style&gt;Java&gt;Scheme Default&gt;Imports ① 将Class count to use import with &ldquo;*&ldquo;改为99（导入同一个包的类超过这个数值自动变为 * ） ② 将Names count to use static import with &ldquo;*&ldquo;改为99（同上，但这是静态导入的……
+                            </div>
+                            <p class="readmore"><a href="https://liabio.github.io/posts/2018-11-17-IntelliJ-IDEA%E8%87%AA%E5%8A%A8%E5%AF%BC%E5%85%A5%E5%8C%85%E5%8E%BB%E9%99%A4%E6%98%9F%E5%8F%B7/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
                                     <a href="https://liabio.github.io/posts/2018-11-16-%E8%BF%9E%E6%8E%A5zookeeper%E6%8A%A5%E9%94%99NoRouteToHost/" title="连接zookeeper报错NoRouteToHost" >连接zookeeper报错NoRouteToHost</a>
                                 </h1>
                             </header>
@@ -157,29 +180,6 @@
                                 报错： nginx: [error] CreateFile() &quot;./logs/nginx.pid&quot; failed (2: The system cannot find the file specified) 在执行了nginx -s stop后，再次启动nginx时报错： 这个坑主要原因就是没有nginx.pid这个文件，./logs/下找不到nginx.pid文件，看了确实找不到。 看了网上很多方案是 需要建立nginx.……
                             </div>
                             <p class="readmore"><a href="https://liabio.github.io/posts/2018-11-13-%E5%AD%A6%E4%B9%A0openresty%E6%97%B6nginx%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://liabio.github.io/posts/2018-11-12-DockerCE%E9%95%9C%E5%83%8F%E6%BA%90%E7%AB%99/" title="Docker CE镜像源站" >Docker CE镜像源站</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2018年11月12日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://liabio.github.io/categories/docker">docker</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                使用官方安装脚本自动安装 curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun 手动安装帮助 Ubuntu 14.04 16.04 (使用apt-get进行安装) # step 1: 安装必要的一些系统工具 sudo apt-get update sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common # step 2: 安装GPG证书 curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add - # Step 3: 写入软件源信息 sudo add-apt-repository &quot;deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable&quot; # Step 4: 更新并安装 Docker-CE sudo apt-get -y update sudo……
-                            </div>
-                            <p class="readmore"><a href="https://liabio.github.io/posts/2018-11-12-DockerCE%E9%95%9C%E5%83%8F%E6%BA%90%E7%AB%99/">阅读全文</a></p>
                         </article>
                     
                     
@@ -294,6 +294,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://liabio.github.io/posts/2019-10-08-npm%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99Z_BUF_ERROR%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="npm安装报错Z_BUF_ERROR问题解决">npm安装报错Z_BUF_ERROR问题解决</a>
+    </li>
+    
+    <li>
         <a href="https://liabio.github.io/posts/2019-09-30-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/" title="kubernetes自定义资源对象高级功能">kubernetes自定义资源对象高级功能</a>
     </li>
     
@@ -329,10 +333,6 @@
         <a href="https://liabio.github.io/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/" title="云服务器使用docker搭建服务">云服务器使用docker搭建服务</a>
     </li>
     
-    <li>
-        <a href="https://liabio.github.io/posts/2019-09-24-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/" title="史上最全docker基础知识汇总">史上最全docker基础知识汇总</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -340,6 +340,14 @@
 <section class="widget">
     <h3 class="widget-title" style="color:red">福利派送</h3>
     <ul class="widget-list">
+        
+        <li>
+            <a href="https://liabio.github.io/img/ad/geek.jpg" title="极客时间课程限时优惠" target="_blank" style="color:red">
+                
+                    <img src="/img/ad/guide_ercode.png">
+                
+            </a>
+        </li>
         
         <li>
             <a href="https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=3iiljysb" title="高性能云服务器2折起" target="_blank" style="color:red">
@@ -451,6 +459,10 @@
     
     <li>
         <a href="https://liabio.github.io/categories/nginx/">nginx(2)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/npm/">npm(1)</a>
     </li>
     
     <li>
@@ -589,6 +601,8 @@
     <a href="https://liabio.github.io/tags/%E9%85%8D%E7%BD%AE/">配置</a>
     
     <a href="https://liabio.github.io/tags/%E9%95%9C%E5%83%8F/">镜像</a>
+    
+    <a href="https://liabio.github.io/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">问题解决</a>
     
     <a href="https://liabio.github.io/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/">验证码</a>
     
