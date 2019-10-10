@@ -68,6 +68,29 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
+                                    <a href="https://liabio.github.io/posts/2018-12-22-%E7%88%AC%E8%99%AB%E9%81%87%E5%88%B0%E4%BA%86%E7%82%B9%E9%97%AE%E9%A2%98/" title="爬虫遇到了点问题" >爬虫遇到了点问题</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2018年12月22日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/golang">golang</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                golang爬珍爱网代码优化后，运行报了如下的错，找了半小时才找到原因，在此记录一下。 代码是这样的： 有一个interface类型的Parser： type Parser interface { Parser(contents []byte, url string) ParserResult Serialize() (funcName string, args interface{}) } 有一个struct类型的FuncParser： type FuncParser struct { parser ParserFunc funcName string } FuncParser……
+                            </div>
+                            <p class="readmore"><a href="https://liabio.github.io/posts/2018-12-22-%E7%88%AC%E8%99%AB%E9%81%87%E5%88%B0%E4%BA%86%E7%82%B9%E9%97%AE%E9%A2%98/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
                                     <a href="https://liabio.github.io/posts/2018-12-22-Go-%E8%AF%AD%E8%A8%80-IDE-GoLand%E7%9A%84BUG/" title="Go 语言 IDE GoLand的BUG" >Go 语言 IDE GoLand的BUG</a>
                                 </h1>
                             </header>
@@ -159,31 +182,6 @@
                                 安装nodejs： https://nodejs.org/en/download/current/ 以windows64为例，下载msi文件： 安装时，安装目录选择D盘，一路下一步即可。 安装完成，在cmd里执行node -v，成功回显版本号表示nodejs安装成功： 安装grunt： npm install -g grunt-cli grunt -version 开始安装head 在https:……
                             </div>
                             <p class="readmore"><a href="https://liabio.github.io/posts/2018-12-20-elasticsearch6-2-4%E6%8F%92%E4%BB%B6head%E5%AE%89%E8%A3%85/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://liabio.github.io/posts/2018-12-19-CentosLinux%E4%BD%BF%E7%94%A8Yum%E5%AE%89%E8%A3%85Go%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/" title="Centos Linux使用Yum安装Go和配置环境" >Centos Linux使用Yum安装Go和配置环境</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2018年12月19日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://liabio.github.io/categories/centos">centos</a></span>
-                                
-                                <span class="meta-category"><a href="https://liabio.github.io/categories/golang">golang</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                安装环境：CentOS7.2 64位，安装Golang 查看go是否安装过： $ go env GOARCH=&quot;amd64&quot; GOBIN=&quot;&quot; GOEXE=&quot;&quot; GOHOSTARCH=&quot;amd64&quot; GOHOSTOS=&quot;linux&quot; GOOS=&quot;linux&quot; GOPATH=&quot;/root/go&quot; GORACE=&quot;&quot; GOROOT=&quot;/usr/lib/golang&quot; GOTOOLDIR=&quot;/usr/lib/golang/pkg/tool/linux_amd64&quot; GCCGO=&quot;gccgo&quot; CC=&quot;gcc&quot; GOGCCFLAGS=&quot;-fPIC -m64 -pthread -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build892156781=/tmp/go-build -gno-record-gcc-switches&quot; CXX=&quot;g++&quot; CGO_ENABLED=&quot;1&quot; CGO_CFLAGS=&quot;-g -O2&quot; CGO_CPPFLAGS=&quot;&quot; CGO_CXXFLAGS=&quot;-g -O2&quot; CGO_FFLAGS=&quot;-g -O2&quot; CGO_LDFLAGS=&quot;-g -O2&quot; PKG_CONFIG=&quot;pkg-config&quot; 查看yum的Golang 查看golang： $ yum info golang Loading mirror speeds from cached hostfile Installed Packages Name : golang Arch : x86_64 Version : 1.8.3 Release : 1.el7 Size : 11 M Repo :……
-                            </div>
-                            <p class="readmore"><a href="https://liabio.github.io/posts/2018-12-19-CentosLinux%E4%BD%BF%E7%94%A8Yum%E5%AE%89%E8%A3%85Go%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/">阅读全文</a></p>
                         </article>
                     
                     
@@ -298,7 +296,11 @@
 <ul class="widget-list">
     
     <li>
-        <a href="https://liabio.github.io/posts/2019-10-08-npm%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99Z_BUF_ERROR%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="npm安装报错Z_BUF_ERROR问题解决">npm安装报错Z_BUF_ERROR问题解决</a>
+        <a href="https://liabio.github.io/posts/2019-10-10-%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4k8s-pvc-pv/" title="如何批量删除k8s资源对象">如何批量删除k8s资源对象</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-10-08-npm%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99Z-BUF-ERROR%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="npm安装报错Z_BUF_ERROR问题解决">npm安装报错Z_BUF_ERROR问题解决</a>
     </li>
     
     <li>
@@ -331,10 +333,6 @@
     
     <li>
         <a href="https://liabio.github.io/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/" title="一次socket.error: [Errno 99] Cannot assign requested address报错排查">一次socket.error: [Errno 99] Cannot assign requested address报错排查</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/" title="云服务器使用docker搭建服务">云服务器使用docker搭建服务</a>
     </li>
     
 </ul>
@@ -422,7 +420,7 @@
     </li>
     
     <li>
-        <a href="https://liabio.github.io/categories/golang/">golang(10)</a>
+        <a href="https://liabio.github.io/categories/golang/">golang(11)</a>
     </li>
     
     <li>
@@ -450,7 +448,7 @@
     </li>
     
     <li>
-        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(15)</a>
+        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(16)</a>
     </li>
     
     <li>

@@ -68,6 +68,29 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
+                                    <a href="https://liabio.github.io/posts/2019-01-02-java%E5%8F%91%E9%82%AE%E4%BB%B6-%E8%BF%99%E4%B8%AA%E5%9D%91%E4%BD%A0%E8%83%BD%E5%A1%AB%E5%90%97/" title="Java发邮件 这个坑你能填吗" >Java发邮件 这个坑你能填吗</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年1月2日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/java">java</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                今天利用java发邮件，本地windows上测试时发送ok的，部署到服务器上却报异常，让我们走进异常，探索到底坑在哪里，并填之。 利用outlook发邮件代码如下： package com.website.service.impl; import com.alibaba.fastjson.JSON; import org.slf4j.Logger; import org.slf4j.LoggerFactory; import org.springframework.beans.factory.annotation.Autowired; import org.springframework.beans.factory.annotation.Qualifier; import org.springframework.mail.javamail.JavaMailSenderImpl; import org.springframework.mail.javamail.MimeMessageHelper; import javax.mail.internet.MimeMessage; import java.util.Properties; /** * @program: WebSite * @description: SpringMvc实现的发……
+                            </div>
+                            <p class="readmore"><a href="https://liabio.github.io/posts/2019-01-02-java%E5%8F%91%E9%82%AE%E4%BB%B6-%E8%BF%99%E4%B8%AA%E5%9D%91%E4%BD%A0%E8%83%BD%E5%A1%AB%E5%90%97/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
                                     <a href="https://liabio.github.io/posts/2019-01-01-vmware%E4%B8%8A%E5%AE%89%E8%A3%85linux%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/" title="Vmware上安装linux过程记录" >Vmware上安装linux过程记录</a>
                                 </h1>
                             </header>
@@ -157,31 +180,6 @@
                                 正文 今天来用java实现手机验证码的发送。 短信平台有很多，中国网建提供的SMS短信通，注册免费5条短信，3条彩信， http://sms.webchinese.cn/ 但是刚才试了，第一次用官方提供的demo发送成功，然后整合到自己项目中，调试时由于参数配置错误导致发送了几次失败后，5次就用……
                             </div>
                             <p class="readmore"><a href="https://liabio.github.io/posts/2018-12-26-java%E5%8F%91%E9%80%81%E6%89%8B%E6%9C%BA%E9%AA%8C%E8%AF%81%E7%A0%81%E5%AE%9E%E7%8E%B0/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://liabio.github.io/posts/2018-12-25-SpringMVC%E5%AE%9E%E7%8E%B0%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/" title="SpringMVC实现发送邮件" >SpringMVC实现发送邮件</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2018年12月25日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://liabio.github.io/categories/java">java</a></span>
-                                
-                                <span class="meta-category"><a href="https://liabio.github.io/categories/springmvc">springmvc</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                今天来试着用SpringMVC发送邮件，主要需要依赖以下两个包； &lt;!--spring发送邮件依赖spring.version=4.3.8.RELEASE--&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework&lt;/groupId&gt; &lt;artifactId&gt;spring-context-support&lt;/artifactId&gt; &lt;version&gt;${spring.version}&lt;/version&gt; &lt;/dependency&gt; &lt;!-- Javamail API --&gt; &lt;dependency&gt; &lt;groupId&gt;javax.mail&lt;/groupId&gt; &lt;artifactId&gt;mail&lt;/artifactId&gt; &lt;version&gt;1.4.5&lt;/version&gt; &lt;/dependency&gt; spring-mail.xml配置文件如下……
-                            </div>
-                            <p class="readmore"><a href="https://liabio.github.io/posts/2018-12-25-SpringMVC%E5%AE%9E%E7%8E%B0%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/">阅读全文</a></p>
                         </article>
                     
                     
@@ -296,7 +294,11 @@
 <ul class="widget-list">
     
     <li>
-        <a href="https://liabio.github.io/posts/2019-10-08-npm%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99Z_BUF_ERROR%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="npm安装报错Z_BUF_ERROR问题解决">npm安装报错Z_BUF_ERROR问题解决</a>
+        <a href="https://liabio.github.io/posts/2019-10-10-%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4k8s-pvc-pv/" title="如何批量删除k8s资源对象">如何批量删除k8s资源对象</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-10-08-npm%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99Z-BUF-ERROR%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="npm安装报错Z_BUF_ERROR问题解决">npm安装报错Z_BUF_ERROR问题解决</a>
     </li>
     
     <li>
@@ -329,10 +331,6 @@
     
     <li>
         <a href="https://liabio.github.io/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/" title="一次socket.error: [Errno 99] Cannot assign requested address报错排查">一次socket.error: [Errno 99] Cannot assign requested address报错排查</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/" title="云服务器使用docker搭建服务">云服务器使用docker搭建服务</a>
     </li>
     
 </ul>
@@ -420,7 +418,7 @@
     </li>
     
     <li>
-        <a href="https://liabio.github.io/categories/golang/">golang(10)</a>
+        <a href="https://liabio.github.io/categories/golang/">golang(11)</a>
     </li>
     
     <li>
@@ -448,7 +446,7 @@
     </li>
     
     <li>
-        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(15)</a>
+        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(16)</a>
     </li>
     
     <li>

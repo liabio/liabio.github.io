@@ -68,6 +68,29 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
+                                    <a href="https://liabio.github.io/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/" title="云服务器使用docker搭建服务" >云服务器使用docker搭建服务</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年9月24日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/docker">docker</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                前提：亚马逊云已经配置好启动。 安全组入站策略如下： 出站策略如下： 登陆EC2后，默认只能用ec2-user用户登陆，然后切换到root： sudo su 用yum执行安装docker提示No package docker avaible yum install docker -y 解决方法： 在/etc/yum.repos.d/下加C……
+                            </div>
+                            <p class="readmore"><a href="https://liabio.github.io/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
                                     <a href="https://liabio.github.io/posts/2019-09-24-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/" title="史上最全docker基础知识汇总" >史上最全docker基础知识汇总</a>
                                 </h1>
                             </header>
@@ -161,29 +184,6 @@
                                 &emsp;&emsp;要求在页面查询到5000条数据，为了方便插入，准备用shell脚本写curl命令调用自己写的代码接口，但是速度慢，而且写的时候遇到点儿小问题，故用sql语句写了这个功能 &emsp;&emsp;由于operationl……
                             </div>
                             <p class="readmore"><a href="https://liabio.github.io/posts/2019-08-21-%E5%88%A9%E7%94%A8procedure%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://liabio.github.io/posts/2019-07-21-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8Bprocedure%E5%92%8C%E5%87%BD%E6%95%B0Function%E7%9A%84%E5%8C%BA%E5%88%AB/" title="存储过程procedure和函数Function的区别" >存储过程procedure和函数Function的区别</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年7月21日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://liabio.github.io/categories/mysql">mysql</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                1、返回值的区别 函数有1个返回值,而存储过程是通过参数返回的,可以有多个或者没有 2. 调用的区别,函数可以在查询语句中直接调用,而存储过程必须单独调用. 函数：一般情况下是用来计算并返回一个计算结果； 存储过程： 一般是用来完成特定的数据操作（比如修……
-                            </div>
-                            <p class="readmore"><a href="https://liabio.github.io/posts/2019-07-21-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8Bprocedure%E5%92%8C%E5%87%BD%E6%95%B0Function%E7%9A%84%E5%8C%BA%E5%88%AB/">阅读全文</a></p>
                         </article>
                     
                     
@@ -284,7 +284,11 @@
 <ul class="widget-list">
     
     <li>
-        <a href="https://liabio.github.io/posts/2019-10-08-npm%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99Z_BUF_ERROR%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="npm安装报错Z_BUF_ERROR问题解决">npm安装报错Z_BUF_ERROR问题解决</a>
+        <a href="https://liabio.github.io/posts/2019-10-10-%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4k8s-pvc-pv/" title="如何批量删除k8s资源对象">如何批量删除k8s资源对象</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-10-08-npm%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99Z-BUF-ERROR%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="npm安装报错Z_BUF_ERROR问题解决">npm安装报错Z_BUF_ERROR问题解决</a>
     </li>
     
     <li>
@@ -317,10 +321,6 @@
     
     <li>
         <a href="https://liabio.github.io/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/" title="一次socket.error: [Errno 99] Cannot assign requested address报错排查">一次socket.error: [Errno 99] Cannot assign requested address报错排查</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/" title="云服务器使用docker搭建服务">云服务器使用docker搭建服务</a>
     </li>
     
 </ul>
@@ -408,7 +408,7 @@
     </li>
     
     <li>
-        <a href="https://liabio.github.io/categories/golang/">golang(10)</a>
+        <a href="https://liabio.github.io/categories/golang/">golang(11)</a>
     </li>
     
     <li>
@@ -436,7 +436,7 @@
     </li>
     
     <li>
-        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(15)</a>
+        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(16)</a>
     </li>
     
     <li>

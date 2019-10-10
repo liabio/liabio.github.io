@@ -81,6 +81,33 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
+                                    <a href="https://liabio.github.io/posts/2019-09-24-%E9%87%87%E5%9D%91%E6%8C%87%E5%8D%97-k8s%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90coredns%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/">采坑指南——k8s域名解析coredns问题排查过程</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年9月24日
+                            </date>
+                            
+                            <div class="post-meta meta-category">
+                                |
+                                
+                                    <a href="https://liabio.github.io/categories/docker">docker</a>
+                                
+                                    <a href="https://liabio.github.io/categories/kubernetes">kubernetes</a>
+                                
+                                    <a href="https://liabio.github.io/categories/k8s">k8s</a>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                正文 前几天，在ucloud上搭建的k8s集群（搭建教程后续会发出）。今天发现域名解析不了。 组件版本：k8s 1.15.0，coredns：1.3.1 过程是这样的： 首先用以下yaml文件创建了一个nginx服务 apiVersion: v1 kind: Service metadata: name: nginx-svc-old labels: app: nginx-svc spec: selector: app: nginx ports: - protocol:……
+                                <p class="readmore"><a href="https://liabio.github.io/posts/2019-09-24-%E9%87%87%E5%9D%91%E6%8C%87%E5%8D%97-k8s%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90coredns%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/">阅读全文</a></p>
+                            </div>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
                                     <a href="https://liabio.github.io/posts/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/">手把手教你搭建kubernetes集群</a>
                                 </h1>
                             </header>
@@ -170,29 +197,6 @@
                             </div>
                         </article>
                     
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://liabio.github.io/posts/2018-11-14-%E6%90%AD%E5%BB%BAk8s%E9%9B%86%E7%BE%A4%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">搭建k8s集群遇到的问题</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2018年11月14日
-                            </date>
-                            
-                            <div class="post-meta meta-category">
-                                |
-                                
-                                    <a href="https://liabio.github.io/categories/kubernetes">kubernetes</a>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                部署CalicoNode（所有节点）报错： Oct 10 21:04:55 smallsoup docker[76907]: bird: BGP: Unexpected connect from unknown address 192.168.1.104 (port 58153) Oct 10 21:04:59 smallsoup docker[76907]: bird: BGP: Unexpected connect from unknown address 192.168.1.104 (port 40415) Oct 10 21:05:00 smallsoup docker[76907]: 2018-10-10 13:05:00.213 [INFO][87] int_dataplane.go 690: Applying dataplane updates Oct 10 21:05:00 smallsoup docker[76907]: 2018-10-10 13:05:00.213 [INFO][87] ipsets.go 224: Asked to resync with the dataplane on next update. family=&quot;inet&quot; Oct 10 21:05:00 smallsoup docker[76907]: 2018-10-10 13:05:00.213 [INFO][87] ipsets.go 255: Resyncing ipsets with dataplane. family=&quot;inet&quot; Oct 10 21:05:00 smallsoup docker[76907]: 2018-10-10 13:05:00.218 [INFO][87] ipsets.go 297: Finished resync family=&quot;inet&quot; numInconsistenciesFound=0 resyncDuration=4.542824ms Oct 10 21:05:00 smallsoup docker[76907]: 2018-10-10……
-                                <p class="readmore"><a href="https://liabio.github.io/posts/2018-11-14-%E6%90%AD%E5%BB%BAk8s%E9%9B%86%E7%BE%A4%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">阅读全文</a></p>
-                            </div>
-                        </article>
-                    
 
                     
 
@@ -216,6 +220,10 @@
     
     <li >
         <a href="https://liabio.github.io/categories/kubernetes/page/3/">3</a>
+    </li>
+    
+    <li >
+        <a href="https://liabio.github.io/categories/kubernetes/page/4/">4</a>
     </li>
     
 
@@ -246,7 +254,11 @@
 <ul class="widget-list">
     
     <li>
-        <a href="https://liabio.github.io/posts/2019-10-08-npm%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99Z_BUF_ERROR%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="npm安装报错Z_BUF_ERROR问题解决">npm安装报错Z_BUF_ERROR问题解决</a>
+        <a href="https://liabio.github.io/posts/2019-10-10-%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4k8s-pvc-pv/" title="如何批量删除k8s资源对象">如何批量删除k8s资源对象</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/posts/2019-10-08-npm%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99Z-BUF-ERROR%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="npm安装报错Z_BUF_ERROR问题解决">npm安装报错Z_BUF_ERROR问题解决</a>
     </li>
     
     <li>
@@ -279,10 +291,6 @@
     
     <li>
         <a href="https://liabio.github.io/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/" title="一次socket.error: [Errno 99] Cannot assign requested address报错排查">一次socket.error: [Errno 99] Cannot assign requested address报错排查</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/" title="云服务器使用docker搭建服务">云服务器使用docker搭建服务</a>
     </li>
     
 </ul>
@@ -370,7 +378,7 @@
     </li>
     
     <li>
-        <a href="https://liabio.github.io/categories/golang/">golang(10)</a>
+        <a href="https://liabio.github.io/categories/golang/">golang(11)</a>
     </li>
     
     <li>
@@ -398,7 +406,7 @@
     </li>
     
     <li>
-        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(15)</a>
+        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(16)</a>
     </li>
     
     <li>
