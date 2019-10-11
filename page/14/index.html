@@ -68,6 +68,29 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
+                                    <a href="https://liabio.github.io/posts/2018-11-14-%E6%90%AD%E5%BB%BAk8s%E9%9B%86%E7%BE%A4%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" title="搭建k8s集群遇到的问题" >搭建k8s集群遇到的问题</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2018年11月14日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/kubernetes">kubernetes</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                部署CalicoNode（所有节点）报错： Oct 10 21:04:55 smallsoup docker[76907]: bird: BGP: Unexpected connect from unknown address 192.168.1.104 (port 58153) Oct 10 21:04:59 smallsoup docker[76907]: bird: BGP: Unexpected connect from unknown address 192.168.1.104 (port 40415) Oct 10 21:05:00 smallsoup docker[76907]: 2018-10-10 13:05:00.213 [INFO][87] int_dataplane.go 690: Applying dataplane updates Oct 10 21:05:00 smallsoup docker[76907]: 2018-10-10 13:05:00.213 [INFO][87] ipsets.go 224: Asked to resync with the dataplane on next update. family=&quot;inet&quot; Oct 10 21:05:00 smallsoup docker[76907]: 2018-10-10 13:05:00.213 [INFO][87] ipsets.go 255: Resyncing ipsets with dataplane. family=&quot;inet&quot; Oct 10 21:05:00 smallsoup docker[76907]: 2018-10-10 13:05:00.218 [INFO][87] ipsets.go 297: Finished resync family=&quot;inet&quot; numInconsistenciesFound=0 resyncDuration=4.542824ms Oct 10 21:05:00 smallsoup docker[76907]: 2018-10-10……
+                            </div>
+                            <p class="readmore"><a href="https://liabio.github.io/posts/2018-11-14-%E6%90%AD%E5%BB%BAk8s%E9%9B%86%E7%BE%A4%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
                                     <a href="https://liabio.github.io/posts/2018-11-13-%E5%AD%A6%E4%B9%A0openresty%E6%97%B6nginx%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/" title="学习openresty时nginx的一个坑" >学习openresty时nginx的一个坑</a>
                                 </h1>
                             </header>
@@ -157,29 +180,6 @@
                                 用以下命令生成代码： ./generate-groups.sh all &quot;github.com/openshift-evangelist/crd-code-generation/pkg/client&quot; &quot;github.com/openshift-evangelist/crd-code-generation/pkg/apis&quot; &quot;ingressgroup:v1&quot; 第一个报错 生成代码报错： Generating deepcopy funcs F0910 19:18:35.552948 12153 main.go:82] Error: Failed making a parser: unable to add directory &quot;github.com/openshift-evangelist/crd-code-generation/pkg/client&quot;: unable to import &quot;github.com/asdfsx/getkubeconfig/pkg/apis/example/v1&quot;: cannot find package &quot;github.com/openshift-evangelist/crd-code-generation/pkg/client&quot; in any of: D:/Program Files/Go/go103/src/github.com/openshift-evangelist/crd-code-generation/pkg/client (from $GOROOT) D:/SoftwareAndProgram/program/Go/Development/src/github.com/openshift-evangelist/crd-code-generation/pkg/client (from $GOPATH) 这个问题可以参考issue 可以参考这个文章： https://medium.com/@trstringer/create-kubernetes-controllers-for-core-and-custom-resources-62fc35ad64a3 由于该链接国内访问比较困难，故转载到了这里： https://www.jianshu.com/p/dcfe6eac4152 第二个报错： Generating deepcopy funcs F1104 02:57:44.419529 35……
                             </div>
                             <p class="readmore"><a href="https://liabio.github.io/posts/2018-11-02-k8s%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E7%B1%BB%E5%9E%8B%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://liabio.github.io/posts/2018-10-02-kubernetesPodExec%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8/" title="Kubernetes Pod Exec接口调用" >Kubernetes Pod Exec接口调用</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2018年10月2日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://liabio.github.io/categories/kubernetes">kubernetes</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                一般生产环境上由于网络安全策略，大多数端口是不能为集群外部访问的。多个集群之间一般都是通过k8s的ApiServer组件提供的接口通信，如https://192.168.1.101:6443。所以在做云平台时，集群管理平台（雅称：观云台）需……
-                            </div>
-                            <p class="readmore"><a href="https://liabio.github.io/posts/2018-10-02-kubernetesPodExec%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8/">阅读全文</a></p>
                         </article>
                     
                     
@@ -294,6 +294,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://liabio.github.io/posts/2019-10-11-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%902/" title="kubernetes垃圾回收器Garbage Collector Controller源码分析（二）">kubernetes垃圾回收器Garbage Collector Controller源码分析（二）</a>
+    </li>
+    
+    <li>
         <a href="https://liabio.github.io/posts/2019-10-10-%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4k8s-pvc-pv/" title="如何批量删除k8s资源对象">如何批量删除k8s资源对象</a>
     </li>
     
@@ -327,10 +331,6 @@
     
     <li>
         <a href="https://liabio.github.io/posts/2019-09-24-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%901/" title="kubernetes垃圾回收器GarbageCollector Controller源码分析（一）">kubernetes垃圾回收器GarbageCollector Controller源码分析（一）</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/" title="一次socket.error: [Errno 99] Cannot assign requested address报错排查">一次socket.error: [Errno 99] Cannot assign requested address报错排查</a>
     </li>
     
 </ul>
@@ -446,7 +446,7 @@
     </li>
     
     <li>
-        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(16)</a>
+        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(17)</a>
     </li>
     
     <li>

@@ -4,7 +4,47 @@
   
   <url>
     <loc>https://liabio.github.io/categories/</loc>
-    <lastmod>2019-10-10T17:20:28+08:00</lastmod>
+    <lastmod>2019-10-11T21:21:50+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/tags/garbageCollector/</loc>
+    <lastmod>2019-10-11T21:21:50+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/categories/kubernetes/</loc>
+    <lastmod>2019-10-11T21:21:50+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/tags/kubernetes/</loc>
+    <lastmod>2019-10-11T21:21:50+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/posts/2019-10-11-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%902/</loc>
+    <lastmod>2019-10-11T21:21:50+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/posts/</loc>
+    <lastmod>2019-10-11T21:21:50+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/tags/</loc>
+    <lastmod>2019-10-11T21:21:50+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/</loc>
+    <lastmod>2019-10-11T21:21:50+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/</loc>
+    <lastmod>2019-10-11T21:21:50+08:00</lastmod>
   </url>
   
   <url>
@@ -13,32 +53,7 @@
   </url>
   
   <url>
-    <loc>https://liabio.github.io/categories/kubernetes/</loc>
-    <lastmod>2019-10-10T17:20:28+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liabio.github.io/tags/kubernetes/</loc>
-    <lastmod>2019-10-10T17:20:28+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liabio.github.io/posts/</loc>
-    <lastmod>2019-10-10T17:20:28+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liabio.github.io/tags/</loc>
-    <lastmod>2019-10-10T17:20:28+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://liabio.github.io/posts/2019-10-10-%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4k8s-pvc-pv/</loc>
-    <lastmod>2019-10-10T17:20:28+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liabio.github.io/</loc>
     <lastmod>2019-10-10T17:20:28+08:00</lastmod>
   </url>
   
@@ -73,12 +88,12 @@
   </url>
   
   <url>
-    <loc>https://liabio.github.io/tags/etcd/</loc>
+    <loc>https://liabio.github.io/categories/etcd/</loc>
     <lastmod>2019-09-27T09:59:46+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liabio.github.io/categories/etcd/</loc>
+    <loc>https://liabio.github.io/tags/etcd/</loc>
     <lastmod>2019-09-27T09:59:46+08:00</lastmod>
   </url>
   
@@ -108,11 +123,6 @@
   </url>
   
   <url>
-    <loc>https://liabio.github.io/tags/garbageCollector/</loc>
-    <lastmod>2019-09-24T09:59:46+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://liabio.github.io/tags/git/</loc>
     <lastmod>2019-09-24T09:59:46+08:00</lastmod>
   </url>
@@ -128,12 +138,12 @@
   </url>
   
   <url>
-    <loc>https://liabio.github.io/categories/ingress-nginx/</loc>
+    <loc>https://liabio.github.io/tags/ingress-nginx/</loc>
     <lastmod>2019-09-24T09:59:46+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liabio.github.io/tags/ingress-nginx/</loc>
+    <loc>https://liabio.github.io/categories/ingress-nginx/</loc>
     <lastmod>2019-09-24T09:59:46+08:00</lastmod>
   </url>
   
@@ -183,17 +193,12 @@
   </url>
   
   <url>
-    <loc>https://liabio.github.io/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/</loc>
+    <loc>https://liabio.github.io/categories/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2019-09-24T09:59:46+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://liabio.github.io/tags/%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2019-09-24T09:59:46+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liabio.github.io/categories/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2019-09-24T09:59:46+08:00</lastmod>
   </url>
   
@@ -243,12 +248,12 @@
   </url>
   
   <url>
-    <loc>https://liabio.github.io/categories/shell/</loc>
+    <loc>https://liabio.github.io/tags/shell/</loc>
     <lastmod>2019-06-20T17:50:45+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liabio.github.io/tags/shell/</loc>
+    <loc>https://liabio.github.io/categories/shell/</loc>
     <lastmod>2019-06-20T17:50:45+08:00</lastmod>
   </url>
   
@@ -268,12 +273,12 @@
   </url>
   
   <url>
-    <loc>https://liabio.github.io/tags/java/</loc>
+    <loc>https://liabio.github.io/categories/java/</loc>
     <lastmod>2019-05-20T17:50:15+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liabio.github.io/categories/java/</loc>
+    <loc>https://liabio.github.io/tags/java/</loc>
     <lastmod>2019-05-20T17:50:15+08:00</lastmod>
   </url>
   

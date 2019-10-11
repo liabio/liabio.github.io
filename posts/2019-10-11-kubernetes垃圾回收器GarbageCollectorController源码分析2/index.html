@@ -6,21 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Java发邮件 这个坑你能填吗 | 小碗汤的博客</title>
-    <meta property="og:title" content="Java发邮件 这个坑你能填吗 - 小碗汤的博客">
+    <title>kubernetes垃圾回收器Garbage Collector Controller源码分析（二） | 小碗汤的博客</title>
+    <meta property="og:title" content="kubernetes垃圾回收器Garbage Collector Controller源码分析（二） - 小碗汤的博客">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content="2019-01-02T17:38:10&#43;08:00">
+    <meta property="article:published_time" content="2019-10-11T21:21:50&#43;08:00">
         
         
-    <meta property="article:modified_time" content="2019-01-02T17:38:10&#43;08:00">
+    <meta property="article:modified_time" content="2019-10-11T21:21:50&#43;08:00">
         
 
     <meta name="Keywords" content="golang,go语言,go语言笔记,小碗汤,docker,kubernetes,k8s,java,博客,python,软件架构,公众号,小程序,Hugo,theme,maupassant">
-    <meta name="description" content="Java发邮件 这个坑你能填吗">
-        <meta name="author" content="小碗汤">
+    <meta name="description" content="kubernetes垃圾回收器Garbage Collector Controller源码分析（二）">
+        <meta name="author" content="liabio">
         
-    <meta property="og:url" content="https://liabio.github.io/posts/2019-01-02-java%E5%8F%91%E9%82%AE%E4%BB%B6-%E8%BF%99%E4%B8%AA%E5%9D%91%E4%BD%A0%E8%83%BD%E5%A1%AB%E5%90%97/">
+    <meta property="og:url" content="https://liabio.github.io/posts/2019-10-11-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%902/">
     
     <link rel="shortcut icon" href="/img/me/avatar-flowers.jpg" type="image/x-icon">
 
@@ -70,7 +70,23 @@
 <div id="body">
         
         <div id="virtual_toc_list" style="display: none">
-            
+            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#主要步骤">主要步骤</a></li>
+<li><a href="#runprocessgraphchanges处理主流程">runProcessGraphChanges处理主流程</a>
+<ul>
+<li><a href="#1-出队">1、 出队</a></li>
+<li><a href="#2-switch的第一个case">2、switch的第一个case</a></li>
+<li><a href="#3-switch的第二个case">3、switch的第二个case</a></li>
+<li><a href="#4-switch的第三个case">4、switch的第三个case</a></li>
+</ul></li>
+<li><a href="#整理流程">整理流程</a></li>
+<li><a href="#参考">参考：</a></li>
+</ul></li>
+</ul>
+</nav>
         </div>
         <div id="float_toc_div" style="margin: 10px;border: 1px solid gray;z-index:99999;display: none;">
             <header style="background-color: #f3f3f3;color: black;border-bottom: 1px solid gray;padding: 10px 10px 10px 10px;">
@@ -178,16 +194,16 @@
                 <div class="res-cons">
                     <article class="post">
                         <header>
-                            <h1 class="post-title">Java发邮件 这个坑你能填吗</h1>
+                            <h1 class="post-title">kubernetes垃圾回收器Garbage Collector Controller源码分析（二）</h1>
                         </header>
                         <date class="post-meta meta-date">
-                            2019年1月2日
+                            2019年10月11日
                         </date>
                         
                         <div class="post-meta">
                             <span>|</span>
                             
-                                <span class="meta-category"><a href="https://liabio.github.io/categories/java">java</a></span>
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/kubernetes">kubernetes</a></span>
                             
                         </div>
                         
@@ -207,100 +223,359 @@
                         
                         
                         <div class="post-content">
-                            <p>今天利用java发邮件，本地windows上测试时发送ok的，部署到服务器上却报异常，让我们走进异常，探索到底坑在哪里，并填之。</p>
+                            
 
-<p>利用outlook发邮件代码如下：</p>
+<blockquote>
+<p><strong>kubernetes版本：1.13.2</strong></p>
+</blockquote>
 
-<pre><code class="language-java">
-package com.website.service.impl;
+<p>接上一节：<a href="https://liabio.blog.csdn.net/article/details/100081941">kubernetes垃圾回收器GarbageCollector Controller源码分析（一）</a></p>
 
-import com.alibaba.fastjson.JSON;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
-import org.springframework.mail.javamail.MimeMessageHelper;
+<h2 id="主要步骤">主要步骤</h2>
 
-import javax.mail.internet.MimeMessage;
-import java.util.Properties;
+<p>GarbageCollector Controller源码主要分为以下几部分：</p>
 
-/**
-* @program: WebSite
-* @description: SpringMvc实现的发送email
-* @author: smallsoup
-* @create: 2018-06-30 20:29
-**/
-public class EmailServiceImpl {
+<ol>
+<li><p><code>monitors</code>作为生产者将变化的资源放入<code>graphChanges</code>队列；同时<code>restMapper</code>定期检测集群内资源类型，刷新<code>monitors</code></p></li>
 
-   private static final Logger LOGGER = LoggerFactory.getLogger(Test.class);
+<li><p><code>runProcessGraphChanges</code>从<code>graphChanges</code>队列中取出变化的<code>item</code>，根据情况放入<code>attemptToDelete</code>队列；</p></li>
 
-   @Autowired
-   @Qualifier(&quot;javaMailSender&quot;)
-   private JavaMailSenderImpl sender;
+<li><p><code>runProcessGraphChanges</code>从<code>graphChanges</code>队列中取出变化的<code>item</code>，根据情况放入<code>attemptToOrphan</code>队列；</p></li>
 
-   /**
-    * @方法名: sendMail
-    * @参数名：@param subject  邮件主题
-    * @参数名：@param content 邮件内容
-    * @参数名：@param to     收件人Email地址
-    * @描述语: 发送邮件
-    */
-   public void sendMailHtml(String to, String subject, String content) throws Exception {
+<li><p><code>runAttemptToDeleteWorker</code>从<code>attemptToDelete</code>队列取出，尝试删除垃圾资源；</p></li>
 
-       sender.setUsername(&quot;yourusername@outlook.com&quot;);
-       sender.setPassword(&quot;your_password&quot;);
-       sender.setPort(587);
+<li><p><code>runAttemptToOrphanWorker</code>从<code>attemptToDelete</code>队列取出，处理该孤立的资源；</p></li>
+</ol>
 
-       Properties props = new Properties();
-       props.setProperty(&quot;mail.transport.protocol&quot;, &quot;smtp&quot;);
-       props.setProperty(&quot;mail.smtp.host&quot;, &quot;smtp-mail.outlook.com&quot;);
-       props.setProperty(&quot;mail.smtp.starttls.enable&quot;, &quot;true&quot;);
-       props.setProperty(&quot;mail.smtp.auth&quot;, &quot;true&quot;);
-       props.setProperty(&quot;mail.smtp.socketFactory.class&quot;, &quot;javax.net.ssl.SSLSocketFactory&quot;);
-       props.setProperty(&quot;mail.smtp.socketFactory.port&quot;, &quot;587&quot;);
-       props.setProperty(&quot;mail.smtp.socketFactory.fallback&quot;, &quot;true&quot;);
-       props.setProperty(&quot;mail.smtp.auth.ntlm.domain&quot;, &quot;THING&quot;);
+<p><img src="https://img-blog.csdnimg.cn/20190903103422219.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saWFiaW8uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" />
+代码较复杂，便于讲的更清楚，调整了下讲解顺序。上一节分析了第1部分，本节分析第2、3部分。</p>
 
-       sender.setJavaMailProperties(props);
+<h2 id="runprocessgraphchanges处理主流程">runProcessGraphChanges处理主流程</h2>
 
-       //建立邮件消息,发送简单邮件和html邮件的区别
-       MimeMessage mailMessage = sender.createMimeMessage();
-       MimeMessageHelper messageHelper = new MimeMessageHelper(mailMessage);
+<p>来到源码k8s.io\kubernetes\pkg\controller\garbagecollector\graph_builder.go中，runProcessGraphChanges中一直死循环处理变化的资源对象：</p>
 
-       messageHelper.setFrom(&quot;smallsoup@outlook.com&quot;);
-
-       //用于接收邮件的邮箱
-       messageHelper.setTo(to);
-       //邮件的主题
-       messageHelper.setSubject(subject);
-       //邮件的正文，第二个boolean类型的参数代表html格式
-       messageHelper.setText(content, true);
-
-       LOGGER.info(&quot;----------sendMailHtml-----------------&quot;);
-       LOGGER.info(&quot;----------mailMessage is------------FROM:{}, Subject:{}, content:{}, AllRecipients:{}&quot;, mailMessage.getFrom(), mailMessage.getSubject(), mailMessage.getContent(), JSON.toJSONString(mailMessage.getAllRecipients()));
-       //发送
-       sender.send(mailMessage);
-   }
+<pre><code class="language-go">func (gb *GraphBuilder) runProcessGraphChanges() {
+	for gb.processGraphChanges() {
+	}
 }
 </code></pre>
 
-<p>上面的代码打包在本地tomcat上运行，可以发送邮件成功。但是将war包部署到亚马逊云服务器上发送邮件报错：</p>
+<p>一个协程一直循环从graphChanges队列中获取变化的资源对象，更新图形，填充dirty_queue。(graphChanges队列里数据来源于各个资源的monitors监听资源变化回调addFunc、updateFunc、deleteFunc)</p>
 
-<p><img src="https://upload-images.jianshu.io/upload_images/9134763-a54c0c365a4a94c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" /></p>
+<pre><code class="language-go">// Dequeueing an event from graphChanges, updating graph, populating dirty_queue.
+//从graphChanges中获取事件，更新图形，填充dirty_queue。(graphChanges队列里数据来源于各个资源的monitors监听资源变化回调addFunc、updateFunc、deleteFunc)
+func (gb *GraphBuilder) processGraphChanges() bool {
+	item, quit := gb.graphChanges.Get()
+	if quit {
+		return false
+	}
+	defer gb.graphChanges.Done(item)
+	event, ok := item.(*event)
+	if !ok {
+		utilruntime.HandleError(fmt.Errorf(&quot;expect a *event, got %v&quot;, item))
+		return true
+	}
+	obj := event.obj
+	//获取该变化资源obj的accessor
+	accessor, err := meta.Accessor(obj)
+	if err != nil {
+		utilruntime.HandleError(fmt.Errorf(&quot;cannot access obj: %v&quot;, err))
+		return true
+	}
+	klog.V(5).Infof(&quot;GraphBuilder process object: %s/%s, namespace %s, name %s, uid %s, event type %v&quot;, event.gvk.GroupVersion().String(), event.gvk.Kind, accessor.GetNamespace(), accessor.GetName(), string(accessor.GetUID()), event.eventType)
+	// Check if the node already exists
+	// 检查节点是否已存在
+	//根据该变化资源obj的UID
+	//uidToNode维护着资源对象依赖关系图表结构
+	existingNode, found := gb.uidToNode.Read(accessor.GetUID())
+	if found {
+		// this marks the node as having been observed via an informer event
+		// 1. this depends on graphChanges only containing add/update events from the actual informer
+		// 2. this allows things tracking virtual nodes' existence to stop polling and rely on informer events
+	    //这标志着节点已经通过informer事件
+		// 1.进行了观察。这取决于仅包含来自实际informer的添加/更新事件的graphChange
+		// 2.这允许跟踪虚拟节点的存在以停止轮询和依赖informer事件
+		existingNode.markObserved()
+	}
+	switch {
+	//gc第一次运行时，uidToNode尚且没有初始化资源对象依赖关系图表结构，所以found为false，会新增节点
+	case (event.eventType == addEvent || event.eventType == updateEvent) &amp;&amp; !found:
+		newNode := &amp;node{
+			identity: objectReference{
+				OwnerReference: metav1.OwnerReference{
+					APIVersion: event.gvk.GroupVersion().String(),
+					Kind:       event.gvk.Kind,
+					UID:        accessor.GetUID(),
+					Name:       accessor.GetName(),
+				},
+				Namespace: accessor.GetNamespace(),
+			},
+			dependents:         make(map[*node]struct{}),
+			owners:             accessor.GetOwnerReferences(),
+			deletingDependents: beingDeleted(accessor) &amp;&amp; hasDeleteDependentsFinalizer(accessor),
+			beingDeleted:       beingDeleted(accessor),
+		}
+		gb.insertNode(newNode)
+		// the underlying delta_fifo may combine a creation and a deletion into
+		// one event, so we need to further process the event.
+		//底层delta_fifo可以将创建和删除组合成一个事件，因此我们需要进一步处理事件。
+		gb.processTransitions(event.oldObj, accessor, newNode)
+	//uidToNode已经初始化资源对象依赖关系图表结构，所以found为true
+	case (event.eventType == addEvent || event.eventType == updateEvent) &amp;&amp; found:
+		// handle changes in ownerReferences
+		//处理ownerReferences中的更改
+		added, removed, changed := referencesDiffs(existingNode.owners, accessor.GetOwnerReferences())
+		if len(added) != 0 || len(removed) != 0 || len(changed) != 0 {
+			// check if the changed dependency graph unblock owners that are
+			// waiting for the deletion of their dependents.
+			//检查更改的依赖关系图是否取消阻止等待删除其依赖项的所有者。
+			gb.addUnblockedOwnersToDeleteQueue(removed, changed)
+			// update the node itself
+			//更新node的owner
+			existingNode.owners = accessor.GetOwnerReferences()
+			// Add the node to its new owners' dependent lists.
+			//给新owner添加依赖资源列表
+			gb.addDependentToOwners(existingNode, added)
+			// remove the node from the dependent list of node that are no longer in
+			// the node's owners list.
+			//从不再属于该资源owner列表中删除该节点。
+			gb.removeDependentFromOwners(existingNode, removed)
+		}
 
-<p>网上说是由于用户名和密码不正确导致验证失败。但是这不能解释本地能发出去邮件的事实。继续排查、google，实在找不到解决办法。那就试着登陆下outlook邮件看能不能登进去，登陆正常，有一封最近的一次登录存在某些异常的邮件。
-<img src="https://upload-images.jianshu.io/upload_images/9134763-0f0eaae1ec3b9e78.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" /></p>
+		// 该对象正在被删除中
+		if beingDeleted(accessor) {
+			existingNode.markBeingDeleted()
+		}
+		gb.processTransitions(event.oldObj, accessor, existingNode)
+	//处理资源对象被删除的场景，涉及垃圾。比如，owner被删除，其依赖资源（从资源）也需要被删除掉，除非设置了Orphan
+	case event.eventType == deleteEvent:
+		if !found {
+			klog.V(5).Infof(&quot;%v doesn't exist in the graph, this shouldn't happen&quot;, accessor.GetUID())
+			return true
+		}
+		// 从图标中移除item资源，同时遍历owners，移除owner下的item资源
+		gb.removeNode(existingNode)
+		existingNode.dependentsLock.RLock()
+		defer existingNode.dependentsLock.RUnlock()
+		//如果该资源的从资源数大于0,则将该资源被删除信息加入absentOwnerCache缓存
+		if len(existingNode.dependents) &gt; 0 {
+			gb.absentOwnerCache.Add(accessor.GetUID())
+		}
+		//遍历该资源的从资源加到删除队列里
+		for dep := range existingNode.dependents {
+			gb.attemptToDelete.Add(dep)
+		}
+		for _, owner := range existingNode.owners {
+			ownerNode, found := gb.uidToNode.Read(owner.UID)
+			//owner没发现 或者 owner的从资源不是正在被删除(只有该资源对象的终结器为foregroundDeletion Finalizer时deletingDependents被设为true,因为后台删除owner直接被删除,不会被其从资源block,故这里都不需要去尝试删除owner了)
+			if !found || !ownerNode.isDeletingDependents() {
+				continue
+			}
+			
+			// 这是让attempToDeleteItem检查是否删除了owner的依赖项，如果是，则删除所有者。
+			gb.attemptToDelete.Add(ownerNode)
+		}
+	}
+	return true
+}
+</code></pre>
 
-<p>然后点击查看最新活动状态。异常显示最近一次登陆在美国。</p>
+<p>该方法功能主要将对象、owner、从资源加入到attemptToDelete或attemptToOrphan。</p>
 
-<p><img src="https://upload-images.jianshu.io/upload_images/9134763-5c4494072b3d3863.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" /></p>
+<h3 id="1-出队">1、 出队</h3>
 
-<p>这么一来就知道问题了，由于亚马逊云实际位置在美国，所以发邮件时相当于在异地登陆被拒绝。当点击了“是我本人”之后，重新发邮件，就发出去了。</p>
+<p>从graphChanges队列取出资源对象，从GraphBuilder.uidToNode中读取该资源节点（uidToNode维护着资源对象依赖关系图表结构），found为true时表示图表存在该资源节点；</p>
 
-<p><img src="https://upload-images.jianshu.io/upload_images/9134763-70db00b487b761b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png" /></p>
+<h3 id="2-switch的第一个case">2、switch的第一个case</h3>
 
-<p>之所以不用163发邮件，是因为本地部署也可以发出去，放到服务器上也发不出，报554 DT:SPM 163 smtp3，网上说是因为邮件主题和正文中又非法字符导致，目前还没解决，之后再填此坑。</p>
+<p>如果该资源是新增或者更新触发，且该资源对象不存在于图表中，gb.uidToNode.Write(n)会将其写入图标；
+gb.insertNode(newNode)中的gb.addDependentToOwners(n, n.owners)方法则会遍历该资源的owner，如果其owner不存在于图标中，则新增owner的虚拟节点到图标中，并将该资源和owner产生关联。如果owner不存在时，则尝试将owner加入到attemptToDelete队列中去；</p>
+
+<pre><code class="language-go">// addDependentToOwners将n添加到所有者的从属列表中。如果所有者不存在于gb.uidToNode中，则将创建&quot;虚拟&quot;节点以表示
+// 所有者。 &quot;虚拟&quot;节点将入队到attemptToDelete，因此
+// attemptToDeleteItem()将根据API服务器验证所有者是否存在。
+func (gb *GraphBuilder) addDependentToOwners(n *node, owners []metav1.OwnerReference) {
+	//遍历owner
+	for _, owner := range owners {
+		//获取owner node如果不存在于图中,则加虚拟owner节点
+		ownerNode, ok := gb.uidToNode.Read(owner.UID)
+		if !ok {
+			// Create a &quot;virtual&quot; node in the graph for the owner if it doesn't
+			// exist in the graph yet.
+			//如果图形中尚未存在，则在图表中为所有者创建“虚拟”节点。
+			ownerNode = &amp;node{
+				identity: objectReference{
+					OwnerReference: owner,
+					Namespace:      n.identity.Namespace,
+				},
+				dependents: make(map[*node]struct{}),
+				virtual:    true,
+			}
+			klog.V(5).Infof(&quot;add virtual node.identity: %s\n\n&quot;, ownerNode.identity)
+			gb.uidToNode.Write(ownerNode)
+		}
+		//给owner加该资源作为依赖
+		ownerNode.addDependent(n)
+		//owner不存在于图中时，才往删除队列添加
+		if !ok {
+			// Enqueue the virtual node into attemptToDelete.
+			// The garbage processor will enqueue a virtual delete
+			// event to delete it from the graph if API server confirms this
+			// owner doesn't exist.
+			//将虚拟节点排入attemptToDelete。
+			// 如果API服务器确认owner不存在，垃圾处理器将排队虚拟删除事件以将其从图中删除。
+			gb.attemptToDelete.Add(ownerNode)
+		}
+	}
+}
+
+</code></pre>
+
+<p>gb.processTransitions方法：
+新item正在被删,旧item没开始被删除,且终结器为Orphan Finalizer加入到attemptToOrphan队列；
+新item正在被删,旧item没开始被删除,且终结器为foregroundDeletion Finalizer，则加入到attemptToDelete队列。</p>
+
+<pre><code class="language-go">func (gb *GraphBuilder) processTransitions(oldObj interface{}, newAccessor metav1.Object, n *node) {
+	//新的正在被删,旧的没开始被删除,且终结器为Orphan Finalizer
+	if startsWaitingForDependentsOrphaned(oldObj, newAccessor) {
+		klog.V(5).Infof(&quot;add %s to the attemptToOrphan&quot;, n.identity)
+		//加入到Orphan队列
+		gb.attemptToOrphan.Add(n)
+		return
+	}
+
+	//新的正在被删,旧的没开始被删除,且终结器为foregroundDeletion Finalizer
+	if startsWaitingForDependentsDeleted(oldObj, newAccessor) {
+		klog.V(2).Infof(&quot;add %s to the attemptToDelete, because it's waiting for its dependents to be deleted&quot;, n.identity)
+		// if the n is added as a &quot;virtual&quot; node, its deletingDependents field is not properly set, so always set it here.
+		n.markDeletingDependents()
+		for dep := range n.dependents {
+			gb.attemptToDelete.Add(dep)
+		}
+		gb.attemptToDelete.Add(n)
+	}
+}
+</code></pre>
+
+<h3 id="3-switch的第二个case">3、switch的第二个case</h3>
+
+<p>如果该资源是新增或者更新触发，且该资源对象存在于图表中。对比owneReferences是否有变更，referencesDiffs方法里会根据uid对比，added表示新owner里有,旧owner里没有的, removed表示旧owner里有,新owner里没有的, changed表示相同uid的owner不deepEqual的。</p>
+
+<pre><code class="language-go">func referencesDiffs(old []metav1.OwnerReference, new []metav1.OwnerReference) (added []metav1.OwnerReference, removed []metav1.OwnerReference, changed []ownerRefPair) {
+	//key为uid, value为OwnerReference
+	oldUIDToRef := make(map[string]metav1.OwnerReference)
+	for _, value := range old {
+		oldUIDToRef[string(value.UID)] = value
+	}
+	oldUIDSet := sets.StringKeySet(oldUIDToRef)
+
+	//key为uid, value为OwnerReference
+	newUIDToRef := make(map[string]metav1.OwnerReference)
+	for _, value := range new {
+		newUIDToRef[string(value.UID)] = value
+	}
+	newUIDSet := sets.StringKeySet(newUIDToRef)
+
+	//新的里有,旧的里没有的为新增(根据uid判断)
+	addedUID := newUIDSet.Difference(oldUIDSet)
+
+	//旧的里有,新的里没有的为删除(根据uid判断)
+	removedUID := oldUIDSet.Difference(newUIDSet)
+
+	//取交集, 旧的和新的里都有的owner(根据uid判断)
+	intersection := oldUIDSet.Intersection(newUIDSet)
+
+	for uid := range addedUID {
+		added = append(added, newUIDToRef[uid])
+	}
+	for uid := range removedUID {
+		removed = append(removed, oldUIDToRef[uid])
+	}
+
+	//根据uid判断,两个uid相等的OwnerReference是否deepEqual,不等则加到changed
+	for uid := range intersection {
+		if !reflect.DeepEqual(oldUIDToRef[uid], newUIDToRef[uid]) {
+			changed = append(changed, ownerRefPair{oldRef: oldUIDToRef[uid], newRef: newUIDToRef[uid]})
+		}
+	}
+	return added, removed, changed
+}
+</code></pre>
+
+<p>整体来说，owner发生变化，addUnblockedOwnersToDeleteQueue方法会判断：如果阻塞ownerReference指向某个对象被删除，或者设置为<code>BlockOwnerDeletion=false</code>，则将该对象添加到attemptToDelete队列；</p>
+
+<pre><code class="language-go">// if an blocking ownerReference points to an object gets removed, or gets set to
+// &quot;BlockOwnerDeletion=false&quot;, add the object to the attemptToDelete queue.
+//如果阻塞ownerReference指向某个对象被删除，或者设置为
+// &quot;BlockOwnerDeletion = false&quot;，则将该对象添加到attemptToDelete队列。
+func (gb *GraphBuilder) addUnblockedOwnersToDeleteQueue(removed []metav1.OwnerReference, changed []ownerRefPair) {
+	for _, ref := range removed {
+		//被移除的OwnersReferences,BlockOwnerDeletion为true
+		if ref.BlockOwnerDeletion != nil &amp;&amp; *ref.BlockOwnerDeletion {
+			//依赖图表中发现,则加入删除队列
+			node, found := gb.uidToNode.Read(ref.UID)
+			if !found {
+				klog.V(5).Infof(&quot;cannot find %s in uidToNode&quot;, ref.UID)
+				continue
+			}
+			//加入尝试删除队列删除这个owner
+			gb.attemptToDelete.Add(node)
+		}
+	}
+
+	// Owners存在且发生变化,旧的BlockOwnerDeletion为true, 新的BlockOwnerDeletion为空或者BlockOwnerDeletion为false则删除owner(父节点)
+	for _, c := range changed {
+		wasBlocked := c.oldRef.BlockOwnerDeletion != nil &amp;&amp; *c.oldRef.BlockOwnerDeletion
+		isUnblocked := c.newRef.BlockOwnerDeletion == nil || (c.newRef.BlockOwnerDeletion != nil &amp;&amp; !*c.newRef.BlockOwnerDeletion)
+		if wasBlocked &amp;&amp; isUnblocked {
+			node, found := gb.uidToNode.Read(c.newRef.UID)
+			if !found {
+				klog.V(5).Infof(&quot;cannot find %s in uidToNode&quot;, c.newRef.UID)
+				continue
+			}
+			gb.attemptToDelete.Add(node)
+		}
+	}
+}
+</code></pre>
+
+<p>更新node的owner；
+在依赖图表中给新owner添加该node；
+在依赖图表中,被删除的owner列表下删除该节点。</p>
+
+<p>gb.processTransitions方法：
+新item正在被删,旧item没开始被删除,且终结器为Orphan Finalizer加入到attemptToOrphan队列；
+新item正在被删,旧item没开始被删除,且终结器为foregroundDeletion Finalizer，则加入到attemptToDelete队列。</p>
+
+<p>gb.processTransitions方法：
+新item正在被删,旧item没开始被删除,且终结器为Orphan Finalizer加入到attemptToOrphan队列；
+新item正在被删,旧item没开始被删除,且终结器为foregroundDeletion Finalizer，则加入到attemptToDelete队列。</p>
+
+<h3 id="4-switch的第三个case">4、switch的第三个case</h3>
+
+<p>如果该资源是删除时触发，从图表中移除item资源，同时遍历owners，移除owner下的item资源；
+如果该资源的从资源数大于0,则将该资源被删除信息（uid）加入absentOwnerCache缓存，这样处理该资源的从资源时，就知道owner不存在了。
+遍历该资源的从资源加到删除队列里；
+如果从图表中发现 owner或者 owner的从资源正在被删除，则尝试将owner加入到attemptToDelete队列中，去尝试删除owner。</p>
+
+<h2 id="整理流程">整理流程</h2>
+
+<ul>
+<li>当controllermanager重启时，会全量listwatch一遍所有对象，gc collector维护的uidToNode图表里各个资源对象node是不存在的，此时会走第一个switch case，构建完整关系图表，如果owner不存在则先构建虚拟owner节点，同时加入attemptToDelete队列，尝试去删除这个owner，其实即使加入到attemptToDelete队列，也不一定会被删除，还会进行一系列判断，这个下一节再分析；将正在删除的资源，同时Finalizer为Orphan的加入到attemptToOrphan队列；为foreground的资源以及其从资源加入到attemptToDelete队列，并将deletingDependents设置为true；</li>
+<li>添加或者更新事件时，且图表中存在item资源对象时，会走第二个switch case，对item的owner变化进行判断，并维护更新图表；同理将正在删除的资源，同时Finalizer为Orphan的加入到attemptToOrphan队列；Finalizer为foreground的资源以及其从资源加入到attemptToDelete队列，并将deletingDependents设置为true；</li>
+<li>如果是删除事件，则会更新图表，并处理和其相关的从资源和其owner加入到attemptToDelete队列。</li>
+</ul>
+
+<h2 id="参考">参考：</h2>
+
+<p>k8s官方文档garbage-collection英文版：
+<a href="https://kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/">https://kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/</a></p>
+
+<p>依赖图标生成库gonum Api文档：
+<a href="https://godoc.org/gonum.org/v1/gonum/graph">https://godoc.org/gonum.org/v1/gonum/graph</a></p>
+
+<p>graphviz下载：
+<a href="https://graphviz.gitlab.io/_pages/Download/Download_windows.html">https://graphviz.gitlab.io/_pages/Download/Download_windows.html</a></p>
 
                         </div>
 
@@ -335,7 +610,7 @@ public class EmailServiceImpl {
 <div class="post-archive">
     <ul class="post-copyright">
         <li><strong>原文作者：</strong><a rel="author" href="https://liabio.github.io">小碗汤</a></li>
-        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://liabio.github.io/posts/2019-01-02-java%E5%8F%91%E9%82%AE%E4%BB%B6-%E8%BF%99%E4%B8%AA%E5%9D%91%E4%BD%A0%E8%83%BD%E5%A1%AB%E5%90%97/">https://liabio.github.io/posts/2019-01-02-java%E5%8F%91%E9%82%AE%E4%BB%B6-%E8%BF%99%E4%B8%AA%E5%9D%91%E4%BD%A0%E8%83%BD%E5%A1%AB%E5%90%97/</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://liabio.github.io/posts/2019-10-11-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%902/">https://liabio.github.io/posts/2019-10-11-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%902/</a></li>
         <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
     </ul>
 </div>
@@ -349,15 +624,15 @@ public class EmailServiceImpl {
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="/posts/2018-12-25-SpringMVC%E5%AE%9E%E7%8E%B0%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/">SpringMVC实现发送邮件</a></li>
+        <li><a href="/posts/2019-09-24-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%901/">kubernetes垃圾回收器GarbageCollector Controller源码分析（一）</a></li>
         
-        <li><a href="/posts/2018-12-12-java%E5%8F%91%E9%80%81html%E6%A8%A1%E6%9D%BF%E7%9A%84%E9%AB%98%E9%80%BC%E6%A0%BC%E9%82%AE%E4%BB%B6/">Java发送html模板的高逼格邮件</a></li>
+        <li><a href="/posts/2019-10-10-%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4k8s-pvc-pv/">如何批量删除k8s资源对象</a></li>
         
-        <li><a href="/posts/2018-12-04-Javamail%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/">Javamail发送邮件</a></li>
+        <li><a href="/posts/2019-09-30-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/">kubernetes自定义资源对象高级功能</a></li>
         
-        <li><a href="/posts/2019-01-01-vmware%E4%B8%8A%E5%AE%89%E8%A3%85linux%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/">Vmware上安装linux过程记录</a></li>
+        <li><a href="/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/">etcd操作</a></li>
         
-        <li><a href="/posts/2018-12-27-java%E5%9B%BE%E5%BD%A2%E9%AA%8C%E8%AF%81%E7%A0%81%E5%AE%9E%E7%8E%B0/">Java图形验证码实现</a></li>
+        <li><a href="/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/">k8s中部署负载均衡器ingress-nginx</a></li>
         
     </ul>
 </div>
@@ -367,7 +642,11 @@ public class EmailServiceImpl {
                             
                             <ul class="clearfix">
                                 
-                                <li><a href="https://liabio.github.io/tags/email">email</a></li>
+                                <li><a href="https://liabio.github.io/tags/kubernetes">kubernetes</a></li>
+                                
+                                <li><a href="https://liabio.github.io/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8">垃圾回收器</a></li>
+                                
+                                <li><a href="https://liabio.github.io/tags/garbageCollector">garbageCollector</a></li>
                                 
                             </ul>
                             

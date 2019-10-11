@@ -68,6 +68,29 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
+                                    <a href="https://liabio.github.io/posts/2018-12-20-elasticsearch6-2-4%E6%8F%92%E4%BB%B6head%E5%AE%89%E8%A3%85/" title="Elasticsearch6.2.4插件head安装" >Elasticsearch6.2.4插件head安装</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2018年12月20日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/elasticsearch">elasticsearch</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                安装nodejs： https://nodejs.org/en/download/current/ 以windows64为例，下载msi文件： 安装时，安装目录选择D盘，一路下一步即可。 安装完成，在cmd里执行node -v，成功回显版本号表示nodejs安装成功： 安装grunt： npm install -g grunt-cli grunt -version 开始安装head 在https:……
+                            </div>
+                            <p class="readmore"><a href="https://liabio.github.io/posts/2018-12-20-elasticsearch6-2-4%E6%8F%92%E4%BB%B6head%E5%AE%89%E8%A3%85/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
                                     <a href="https://liabio.github.io/posts/2018-12-19-CentosLinux%E4%BD%BF%E7%94%A8Yum%E5%AE%89%E8%A3%85Go%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/" title="Centos Linux使用Yum安装Go和配置环境" >Centos Linux使用Yum安装Go和配置环境</a>
                                 </h1>
                             </header>
@@ -157,29 +180,6 @@
                                 最近做了一个监测k8s服务pod水平伸缩发送邮件的功能（当pod的cpu/内存达到指定阈值后会水平扩展出多个pod、或者指定时间内pod数应扩展到指定数量），一开始写了个格式很low的邮件，像下面这样： 主流程打通，算个v1版本吧，程序员是个……
                             </div>
                             <p class="readmore"><a href="https://liabio.github.io/posts/2018-12-12-java%E5%8F%91%E9%80%81html%E6%A8%A1%E6%9D%BF%E7%9A%84%E9%AB%98%E9%80%BC%E6%A0%BC%E9%82%AE%E4%BB%B6/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://liabio.github.io/posts/2018-12-04-Javamail%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/" title="Javamail发送邮件" >Javamail发送邮件</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2018年12月4日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://liabio.github.io/categories/java">java</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                这几篇文章写的就挺好了，传送过去看看吧： 1、 使用JavaMail创建邮件和发送邮件 可能遇到的问题： 1、因为端口号问题导致的错误： javax.mail.MessagingException: Exception reading response; nested exception is: java.net.SocketTimeoutException: Read timed out javax.mail.MessagingException: Exception reading response; nested exception is: java.net.SocketTimeoutException: Read timed out at com.sun.mail.smtp.SMTPTransport.readServerResponse(SMTPTransport.java:2210) at com.sun.mail.smtp.SMTPTransport.openServer(SMTPTransport.java:1950) at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:642) at javax.mail.Service.connect(Service.java:317) at javax.mail.Service.connect(Service.java:176) at javax.mail.Service.connect(Service.java:125) at javax.mail.Transport.send0(Transport.java:194) at javax.mail.Transport.send(Transport.java:124) 问题和解决这里可以看到，把port configuration……
-                            </div>
-                            <p class="readmore"><a href="https://liabio.github.io/posts/2018-12-04-Javamail%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/">阅读全文</a></p>
                         </article>
                     
                     
@@ -294,6 +294,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://liabio.github.io/posts/2019-10-11-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%902/" title="kubernetes垃圾回收器Garbage Collector Controller源码分析（二）">kubernetes垃圾回收器Garbage Collector Controller源码分析（二）</a>
+    </li>
+    
+    <li>
         <a href="https://liabio.github.io/posts/2019-10-10-%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4k8s-pvc-pv/" title="如何批量删除k8s资源对象">如何批量删除k8s资源对象</a>
     </li>
     
@@ -327,10 +331,6 @@
     
     <li>
         <a href="https://liabio.github.io/posts/2019-09-24-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%901/" title="kubernetes垃圾回收器GarbageCollector Controller源码分析（一）">kubernetes垃圾回收器GarbageCollector Controller源码分析（一）</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/" title="一次socket.error: [Errno 99] Cannot assign requested address报错排查">一次socket.error: [Errno 99] Cannot assign requested address报错排查</a>
     </li>
     
 </ul>
@@ -446,7 +446,7 @@
     </li>
     
     <li>
-        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(16)</a>
+        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(17)</a>
     </li>
     
     <li>

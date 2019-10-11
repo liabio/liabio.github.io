@@ -68,6 +68,29 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
+                                    <a href="https://liabio.github.io/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/" title="docker镜像制作必备技能" >docker镜像制作必备技能</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年9月24日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/docker">docker</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                正文 使用过docker的都知道dockerfile，其用于定义制作镜像的流程，由一系列命令和参数构成的脚本，这些命令应用于基础镜像并最终创建一个新的镜像。可参考往期文章学习：docker基础知识整理 有时候，我们想在原有镜像基础上修改、增加文……
+                            </div>
+                            <p class="readmore"><a href="https://liabio.github.io/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
                                     <a href="https://liabio.github.io/posts/2019-09-24-git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" title="git常用操作" >git常用操作</a>
                                 </h1>
                             </header>
@@ -163,31 +186,6 @@
                             <p class="readmore"><a href="https://liabio.github.io/posts/2019-09-24-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%901/">阅读全文</a></p>
                         </article>
                     
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://liabio.github.io/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/" title="一次socket.error: [Errno 99] Cannot assign requested address报错排查" >一次socket.error: [Errno 99] Cannot assign requested address报错排查</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年9月24日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://liabio.github.io/categories/debug">debug</a></span>
-                                
-                                <span class="meta-category"><a href="https://liabio.github.io/categories/%E5%B7%A5%E5%85%B7">工具</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                今天在Ucloud国际版的机器上配置某个不可描述的服务时，遇到了 socket.error: [Errno 99] Cannot assign requested address 的错误，详细如下： [root@liabio ~]# docker logs c0c34ba49967 2019-07-15 00:02:26 INFO loading libcrypto from libcrypto.so.1.0.0 2019-07-15 00:02:26 INFO starting server at 128.1.132.124:8002 Traceback (most recent call last): File &quot;/usr/local/bin/ssserver&quot;, line 11, in &lt;module&gt; sys.exit(main()) File &quot;/usr/local/lib/python2.7/dist-packages/shadowsocks/server.py&quot;, line 68, in main tcp_servers.append(tcprelay.TCPRelay(a_config, dns_resolver, False)) File &quot;/usr/local/lib/python2.7/dist-packages/shadowsocks/tcprelay.py&quot;, line 582, in __init__ server_socket.bind(sa) File &quot;/usr/lib/python2.7/socket.py&quot;, line 228, in meth return getattr(self._sock,name)(*args) socket.error: [Errno 99] Cannot assign requested address 原先以为是resol……
-                            </div>
-                            <p class="readmore"><a href="https://liabio.github.io/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/">阅读全文</a></p>
-                        </article>
-                    
                     
 
 
@@ -279,6 +277,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://liabio.github.io/posts/2019-10-11-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%902/" title="kubernetes垃圾回收器Garbage Collector Controller源码分析（二）">kubernetes垃圾回收器Garbage Collector Controller源码分析（二）</a>
+    </li>
+    
+    <li>
         <a href="https://liabio.github.io/posts/2019-10-10-%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4k8s-pvc-pv/" title="如何批量删除k8s资源对象">如何批量删除k8s资源对象</a>
     </li>
     
@@ -312,10 +314,6 @@
     
     <li>
         <a href="https://liabio.github.io/posts/2019-09-24-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%901/" title="kubernetes垃圾回收器GarbageCollector Controller源码分析（一）">kubernetes垃圾回收器GarbageCollector Controller源码分析（一）</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/" title="一次socket.error: [Errno 99] Cannot assign requested address报错排查">一次socket.error: [Errno 99] Cannot assign requested address报错排查</a>
     </li>
     
 </ul>
@@ -431,7 +429,7 @@
     </li>
     
     <li>
-        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(16)</a>
+        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(17)</a>
     </li>
     
     <li>

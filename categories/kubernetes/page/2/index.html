@@ -81,6 +81,29 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
+                                    <a href="https://liabio.github.io/posts/2019-09-24-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%901/">kubernetes垃圾回收器GarbageCollector Controller源码分析（一）</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年9月24日
+                            </date>
+                            
+                            <div class="post-meta meta-category">
+                                |
+                                
+                                    <a href="https://liabio.github.io/categories/kubernetes">kubernetes</a>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                kubernetes版本：1.13.2 背景 由于operator创建的redis集群，在kubernetes apiserver重启后，redis集群被异常删除（包括redis exporter statefulset、redis statefulset）。删除后……
+                                <p class="readmore"><a href="https://liabio.github.io/posts/2019-09-24-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%901/">阅读全文</a></p>
+                            </div>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
                                     <a href="https://liabio.github.io/posts/2019-09-24-%E9%87%87%E5%9D%91%E6%8C%87%E5%8D%97-k8s%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90coredns%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/">采坑指南——k8s域名解析coredns问题排查过程</a>
                                 </h1>
                             </header>
@@ -174,29 +197,6 @@
                             </div>
                         </article>
                     
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://liabio.github.io/posts/2018-12-13-pod%E8%B0%83%E5%BA%A6%E5%88%B0%E9%9B%86%E7%BE%A4%E4%B8%AD%E6%9F%90node%E8%8A%82%E7%82%B9%E5%A4%B1%E8%B4%A5/">Pod调度到集群中某node节点失败</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2018年12月13日
-                            </date>
-                            
-                            <div class="post-meta meta-category">
-                                |
-                                
-                                    <a href="https://liabio.github.io/categories/kubernetes">kubernetes</a>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                Fixing rpc.statd is not running but is required for remote locking If you come across this error while attempting to mount an NFS filesystem it means that the statd process is not running. mount -a -t nfs mount.nfs: rpc.statd is not running but is required for remote locking. mount.nfs: Either use '-o nolock' to keep locks local, or start statd. mount.nfs: an incorrect mount option was specified Here’s how to fix the rpc.statd is not running error on el6 First, ensure that rpcbind is running and that it is set to start on boot /etc/init.d/rpcbind start Starting rpcbind: [ OK ] chkconfig rpcbind on Then, start the nfslock service /etc/init.d/nfslock start Starting NFS statd: [……
-                                <p class="readmore"><a href="https://liabio.github.io/posts/2018-12-13-pod%E8%B0%83%E5%BA%A6%E5%88%B0%E9%9B%86%E7%BE%A4%E4%B8%AD%E6%9F%90node%E8%8A%82%E7%82%B9%E5%A4%B1%E8%B4%A5/">阅读全文</a></p>
-                            </div>
-                        </article>
-                    
 
                     
 
@@ -254,6 +254,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://liabio.github.io/posts/2019-10-11-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%902/" title="kubernetes垃圾回收器Garbage Collector Controller源码分析（二）">kubernetes垃圾回收器Garbage Collector Controller源码分析（二）</a>
+    </li>
+    
+    <li>
         <a href="https://liabio.github.io/posts/2019-10-10-%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4k8s-pvc-pv/" title="如何批量删除k8s资源对象">如何批量删除k8s资源对象</a>
     </li>
     
@@ -287,10 +291,6 @@
     
     <li>
         <a href="https://liabio.github.io/posts/2019-09-24-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%901/" title="kubernetes垃圾回收器GarbageCollector Controller源码分析（一）">kubernetes垃圾回收器GarbageCollector Controller源码分析（一）</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/" title="一次socket.error: [Errno 99] Cannot assign requested address报错排查">一次socket.error: [Errno 99] Cannot assign requested address报错排查</a>
     </li>
     
 </ul>
@@ -406,7 +406,7 @@
     </li>
     
     <li>
-        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(16)</a>
+        <a href="https://liabio.github.io/categories/kubernetes/">kubernetes(17)</a>
     </li>
     
     <li>
