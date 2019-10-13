@@ -68,6 +68,29 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
+                                    <a href="https://liabio.github.io/posts/2018-11-15-docker%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93/" title="Docker镜像仓库" >Docker镜像仓库</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2018年11月15日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/docker">docker</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                公有仓库和私有仓库： 速度：公有仓库走的公网，速度较慢；私有仓库走的是内网，即局域网； 安全性：公有仓库存放在公共硬盘上；私有仓库存在自己服务器硬盘上。 公有仓： 最权威的，但速度比较慢： https://hub.docker.com/ 首先登陆： $ docker login -usmallsoup Password: WARNING! Your password will be stored unencrypted in /root/.docker/config.json. Configure a credential helper to remove this warning. See https://docs.docker.com/engine/reference/commandline/login/#credentials-store……
+                            </div>
+                            <p class="readmore"><a href="https://liabio.github.io/posts/2018-11-15-docker%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
                                     <a href="https://liabio.github.io/posts/2018-11-14-%E6%90%AD%E5%BB%BAk8s%E9%9B%86%E7%BE%A4%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" title="搭建k8s集群遇到的问题" >搭建k8s集群遇到的问题</a>
                                 </h1>
                             </header>
@@ -157,29 +180,6 @@
                                 摘要： 随着17.05版本的发布，Docker对于镜像构建这块也作了一项重要更新，那就是 multi-stage build（多阶段构建），这对于长期因为构建镜像太大而困扰的小伙伴们来说真是雪中送炭。 随着17.05版本的发布，Docker对于镜像构建这块也作了一项重……
                             </div>
                             <p class="readmore"><a href="https://liabio.github.io/posts/2018-11-11-DockerMulti-stageBuild%E6%9C%BA%E5%88%B6/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://liabio.github.io/posts/2018-11-02-k8s%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E7%B1%BB%E5%9E%8B%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90/" title="kubernetes自定义资源类型代码自动生成" >kubernetes自定义资源类型代码自动生成</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2018年11月2日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://liabio.github.io/categories/kubernetes">kubernetes</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                用以下命令生成代码： ./generate-groups.sh all &quot;github.com/openshift-evangelist/crd-code-generation/pkg/client&quot; &quot;github.com/openshift-evangelist/crd-code-generation/pkg/apis&quot; &quot;ingressgroup:v1&quot; 第一个报错 生成代码报错： Generating deepcopy funcs F0910 19:18:35.552948 12153 main.go:82] Error: Failed making a parser: unable to add directory &quot;github.com/openshift-evangelist/crd-code-generation/pkg/client&quot;: unable to import &quot;github.com/asdfsx/getkubeconfig/pkg/apis/example/v1&quot;: cannot find package &quot;github.com/openshift-evangelist/crd-code-generation/pkg/client&quot; in any of: D:/Program Files/Go/go103/src/github.com/openshift-evangelist/crd-code-generation/pkg/client (from $GOROOT) D:/SoftwareAndProgram/program/Go/Development/src/github.com/openshift-evangelist/crd-code-generation/pkg/client (from $GOPATH) 这个问题可以参考issue 可以参考这个文章： https://medium.com/@trstringer/create-kubernetes-controllers-for-core-and-custom-resources-62fc35ad64a3 由于该链接国内访问比较困难，故转载到了这里： https://www.jianshu.com/p/dcfe6eac4152 第二个报错： Generating deepcopy funcs F1104 02:57:44.419529 35……
-                            </div>
-                            <p class="readmore"><a href="https://liabio.github.io/posts/2018-11-02-k8s%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E7%B1%BB%E5%9E%8B%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90/">阅读全文</a></p>
                         </article>
                     
                     
@@ -294,6 +294,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://liabio.github.io/posts/2019-10-13-aes-cloud-server-deduct-fee/" title="亚马逊AWS云服务器不合理扣费怎么处理">亚马逊AWS云服务器不合理扣费怎么处理</a>
+    </li>
+    
+    <li>
         <a href="https://liabio.github.io/posts/2019-10-11-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%902/" title="kubernetes垃圾回收器Garbage Collector Controller源码分析（二）">kubernetes垃圾回收器Garbage Collector Controller源码分析（二）</a>
     </li>
     
@@ -327,10 +331,6 @@
     
     <li>
         <a href="https://liabio.github.io/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/" title="k8s使用Job执行任务失败了怎么办">k8s使用Job执行任务失败了怎么办</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/posts/2019-09-24-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%901/" title="kubernetes垃圾回收器GarbageCollector Controller源码分析（一）">kubernetes垃圾回收器GarbageCollector Controller源码分析（一）</a>
     </li>
     
 </ul>
@@ -499,6 +499,10 @@
     
     <li>
         <a href="https://liabio.github.io/categories/zookeeper/">zookeeper(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/">云服务器(1)</a>
     </li>
     
     <li>

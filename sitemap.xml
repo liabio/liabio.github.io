@@ -4,7 +4,37 @@
   
   <url>
     <loc>https://liabio.github.io/categories/</loc>
-    <lastmod>2019-10-11T21:21:50+08:00</lastmod>
+    <lastmod>2019-10-13T20:27:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/posts/</loc>
+    <lastmod>2019-10-13T20:27:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/tags/</loc>
+    <lastmod>2019-10-13T20:27:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
+    <lastmod>2019-10-13T20:27:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/posts/2019-10-13-aes-cloud-server-deduct-fee/</loc>
+    <lastmod>2019-10-13T20:27:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/</loc>
+    <lastmod>2019-10-13T20:27:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://liabio.github.io/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/</loc>
+    <lastmod>2019-10-13T20:27:19+08:00</lastmod>
   </url>
   
   <url>
@@ -28,22 +58,7 @@
   </url>
   
   <url>
-    <loc>https://liabio.github.io/posts/</loc>
-    <lastmod>2019-10-11T21:21:50+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liabio.github.io/tags/</loc>
-    <lastmod>2019-10-11T21:21:50+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://liabio.github.io/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/</loc>
-    <lastmod>2019-10-11T21:21:50+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liabio.github.io/</loc>
     <lastmod>2019-10-11T21:21:50+08:00</lastmod>
   </url>
   
@@ -138,12 +153,12 @@
   </url>
   
   <url>
-    <loc>https://liabio.github.io/tags/ingress-nginx/</loc>
+    <loc>https://liabio.github.io/categories/ingress-nginx/</loc>
     <lastmod>2019-09-24T09:59:46+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liabio.github.io/categories/ingress-nginx/</loc>
+    <loc>https://liabio.github.io/tags/ingress-nginx/</loc>
     <lastmod>2019-09-24T09:59:46+08:00</lastmod>
   </url>
   
@@ -333,12 +348,12 @@
   </url>
   
   <url>
-    <loc>https://liabio.github.io/categories/http/</loc>
+    <loc>https://liabio.github.io/tags/http/</loc>
     <lastmod>2019-03-20T17:49:52+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://liabio.github.io/tags/http/</loc>
+    <loc>https://liabio.github.io/categories/http/</loc>
     <lastmod>2019-03-20T17:49:52+08:00</lastmod>
   </url>
   
@@ -464,11 +479,6 @@
   
   <url>
     <loc>https://liabio.github.io/posts/2018-12-26-java%E8%BF%99%E4%B8%AA404%E4%BD%A0%E8%83%BD%E8%A7%A3%E5%86%B3%E5%90%97/</loc>
-    <lastmod>2018-12-26T17:32:26+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://liabio.github.io/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2018-12-26T17:32:26+08:00</lastmod>
   </url>
   

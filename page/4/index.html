@@ -68,6 +68,31 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
+                                    <a href="https://liabio.github.io/posts/2019-09-21-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/" title="云服务器使用docker搭建服务" >云服务器使用docker搭建服务</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年9月21日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/docker">docker</a></span>
+                                
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/job">job</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                前提：亚马逊云已经配置好启动。 安全组入站策略如下： 出站策略如下： 登陆EC2后，默认只能用ec2-user用户登陆，然后切换到root： sudo su 用yum执行安装docker提示No package docker avaible yum install docker -y 解决方法： 在/etc/yum.repos.d/下加C……
+                            </div>
+                            <p class="readmore"><a href="https://liabio.github.io/posts/2019-09-21-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
                                     <a href="https://liabio.github.io/posts/2019-08-21-%E5%88%A9%E7%94%A8procedure%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE/" title="利用procedure批量插入数据" >利用procedure批量插入数据</a>
                                 </h1>
                             </header>
@@ -155,29 +180,6 @@
                                 &emsp;&emsp;要求在页面查询到5000条数据，为了方便插入，用shell脚本写curl命令调用自己写的代码接口； 脚本如下： #!/bin/bash a=0 while [ $a -le 10 ]; do # length of ts is 13 required,Through the following way like this ts=`date +%s%N` ts=${ts:0:13} json='{&quot;name&quot; : &quot;'$1$a'&quot;, &quot;age&quot; : '$2', &quot;ts&quot; : '$ts'}' a=$((a+1)) curl -k -H 'Content-Type:application/json;charset=utf-8' http://192.168.2.5:8080 -X POST -d &quot;'$json'&quot; done 执行脚本 **执行结果……
                             </div>
                             <p class="readmore"><a href="https://liabio.github.io/posts/2019-06-20-shell%E8%84%9A%E6%9C%AC%E6%89%B9%E9%87%8F%E8%B0%83%E7%94%A8%E6%8E%A5%E5%8F%A3/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://liabio.github.io/posts/2019-06-20-golangFlag%E5%8C%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" title="GolangFlag包使用笔记" >GolangFlag包使用笔记</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年6月20日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://liabio.github.io/categories/golang">golang</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                本文原文地址：flag - 命令行参数解析 在写命令行程序（工具、server）时，对命令参数进行解析是常见的需求。各种语言一般都会提供解析命令行参数的方法或库，以方便程序员使用。如果命令行参数纯粹自己写代码来解析，对于比较复杂的，还是挺费劲的。……
-                            </div>
-                            <p class="readmore"><a href="https://liabio.github.io/posts/2019-06-20-golangFlag%E5%8C%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">阅读全文</a></p>
                         </article>
                     
                     
@@ -292,6 +294,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://liabio.github.io/posts/2019-10-13-aes-cloud-server-deduct-fee/" title="亚马逊AWS云服务器不合理扣费怎么处理">亚马逊AWS云服务器不合理扣费怎么处理</a>
+    </li>
+    
+    <li>
         <a href="https://liabio.github.io/posts/2019-10-11-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%902/" title="kubernetes垃圾回收器Garbage Collector Controller源码分析（二）">kubernetes垃圾回收器Garbage Collector Controller源码分析（二）</a>
     </li>
     
@@ -325,10 +331,6 @@
     
     <li>
         <a href="https://liabio.github.io/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/" title="k8s使用Job执行任务失败了怎么办">k8s使用Job执行任务失败了怎么办</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/posts/2019-09-24-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%901/" title="kubernetes垃圾回收器GarbageCollector Controller源码分析（一）">kubernetes垃圾回收器GarbageCollector Controller源码分析（一）</a>
     </li>
     
 </ul>
@@ -497,6 +499,10 @@
     
     <li>
         <a href="https://liabio.github.io/categories/zookeeper/">zookeeper(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/">云服务器(1)</a>
     </li>
     
     <li>

@@ -6,10 +6,19 @@
     <description>Recent content in Posts on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 11 Oct 2019 21:21:50 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 13 Oct 2019 20:27:19 +0800</lastBuildDate>
     
 	<atom:link href="https://liabio.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>亚马逊AWS云服务器不合理扣费怎么处理</title>
+      <link>https://liabio.github.io/posts/2019-10-13-aes-cloud-server-deduct-fee/</link>
+      <pubDate>Sun, 13 Oct 2019 20:27:19 +0800</pubDate>
+      
+      <guid>https://liabio.github.io/posts/2019-10-13-aes-cloud-server-deduct-fee/</guid>
+      <description>有些小伙伴可能不知道，亚马逊AWS对新用户有个免费体验一年的活动。如果希望体验免费亚马逊AWS云服务器产品，或者看看他们后台面板长什么样，体验产品的速度和性能，又或者准备搭建一个免费梯子，可以 注册玩玩。 很简单，全程基本都是中文，不用担心看不</description>
+    </item>
     
     <item>
       <title>kubernetes垃圾回收器Garbage Collector Controller源码分析（二）</title>

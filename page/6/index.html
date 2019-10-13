@@ -68,6 +68,29 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
+                                    <a href="https://liabio.github.io/posts/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/" title="Hugo搭建博客教程" >Hugo搭建博客教程</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年5月3日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/blog">blog</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                在编译时报错如下： Building sites … ERROR 2019/05/03 10:36:45 Failed to read Git log: fatal: Not a git repository (or any of the parent d irectories): .git Building sites … ERROR 2019/05/03 10:45:16 Failed to read Git log: fatal: your current branch 'master' does not have a ny commits yet 需要先在站点根目录执行以下命令： git init git add . git commit -m 'test' config.toml中的baseUrl为http://liabio.gith……
+                            </div>
+                            <p class="readmore"><a href="https://liabio.github.io/posts/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
                                     <a href="https://liabio.github.io/posts/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/" title="kube-scheduler调度扩展" >kube-scheduler调度扩展</a>
                                 </h1>
                             </header>
@@ -150,29 +173,6 @@
                                 日志的转储和压缩是非常关键的，它不仅可以减少硬盘空间占用，主要还可以在发生故障时根据日志定位出故障原因。下面来看看golang和java的文件转储实现。 go语言： 用到了filepath包下的Walk方法，具体说明可以参看历史文章： go语言p……
                             </div>
                             <p class="readmore"><a href="https://liabio.github.io/posts/2019-03-08-java-golang%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E8%BD%AC%E5%82%A8%E5%8E%8B%E7%BC%A9%E5%AE%9E%E7%8E%B0/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://liabio.github.io/posts/2019-02-08-%E4%B8%80%E6%AC%BE%E6%9C%80%E5%A5%BD%E7%94%A8%E7%9A%84windows%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/" title="一款最好用的windows文件管理器" >一款最好用的windows文件管理器</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年2月8日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://liabio.github.io/categories/xyplorer">xyplorer</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                在日常生活或工作中，除了一些文本编辑工具以及网页浏览器以外，我们接触的最多的可能就是资源管理器了。资源管理器软件有很多。如： Clover 、QTTabBar、FreeCommander、WindowsTabs、Q-Dir、Total Commander等……
-                            </div>
-                            <p class="readmore"><a href="https://liabio.github.io/posts/2019-02-08-%E4%B8%80%E6%AC%BE%E6%9C%80%E5%A5%BD%E7%94%A8%E7%9A%84windows%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/">阅读全文</a></p>
                         </article>
                     
                     
@@ -287,6 +287,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://liabio.github.io/posts/2019-10-13-aes-cloud-server-deduct-fee/" title="亚马逊AWS云服务器不合理扣费怎么处理">亚马逊AWS云服务器不合理扣费怎么处理</a>
+    </li>
+    
+    <li>
         <a href="https://liabio.github.io/posts/2019-10-11-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%902/" title="kubernetes垃圾回收器Garbage Collector Controller源码分析（二）">kubernetes垃圾回收器Garbage Collector Controller源码分析（二）</a>
     </li>
     
@@ -320,10 +324,6 @@
     
     <li>
         <a href="https://liabio.github.io/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/" title="k8s使用Job执行任务失败了怎么办">k8s使用Job执行任务失败了怎么办</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/posts/2019-09-24-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%901/" title="kubernetes垃圾回收器GarbageCollector Controller源码分析（一）">kubernetes垃圾回收器GarbageCollector Controller源码分析（一）</a>
     </li>
     
 </ul>
@@ -492,6 +492,10 @@
     
     <li>
         <a href="https://liabio.github.io/categories/zookeeper/">zookeeper(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/">云服务器(1)</a>
     </li>
     
     <li>

@@ -68,6 +68,29 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
+                                    <a href="https://liabio.github.io/posts/2019-01-04-%E8%87%AA%E5%8A%A8%E8%AF%84%E8%AE%BAcsdn%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%AE%9E%E7%8E%B0/" title="自动评论csdn博客文章实现" >自动评论csdn博客文章实现</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年1月4日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="https://liabio.github.io/categories/java">java</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                我们来用java代码爬取csdn博客网站，然后自动评论，这一波操作可以说是相当风骚了，话不多说，咱上代码。 第一步是登录代码，这个网上一大把，代码中用到了jsoup依赖包，用于解析html获取相应元素，相当于css选择器，很强大的三方件。 /** *……
+                            </div>
+                            <p class="readmore"><a href="https://liabio.github.io/posts/2019-01-04-%E8%87%AA%E5%8A%A8%E8%AF%84%E8%AE%BAcsdn%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%AE%9E%E7%8E%B0/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
                                     <a href="https://liabio.github.io/posts/2019-01-03-yum%E6%BA%90%E9%85%8D%E7%BD%AE/" title="Yum源配置" >Yum源配置</a>
                                 </h1>
                             </header>
@@ -157,29 +180,6 @@
                                 今天来学习下图形验证码的生成，首先依赖开源组件： &lt;dependency&gt; &lt;groupId&gt;com.github.penggle&lt;/groupId&gt; &lt;artifactId&gt;kaptcha&lt;/artifactId&gt; &lt;version&gt;2.3.2&lt;/version&gt; &lt;/dependency&gt; 在web.xml中配置名为Kaptcha的servlet： &lt;servlet&gt; &lt;!-- 生成图片的Servlet --&gt; &lt;servlet-name&gt;Kaptcha&lt;/servlet-name&gt; &lt;servlet-class&gt;com.google.code.kaptcha.servlet.KaptchaServlet&lt;/servlet-class&gt; &lt;!-- 是否有边框 --&gt; &lt;init-param&gt; &lt;param-name&gt;kaptcha.border&lt;/param-name&gt; &lt;param-value&gt;no&lt;/param-value&gt; &lt;/init-param&gt; &lt;!-- 字体颜色 --&gt; &lt;init-param&gt; &lt;param-name&gt;kaptcha.textproducer.font.color&lt;/param-name&gt; &lt;param-value&gt;red&lt;/param-value&gt; &lt;/init-param&gt; &lt;!-- 图片宽度 --&gt; &lt;init-param&gt; &lt;param-name&gt;kaptcha.image.width&lt;/param-name&gt; &lt;param-value&gt;135&lt;/param-value&gt; &lt;/init-param&gt; &lt;!-- 使用哪些字符生成验证码 --&gt; &lt;init-param&gt;……
                             </div>
                             <p class="readmore"><a href="https://liabio.github.io/posts/2018-12-27-java%E5%9B%BE%E5%BD%A2%E9%AA%8C%E8%AF%81%E7%A0%81%E5%AE%9E%E7%8E%B0/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="https://liabio.github.io/posts/2018-12-26-java%E8%BF%99%E4%B8%AA404%E4%BD%A0%E8%83%BD%E8%A7%A3%E5%86%B3%E5%90%97/" title="Java这个404你能解决吗？" >Java这个404你能解决吗？</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2018年12月26日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="https://liabio.github.io/categories/java">java</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                今天在tomcat里部署运行了一个小工程，工程结构如下： 运行tomcat服务器后，访问index.html，发现报404： 但是后台接口是正常返回的： 去看webapps里工程目录下，index.html文件是有的，见鬼了，是哪儿出了问题？ 然后……
-                            </div>
-                            <p class="readmore"><a href="https://liabio.github.io/posts/2018-12-26-java%E8%BF%99%E4%B8%AA404%E4%BD%A0%E8%83%BD%E8%A7%A3%E5%86%B3%E5%90%97/">阅读全文</a></p>
                         </article>
                     
                     
@@ -294,6 +294,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://liabio.github.io/posts/2019-10-13-aes-cloud-server-deduct-fee/" title="亚马逊AWS云服务器不合理扣费怎么处理">亚马逊AWS云服务器不合理扣费怎么处理</a>
+    </li>
+    
+    <li>
         <a href="https://liabio.github.io/posts/2019-10-11-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%902/" title="kubernetes垃圾回收器Garbage Collector Controller源码分析（二）">kubernetes垃圾回收器Garbage Collector Controller源码分析（二）</a>
     </li>
     
@@ -327,10 +331,6 @@
     
     <li>
         <a href="https://liabio.github.io/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/" title="k8s使用Job执行任务失败了怎么办">k8s使用Job执行任务失败了怎么办</a>
-    </li>
-    
-    <li>
-        <a href="https://liabio.github.io/posts/2019-09-24-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%901/" title="kubernetes垃圾回收器GarbageCollector Controller源码分析（一）">kubernetes垃圾回收器GarbageCollector Controller源码分析（一）</a>
     </li>
     
 </ul>
@@ -499,6 +499,10 @@
     
     <li>
         <a href="https://liabio.github.io/categories/zookeeper/">zookeeper(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://liabio.github.io/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/">云服务器(1)</a>
     </li>
     
     <li>
