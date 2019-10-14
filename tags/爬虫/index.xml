@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>爬虫 on 小碗汤的博客</title>
-    <link>https://liabio.github.io/tags/%E7%88%AC%E8%99%AB/</link>
+    <link>http://www.liabio.cn/tags/%E7%88%AC%E8%99%AB/</link>
     <description>Recent content in 爬虫 on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 23 Dec 2018 17:27:15 +0800</lastBuildDate>
     
-	<atom:link href="https://liabio.github.io/tags/%E7%88%AC%E8%99%AB/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.liabio.cn/tags/%E7%88%AC%E8%99%AB/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>爬虫遇到了点问题</title>
-      <link>https://liabio.github.io/posts/2018-12-23-%E7%88%AC%E8%99%AB%E9%81%87%E5%88%B0%E4%BA%86%E7%82%B9%E9%97%AE%E9%A2%98/</link>
+      <link>http://www.liabio.cn/posts/2018-12-23-%E7%88%AC%E8%99%AB%E9%81%87%E5%88%B0%E4%BA%86%E7%82%B9%E9%97%AE%E9%A2%98/</link>
       <pubDate>Sun, 23 Dec 2018 17:27:15 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2018-12-23-%E7%88%AC%E8%99%AB%E9%81%87%E5%88%B0%E4%BA%86%E7%82%B9%E9%97%AE%E9%A2%98/</guid>
+      <guid>http://www.liabio.cn/posts/2018-12-23-%E7%88%AC%E8%99%AB%E9%81%87%E5%88%B0%E4%BA%86%E7%82%B9%E9%97%AE%E9%A2%98/</guid>
       <description>golang爬珍爱网代码优化后，运行报了如下的错，找了半小时才找到原因，在此记录一下。 代码是这样的： 有一个interface类型的Parser： type Parser interface { Parser(contents []byte, url string) ParserResult Serialize() (funcName string, args interface{}) } 有一个struct类型的FuncParser： type FuncParser struct { parser ParserFunc funcName string } FuncParser</description>
     </item>
     
     <item>
       <title>爬取珍爱网后用户信息展示</title>
-      <link>https://liabio.github.io/posts/2018-12-23-%E7%88%AC%E5%8F%96%E7%8F%8D%E7%88%B1%E7%BD%91%E5%90%8E%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E5%B1%95%E7%A4%BA/</link>
+      <link>http://www.liabio.cn/posts/2018-12-23-%E7%88%AC%E5%8F%96%E7%8F%8D%E7%88%B1%E7%BD%91%E5%90%8E%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E5%B1%95%E7%A4%BA/</link>
       <pubDate>Sun, 23 Dec 2018 17:25:52 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2018-12-23-%E7%88%AC%E5%8F%96%E7%8F%8D%E7%88%B1%E7%BD%91%E5%90%8E%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E5%B1%95%E7%A4%BA/</guid>
+      <guid>http://www.liabio.cn/posts/2018-12-23-%E7%88%AC%E5%8F%96%E7%8F%8D%E7%88%B1%E7%BD%91%E5%90%8E%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E5%B1%95%E7%A4%BA/</guid>
       <description>golang爬取珍爱网，爬到了3万多用户信息，并存到了elasticsearch中，如下图，查询到了3万多用户信息。 先来看看最终效果： 利用到了go语言的html模板库： 执行模板渲染： func (s SearchResultView) Render (w io.Writer, data model.SearchResult) error { return s.template.Execute(w, data) } model.SearchRes</description>
     </item>
     
     <item>
       <title>爬虫遇到了点问题</title>
-      <link>https://liabio.github.io/posts/2018-12-22-%E7%88%AC%E8%99%AB%E9%81%87%E5%88%B0%E4%BA%86%E7%82%B9%E9%97%AE%E9%A2%98/</link>
+      <link>http://www.liabio.cn/posts/2018-12-22-%E7%88%AC%E8%99%AB%E9%81%87%E5%88%B0%E4%BA%86%E7%82%B9%E9%97%AE%E9%A2%98/</link>
       <pubDate>Sat, 22 Dec 2018 17:24:52 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2018-12-22-%E7%88%AC%E8%99%AB%E9%81%87%E5%88%B0%E4%BA%86%E7%82%B9%E9%97%AE%E9%A2%98/</guid>
+      <guid>http://www.liabio.cn/posts/2018-12-22-%E7%88%AC%E8%99%AB%E9%81%87%E5%88%B0%E4%BA%86%E7%82%B9%E9%97%AE%E9%A2%98/</guid>
       <description>golang爬珍爱网代码优化后，运行报了如下的错，找了半小时才找到原因，在此记录一下。 代码是这样的： 有一个interface类型的Parser： type Parser interface { Parser(contents []byte, url string) ParserResult Serialize() (funcName string, args interface{}) } 有一个struct类型的FuncParser： type FuncParser struct { parser ParserFunc funcName string } FuncParser</description>
     </item>
     

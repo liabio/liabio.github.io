@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>坑 on 小碗汤的博客</title>
-    <link>https://liabio.github.io/tags/%E5%9D%91/</link>
+    <link>http://www.liabio.cn/tags/%E5%9D%91/</link>
     <description>Recent content in 坑 on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 25 Dec 2018 17:29:19 +0800</lastBuildDate>
     
-	<atom:link href="https://liabio.github.io/tags/%E5%9D%91/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.liabio.cn/tags/%E5%9D%91/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Golang 设置 Http Response 响应头与坑</title>
-      <link>https://liabio.github.io/posts/2018-12-25-golang-%E8%AE%BE%E7%BD%AE-http-response-%E5%93%8D%E5%BA%94%E5%A4%B4%E4%B8%8E%E5%9D%91/</link>
+      <link>http://www.liabio.cn/posts/2018-12-25-golang-%E8%AE%BE%E7%BD%AE-http-response-%E5%93%8D%E5%BA%94%E5%A4%B4%E4%B8%8E%E5%9D%91/</link>
       <pubDate>Tue, 25 Dec 2018 17:29:19 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2018-12-25-golang-%E8%AE%BE%E7%BD%AE-http-response-%E5%93%8D%E5%BA%94%E5%A4%B4%E4%B8%8E%E5%9D%91/</guid>
+      <guid>http://www.liabio.cn/posts/2018-12-25-golang-%E8%AE%BE%E7%BD%AE-http-response-%E5%93%8D%E5%BA%94%E5%A4%B4%E4%B8%8E%E5%9D%91/</guid>
       <description>1、 设置WriteHeader的顺序问题 之前遇到个问题，在一段代码中这样设置WriteHeader,最后在header中取Name时怎么也取不到。 w.WriteHeader(201) w.Header().Set(&amp;quot;Name&amp;quot;, &amp;quot;my name is smallsoup&amp;quot;) 用 golang 写 http server 时，可以很方便可通过 w.Header.Set(k, v) 来设置 http response 中 header 的内容。但是需要特别注意的是：某些</description>
     </item>
     
     <item>
       <title>Go 语言 IDE GoLand的BUG</title>
-      <link>https://liabio.github.io/posts/2018-12-22-Go-%E8%AF%AD%E8%A8%80-IDE-GoLand%E7%9A%84BUG/</link>
+      <link>http://www.liabio.cn/posts/2018-12-22-Go-%E8%AF%AD%E8%A8%80-IDE-GoLand%E7%9A%84BUG/</link>
       <pubDate>Sat, 22 Dec 2018 17:23:16 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2018-12-22-Go-%E8%AF%AD%E8%A8%80-IDE-GoLand%E7%9A%84BUG/</guid>
+      <guid>http://www.liabio.cn/posts/2018-12-22-Go-%E8%AF%AD%E8%A8%80-IDE-GoLand%E7%9A%84BUG/</guid>
       <description>前言 GoLand 是 Jetbrains 推出的 Golang IDE，在内侧阶段我就开始使用了，刚出的时候我还在博客中发表过文章（看了下日期是 16 年年底）。 那时候它还不是很完善，BUG 很多。准确的说也不算 BUG，主要是语法提示上的各种不足，重构功能也很弱。后来我有一段时间没有写 Go 代码，</description>
     </item>
     

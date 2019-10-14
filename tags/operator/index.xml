@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>operator on 小碗汤的博客</title>
-    <link>https://liabio.github.io/tags/operator/</link>
+    <link>http://www.liabio.cn/tags/operator/</link>
     <description>Recent content in operator on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 02 May 2018 15:01:15 +0800</lastBuildDate>
     
-	<atom:link href="https://liabio.github.io/tags/operator/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.liabio.cn/tags/operator/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>开发一个operator扩展kubernetes的能力</title>
-      <link>https://liabio.github.io/posts/2018-05-02-%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AAoperator%E6%89%A9%E5%B1%95kubernetes%E7%9A%84%E8%83%BD%E5%8A%9B/</link>
+      <link>http://www.liabio.cn/posts/2018-05-02-%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AAoperator%E6%89%A9%E5%B1%95kubernetes%E7%9A%84%E8%83%BD%E5%8A%9B/</link>
       <pubDate>Wed, 02 May 2018 15:01:15 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2018-05-02-%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AAoperator%E6%89%A9%E5%B1%95kubernetes%E7%9A%84%E8%83%BD%E5%8A%9B/</guid>
+      <guid>http://www.liabio.cn/posts/2018-05-02-%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AAoperator%E6%89%A9%E5%B1%95kubernetes%E7%9A%84%E8%83%BD%E5%8A%9B/</guid>
       <description>Operator 是 CoreOS 推出的旨在简化复杂有状态应用管理，它是一个感知应用状态的控制器，通过扩展 Kubernetes API 来自动创建、管理和配置应用实例。 Operator 基于 CRD 扩展资源对象，并通过控制器来保证应用处于预期状态。 通过 Kubernetes API 观察集群的当前状态； 分析当前状态与期望状态的差别； 调用k8s</description>
     </item>
     

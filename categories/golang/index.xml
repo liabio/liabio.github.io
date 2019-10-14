@@ -2,111 +2,111 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>golang on 小碗汤的博客</title>
-    <link>https://liabio.github.io/categories/golang/</link>
+    <link>http://www.liabio.cn/categories/golang/</link>
     <description>Recent content in golang on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 10 Oct 2019 17:20:28 +0800</lastBuildDate>
     
-	<atom:link href="https://liabio.github.io/categories/golang/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.liabio.cn/categories/golang/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>如何批量删除k8s资源对象</title>
-      <link>https://liabio.github.io/posts/2019-10-10-%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4k8s-pvc-pv/</link>
+      <link>http://www.liabio.cn/posts/2019-10-10-%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4k8s-pvc-pv/</link>
       <pubDate>Thu, 10 Oct 2019 17:20:28 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2019-10-10-%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4k8s-pvc-pv/</guid>
+      <guid>http://www.liabio.cn/posts/2019-10-10-%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4k8s-pvc-pv/</guid>
       <description>在云平台开发、中间件容器化时，经常会遇到批量删除k8s资源对象的需求，下面记录一下kubectl和golang发送删除pvc、pv、pod请求的例子，便于后续学习查阅 kubectl发送删除请求 根据label批量删除pod： kubectl delete pod -n kube-system -l &amp;quot;harmonycloud.cn/statefulset=redis-ll-1010-a&amp;quot; 根据</description>
     </item>
     
     <item>
       <title>GolangFlag包使用笔记</title>
-      <link>https://liabio.github.io/posts/2019-06-20-golangFlag%E5%8C%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</link>
+      <link>http://www.liabio.cn/posts/2019-06-20-golangFlag%E5%8C%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Thu, 20 Jun 2019 17:50:36 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2019-06-20-golangFlag%E5%8C%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</guid>
+      <guid>http://www.liabio.cn/posts/2019-06-20-golangFlag%E5%8C%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</guid>
       <description>本文原文地址：flag - 命令行参数解析 在写命令行程序（工具、server）时，对命令参数进行解析是常见的需求。各种语言一般都会提供解析命令行参数的方法或库，以方便程序员使用。如果命令行参数纯粹自己写代码来解析，对于比较复杂的，还是挺费劲的。</description>
     </item>
     
     <item>
       <title>Java Golang日志文件转储压缩实现</title>
-      <link>https://liabio.github.io/posts/2019-03-08-java-golang%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E8%BD%AC%E5%82%A8%E5%8E%8B%E7%BC%A9%E5%AE%9E%E7%8E%B0/</link>
+      <link>http://www.liabio.cn/posts/2019-03-08-java-golang%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E8%BD%AC%E5%82%A8%E5%8E%8B%E7%BC%A9%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Fri, 08 Mar 2019 17:49:27 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2019-03-08-java-golang%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E8%BD%AC%E5%82%A8%E5%8E%8B%E7%BC%A9%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>http://www.liabio.cn/posts/2019-03-08-java-golang%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E8%BD%AC%E5%82%A8%E5%8E%8B%E7%BC%A9%E5%AE%9E%E7%8E%B0/</guid>
       <description>日志的转储和压缩是非常关键的，它不仅可以减少硬盘空间占用，主要还可以在发生故障时根据日志定位出故障原因。下面来看看golang和java的文件转储实现。 go语言： 用到了filepath包下的Walk方法，具体说明可以参看历史文章： go语言p</description>
     </item>
     
     <item>
       <title>Golang 设置 Http Response 响应头与坑</title>
-      <link>https://liabio.github.io/posts/2018-12-25-golang-%E8%AE%BE%E7%BD%AE-http-response-%E5%93%8D%E5%BA%94%E5%A4%B4%E4%B8%8E%E5%9D%91/</link>
+      <link>http://www.liabio.cn/posts/2018-12-25-golang-%E8%AE%BE%E7%BD%AE-http-response-%E5%93%8D%E5%BA%94%E5%A4%B4%E4%B8%8E%E5%9D%91/</link>
       <pubDate>Tue, 25 Dec 2018 17:29:19 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2018-12-25-golang-%E8%AE%BE%E7%BD%AE-http-response-%E5%93%8D%E5%BA%94%E5%A4%B4%E4%B8%8E%E5%9D%91/</guid>
+      <guid>http://www.liabio.cn/posts/2018-12-25-golang-%E8%AE%BE%E7%BD%AE-http-response-%E5%93%8D%E5%BA%94%E5%A4%B4%E4%B8%8E%E5%9D%91/</guid>
       <description>1、 设置WriteHeader的顺序问题 之前遇到个问题，在一段代码中这样设置WriteHeader,最后在header中取Name时怎么也取不到。 w.WriteHeader(201) w.Header().Set(&amp;quot;Name&amp;quot;, &amp;quot;my name is smallsoup&amp;quot;) 用 golang 写 http server 时，可以很方便可通过 w.Header.Set(k, v) 来设置 http response 中 header 的内容。但是需要特别注意的是：某些</description>
     </item>
     
     <item>
       <title>爬虫遇到了点问题</title>
-      <link>https://liabio.github.io/posts/2018-12-23-%E7%88%AC%E8%99%AB%E9%81%87%E5%88%B0%E4%BA%86%E7%82%B9%E9%97%AE%E9%A2%98/</link>
+      <link>http://www.liabio.cn/posts/2018-12-23-%E7%88%AC%E8%99%AB%E9%81%87%E5%88%B0%E4%BA%86%E7%82%B9%E9%97%AE%E9%A2%98/</link>
       <pubDate>Sun, 23 Dec 2018 17:27:15 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2018-12-23-%E7%88%AC%E8%99%AB%E9%81%87%E5%88%B0%E4%BA%86%E7%82%B9%E9%97%AE%E9%A2%98/</guid>
+      <guid>http://www.liabio.cn/posts/2018-12-23-%E7%88%AC%E8%99%AB%E9%81%87%E5%88%B0%E4%BA%86%E7%82%B9%E9%97%AE%E9%A2%98/</guid>
       <description>golang爬珍爱网代码优化后，运行报了如下的错，找了半小时才找到原因，在此记录一下。 代码是这样的： 有一个interface类型的Parser： type Parser interface { Parser(contents []byte, url string) ParserResult Serialize() (funcName string, args interface{}) } 有一个struct类型的FuncParser： type FuncParser struct { parser ParserFunc funcName string } FuncParser</description>
     </item>
     
     <item>
       <title>爬取珍爱网后用户信息展示</title>
-      <link>https://liabio.github.io/posts/2018-12-23-%E7%88%AC%E5%8F%96%E7%8F%8D%E7%88%B1%E7%BD%91%E5%90%8E%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E5%B1%95%E7%A4%BA/</link>
+      <link>http://www.liabio.cn/posts/2018-12-23-%E7%88%AC%E5%8F%96%E7%8F%8D%E7%88%B1%E7%BD%91%E5%90%8E%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E5%B1%95%E7%A4%BA/</link>
       <pubDate>Sun, 23 Dec 2018 17:25:52 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2018-12-23-%E7%88%AC%E5%8F%96%E7%8F%8D%E7%88%B1%E7%BD%91%E5%90%8E%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E5%B1%95%E7%A4%BA/</guid>
+      <guid>http://www.liabio.cn/posts/2018-12-23-%E7%88%AC%E5%8F%96%E7%8F%8D%E7%88%B1%E7%BD%91%E5%90%8E%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E5%B1%95%E7%A4%BA/</guid>
       <description>golang爬取珍爱网，爬到了3万多用户信息，并存到了elasticsearch中，如下图，查询到了3万多用户信息。 先来看看最终效果： 利用到了go语言的html模板库： 执行模板渲染： func (s SearchResultView) Render (w io.Writer, data model.SearchResult) error { return s.template.Execute(w, data) } model.SearchRes</description>
     </item>
     
     <item>
       <title>爬虫遇到了点问题</title>
-      <link>https://liabio.github.io/posts/2018-12-22-%E7%88%AC%E8%99%AB%E9%81%87%E5%88%B0%E4%BA%86%E7%82%B9%E9%97%AE%E9%A2%98/</link>
+      <link>http://www.liabio.cn/posts/2018-12-22-%E7%88%AC%E8%99%AB%E9%81%87%E5%88%B0%E4%BA%86%E7%82%B9%E9%97%AE%E9%A2%98/</link>
       <pubDate>Sat, 22 Dec 2018 17:24:52 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2018-12-22-%E7%88%AC%E8%99%AB%E9%81%87%E5%88%B0%E4%BA%86%E7%82%B9%E9%97%AE%E9%A2%98/</guid>
+      <guid>http://www.liabio.cn/posts/2018-12-22-%E7%88%AC%E8%99%AB%E9%81%87%E5%88%B0%E4%BA%86%E7%82%B9%E9%97%AE%E9%A2%98/</guid>
       <description>golang爬珍爱网代码优化后，运行报了如下的错，找了半小时才找到原因，在此记录一下。 代码是这样的： 有一个interface类型的Parser： type Parser interface { Parser(contents []byte, url string) ParserResult Serialize() (funcName string, args interface{}) } 有一个struct类型的FuncParser： type FuncParser struct { parser ParserFunc funcName string } FuncParser</description>
     </item>
     
     <item>
       <title>Go 语言 IDE GoLand的BUG</title>
-      <link>https://liabio.github.io/posts/2018-12-22-Go-%E8%AF%AD%E8%A8%80-IDE-GoLand%E7%9A%84BUG/</link>
+      <link>http://www.liabio.cn/posts/2018-12-22-Go-%E8%AF%AD%E8%A8%80-IDE-GoLand%E7%9A%84BUG/</link>
       <pubDate>Sat, 22 Dec 2018 17:23:16 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2018-12-22-Go-%E8%AF%AD%E8%A8%80-IDE-GoLand%E7%9A%84BUG/</guid>
+      <guid>http://www.liabio.cn/posts/2018-12-22-Go-%E8%AF%AD%E8%A8%80-IDE-GoLand%E7%9A%84BUG/</guid>
       <description>前言 GoLand 是 Jetbrains 推出的 Golang IDE，在内侧阶段我就开始使用了，刚出的时候我还在博客中发表过文章（看了下日期是 16 年年底）。 那时候它还不是很完善，BUG 很多。准确的说也不算 BUG，主要是语法提示上的各种不足，重构功能也很弱。后来我有一段时间没有写 Go 代码，</description>
     </item>
     
     <item>
       <title>Mysql数据导出golang实现</title>
-      <link>https://liabio.github.io/posts/2018-12-21-mysql%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BAgolang%E5%AE%9E%E7%8E%B0/</link>
+      <link>http://www.liabio.cn/posts/2018-12-21-mysql%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BAgolang%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Fri, 21 Dec 2018 17:21:38 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2018-12-21-mysql%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BAgolang%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>http://www.liabio.cn/posts/2018-12-21-mysql%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BAgolang%E5%AE%9E%E7%8E%B0/</guid>
       <description>mysql数据导出为excel文件，golang实现： 首先下载依赖到的三方库： Simple install the package to your $GOPATH with the go tool from shell: $ go get -u github.com/go-sql-driver/mysql 具体说明请看： 库地址 wiki说明 代码示例如下，用到了go的flag包的能力，传入命令行参数。具体看helpInfo： Usage of mysqldataexport: -port int</description>
     </item>
     
     <item>
       <title>Centos Linux使用Yum安装Go和配置环境</title>
-      <link>https://liabio.github.io/posts/2018-12-19-CentosLinux%E4%BD%BF%E7%94%A8Yum%E5%AE%89%E8%A3%85Go%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/</link>
+      <link>http://www.liabio.cn/posts/2018-12-19-CentosLinux%E4%BD%BF%E7%94%A8Yum%E5%AE%89%E8%A3%85Go%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/</link>
       <pubDate>Wed, 19 Dec 2018 17:17:22 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2018-12-19-CentosLinux%E4%BD%BF%E7%94%A8Yum%E5%AE%89%E8%A3%85Go%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/</guid>
+      <guid>http://www.liabio.cn/posts/2018-12-19-CentosLinux%E4%BD%BF%E7%94%A8Yum%E5%AE%89%E8%A3%85Go%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/</guid>
       <description>安装环境：CentOS7.2 64位，安装Golang 查看go是否安装过： $ go env GOARCH=&amp;quot;amd64&amp;quot; GOBIN=&amp;quot;&amp;quot; GOEXE=&amp;quot;&amp;quot; GOHOSTARCH=&amp;quot;amd64&amp;quot; GOHOSTOS=&amp;quot;linux&amp;quot; GOOS=&amp;quot;linux&amp;quot; GOPATH=&amp;quot;/root/go&amp;quot; GORACE=&amp;quot;&amp;quot; GOROOT=&amp;quot;/usr/lib/golang&amp;quot; GOTOOLDIR=&amp;quot;/usr/lib/golang/pkg/tool/linux_amd64&amp;quot; GCCGO=&amp;quot;gccgo&amp;quot; CC=&amp;quot;gcc&amp;quot; GOGCCFLAGS=&amp;quot;-fPIC -m64 -pthread -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build892156781=/tmp/go-build -gno-record-gcc-switches&amp;quot; CXX=&amp;quot;g++&amp;quot; CGO_ENABLED=&amp;quot;1&amp;quot; CGO_CFLAGS=&amp;quot;-g -O2&amp;quot; CGO_CPPFLAGS=&amp;quot;&amp;quot; CGO_CXXFLAGS=&amp;quot;-g -O2&amp;quot; CGO_FFLAGS=&amp;quot;-g -O2&amp;quot; CGO_LDFLAGS=&amp;quot;-g -O2&amp;quot; PKG_CONFIG=&amp;quot;pkg-config&amp;quot; 查看yum的Golang 查看golang： $ yum info golang Loading mirror speeds from cached hostfile Installed Packages Name : golang Arch : x86_64 Version : 1.8.3 Release : 1.el7 Size : 11 M Repo :</description>
     </item>
     
     <item>
       <title>2018 11 19 Go语言中Select与for结合使用时可能会遇到的坑</title>
-      <link>https://liabio.github.io/posts/2018-11-19-Go%E8%AF%AD%E8%A8%80%E4%B8%ADSelect%E4%B8%8Efor%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8%E6%97%B6%E5%8F%AF%E8%83%BD%E4%BC%9A%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/</link>
+      <link>http://www.liabio.cn/posts/2018-11-19-Go%E8%AF%AD%E8%A8%80%E4%B8%ADSelect%E4%B8%8Efor%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8%E6%97%B6%E5%8F%AF%E8%83%BD%E4%BC%9A%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/</link>
       <pubDate>Mon, 19 Nov 2018 17:08:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2018-11-19-Go%E8%AF%AD%E8%A8%80%E4%B8%ADSelect%E4%B8%8Efor%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8%E6%97%B6%E5%8F%AF%E8%83%BD%E4%BC%9A%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/</guid>
+      <guid>http://www.liabio.cn/posts/2018-11-19-Go%E8%AF%AD%E8%A8%80%E4%B8%ADSelect%E4%B8%8Efor%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8%E6%97%B6%E5%8F%AF%E8%83%BD%E4%BC%9A%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/</guid>
       <description>作为一个刚接触go编程的新鸟，是不是被它的某些新特性给吓到，尤其是之前已经习惯了C++的编程。对于Go语言，网上褒贬不一，有极力推崇的，如七牛的许式伟，其对go的评价极高，并预言Go的市场占有率会一直逐步上升，取代java，成为第一。也有极</description>
     </item>
     

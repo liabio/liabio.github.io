@@ -2,417 +2,417 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on 小碗汤的博客</title>
-    <link>https://liabio.github.io/tags/</link>
+    <link>http://www.liabio.cn/tags/</link>
     <description>Recent content in Tags on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 13 Oct 2019 20:27:19 +0800</lastBuildDate>
     
-	<atom:link href="https://liabio.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.liabio.cn/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>解决问题</title>
-      <link>https://liabio.github.io/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/</link>
+      <link>http://www.liabio.cn/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/</link>
       <pubDate>Sun, 13 Oct 2019 20:27:19 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/</guid>
+      <guid>http://www.liabio.cn/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/</guid>
       <description></description>
     </item>
     
     <item>
       <title>garbageCollector</title>
-      <link>https://liabio.github.io/tags/garbageCollector/</link>
+      <link>http://www.liabio.cn/tags/garbageCollector/</link>
       <pubDate>Fri, 11 Oct 2019 21:21:50 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/garbageCollector/</guid>
+      <guid>http://www.liabio.cn/tags/garbageCollector/</guid>
       <description></description>
     </item>
     
     <item>
       <title>kubernetes</title>
-      <link>https://liabio.github.io/tags/kubernetes/</link>
+      <link>http://www.liabio.cn/tags/kubernetes/</link>
       <pubDate>Fri, 11 Oct 2019 21:21:50 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/kubernetes/</guid>
+      <guid>http://www.liabio.cn/tags/kubernetes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>垃圾回收器</title>
-      <link>https://liabio.github.io/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/</link>
+      <link>http://www.liabio.cn/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/</link>
       <pubDate>Fri, 11 Oct 2019 21:21:50 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/</guid>
+      <guid>http://www.liabio.cn/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/</guid>
       <description></description>
     </item>
     
     <item>
       <title>问题解决</title>
-      <link>https://liabio.github.io/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</link>
+      <link>http://www.liabio.cn/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</link>
       <pubDate>Tue, 08 Oct 2019 20:49:44 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</guid>
+      <guid>http://www.liabio.cn/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</guid>
       <description></description>
     </item>
     
     <item>
       <title>crd</title>
-      <link>https://liabio.github.io/tags/crd/</link>
+      <link>http://www.liabio.cn/tags/crd/</link>
       <pubDate>Mon, 30 Sep 2019 14:41:33 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/crd/</guid>
+      <guid>http://www.liabio.cn/tags/crd/</guid>
       <description></description>
     </item>
     
     <item>
       <title>docker</title>
-      <link>https://liabio.github.io/tags/docker/</link>
+      <link>http://www.liabio.cn/tags/docker/</link>
       <pubDate>Fri, 27 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/docker/</guid>
+      <guid>http://www.liabio.cn/tags/docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>etcd</title>
-      <link>https://liabio.github.io/tags/etcd/</link>
+      <link>http://www.liabio.cn/tags/etcd/</link>
       <pubDate>Fri, 27 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/etcd/</guid>
+      <guid>http://www.liabio.cn/tags/etcd/</guid>
       <description></description>
     </item>
     
     <item>
       <title>容器</title>
-      <link>https://liabio.github.io/tags/%E5%AE%B9%E5%99%A8/</link>
+      <link>http://www.liabio.cn/tags/%E5%AE%B9%E5%99%A8/</link>
       <pubDate>Fri, 27 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/%E5%AE%B9%E5%99%A8/</guid>
+      <guid>http://www.liabio.cn/tags/%E5%AE%B9%E5%99%A8/</guid>
       <description></description>
     </item>
     
     <item>
       <title>git</title>
-      <link>https://liabio.github.io/tags/git/</link>
+      <link>http://www.liabio.cn/tags/git/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/git/</guid>
+      <guid>http://www.liabio.cn/tags/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ingress-nginx</title>
-      <link>https://liabio.github.io/tags/ingress-nginx/</link>
+      <link>http://www.liabio.cn/tags/ingress-nginx/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/ingress-nginx/</guid>
+      <guid>http://www.liabio.cn/tags/ingress-nginx/</guid>
       <description></description>
     </item>
     
     <item>
       <title>job</title>
-      <link>https://liabio.github.io/tags/job/</link>
+      <link>http://www.liabio.cn/tags/job/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/job/</guid>
+      <guid>http://www.liabio.cn/tags/job/</guid>
       <description></description>
     </item>
     
     <item>
       <title>工具</title>
-      <link>https://liabio.github.io/tags/%E5%B7%A5%E5%85%B7/</link>
+      <link>http://www.liabio.cn/tags/%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/%E5%B7%A5%E5%85%B7/</guid>
+      <guid>http://www.liabio.cn/tags/%E5%B7%A5%E5%85%B7/</guid>
       <description></description>
     </item>
     
     <item>
       <title>存储过程</title>
-      <link>https://liabio.github.io/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</link>
+      <link>http://www.liabio.cn/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</link>
       <pubDate>Wed, 21 Aug 2019 17:51:26 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</guid>
+      <guid>http://www.liabio.cn/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</guid>
       <description></description>
     </item>
     
     <item>
       <title>虚拟机</title>
-      <link>https://liabio.github.io/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/</link>
+      <link>http://www.liabio.cn/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/</link>
       <pubDate>Sat, 20 Jul 2019 17:50:56 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/</guid>
+      <guid>http://www.liabio.cn/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/</guid>
       <description></description>
     </item>
     
     <item>
       <title>shell</title>
-      <link>https://liabio.github.io/tags/shell/</link>
+      <link>http://www.liabio.cn/tags/shell/</link>
       <pubDate>Thu, 20 Jun 2019 17:50:45 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/shell/</guid>
+      <guid>http://www.liabio.cn/tags/shell/</guid>
       <description></description>
     </item>
     
     <item>
       <title>教程</title>
-      <link>https://liabio.github.io/tags/%E6%95%99%E7%A8%8B/</link>
+      <link>http://www.liabio.cn/tags/%E6%95%99%E7%A8%8B/</link>
       <pubDate>Thu, 20 Jun 2019 17:50:36 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/%E6%95%99%E7%A8%8B/</guid>
+      <guid>http://www.liabio.cn/tags/%E6%95%99%E7%A8%8B/</guid>
       <description></description>
     </item>
     
     <item>
       <title>java</title>
-      <link>https://liabio.github.io/tags/java/</link>
+      <link>http://www.liabio.cn/tags/java/</link>
       <pubDate>Mon, 20 May 2019 17:50:15 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/java/</guid>
+      <guid>http://www.liabio.cn/tags/java/</guid>
       <description></description>
     </item>
     
     <item>
       <title>blog</title>
-      <link>https://liabio.github.io/tags/blog/</link>
+      <link>http://www.liabio.cn/tags/blog/</link>
       <pubDate>Fri, 03 May 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/blog/</guid>
+      <guid>http://www.liabio.cn/tags/blog/</guid>
       <description></description>
     </item>
     
     <item>
       <title>hugo</title>
-      <link>https://liabio.github.io/tags/hugo/</link>
+      <link>http://www.liabio.cn/tags/hugo/</link>
       <pubDate>Fri, 03 May 2019 09:59:46 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/hugo/</guid>
+      <guid>http://www.liabio.cn/tags/hugo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>http</title>
-      <link>https://liabio.github.io/tags/http/</link>
+      <link>http://www.liabio.cn/tags/http/</link>
       <pubDate>Wed, 20 Mar 2019 17:49:52 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/http/</guid>
+      <guid>http://www.liabio.cn/tags/http/</guid>
       <description></description>
     </item>
     
     <item>
       <title>日志转储</title>
-      <link>https://liabio.github.io/tags/%E6%97%A5%E5%BF%97%E8%BD%AC%E5%82%A8/</link>
+      <link>http://www.liabio.cn/tags/%E6%97%A5%E5%BF%97%E8%BD%AC%E5%82%A8/</link>
       <pubDate>Fri, 08 Mar 2019 17:49:27 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/%E6%97%A5%E5%BF%97%E8%BD%AC%E5%82%A8/</guid>
+      <guid>http://www.liabio.cn/tags/%E6%97%A5%E5%BF%97%E8%BD%AC%E5%82%A8/</guid>
       <description></description>
     </item>
     
     <item>
       <title>效率工具</title>
-      <link>https://liabio.github.io/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/</link>
+      <link>http://www.liabio.cn/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Fri, 08 Feb 2019 17:49:07 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/</guid>
+      <guid>http://www.liabio.cn/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/</guid>
       <description></description>
     </item>
     
     <item>
       <title>国际化</title>
-      <link>https://liabio.github.io/tags/%E5%9B%BD%E9%99%85%E5%8C%96/</link>
+      <link>http://www.liabio.cn/tags/%E5%9B%BD%E9%99%85%E5%8C%96/</link>
       <pubDate>Sun, 06 Jan 2019 17:43:33 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/%E5%9B%BD%E9%99%85%E5%8C%96/</guid>
+      <guid>http://www.liabio.cn/tags/%E5%9B%BD%E9%99%85%E5%8C%96/</guid>
       <description></description>
     </item>
     
     <item>
       <title>csdn</title>
-      <link>https://liabio.github.io/tags/csdn/</link>
+      <link>http://www.liabio.cn/tags/csdn/</link>
       <pubDate>Fri, 04 Jan 2019 17:40:20 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/csdn/</guid>
+      <guid>http://www.liabio.cn/tags/csdn/</guid>
       <description></description>
     </item>
     
     <item>
       <title>linux</title>
-      <link>https://liabio.github.io/tags/linux/</link>
+      <link>http://www.liabio.cn/tags/linux/</link>
       <pubDate>Thu, 03 Jan 2019 17:39:30 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/linux/</guid>
+      <guid>http://www.liabio.cn/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>email</title>
-      <link>https://liabio.github.io/tags/email/</link>
+      <link>http://www.liabio.cn/tags/email/</link>
       <pubDate>Wed, 02 Jan 2019 17:38:10 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/email/</guid>
+      <guid>http://www.liabio.cn/tags/email/</guid>
       <description></description>
     </item>
     
     <item>
       <title>验证码</title>
-      <link>https://liabio.github.io/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/</link>
+      <link>http://www.liabio.cn/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/</link>
       <pubDate>Thu, 27 Dec 2018 17:34:47 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/</guid>
+      <guid>http://www.liabio.cn/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/</guid>
       <description></description>
     </item>
     
     <item>
       <title>坑</title>
-      <link>https://liabio.github.io/tags/%E5%9D%91/</link>
+      <link>http://www.liabio.cn/tags/%E5%9D%91/</link>
       <pubDate>Tue, 25 Dec 2018 17:29:19 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/%E5%9D%91/</guid>
+      <guid>http://www.liabio.cn/tags/%E5%9D%91/</guid>
       <description></description>
     </item>
     
     <item>
       <title>爬虫</title>
-      <link>https://liabio.github.io/tags/%E7%88%AC%E8%99%AB/</link>
+      <link>http://www.liabio.cn/tags/%E7%88%AC%E8%99%AB/</link>
       <pubDate>Sun, 23 Dec 2018 17:27:15 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/%E7%88%AC%E8%99%AB/</guid>
+      <guid>http://www.liabio.cn/tags/%E7%88%AC%E8%99%AB/</guid>
       <description></description>
     </item>
     
     <item>
       <title>mysql</title>
-      <link>https://liabio.github.io/tags/mysql/</link>
+      <link>http://www.liabio.cn/tags/mysql/</link>
       <pubDate>Fri, 21 Dec 2018 17:21:38 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/mysql/</guid>
+      <guid>http://www.liabio.cn/tags/mysql/</guid>
       <description></description>
     </item>
     
     <item>
       <title>chocolate</title>
-      <link>https://liabio.github.io/tags/chocolate/</link>
+      <link>http://www.liabio.cn/tags/chocolate/</link>
       <pubDate>Wed, 19 Dec 2018 17:16:03 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/chocolate/</guid>
+      <guid>http://www.liabio.cn/tags/chocolate/</guid>
       <description></description>
     </item>
     
     <item>
       <title>包管理</title>
-      <link>https://liabio.github.io/tags/%E5%8C%85%E7%AE%A1%E7%90%86/</link>
+      <link>http://www.liabio.cn/tags/%E5%8C%85%E7%AE%A1%E7%90%86/</link>
       <pubDate>Wed, 19 Dec 2018 17:16:03 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/%E5%8C%85%E7%AE%A1%E7%90%86/</guid>
+      <guid>http://www.liabio.cn/tags/%E5%8C%85%E7%AE%A1%E7%90%86/</guid>
       <description></description>
     </item>
     
     <item>
       <title>灰度发布</title>
-      <link>https://liabio.github.io/tags/%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/</link>
+      <link>http://www.liabio.cn/tags/%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/</link>
       <pubDate>Sun, 02 Dec 2018 15:15:43 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/</guid>
+      <guid>http://www.liabio.cn/tags/%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/</guid>
       <description></description>
     </item>
     
     <item>
       <title>上网</title>
-      <link>https://liabio.github.io/tags/%E4%B8%8A%E7%BD%91/</link>
+      <link>http://www.liabio.cn/tags/%E4%B8%8A%E7%BD%91/</link>
       <pubDate>Mon, 19 Nov 2018 17:10:57 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/%E4%B8%8A%E7%BD%91/</guid>
+      <guid>http://www.liabio.cn/tags/%E4%B8%8A%E7%BD%91/</guid>
       <description></description>
     </item>
     
     <item>
       <title>thrift</title>
-      <link>https://liabio.github.io/tags/thrift/</link>
+      <link>http://www.liabio.cn/tags/thrift/</link>
       <pubDate>Mon, 19 Nov 2018 17:10:29 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/thrift/</guid>
+      <guid>http://www.liabio.cn/tags/thrift/</guid>
       <description></description>
     </item>
     
     <item>
       <title>telnet</title>
-      <link>https://liabio.github.io/tags/telnet/</link>
+      <link>http://www.liabio.cn/tags/telnet/</link>
       <pubDate>Sun, 18 Nov 2018 17:07:16 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/telnet/</guid>
+      <guid>http://www.liabio.cn/tags/telnet/</guid>
       <description></description>
     </item>
     
     <item>
       <title>配置</title>
-      <link>https://liabio.github.io/tags/%E9%85%8D%E7%BD%AE/</link>
+      <link>http://www.liabio.cn/tags/%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Sat, 17 Nov 2018 17:05:55 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://www.liabio.cn/tags/%E9%85%8D%E7%BD%AE/</guid>
       <description></description>
     </item>
     
     <item>
       <title>镜像</title>
-      <link>https://liabio.github.io/tags/%E9%95%9C%E5%83%8F/</link>
+      <link>http://www.liabio.cn/tags/%E9%95%9C%E5%83%8F/</link>
       <pubDate>Thu, 15 Nov 2018 17:00:35 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/%E9%95%9C%E5%83%8F/</guid>
+      <guid>http://www.liabio.cn/tags/%E9%95%9C%E5%83%8F/</guid>
       <description></description>
     </item>
     
     <item>
       <title>nginx</title>
-      <link>https://liabio.github.io/tags/nginx/</link>
+      <link>http://www.liabio.cn/tags/nginx/</link>
       <pubDate>Tue, 13 Nov 2018 16:56:04 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/nginx/</guid>
+      <guid>http://www.liabio.cn/tags/nginx/</guid>
       <description></description>
     </item>
     
     <item>
       <title>redis集群</title>
-      <link>https://liabio.github.io/tags/redis%E9%9B%86%E7%BE%A4/</link>
+      <link>http://www.liabio.cn/tags/redis%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Sun, 02 Sep 2018 15:10:53 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/redis%E9%9B%86%E7%BE%A4/</guid>
+      <guid>http://www.liabio.cn/tags/redis%E9%9B%86%E7%BE%A4/</guid>
       <description></description>
     </item>
     
     <item>
       <title>代理</title>
-      <link>https://liabio.github.io/tags/%E4%BB%A3%E7%90%86/</link>
+      <link>http://www.liabio.cn/tags/%E4%BB%A3%E7%90%86/</link>
       <pubDate>Mon, 02 Jul 2018 15:07:05 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/%E4%BB%A3%E7%90%86/</guid>
+      <guid>http://www.liabio.cn/tags/%E4%BB%A3%E7%90%86/</guid>
       <description></description>
     </item>
     
     <item>
       <title>controller</title>
-      <link>https://liabio.github.io/tags/controller/</link>
+      <link>http://www.liabio.cn/tags/controller/</link>
       <pubDate>Sat, 02 Jun 2018 15:04:35 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/controller/</guid>
+      <guid>http://www.liabio.cn/tags/controller/</guid>
       <description></description>
     </item>
     
     <item>
       <title>operator</title>
-      <link>https://liabio.github.io/tags/operator/</link>
+      <link>http://www.liabio.cn/tags/operator/</link>
       <pubDate>Wed, 02 May 2018 15:01:15 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/operator/</guid>
+      <guid>http://www.liabio.cn/tags/operator/</guid>
       <description></description>
     </item>
     
     <item>
       <title>服务器安全</title>
-      <link>https://liabio.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E5%85%A8/</link>
+      <link>http://www.liabio.cn/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E5%85%A8/</link>
       <pubDate>Tue, 30 Jan 2018 14:49:18 +0800</pubDate>
       
-      <guid>https://liabio.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E5%85%A8/</guid>
+      <guid>http://www.liabio.cn/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E5%85%A8/</guid>
       <description></description>
     </item>
     

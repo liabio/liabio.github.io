@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>telnet on 小碗汤的博客</title>
-    <link>https://liabio.github.io/tags/telnet/</link>
+    <link>http://www.liabio.cn/tags/telnet/</link>
     <description>Recent content in telnet on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 18 Nov 2018 17:07:16 +0800</lastBuildDate>
     
-	<atom:link href="https://liabio.github.io/tags/telnet/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.liabio.cn/tags/telnet/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>使用telnet连接redis</title>
-      <link>https://liabio.github.io/posts/2018-11-18-%E4%BD%BF%E7%94%A8telnet%E8%BF%9E%E6%8E%A5redis/</link>
+      <link>http://www.liabio.cn/posts/2018-11-18-%E4%BD%BF%E7%94%A8telnet%E8%BF%9E%E6%8E%A5redis/</link>
       <pubDate>Sun, 18 Nov 2018 17:07:16 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2018-11-18-%E4%BD%BF%E7%94%A8telnet%E8%BF%9E%E6%8E%A5redis/</guid>
+      <guid>http://www.liabio.cn/posts/2018-11-18-%E4%BD%BF%E7%94%A8telnet%E8%BF%9E%E6%8E%A5redis/</guid>
       <description>平时连接redis用的是官方客户端redis-cli, 使用redis-cli最常用的几个参数如下： -h Server hostname (default: 127.0.0.1). -p Server port (default: 6379). -a Password to use when connecting to the server. 比如连接本地redis： redis-cli -h 127.0.0.1 -p 6379 -a 12345 如果没有redis-cli，还可以用telnet，连接方式为： telnet &amp;lt;hostname&amp;gt;</description>
     </item>
     

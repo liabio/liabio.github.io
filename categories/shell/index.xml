@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>shell on 小碗汤的博客</title>
-    <link>https://liabio.github.io/categories/shell/</link>
+    <link>http://www.liabio.cn/categories/shell/</link>
     <description>Recent content in shell on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 20 Jun 2019 17:50:45 +0800</lastBuildDate>
     
-	<atom:link href="https://liabio.github.io/categories/shell/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.liabio.cn/categories/shell/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Shell脚本批量调用接口</title>
-      <link>https://liabio.github.io/posts/2019-06-20-shell%E8%84%9A%E6%9C%AC%E6%89%B9%E9%87%8F%E8%B0%83%E7%94%A8%E6%8E%A5%E5%8F%A3/</link>
+      <link>http://www.liabio.cn/posts/2019-06-20-shell%E8%84%9A%E6%9C%AC%E6%89%B9%E9%87%8F%E8%B0%83%E7%94%A8%E6%8E%A5%E5%8F%A3/</link>
       <pubDate>Thu, 20 Jun 2019 17:50:45 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2019-06-20-shell%E8%84%9A%E6%9C%AC%E6%89%B9%E9%87%8F%E8%B0%83%E7%94%A8%E6%8E%A5%E5%8F%A3/</guid>
+      <guid>http://www.liabio.cn/posts/2019-06-20-shell%E8%84%9A%E6%9C%AC%E6%89%B9%E9%87%8F%E8%B0%83%E7%94%A8%E6%8E%A5%E5%8F%A3/</guid>
       <description>&amp;emsp;&amp;emsp;要求在页面查询到5000条数据，为了方便插入，用shell脚本写curl命令调用自己写的代码接口； 脚本如下： #!/bin/bash a=0 while [ $a -le 10 ]; do # length of ts is 13 required,Through the following way like this ts=`date +%s%N` ts=${ts:0:13} json=&#39;{&amp;quot;name&amp;quot; : &amp;quot;&#39;$1$a&#39;&amp;quot;, &amp;quot;age&amp;quot; : &#39;$2&#39;, &amp;quot;ts&amp;quot; : &#39;$ts&#39;}&#39; a=$((a+1)) curl -k -H &#39;Content-Type:application/json;charset=utf-8&#39; http://192.168.2.5:8080 -X POST -d &amp;quot;&#39;$json&#39;&amp;quot; done 执行脚本 **执行结果</description>
     </item>
     
     <item>
       <title>一次写shell脚本的经历记录——特殊字符惹的祸</title>
-      <link>https://liabio.github.io/posts/2018-04-02-%E4%B8%80%E6%AC%A1%E5%86%99shell%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BB%8F%E5%8E%86%E8%AE%B0%E5%BD%95%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E6%83%B9%E7%9A%84%E7%A5%B8/</link>
+      <link>http://www.liabio.cn/posts/2018-04-02-%E4%B8%80%E6%AC%A1%E5%86%99shell%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BB%8F%E5%8E%86%E8%AE%B0%E5%BD%95%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E6%83%B9%E7%9A%84%E7%A5%B8/</link>
       <pubDate>Mon, 02 Apr 2018 14:59:25 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2018-04-02-%E4%B8%80%E6%AC%A1%E5%86%99shell%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BB%8F%E5%8E%86%E8%AE%B0%E5%BD%95%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E6%83%B9%E7%9A%84%E7%A5%B8/</guid>
+      <guid>http://www.liabio.cn/posts/2018-04-02-%E4%B8%80%E6%AC%A1%E5%86%99shell%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BB%8F%E5%8E%86%E8%AE%B0%E5%BD%95%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E6%83%B9%E7%9A%84%E7%A5%B8/</guid>
       <description>本文首发于微信公众号“我的小碗汤”，扫码文末二维码即可关注，欢迎一起交流！ redis在容器化的过程中，涉及到纵向扩pod实例cpu、内存以及redis实例的maxmemory值，statefulset管理的pod需要重启。所以把redis集</description>
     </item>
     
     <item>
       <title>Shell脚本获取目录中个各个服务最新的包</title>
-      <link>https://liabio.github.io/posts/2018-02-1-shell%E8%84%9A%E6%9C%AC%E8%8E%B7%E5%8F%96%E7%9B%AE%E5%BD%95%E4%B8%AD%E4%B8%AA%E5%90%84%E4%B8%AA%E6%9C%8D%E5%8A%A1%E6%9C%80%E6%96%B0%E7%9A%84%E5%8C%85/</link>
+      <link>http://www.liabio.cn/posts/2018-02-1-shell%E8%84%9A%E6%9C%AC%E8%8E%B7%E5%8F%96%E7%9B%AE%E5%BD%95%E4%B8%AD%E4%B8%AA%E5%90%84%E4%B8%AA%E6%9C%8D%E5%8A%A1%E6%9C%80%E6%96%B0%E7%9A%84%E5%8C%85/</link>
       <pubDate>Thu, 01 Feb 2018 14:53:28 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2018-02-1-shell%E8%84%9A%E6%9C%AC%E8%8E%B7%E5%8F%96%E7%9B%AE%E5%BD%95%E4%B8%AD%E4%B8%AA%E5%90%84%E4%B8%AA%E6%9C%8D%E5%8A%A1%E6%9C%80%E6%96%B0%E7%9A%84%E5%8C%85/</guid>
+      <guid>http://www.liabio.cn/posts/2018-02-1-shell%E8%84%9A%E6%9C%AC%E8%8E%B7%E5%8F%96%E7%9B%AE%E5%BD%95%E4%B8%AD%E4%B8%AA%E5%90%84%E4%B8%AA%E6%9C%8D%E5%8A%A1%E6%9C%80%E6%96%B0%E7%9A%84%E5%8C%85/</guid>
       <description>需求 有个目录，里面是存放着各个微服务的各个版本的包，包名格式为：{服务名}-{时间戳}.zip 比如： 需要获取各个服务最新的包名，即： aad-service-7.35.20190723005668.zip add-service-7.35.20190723005668.zip icm-service-7.35.20190724005968.zip shell怎么写? #!/bin/bash # 进入包目录 cd /data/test/testsvc # 申明数组 declare -a SVCNAME # 遍历目录中所有的包 for svc in $(ls) do # 把包名按照时间戳前</description>
     </item>
     

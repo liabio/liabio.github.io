@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>云服务器 on 小碗汤的博客</title>
-    <link>https://liabio.github.io/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+    <link>http://www.liabio.cn/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
     <description>Recent content in 云服务器 on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 13 Oct 2019 20:27:19 +0800</lastBuildDate>
     
-	<atom:link href="https://liabio.github.io/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.liabio.cn/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>亚马逊AWS云服务器不合理扣费怎么处理</title>
-      <link>https://liabio.github.io/posts/2019-10-13-aes-cloud-server-deduct-fee/</link>
+      <link>http://www.liabio.cn/posts/2019-10-13-aes-cloud-server-deduct-fee/</link>
       <pubDate>Sun, 13 Oct 2019 20:27:19 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2019-10-13-aes-cloud-server-deduct-fee/</guid>
+      <guid>http://www.liabio.cn/posts/2019-10-13-aes-cloud-server-deduct-fee/</guid>
       <description>有些小伙伴可能不知道，亚马逊AWS对新用户有个免费体验一年的活动。如果希望体验免费亚马逊AWS云服务器产品，或者看看他们后台面板长什么样，体验产品的速度和性能，又或者准备搭建一个免费梯子，可以 注册玩玩。 很简单，全程基本都是中文，不用担心看不</description>
     </item>
     

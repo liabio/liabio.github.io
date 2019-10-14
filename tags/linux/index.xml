@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>linux on 小碗汤的博客</title>
-    <link>https://liabio.github.io/tags/linux/</link>
+    <link>http://www.liabio.cn/tags/linux/</link>
     <description>Recent content in linux on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 03 Jan 2019 17:39:30 +0800</lastBuildDate>
     
-	<atom:link href="https://liabio.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.liabio.cn/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Yum源配置</title>
-      <link>https://liabio.github.io/posts/2019-01-03-yum%E6%BA%90%E9%85%8D%E7%BD%AE/</link>
+      <link>http://www.liabio.cn/posts/2019-01-03-yum%E6%BA%90%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Thu, 03 Jan 2019 17:39:30 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2019-01-03-yum%E6%BA%90%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://www.liabio.cn/posts/2019-01-03-yum%E6%BA%90%E9%85%8D%E7%BD%AE/</guid>
       <description>在配置yum前首先得说说rpm，在redhat和centos linux系统上，rpm作为软件包管理工具，可以方便的安装、查询、卸载软件包。常见命令如下： #安装： rpm -ivh jdk-7u25-linux-x64.rpm #卸载： rpm -e jdk-7u25-linux-x64.rpm #升级： rpm -Uvh jdk-7u25-linux-x64.rpm #查询软件的安装路径： rpm -ql yum-3.4.3-118.el7.noarch #查询所有安装的包</description>
     </item>
     

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>微服务 on 小碗汤的博客</title>
-    <link>https://liabio.github.io/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</link>
+    <link>http://www.liabio.cn/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</link>
     <description>Recent content in 微服务 on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Mon, 19 Nov 2018 17:10:29 +0800</lastBuildDate>
     
-	<atom:link href="https://liabio.github.io/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.liabio.cn/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>微服务学习之thrift安装</title>
-      <link>https://liabio.github.io/posts/2018-11-19-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E4%B9%8Bthrift%E5%AE%89%E8%A3%85/</link>
+      <link>http://www.liabio.cn/posts/2018-11-19-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E4%B9%8Bthrift%E5%AE%89%E8%A3%85/</link>
       <pubDate>Mon, 19 Nov 2018 17:10:29 +0800</pubDate>
       
-      <guid>https://liabio.github.io/posts/2018-11-19-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E4%B9%8Bthrift%E5%AE%89%E8%A3%85/</guid>
+      <guid>http://www.liabio.cn/posts/2018-11-19-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E4%B9%8Bthrift%E5%AE%89%E8%A3%85/</guid>
       <description>学生课程管理系统简单微服务架构图： Thirft下载安装： 安装的是thrift tgz，即后缀是tar.gz 或者.tgz包： wget http://mirrors.tuna.tsinghua.edu.cn/apache/thrift/0.11.0/thrift-0.11.0.tar.gz 可以解压后看README.MD文件里的安装步骤。 tar zxf thrift-0.11.0.tar.gz 源码包需要第一步的./bootstrap.sh，tar（即后缀</description>
     </item>
     
