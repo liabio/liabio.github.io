@@ -6,10 +6,19 @@
     <description>Recent content in Tags on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 13 Oct 2019 20:27:19 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 15 Oct 2019 17:49:46 +0800</lastBuildDate>
     
 	<atom:link href="http://www.liabio.cn/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>教程</title>
+      <link>http://www.liabio.cn/tags/%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Tue, 15 Oct 2019 17:49:46 +0800</pubDate>
+      
+      <guid>http://www.liabio.cn/tags/%E6%95%99%E7%A8%8B/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>解决问题</title>
@@ -152,15 +161,6 @@
       <pubDate>Thu, 20 Jun 2019 17:50:45 +0800</pubDate>
       
       <guid>http://www.liabio.cn/tags/shell/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>教程</title>
-      <link>http://www.liabio.cn/tags/%E6%95%99%E7%A8%8B/</link>
-      <pubDate>Thu, 20 Jun 2019 17:50:36 +0800</pubDate>
-      
-      <guid>http://www.liabio.cn/tags/%E6%95%99%E7%A8%8B/</guid>
       <description></description>
     </item>
     

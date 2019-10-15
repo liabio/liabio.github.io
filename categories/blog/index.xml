@@ -6,10 +6,19 @@
     <description>Recent content in blog on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 03 May 2019 09:59:46 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 15 Oct 2019 17:49:46 +0800</lastBuildDate>
     
 	<atom:link href="http://www.liabio.cn/categories/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>CSDN VIP博客如何自定义栏目</title>
+      <link>http://www.liabio.cn/posts/2019-10-15-csdn-custom-menu/</link>
+      <pubDate>Tue, 15 Oct 2019 17:49:46 +0800</pubDate>
+      
+      <guid>http://www.liabio.cn/posts/2019-10-15-csdn-custom-menu/</guid>
+      <description>几个月前我也开始在csdn上开了博客，一来给自己加几个少的可怜的流量，再者，让公众号的原创文章获得更多的曝光，让有需要的同学看到。 写过csdn博客的同学都知道，默认只有打赏c币功能；也没有专门广告位；引导栏目，只有侧栏csdn自己的引导二维</description>
+    </item>
     
     <item>
       <title>Hugo搭建博客教程</title>

@@ -68,6 +68,52 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
+                                    <a href="http://www.liabio.cn/posts/2018-11-19-%E5%90%AC%E8%AF%B4%E4%BD%A0%E8%BF%98%E6%B2%A1%E6%8E%8C%E6%8F%A1Normalizer%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" title="听说你还没掌握Normalizer的使用方法" >听说你还没掌握Normalizer的使用方法</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2018年11月19日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="http://www.liabio.cn/categories/elasticsearch">elasticsearch</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                在 Elasticsearch 中处理字符串类型的数据时，如果我们想把整个字符串作为一个完整的 term 存储，我们通常会将其类型 type 设定为 keyword。但有时这种设定又会给我们带来麻烦，比如同一个数据再写入时由于没有做好清洗，导致大小写不一致，比如 apple、Apple两个实……
+                            </div>
+                            <p class="readmore"><a href="http://www.liabio.cn/posts/2018-11-19-%E5%90%AC%E8%AF%B4%E4%BD%A0%E8%BF%98%E6%B2%A1%E6%8E%8C%E6%8F%A1Normalizer%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="http://www.liabio.cn/posts/2018-11-19-%E5%A6%82%E4%BD%95%E8%AE%A9CentOS%E4%B9%9F%E8%83%BD%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" title="如何让CentOS也能科学上网" >如何让CentOS也能科学上网</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2018年11月19日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="http://www.liabio.cn/categories/centos">centos</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                对于攻城狮们来说，在 PC 机上安装 ss ，以及在海外服务器上搭建 ss 服务已经不是什么新鲜事，毕竟知识无国界，有时候参照些国外先进的技术，对自身的提高也是很有帮助的。 但是如何在国内服务器上搭建 ss 客户端，并进行代理，这却是比较少见的。也正好今天碰到有这需……
+                            </div>
+                            <p class="readmore"><a href="http://www.liabio.cn/posts/2018-11-19-%E5%A6%82%E4%BD%95%E8%AE%A9CentOS%E4%B9%9F%E8%83%BD%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
                                     <a href="http://www.liabio.cn/posts/2018-11-19-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E4%B9%8Bthrift%E5%AE%89%E8%A3%85/" title="微服务学习之thrift安装" >微服务学习之thrift安装</a>
                                 </h1>
                             </header>
@@ -132,52 +178,6 @@
                                 平时连接redis用的是官方客户端redis-cli, 使用redis-cli最常用的几个参数如下： -h Server hostname (default: 127.0.0.1). -p Server port (default: 6379). -a Password to use when connecting to the server. 比如连接本地redis： redis-cli -h 127.0.0.1 -p 6379 -a 12345 如果没有redis-cli，还可以用telnet，连接方式为： telnet &lt;hostname&gt;……
                             </div>
                             <p class="readmore"><a href="http://www.liabio.cn/posts/2018-11-18-%E4%BD%BF%E7%94%A8telnet%E8%BF%9E%E6%8E%A5redis/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="http://www.liabio.cn/posts/2018-11-17-IntelliJ-IDEA%E8%87%AA%E5%8A%A8%E5%AF%BC%E5%85%A5%E5%8C%85%E5%8E%BB%E9%99%A4%E6%98%9F%E5%8F%B7/" title="IntelliJ IDEA自动导入包去除星号" >IntelliJ IDEA自动导入包去除星号</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2018年11月17日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="http://www.liabio.cn/categories/idea">idea</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                打开设置&gt;Editor&gt;Code Style&gt;Java&gt;Scheme Default&gt;Imports ① 将Class count to use import with &ldquo;*&ldquo;改为99（导入同一个包的类超过这个数值自动变为 * ） ② 将Names count to use static import with &ldquo;*&ldquo;改为99（同上，但这是静态导入的……
-                            </div>
-                            <p class="readmore"><a href="http://www.liabio.cn/posts/2018-11-17-IntelliJ-IDEA%E8%87%AA%E5%8A%A8%E5%AF%BC%E5%85%A5%E5%8C%85%E5%8E%BB%E9%99%A4%E6%98%9F%E5%8F%B7/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="http://www.liabio.cn/posts/2018-11-16-%E8%BF%9E%E6%8E%A5zookeeper%E6%8A%A5%E9%94%99NoRouteToHost/" title="连接zookeeper报错NoRouteToHost" >连接zookeeper报错NoRouteToHost</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2018年11月16日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="http://www.liabio.cn/categories/zookeeper">zookeeper</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                最近在学习微服务，遇到了很多问题，今天又遇到了个连接zookeeper报错的问题，在此记录下。 学生课程管理系统简单微服务架构图： 各个服务容器化以后，用docker-compose启动，其中docker-compose.yml文件如下： version: &quot;3&quot; services:……
-                            </div>
-                            <p class="readmore"><a href="http://www.liabio.cn/posts/2018-11-16-%E8%BF%9E%E6%8E%A5zookeeper%E6%8A%A5%E9%94%99NoRouteToHost/">阅读全文</a></p>
                         </article>
                     
                     
@@ -257,7 +257,7 @@
         
         
         <li >
-            <a href="http://www.liabio.cn/page/17/">17</a>
+            <a href="http://www.liabio.cn/page/18/">18</a>
         </li>
         
     
@@ -292,6 +292,14 @@
 <ul class="widget-list">
     
     <li>
+        <a href="http://www.liabio.cn/posts/2019-10-15-csdn-custom-menu/" title="CSDN VIP博客如何自定义栏目">CSDN VIP博客如何自定义栏目</a>
+    </li>
+    
+    <li>
+        <a href="http://www.liabio.cn/posts/2019-10-15-taobao-defraud/" title="骗子手段真多，诚会玩">骗子手段真多，诚会玩</a>
+    </li>
+    
+    <li>
         <a href="http://www.liabio.cn/posts/2019-10-13-aes-cloud-server-deduct-fee/" title="亚马逊AWS云服务器不合理扣费怎么处理">亚马逊AWS云服务器不合理扣费怎么处理</a>
     </li>
     
@@ -321,14 +329,6 @@
     
     <li>
         <a href="http://www.liabio.cn/posts/2019-09-24-git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" title="git常用操作">git常用操作</a>
-    </li>
-    
-    <li>
-        <a href="http://www.liabio.cn/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/" title="k8s中部署负载均衡器ingress-nginx">k8s中部署负载均衡器ingress-nginx</a>
-    </li>
-    
-    <li>
-        <a href="http://www.liabio.cn/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/" title="k8s使用Job执行任务失败了怎么办">k8s使用Job执行任务失败了怎么办</a>
     </li>
     
 </ul>
@@ -380,11 +380,15 @@
 <ul class="widget-list">
     
     <li>
+        <a href="http://www.liabio.cn/categories//">(1)</a>
+    </li>
+    
+    <li>
         <a href="http://www.liabio.cn/categories/anyListen/">anyListen(1)</a>
     </li>
     
     <li>
-        <a href="http://www.liabio.cn/categories/blog/">blog(2)</a>
+        <a href="http://www.liabio.cn/categories/blog/">blog(3)</a>
     </li>
     
     <li>
@@ -517,6 +521,8 @@
     <section class="widget">
         <h3 class="widget-title">标签</h3>
 <div class="tagcloud">
+    
+    <a href="http://www.liabio.cn/tags//"></a>
     
     <a href="http://www.liabio.cn/tags/blog/">blog</a>
     

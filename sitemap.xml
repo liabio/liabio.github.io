@@ -3,18 +3,43 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://www.liabio.cn/categories/blog/</loc>
+    <lastmod>2019-10-15T17:49:46+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://www.liabio.cn/categories/</loc>
-    <lastmod>2019-10-13T20:27:19+08:00</lastmod>
+    <lastmod>2019-10-15T17:49:46+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.liabio.cn/posts/2019-10-15-csdn-custom-menu/</loc>
+    <lastmod>2019-10-15T17:49:46+08:00</lastmod>
   </url>
   
   <url>
     <loc>http://www.liabio.cn/posts/</loc>
-    <lastmod>2019-10-13T20:27:19+08:00</lastmod>
+    <lastmod>2019-10-15T17:49:46+08:00</lastmod>
   </url>
   
   <url>
     <loc>http://www.liabio.cn/tags/</loc>
-    <lastmod>2019-10-13T20:27:19+08:00</lastmod>
+    <lastmod>2019-10-15T17:49:46+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.liabio.cn/</loc>
+    <lastmod>2019-10-15T17:49:46+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.liabio.cn/tags/%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2019-10-15T17:49:46+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.liabio.cn/posts/2019-10-15-taobao-defraud/</loc>
+    <lastmod>2019-10-15T17:24:55+08:00</lastmod>
   </url>
   
   <url>
@@ -24,11 +49,6 @@
   
   <url>
     <loc>http://www.liabio.cn/posts/2019-10-13-aes-cloud-server-deduct-fee/</loc>
-    <lastmod>2019-10-13T20:27:19+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.liabio.cn/</loc>
     <lastmod>2019-10-13T20:27:19+08:00</lastmod>
   </url>
   
@@ -43,12 +63,12 @@
   </url>
   
   <url>
-    <loc>http://www.liabio.cn/tags/kubernetes/</loc>
+    <loc>http://www.liabio.cn/categories/kubernetes/</loc>
     <lastmod>2019-10-11T21:21:50+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.liabio.cn/categories/kubernetes/</loc>
+    <loc>http://www.liabio.cn/tags/kubernetes/</loc>
     <lastmod>2019-10-11T21:21:50+08:00</lastmod>
   </url>
   
@@ -103,12 +123,12 @@
   </url>
   
   <url>
-    <loc>http://www.liabio.cn/tags/etcd/</loc>
+    <loc>http://www.liabio.cn/categories/etcd/</loc>
     <lastmod>2019-09-27T09:59:46+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.liabio.cn/categories/etcd/</loc>
+    <loc>http://www.liabio.cn/tags/etcd/</loc>
     <lastmod>2019-09-27T09:59:46+08:00</lastmod>
   </url>
   
@@ -138,12 +158,12 @@
   </url>
   
   <url>
-    <loc>http://www.liabio.cn/tags/git/</loc>
+    <loc>http://www.liabio.cn/categories/git/</loc>
     <lastmod>2019-09-24T09:59:46+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.liabio.cn/categories/git/</loc>
+    <loc>http://www.liabio.cn/tags/git/</loc>
     <lastmod>2019-09-24T09:59:46+08:00</lastmod>
   </url>
   
@@ -153,12 +173,12 @@
   </url>
   
   <url>
-    <loc>http://www.liabio.cn/tags/ingress-nginx/</loc>
+    <loc>http://www.liabio.cn/categories/ingress-nginx/</loc>
     <lastmod>2019-09-24T09:59:46+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.liabio.cn/categories/ingress-nginx/</loc>
+    <loc>http://www.liabio.cn/tags/ingress-nginx/</loc>
     <lastmod>2019-09-24T09:59:46+08:00</lastmod>
   </url>
   
@@ -208,12 +228,12 @@
   </url>
   
   <url>
-    <loc>http://www.liabio.cn/tags/%E5%B7%A5%E5%85%B7/</loc>
+    <loc>http://www.liabio.cn/categories/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2019-09-24T09:59:46+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.liabio.cn/categories/%E5%B7%A5%E5%85%B7/</loc>
+    <loc>http://www.liabio.cn/tags/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2019-09-24T09:59:46+08:00</lastmod>
   </url>
   
@@ -263,12 +283,12 @@
   </url>
   
   <url>
-    <loc>http://www.liabio.cn/categories/shell/</loc>
+    <loc>http://www.liabio.cn/tags/shell/</loc>
     <lastmod>2019-06-20T17:50:45+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.liabio.cn/tags/shell/</loc>
+    <loc>http://www.liabio.cn/categories/shell/</loc>
     <lastmod>2019-06-20T17:50:45+08:00</lastmod>
   </url>
   
@@ -279,11 +299,6 @@
   
   <url>
     <loc>http://www.liabio.cn/posts/2019-06-20-golangFlag%E5%8C%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2019-06-20T17:50:36+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://www.liabio.cn/tags/%E6%95%99%E7%A8%8B/</loc>
     <lastmod>2019-06-20T17:50:36+08:00</lastmod>
   </url>
   
@@ -323,11 +338,6 @@
   </url>
   
   <url>
-    <loc>http://www.liabio.cn/categories/blog/</loc>
-    <lastmod>2019-05-03T09:59:46+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://www.liabio.cn/tags/hugo/</loc>
     <lastmod>2019-05-03T09:59:46+08:00</lastmod>
   </url>
@@ -348,12 +358,12 @@
   </url>
   
   <url>
-    <loc>http://www.liabio.cn/categories/http/</loc>
+    <loc>http://www.liabio.cn/tags/http/</loc>
     <lastmod>2019-03-20T17:49:52+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://www.liabio.cn/tags/http/</loc>
+    <loc>http://www.liabio.cn/categories/http/</loc>
     <lastmod>2019-03-20T17:49:52+08:00</lastmod>
   </url>
   

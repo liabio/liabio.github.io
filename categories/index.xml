@@ -6,10 +6,19 @@
     <description>Recent content in Categories on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 13 Oct 2019 20:27:19 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 15 Oct 2019 17:49:46 +0800</lastBuildDate>
     
 	<atom:link href="http://www.liabio.cn/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>blog</title>
+      <link>http://www.liabio.cn/categories/blog/</link>
+      <pubDate>Tue, 15 Oct 2019 17:49:46 +0800</pubDate>
+      
+      <guid>http://www.liabio.cn/categories/blog/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>云服务器</title>
@@ -152,15 +161,6 @@
       <pubDate>Mon, 20 May 2019 17:50:15 +0800</pubDate>
       
       <guid>http://www.liabio.cn/categories/java/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>blog</title>
-      <link>http://www.liabio.cn/categories/blog/</link>
-      <pubDate>Fri, 03 May 2019 09:59:46 +0800</pubDate>
-      
-      <guid>http://www.liabio.cn/categories/blog/</guid>
       <description></description>
     </item>
     

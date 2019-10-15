@@ -6,10 +6,28 @@
     <description>Recent content in Posts on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 13 Oct 2019 20:27:19 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 15 Oct 2019 17:49:46 +0800</lastBuildDate>
     
 	<atom:link href="http://www.liabio.cn/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>CSDN VIP博客如何自定义栏目</title>
+      <link>http://www.liabio.cn/posts/2019-10-15-csdn-custom-menu/</link>
+      <pubDate>Tue, 15 Oct 2019 17:49:46 +0800</pubDate>
+      
+      <guid>http://www.liabio.cn/posts/2019-10-15-csdn-custom-menu/</guid>
+      <description>几个月前我也开始在csdn上开了博客，一来给自己加几个少的可怜的流量，再者，让公众号的原创文章获得更多的曝光，让有需要的同学看到。 写过csdn博客的同学都知道，默认只有打赏c币功能；也没有专门广告位；引导栏目，只有侧栏csdn自己的引导二维</description>
+    </item>
+    
+    <item>
+      <title>骗子手段真多，诚会玩</title>
+      <link>http://www.liabio.cn/posts/2019-10-15-taobao-defraud/</link>
+      <pubDate>Tue, 15 Oct 2019 17:24:55 +0800</pubDate>
+      
+      <guid>http://www.liabio.cn/posts/2019-10-15-taobao-defraud/</guid>
+      <description>【系统拦截，支付受限】，13523023584，广东省 韶关市 仁化县 城口镇 【消息】&amp;mdash;该店未受权【订单已限制】；请使用网页打开链接【www.tb36674.net】后台技术中心处理。，000000 李艳，13566768898，天津 天</description>
+    </item>
     
     <item>
       <title>亚马逊AWS云服务器不合理扣费怎么处理</title>

@@ -68,6 +68,52 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
+                                    <a href="http://www.liabio.cn/posts/2019-07-20-linux%E9%80%9A%E8%BF%87VMware%E5%92%8C%E4%B8%BB%E6%9C%BA%E7%9B%B8%E8%BF%9E%E8%BF%9E%E6%8E%A5%E4%BA%92%E8%81%94%E7%BD%91/" title="Linux通过VMware和主机相连连接互联网" >Linux通过VMware和主机相连连接互联网</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年7月20日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="http://www.liabio.cn/categories/linux">linux</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                1.&emsp;VM8 使用固定IP： 2.&emsp; 这里使用NAT模式： 3.&emsp;VM中依次：编辑——&gt;虚拟网络编辑器，点VMnet8 把使用本 地DHCP的勾去掉，子网IP和主机VM8的IP同网段，然后点NAT设置。 网关IP和刚才的IP也是同一个网段。 4.&emsp;vim /etc/sysconfig/network-scripts/ifcfg-eno16777736 增加这些……
+                            </div>
+                            <p class="readmore"><a href="http://www.liabio.cn/posts/2019-07-20-linux%E9%80%9A%E8%BF%87VMware%E5%92%8C%E4%B8%BB%E6%9C%BA%E7%9B%B8%E8%BF%9E%E8%BF%9E%E6%8E%A5%E4%BA%92%E8%81%94%E7%BD%91/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="http://www.liabio.cn/posts/2019-06-20-shell%E8%84%9A%E6%9C%AC%E6%89%B9%E9%87%8F%E8%B0%83%E7%94%A8%E6%8E%A5%E5%8F%A3/" title="Shell脚本批量调用接口" >Shell脚本批量调用接口</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年6月20日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="http://www.liabio.cn/categories/shell">shell</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                &emsp;&emsp;要求在页面查询到5000条数据，为了方便插入，用shell脚本写curl命令调用自己写的代码接口； 脚本如下： #!/bin/bash a=0 while [ $a -le 10 ]; do # length of ts is 13 required,Through the following way like this ts=`date +%s%N` ts=${ts:0:13} json='{&quot;name&quot; : &quot;'$1$a'&quot;, &quot;age&quot; : '$2', &quot;ts&quot; : '$ts'}' a=$((a+1)) curl -k -H 'Content-Type:application/json;charset=utf-8' http://192.168.2.5:8080 -X POST -d &quot;'$json'&quot; done 执行脚本 **执行结果……
+                            </div>
+                            <p class="readmore"><a href="http://www.liabio.cn/posts/2019-06-20-shell%E8%84%9A%E6%9C%AC%E6%89%B9%E9%87%8F%E8%B0%83%E7%94%A8%E6%8E%A5%E5%8F%A3/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
                                     <a href="http://www.liabio.cn/posts/2019-06-20-golangFlag%E5%8C%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" title="GolangFlag包使用笔记" >GolangFlag包使用笔记</a>
                                 </h1>
                             </header>
@@ -132,52 +178,6 @@
                                 cat &gt; /etc/yum.repos.d/kubernetes.repo &lt;&lt; EOF [kubernetes] name=Kubernetes baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/ enabled=1 gpgcheck=0 repo_gpgcheck=1 gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg EOF 安装kubeadm、kubectl、kubelet yum install -y kubeadm kubelet kubectl 如果在云服务器上搭建时，IP-18.219.28.143是公网IP kubeadm init --kubernetes-version=v1.14.1 --pod-network-cidr=10.244.0.0/16 --service-cidr=10.96.0.0/12 --apiserver-advertise-address=18.219.28.143 --ignore-preflight-errors=Swap,NumCPU init的时候可能会： [kubelet-check] Initial timeout of 40s passed ![](/img/build-kubernetes-cluster-learning/install_kubernetes_cluster2.png) 需要把/etc/kubernete……
                             </div>
                             <p class="readmore"><a href="http://www.liabio.cn/posts/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="http://www.liabio.cn/posts/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/" title="手把手教你搭建kubernetes集群1" >手把手教你搭建kubernetes集群1</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年5月14日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="http://www.liabio.cn/categories/kubernetes">kubernetes</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                部署 以CentOS7为基础，搭建一个Master主机和三个Node主机，各个Node主机的配置方式基本相同。 OS: CentOS 7.5 x86_64 Container runtime: Docker 18.06.ce Kubernetes: 1.13 IP 地址 主机名 角色 192.168.50.71 master, master.kubernetes.io master 192.168.50.72 node01, node01.kubernetes.io node 192.168.50.73 node02, node02.kubernetes.io node 192.168.50.74 node03, node03.kubernetes.io node 这里需要使用常规的域名格式，因为后面需要为集群配置Kuberne……
-                            </div>
-                            <p class="readmore"><a href="http://www.liabio.cn/posts/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="http://www.liabio.cn/posts/2019-05-14-%E6%90%AD%E5%BB%BAk8s%E7%8E%AF%E5%A2%83%E6%97%B6gcr.io%E5%92%8Cquay.io%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E5%A4%B1%E8%B4%A5/" title="搭建k8s环境时gcr.io和quay.io拉取镜像失败" >搭建k8s环境时gcr.io和quay.io拉取镜像失败</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年5月14日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="http://www.liabio.cn/categories/kubernetes">kubernetes</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                k8s在使用编排（manifest）工具进行yaml文件启动pod时，会遇到官方所给例子中spec.containers.image包含： quay.io/coreos/example_ gcr.io/google_containers/example_ 也就是说，从quay.io和gcr.io进行镜像拉取，我们知道，国内访问外网是被屏蔽了的。可以将其……
-                            </div>
-                            <p class="readmore"><a href="http://www.liabio.cn/posts/2019-05-14-%E6%90%AD%E5%BB%BAk8s%E7%8E%AF%E5%A2%83%E6%97%B6gcr.io%E5%92%8Cquay.io%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E5%A4%B1%E8%B4%A5/">阅读全文</a></p>
                         </article>
                     
                     
@@ -257,7 +257,7 @@
         
         
         <li >
-            <a href="http://www.liabio.cn/page/17/">17</a>
+            <a href="http://www.liabio.cn/page/18/">18</a>
         </li>
         
     
@@ -292,6 +292,14 @@
 <ul class="widget-list">
     
     <li>
+        <a href="http://www.liabio.cn/posts/2019-10-15-csdn-custom-menu/" title="CSDN VIP博客如何自定义栏目">CSDN VIP博客如何自定义栏目</a>
+    </li>
+    
+    <li>
+        <a href="http://www.liabio.cn/posts/2019-10-15-taobao-defraud/" title="骗子手段真多，诚会玩">骗子手段真多，诚会玩</a>
+    </li>
+    
+    <li>
         <a href="http://www.liabio.cn/posts/2019-10-13-aes-cloud-server-deduct-fee/" title="亚马逊AWS云服务器不合理扣费怎么处理">亚马逊AWS云服务器不合理扣费怎么处理</a>
     </li>
     
@@ -321,14 +329,6 @@
     
     <li>
         <a href="http://www.liabio.cn/posts/2019-09-24-git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" title="git常用操作">git常用操作</a>
-    </li>
-    
-    <li>
-        <a href="http://www.liabio.cn/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/" title="k8s中部署负载均衡器ingress-nginx">k8s中部署负载均衡器ingress-nginx</a>
-    </li>
-    
-    <li>
-        <a href="http://www.liabio.cn/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/" title="k8s使用Job执行任务失败了怎么办">k8s使用Job执行任务失败了怎么办</a>
     </li>
     
 </ul>
@@ -380,11 +380,15 @@
 <ul class="widget-list">
     
     <li>
+        <a href="http://www.liabio.cn/categories//">(1)</a>
+    </li>
+    
+    <li>
         <a href="http://www.liabio.cn/categories/anyListen/">anyListen(1)</a>
     </li>
     
     <li>
-        <a href="http://www.liabio.cn/categories/blog/">blog(2)</a>
+        <a href="http://www.liabio.cn/categories/blog/">blog(3)</a>
     </li>
     
     <li>
@@ -517,6 +521,8 @@
     <section class="widget">
         <h3 class="widget-title">标签</h3>
 <div class="tagcloud">
+    
+    <a href="http://www.liabio.cn/tags//"></a>
     
     <a href="http://www.liabio.cn/tags/blog/">blog</a>
     

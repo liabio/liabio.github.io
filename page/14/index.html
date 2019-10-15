@@ -68,6 +68,52 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
+                                    <a href="http://www.liabio.cn/posts/2018-11-17-IntelliJ-IDEA%E8%87%AA%E5%8A%A8%E5%AF%BC%E5%85%A5%E5%8C%85%E5%8E%BB%E9%99%A4%E6%98%9F%E5%8F%B7/" title="IntelliJ IDEA自动导入包去除星号" >IntelliJ IDEA自动导入包去除星号</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2018年11月17日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="http://www.liabio.cn/categories/idea">idea</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                打开设置&gt;Editor&gt;Code Style&gt;Java&gt;Scheme Default&gt;Imports ① 将Class count to use import with &ldquo;*&ldquo;改为99（导入同一个包的类超过这个数值自动变为 * ） ② 将Names count to use static import with &ldquo;*&ldquo;改为99（同上，但这是静态导入的……
+                            </div>
+                            <p class="readmore"><a href="http://www.liabio.cn/posts/2018-11-17-IntelliJ-IDEA%E8%87%AA%E5%8A%A8%E5%AF%BC%E5%85%A5%E5%8C%85%E5%8E%BB%E9%99%A4%E6%98%9F%E5%8F%B7/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="http://www.liabio.cn/posts/2018-11-16-%E8%BF%9E%E6%8E%A5zookeeper%E6%8A%A5%E9%94%99NoRouteToHost/" title="连接zookeeper报错NoRouteToHost" >连接zookeeper报错NoRouteToHost</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2018年11月16日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="http://www.liabio.cn/categories/zookeeper">zookeeper</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                最近在学习微服务，遇到了很多问题，今天又遇到了个连接zookeeper报错的问题，在此记录下。 学生课程管理系统简单微服务架构图： 各个服务容器化以后，用docker-compose启动，其中docker-compose.yml文件如下： version: &quot;3&quot; services:……
+                            </div>
+                            <p class="readmore"><a href="http://www.liabio.cn/posts/2018-11-16-%E8%BF%9E%E6%8E%A5zookeeper%E6%8A%A5%E9%94%99NoRouteToHost/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
                                     <a href="http://www.liabio.cn/posts/2018-11-15-docker%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93/" title="Docker镜像仓库" >Docker镜像仓库</a>
                                 </h1>
                             </header>
@@ -134,52 +180,6 @@
                                 报错： nginx: [error] CreateFile() &quot;./logs/nginx.pid&quot; failed (2: The system cannot find the file specified) 在执行了nginx -s stop后，再次启动nginx时报错： 这个坑主要原因就是没有nginx.pid这个文件，./logs/下找不到nginx.pid文件，看了确实找不到。 看了网上很多方案是 需要建立nginx.……
                             </div>
                             <p class="readmore"><a href="http://www.liabio.cn/posts/2018-11-13-%E5%AD%A6%E4%B9%A0openresty%E6%97%B6nginx%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="http://www.liabio.cn/posts/2018-11-12-DockerCE%E9%95%9C%E5%83%8F%E6%BA%90%E7%AB%99/" title="Docker CE镜像源站" >Docker CE镜像源站</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2018年11月12日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="http://www.liabio.cn/categories/docker">docker</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                使用官方安装脚本自动安装 curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun 手动安装帮助 Ubuntu 14.04 16.04 (使用apt-get进行安装) # step 1: 安装必要的一些系统工具 sudo apt-get update sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common # step 2: 安装GPG证书 curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add - # Step 3: 写入软件源信息 sudo add-apt-repository &quot;deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable&quot; # Step 4: 更新并安装 Docker-CE sudo apt-get -y update sudo……
-                            </div>
-                            <p class="readmore"><a href="http://www.liabio.cn/posts/2018-11-12-DockerCE%E9%95%9C%E5%83%8F%E6%BA%90%E7%AB%99/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="http://www.liabio.cn/posts/2018-11-11-DockerMulti-stageBuild%E6%9C%BA%E5%88%B6/" title="Docker multi stage build机制" >Docker multi stage build机制</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2018年11月11日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="http://www.liabio.cn/categories/docker">docker</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                摘要： 随着17.05版本的发布，Docker对于镜像构建这块也作了一项重要更新，那就是 multi-stage build（多阶段构建），这对于长期因为构建镜像太大而困扰的小伙伴们来说真是雪中送炭。 随着17.05版本的发布，Docker对于镜像构建这块也作了一项重……
-                            </div>
-                            <p class="readmore"><a href="http://www.liabio.cn/posts/2018-11-11-DockerMulti-stageBuild%E6%9C%BA%E5%88%B6/">阅读全文</a></p>
                         </article>
                     
                     
@@ -259,7 +259,7 @@
         
         
         <li >
-            <a href="http://www.liabio.cn/page/17/">17</a>
+            <a href="http://www.liabio.cn/page/18/">18</a>
         </li>
         
     
@@ -294,6 +294,14 @@
 <ul class="widget-list">
     
     <li>
+        <a href="http://www.liabio.cn/posts/2019-10-15-csdn-custom-menu/" title="CSDN VIP博客如何自定义栏目">CSDN VIP博客如何自定义栏目</a>
+    </li>
+    
+    <li>
+        <a href="http://www.liabio.cn/posts/2019-10-15-taobao-defraud/" title="骗子手段真多，诚会玩">骗子手段真多，诚会玩</a>
+    </li>
+    
+    <li>
         <a href="http://www.liabio.cn/posts/2019-10-13-aes-cloud-server-deduct-fee/" title="亚马逊AWS云服务器不合理扣费怎么处理">亚马逊AWS云服务器不合理扣费怎么处理</a>
     </li>
     
@@ -323,14 +331,6 @@
     
     <li>
         <a href="http://www.liabio.cn/posts/2019-09-24-git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" title="git常用操作">git常用操作</a>
-    </li>
-    
-    <li>
-        <a href="http://www.liabio.cn/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/" title="k8s中部署负载均衡器ingress-nginx">k8s中部署负载均衡器ingress-nginx</a>
-    </li>
-    
-    <li>
-        <a href="http://www.liabio.cn/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/" title="k8s使用Job执行任务失败了怎么办">k8s使用Job执行任务失败了怎么办</a>
     </li>
     
 </ul>
@@ -382,11 +382,15 @@
 <ul class="widget-list">
     
     <li>
+        <a href="http://www.liabio.cn/categories//">(1)</a>
+    </li>
+    
+    <li>
         <a href="http://www.liabio.cn/categories/anyListen/">anyListen(1)</a>
     </li>
     
     <li>
-        <a href="http://www.liabio.cn/categories/blog/">blog(2)</a>
+        <a href="http://www.liabio.cn/categories/blog/">blog(3)</a>
     </li>
     
     <li>
@@ -519,6 +523,8 @@
     <section class="widget">
         <h3 class="widget-title">标签</h3>
 <div class="tagcloud">
+    
+    <a href="http://www.liabio.cn/tags//"></a>
     
     <a href="http://www.liabio.cn/tags/blog/">blog</a>
     
