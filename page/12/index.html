@@ -68,6 +68,31 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
+                                    <a href="http://www.liabio.cn/posts/2018-12-19-CentosLinux%E4%BD%BF%E7%94%A8Yum%E5%AE%89%E8%A3%85Go%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/" title="Centos Linux使用Yum安装Go和配置环境" >Centos Linux使用Yum安装Go和配置环境</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2018年12月19日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="http://www.liabio.cn/categories/centos">centos</a></span>
+                                
+                                <span class="meta-category"><a href="http://www.liabio.cn/categories/golang">golang</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                安装环境：CentOS7.2 64位，安装Golang 查看go是否安装过： $ go env GOARCH=&quot;amd64&quot; GOBIN=&quot;&quot; GOEXE=&quot;&quot; GOHOSTARCH=&quot;amd64&quot; GOHOSTOS=&quot;linux&quot; GOOS=&quot;linux&quot; GOPATH=&quot;/root/go&quot; GORACE=&quot;&quot; GOROOT=&quot;/usr/lib/golang&quot; GOTOOLDIR=&quot;/usr/lib/golang/pkg/tool/linux_amd64&quot; GCCGO=&quot;gccgo&quot; CC=&quot;gcc&quot; GOGCCFLAGS=&quot;-fPIC -m64 -pthread -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build892156781=/tmp/go-build -gno-record-gcc-switches&quot; CXX=&quot;g++&quot; CGO_ENABLED=&quot;1&quot; CGO_CFLAGS=&quot;-g -O2&quot; CGO_CPPFLAGS=&quot;&quot; CGO_CXXFLAGS=&quot;-g -O2&quot; CGO_FFLAGS=&quot;-g -O2&quot; CGO_LDFLAGS=&quot;-g -O2&quot; PKG_CONFIG=&quot;pkg-config&quot; 查看yum的Golang 查看golang： $ yum info golang Loading mirror speeds from cached hostfile Installed Packages Name : golang Arch : x86_64 Version : 1.8.3 Release : 1.el7 Size : 11 M Repo :……
+                            </div>
+                            <p class="readmore"><a href="http://www.liabio.cn/posts/2018-12-19-CentosLinux%E4%BD%BF%E7%94%A8Yum%E5%AE%89%E8%A3%85Go%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
                                     <a href="http://www.liabio.cn/posts/2018-12-19-%E4%BD%BF%E7%94%A8Chocolate%E9%80%9A%E8%BF%87%E8%84%9A%E6%9C%AC%E7%AE%A1%E7%90%86Windows%E5%BA%94%E7%94%A8/" title="使用Chocolate通过脚本管理Windows应用" >使用Chocolate通过脚本管理Windows应用</a>
                                 </h1>
                             </header>
@@ -155,29 +180,6 @@
                                 这几篇文章写的就挺好了，传送过去看看吧： 1、 使用JavaMail创建邮件和发送邮件 可能遇到的问题： 1、因为端口号问题导致的错误： javax.mail.MessagingException: Exception reading response; nested exception is: java.net.SocketTimeoutException: Read timed out javax.mail.MessagingException: Exception reading response; nested exception is: java.net.SocketTimeoutException: Read timed out at com.sun.mail.smtp.SMTPTransport.readServerResponse(SMTPTransport.java:2210) at com.sun.mail.smtp.SMTPTransport.openServer(SMTPTransport.java:1950) at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:642) at javax.mail.Service.connect(Service.java:317) at javax.mail.Service.connect(Service.java:176) at javax.mail.Service.connect(Service.java:125) at javax.mail.Transport.send0(Transport.java:194) at javax.mail.Transport.send(Transport.java:124) 问题和解决这里可以看到，把port configuration……
                             </div>
                             <p class="readmore"><a href="http://www.liabio.cn/posts/2018-12-04-Javamail%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="http://www.liabio.cn/posts/2018-12-02-nginx-map%E9%85%8D%E7%BD%AE%E6%A0%B9%E6%8D%AE%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%B8%8D%E5%90%8C%E5%88%86%E9%85%8D%E6%B5%81%E9%87%8F%E5%88%B0%E4%B8%8D%E5%90%8C%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1/" title="Nginx Map配置根据请求头不同分配流量到不同后端服务" >Nginx Map配置根据请求头不同分配流量到不同后端服务</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2018年12月2日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="http://www.liabio.cn/categories/nginx">nginx</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                最近在做一个需求开发：根据请求后的不同，nginx将请求分发到不同的后端服务；需要修改kubernetes的ingress-nginx-controller的源码，调试的时候遇到了挺多问题，写出来，有需要的老铁可以参考。具体方案就不说了，只……
-                            </div>
-                            <p class="readmore"><a href="http://www.liabio.cn/posts/2018-12-02-nginx-map%E9%85%8D%E7%BD%AE%E6%A0%B9%E6%8D%AE%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%B8%8D%E5%90%8C%E5%88%86%E9%85%8D%E6%B5%81%E9%87%8F%E5%88%B0%E4%B8%8D%E5%90%8C%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1/">阅读全文</a></p>
                         </article>
                     
                     
@@ -292,6 +294,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="http://www.liabio.cn/posts/2019-10-16-cnblog-readmore/" title="​“ReadMore” 之 cnblogs 博客园使用指南">​“ReadMore” 之 cnblogs 博客园使用指南</a>
+    </li>
+    
+    <li>
         <a href="http://www.liabio.cn/posts/2019-10-15-csdn-custom-menu/" title="CSDN VIP博客如何自定义栏目">CSDN VIP博客如何自定义栏目</a>
     </li>
     
@@ -325,10 +331,6 @@
     
     <li>
         <a href="http://www.liabio.cn/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/" title="docker镜像制作必备技能">docker镜像制作必备技能</a>
-    </li>
-    
-    <li>
-        <a href="http://www.liabio.cn/posts/2019-09-24-git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" title="git常用操作">git常用操作</a>
     </li>
     
 </ul>
@@ -388,7 +390,7 @@
     </li>
     
     <li>
-        <a href="http://www.liabio.cn/categories/blog/">blog(3)</a>
+        <a href="http://www.liabio.cn/categories/blog/">blog(4)</a>
     </li>
     
     <li>

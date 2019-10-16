@@ -68,6 +68,29 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
+                                    <a href="http://www.liabio.cn/posts/2019-09-24-git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" title="git常用操作" >git常用操作</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年9月24日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="http://www.liabio.cn/categories/git">git</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                解决git pull/push每次都需要输入密码问题 git config --global credential.helper store git输入正确密码后还是提示错误解决 git config --system --unset credential.helper 查看从哪个分支切出 比如我从 branch A 切出一个 branch B 然后对branch B做了一系列的操作 然后忘记了branch B是从哪个分支切出来的 请问能不能找……
+                            </div>
+                            <p class="readmore"><a href="http://www.liabio.cn/posts/2019-09-24-git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
                                     <a href="http://www.liabio.cn/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/" title="k8s中部署负载均衡器ingress-nginx" >k8s中部署负载均衡器ingress-nginx</a>
                                 </h1>
                             </header>
@@ -163,29 +186,6 @@
                                 今天在Ucloud国际版的机器上配置某个不可描述的服务时，遇到了 socket.error: [Errno 99] Cannot assign requested address 的错误，详细如下： [root@liabio ~]# docker logs c0c34ba49967 2019-07-15 00:02:26 INFO loading libcrypto from libcrypto.so.1.0.0 2019-07-15 00:02:26 INFO starting server at 128.1.132.124:8002 Traceback (most recent call last): File &quot;/usr/local/bin/ssserver&quot;, line 11, in &lt;module&gt; sys.exit(main()) File &quot;/usr/local/lib/python2.7/dist-packages/shadowsocks/server.py&quot;, line 68, in main tcp_servers.append(tcprelay.TCPRelay(a_config, dns_resolver, False)) File &quot;/usr/local/lib/python2.7/dist-packages/shadowsocks/tcprelay.py&quot;, line 582, in __init__ server_socket.bind(sa) File &quot;/usr/lib/python2.7/socket.py&quot;, line 228, in meth return getattr(self._sock,name)(*args) socket.error: [Errno 99] Cannot assign requested address 原先以为是resol……
                             </div>
                             <p class="readmore"><a href="http://www.liabio.cn/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="http://www.liabio.cn/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/" title="云服务器使用docker搭建服务" >云服务器使用docker搭建服务</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年9月24日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="http://www.liabio.cn/categories/docker">docker</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                前提：亚马逊云已经配置好启动。 安全组入站策略如下： 出站策略如下： 登陆EC2后，默认只能用ec2-user用户登陆，然后切换到root： sudo su 用yum执行安装docker提示No package docker avaible yum install docker -y 解决方法： 在/etc/yum.repos.d/下加C……
-                            </div>
-                            <p class="readmore"><a href="http://www.liabio.cn/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/">阅读全文</a></p>
                         </article>
                     
                     
@@ -286,6 +286,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="http://www.liabio.cn/posts/2019-10-16-cnblog-readmore/" title="​“ReadMore” 之 cnblogs 博客园使用指南">​“ReadMore” 之 cnblogs 博客园使用指南</a>
+    </li>
+    
+    <li>
         <a href="http://www.liabio.cn/posts/2019-10-15-csdn-custom-menu/" title="CSDN VIP博客如何自定义栏目">CSDN VIP博客如何自定义栏目</a>
     </li>
     
@@ -319,10 +323,6 @@
     
     <li>
         <a href="http://www.liabio.cn/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/" title="docker镜像制作必备技能">docker镜像制作必备技能</a>
-    </li>
-    
-    <li>
-        <a href="http://www.liabio.cn/posts/2019-09-24-git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" title="git常用操作">git常用操作</a>
     </li>
     
 </ul>
@@ -382,7 +382,7 @@
     </li>
     
     <li>
-        <a href="http://www.liabio.cn/categories/blog/">blog(3)</a>
+        <a href="http://www.liabio.cn/categories/blog/">blog(4)</a>
     </li>
     
     <li>

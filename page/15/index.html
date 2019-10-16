@@ -68,6 +68,31 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
+                                    <a href="http://www.liabio.cn/posts/2018-11-13-%E5%AD%A6%E4%B9%A0openresty%E6%97%B6nginx%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/" title="学习openresty时nginx的一个坑" >学习openresty时nginx的一个坑</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2018年11月13日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="http://www.liabio.cn/categories/openresty">openresty</a></span>
+                                
+                                <span class="meta-category"><a href="http://www.liabio.cn/categories/nginx">nginx</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                报错： nginx: [error] CreateFile() &quot;./logs/nginx.pid&quot; failed (2: The system cannot find the file specified) 在执行了nginx -s stop后，再次启动nginx时报错： 这个坑主要原因就是没有nginx.pid这个文件，./logs/下找不到nginx.pid文件，看了确实找不到。 看了网上很多方案是 需要建立nginx.……
+                            </div>
+                            <p class="readmore"><a href="http://www.liabio.cn/posts/2018-11-13-%E5%AD%A6%E4%B9%A0openresty%E6%97%B6nginx%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
                                     <a href="http://www.liabio.cn/posts/2018-11-12-DockerCE%E9%95%9C%E5%83%8F%E6%BA%90%E7%AB%99/" title="Docker CE镜像源站" >Docker CE镜像源站</a>
                                 </h1>
                             </header>
@@ -155,29 +180,6 @@
                                 一般生产环境上由于网络安全策略，大多数端口是不能为集群外部访问的。多个集群之间一般都是通过k8s的ApiServer组件提供的接口通信，如https://192.168.1.101:6443。所以在做云平台时，集群管理平台（雅称：观云台）需……
                             </div>
                             <p class="readmore"><a href="http://www.liabio.cn/posts/2018-10-02-kubernetesPodExec%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="http://www.liabio.cn/posts/2018-09-02-RedisCluster%E4%BB%8B%E7%BB%8D%E4%B8%8Edocker%E5%AE%B9%E5%99%A8%E6%96%B9%E5%BC%8F%E6%90%AD%E5%BB%BA/" title="Redis Cluster介绍与docker容器方式搭建" >Redis Cluster介绍与docker容器方式搭建</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2018年9月2日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="http://www.liabio.cn/categories/redis">redis</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                1. Redis Cluster介绍 Redis Cluster是Redis的分布式解决方案，在Redis 3.0版本正式推出的，有效解决了Redis分布式方面的需求。当遇到单机内存、并发、流量等瓶颈时，可以采用Cluster架构达到负载均衡的目的。 1.1 数据分布理论 分布……
-                            </div>
-                            <p class="readmore"><a href="http://www.liabio.cn/posts/2018-09-02-RedisCluster%E4%BB%8B%E7%BB%8D%E4%B8%8Edocker%E5%AE%B9%E5%99%A8%E6%96%B9%E5%BC%8F%E6%90%AD%E5%BB%BA/">阅读全文</a></p>
                         </article>
                     
                     
@@ -292,6 +294,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="http://www.liabio.cn/posts/2019-10-16-cnblog-readmore/" title="​“ReadMore” 之 cnblogs 博客园使用指南">​“ReadMore” 之 cnblogs 博客园使用指南</a>
+    </li>
+    
+    <li>
         <a href="http://www.liabio.cn/posts/2019-10-15-csdn-custom-menu/" title="CSDN VIP博客如何自定义栏目">CSDN VIP博客如何自定义栏目</a>
     </li>
     
@@ -325,10 +331,6 @@
     
     <li>
         <a href="http://www.liabio.cn/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/" title="docker镜像制作必备技能">docker镜像制作必备技能</a>
-    </li>
-    
-    <li>
-        <a href="http://www.liabio.cn/posts/2019-09-24-git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" title="git常用操作">git常用操作</a>
     </li>
     
 </ul>
@@ -388,7 +390,7 @@
     </li>
     
     <li>
-        <a href="http://www.liabio.cn/categories/blog/">blog(3)</a>
+        <a href="http://www.liabio.cn/categories/blog/">blog(4)</a>
     </li>
     
     <li>

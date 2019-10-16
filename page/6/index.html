@@ -68,6 +68,29 @@
                         <article class="post">
                             <header>
                                 <h1 class="post-title">
+                                    <a href="http://www.liabio.cn/posts/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/" title="手把手教你搭建kubernetes集群" >手把手教你搭建kubernetes集群</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年5月14日
+                            </date>
+                            
+                            <div class="post-meta">
+                                <span>|</span>
+                                
+                                <span class="meta-category"><a href="http://www.liabio.cn/categories/kubernetes">kubernetes</a></span>
+                                
+                            </div>
+                            
+                            <div class="post-content">
+                                cat &gt; /etc/yum.repos.d/kubernetes.repo &lt;&lt; EOF [kubernetes] name=Kubernetes baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/ enabled=1 gpgcheck=0 repo_gpgcheck=1 gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg EOF 安装kubeadm、kubectl、kubelet yum install -y kubeadm kubelet kubectl 如果在云服务器上搭建时，IP-18.219.28.143是公网IP kubeadm init --kubernetes-version=v1.14.1 --pod-network-cidr=10.244.0.0/16 --service-cidr=10.96.0.0/12 --apiserver-advertise-address=18.219.28.143 --ignore-preflight-errors=Swap,NumCPU init的时候可能会： [kubelet-check] Initial timeout of 40s passed ![](/img/build-kubernetes-cluster-learning/install_kubernetes_cluster2.png) 需要把/etc/kubernete……
+                            </div>
+                            <p class="readmore"><a href="http://www.liabio.cn/posts/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
                                     <a href="http://www.liabio.cn/posts/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/" title="手把手教你搭建kubernetes集群1" >手把手教你搭建kubernetes集群1</a>
                                 </h1>
                             </header>
@@ -148,29 +171,6 @@
                                 正文 Kubernetes 自带了一个默认调度器kube-scheduler，其内置了很多节点预选和优选的调度算法，一般调度场景下可以满足要求。但是在一些特殊场景下，默认调度器不能满足我们复杂的调度需求。我们就需要对调度器进行扩展，以达到调度适合业务场景的目的。……
                             </div>
                             <p class="readmore"><a href="http://www.liabio.cn/posts/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/">阅读全文</a></p>
-                        </article>
-                    
-                        <article class="post">
-                            <header>
-                                <h1 class="post-title">
-                                    <a href="http://www.liabio.cn/posts/2019-04-20-MySql%E9%95%9C%E5%83%8F%E5%AE%89%E8%A3%85/" title="MySql镜像安装" >MySql镜像安装</a>
-                                </h1>
-                            </header>
-                            <date class="post-meta meta-date">
-                                2019年4月20日
-                            </date>
-                            
-                            <div class="post-meta">
-                                <span>|</span>
-                                
-                                <span class="meta-category"><a href="http://www.liabio.cn/categories/mysql">mysql</a></span>
-                                
-                            </div>
-                            
-                            <div class="post-content">
-                                安装MySql镜像 &gt; docker search mysql #查找MySql镜像版本 &gt; docker pull mysql:tag #安装指定版本的mysql镜像，tag为版本号 例如： &gt; docker pull mysql:5.6 #安装MySql 5.6版本镜像 启动MySql容器 &gt; docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag 例如： &gt; docker run --name test-mysql -e MYSQL_ROOT_PASSWORD=123456 -d -p 3306:3306 mysql:5.6 #启动mysql 5.6版本镜……
-                            </div>
-                            <p class="readmore"><a href="http://www.liabio.cn/posts/2019-04-20-MySql%E9%95%9C%E5%83%8F%E5%AE%89%E8%A3%85/">阅读全文</a></p>
                         </article>
                     
                     
@@ -285,6 +285,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="http://www.liabio.cn/posts/2019-10-16-cnblog-readmore/" title="​“ReadMore” 之 cnblogs 博客园使用指南">​“ReadMore” 之 cnblogs 博客园使用指南</a>
+    </li>
+    
+    <li>
         <a href="http://www.liabio.cn/posts/2019-10-15-csdn-custom-menu/" title="CSDN VIP博客如何自定义栏目">CSDN VIP博客如何自定义栏目</a>
     </li>
     
@@ -318,10 +322,6 @@
     
     <li>
         <a href="http://www.liabio.cn/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/" title="docker镜像制作必备技能">docker镜像制作必备技能</a>
-    </li>
-    
-    <li>
-        <a href="http://www.liabio.cn/posts/2019-09-24-git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/" title="git常用操作">git常用操作</a>
     </li>
     
 </ul>
@@ -381,7 +381,7 @@
     </li>
     
     <li>
-        <a href="http://www.liabio.cn/categories/blog/">blog(3)</a>
+        <a href="http://www.liabio.cn/categories/blog/">blog(4)</a>
     </li>
     
     <li>

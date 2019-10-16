@@ -6,10 +6,19 @@
     <description>Recent content on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 15 Oct 2019 17:49:46 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 16 Oct 2019 15:28:03 +0800</lastBuildDate>
     
 	<atom:link href="http://www.liabio.cn/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>​“ReadMore” 之 cnblogs 博客园使用指南</title>
+      <link>http://www.liabio.cn/posts/2019-10-16-cnblog-readmore/</link>
+      <pubDate>Wed, 16 Oct 2019 15:28:03 +0800</pubDate>
+      
+      <guid>http://www.liabio.cn/posts/2019-10-16-cnblog-readmore/</guid>
+      <description>readmore来源于：https://openwrite.cn/openwrite/openwrite-readmore/ 博客园接入 readmore 很简单，三步走，2 分钟搞定！ 在 OpenWrite 生成 readmore 脚本 微信公众号设置关键词回复 在博客园设置中添加脚本 1、在 OpenWrite 生成 readmore 脚</description>
+    </item>
     
     <item>
       <title>CSDN VIP博客如何自定义栏目</title>
