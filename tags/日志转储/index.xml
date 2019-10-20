@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>日志转储 on 小碗汤的博客</title>
-    <link>http://www.liabio.cn/tags/%E6%97%A5%E5%BF%97%E8%BD%AC%E5%82%A8/</link>
+    <link>http://liabio.cn/tags/%E6%97%A5%E5%BF%97%E8%BD%AC%E5%82%A8/</link>
     <description>Recent content in 日志转储 on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 08 Mar 2019 17:49:27 +0800</lastBuildDate>
     
-	<atom:link href="http://www.liabio.cn/tags/%E6%97%A5%E5%BF%97%E8%BD%AC%E5%82%A8/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://liabio.cn/tags/%E6%97%A5%E5%BF%97%E8%BD%AC%E5%82%A8/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Java Golang日志文件转储压缩实现</title>
-      <link>http://www.liabio.cn/posts/2019-03-08-java-golang%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E8%BD%AC%E5%82%A8%E5%8E%8B%E7%BC%A9%E5%AE%9E%E7%8E%B0/</link>
+      <link>http://liabio.cn/posts/2019-03-08-java-golang%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E8%BD%AC%E5%82%A8%E5%8E%8B%E7%BC%A9%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Fri, 08 Mar 2019 17:49:27 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-03-08-java-golang%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E8%BD%AC%E5%82%A8%E5%8E%8B%E7%BC%A9%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>http://liabio.cn/posts/2019-03-08-java-golang%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E8%BD%AC%E5%82%A8%E5%8E%8B%E7%BC%A9%E5%AE%9E%E7%8E%B0/</guid>
       <description>日志的转储和压缩是非常关键的，它不仅可以减少硬盘空间占用，主要还可以在发生故障时根据日志定位出故障原因。下面来看看golang和java的文件转储实现。 go语言： 用到了filepath包下的Walk方法，具体说明可以参看历史文章： go语言p</description>
     </item>
     

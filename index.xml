@@ -2,804 +2,804 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>小碗汤的博客</title>
-    <link>http://www.liabio.cn/</link>
+    <link>http://liabio.cn/</link>
     <description>Recent content on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 16 Oct 2019 15:28:03 +0800</lastBuildDate>
     
-	<atom:link href="http://www.liabio.cn/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://liabio.cn/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>​“ReadMore” 之 cnblogs 博客园使用指南</title>
-      <link>http://www.liabio.cn/posts/2019-10-16-cnblog-readmore/</link>
+      <link>http://liabio.cn/posts/2019-10-16-cnblog-readmore/</link>
       <pubDate>Wed, 16 Oct 2019 15:28:03 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-10-16-cnblog-readmore/</guid>
+      <guid>http://liabio.cn/posts/2019-10-16-cnblog-readmore/</guid>
       <description>readmore来源于：https://openwrite.cn/openwrite/openwrite-readmore/ 博客园接入 readmore 很简单，三步走，2 分钟搞定！ 在 OpenWrite 生成 readmore 脚本 微信公众号设置关键词回复 在博客园设置中添加脚本 1、在 OpenWrite 生成 readmore 脚</description>
     </item>
     
     <item>
       <title>CSDN VIP博客如何自定义栏目</title>
-      <link>http://www.liabio.cn/posts/2019-10-15-csdn-custom-menu/</link>
+      <link>http://liabio.cn/posts/2019-10-15-csdn-custom-menu/</link>
       <pubDate>Tue, 15 Oct 2019 17:49:46 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-10-15-csdn-custom-menu/</guid>
+      <guid>http://liabio.cn/posts/2019-10-15-csdn-custom-menu/</guid>
       <description>几个月前我也开始在csdn上开了博客，一来给自己加几个少的可怜的流量，再者，让公众号的原创文章获得更多的曝光，让有需要的同学看到。 写过csdn博客的同学都知道，默认只有打赏c币功能；也没有专门广告位；引导栏目，只有侧栏csdn自己的引导二维</description>
     </item>
     
     <item>
       <title>骗子手段真多，诚会玩</title>
-      <link>http://www.liabio.cn/posts/2019-10-15-taobao-defraud/</link>
+      <link>http://liabio.cn/posts/2019-10-15-taobao-defraud/</link>
       <pubDate>Tue, 15 Oct 2019 17:24:55 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-10-15-taobao-defraud/</guid>
+      <guid>http://liabio.cn/posts/2019-10-15-taobao-defraud/</guid>
       <description>【系统拦截，支付受限】，13523023584，广东省 韶关市 仁化县 城口镇 【消息】&amp;mdash;该店未受权【订单已限制】；请使用网页打开链接【www.tb36674.net】后台技术中心处理。，000000 李艳，13566768898，天津 天</description>
     </item>
     
     <item>
       <title>亚马逊AWS云服务器不合理扣费怎么处理</title>
-      <link>http://www.liabio.cn/posts/2019-10-13-aes-cloud-server-deduct-fee/</link>
+      <link>http://liabio.cn/posts/2019-10-13-aes-cloud-server-deduct-fee/</link>
       <pubDate>Sun, 13 Oct 2019 20:27:19 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-10-13-aes-cloud-server-deduct-fee/</guid>
+      <guid>http://liabio.cn/posts/2019-10-13-aes-cloud-server-deduct-fee/</guid>
       <description>有些小伙伴可能不知道，亚马逊AWS对新用户有个免费体验一年的活动。如果希望体验免费亚马逊AWS云服务器产品，或者看看他们后台面板长什么样，体验产品的速度和性能，又或者准备搭建一个免费梯子，可以 注册玩玩。 很简单，全程基本都是中文，不用担心看不</description>
     </item>
     
     <item>
       <title>kubernetes垃圾回收器Garbage Collector Controller源码分析（二）</title>
-      <link>http://www.liabio.cn/posts/2019-10-11-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%902/</link>
+      <link>http://liabio.cn/posts/2019-10-11-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%902/</link>
       <pubDate>Fri, 11 Oct 2019 21:21:50 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-10-11-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%902/</guid>
+      <guid>http://liabio.cn/posts/2019-10-11-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%902/</guid>
       <description>kubernetes版本：1.13.2 接上一节：kubernetes垃圾回收器GarbageCollector Controller源码分析（一） 主要步骤 GarbageCollector Controller源码主要分为以下几部分： monitors作为生产者将变化的资源放入</description>
     </item>
     
     <item>
       <title>如何批量删除k8s资源对象</title>
-      <link>http://www.liabio.cn/posts/2019-10-10-%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4k8s-pvc-pv/</link>
+      <link>http://liabio.cn/posts/2019-10-10-%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4k8s-pvc-pv/</link>
       <pubDate>Thu, 10 Oct 2019 17:20:28 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-10-10-%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4k8s-pvc-pv/</guid>
+      <guid>http://liabio.cn/posts/2019-10-10-%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4k8s-pvc-pv/</guid>
       <description>在云平台开发、中间件容器化时，经常会遇到批量删除k8s资源对象的需求，下面记录一下kubectl和golang发送删除pvc、pv、pod请求的例子，便于后续学习查阅 kubectl发送删除请求 根据label批量删除pod： kubectl delete pod -n kube-system -l &amp;quot;harmonycloud.cn/statefulset=redis-ll-1010-a&amp;quot; 根据</description>
     </item>
     
     <item>
       <title>npm安装报错Z_BUF_ERROR问题解决</title>
-      <link>http://www.liabio.cn/posts/2019-10-08-npm%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99Z-BUF-ERROR%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</link>
+      <link>http://liabio.cn/posts/2019-10-08-npm%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99Z-BUF-ERROR%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</link>
       <pubDate>Tue, 08 Oct 2019 20:49:44 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-10-08-npm%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99Z-BUF-ERROR%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</guid>
+      <guid>http://liabio.cn/posts/2019-10-08-npm%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99Z-BUF-ERROR%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</guid>
       <description>一、引言 最近在研究 gitBook 使用, 需要执行一个 npm install gitbook-cli -g 的命令来安装gitbook二进制包： $ npm install gitbook-cli -g npm ERR! code Z_BUF_ERROR npm ERR! errno -5 npm ERR! zlib: unexpected end of file npm ERR! A complete log of this run can be found in: npm ERR! C:\Users\lenovo\AppData\Roaming\npm-cache\_logs\2019-10-08T12_45_13_951Z-debug.log 如图所示： 二、解决 最后在网上找了很多资料，有替换 npm 国内源的方法（实测不行），后来找到一个</description>
     </item>
     
     <item>
       <title>kubernetes自定义资源对象高级功能</title>
-      <link>http://www.liabio.cn/posts/2019-09-30-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/</link>
+      <link>http://liabio.cn/posts/2019-09-30-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/</link>
       <pubDate>Mon, 30 Sep 2019 14:41:33 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-09-30-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/</guid>
+      <guid>http://liabio.cn/posts/2019-09-30-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/</guid>
       <description>kubernetes自定义资源对象再极大程度提高了API Server的可扩展性，让企业能够根据业务需求通过CRD编写controller或者operator来实现生产中各种特殊场景。随着k8s的版本升级，CRD的功能也越来越完善，下面对其中</description>
     </item>
     
     <item>
       <title>etcd操作</title>
-      <link>http://www.liabio.cn/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/</link>
+      <link>http://liabio.cn/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Fri, 27 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/</guid>
+      <guid>http://liabio.cn/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/</guid>
       <description>etcdctl安装 下载并解压二进制文件 curl -L https://github.com/coreos/etcd/releases/download/v3.3.2/etcd-v3.3.2-linux-amd64.tar.gz -o etcd-v3.3.2-linux-amd64.tar.gz tar zxf etcd-v3.3.2-linux-amd64.tar.gz 解压后是一些文档和两个二进制文件etcd和etcdctl。etcd是server端，etcdctl是客户端。 将解压后的etcd和etcdctl移动到$GOPATH/bin目录下，可以直接</description>
     </item>
     
     <item>
       <title>docker镜像制作必备技能</title>
-      <link>http://www.liabio.cn/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/</link>
+      <link>http://liabio.cn/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/</guid>
+      <guid>http://liabio.cn/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/</guid>
       <description>正文 使用过docker的都知道dockerfile，其用于定义制作镜像的流程，由一系列命令和参数构成的脚本，这些命令应用于基础镜像并最终创建一个新的镜像。可参考往期文章学习：docker基础知识整理 有时候，我们想在原有镜像基础上修改、增加文</description>
     </item>
     
     <item>
       <title>git常用操作</title>
-      <link>http://www.liabio.cn/posts/2019-09-24-git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
+      <link>http://liabio.cn/posts/2019-09-24-git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-09-24-git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
+      <guid>http://liabio.cn/posts/2019-09-24-git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
       <description>解决git pull/push每次都需要输入密码问题 git config --global credential.helper store git输入正确密码后还是提示错误解决 git config --system --unset credential.helper 查看从哪个分支切出 比如我从 branch A 切出一个 branch B 然后对branch B做了一系列的操作 然后忘记了branch B是从哪个分支切出来的 请问能不能找</description>
     </item>
     
     <item>
       <title>k8s中部署负载均衡器ingress-nginx</title>
-      <link>http://www.liabio.cn/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/</link>
+      <link>http://liabio.cn/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/</guid>
+      <guid>http://liabio.cn/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/</guid>
       <description>正文 在Kubernetes中，服务和Pod的IP地址仅可以在集群网络内部使用，对于集群外的应用是不可见的。为了使外部的应用能够访问集群内的服务，在Kubernetes 目前 提供了以下几种方案： NodePort LoadBalancer Ingress 本节主要就ingress和ingress控制</description>
     </item>
     
     <item>
       <title>k8s使用Job执行任务失败了怎么办</title>
-      <link>http://www.liabio.cn/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/</link>
+      <link>http://liabio.cn/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/</guid>
+      <guid>http://liabio.cn/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/</guid>
       <description>正文 Kubernetes 中使用 Job 和 CronJob 两个资源分别提供了一次性任务和定时任务的特性，这两种对象也使用控制器模型来实现资源的管理，我们在这篇文章来介绍Job执行如果失败了会怎么样呢？ 修改job-fail.yaml，故意引入一个错误： Never 如果将 restartPolicy 设置为 Never 会怎么样？下</description>
     </item>
     
     <item>
       <title>kubernetes垃圾回收器GarbageCollector Controller源码分析（一）</title>
-      <link>http://www.liabio.cn/posts/2019-09-24-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%901/</link>
+      <link>http://liabio.cn/posts/2019-09-24-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%901/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-09-24-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%901/</guid>
+      <guid>http://liabio.cn/posts/2019-09-24-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%901/</guid>
       <description>kubernetes版本：1.13.2 背景 由于operator创建的redis集群，在kubernetes apiserver重启后，redis集群被异常删除（包括redis exporter statefulset、redis statefulset）。删除后</description>
     </item>
     
     <item>
       <title>一次socket.error: [Errno 99] Cannot assign requested address报错排查</title>
-      <link>http://www.liabio.cn/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/</link>
+      <link>http://liabio.cn/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/</guid>
+      <guid>http://liabio.cn/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/</guid>
       <description>今天在Ucloud国际版的机器上配置某个不可描述的服务时，遇到了 socket.error: [Errno 99] Cannot assign requested address 的错误，详细如下： [root@liabio ~]# docker logs c0c34ba49967 2019-07-15 00:02:26 INFO loading libcrypto from libcrypto.so.1.0.0 2019-07-15 00:02:26 INFO starting server at 128.1.132.124:8002 Traceback (most recent call last): File &amp;quot;/usr/local/bin/ssserver&amp;quot;, line 11, in &amp;lt;module&amp;gt; sys.exit(main()) File &amp;quot;/usr/local/lib/python2.7/dist-packages/shadowsocks/server.py&amp;quot;, line 68, in main tcp_servers.append(tcprelay.TCPRelay(a_config, dns_resolver, False)) File &amp;quot;/usr/local/lib/python2.7/dist-packages/shadowsocks/tcprelay.py&amp;quot;, line 582, in __init__ server_socket.bind(sa) File &amp;quot;/usr/lib/python2.7/socket.py&amp;quot;, line 228, in meth return getattr(self._sock,name)(*args) socket.error: [Errno 99] Cannot assign requested address 原先以为是resol</description>
     </item>
     
     <item>
       <title>云服务器使用docker搭建服务</title>
-      <link>http://www.liabio.cn/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/</link>
+      <link>http://liabio.cn/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/</guid>
+      <guid>http://liabio.cn/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/</guid>
       <description>前提：亚马逊云已经配置好启动。 安全组入站策略如下： 出站策略如下： 登陆EC2后，默认只能用ec2-user用户登陆，然后切换到root： sudo su 用yum执行安装docker提示No package docker avaible yum install docker -y 解决方法： 在/etc/yum.repos.d/下加C</description>
     </item>
     
     <item>
       <title>史上最全docker基础知识汇总</title>
-      <link>http://www.liabio.cn/posts/2019-09-24-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/</link>
+      <link>http://liabio.cn/posts/2019-09-24-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-09-24-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/</guid>
+      <guid>http://liabio.cn/posts/2019-09-24-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/</guid>
       <description>正文 Docker常用命令 run docker run [OPTIONS] IMAGE [COMMAND] [ARG...] -e设置环境变量；-e username=zhj &amp;ndash;name为容器指定一个名称；&amp;ndash;name=zhj -p指定端口映射，格式为：主机(宿主)端口:容器端口 -p 80:8080 -t为容器重新分配一个伪输入终端，通常与 -i 同时使用</description>
     </item>
     
     <item>
       <title>采坑指南——k8s域名解析coredns问题排查过程</title>
-      <link>http://www.liabio.cn/posts/2019-09-24-%E9%87%87%E5%9D%91%E6%8C%87%E5%8D%97-k8s%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90coredns%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/</link>
+      <link>http://liabio.cn/posts/2019-09-24-%E9%87%87%E5%9D%91%E6%8C%87%E5%8D%97-k8s%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90coredns%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-09-24-%E9%87%87%E5%9D%91%E6%8C%87%E5%8D%97-k8s%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90coredns%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/</guid>
+      <guid>http://liabio.cn/posts/2019-09-24-%E9%87%87%E5%9D%91%E6%8C%87%E5%8D%97-k8s%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90coredns%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/</guid>
       <description>正文 前几天，在ucloud上搭建的k8s集群（搭建教程后续会发出）。今天发现域名解析不了。 组件版本：k8s 1.15.0，coredns：1.3.1 过程是这样的： 首先用以下yaml文件创建了一个nginx服务 apiVersion: v1 kind: Service metadata: name: nginx-svc-old labels: app: nginx-svc spec: selector: app: nginx ports: - protocol:</description>
     </item>
     
     <item>
       <title>云服务器使用docker搭建服务</title>
-      <link>http://www.liabio.cn/posts/2019-09-21-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/</link>
+      <link>http://liabio.cn/posts/2019-09-21-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/</link>
       <pubDate>Sat, 21 Sep 2019 10:48:21 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-09-21-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/</guid>
+      <guid>http://liabio.cn/posts/2019-09-21-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/</guid>
       <description>前提：亚马逊云已经配置好启动。 安全组入站策略如下： 出站策略如下： 登陆EC2后，默认只能用ec2-user用户登陆，然后切换到root： sudo su 用yum执行安装docker提示No package docker avaible yum install docker -y 解决方法： 在/etc/yum.repos.d/下加C</description>
     </item>
     
     <item>
       <title>利用procedure批量插入数据</title>
-      <link>http://www.liabio.cn/posts/2019-08-21-%E5%88%A9%E7%94%A8procedure%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE/</link>
+      <link>http://liabio.cn/posts/2019-08-21-%E5%88%A9%E7%94%A8procedure%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE/</link>
       <pubDate>Wed, 21 Aug 2019 17:51:26 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-08-21-%E5%88%A9%E7%94%A8procedure%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE/</guid>
+      <guid>http://liabio.cn/posts/2019-08-21-%E5%88%A9%E7%94%A8procedure%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE/</guid>
       <description>&amp;emsp;&amp;emsp;要求在页面查询到5000条数据，为了方便插入，准备用shell脚本写curl命令调用自己写的代码接口，但是速度慢，而且写的时候遇到点儿小问题，故用sql语句写了这个功能 &amp;emsp;&amp;emsp;由于operationl</description>
     </item>
     
     <item>
       <title>存储过程procedure和函数Function的区别</title>
-      <link>http://www.liabio.cn/posts/2019-07-21-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8Bprocedure%E5%92%8C%E5%87%BD%E6%95%B0Function%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
+      <link>http://liabio.cn/posts/2019-07-21-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8Bprocedure%E5%92%8C%E5%87%BD%E6%95%B0Function%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
       <pubDate>Sun, 21 Jul 2019 17:51:13 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-07-21-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8Bprocedure%E5%92%8C%E5%87%BD%E6%95%B0Function%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
+      <guid>http://liabio.cn/posts/2019-07-21-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8Bprocedure%E5%92%8C%E5%87%BD%E6%95%B0Function%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
       <description>1、返回值的区别 函数有1个返回值,而存储过程是通过参数返回的,可以有多个或者没有 2. 调用的区别,函数可以在查询语句中直接调用,而存储过程必须单独调用. 函数：一般情况下是用来计算并返回一个计算结果； 存储过程： 一般是用来完成特定的数据操作（比如修</description>
     </item>
     
     <item>
       <title>Linux通过VMware和主机相连连接互联网</title>
-      <link>http://www.liabio.cn/posts/2019-07-20-linux%E9%80%9A%E8%BF%87VMware%E5%92%8C%E4%B8%BB%E6%9C%BA%E7%9B%B8%E8%BF%9E%E8%BF%9E%E6%8E%A5%E4%BA%92%E8%81%94%E7%BD%91/</link>
+      <link>http://liabio.cn/posts/2019-07-20-linux%E9%80%9A%E8%BF%87VMware%E5%92%8C%E4%B8%BB%E6%9C%BA%E7%9B%B8%E8%BF%9E%E8%BF%9E%E6%8E%A5%E4%BA%92%E8%81%94%E7%BD%91/</link>
       <pubDate>Sat, 20 Jul 2019 17:50:56 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-07-20-linux%E9%80%9A%E8%BF%87VMware%E5%92%8C%E4%B8%BB%E6%9C%BA%E7%9B%B8%E8%BF%9E%E8%BF%9E%E6%8E%A5%E4%BA%92%E8%81%94%E7%BD%91/</guid>
+      <guid>http://liabio.cn/posts/2019-07-20-linux%E9%80%9A%E8%BF%87VMware%E5%92%8C%E4%B8%BB%E6%9C%BA%E7%9B%B8%E8%BF%9E%E8%BF%9E%E6%8E%A5%E4%BA%92%E8%81%94%E7%BD%91/</guid>
       <description>1.&amp;emsp;VM8 使用固定IP： 2.&amp;emsp; 这里使用NAT模式： 3.&amp;emsp;VM中依次：编辑——&amp;gt;虚拟网络编辑器，点VMnet8 把使用本 地DHCP的勾去掉，子网IP和主机VM8的IP同网段，然后点NAT设置。 网关IP和刚才的IP也是同一个网段。 4.&amp;emsp;vim /etc/sysconfig/network-scripts/ifcfg-eno16777736 增加这些</description>
     </item>
     
     <item>
       <title>Shell脚本批量调用接口</title>
-      <link>http://www.liabio.cn/posts/2019-06-20-shell%E8%84%9A%E6%9C%AC%E6%89%B9%E9%87%8F%E8%B0%83%E7%94%A8%E6%8E%A5%E5%8F%A3/</link>
+      <link>http://liabio.cn/posts/2019-06-20-shell%E8%84%9A%E6%9C%AC%E6%89%B9%E9%87%8F%E8%B0%83%E7%94%A8%E6%8E%A5%E5%8F%A3/</link>
       <pubDate>Thu, 20 Jun 2019 17:50:45 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-06-20-shell%E8%84%9A%E6%9C%AC%E6%89%B9%E9%87%8F%E8%B0%83%E7%94%A8%E6%8E%A5%E5%8F%A3/</guid>
+      <guid>http://liabio.cn/posts/2019-06-20-shell%E8%84%9A%E6%9C%AC%E6%89%B9%E9%87%8F%E8%B0%83%E7%94%A8%E6%8E%A5%E5%8F%A3/</guid>
       <description>&amp;emsp;&amp;emsp;要求在页面查询到5000条数据，为了方便插入，用shell脚本写curl命令调用自己写的代码接口； 脚本如下： #!/bin/bash a=0 while [ $a -le 10 ]; do # length of ts is 13 required,Through the following way like this ts=`date +%s%N` ts=${ts:0:13} json=&#39;{&amp;quot;name&amp;quot; : &amp;quot;&#39;$1$a&#39;&amp;quot;, &amp;quot;age&amp;quot; : &#39;$2&#39;, &amp;quot;ts&amp;quot; : &#39;$ts&#39;}&#39; a=$((a+1)) curl -k -H &#39;Content-Type:application/json;charset=utf-8&#39; http://192.168.2.5:8080 -X POST -d &amp;quot;&#39;$json&#39;&amp;quot; done 执行脚本 **执行结果</description>
     </item>
     
     <item>
       <title>GolangFlag包使用笔记</title>
-      <link>http://www.liabio.cn/posts/2019-06-20-golangFlag%E5%8C%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</link>
+      <link>http://liabio.cn/posts/2019-06-20-golangFlag%E5%8C%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Thu, 20 Jun 2019 17:50:36 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-06-20-golangFlag%E5%8C%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</guid>
+      <guid>http://liabio.cn/posts/2019-06-20-golangFlag%E5%8C%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</guid>
       <description>本文原文地址：flag - 命令行参数解析 在写命令行程序（工具、server）时，对命令参数进行解析是常见的需求。各种语言一般都会提供解析命令行参数的方法或库，以方便程序员使用。如果命令行参数纯粹自己写代码来解析，对于比较复杂的，还是挺费劲的。</description>
     </item>
     
     <item>
       <title>Java子类调用父类构造器函数</title>
-      <link>http://www.liabio.cn/posts/2019-05-20-java%E5%AD%90%E7%B1%BB%E8%B0%83%E7%94%A8%E7%88%B6%E7%B1%BB%E6%9E%84%E9%80%A0%E5%99%A8%E5%87%BD%E6%95%B0/</link>
+      <link>http://liabio.cn/posts/2019-05-20-java%E5%AD%90%E7%B1%BB%E8%B0%83%E7%94%A8%E7%88%B6%E7%B1%BB%E6%9E%84%E9%80%A0%E5%99%A8%E5%87%BD%E6%95%B0/</link>
       <pubDate>Mon, 20 May 2019 17:50:15 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-05-20-java%E5%AD%90%E7%B1%BB%E8%B0%83%E7%94%A8%E7%88%B6%E7%B1%BB%E6%9E%84%E9%80%A0%E5%99%A8%E5%87%BD%E6%95%B0/</guid>
+      <guid>http://liabio.cn/posts/2019-05-20-java%E5%AD%90%E7%B1%BB%E8%B0%83%E7%94%A8%E7%88%B6%E7%B1%BB%E6%9E%84%E9%80%A0%E5%99%A8%E5%87%BD%E6%95%B0/</guid>
       <description>class FatherClass{ public FatherClass(){ System.out.println(&amp;quot;父类 无参 构造函数&amp;quot;); } public FatherClass(int i){ System.out.println(&amp;quot;父类 一个参数构造函数super = &amp;quot;+i); } public FatherClass(int i,String j){ System.out.println(&amp;quot</description>
     </item>
     
     <item>
       <title>手把手教你搭建kubernetes集群</title>
-      <link>http://www.liabio.cn/posts/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/</link>
+      <link>http://liabio.cn/posts/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Tue, 14 May 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/</guid>
+      <guid>http://liabio.cn/posts/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A4/</guid>
       <description>cat &amp;gt; /etc/yum.repos.d/kubernetes.repo &amp;lt;&amp;lt; EOF [kubernetes] name=Kubernetes baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/ enabled=1 gpgcheck=0 repo_gpgcheck=1 gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg EOF 安装kubeadm、kubectl、kubelet yum install -y kubeadm kubelet kubectl 如果在云服务器上搭建时，IP-18.219.28.143是公网IP kubeadm init --kubernetes-version=v1.14.1 --pod-network-cidr=10.244.0.0/16 --service-cidr=10.96.0.0/12 --apiserver-advertise-address=18.219.28.143 --ignore-preflight-errors=Swap,NumCPU init的时候可能会： [kubelet-check] Initial timeout of 40s passed ![](/img/build-kubernetes-cluster-learning/install_kubernetes_cluster2.png) 需要把/etc/kubernete</description>
     </item>
     
     <item>
       <title>手把手教你搭建kubernetes集群1</title>
-      <link>http://www.liabio.cn/posts/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/</link>
+      <link>http://liabio.cn/posts/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/</link>
       <pubDate>Tue, 14 May 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/</guid>
+      <guid>http://liabio.cn/posts/2019-05-14-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BAkubernetes%E9%9B%86%E7%BE%A41/</guid>
       <description>部署 以CentOS7为基础，搭建一个Master主机和三个Node主机，各个Node主机的配置方式基本相同。 OS: CentOS 7.5 x86_64 Container runtime: Docker 18.06.ce Kubernetes: 1.13 IP 地址 主机名 角色 192.168.50.71 master, master.kubernetes.io master 192.168.50.72 node01, node01.kubernetes.io node 192.168.50.73 node02, node02.kubernetes.io node 192.168.50.74 node03, node03.kubernetes.io node 这里需要使用常规的域名格式，因为后面需要为集群配置Kuberne</description>
     </item>
     
     <item>
       <title>搭建k8s环境时gcr.io和quay.io拉取镜像失败</title>
-      <link>http://www.liabio.cn/posts/2019-05-14-%E6%90%AD%E5%BB%BAk8s%E7%8E%AF%E5%A2%83%E6%97%B6gcr.io%E5%92%8Cquay.io%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E5%A4%B1%E8%B4%A5/</link>
+      <link>http://liabio.cn/posts/2019-05-14-%E6%90%AD%E5%BB%BAk8s%E7%8E%AF%E5%A2%83%E6%97%B6gcr.io%E5%92%8Cquay.io%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E5%A4%B1%E8%B4%A5/</link>
       <pubDate>Tue, 14 May 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-05-14-%E6%90%AD%E5%BB%BAk8s%E7%8E%AF%E5%A2%83%E6%97%B6gcr.io%E5%92%8Cquay.io%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E5%A4%B1%E8%B4%A5/</guid>
+      <guid>http://liabio.cn/posts/2019-05-14-%E6%90%AD%E5%BB%BAk8s%E7%8E%AF%E5%A2%83%E6%97%B6gcr.io%E5%92%8Cquay.io%E6%8B%89%E5%8F%96%E9%95%9C%E5%83%8F%E5%A4%B1%E8%B4%A5/</guid>
       <description>k8s在使用编排（manifest）工具进行yaml文件启动pod时，会遇到官方所给例子中spec.containers.image包含： quay.io/coreos/example_ gcr.io/google_containers/example_ 也就是说，从quay.io和gcr.io进行镜像拉取，我们知道，国内访问外网是被屏蔽了的。可以将其</description>
     </item>
     
     <item>
       <title>Hugo搭建博客教程</title>
-      <link>http://www.liabio.cn/posts/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</link>
+      <link>http://liabio.cn/posts/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</link>
       <pubDate>Fri, 03 May 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</guid>
+      <guid>http://liabio.cn/posts/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</guid>
       <description>在编译时报错如下： Building sites … ERROR 2019/05/03 10:36:45 Failed to read Git log: fatal: Not a git repository (or any of the parent d irectories): .git Building sites … ERROR 2019/05/03 10:45:16 Failed to read Git log: fatal: your current branch &#39;master&#39; does not have a ny commits yet 需要先在站点根目录执行以下命令： git init git add . git commit -m &#39;test&#39; config.toml中的baseUrl为http://liabio.gith</description>
     </item>
     
     <item>
       <title>kube-scheduler调度扩展</title>
-      <link>http://www.liabio.cn/posts/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/</link>
+      <link>http://liabio.cn/posts/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/</link>
       <pubDate>Wed, 01 May 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/</guid>
+      <guid>http://liabio.cn/posts/2019-05-01-kube-scheduler%E8%B0%83%E5%BA%A6%E6%89%A9%E5%B1%95/</guid>
       <description>正文 Kubernetes 自带了一个默认调度器kube-scheduler，其内置了很多节点预选和优选的调度算法，一般调度场景下可以满足要求。但是在一些特殊场景下，默认调度器不能满足我们复杂的调度需求。我们就需要对调度器进行扩展，以达到调度适合业务场景的目的。</description>
     </item>
     
     <item>
       <title>MySql镜像安装</title>
-      <link>http://www.liabio.cn/posts/2019-04-20-MySql%E9%95%9C%E5%83%8F%E5%AE%89%E8%A3%85/</link>
+      <link>http://liabio.cn/posts/2019-04-20-MySql%E9%95%9C%E5%83%8F%E5%AE%89%E8%A3%85/</link>
       <pubDate>Sat, 20 Apr 2019 17:50:04 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-04-20-MySql%E9%95%9C%E5%83%8F%E5%AE%89%E8%A3%85/</guid>
+      <guid>http://liabio.cn/posts/2019-04-20-MySql%E9%95%9C%E5%83%8F%E5%AE%89%E8%A3%85/</guid>
       <description>安装MySql镜像 &amp;gt; docker search mysql #查找MySql镜像版本 &amp;gt; docker pull mysql:tag #安装指定版本的mysql镜像，tag为版本号 例如： &amp;gt; docker pull mysql:5.6 #安装MySql 5.6版本镜像 启动MySql容器 &amp;gt; docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag 例如： &amp;gt; docker run --name test-mysql -e MYSQL_ROOT_PASSWORD=123456 -d -p 3306:3306 mysql:5.6 #启动mysql 5.6版本镜</description>
     </item>
     
     <item>
       <title>HTTP请求中的FormData与RequestPayload的区别</title>
-      <link>http://www.liabio.cn/posts/2019-03-20-HTTP%E8%AF%B7%E6%B1%82%E4%B8%AD%E7%9A%84FormData%E4%B8%8ERequestPayload%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
+      <link>http://liabio.cn/posts/2019-03-20-HTTP%E8%AF%B7%E6%B1%82%E4%B8%AD%E7%9A%84FormData%E4%B8%8ERequestPayload%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
       <pubDate>Wed, 20 Mar 2019 17:49:52 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-03-20-HTTP%E8%AF%B7%E6%B1%82%E4%B8%AD%E7%9A%84FormData%E4%B8%8ERequestPayload%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
+      <guid>http://liabio.cn/posts/2019-03-20-HTTP%E8%AF%B7%E6%B1%82%E4%B8%AD%E7%9A%84FormData%E4%B8%8ERequestPayload%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
       <description>HTTP请求中的Form Data与Request Payload的区别 前端开发中经常会用到AJAX发送异步请求，对于POST类型的请求会附带请求数据。而常用的两种传参方式为：Form Data 和 Request Payload。 GET请求 使用get请求时，参数会以k</description>
     </item>
     
     <item>
       <title>Java Golang日志文件转储压缩实现</title>
-      <link>http://www.liabio.cn/posts/2019-03-08-java-golang%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E8%BD%AC%E5%82%A8%E5%8E%8B%E7%BC%A9%E5%AE%9E%E7%8E%B0/</link>
+      <link>http://liabio.cn/posts/2019-03-08-java-golang%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E8%BD%AC%E5%82%A8%E5%8E%8B%E7%BC%A9%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Fri, 08 Mar 2019 17:49:27 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-03-08-java-golang%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E8%BD%AC%E5%82%A8%E5%8E%8B%E7%BC%A9%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>http://liabio.cn/posts/2019-03-08-java-golang%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E8%BD%AC%E5%82%A8%E5%8E%8B%E7%BC%A9%E5%AE%9E%E7%8E%B0/</guid>
       <description>日志的转储和压缩是非常关键的，它不仅可以减少硬盘空间占用，主要还可以在发生故障时根据日志定位出故障原因。下面来看看golang和java的文件转储实现。 go语言： 用到了filepath包下的Walk方法，具体说明可以参看历史文章： go语言p</description>
     </item>
     
     <item>
       <title>一款最好用的windows文件管理器</title>
-      <link>http://www.liabio.cn/posts/2019-02-08-%E4%B8%80%E6%AC%BE%E6%9C%80%E5%A5%BD%E7%94%A8%E7%9A%84windows%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/</link>
+      <link>http://liabio.cn/posts/2019-02-08-%E4%B8%80%E6%AC%BE%E6%9C%80%E5%A5%BD%E7%94%A8%E7%9A%84windows%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/</link>
       <pubDate>Fri, 08 Feb 2019 17:49:07 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-02-08-%E4%B8%80%E6%AC%BE%E6%9C%80%E5%A5%BD%E7%94%A8%E7%9A%84windows%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/</guid>
+      <guid>http://liabio.cn/posts/2019-02-08-%E4%B8%80%E6%AC%BE%E6%9C%80%E5%A5%BD%E7%94%A8%E7%9A%84windows%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/</guid>
       <description>在日常生活或工作中，除了一些文本编辑工具以及网页浏览器以外，我们接触的最多的可能就是资源管理器了。资源管理器软件有很多。如： Clover 、QTTabBar、FreeCommander、WindowsTabs、Q-Dir、Total Commander等</description>
     </item>
     
     <item>
       <title>Mysql大小写敏感与校对规则</title>
-      <link>http://www.liabio.cn/posts/2019-01-08-mysql%E5%A4%A7%E5%B0%8F%E5%86%99%E6%95%8F%E6%84%9F%E4%B8%8E%E6%A0%A1%E5%AF%B9%E8%A7%84%E5%88%99/</link>
+      <link>http://liabio.cn/posts/2019-01-08-mysql%E5%A4%A7%E5%B0%8F%E5%86%99%E6%95%8F%E6%84%9F%E4%B8%8E%E6%A0%A1%E5%AF%B9%E8%A7%84%E5%88%99/</link>
       <pubDate>Tue, 08 Jan 2019 17:46:39 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-01-08-mysql%E5%A4%A7%E5%B0%8F%E5%86%99%E6%95%8F%E6%84%9F%E4%B8%8E%E6%A0%A1%E5%AF%B9%E8%A7%84%E5%88%99/</guid>
+      <guid>http://liabio.cn/posts/2019-01-08-mysql%E5%A4%A7%E5%B0%8F%E5%86%99%E6%95%8F%E6%84%9F%E4%B8%8E%E6%A0%A1%E5%AF%B9%E8%A7%84%E5%88%99/</guid>
       <description>大家在使用mysql过程中，可能会遇到类似以下的问题： 模糊匹配 jg%，结果以JG开头的字符串也出现在结果集中，大家很自然的认为是大小写敏感的问题。那么mysql中大小写敏感是如何控制的；数据库名，表名，字段名这些字典对象以及字段值的大小敏感</description>
     </item>
     
     <item>
       <title>一款全网音乐神器</title>
-      <link>http://www.liabio.cn/posts/2019-01-07-%E4%B8%80%E6%AC%BE%E5%85%A8%E7%BD%91%E9%9F%B3%E4%B9%90%E7%A5%9E%E5%99%A8/</link>
+      <link>http://liabio.cn/posts/2019-01-07-%E4%B8%80%E6%AC%BE%E5%85%A8%E7%BD%91%E9%9F%B3%E4%B9%90%E7%A5%9E%E5%99%A8/</link>
       <pubDate>Mon, 07 Jan 2019 17:45:29 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-01-07-%E4%B8%80%E6%AC%BE%E5%85%A8%E7%BD%91%E9%9F%B3%E4%B9%90%E7%A5%9E%E5%99%A8/</guid>
+      <guid>http://liabio.cn/posts/2019-01-07-%E4%B8%80%E6%AC%BE%E5%85%A8%E7%BD%91%E9%9F%B3%E4%B9%90%E7%A5%9E%E5%99%A8/</guid>
       <description>突然发现自己很久没有听音乐了，之前对纯音乐和泰勒歌曲喜欢入迷的我，由于工作忙的原因，都很少打开网易云音乐静静品味音乐带来的美感。 音乐距离心最近，好的音乐能让人在忙碌生活之余放松自我。 现在音乐很多都是收费的，或者只能听不能下载的。如果你想听、</description>
     </item>
     
     <item>
       <title>Java加载国际化文件的几种姿势</title>
-      <link>http://www.liabio.cn/posts/2019-01-06-java%E5%8A%A0%E8%BD%BD%E5%9B%BD%E9%99%85%E5%8C%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%A7%BF%E5%8A%BF/</link>
+      <link>http://liabio.cn/posts/2019-01-06-java%E5%8A%A0%E8%BD%BD%E5%9B%BD%E9%99%85%E5%8C%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%A7%BF%E5%8A%BF/</link>
       <pubDate>Sun, 06 Jan 2019 17:43:33 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-01-06-java%E5%8A%A0%E8%BD%BD%E5%9B%BD%E9%99%85%E5%8C%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%A7%BF%E5%8A%BF/</guid>
+      <guid>http://liabio.cn/posts/2019-01-06-java%E5%8A%A0%E8%BD%BD%E5%9B%BD%E9%99%85%E5%8C%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%A7%BF%E5%8A%BF/</guid>
       <description>1、 通过util包中的ResourceBundle加载： 首先国际化资源文件放在了classpath下的i18n目录下： mymessage_en_US.properties： com.website.operation=\u67e5\u8be2\u64cd\u4f5c\u65e5\u5fd7 com.website.write=\u5199\u65e5\u5fd7 com.website.writeLog=\u5199 {0} \u65e5\u5fd7 mymessage_en_US.properties： com.website.operation=queryOperationLog com.website.write=recordLog</description>
     </item>
     
     <item>
       <title>一款效率神器Ditto</title>
-      <link>http://www.liabio.cn/posts/2019-01-05-%E4%B8%80%E6%AC%BE%E6%95%88%E7%8E%87%E7%A5%9E%E5%99%A8Ditto/</link>
+      <link>http://liabio.cn/posts/2019-01-05-%E4%B8%80%E6%AC%BE%E6%95%88%E7%8E%87%E7%A5%9E%E5%99%A8Ditto/</link>
       <pubDate>Sat, 05 Jan 2019 17:42:39 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-01-05-%E4%B8%80%E6%AC%BE%E6%95%88%E7%8E%87%E7%A5%9E%E5%99%A8Ditto/</guid>
+      <guid>http://liabio.cn/posts/2019-01-05-%E4%B8%80%E6%AC%BE%E6%95%88%E7%8E%87%E7%A5%9E%E5%99%A8Ditto/</guid>
       <description>Ditto 是一款开源、免费、强大的剪贴板增强工具。可以把复制过的所有内容保存起来（可以设定保存日期或条目总数），快捷地供后续调用。还可以合并粘贴，纯文本粘贴，支持分组、置顶、快速搜索、热键粘贴功能。并且，还可以通过网络共享剪贴板内容。 平常情况下，D</description>
     </item>
     
     <item>
       <title>自动评论csdn博客文章实现</title>
-      <link>http://www.liabio.cn/posts/2019-01-04-%E8%87%AA%E5%8A%A8%E8%AF%84%E8%AE%BAcsdn%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%AE%9E%E7%8E%B0/</link>
+      <link>http://liabio.cn/posts/2019-01-04-%E8%87%AA%E5%8A%A8%E8%AF%84%E8%AE%BAcsdn%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Fri, 04 Jan 2019 17:40:20 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-01-04-%E8%87%AA%E5%8A%A8%E8%AF%84%E8%AE%BAcsdn%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>http://liabio.cn/posts/2019-01-04-%E8%87%AA%E5%8A%A8%E8%AF%84%E8%AE%BAcsdn%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%AE%9E%E7%8E%B0/</guid>
       <description>我们来用java代码爬取csdn博客网站，然后自动评论，这一波操作可以说是相当风骚了，话不多说，咱上代码。 第一步是登录代码，这个网上一大把，代码中用到了jsoup依赖包，用于解析html获取相应元素，相当于css选择器，很强大的三方件。 /** *</description>
     </item>
     
     <item>
       <title>Yum源配置</title>
-      <link>http://www.liabio.cn/posts/2019-01-03-yum%E6%BA%90%E9%85%8D%E7%BD%AE/</link>
+      <link>http://liabio.cn/posts/2019-01-03-yum%E6%BA%90%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Thu, 03 Jan 2019 17:39:30 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-01-03-yum%E6%BA%90%E9%85%8D%E7%BD%AE/</guid>
+      <guid>http://liabio.cn/posts/2019-01-03-yum%E6%BA%90%E9%85%8D%E7%BD%AE/</guid>
       <description>在配置yum前首先得说说rpm，在redhat和centos linux系统上，rpm作为软件包管理工具，可以方便的安装、查询、卸载软件包。常见命令如下： #安装： rpm -ivh jdk-7u25-linux-x64.rpm #卸载： rpm -e jdk-7u25-linux-x64.rpm #升级： rpm -Uvh jdk-7u25-linux-x64.rpm #查询软件的安装路径： rpm -ql yum-3.4.3-118.el7.noarch #查询所有安装的包</description>
     </item>
     
     <item>
       <title>Java发邮件 这个坑你能填吗</title>
-      <link>http://www.liabio.cn/posts/2019-01-02-java%E5%8F%91%E9%82%AE%E4%BB%B6-%E8%BF%99%E4%B8%AA%E5%9D%91%E4%BD%A0%E8%83%BD%E5%A1%AB%E5%90%97/</link>
+      <link>http://liabio.cn/posts/2019-01-02-java%E5%8F%91%E9%82%AE%E4%BB%B6-%E8%BF%99%E4%B8%AA%E5%9D%91%E4%BD%A0%E8%83%BD%E5%A1%AB%E5%90%97/</link>
       <pubDate>Wed, 02 Jan 2019 17:38:10 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-01-02-java%E5%8F%91%E9%82%AE%E4%BB%B6-%E8%BF%99%E4%B8%AA%E5%9D%91%E4%BD%A0%E8%83%BD%E5%A1%AB%E5%90%97/</guid>
+      <guid>http://liabio.cn/posts/2019-01-02-java%E5%8F%91%E9%82%AE%E4%BB%B6-%E8%BF%99%E4%B8%AA%E5%9D%91%E4%BD%A0%E8%83%BD%E5%A1%AB%E5%90%97/</guid>
       <description>今天利用java发邮件，本地windows上测试时发送ok的，部署到服务器上却报异常，让我们走进异常，探索到底坑在哪里，并填之。 利用outlook发邮件代码如下： package com.website.service.impl; import com.alibaba.fastjson.JSON; import org.slf4j.Logger; import org.slf4j.LoggerFactory; import org.springframework.beans.factory.annotation.Autowired; import org.springframework.beans.factory.annotation.Qualifier; import org.springframework.mail.javamail.JavaMailSenderImpl; import org.springframework.mail.javamail.MimeMessageHelper; import javax.mail.internet.MimeMessage; import java.util.Properties; /** * @program: WebSite * @description: SpringMvc实现的发</description>
     </item>
     
     <item>
       <title>Vmware上安装linux过程记录</title>
-      <link>http://www.liabio.cn/posts/2019-01-01-vmware%E4%B8%8A%E5%AE%89%E8%A3%85linux%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/</link>
+      <link>http://liabio.cn/posts/2019-01-01-vmware%E4%B8%8A%E5%AE%89%E8%A3%85linux%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Tue, 01 Jan 2019 17:36:41 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-01-01-vmware%E4%B8%8A%E5%AE%89%E8%A3%85linux%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/</guid>
+      <guid>http://liabio.cn/posts/2019-01-01-vmware%E4%B8%8A%E5%AE%89%E8%A3%85linux%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/</guid>
       <description>以前的电脑上安装过vmware+redhat，但是奈何电脑太老，配置太低，打开的时候超级卡，没法用。换了电脑后，再装上玩玩，故此记录一下安装过程。需要安装的小伙伴可以在此获取包然后按此步骤安装。 1、创建新的虚拟机 -&amp;gt; 自定义安装 2、选择虚拟机兼</description>
     </item>
     
     <item>
       <title>Java图形验证码实现</title>
-      <link>http://www.liabio.cn/posts/2018-12-27-java%E5%9B%BE%E5%BD%A2%E9%AA%8C%E8%AF%81%E7%A0%81%E5%AE%9E%E7%8E%B0/</link>
+      <link>http://liabio.cn/posts/2018-12-27-java%E5%9B%BE%E5%BD%A2%E9%AA%8C%E8%AF%81%E7%A0%81%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Thu, 27 Dec 2018 17:34:47 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-27-java%E5%9B%BE%E5%BD%A2%E9%AA%8C%E8%AF%81%E7%A0%81%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>http://liabio.cn/posts/2018-12-27-java%E5%9B%BE%E5%BD%A2%E9%AA%8C%E8%AF%81%E7%A0%81%E5%AE%9E%E7%8E%B0/</guid>
       <description>今天来学习下图形验证码的生成，首先依赖开源组件： &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.github.penggle&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;kaptcha&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.3.2&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; 在web.xml中配置名为Kaptcha的servlet： &amp;lt;servlet&amp;gt; &amp;lt;!-- 生成图片的Servlet --&amp;gt; &amp;lt;servlet-name&amp;gt;Kaptcha&amp;lt;/servlet-name&amp;gt; &amp;lt;servlet-class&amp;gt;com.google.code.kaptcha.servlet.KaptchaServlet&amp;lt;/servlet-class&amp;gt; &amp;lt;!-- 是否有边框 --&amp;gt; &amp;lt;init-param&amp;gt; &amp;lt;param-name&amp;gt;kaptcha.border&amp;lt;/param-name&amp;gt; &amp;lt;param-value&amp;gt;no&amp;lt;/param-value&amp;gt; &amp;lt;/init-param&amp;gt; &amp;lt;!-- 字体颜色 --&amp;gt; &amp;lt;init-param&amp;gt; &amp;lt;param-name&amp;gt;kaptcha.textproducer.font.color&amp;lt;/param-name&amp;gt; &amp;lt;param-value&amp;gt;red&amp;lt;/param-value&amp;gt; &amp;lt;/init-param&amp;gt; &amp;lt;!-- 图片宽度 --&amp;gt; &amp;lt;init-param&amp;gt; &amp;lt;param-name&amp;gt;kaptcha.image.width&amp;lt;/param-name&amp;gt; &amp;lt;param-value&amp;gt;135&amp;lt;/param-value&amp;gt; &amp;lt;/init-param&amp;gt; &amp;lt;!-- 使用哪些字符生成验证码 --&amp;gt; &amp;lt;init-param&amp;gt;</description>
     </item>
     
     <item>
       <title>Java这个404你能解决吗？</title>
-      <link>http://www.liabio.cn/posts/2018-12-26-java%E8%BF%99%E4%B8%AA404%E4%BD%A0%E8%83%BD%E8%A7%A3%E5%86%B3%E5%90%97/</link>
+      <link>http://liabio.cn/posts/2018-12-26-java%E8%BF%99%E4%B8%AA404%E4%BD%A0%E8%83%BD%E8%A7%A3%E5%86%B3%E5%90%97/</link>
       <pubDate>Wed, 26 Dec 2018 17:32:26 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-26-java%E8%BF%99%E4%B8%AA404%E4%BD%A0%E8%83%BD%E8%A7%A3%E5%86%B3%E5%90%97/</guid>
+      <guid>http://liabio.cn/posts/2018-12-26-java%E8%BF%99%E4%B8%AA404%E4%BD%A0%E8%83%BD%E8%A7%A3%E5%86%B3%E5%90%97/</guid>
       <description>今天在tomcat里部署运行了一个小工程，工程结构如下： 运行tomcat服务器后，访问index.html，发现报404： 但是后台接口是正常返回的： 去看webapps里工程目录下，index.html文件是有的，见鬼了，是哪儿出了问题？ 然后</description>
     </item>
     
     <item>
       <title>Java发送手机验证码实现</title>
-      <link>http://www.liabio.cn/posts/2018-12-26-java%E5%8F%91%E9%80%81%E6%89%8B%E6%9C%BA%E9%AA%8C%E8%AF%81%E7%A0%81%E5%AE%9E%E7%8E%B0/</link>
+      <link>http://liabio.cn/posts/2018-12-26-java%E5%8F%91%E9%80%81%E6%89%8B%E6%9C%BA%E9%AA%8C%E8%AF%81%E7%A0%81%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Wed, 26 Dec 2018 17:31:38 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-26-java%E5%8F%91%E9%80%81%E6%89%8B%E6%9C%BA%E9%AA%8C%E8%AF%81%E7%A0%81%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>http://liabio.cn/posts/2018-12-26-java%E5%8F%91%E9%80%81%E6%89%8B%E6%9C%BA%E9%AA%8C%E8%AF%81%E7%A0%81%E5%AE%9E%E7%8E%B0/</guid>
       <description>正文 今天来用java实现手机验证码的发送。 短信平台有很多，中国网建提供的SMS短信通，注册免费5条短信，3条彩信， http://sms.webchinese.cn/ 但是刚才试了，第一次用官方提供的demo发送成功，然后整合到自己项目中，调试时由于参数配置错误导致发送了几次失败后，5次就用</description>
     </item>
     
     <item>
       <title>SpringMVC实现发送邮件</title>
-      <link>http://www.liabio.cn/posts/2018-12-25-SpringMVC%E5%AE%9E%E7%8E%B0%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</link>
+      <link>http://liabio.cn/posts/2018-12-25-SpringMVC%E5%AE%9E%E7%8E%B0%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</link>
       <pubDate>Tue, 25 Dec 2018 17:30:24 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-25-SpringMVC%E5%AE%9E%E7%8E%B0%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</guid>
+      <guid>http://liabio.cn/posts/2018-12-25-SpringMVC%E5%AE%9E%E7%8E%B0%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</guid>
       <description>今天来试着用SpringMVC发送邮件，主要需要依赖以下两个包； &amp;lt;!--spring发送邮件依赖spring.version=4.3.8.RELEASE--&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-context-support&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;${spring.version}&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!-- Javamail API --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;javax.mail&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;mail&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.4.5&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; spring-mail.xml配置文件如下</description>
     </item>
     
     <item>
       <title>Golang 设置 Http Response 响应头与坑</title>
-      <link>http://www.liabio.cn/posts/2018-12-25-golang-%E8%AE%BE%E7%BD%AE-http-response-%E5%93%8D%E5%BA%94%E5%A4%B4%E4%B8%8E%E5%9D%91/</link>
+      <link>http://liabio.cn/posts/2018-12-25-golang-%E8%AE%BE%E7%BD%AE-http-response-%E5%93%8D%E5%BA%94%E5%A4%B4%E4%B8%8E%E5%9D%91/</link>
       <pubDate>Tue, 25 Dec 2018 17:29:19 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-25-golang-%E8%AE%BE%E7%BD%AE-http-response-%E5%93%8D%E5%BA%94%E5%A4%B4%E4%B8%8E%E5%9D%91/</guid>
+      <guid>http://liabio.cn/posts/2018-12-25-golang-%E8%AE%BE%E7%BD%AE-http-response-%E5%93%8D%E5%BA%94%E5%A4%B4%E4%B8%8E%E5%9D%91/</guid>
       <description>1、 设置WriteHeader的顺序问题 之前遇到个问题，在一段代码中这样设置WriteHeader,最后在header中取Name时怎么也取不到。 w.WriteHeader(201) w.Header().Set(&amp;quot;Name&amp;quot;, &amp;quot;my name is smallsoup&amp;quot;) 用 golang 写 http server 时，可以很方便可通过 w.Header.Set(k, v) 来设置 http response 中 header 的内容。但是需要特别注意的是：某些</description>
     </item>
     
     <item>
       <title>Mysql支持原生json使用说明</title>
-      <link>http://www.liabio.cn/posts/2018-12-24-mysql%E6%94%AF%E6%8C%81%E5%8E%9F%E7%94%9Fjson%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</link>
+      <link>http://liabio.cn/posts/2018-12-24-mysql%E6%94%AF%E6%8C%81%E5%8E%9F%E7%94%9Fjson%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</link>
       <pubDate>Mon, 24 Dec 2018 17:28:07 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-24-mysql%E6%94%AF%E6%8C%81%E5%8E%9F%E7%94%9Fjson%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</guid>
+      <guid>http://liabio.cn/posts/2018-12-24-mysql%E6%94%AF%E6%8C%81%E5%8E%9F%E7%94%9Fjson%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</guid>
       <description>MySQL在5.7.8开始对json原生支持，本文将对MySQL中json类型的用法简单说明，希望对你有用。 CREATE TABLE testproject ( `id` int(10) unsigned NOT NULL AUTO_INCREMENT, `skill` JSON NOT NULL, `student` JSON NOT NULL, PRIMARY KEY (`id`) ); 查看表结构： 这样JSON的字段就被创建好了 注：JSON类型不能有默认值。 插入JSON 插入</description>
     </item>
     
     <item>
       <title>爬虫遇到了点问题</title>
-      <link>http://www.liabio.cn/posts/2018-12-23-%E7%88%AC%E8%99%AB%E9%81%87%E5%88%B0%E4%BA%86%E7%82%B9%E9%97%AE%E9%A2%98/</link>
+      <link>http://liabio.cn/posts/2018-12-23-%E7%88%AC%E8%99%AB%E9%81%87%E5%88%B0%E4%BA%86%E7%82%B9%E9%97%AE%E9%A2%98/</link>
       <pubDate>Sun, 23 Dec 2018 17:27:15 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-23-%E7%88%AC%E8%99%AB%E9%81%87%E5%88%B0%E4%BA%86%E7%82%B9%E9%97%AE%E9%A2%98/</guid>
+      <guid>http://liabio.cn/posts/2018-12-23-%E7%88%AC%E8%99%AB%E9%81%87%E5%88%B0%E4%BA%86%E7%82%B9%E9%97%AE%E9%A2%98/</guid>
       <description>golang爬珍爱网代码优化后，运行报了如下的错，找了半小时才找到原因，在此记录一下。 代码是这样的： 有一个interface类型的Parser： type Parser interface { Parser(contents []byte, url string) ParserResult Serialize() (funcName string, args interface{}) } 有一个struct类型的FuncParser： type FuncParser struct { parser ParserFunc funcName string } FuncParser</description>
     </item>
     
     <item>
       <title>爬取珍爱网后用户信息展示</title>
-      <link>http://www.liabio.cn/posts/2018-12-23-%E7%88%AC%E5%8F%96%E7%8F%8D%E7%88%B1%E7%BD%91%E5%90%8E%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E5%B1%95%E7%A4%BA/</link>
+      <link>http://liabio.cn/posts/2018-12-23-%E7%88%AC%E5%8F%96%E7%8F%8D%E7%88%B1%E7%BD%91%E5%90%8E%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E5%B1%95%E7%A4%BA/</link>
       <pubDate>Sun, 23 Dec 2018 17:25:52 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-23-%E7%88%AC%E5%8F%96%E7%8F%8D%E7%88%B1%E7%BD%91%E5%90%8E%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E5%B1%95%E7%A4%BA/</guid>
+      <guid>http://liabio.cn/posts/2018-12-23-%E7%88%AC%E5%8F%96%E7%8F%8D%E7%88%B1%E7%BD%91%E5%90%8E%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E5%B1%95%E7%A4%BA/</guid>
       <description>golang爬取珍爱网，爬到了3万多用户信息，并存到了elasticsearch中，如下图，查询到了3万多用户信息。 先来看看最终效果： 利用到了go语言的html模板库： 执行模板渲染： func (s SearchResultView) Render (w io.Writer, data model.SearchResult) error { return s.template.Execute(w, data) } model.SearchRes</description>
     </item>
     
     <item>
       <title>爬虫遇到了点问题</title>
-      <link>http://www.liabio.cn/posts/2018-12-22-%E7%88%AC%E8%99%AB%E9%81%87%E5%88%B0%E4%BA%86%E7%82%B9%E9%97%AE%E9%A2%98/</link>
+      <link>http://liabio.cn/posts/2018-12-22-%E7%88%AC%E8%99%AB%E9%81%87%E5%88%B0%E4%BA%86%E7%82%B9%E9%97%AE%E9%A2%98/</link>
       <pubDate>Sat, 22 Dec 2018 17:24:52 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-22-%E7%88%AC%E8%99%AB%E9%81%87%E5%88%B0%E4%BA%86%E7%82%B9%E9%97%AE%E9%A2%98/</guid>
+      <guid>http://liabio.cn/posts/2018-12-22-%E7%88%AC%E8%99%AB%E9%81%87%E5%88%B0%E4%BA%86%E7%82%B9%E9%97%AE%E9%A2%98/</guid>
       <description>golang爬珍爱网代码优化后，运行报了如下的错，找了半小时才找到原因，在此记录一下。 代码是这样的： 有一个interface类型的Parser： type Parser interface { Parser(contents []byte, url string) ParserResult Serialize() (funcName string, args interface{}) } 有一个struct类型的FuncParser： type FuncParser struct { parser ParserFunc funcName string } FuncParser</description>
     </item>
     
     <item>
       <title>Go 语言 IDE GoLand的BUG</title>
-      <link>http://www.liabio.cn/posts/2018-12-22-Go-%E8%AF%AD%E8%A8%80-IDE-GoLand%E7%9A%84BUG/</link>
+      <link>http://liabio.cn/posts/2018-12-22-Go-%E8%AF%AD%E8%A8%80-IDE-GoLand%E7%9A%84BUG/</link>
       <pubDate>Sat, 22 Dec 2018 17:23:16 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-22-Go-%E8%AF%AD%E8%A8%80-IDE-GoLand%E7%9A%84BUG/</guid>
+      <guid>http://liabio.cn/posts/2018-12-22-Go-%E8%AF%AD%E8%A8%80-IDE-GoLand%E7%9A%84BUG/</guid>
       <description>前言 GoLand 是 Jetbrains 推出的 Golang IDE，在内侧阶段我就开始使用了，刚出的时候我还在博客中发表过文章（看了下日期是 16 年年底）。 那时候它还不是很完善，BUG 很多。准确的说也不算 BUG，主要是语法提示上的各种不足，重构功能也很弱。后来我有一段时间没有写 Go 代码，</description>
     </item>
     
     <item>
       <title>Mysql数据导出golang实现</title>
-      <link>http://www.liabio.cn/posts/2018-12-21-mysql%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BAgolang%E5%AE%9E%E7%8E%B0/</link>
+      <link>http://liabio.cn/posts/2018-12-21-mysql%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BAgolang%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Fri, 21 Dec 2018 17:21:38 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-21-mysql%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BAgolang%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>http://liabio.cn/posts/2018-12-21-mysql%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BAgolang%E5%AE%9E%E7%8E%B0/</guid>
       <description>mysql数据导出为excel文件，golang实现： 首先下载依赖到的三方库： Simple install the package to your $GOPATH with the go tool from shell: $ go get -u github.com/go-sql-driver/mysql 具体说明请看： 库地址 wiki说明 代码示例如下，用到了go的flag包的能力，传入命令行参数。具体看helpInfo： Usage of mysqldataexport: -port int</description>
     </item>
     
     <item>
       <title>运行elasticsearch报错解决</title>
-      <link>http://www.liabio.cn/posts/2018-12-21-%E8%BF%90%E8%A1%8Celasticsearch%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/</link>
+      <link>http://liabio.cn/posts/2018-12-21-%E8%BF%90%E8%A1%8Celasticsearch%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/</link>
       <pubDate>Fri, 21 Dec 2018 17:20:27 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-21-%E8%BF%90%E8%A1%8Celasticsearch%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/</guid>
+      <guid>http://liabio.cn/posts/2018-12-21-%E8%BF%90%E8%A1%8Celasticsearch%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/</guid>
       <description>docker 运行elasticsearch6.2.4时报错： ERROR: [1] bootstrap checks failed [1]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144] 解决： 查看 sysctl vm.max_map_count 设置： sysctl -w vm.max_map_count=262144</description>
     </item>
     
     <item>
       <title>Elasticsearch6.2.4插件head安装</title>
-      <link>http://www.liabio.cn/posts/2018-12-20-elasticsearch6-2-4%E6%8F%92%E4%BB%B6head%E5%AE%89%E8%A3%85/</link>
+      <link>http://liabio.cn/posts/2018-12-20-elasticsearch6-2-4%E6%8F%92%E4%BB%B6head%E5%AE%89%E8%A3%85/</link>
       <pubDate>Thu, 20 Dec 2018 17:18:27 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-20-elasticsearch6-2-4%E6%8F%92%E4%BB%B6head%E5%AE%89%E8%A3%85/</guid>
+      <guid>http://liabio.cn/posts/2018-12-20-elasticsearch6-2-4%E6%8F%92%E4%BB%B6head%E5%AE%89%E8%A3%85/</guid>
       <description>安装nodejs： https://nodejs.org/en/download/current/ 以windows64为例，下载msi文件： 安装时，安装目录选择D盘，一路下一步即可。 安装完成，在cmd里执行node -v，成功回显版本号表示nodejs安装成功： 安装grunt： npm install -g grunt-cli grunt -version 开始安装head 在https:</description>
     </item>
     
     <item>
       <title>Centos Linux使用Yum安装Go和配置环境</title>
-      <link>http://www.liabio.cn/posts/2018-12-19-CentosLinux%E4%BD%BF%E7%94%A8Yum%E5%AE%89%E8%A3%85Go%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/</link>
+      <link>http://liabio.cn/posts/2018-12-19-CentosLinux%E4%BD%BF%E7%94%A8Yum%E5%AE%89%E8%A3%85Go%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/</link>
       <pubDate>Wed, 19 Dec 2018 17:17:22 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-19-CentosLinux%E4%BD%BF%E7%94%A8Yum%E5%AE%89%E8%A3%85Go%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/</guid>
+      <guid>http://liabio.cn/posts/2018-12-19-CentosLinux%E4%BD%BF%E7%94%A8Yum%E5%AE%89%E8%A3%85Go%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/</guid>
       <description>安装环境：CentOS7.2 64位，安装Golang 查看go是否安装过： $ go env GOARCH=&amp;quot;amd64&amp;quot; GOBIN=&amp;quot;&amp;quot; GOEXE=&amp;quot;&amp;quot; GOHOSTARCH=&amp;quot;amd64&amp;quot; GOHOSTOS=&amp;quot;linux&amp;quot; GOOS=&amp;quot;linux&amp;quot; GOPATH=&amp;quot;/root/go&amp;quot; GORACE=&amp;quot;&amp;quot; GOROOT=&amp;quot;/usr/lib/golang&amp;quot; GOTOOLDIR=&amp;quot;/usr/lib/golang/pkg/tool/linux_amd64&amp;quot; GCCGO=&amp;quot;gccgo&amp;quot; CC=&amp;quot;gcc&amp;quot; GOGCCFLAGS=&amp;quot;-fPIC -m64 -pthread -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build892156781=/tmp/go-build -gno-record-gcc-switches&amp;quot; CXX=&amp;quot;g++&amp;quot; CGO_ENABLED=&amp;quot;1&amp;quot; CGO_CFLAGS=&amp;quot;-g -O2&amp;quot; CGO_CPPFLAGS=&amp;quot;&amp;quot; CGO_CXXFLAGS=&amp;quot;-g -O2&amp;quot; CGO_FFLAGS=&amp;quot;-g -O2&amp;quot; CGO_LDFLAGS=&amp;quot;-g -O2&amp;quot; PKG_CONFIG=&amp;quot;pkg-config&amp;quot; 查看yum的Golang 查看golang： $ yum info golang Loading mirror speeds from cached hostfile Installed Packages Name : golang Arch : x86_64 Version : 1.8.3 Release : 1.el7 Size : 11 M Repo :</description>
     </item>
     
     <item>
       <title>使用Chocolate通过脚本管理Windows应用</title>
-      <link>http://www.liabio.cn/posts/2018-12-19-%E4%BD%BF%E7%94%A8Chocolate%E9%80%9A%E8%BF%87%E8%84%9A%E6%9C%AC%E7%AE%A1%E7%90%86Windows%E5%BA%94%E7%94%A8/</link>
+      <link>http://liabio.cn/posts/2018-12-19-%E4%BD%BF%E7%94%A8Chocolate%E9%80%9A%E8%BF%87%E8%84%9A%E6%9C%AC%E7%AE%A1%E7%90%86Windows%E5%BA%94%E7%94%A8/</link>
       <pubDate>Wed, 19 Dec 2018 17:16:03 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-19-%E4%BD%BF%E7%94%A8Chocolate%E9%80%9A%E8%BF%87%E8%84%9A%E6%9C%AC%E7%AE%A1%E7%90%86Windows%E5%BA%94%E7%94%A8/</guid>
+      <guid>http://liabio.cn/posts/2018-12-19-%E4%BD%BF%E7%94%A8Chocolate%E9%80%9A%E8%BF%87%E8%84%9A%E6%9C%AC%E7%AE%A1%E7%90%86Windows%E5%BA%94%E7%94%A8/</guid>
       <description>使用Chocolate通过脚本管理Windows应用 在类Unix系统中，我们可以使用例如port、apt-get、yum此类包管理工具，对应用进行快速便捷的安装。在Windows平台，通过chololate，我们同样可以做到通过一条命令完成</description>
     </item>
     
     <item>
       <title>Pod调度到集群中某node节点失败</title>
-      <link>http://www.liabio.cn/posts/2018-12-13-pod%E8%B0%83%E5%BA%A6%E5%88%B0%E9%9B%86%E7%BE%A4%E4%B8%AD%E6%9F%90node%E8%8A%82%E7%82%B9%E5%A4%B1%E8%B4%A5/</link>
+      <link>http://liabio.cn/posts/2018-12-13-pod%E8%B0%83%E5%BA%A6%E5%88%B0%E9%9B%86%E7%BE%A4%E4%B8%AD%E6%9F%90node%E8%8A%82%E7%82%B9%E5%A4%B1%E8%B4%A5/</link>
       <pubDate>Thu, 13 Dec 2018 16:43:35 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-13-pod%E8%B0%83%E5%BA%A6%E5%88%B0%E9%9B%86%E7%BE%A4%E4%B8%AD%E6%9F%90node%E8%8A%82%E7%82%B9%E5%A4%B1%E8%B4%A5/</guid>
+      <guid>http://liabio.cn/posts/2018-12-13-pod%E8%B0%83%E5%BA%A6%E5%88%B0%E9%9B%86%E7%BE%A4%E4%B8%AD%E6%9F%90node%E8%8A%82%E7%82%B9%E5%A4%B1%E8%B4%A5/</guid>
       <description>Fixing rpc.statd is not running but is required for remote locking If you come across this error while attempting to mount an NFS filesystem it means that the statd process is not running. mount -a -t nfs mount.nfs: rpc.statd is not running but is required for remote locking. mount.nfs: Either use &#39;-o nolock&#39; to keep locks local, or start statd. mount.nfs: an incorrect mount option was specified Here’s how to fix the rpc.statd is not running error on el6 First, ensure that rpcbind is running and that it is set to start on boot /etc/init.d/rpcbind start Starting rpcbind: [ OK ] chkconfig rpcbind on Then, start the nfslock service /etc/init.d/nfslock start Starting NFS statd: [</description>
     </item>
     
     <item>
       <title>Java发送html模板的高逼格邮件</title>
-      <link>http://www.liabio.cn/posts/2018-12-12-java%E5%8F%91%E9%80%81html%E6%A8%A1%E6%9D%BF%E7%9A%84%E9%AB%98%E9%80%BC%E6%A0%BC%E9%82%AE%E4%BB%B6/</link>
+      <link>http://liabio.cn/posts/2018-12-12-java%E5%8F%91%E9%80%81html%E6%A8%A1%E6%9D%BF%E7%9A%84%E9%AB%98%E9%80%BC%E6%A0%BC%E9%82%AE%E4%BB%B6/</link>
       <pubDate>Wed, 12 Dec 2018 16:42:12 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-12-java%E5%8F%91%E9%80%81html%E6%A8%A1%E6%9D%BF%E7%9A%84%E9%AB%98%E9%80%BC%E6%A0%BC%E9%82%AE%E4%BB%B6/</guid>
+      <guid>http://liabio.cn/posts/2018-12-12-java%E5%8F%91%E9%80%81html%E6%A8%A1%E6%9D%BF%E7%9A%84%E9%AB%98%E9%80%BC%E6%A0%BC%E9%82%AE%E4%BB%B6/</guid>
       <description>最近做了一个监测k8s服务pod水平伸缩发送邮件的功能（当pod的cpu/内存达到指定阈值后会水平扩展出多个pod、或者指定时间内pod数应扩展到指定数量），一开始写了个格式很low的邮件，像下面这样： 主流程打通，算个v1版本吧，程序员是个</description>
     </item>
     
     <item>
       <title>Javamail发送邮件</title>
-      <link>http://www.liabio.cn/posts/2018-12-04-Javamail%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</link>
+      <link>http://liabio.cn/posts/2018-12-04-Javamail%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</link>
       <pubDate>Tue, 04 Dec 2018 16:40:27 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-04-Javamail%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</guid>
+      <guid>http://liabio.cn/posts/2018-12-04-Javamail%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</guid>
       <description>这几篇文章写的就挺好了，传送过去看看吧： 1、 使用JavaMail创建邮件和发送邮件 可能遇到的问题： 1、因为端口号问题导致的错误： javax.mail.MessagingException: Exception reading response; nested exception is: java.net.SocketTimeoutException: Read timed out javax.mail.MessagingException: Exception reading response; nested exception is: java.net.SocketTimeoutException: Read timed out at com.sun.mail.smtp.SMTPTransport.readServerResponse(SMTPTransport.java:2210) at com.sun.mail.smtp.SMTPTransport.openServer(SMTPTransport.java:1950) at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:642) at javax.mail.Service.connect(Service.java:317) at javax.mail.Service.connect(Service.java:176) at javax.mail.Service.connect(Service.java:125) at javax.mail.Transport.send0(Transport.java:194) at javax.mail.Transport.send(Transport.java:124) 问题和解决这里可以看到，把port configuration</description>
     </item>
     
     <item>
       <title>Nginx Map配置根据请求头不同分配流量到不同后端服务</title>
-      <link>http://www.liabio.cn/posts/2018-12-02-nginx-map%E9%85%8D%E7%BD%AE%E6%A0%B9%E6%8D%AE%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%B8%8D%E5%90%8C%E5%88%86%E9%85%8D%E6%B5%81%E9%87%8F%E5%88%B0%E4%B8%8D%E5%90%8C%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1/</link>
+      <link>http://liabio.cn/posts/2018-12-02-nginx-map%E9%85%8D%E7%BD%AE%E6%A0%B9%E6%8D%AE%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%B8%8D%E5%90%8C%E5%88%86%E9%85%8D%E6%B5%81%E9%87%8F%E5%88%B0%E4%B8%8D%E5%90%8C%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1/</link>
       <pubDate>Sun, 02 Dec 2018 15:15:43 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-02-nginx-map%E9%85%8D%E7%BD%AE%E6%A0%B9%E6%8D%AE%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%B8%8D%E5%90%8C%E5%88%86%E9%85%8D%E6%B5%81%E9%87%8F%E5%88%B0%E4%B8%8D%E5%90%8C%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1/</guid>
+      <guid>http://liabio.cn/posts/2018-12-02-nginx-map%E9%85%8D%E7%BD%AE%E6%A0%B9%E6%8D%AE%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%B8%8D%E5%90%8C%E5%88%86%E9%85%8D%E6%B5%81%E9%87%8F%E5%88%B0%E4%B8%8D%E5%90%8C%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1/</guid>
       <description>最近在做一个需求开发：根据请求后的不同，nginx将请求分发到不同的后端服务；需要修改kubernetes的ingress-nginx-controller的源码，调试的时候遇到了挺多问题，写出来，有需要的老铁可以参考。具体方案就不说了，只</description>
     </item>
     
     <item>
       <title>听说你还没掌握Normalizer的使用方法</title>
-      <link>http://www.liabio.cn/posts/2018-11-19-%E5%90%AC%E8%AF%B4%E4%BD%A0%E8%BF%98%E6%B2%A1%E6%8E%8C%E6%8F%A1Normalizer%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</link>
+      <link>http://liabio.cn/posts/2018-11-19-%E5%90%AC%E8%AF%B4%E4%BD%A0%E8%BF%98%E6%B2%A1%E6%8E%8C%E6%8F%A1Normalizer%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</link>
       <pubDate>Mon, 19 Nov 2018 17:14:22 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-11-19-%E5%90%AC%E8%AF%B4%E4%BD%A0%E8%BF%98%E6%B2%A1%E6%8E%8C%E6%8F%A1Normalizer%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</guid>
+      <guid>http://liabio.cn/posts/2018-11-19-%E5%90%AC%E8%AF%B4%E4%BD%A0%E8%BF%98%E6%B2%A1%E6%8E%8C%E6%8F%A1Normalizer%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</guid>
       <description>在 Elasticsearch 中处理字符串类型的数据时，如果我们想把整个字符串作为一个完整的 term 存储，我们通常会将其类型 type 设定为 keyword。但有时这种设定又会给我们带来麻烦，比如同一个数据再写入时由于没有做好清洗，导致大小写不一致，比如 apple、Apple两个实</description>
     </item>
     
     <item>
       <title>如何让CentOS也能科学上网</title>
-      <link>http://www.liabio.cn/posts/2018-11-19-%E5%A6%82%E4%BD%95%E8%AE%A9CentOS%E4%B9%9F%E8%83%BD%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</link>
+      <link>http://liabio.cn/posts/2018-11-19-%E5%A6%82%E4%BD%95%E8%AE%A9CentOS%E4%B9%9F%E8%83%BD%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</link>
       <pubDate>Mon, 19 Nov 2018 17:10:57 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-11-19-%E5%A6%82%E4%BD%95%E8%AE%A9CentOS%E4%B9%9F%E8%83%BD%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</guid>
+      <guid>http://liabio.cn/posts/2018-11-19-%E5%A6%82%E4%BD%95%E8%AE%A9CentOS%E4%B9%9F%E8%83%BD%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</guid>
       <description>对于攻城狮们来说，在 PC 机上安装 ss ，以及在海外服务器上搭建 ss 服务已经不是什么新鲜事，毕竟知识无国界，有时候参照些国外先进的技术，对自身的提高也是很有帮助的。 但是如何在国内服务器上搭建 ss 客户端，并进行代理，这却是比较少见的。也正好今天碰到有这需</description>
     </item>
     
     <item>
       <title>微服务学习之thrift安装</title>
-      <link>http://www.liabio.cn/posts/2018-11-19-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E4%B9%8Bthrift%E5%AE%89%E8%A3%85/</link>
+      <link>http://liabio.cn/posts/2018-11-19-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E4%B9%8Bthrift%E5%AE%89%E8%A3%85/</link>
       <pubDate>Mon, 19 Nov 2018 17:10:29 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-11-19-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E4%B9%8Bthrift%E5%AE%89%E8%A3%85/</guid>
+      <guid>http://liabio.cn/posts/2018-11-19-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0%E4%B9%8Bthrift%E5%AE%89%E8%A3%85/</guid>
       <description>学生课程管理系统简单微服务架构图： Thirft下载安装： 安装的是thrift tgz，即后缀是tar.gz 或者.tgz包： wget http://mirrors.tuna.tsinghua.edu.cn/apache/thrift/0.11.0/thrift-0.11.0.tar.gz 可以解压后看README.MD文件里的安装步骤。 tar zxf thrift-0.11.0.tar.gz 源码包需要第一步的./bootstrap.sh，tar（即后缀</description>
     </item>
     
     <item>
       <title>2018 11 19 Go语言中Select与for结合使用时可能会遇到的坑</title>
-      <link>http://www.liabio.cn/posts/2018-11-19-Go%E8%AF%AD%E8%A8%80%E4%B8%ADSelect%E4%B8%8Efor%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8%E6%97%B6%E5%8F%AF%E8%83%BD%E4%BC%9A%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/</link>
+      <link>http://liabio.cn/posts/2018-11-19-Go%E8%AF%AD%E8%A8%80%E4%B8%ADSelect%E4%B8%8Efor%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8%E6%97%B6%E5%8F%AF%E8%83%BD%E4%BC%9A%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/</link>
       <pubDate>Mon, 19 Nov 2018 17:08:46 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-11-19-Go%E8%AF%AD%E8%A8%80%E4%B8%ADSelect%E4%B8%8Efor%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8%E6%97%B6%E5%8F%AF%E8%83%BD%E4%BC%9A%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/</guid>
+      <guid>http://liabio.cn/posts/2018-11-19-Go%E8%AF%AD%E8%A8%80%E4%B8%ADSelect%E4%B8%8Efor%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8%E6%97%B6%E5%8F%AF%E8%83%BD%E4%BC%9A%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/</guid>
       <description>作为一个刚接触go编程的新鸟，是不是被它的某些新特性给吓到，尤其是之前已经习惯了C++的编程。对于Go语言，网上褒贬不一，有极力推崇的，如七牛的许式伟，其对go的评价极高，并预言Go的市场占有率会一直逐步上升，取代java，成为第一。也有极</description>
     </item>
     
     <item>
       <title>使用telnet连接redis</title>
-      <link>http://www.liabio.cn/posts/2018-11-18-%E4%BD%BF%E7%94%A8telnet%E8%BF%9E%E6%8E%A5redis/</link>
+      <link>http://liabio.cn/posts/2018-11-18-%E4%BD%BF%E7%94%A8telnet%E8%BF%9E%E6%8E%A5redis/</link>
       <pubDate>Sun, 18 Nov 2018 17:07:16 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-11-18-%E4%BD%BF%E7%94%A8telnet%E8%BF%9E%E6%8E%A5redis/</guid>
+      <guid>http://liabio.cn/posts/2018-11-18-%E4%BD%BF%E7%94%A8telnet%E8%BF%9E%E6%8E%A5redis/</guid>
       <description>平时连接redis用的是官方客户端redis-cli, 使用redis-cli最常用的几个参数如下： -h Server hostname (default: 127.0.0.1). -p Server port (default: 6379). -a Password to use when connecting to the server. 比如连接本地redis： redis-cli -h 127.0.0.1 -p 6379 -a 12345 如果没有redis-cli，还可以用telnet，连接方式为： telnet &amp;lt;hostname&amp;gt;</description>
     </item>
     
     <item>
       <title>IntelliJ IDEA自动导入包去除星号</title>
-      <link>http://www.liabio.cn/posts/2018-11-17-IntelliJ-IDEA%E8%87%AA%E5%8A%A8%E5%AF%BC%E5%85%A5%E5%8C%85%E5%8E%BB%E9%99%A4%E6%98%9F%E5%8F%B7/</link>
+      <link>http://liabio.cn/posts/2018-11-17-IntelliJ-IDEA%E8%87%AA%E5%8A%A8%E5%AF%BC%E5%85%A5%E5%8C%85%E5%8E%BB%E9%99%A4%E6%98%9F%E5%8F%B7/</link>
       <pubDate>Sat, 17 Nov 2018 17:05:55 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-11-17-IntelliJ-IDEA%E8%87%AA%E5%8A%A8%E5%AF%BC%E5%85%A5%E5%8C%85%E5%8E%BB%E9%99%A4%E6%98%9F%E5%8F%B7/</guid>
+      <guid>http://liabio.cn/posts/2018-11-17-IntelliJ-IDEA%E8%87%AA%E5%8A%A8%E5%AF%BC%E5%85%A5%E5%8C%85%E5%8E%BB%E9%99%A4%E6%98%9F%E5%8F%B7/</guid>
       <description>打开设置&amp;gt;Editor&amp;gt;Code Style&amp;gt;Java&amp;gt;Scheme Default&amp;gt;Imports ① 将Class count to use import with &amp;ldquo;*&amp;ldquo;改为99（导入同一个包的类超过这个数值自动变为 * ） ② 将Names count to use static import with &amp;ldquo;*&amp;ldquo;改为99（同上，但这是静态导入的</description>
     </item>
     
     <item>
       <title>连接zookeeper报错NoRouteToHost</title>
-      <link>http://www.liabio.cn/posts/2018-11-16-%E8%BF%9E%E6%8E%A5zookeeper%E6%8A%A5%E9%94%99NoRouteToHost/</link>
+      <link>http://liabio.cn/posts/2018-11-16-%E8%BF%9E%E6%8E%A5zookeeper%E6%8A%A5%E9%94%99NoRouteToHost/</link>
       <pubDate>Fri, 16 Nov 2018 17:03:54 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-11-16-%E8%BF%9E%E6%8E%A5zookeeper%E6%8A%A5%E9%94%99NoRouteToHost/</guid>
+      <guid>http://liabio.cn/posts/2018-11-16-%E8%BF%9E%E6%8E%A5zookeeper%E6%8A%A5%E9%94%99NoRouteToHost/</guid>
       <description>最近在学习微服务，遇到了很多问题，今天又遇到了个连接zookeeper报错的问题，在此记录下。 学生课程管理系统简单微服务架构图： 各个服务容器化以后，用docker-compose启动，其中docker-compose.yml文件如下： version: &amp;quot;3&amp;quot; services:</description>
     </item>
     
     <item>
       <title>Docker镜像仓库</title>
-      <link>http://www.liabio.cn/posts/2018-11-15-docker%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93/</link>
+      <link>http://liabio.cn/posts/2018-11-15-docker%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93/</link>
       <pubDate>Thu, 15 Nov 2018 17:00:35 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-11-15-docker%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93/</guid>
+      <guid>http://liabio.cn/posts/2018-11-15-docker%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93/</guid>
       <description>公有仓库和私有仓库： 速度：公有仓库走的公网，速度较慢；私有仓库走的是内网，即局域网； 安全性：公有仓库存放在公共硬盘上；私有仓库存在自己服务器硬盘上。 公有仓： 最权威的，但速度比较慢： https://hub.docker.com/ 首先登陆： $ docker login -usmallsoup Password: WARNING! Your password will be stored unencrypted in /root/.docker/config.json. Configure a credential helper to remove this warning. See https://docs.docker.com/engine/reference/commandline/login/#credentials-store</description>
     </item>
     
     <item>
       <title>搭建k8s集群遇到的问题</title>
-      <link>http://www.liabio.cn/posts/2018-11-14-%E6%90%AD%E5%BB%BAk8s%E9%9B%86%E7%BE%A4%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</link>
+      <link>http://liabio.cn/posts/2018-11-14-%E6%90%AD%E5%BB%BAk8s%E9%9B%86%E7%BE%A4%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</link>
       <pubDate>Wed, 14 Nov 2018 16:57:38 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-11-14-%E6%90%AD%E5%BB%BAk8s%E9%9B%86%E7%BE%A4%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
+      <guid>http://liabio.cn/posts/2018-11-14-%E6%90%AD%E5%BB%BAk8s%E9%9B%86%E7%BE%A4%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
       <description>部署CalicoNode（所有节点）报错： Oct 10 21:04:55 smallsoup docker[76907]: bird: BGP: Unexpected connect from unknown address 192.168.1.104 (port 58153) Oct 10 21:04:59 smallsoup docker[76907]: bird: BGP: Unexpected connect from unknown address 192.168.1.104 (port 40415) Oct 10 21:05:00 smallsoup docker[76907]: 2018-10-10 13:05:00.213 [INFO][87] int_dataplane.go 690: Applying dataplane updates Oct 10 21:05:00 smallsoup docker[76907]: 2018-10-10 13:05:00.213 [INFO][87] ipsets.go 224: Asked to resync with the dataplane on next update. family=&amp;quot;inet&amp;quot; Oct 10 21:05:00 smallsoup docker[76907]: 2018-10-10 13:05:00.213 [INFO][87] ipsets.go 255: Resyncing ipsets with dataplane. family=&amp;quot;inet&amp;quot; Oct 10 21:05:00 smallsoup docker[76907]: 2018-10-10 13:05:00.218 [INFO][87] ipsets.go 297: Finished resync family=&amp;quot;inet&amp;quot; numInconsistenciesFound=0 resyncDuration=4.542824ms Oct 10 21:05:00 smallsoup docker[76907]: 2018-10-10</description>
     </item>
     
     <item>
       <title>学习openresty时nginx的一个坑</title>
-      <link>http://www.liabio.cn/posts/2018-11-13-%E5%AD%A6%E4%B9%A0openresty%E6%97%B6nginx%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/</link>
+      <link>http://liabio.cn/posts/2018-11-13-%E5%AD%A6%E4%B9%A0openresty%E6%97%B6nginx%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/</link>
       <pubDate>Tue, 13 Nov 2018 16:56:04 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-11-13-%E5%AD%A6%E4%B9%A0openresty%E6%97%B6nginx%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/</guid>
+      <guid>http://liabio.cn/posts/2018-11-13-%E5%AD%A6%E4%B9%A0openresty%E6%97%B6nginx%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/</guid>
       <description>报错： nginx: [error] CreateFile() &amp;quot;./logs/nginx.pid&amp;quot; failed (2: The system cannot find the file specified) 在执行了nginx -s stop后，再次启动nginx时报错： 这个坑主要原因就是没有nginx.pid这个文件，./logs/下找不到nginx.pid文件，看了确实找不到。 看了网上很多方案是 需要建立nginx.</description>
     </item>
     
     <item>
       <title>Docker CE镜像源站</title>
-      <link>http://www.liabio.cn/posts/2018-11-12-DockerCE%E9%95%9C%E5%83%8F%E6%BA%90%E7%AB%99/</link>
+      <link>http://liabio.cn/posts/2018-11-12-DockerCE%E9%95%9C%E5%83%8F%E6%BA%90%E7%AB%99/</link>
       <pubDate>Mon, 12 Nov 2018 16:54:24 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-11-12-DockerCE%E9%95%9C%E5%83%8F%E6%BA%90%E7%AB%99/</guid>
+      <guid>http://liabio.cn/posts/2018-11-12-DockerCE%E9%95%9C%E5%83%8F%E6%BA%90%E7%AB%99/</guid>
       <description>使用官方安装脚本自动安装 curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun 手动安装帮助 Ubuntu 14.04 16.04 (使用apt-get进行安装) # step 1: 安装必要的一些系统工具 sudo apt-get update sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common # step 2: 安装GPG证书 curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add - # Step 3: 写入软件源信息 sudo add-apt-repository &amp;quot;deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable&amp;quot; # Step 4: 更新并安装 Docker-CE sudo apt-get -y update sudo</description>
     </item>
     
     <item>
       <title>Docker multi stage build机制</title>
-      <link>http://www.liabio.cn/posts/2018-11-11-DockerMulti-stageBuild%E6%9C%BA%E5%88%B6/</link>
+      <link>http://liabio.cn/posts/2018-11-11-DockerMulti-stageBuild%E6%9C%BA%E5%88%B6/</link>
       <pubDate>Sun, 11 Nov 2018 16:52:06 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-11-11-DockerMulti-stageBuild%E6%9C%BA%E5%88%B6/</guid>
+      <guid>http://liabio.cn/posts/2018-11-11-DockerMulti-stageBuild%E6%9C%BA%E5%88%B6/</guid>
       <description>摘要： 随着17.05版本的发布，Docker对于镜像构建这块也作了一项重要更新，那就是 multi-stage build（多阶段构建），这对于长期因为构建镜像太大而困扰的小伙伴们来说真是雪中送炭。 随着17.05版本的发布，Docker对于镜像构建这块也作了一项重</description>
     </item>
     
     <item>
       <title>kubernetes自定义资源类型代码自动生成</title>
-      <link>http://www.liabio.cn/posts/2018-11-02-k8s%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E7%B1%BB%E5%9E%8B%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90/</link>
+      <link>http://liabio.cn/posts/2018-11-02-k8s%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E7%B1%BB%E5%9E%8B%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90/</link>
       <pubDate>Fri, 02 Nov 2018 15:14:14 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-11-02-k8s%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E7%B1%BB%E5%9E%8B%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90/</guid>
+      <guid>http://liabio.cn/posts/2018-11-02-k8s%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E7%B1%BB%E5%9E%8B%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90/</guid>
       <description>用以下命令生成代码： ./generate-groups.sh all &amp;quot;github.com/openshift-evangelist/crd-code-generation/pkg/client&amp;quot; &amp;quot;github.com/openshift-evangelist/crd-code-generation/pkg/apis&amp;quot; &amp;quot;ingressgroup:v1&amp;quot; 第一个报错 生成代码报错： Generating deepcopy funcs F0910 19:18:35.552948 12153 main.go:82] Error: Failed making a parser: unable to add directory &amp;quot;github.com/openshift-evangelist/crd-code-generation/pkg/client&amp;quot;: unable to import &amp;quot;github.com/asdfsx/getkubeconfig/pkg/apis/example/v1&amp;quot;: cannot find package &amp;quot;github.com/openshift-evangelist/crd-code-generation/pkg/client&amp;quot; in any of: D:/Program Files/Go/go103/src/github.com/openshift-evangelist/crd-code-generation/pkg/client (from $GOROOT) D:/SoftwareAndProgram/program/Go/Development/src/github.com/openshift-evangelist/crd-code-generation/pkg/client (from $GOPATH) 这个问题可以参考issue 可以参考这个文章： https://medium.com/@trstringer/create-kubernetes-controllers-for-core-and-custom-resources-62fc35ad64a3 由于该链接国内访问比较困难，故转载到了这里： https://www.jianshu.com/p/dcfe6eac4152 第二个报错： Generating deepcopy funcs F1104 02:57:44.419529 35</description>
     </item>
     
     <item>
       <title>Kubernetes Pod Exec接口调用</title>
-      <link>http://www.liabio.cn/posts/2018-10-02-kubernetesPodExec%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8/</link>
+      <link>http://liabio.cn/posts/2018-10-02-kubernetesPodExec%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8/</link>
       <pubDate>Tue, 02 Oct 2018 15:12:59 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-10-02-kubernetesPodExec%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8/</guid>
+      <guid>http://liabio.cn/posts/2018-10-02-kubernetesPodExec%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8/</guid>
       <description>一般生产环境上由于网络安全策略，大多数端口是不能为集群外部访问的。多个集群之间一般都是通过k8s的ApiServer组件提供的接口通信，如https://192.168.1.101:6443。所以在做云平台时，集群管理平台（雅称：观云台）需</description>
     </item>
     
     <item>
       <title>Redis Cluster介绍与docker容器方式搭建</title>
-      <link>http://www.liabio.cn/posts/2018-09-02-RedisCluster%E4%BB%8B%E7%BB%8D%E4%B8%8Edocker%E5%AE%B9%E5%99%A8%E6%96%B9%E5%BC%8F%E6%90%AD%E5%BB%BA/</link>
+      <link>http://liabio.cn/posts/2018-09-02-RedisCluster%E4%BB%8B%E7%BB%8D%E4%B8%8Edocker%E5%AE%B9%E5%99%A8%E6%96%B9%E5%BC%8F%E6%90%AD%E5%BB%BA/</link>
       <pubDate>Sun, 02 Sep 2018 15:10:53 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-09-02-RedisCluster%E4%BB%8B%E7%BB%8D%E4%B8%8Edocker%E5%AE%B9%E5%99%A8%E6%96%B9%E5%BC%8F%E6%90%AD%E5%BB%BA/</guid>
+      <guid>http://liabio.cn/posts/2018-09-02-RedisCluster%E4%BB%8B%E7%BB%8D%E4%B8%8Edocker%E5%AE%B9%E5%99%A8%E6%96%B9%E5%BC%8F%E6%90%AD%E5%BB%BA/</guid>
       <description>1. Redis Cluster介绍 Redis Cluster是Redis的分布式解决方案，在Redis 3.0版本正式推出的，有效解决了Redis分布式方面的需求。当遇到单机内存、并发、流量等瓶颈时，可以采用Cluster架构达到负载均衡的目的。 1.1 数据分布理论 分布</description>
     </item>
     
     <item>
       <title>Docker升级到最新版本</title>
-      <link>http://www.liabio.cn/posts/2018-08-02-Docker%E5%8D%87%E7%BA%A7%E5%88%B0%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC/</link>
+      <link>http://liabio.cn/posts/2018-08-02-Docker%E5%8D%87%E7%BA%A7%E5%88%B0%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC/</link>
       <pubDate>Thu, 02 Aug 2018 15:09:25 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-08-02-Docker%E5%8D%87%E7%BA%A7%E5%88%B0%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC/</guid>
+      <guid>http://liabio.cn/posts/2018-08-02-Docker%E5%8D%87%E7%BA%A7%E5%88%B0%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC/</guid>
       <description>1、查看系统要求 Docker 要求 CentOS 系统的内核版本高于 3.10 ,查看CentOS的内核版本。 uname -a 2、删除旧版本 yum remove docker docker-common docker-selinux docker-engine 3、安装需要的软件包 yum-util 提供yum-config-manager功能，另外两个是devicemapper驱动依赖的 sudo yum install -y yum-utils device-mapper-persistent-data lvm2 4、设置D</description>
     </item>
     
     <item>
       <title>连上公司的vpn后电脑上不了外网解决办法</title>
-      <link>http://www.liabio.cn/posts/2018-07-02-%E8%BF%9E%E4%B8%8A%E5%85%AC%E5%8F%B8%E7%9A%84vpn%E5%90%8E%E7%94%B5%E8%84%91%E4%B8%8A%E4%B8%8D%E4%BA%86%E5%A4%96%E7%BD%91%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</link>
+      <link>http://liabio.cn/posts/2018-07-02-%E8%BF%9E%E4%B8%8A%E5%85%AC%E5%8F%B8%E7%9A%84vpn%E5%90%8E%E7%94%B5%E8%84%91%E4%B8%8A%E4%B8%8D%E4%BA%86%E5%A4%96%E7%BD%91%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</link>
       <pubDate>Mon, 02 Jul 2018 15:07:05 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-07-02-%E8%BF%9E%E4%B8%8A%E5%85%AC%E5%8F%B8%E7%9A%84vpn%E5%90%8E%E7%94%B5%E8%84%91%E4%B8%8A%E4%B8%8D%E4%BA%86%E5%A4%96%E7%BD%91%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</guid>
+      <guid>http://liabio.cn/posts/2018-07-02-%E8%BF%9E%E4%B8%8A%E5%85%AC%E5%8F%B8%E7%9A%84vpn%E5%90%8E%E7%94%B5%E8%84%91%E4%B8%8A%E4%B8%8D%E4%BA%86%E5%A4%96%E7%BD%91%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</guid>
       <description>最近工作需要连接公司的vpn。连接前电脑可以上外网，微信、网页都可以访问，但是连接上vpn后，只能访问公司网络了，这就有点虐了。消息收不到很不方便，也查不了资料。以下来说道说道怎么解决，因为网上查到的一些资料，只有文字，无图导致理解的费劲儿</description>
     </item>
     
     <item>
       <title>Extending Kubernetes: Create Controllers For Core And Custom Resources</title>
-      <link>http://www.liabio.cn/posts/2018-06-02-ExtendingKubernetes-CreateControllersForCoreAndCustomResources/</link>
+      <link>http://liabio.cn/posts/2018-06-02-ExtendingKubernetes-CreateControllersForCoreAndCustomResources/</link>
       <pubDate>Sat, 02 Jun 2018 15:04:35 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-06-02-ExtendingKubernetes-CreateControllersForCoreAndCustomResources/</guid>
+      <guid>http://liabio.cn/posts/2018-06-02-ExtendingKubernetes-CreateControllersForCoreAndCustomResources/</guid>
       <description>原文地址：https://medium.com/@trstringer/create-kubernetes-controllers-for-core-and-custom-resources-62fc35ad64a3 感谢原作者的输出。由于原</description>
     </item>
     
     <item>
       <title>开发一个operator扩展kubernetes的能力</title>
-      <link>http://www.liabio.cn/posts/2018-05-02-%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AAoperator%E6%89%A9%E5%B1%95kubernetes%E7%9A%84%E8%83%BD%E5%8A%9B/</link>
+      <link>http://liabio.cn/posts/2018-05-02-%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AAoperator%E6%89%A9%E5%B1%95kubernetes%E7%9A%84%E8%83%BD%E5%8A%9B/</link>
       <pubDate>Wed, 02 May 2018 15:01:15 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-05-02-%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AAoperator%E6%89%A9%E5%B1%95kubernetes%E7%9A%84%E8%83%BD%E5%8A%9B/</guid>
+      <guid>http://liabio.cn/posts/2018-05-02-%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AAoperator%E6%89%A9%E5%B1%95kubernetes%E7%9A%84%E8%83%BD%E5%8A%9B/</guid>
       <description>Operator 是 CoreOS 推出的旨在简化复杂有状态应用管理，它是一个感知应用状态的控制器，通过扩展 Kubernetes API 来自动创建、管理和配置应用实例。 Operator 基于 CRD 扩展资源对象，并通过控制器来保证应用处于预期状态。 通过 Kubernetes API 观察集群的当前状态； 分析当前状态与期望状态的差别； 调用k8s</description>
     </item>
     
     <item>
       <title>一次写shell脚本的经历记录——特殊字符惹的祸</title>
-      <link>http://www.liabio.cn/posts/2018-04-02-%E4%B8%80%E6%AC%A1%E5%86%99shell%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BB%8F%E5%8E%86%E8%AE%B0%E5%BD%95%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E6%83%B9%E7%9A%84%E7%A5%B8/</link>
+      <link>http://liabio.cn/posts/2018-04-02-%E4%B8%80%E6%AC%A1%E5%86%99shell%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BB%8F%E5%8E%86%E8%AE%B0%E5%BD%95%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E6%83%B9%E7%9A%84%E7%A5%B8/</link>
       <pubDate>Mon, 02 Apr 2018 14:59:25 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-04-02-%E4%B8%80%E6%AC%A1%E5%86%99shell%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BB%8F%E5%8E%86%E8%AE%B0%E5%BD%95%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E6%83%B9%E7%9A%84%E7%A5%B8/</guid>
+      <guid>http://liabio.cn/posts/2018-04-02-%E4%B8%80%E6%AC%A1%E5%86%99shell%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BB%8F%E5%8E%86%E8%AE%B0%E5%BD%95%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E6%83%B9%E7%9A%84%E7%A5%B8/</guid>
       <description>本文首发于微信公众号“我的小碗汤”，扫码文末二维码即可关注，欢迎一起交流！ redis在容器化的过程中，涉及到纵向扩pod实例cpu、内存以及redis实例的maxmemory值，statefulset管理的pod需要重启。所以把redis集</description>
     </item>
     
     <item>
       <title>史上最全k8s必学必会知识梳理</title>
-      <link>http://www.liabio.cn/posts/2018-03-11-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8k8s%E5%BF%85%E5%AD%A6%E5%BF%85%E4%BC%9A%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/</link>
+      <link>http://liabio.cn/posts/2018-03-11-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8k8s%E5%BF%85%E5%AD%A6%E5%BF%85%E4%BC%9A%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/</link>
       <pubDate>Sun, 11 Mar 2018 14:56:02 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-03-11-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8k8s%E5%BF%85%E5%AD%A6%E5%BF%85%E4%BC%9A%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/</guid>
+      <guid>http://liabio.cn/posts/2018-03-11-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8k8s%E5%BF%85%E5%AD%A6%E5%BF%85%E4%BC%9A%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/</guid>
       <description>正文 kube-apiserver 对外暴露了Kubernetes API。它是的 Kubernetes 核心控制层。它被设计为水平扩展，即通过部署更多实例来横向扩展。API Server 负责和 etcd 交互（其他组件不会直接操作 etcd，只有 API Server 这么做），是整个 kubernetes 集群的数据中心，所有的交互都是以 API Server 为核心的。A</description>
     </item>
     
     <item>
       <title>Shell脚本获取目录中个各个服务最新的包</title>
-      <link>http://www.liabio.cn/posts/2018-02-1-shell%E8%84%9A%E6%9C%AC%E8%8E%B7%E5%8F%96%E7%9B%AE%E5%BD%95%E4%B8%AD%E4%B8%AA%E5%90%84%E4%B8%AA%E6%9C%8D%E5%8A%A1%E6%9C%80%E6%96%B0%E7%9A%84%E5%8C%85/</link>
+      <link>http://liabio.cn/posts/2018-02-1-shell%E8%84%9A%E6%9C%AC%E8%8E%B7%E5%8F%96%E7%9B%AE%E5%BD%95%E4%B8%AD%E4%B8%AA%E5%90%84%E4%B8%AA%E6%9C%8D%E5%8A%A1%E6%9C%80%E6%96%B0%E7%9A%84%E5%8C%85/</link>
       <pubDate>Thu, 01 Feb 2018 14:53:28 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-02-1-shell%E8%84%9A%E6%9C%AC%E8%8E%B7%E5%8F%96%E7%9B%AE%E5%BD%95%E4%B8%AD%E4%B8%AA%E5%90%84%E4%B8%AA%E6%9C%8D%E5%8A%A1%E6%9C%80%E6%96%B0%E7%9A%84%E5%8C%85/</guid>
+      <guid>http://liabio.cn/posts/2018-02-1-shell%E8%84%9A%E6%9C%AC%E8%8E%B7%E5%8F%96%E7%9B%AE%E5%BD%95%E4%B8%AD%E4%B8%AA%E5%90%84%E4%B8%AA%E6%9C%8D%E5%8A%A1%E6%9C%80%E6%96%B0%E7%9A%84%E5%8C%85/</guid>
       <description>需求 有个目录，里面是存放着各个微服务的各个版本的包，包名格式为：{服务名}-{时间戳}.zip 比如： 需要获取各个服务最新的包名，即： aad-service-7.35.20190723005668.zip add-service-7.35.20190723005668.zip icm-service-7.35.20190724005968.zip shell怎么写? #!/bin/bash # 进入包目录 cd /data/test/testsvc # 申明数组 declare -a SVCNAME # 遍历目录中所有的包 for svc in $(ls) do # 把包名按照时间戳前</description>
     </item>
     
     <item>
       <title>利用denyhosts防止服务器被ssh暴力破解</title>
-      <link>http://www.liabio.cn/posts/2018-01-30-%E5%88%A9%E7%94%A8denyhosts%E9%98%B2%E6%AD%A2%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%ABssh%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3/</link>
+      <link>http://liabio.cn/posts/2018-01-30-%E5%88%A9%E7%94%A8denyhosts%E9%98%B2%E6%AD%A2%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%ABssh%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3/</link>
       <pubDate>Tue, 30 Jan 2018 14:49:18 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-01-30-%E5%88%A9%E7%94%A8denyhosts%E9%98%B2%E6%AD%A2%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%ABssh%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3/</guid>
+      <guid>http://liabio.cn/posts/2018-01-30-%E5%88%A9%E7%94%A8denyhosts%E9%98%B2%E6%AD%A2%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%ABssh%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3/</guid>
       <description>博主我新买的VPS建站没几天，心想应该没人动我的歪主意就一直没太注意服务器安全。今天用iftop查看到有几个IP一直连接中，而我的blog里的流量统计页面访问数量却没有新增，很明显这不是在访问blog。通过netstat -anp 可以查看到这几个I</description>
     </item>
     
     <item>
       <title>工具</title>
-      <link>http://www.liabio.cn/tools/</link>
+      <link>http://liabio.cn/tools/</link>
       <pubDate>Sat, 29 Jul 2017 20:54:37 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/tools/</guid>
+      <guid>http://liabio.cn/tools/</guid>
       <description></description>
     </item>
     
     <item>
       <title>关于</title>
-      <link>http://www.liabio.cn/about/</link>
+      <link>http://liabio.cn/about/</link>
       <pubDate>Fri, 28 Jul 2017 20:54:37 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/about/</guid>
+      <guid>http://liabio.cn/about/</guid>
       <description>Hey，我是小碗汤，主要从事Java、Golang、Docker、Kubernetes开发工作，平时喜欢写博客，分享技术文章和记录编程中遇到的问题及解决方案，工作中提高效率的工具，推送原创优秀文章等！ 如果博客中有图片失效的情况，可以转移到其</description>
     </item>
     
     <item>
       <title>快速搭建个人博客</title>
-      <link>http://www.liabio.cn/posts/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+      <link>http://liabio.cn/posts/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
       <pubDate>Mon, 06 Feb 2017 09:59:46 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <guid>http://liabio.cn/posts/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
       <description>正所谓前人栽树，后人乘凉。 感谢Huxpro提供的博客模板 我的的博客 前言 从 Jekyll 到 GitHub Pages 中间踩了许多坑，终于把我的个人博客BY Blog搭建出来了。。。 本教程针对的是不懂技术又想搭建个人博客的小白，操作简单暴力且快速。当然懂技术那就更好了。 看看看博客</description>
     </item>
     
     <item>
       <title>归档</title>
-      <link>http://www.liabio.cn/archives/</link>
+      <link>http://liabio.cn/archives/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://www.liabio.cn/archives/</guid>
+      <guid>http://liabio.cn/archives/</guid>
       <description></description>
     </item>
     

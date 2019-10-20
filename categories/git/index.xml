@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>git on 小碗汤的博客</title>
-    <link>http://www.liabio.cn/categories/git/</link>
+    <link>http://liabio.cn/categories/git/</link>
     <description>Recent content in git on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 24 Sep 2019 09:59:46 +0800</lastBuildDate>
     
-	<atom:link href="http://www.liabio.cn/categories/git/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://liabio.cn/categories/git/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>git常用操作</title>
-      <link>http://www.liabio.cn/posts/2019-09-24-git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
+      <link>http://liabio.cn/posts/2019-09-24-git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-09-24-git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
+      <guid>http://liabio.cn/posts/2019-09-24-git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
       <description>解决git pull/push每次都需要输入密码问题 git config --global credential.helper store git输入正确密码后还是提示错误解决 git config --system --unset credential.helper 查看从哪个分支切出 比如我从 branch A 切出一个 branch B 然后对branch B做了一系列的操作 然后忘记了branch B是从哪个分支切出来的 请问能不能找</description>
     </item>
     

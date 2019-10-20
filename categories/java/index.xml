@@ -2,111 +2,111 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>java on 小碗汤的博客</title>
-    <link>http://www.liabio.cn/categories/java/</link>
+    <link>http://liabio.cn/categories/java/</link>
     <description>Recent content in java on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Mon, 20 May 2019 17:50:15 +0800</lastBuildDate>
     
-	<atom:link href="http://www.liabio.cn/categories/java/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://liabio.cn/categories/java/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Java子类调用父类构造器函数</title>
-      <link>http://www.liabio.cn/posts/2019-05-20-java%E5%AD%90%E7%B1%BB%E8%B0%83%E7%94%A8%E7%88%B6%E7%B1%BB%E6%9E%84%E9%80%A0%E5%99%A8%E5%87%BD%E6%95%B0/</link>
+      <link>http://liabio.cn/posts/2019-05-20-java%E5%AD%90%E7%B1%BB%E8%B0%83%E7%94%A8%E7%88%B6%E7%B1%BB%E6%9E%84%E9%80%A0%E5%99%A8%E5%87%BD%E6%95%B0/</link>
       <pubDate>Mon, 20 May 2019 17:50:15 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-05-20-java%E5%AD%90%E7%B1%BB%E8%B0%83%E7%94%A8%E7%88%B6%E7%B1%BB%E6%9E%84%E9%80%A0%E5%99%A8%E5%87%BD%E6%95%B0/</guid>
+      <guid>http://liabio.cn/posts/2019-05-20-java%E5%AD%90%E7%B1%BB%E8%B0%83%E7%94%A8%E7%88%B6%E7%B1%BB%E6%9E%84%E9%80%A0%E5%99%A8%E5%87%BD%E6%95%B0/</guid>
       <description>class FatherClass{ public FatherClass(){ System.out.println(&amp;quot;父类 无参 构造函数&amp;quot;); } public FatherClass(int i){ System.out.println(&amp;quot;父类 一个参数构造函数super = &amp;quot;+i); } public FatherClass(int i,String j){ System.out.println(&amp;quot</description>
     </item>
     
     <item>
       <title>Java Golang日志文件转储压缩实现</title>
-      <link>http://www.liabio.cn/posts/2019-03-08-java-golang%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E8%BD%AC%E5%82%A8%E5%8E%8B%E7%BC%A9%E5%AE%9E%E7%8E%B0/</link>
+      <link>http://liabio.cn/posts/2019-03-08-java-golang%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E8%BD%AC%E5%82%A8%E5%8E%8B%E7%BC%A9%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Fri, 08 Mar 2019 17:49:27 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-03-08-java-golang%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E8%BD%AC%E5%82%A8%E5%8E%8B%E7%BC%A9%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>http://liabio.cn/posts/2019-03-08-java-golang%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E8%BD%AC%E5%82%A8%E5%8E%8B%E7%BC%A9%E5%AE%9E%E7%8E%B0/</guid>
       <description>日志的转储和压缩是非常关键的，它不仅可以减少硬盘空间占用，主要还可以在发生故障时根据日志定位出故障原因。下面来看看golang和java的文件转储实现。 go语言： 用到了filepath包下的Walk方法，具体说明可以参看历史文章： go语言p</description>
     </item>
     
     <item>
       <title>Java加载国际化文件的几种姿势</title>
-      <link>http://www.liabio.cn/posts/2019-01-06-java%E5%8A%A0%E8%BD%BD%E5%9B%BD%E9%99%85%E5%8C%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%A7%BF%E5%8A%BF/</link>
+      <link>http://liabio.cn/posts/2019-01-06-java%E5%8A%A0%E8%BD%BD%E5%9B%BD%E9%99%85%E5%8C%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%A7%BF%E5%8A%BF/</link>
       <pubDate>Sun, 06 Jan 2019 17:43:33 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-01-06-java%E5%8A%A0%E8%BD%BD%E5%9B%BD%E9%99%85%E5%8C%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%A7%BF%E5%8A%BF/</guid>
+      <guid>http://liabio.cn/posts/2019-01-06-java%E5%8A%A0%E8%BD%BD%E5%9B%BD%E9%99%85%E5%8C%96%E6%96%87%E4%BB%B6%E7%9A%84%E5%87%A0%E7%A7%8D%E5%A7%BF%E5%8A%BF/</guid>
       <description>1、 通过util包中的ResourceBundle加载： 首先国际化资源文件放在了classpath下的i18n目录下： mymessage_en_US.properties： com.website.operation=\u67e5\u8be2\u64cd\u4f5c\u65e5\u5fd7 com.website.write=\u5199\u65e5\u5fd7 com.website.writeLog=\u5199 {0} \u65e5\u5fd7 mymessage_en_US.properties： com.website.operation=queryOperationLog com.website.write=recordLog</description>
     </item>
     
     <item>
       <title>自动评论csdn博客文章实现</title>
-      <link>http://www.liabio.cn/posts/2019-01-04-%E8%87%AA%E5%8A%A8%E8%AF%84%E8%AE%BAcsdn%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%AE%9E%E7%8E%B0/</link>
+      <link>http://liabio.cn/posts/2019-01-04-%E8%87%AA%E5%8A%A8%E8%AF%84%E8%AE%BAcsdn%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Fri, 04 Jan 2019 17:40:20 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-01-04-%E8%87%AA%E5%8A%A8%E8%AF%84%E8%AE%BAcsdn%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>http://liabio.cn/posts/2019-01-04-%E8%87%AA%E5%8A%A8%E8%AF%84%E8%AE%BAcsdn%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%AE%9E%E7%8E%B0/</guid>
       <description>我们来用java代码爬取csdn博客网站，然后自动评论，这一波操作可以说是相当风骚了，话不多说，咱上代码。 第一步是登录代码，这个网上一大把，代码中用到了jsoup依赖包，用于解析html获取相应元素，相当于css选择器，很强大的三方件。 /** *</description>
     </item>
     
     <item>
       <title>Java发邮件 这个坑你能填吗</title>
-      <link>http://www.liabio.cn/posts/2019-01-02-java%E5%8F%91%E9%82%AE%E4%BB%B6-%E8%BF%99%E4%B8%AA%E5%9D%91%E4%BD%A0%E8%83%BD%E5%A1%AB%E5%90%97/</link>
+      <link>http://liabio.cn/posts/2019-01-02-java%E5%8F%91%E9%82%AE%E4%BB%B6-%E8%BF%99%E4%B8%AA%E5%9D%91%E4%BD%A0%E8%83%BD%E5%A1%AB%E5%90%97/</link>
       <pubDate>Wed, 02 Jan 2019 17:38:10 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-01-02-java%E5%8F%91%E9%82%AE%E4%BB%B6-%E8%BF%99%E4%B8%AA%E5%9D%91%E4%BD%A0%E8%83%BD%E5%A1%AB%E5%90%97/</guid>
+      <guid>http://liabio.cn/posts/2019-01-02-java%E5%8F%91%E9%82%AE%E4%BB%B6-%E8%BF%99%E4%B8%AA%E5%9D%91%E4%BD%A0%E8%83%BD%E5%A1%AB%E5%90%97/</guid>
       <description>今天利用java发邮件，本地windows上测试时发送ok的，部署到服务器上却报异常，让我们走进异常，探索到底坑在哪里，并填之。 利用outlook发邮件代码如下： package com.website.service.impl; import com.alibaba.fastjson.JSON; import org.slf4j.Logger; import org.slf4j.LoggerFactory; import org.springframework.beans.factory.annotation.Autowired; import org.springframework.beans.factory.annotation.Qualifier; import org.springframework.mail.javamail.JavaMailSenderImpl; import org.springframework.mail.javamail.MimeMessageHelper; import javax.mail.internet.MimeMessage; import java.util.Properties; /** * @program: WebSite * @description: SpringMvc实现的发</description>
     </item>
     
     <item>
       <title>Java图形验证码实现</title>
-      <link>http://www.liabio.cn/posts/2018-12-27-java%E5%9B%BE%E5%BD%A2%E9%AA%8C%E8%AF%81%E7%A0%81%E5%AE%9E%E7%8E%B0/</link>
+      <link>http://liabio.cn/posts/2018-12-27-java%E5%9B%BE%E5%BD%A2%E9%AA%8C%E8%AF%81%E7%A0%81%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Thu, 27 Dec 2018 17:34:47 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-27-java%E5%9B%BE%E5%BD%A2%E9%AA%8C%E8%AF%81%E7%A0%81%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>http://liabio.cn/posts/2018-12-27-java%E5%9B%BE%E5%BD%A2%E9%AA%8C%E8%AF%81%E7%A0%81%E5%AE%9E%E7%8E%B0/</guid>
       <description>今天来学习下图形验证码的生成，首先依赖开源组件： &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.github.penggle&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;kaptcha&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.3.2&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; 在web.xml中配置名为Kaptcha的servlet： &amp;lt;servlet&amp;gt; &amp;lt;!-- 生成图片的Servlet --&amp;gt; &amp;lt;servlet-name&amp;gt;Kaptcha&amp;lt;/servlet-name&amp;gt; &amp;lt;servlet-class&amp;gt;com.google.code.kaptcha.servlet.KaptchaServlet&amp;lt;/servlet-class&amp;gt; &amp;lt;!-- 是否有边框 --&amp;gt; &amp;lt;init-param&amp;gt; &amp;lt;param-name&amp;gt;kaptcha.border&amp;lt;/param-name&amp;gt; &amp;lt;param-value&amp;gt;no&amp;lt;/param-value&amp;gt; &amp;lt;/init-param&amp;gt; &amp;lt;!-- 字体颜色 --&amp;gt; &amp;lt;init-param&amp;gt; &amp;lt;param-name&amp;gt;kaptcha.textproducer.font.color&amp;lt;/param-name&amp;gt; &amp;lt;param-value&amp;gt;red&amp;lt;/param-value&amp;gt; &amp;lt;/init-param&amp;gt; &amp;lt;!-- 图片宽度 --&amp;gt; &amp;lt;init-param&amp;gt; &amp;lt;param-name&amp;gt;kaptcha.image.width&amp;lt;/param-name&amp;gt; &amp;lt;param-value&amp;gt;135&amp;lt;/param-value&amp;gt; &amp;lt;/init-param&amp;gt; &amp;lt;!-- 使用哪些字符生成验证码 --&amp;gt; &amp;lt;init-param&amp;gt;</description>
     </item>
     
     <item>
       <title>Java这个404你能解决吗？</title>
-      <link>http://www.liabio.cn/posts/2018-12-26-java%E8%BF%99%E4%B8%AA404%E4%BD%A0%E8%83%BD%E8%A7%A3%E5%86%B3%E5%90%97/</link>
+      <link>http://liabio.cn/posts/2018-12-26-java%E8%BF%99%E4%B8%AA404%E4%BD%A0%E8%83%BD%E8%A7%A3%E5%86%B3%E5%90%97/</link>
       <pubDate>Wed, 26 Dec 2018 17:32:26 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-26-java%E8%BF%99%E4%B8%AA404%E4%BD%A0%E8%83%BD%E8%A7%A3%E5%86%B3%E5%90%97/</guid>
+      <guid>http://liabio.cn/posts/2018-12-26-java%E8%BF%99%E4%B8%AA404%E4%BD%A0%E8%83%BD%E8%A7%A3%E5%86%B3%E5%90%97/</guid>
       <description>今天在tomcat里部署运行了一个小工程，工程结构如下： 运行tomcat服务器后，访问index.html，发现报404： 但是后台接口是正常返回的： 去看webapps里工程目录下，index.html文件是有的，见鬼了，是哪儿出了问题？ 然后</description>
     </item>
     
     <item>
       <title>Java发送手机验证码实现</title>
-      <link>http://www.liabio.cn/posts/2018-12-26-java%E5%8F%91%E9%80%81%E6%89%8B%E6%9C%BA%E9%AA%8C%E8%AF%81%E7%A0%81%E5%AE%9E%E7%8E%B0/</link>
+      <link>http://liabio.cn/posts/2018-12-26-java%E5%8F%91%E9%80%81%E6%89%8B%E6%9C%BA%E9%AA%8C%E8%AF%81%E7%A0%81%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Wed, 26 Dec 2018 17:31:38 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-26-java%E5%8F%91%E9%80%81%E6%89%8B%E6%9C%BA%E9%AA%8C%E8%AF%81%E7%A0%81%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>http://liabio.cn/posts/2018-12-26-java%E5%8F%91%E9%80%81%E6%89%8B%E6%9C%BA%E9%AA%8C%E8%AF%81%E7%A0%81%E5%AE%9E%E7%8E%B0/</guid>
       <description>正文 今天来用java实现手机验证码的发送。 短信平台有很多，中国网建提供的SMS短信通，注册免费5条短信，3条彩信， http://sms.webchinese.cn/ 但是刚才试了，第一次用官方提供的demo发送成功，然后整合到自己项目中，调试时由于参数配置错误导致发送了几次失败后，5次就用</description>
     </item>
     
     <item>
       <title>SpringMVC实现发送邮件</title>
-      <link>http://www.liabio.cn/posts/2018-12-25-SpringMVC%E5%AE%9E%E7%8E%B0%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</link>
+      <link>http://liabio.cn/posts/2018-12-25-SpringMVC%E5%AE%9E%E7%8E%B0%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</link>
       <pubDate>Tue, 25 Dec 2018 17:30:24 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-25-SpringMVC%E5%AE%9E%E7%8E%B0%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</guid>
+      <guid>http://liabio.cn/posts/2018-12-25-SpringMVC%E5%AE%9E%E7%8E%B0%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</guid>
       <description>今天来试着用SpringMVC发送邮件，主要需要依赖以下两个包； &amp;lt;!--spring发送邮件依赖spring.version=4.3.8.RELEASE--&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-context-support&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;${spring.version}&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!-- Javamail API --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;javax.mail&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;mail&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.4.5&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; spring-mail.xml配置文件如下</description>
     </item>
     
     <item>
       <title>Java发送html模板的高逼格邮件</title>
-      <link>http://www.liabio.cn/posts/2018-12-12-java%E5%8F%91%E9%80%81html%E6%A8%A1%E6%9D%BF%E7%9A%84%E9%AB%98%E9%80%BC%E6%A0%BC%E9%82%AE%E4%BB%B6/</link>
+      <link>http://liabio.cn/posts/2018-12-12-java%E5%8F%91%E9%80%81html%E6%A8%A1%E6%9D%BF%E7%9A%84%E9%AB%98%E9%80%BC%E6%A0%BC%E9%82%AE%E4%BB%B6/</link>
       <pubDate>Wed, 12 Dec 2018 16:42:12 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-12-java%E5%8F%91%E9%80%81html%E6%A8%A1%E6%9D%BF%E7%9A%84%E9%AB%98%E9%80%BC%E6%A0%BC%E9%82%AE%E4%BB%B6/</guid>
+      <guid>http://liabio.cn/posts/2018-12-12-java%E5%8F%91%E9%80%81html%E6%A8%A1%E6%9D%BF%E7%9A%84%E9%AB%98%E9%80%BC%E6%A0%BC%E9%82%AE%E4%BB%B6/</guid>
       <description>最近做了一个监测k8s服务pod水平伸缩发送邮件的功能（当pod的cpu/内存达到指定阈值后会水平扩展出多个pod、或者指定时间内pod数应扩展到指定数量），一开始写了个格式很low的邮件，像下面这样： 主流程打通，算个v1版本吧，程序员是个</description>
     </item>
     
     <item>
       <title>Javamail发送邮件</title>
-      <link>http://www.liabio.cn/posts/2018-12-04-Javamail%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</link>
+      <link>http://liabio.cn/posts/2018-12-04-Javamail%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</link>
       <pubDate>Tue, 04 Dec 2018 16:40:27 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-04-Javamail%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</guid>
+      <guid>http://liabio.cn/posts/2018-12-04-Javamail%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</guid>
       <description>这几篇文章写的就挺好了，传送过去看看吧： 1、 使用JavaMail创建邮件和发送邮件 可能遇到的问题： 1、因为端口号问题导致的错误： javax.mail.MessagingException: Exception reading response; nested exception is: java.net.SocketTimeoutException: Read timed out javax.mail.MessagingException: Exception reading response; nested exception is: java.net.SocketTimeoutException: Read timed out at com.sun.mail.smtp.SMTPTransport.readServerResponse(SMTPTransport.java:2210) at com.sun.mail.smtp.SMTPTransport.openServer(SMTPTransport.java:1950) at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:642) at javax.mail.Service.connect(Service.java:317) at javax.mail.Service.connect(Service.java:176) at javax.mail.Service.connect(Service.java:125) at javax.mail.Transport.send0(Transport.java:194) at javax.mail.Transport.send(Transport.java:124) 问题和解决这里可以看到，把port configuration</description>
     </item>
     

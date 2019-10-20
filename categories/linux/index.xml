@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>linux on 小碗汤的博客</title>
-    <link>http://www.liabio.cn/categories/linux/</link>
+    <link>http://liabio.cn/categories/linux/</link>
     <description>Recent content in linux on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 20 Jul 2019 17:50:56 +0800</lastBuildDate>
     
-	<atom:link href="http://www.liabio.cn/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://liabio.cn/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Linux通过VMware和主机相连连接互联网</title>
-      <link>http://www.liabio.cn/posts/2019-07-20-linux%E9%80%9A%E8%BF%87VMware%E5%92%8C%E4%B8%BB%E6%9C%BA%E7%9B%B8%E8%BF%9E%E8%BF%9E%E6%8E%A5%E4%BA%92%E8%81%94%E7%BD%91/</link>
+      <link>http://liabio.cn/posts/2019-07-20-linux%E9%80%9A%E8%BF%87VMware%E5%92%8C%E4%B8%BB%E6%9C%BA%E7%9B%B8%E8%BF%9E%E8%BF%9E%E6%8E%A5%E4%BA%92%E8%81%94%E7%BD%91/</link>
       <pubDate>Sat, 20 Jul 2019 17:50:56 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-07-20-linux%E9%80%9A%E8%BF%87VMware%E5%92%8C%E4%B8%BB%E6%9C%BA%E7%9B%B8%E8%BF%9E%E8%BF%9E%E6%8E%A5%E4%BA%92%E8%81%94%E7%BD%91/</guid>
+      <guid>http://liabio.cn/posts/2019-07-20-linux%E9%80%9A%E8%BF%87VMware%E5%92%8C%E4%B8%BB%E6%9C%BA%E7%9B%B8%E8%BF%9E%E8%BF%9E%E6%8E%A5%E4%BA%92%E8%81%94%E7%BD%91/</guid>
       <description>1.&amp;emsp;VM8 使用固定IP： 2.&amp;emsp; 这里使用NAT模式： 3.&amp;emsp;VM中依次：编辑——&amp;gt;虚拟网络编辑器，点VMnet8 把使用本 地DHCP的勾去掉，子网IP和主机VM8的IP同网段，然后点NAT设置。 网关IP和刚才的IP也是同一个网段。 4.&amp;emsp;vim /etc/sysconfig/network-scripts/ifcfg-eno16777736 增加这些</description>
     </item>
     
     <item>
       <title>Vmware上安装linux过程记录</title>
-      <link>http://www.liabio.cn/posts/2019-01-01-vmware%E4%B8%8A%E5%AE%89%E8%A3%85linux%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/</link>
+      <link>http://liabio.cn/posts/2019-01-01-vmware%E4%B8%8A%E5%AE%89%E8%A3%85linux%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Tue, 01 Jan 2019 17:36:41 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-01-01-vmware%E4%B8%8A%E5%AE%89%E8%A3%85linux%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/</guid>
+      <guid>http://liabio.cn/posts/2019-01-01-vmware%E4%B8%8A%E5%AE%89%E8%A3%85linux%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/</guid>
       <description>以前的电脑上安装过vmware+redhat，但是奈何电脑太老，配置太低，打开的时候超级卡，没法用。换了电脑后，再装上玩玩，故此记录一下安装过程。需要安装的小伙伴可以在此获取包然后按此步骤安装。 1、创建新的虚拟机 -&amp;gt; 自定义安装 2、选择虚拟机兼</description>
     </item>
     
     <item>
       <title>利用denyhosts防止服务器被ssh暴力破解</title>
-      <link>http://www.liabio.cn/posts/2018-01-30-%E5%88%A9%E7%94%A8denyhosts%E9%98%B2%E6%AD%A2%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%ABssh%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3/</link>
+      <link>http://liabio.cn/posts/2018-01-30-%E5%88%A9%E7%94%A8denyhosts%E9%98%B2%E6%AD%A2%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%ABssh%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3/</link>
       <pubDate>Tue, 30 Jan 2018 14:49:18 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-01-30-%E5%88%A9%E7%94%A8denyhosts%E9%98%B2%E6%AD%A2%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%ABssh%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3/</guid>
+      <guid>http://liabio.cn/posts/2018-01-30-%E5%88%A9%E7%94%A8denyhosts%E9%98%B2%E6%AD%A2%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%ABssh%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3/</guid>
       <description>博主我新买的VPS建站没几天，心想应该没人动我的歪主意就一直没太注意服务器安全。今天用iftop查看到有几个IP一直连接中，而我的blog里的流量统计页面访问数量却没有新增，很明显这不是在访问blog。通过netstat -anp 可以查看到这几个I</description>
     </item>
     

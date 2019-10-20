@@ -2,48 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>email on 小碗汤的博客</title>
-    <link>http://www.liabio.cn/tags/email/</link>
+    <link>http://liabio.cn/tags/email/</link>
     <description>Recent content in email on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 02 Jan 2019 17:38:10 +0800</lastBuildDate>
     
-	<atom:link href="http://www.liabio.cn/tags/email/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://liabio.cn/tags/email/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Java发邮件 这个坑你能填吗</title>
-      <link>http://www.liabio.cn/posts/2019-01-02-java%E5%8F%91%E9%82%AE%E4%BB%B6-%E8%BF%99%E4%B8%AA%E5%9D%91%E4%BD%A0%E8%83%BD%E5%A1%AB%E5%90%97/</link>
+      <link>http://liabio.cn/posts/2019-01-02-java%E5%8F%91%E9%82%AE%E4%BB%B6-%E8%BF%99%E4%B8%AA%E5%9D%91%E4%BD%A0%E8%83%BD%E5%A1%AB%E5%90%97/</link>
       <pubDate>Wed, 02 Jan 2019 17:38:10 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-01-02-java%E5%8F%91%E9%82%AE%E4%BB%B6-%E8%BF%99%E4%B8%AA%E5%9D%91%E4%BD%A0%E8%83%BD%E5%A1%AB%E5%90%97/</guid>
+      <guid>http://liabio.cn/posts/2019-01-02-java%E5%8F%91%E9%82%AE%E4%BB%B6-%E8%BF%99%E4%B8%AA%E5%9D%91%E4%BD%A0%E8%83%BD%E5%A1%AB%E5%90%97/</guid>
       <description>今天利用java发邮件，本地windows上测试时发送ok的，部署到服务器上却报异常，让我们走进异常，探索到底坑在哪里，并填之。 利用outlook发邮件代码如下： package com.website.service.impl; import com.alibaba.fastjson.JSON; import org.slf4j.Logger; import org.slf4j.LoggerFactory; import org.springframework.beans.factory.annotation.Autowired; import org.springframework.beans.factory.annotation.Qualifier; import org.springframework.mail.javamail.JavaMailSenderImpl; import org.springframework.mail.javamail.MimeMessageHelper; import javax.mail.internet.MimeMessage; import java.util.Properties; /** * @program: WebSite * @description: SpringMvc实现的发</description>
     </item>
     
     <item>
       <title>SpringMVC实现发送邮件</title>
-      <link>http://www.liabio.cn/posts/2018-12-25-SpringMVC%E5%AE%9E%E7%8E%B0%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</link>
+      <link>http://liabio.cn/posts/2018-12-25-SpringMVC%E5%AE%9E%E7%8E%B0%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</link>
       <pubDate>Tue, 25 Dec 2018 17:30:24 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-25-SpringMVC%E5%AE%9E%E7%8E%B0%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</guid>
+      <guid>http://liabio.cn/posts/2018-12-25-SpringMVC%E5%AE%9E%E7%8E%B0%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</guid>
       <description>今天来试着用SpringMVC发送邮件，主要需要依赖以下两个包； &amp;lt;!--spring发送邮件依赖spring.version=4.3.8.RELEASE--&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-context-support&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;${spring.version}&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!-- Javamail API --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;javax.mail&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;mail&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.4.5&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; spring-mail.xml配置文件如下</description>
     </item>
     
     <item>
       <title>Java发送html模板的高逼格邮件</title>
-      <link>http://www.liabio.cn/posts/2018-12-12-java%E5%8F%91%E9%80%81html%E6%A8%A1%E6%9D%BF%E7%9A%84%E9%AB%98%E9%80%BC%E6%A0%BC%E9%82%AE%E4%BB%B6/</link>
+      <link>http://liabio.cn/posts/2018-12-12-java%E5%8F%91%E9%80%81html%E6%A8%A1%E6%9D%BF%E7%9A%84%E9%AB%98%E9%80%BC%E6%A0%BC%E9%82%AE%E4%BB%B6/</link>
       <pubDate>Wed, 12 Dec 2018 16:42:12 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-12-java%E5%8F%91%E9%80%81html%E6%A8%A1%E6%9D%BF%E7%9A%84%E9%AB%98%E9%80%BC%E6%A0%BC%E9%82%AE%E4%BB%B6/</guid>
+      <guid>http://liabio.cn/posts/2018-12-12-java%E5%8F%91%E9%80%81html%E6%A8%A1%E6%9D%BF%E7%9A%84%E9%AB%98%E9%80%BC%E6%A0%BC%E9%82%AE%E4%BB%B6/</guid>
       <description>最近做了一个监测k8s服务pod水平伸缩发送邮件的功能（当pod的cpu/内存达到指定阈值后会水平扩展出多个pod、或者指定时间内pod数应扩展到指定数量），一开始写了个格式很low的邮件，像下面这样： 主流程打通，算个v1版本吧，程序员是个</description>
     </item>
     
     <item>
       <title>Javamail发送邮件</title>
-      <link>http://www.liabio.cn/posts/2018-12-04-Javamail%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</link>
+      <link>http://liabio.cn/posts/2018-12-04-Javamail%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</link>
       <pubDate>Tue, 04 Dec 2018 16:40:27 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-04-Javamail%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</guid>
+      <guid>http://liabio.cn/posts/2018-12-04-Javamail%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</guid>
       <description>这几篇文章写的就挺好了，传送过去看看吧： 1、 使用JavaMail创建邮件和发送邮件 可能遇到的问题： 1、因为端口号问题导致的错误： javax.mail.MessagingException: Exception reading response; nested exception is: java.net.SocketTimeoutException: Read timed out javax.mail.MessagingException: Exception reading response; nested exception is: java.net.SocketTimeoutException: Read timed out at com.sun.mail.smtp.SMTPTransport.readServerResponse(SMTPTransport.java:2210) at com.sun.mail.smtp.SMTPTransport.openServer(SMTPTransport.java:1950) at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:642) at javax.mail.Service.connect(Service.java:317) at javax.mail.Service.connect(Service.java:176) at javax.mail.Service.connect(Service.java:125) at javax.mail.Transport.send0(Transport.java:194) at javax.mail.Transport.send(Transport.java:124) 问题和解决这里可以看到，把port configuration</description>
     </item>
     

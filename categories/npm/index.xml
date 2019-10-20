@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>npm on 小碗汤的博客</title>
-    <link>http://www.liabio.cn/categories/npm/</link>
+    <link>http://liabio.cn/categories/npm/</link>
     <description>Recent content in npm on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 08 Oct 2019 20:49:44 +0800</lastBuildDate>
     
-	<atom:link href="http://www.liabio.cn/categories/npm/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://liabio.cn/categories/npm/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>npm安装报错Z_BUF_ERROR问题解决</title>
-      <link>http://www.liabio.cn/posts/2019-10-08-npm%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99Z-BUF-ERROR%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</link>
+      <link>http://liabio.cn/posts/2019-10-08-npm%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99Z-BUF-ERROR%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</link>
       <pubDate>Tue, 08 Oct 2019 20:49:44 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-10-08-npm%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99Z-BUF-ERROR%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</guid>
+      <guid>http://liabio.cn/posts/2019-10-08-npm%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99Z-BUF-ERROR%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</guid>
       <description>一、引言 最近在研究 gitBook 使用, 需要执行一个 npm install gitbook-cli -g 的命令来安装gitbook二进制包： $ npm install gitbook-cli -g npm ERR! code Z_BUF_ERROR npm ERR! errno -5 npm ERR! zlib: unexpected end of file npm ERR! A complete log of this run can be found in: npm ERR! C:\Users\lenovo\AppData\Roaming\npm-cache\_logs\2019-10-08T12_45_13_951Z-debug.log 如图所示： 二、解决 最后在网上找了很多资料，有替换 npm 国内源的方法（实测不行），后来找到一个</description>
     </item>
     

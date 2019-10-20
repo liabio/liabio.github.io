@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ditto on 小碗汤的博客</title>
-    <link>http://www.liabio.cn/categories/ditto/</link>
+    <link>http://liabio.cn/categories/ditto/</link>
     <description>Recent content in ditto on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 05 Jan 2019 17:42:39 +0800</lastBuildDate>
     
-	<atom:link href="http://www.liabio.cn/categories/ditto/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://liabio.cn/categories/ditto/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>一款效率神器Ditto</title>
-      <link>http://www.liabio.cn/posts/2019-01-05-%E4%B8%80%E6%AC%BE%E6%95%88%E7%8E%87%E7%A5%9E%E5%99%A8Ditto/</link>
+      <link>http://liabio.cn/posts/2019-01-05-%E4%B8%80%E6%AC%BE%E6%95%88%E7%8E%87%E7%A5%9E%E5%99%A8Ditto/</link>
       <pubDate>Sat, 05 Jan 2019 17:42:39 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-01-05-%E4%B8%80%E6%AC%BE%E6%95%88%E7%8E%87%E7%A5%9E%E5%99%A8Ditto/</guid>
+      <guid>http://liabio.cn/posts/2019-01-05-%E4%B8%80%E6%AC%BE%E6%95%88%E7%8E%87%E7%A5%9E%E5%99%A8Ditto/</guid>
       <description>Ditto 是一款开源、免费、强大的剪贴板增强工具。可以把复制过的所有内容保存起来（可以设定保存日期或条目总数），快捷地供后续调用。还可以合并粘贴，纯文本粘贴，支持分组、置顶、快速搜索、热键粘贴功能。并且，还可以通过网络共享剪贴板内容。 平常情况下，D</description>
     </item>
     
