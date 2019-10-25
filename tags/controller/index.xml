@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>controller on 小碗汤的博客</title>
-    <link>http://liabio.cn/tags/controller/</link>
+    <link>http://www.liabio.cn/tags/controller/</link>
     <description>Recent content in controller on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 02 Jun 2018 15:04:35 +0800</lastBuildDate>
     
-	<atom:link href="http://liabio.cn/tags/controller/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.liabio.cn/tags/controller/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Extending Kubernetes: Create Controllers For Core And Custom Resources</title>
-      <link>http://liabio.cn/posts/2018-06-02-ExtendingKubernetes-CreateControllersForCoreAndCustomResources/</link>
+      <link>http://www.liabio.cn/posts/2018-06-02-ExtendingKubernetes-CreateControllersForCoreAndCustomResources/</link>
       <pubDate>Sat, 02 Jun 2018 15:04:35 +0800</pubDate>
       
-      <guid>http://liabio.cn/posts/2018-06-02-ExtendingKubernetes-CreateControllersForCoreAndCustomResources/</guid>
+      <guid>http://www.liabio.cn/posts/2018-06-02-ExtendingKubernetes-CreateControllersForCoreAndCustomResources/</guid>
       <description>原文地址：https://medium.com/@trstringer/create-kubernetes-controllers-for-core-and-custom-resources-62fc35ad64a3 感谢原作者的输出。由于原</description>
     </item>
     

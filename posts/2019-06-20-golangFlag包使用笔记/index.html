@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>GolangFlag包使用笔记 | 小碗汤的博客</title>
-    <meta property="og:title" content="GolangFlag包使用笔记 - 小碗汤的博客">
+    <title>Golang Flag包使用笔记 | 小碗汤的博客</title>
+    <meta property="og:title" content="Golang Flag包使用笔记 - 小碗汤的博客">
     <meta property="og:type" content="article">
         
     <meta property="article:published_time" content="2019-06-20T17:50:36&#43;08:00">
@@ -17,10 +17,10 @@
         
 
     <meta name="Keywords" content="golang,go语言,go语言笔记,小碗汤,docker,kubernetes,k8s,java,博客,python,软件架构,公众号,小程序,Hugo,theme,maupassant">
-    <meta name="description" content="GolangFlag包使用笔记">
+    <meta name="description" content="Golang Flag包使用笔记">
         <meta name="author" content="小碗汤">
         
-    <meta property="og:url" content="http://liabio.cn/posts/2019-06-20-golangFlag%E5%8C%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">
+    <meta property="og:url" content="http://www.liabio.cn/posts/2019-06-20-golangFlag%E5%8C%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">
     
     <link rel="shortcut icon" href="/img/me/avatar-flowers.jpg" type="image/x-icon">
 
@@ -48,7 +48,7 @@
         <div class="col-group">
             <div class="site-name">
                     <h1>
-                        <a id="logo" href="http://liabio.cn">
+                        <a id="logo" href="http://www.liabio.cn">
                             小碗汤的博客
                         </a>
                     </h1>
@@ -56,11 +56,11 @@
             </div>
             <div>
                 <nav id="nav-menu" class="clearfix">
-                    <a class="" href="http://liabio.cn">首页</a>
+                    <a class="" href="http://www.liabio.cn">首页</a>
                     
-                    <a  href="http://liabio.cn/archives/" title="归档">归档</a>
+                    <a  href="http://www.liabio.cn/archives/" title="归档">归档</a>
                     
-                    <a  href="http://liabio.cn/about/" title="关于">关于</a>
+                    <a  href="http://www.liabio.cn/about/" title="关于">关于</a>
                     
                 </nav>
             </div>
@@ -209,7 +209,7 @@
                 <div class="res-cons">
                     <article class="post">
                         <header>
-                            <h1 class="post-title">GolangFlag包使用笔记</h1>
+                            <h1 class="post-title">Golang Flag包使用笔记</h1>
                         </header>
                         <date class="post-meta meta-date">
                             2019年6月20日
@@ -218,7 +218,7 @@
                         <div class="post-meta">
                             <span>|</span>
                             
-                                <span class="meta-category"><a href="http://liabio.cn/categories/golang">golang</a></span>
+                                <span class="meta-category"><a href="http://www.liabio.cn/categories/golang">golang</a></span>
                             
                         </div>
                         
@@ -333,9 +333,8 @@ Options:
 }
 </code></pre>
 
-<p><img src="https://upload-images.jianshu.io/upload_images/9134763-b1def46581e3fc45.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="nginx功能用go实现结果" /></p>
-
-<p>看不懂以上的代码实现没关系，先明确flag的能力，看完下面的讲解回过头来看就可以看懂了。</p>
+<p><img src="https://img-blog.csdnimg.cn/20191025113600215.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9saWFiaW8uYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" />
+ 看不懂以上的代码实现没关系，先明确flag的能力，看完下面的讲解回过头来看就可以看懂了。</p>
 
 <h2 id="1-2-flag-包概述">1.2 flag 包概述</h2>
 
@@ -370,7 +369,7 @@ flag.IntVar(&amp;flagValue, &quot;flagname&quot;, 1234, &quot;help message for f
 
 <h3 id="1-2-2-自定义-value">1.2.2  自定义 Value</h3>
 
-<p>另外，还可以创建自定义 flag，只要实现 flag.Value 接口即可（要求 <code>receiver</code> 是指针），这时候可以通过如下方式定义该 flag：</p>
+<p>另外，还可以创建自定义 flag，只要实现 flag.Value 接口即可（要求 <code>receiver</code> 是指针），这时候可以通过如下方式定义该 flag：</p>
 
 <pre><code class="language-go">flag.Var(&amp;flagVal, &quot;name&quot;, &quot;help message for flagname&quot;)
 </code></pre>
@@ -427,22 +426,22 @@ func main(){
 }
 </code></pre>
 
-<p>这样通过 <code>-slice &quot;go,php&quot;</code> 这样的形式传递参数，<code>languages</code> 得到的就是 <code>[go, php]</code>。如果不加<code>-slice</code>参数则打印默认值<code>[default is me]</code></p>
+<p>这样通过 <code>-slice &quot;go,php&quot;</code> 这样的形式传递参数，<code>languages</code> 得到的就是 <code>[go, php]</code>。如果不加<code>-slice</code>参数则打印默认值<code>[default is me]</code></p>
 
 <p>flag 中对 <code>Duration</code> 这种非基本类型的支持，使用的就是类似这样的方式，即同样实现了<code>Value</code>接口。</p>
 
 <h3 id="1-2-3-解析-flag">1.2.3 解析 flag</h3>
 
-<p>在所有的 flag 定义完成之后，可以通过调用 <code>flag.Parse()</code> 进行解析。</p>
+<p>在所有的 flag 定义完成之后，可以通过调用 <code>flag.Parse()</code> 进行解析。</p>
 
 <p>命令行 flag 的语法有如下三种形式：</p>
 
-<pre><code class="language-shell">-flag // 只支持bool类型
+<pre><code>-flag // 只支持bool类型
 -flag=x
 -flag x // 只支持非bool类型
 </code></pre>
 
-<p>以上语法对于一个或两个‘－’号，效果是一样的，但是要注意对于第三种情况，只能用于非 bool 类型的 flag。原因是：如果支持，那么对于这样的命令 cmd -x *，如果有一个文件名字是：0或false等，则命令的原意会改变（bool 类型可以和其他类型一样处理，其次 bool 类型支持 <code>-flag</code> 这种形式，因为Parse()中，对 bool 类型进行了特殊处理）。默认的，提供了 <code>-flag</code>，则对应的值为 true，否则为 <code>flag.Bool/BoolVar</code> 中指定的默认值；如果希望显示设置为 false 则使用 <code>-flag=false</code>。</p>
+<p>以上语法对于一个或两个‘－’号，效果是一样的，但是要注意对于第三种情况，只能用于非 bool 类型的 flag。原因是：如果支持，那么对于这样的命令 cmd -x *，如果有一个文件名字是：0或false等，则命令的原意会改变（bool 类型可以和其他类型一样处理，其次 bool 类型支持 <code>-flag</code> 这种形式，因为Parse()中，对 bool 类型进行了特殊处理）。默认的，提供了 <code>-flag</code>，则对应的值为 true，否则为 <code>flag.Bool/BoolVar</code> 中指定的默认值；如果希望显示设置为 false 则使用 <code>-flag=false</code>。</p>
 
 <p>int 类型可以是十进制、十六进制、八进制甚至是负数；bool 类型可以是1, 0, t, f, true, false, TRUE, FALSE, True, False。Duration 可以接受任何 time.ParseDuration 能解析的类型。</p>
 
@@ -458,7 +457,7 @@ func main(){
 
 <p>例如1.2.2例子中：如果执行时用了<code>-help</code>或者<code>-h</code>时就会输出help message：</p>
 
-<pre><code class="language-go">Usage of myflag.exe:
+<pre><code>Usage of myflag.exe:
   -slice languages
         I like programming languages
 </code></pre>
@@ -484,7 +483,6 @@ func main(){
 <p>1）ErrorHandling</p>
 
 <pre><code class="language-go">type ErrorHandling int
-
 </code></pre>
 
 <p>该类型定义了在参数解析出错时错误处理方式。定义了三个该类型的常量：</p>
@@ -494,7 +492,6 @@ func main(){
     ExitOnError
     PanicOnError
 )
-
 </code></pre>
 
 <p>三个常量在源码的 FlagSet 的方法 parseOne() 中使用了。</p>
@@ -516,10 +513,9 @@ type Flag struct {
 <p>比如，对于命令：<code>./nginx -c /etc/nginx.conf</code>，相应代码是：</p>
 
 <pre><code class="language-go">flag.StringVar(&amp;c, &quot;c&quot;, &quot;conf/nginx.conf&quot;, &quot;set configuration `file`&quot;)
-
 </code></pre>
 
-<p>则该 Flag 实例（可以通过 <code>flag.Lookup(&quot;c&quot;)</code> 获得）相应各个字段的值为：</p>
+<p>则该 Flag 实例（可以通过 <code>flag.Lookup(&quot;c&quot;)</code> 获得）相应各个字段的值为：</p>
 
 <pre><code class="language-go">&amp;Flag{
     Name: c,
@@ -569,7 +565,7 @@ func main() {
 
 <p>运行结果：</p>
 
-<pre><code class="language-go">//  ./testlookup -test &quot;12345&quot;      
+<pre><code class="language-shell">//  ./testlookup -test &quot;12345&quot;      
 test:default value
 test1:&lt;nil&gt;
 test:12345
@@ -615,7 +611,7 @@ type Value interface {
 
 <h3 id="1-4-1-实例化方式">1.4.1 实例化方式</h3>
 
-<p><code>NewFlagSet()</code> 用于实例化 FlagSet。预定义的 FlagSet 实例 <code>CommandLine</code> 的定义方式：</p>
+<p><code>NewFlagSet()</code> 用于实例化 FlagSet。预定义的 FlagSet 实例 <code>CommandLine</code> 的定义方式：</p>
 
 <pre><code class="language-go">// The default set of command-line flags, parsed from os.Args.
 var CommandLine = NewFlagSet(os.Args[0], ExitOnError)
@@ -634,7 +630,7 @@ var CommandLine = NewFlagSet(os.Args[0], ExitOnError)
 <pre><code class="language-go">func (f *FlagSet) Parse(arguments []string) error
 </code></pre>
 
-<p>从参数列表中解析定义的 flag。方法参数 arguments 不包括命令名，即应该是os.Args[1:]。事实上，<code>flag.Parse()</code> 函数就是这么做的：</p>
+<p>从参数列表中解析定义的 flag。方法参数 arguments 不包括命令名，即应该是os.Args[1:]。事实上，<code>flag.Parse()</code> 函数就是这么做的：</p>
 
 <pre><code class="language-go">// Parse parses the command-line flags from os.Args[1:].  Must be called
 // after all flags are defined and before flags are accessed by the program.
@@ -647,9 +643,9 @@ func Parse() {
 
 <p>该方法应该在 flag 参数定义后而具体参数值被访问前调用。</p>
 
-<p>如果提供了 <code>-help</code> 参数（命令中给了）但没有定义（代码中没有），该方法返回 <code>ErrHelp</code> 错误。默认的 CommandLine，在 Parse 出错时会退出程序（ExitOnError）。</p>
+<p>如果提供了 <code>-help</code> 参数（命令中给了）但没有定义（代码中没有），该方法返回 <code>ErrHelp</code> 错误。默认的 CommandLine，在 Parse 出错时会退出程序（ExitOnError）。</p>
 
-<p>为了更深入的理解，我们看一下 <code>Parse(arguments []string)</code> 的源码：</p>
+<p>为了更深入的理解，我们看一下 <code>Parse(arguments []string)</code> 的源码：</p>
 
 <pre><code class="language-go">func (f *FlagSet) Parse(arguments []string) error {
     f.parsed = true
@@ -675,9 +671,9 @@ func Parse() {
 }
 </code></pre>
 
-<p>真正解析参数的方法是非导出方法 <code>parseOne</code>。</p>
+<p>真正解析参数的方法是非导出方法 <code>parseOne</code>。</p>
 
-<p>结合 <code>parseOne</code> 方法，我们来解释 <code>non-flag</code> 以及包文档中的这句话：</p>
+<p>结合 <code>parseOne</code> 方法，我们来解释 <code>non-flag</code> 以及包文档中的这句话：</p>
 
 <blockquote>
 <p>Flag parsing stops just before the first non-flag argument (&ldquo;-&rdquo; is a non-flag argument) or after the terminator &ldquo;&ndash;&rdquo;.</p>
@@ -685,7 +681,7 @@ func Parse() {
 
 <p>我们需要了解解析什么时候停止。</p>
 
-<p>根据 Parse() 中 for 循环终止的条件（不考虑解析出错），我们知道，当 parseOne 返回 <code>false, nil</code> 时，Parse 解析终止。正常解析完成我们不考虑。看一下 parseOne 的源码发现，有三处会返回 <code>false, nil</code>。
+<p>根据 Parse() 中 for 循环终止的条件（不考虑解析出错），我们知道，当 parseOne 返回 <code>false, nil</code> 时，Parse 解析终止。正常解析完成我们不考虑。看一下 parseOne 的源码发现，有三处会返回 <code>false, nil</code>。
 在这里先说一下non-flag命令行参数是指不满足命令行语法的参数，如命令行参数为cmd -flag=true abc则第一个非flag命令行参数为“abc”</p>
 
 <p>1）参数列表长度为0</p>
@@ -710,7 +706,7 @@ if len(s) == 0 || s[0] != '-' || len(s) == 1 {
 <p>./nginx - 或 ./nginx ba或者./nginx</p>
 </blockquote>
 
-<p>这两种情况，<code>-c</code> 都不会被正确解析。像该例子中的&rdquo;-&ldquo;或ba（以及之后的参数），我们称之为 <code>non-flag</code>参数。</p>
+<p>这两种情况，<code>-c</code> 都不会被正确解析。像该例子中的&rdquo;-&ldquo;或ba（以及之后的参数），我们称之为 <code>non-flag</code>参数。</p>
 
 <p>3）两个连续的&rdquo;&ndash;&rdquo;</p>
 
@@ -733,20 +729,20 @@ if len(s) == 0 || s[0] != '-' || len(s) == 1 {
 <p>./nginx  -c  &ndash;</p>
 </blockquote>
 
-<p>这里的&rdquo;&ndash;&ldquo;会被当成是 <code>c</code> 的值</p>
+<p>这里的&rdquo;&ndash;&ldquo;会被当成是 <code>c</code> 的值</p>
 
-<p>parseOne 方法中接下来是处理 <code>-flag=x</code> 这种形式，然后是 <code>-flag</code> 这种形式（bool类型）（这里对bool进行了特殊处理），接着是 <code>-flag x</code> 这种形式，最后，将解析成功的 Flag 实例存入 FlagSet 的 actual map 中。</p>
+<p>parseOne 方法中接下来是处理 <code>-flag=x</code> 这种形式，然后是 <code>-flag</code> 这种形式（bool类型）（这里对bool进行了特殊处理），接着是 <code>-flag x</code> 这种形式，最后，将解析成功的 Flag 实例存入 FlagSet 的 actual map 中。</p>
 
 <p>另外，在 parseOne 中有这么一句：</p>
 
 <pre><code class="language-go">f.args = f.args[1:]
 </code></pre>
 
-<p>也就是说，每执行成功一次 parseOne，f.args 会少一个。所以，FlagSet 中的 args 最后留下来的就是所有 <code>non-flag</code> 参数。</p>
+<p>也就是说，每执行成功一次 parseOne，f.args 会少一个。所以，FlagSet 中的 args 最后留下来的就是所有 <code>non-flag</code> 参数。</p>
 
 <h3 id="1-4-4-arg-i-int-和-args-narg-nflag">1.4.4 Arg(i int) 和 Args()、NArg()、NFlag()</h3>
 
-<p>Arg(i int) 和 Args() 这两个方法就是获取 <code>non-flag</code> 参数的；NArg()获得 <code>non-flag</code> 的个数；NFlag() 获得 FlagSet 中 actual 长度（即被设置了的参数个数）。</p>
+<p>Arg(i int) 和 Args() 这两个方法就是获取 <code>non-flag</code> 参数的；NArg()获得 <code>non-flag</code> 的个数；NFlag() 获得 FlagSet 中 actual 长度（即被设置了的参数个数）。</p>
 
 <h3 id="1-4-5-visit-visitall">1.4.5 Visit/VisitAll</h3>
 
@@ -772,7 +768,7 @@ if len(s) == 0 || s[0] != '-' || len(s) == 1 {
 
 <p>使用建议：虽然上面讲了那么多，一般来说，我们只简单的定义flag，然后 parse，就如同开始的例子一样。</p>
 
-<p>如果项目需要复杂或更高级的命令行解析方式，可以使用 <a href="https://github.com/urfave/cli">https://github.com/urfave/cli</a> 或者 <a href="https://github.com/spf13/cobra">https://github.com/spf13/cobra</a> 这两个强大的库。</p>
+<p>如果项目需要复杂或更高级的命令行解析方式，可以使用 <a href="https://github.com/urfave/cli">https://github.com/urfave/cli</a> 或者 <a href="https://github.com/spf13/cobra">https://github.com/spf13/cobra</a> 这两个强大的库。</p>
 
                         </div>
 
@@ -806,8 +802,8 @@ if len(s) == 0 || s[0] != '-' || len(s) == 1 {
                         
 <div class="post-archive">
     <ul class="post-copyright">
-        <li><strong>原文作者：</strong><a rel="author" href="http://liabio.cn">小碗汤</a></li>
-        <li style="word-break:break-all"><strong>原文链接：</strong><a href="http://liabio.cn/posts/2019-06-20-golangFlag%E5%8C%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">http://liabio.cn/posts/2019-06-20-golangFlag%E5%8C%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</a></li>
+        <li><strong>原文作者：</strong><a rel="author" href="http://www.liabio.cn">小碗汤</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="http://www.liabio.cn/posts/2019-06-20-golangFlag%E5%8C%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">http://www.liabio.cn/posts/2019-06-20-golangFlag%E5%8C%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</a></li>
         <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
     </ul>
 </div>
@@ -839,7 +835,7 @@ if len(s) == 0 || s[0] != '-' || len(s) == 1 {
                             
                             <ul class="clearfix">
                                 
-                                <li><a href="http://liabio.cn/tags/%E6%95%99%E7%A8%8B">教程</a></li>
+                                <li><a href="http://www.liabio.cn/tags/%E6%95%99%E7%A8%8B">教程</a></li>
                                 
                             </ul>
                             
@@ -867,7 +863,7 @@ if len(s) == 0 || s[0] != '-' || len(s) == 1 {
         <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
       
       <input type="text" name="q" maxlength="20" placeholder="Search">
-      <input type="hidden" name="sitesearch" value="http://liabio.cn">
+      <input type="hidden" name="sitesearch" value="http://www.liabio.cn">
       <button type="submit" class="submit icon-search"></button>
 </form>
     </section>
@@ -877,43 +873,43 @@ if len(s) == 0 || s[0] != '-' || len(s) == 1 {
 <ul class="widget-list">
     
     <li>
-        <a href="http://liabio.cn/posts/2019-10-16-cnblog-readmore/" title="​“ReadMore” 之 cnblogs 博客园使用指南">​“ReadMore” 之 cnblogs 博客园使用指南</a>
+        <a href="http://www.liabio.cn/posts/2019-10-24-solo-blog/" title="5分钟搭建个博客玩玩">5分钟搭建个博客玩玩</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/posts/2019-10-15-csdn-custom-menu/" title="CSDN VIP博客如何自定义栏目">CSDN VIP博客如何自定义栏目</a>
+        <a href="http://www.liabio.cn/posts/2019-10-16-cnblog-readmore/" title="​“ReadMore” 之 cnblogs 博客园使用指南">​“ReadMore” 之 cnblogs 博客园使用指南</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/posts/2019-10-15-taobao-defraud/" title="骗子手段真多，诚会玩">骗子手段真多，诚会玩</a>
+        <a href="http://www.liabio.cn/posts/2019-10-15-csdn-custom-menu/" title="CSDN VIP博客如何自定义栏目">CSDN VIP博客如何自定义栏目</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/posts/2019-10-13-aes-cloud-server-deduct-fee/" title="亚马逊AWS云服务器不合理扣费怎么处理">亚马逊AWS云服务器不合理扣费怎么处理</a>
+        <a href="http://www.liabio.cn/posts/2019-10-15-taobao-defraud/" title="骗子手段真多，诚会玩">骗子手段真多，诚会玩</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/posts/2019-10-11-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%902/" title="kubernetes垃圾回收器Garbage Collector Controller源码分析（二）">kubernetes垃圾回收器Garbage Collector Controller源码分析（二）</a>
+        <a href="http://www.liabio.cn/posts/2019-10-13-aes-cloud-server-deduct-fee/" title="亚马逊AWS云服务器不合理扣费怎么处理">亚马逊AWS云服务器不合理扣费怎么处理</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/posts/2019-10-10-%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4k8s-pvc-pv/" title="如何批量删除k8s资源对象">如何批量删除k8s资源对象</a>
+        <a href="http://www.liabio.cn/posts/2019-10-11-kubernetes%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8GarbageCollectorController%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%902/" title="kubernetes垃圾回收器Garbage Collector Controller源码分析（二）">kubernetes垃圾回收器Garbage Collector Controller源码分析（二）</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/posts/2019-10-08-npm%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99Z-BUF-ERROR%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="npm安装报错Z_BUF_ERROR问题解决">npm安装报错Z_BUF_ERROR问题解决</a>
+        <a href="http://www.liabio.cn/posts/2019-10-10-%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4k8s-pvc-pv/" title="如何批量删除k8s资源对象">如何批量删除k8s资源对象</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/posts/2019-09-30-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/" title="kubernetes自定义资源对象高级功能">kubernetes自定义资源对象高级功能</a>
+        <a href="http://www.liabio.cn/posts/2019-10-08-npm%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99Z-BUF-ERROR%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="npm安装报错Z_BUF_ERROR问题解决">npm安装报错Z_BUF_ERROR问题解决</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/" title="etcd操作">etcd操作</a>
+        <a href="http://www.liabio.cn/posts/2019-09-30-kubernetes%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E5%AF%B9%E8%B1%A1%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/" title="kubernetes自定义资源对象高级功能">kubernetes自定义资源对象高级功能</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/" title="docker镜像制作必备技能">docker镜像制作必备技能</a>
+        <a href="http://www.liabio.cn/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/" title="etcd操作">etcd操作</a>
     </li>
     
 </ul>
@@ -925,9 +921,9 @@ if len(s) == 0 || s[0] != '-' || len(s) == 1 {
     <ul class="widget-list">
         
         <li>
-            <a href="https://liabio.github.io/img/ad/geek.jpg" title="极客时间课程限时优惠" target="_blank" style="color:red">
+            <a href="https://www.aliyun.com/1111/2019/group-buying-share?ptCode=D6D69A10691799ABB368E5BCE818AB07647C88CF896EF535&amp;userCode=3iiljysb&amp;share_source=aliyun_app&amp;from=timeline&amp;isappinstalled=0" title="阿里云服务器1年只需86，3年229" target="_blank" style="color:red">
                 
-                    <img src="/img/ad/guide_ercode.png">
+                    <img src="/img/ad/aliyunserver.jpg">
                 
             </a>
         </li>
@@ -965,139 +961,139 @@ if len(s) == 0 || s[0] != '-' || len(s) == 1 {
 <ul class="widget-list">
     
     <li>
-        <a href="http://liabio.cn/categories//">(1)</a>
+        <a href="http://www.liabio.cn/categories//">(1)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/anyListen/">anyListen(1)</a>
+        <a href="http://www.liabio.cn/categories/anyListen/">anyListen(1)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/blog/">blog(4)</a>
+        <a href="http://www.liabio.cn/categories/blog/">blog(5)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/centos/">centos(2)</a>
+        <a href="http://www.liabio.cn/categories/centos/">centos(2)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/debug/">debug(1)</a>
+        <a href="http://www.liabio.cn/categories/debug/">debug(1)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/ditto/">ditto(1)</a>
+        <a href="http://www.liabio.cn/categories/ditto/">ditto(1)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/docker/">docker(10)</a>
+        <a href="http://www.liabio.cn/categories/docker/">docker(10)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/elasticsearch/">elasticsearch(3)</a>
+        <a href="http://www.liabio.cn/categories/elasticsearch/">elasticsearch(3)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/etcd/">etcd(1)</a>
+        <a href="http://www.liabio.cn/categories/etcd/">etcd(1)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/git/">git(1)</a>
+        <a href="http://www.liabio.cn/categories/git/">git(1)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/golang/">golang(11)</a>
+        <a href="http://www.liabio.cn/categories/golang/">golang(11)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/http/">http(1)</a>
+        <a href="http://www.liabio.cn/categories/http/">http(1)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/idea/">idea(2)</a>
+        <a href="http://www.liabio.cn/categories/idea/">idea(2)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/ingress-nginx/">ingress-nginx(1)</a>
+        <a href="http://www.liabio.cn/categories/ingress-nginx/">ingress-nginx(1)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/java/">java(11)</a>
+        <a href="http://www.liabio.cn/categories/java/">java(11)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/job/">job(2)</a>
+        <a href="http://www.liabio.cn/categories/job/">job(2)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/k8s/">k8s(1)</a>
+        <a href="http://www.liabio.cn/categories/k8s/">k8s(1)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/kubernetes/">kubernetes(17)</a>
+        <a href="http://www.liabio.cn/categories/kubernetes/">kubernetes(17)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/linux/">linux(3)</a>
+        <a href="http://www.liabio.cn/categories/linux/">linux(3)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/mysql/">mysql(6)</a>
+        <a href="http://www.liabio.cn/categories/mysql/">mysql(6)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/nginx/">nginx(2)</a>
+        <a href="http://www.liabio.cn/categories/nginx/">nginx(2)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/npm/">npm(1)</a>
+        <a href="http://www.liabio.cn/categories/npm/">npm(1)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/openresty/">openresty(1)</a>
+        <a href="http://www.liabio.cn/categories/openresty/">openresty(1)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/redis/">redis(2)</a>
+        <a href="http://www.liabio.cn/categories/redis/">redis(2)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/shell/">shell(3)</a>
+        <a href="http://www.liabio.cn/categories/shell/">shell(3)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/springmvc/">springmvc(1)</a>
+        <a href="http://www.liabio.cn/categories/springmvc/">springmvc(1)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/vmware/">vmware(1)</a>
+        <a href="http://www.liabio.cn/categories/vmware/">vmware(1)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/windows/">windows(2)</a>
+        <a href="http://www.liabio.cn/categories/windows/">windows(2)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/xyplorer/">xyplorer(1)</a>
+        <a href="http://www.liabio.cn/categories/xyplorer/">xyplorer(1)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/yum/">yum(1)</a>
+        <a href="http://www.liabio.cn/categories/yum/">yum(1)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/zookeeper/">zookeeper(1)</a>
+        <a href="http://www.liabio.cn/categories/zookeeper/">zookeeper(1)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/">云服务器(1)</a>
+        <a href="http://www.liabio.cn/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/">云服务器(1)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/%E5%B7%A5%E5%85%B7/">工具(1)</a>
+        <a href="http://www.liabio.cn/categories/%E5%B7%A5%E5%85%B7/">工具(1)</a>
     </li>
     
     <li>
-        <a href="http://liabio.cn/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务(1)</a>
+        <a href="http://www.liabio.cn/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务(1)</a>
     </li>
     
 </ul>
@@ -1107,107 +1103,118 @@ if len(s) == 0 || s[0] != '-' || len(s) == 1 {
         <h3 class="widget-title">标签</h3>
 <div class="tagcloud">
     
-    <a href="http://liabio.cn/tags//"></a>
+    <a href="http://www.liabio.cn/tags//"></a>
     
-    <a href="http://liabio.cn/tags/blog/">blog</a>
+    <a href="http://www.liabio.cn/tags/blog/">blog</a>
     
-    <a href="http://liabio.cn/tags/chocolate/">chocolate</a>
+    <a href="http://www.liabio.cn/tags/chocolate/">chocolate</a>
     
-    <a href="http://liabio.cn/tags/controller/">controller</a>
+    <a href="http://www.liabio.cn/tags/controller/">controller</a>
     
-    <a href="http://liabio.cn/tags/crd/">crd</a>
+    <a href="http://www.liabio.cn/tags/crd/">crd</a>
     
-    <a href="http://liabio.cn/tags/csdn/">csdn</a>
+    <a href="http://www.liabio.cn/tags/csdn/">csdn</a>
     
-    <a href="http://liabio.cn/tags/docker/">docker</a>
+    <a href="http://www.liabio.cn/tags/docker/">docker</a>
     
-    <a href="http://liabio.cn/tags/email/">email</a>
+    <a href="http://www.liabio.cn/tags/email/">email</a>
     
-    <a href="http://liabio.cn/tags/etcd/">etcd</a>
+    <a href="http://www.liabio.cn/tags/etcd/">etcd</a>
     
-    <a href="http://liabio.cn/tags/garbageCollector/">garbageCollector</a>
+    <a href="http://www.liabio.cn/tags/garbageCollector/">garbageCollector</a>
     
-    <a href="http://liabio.cn/tags/git/">git</a>
+    <a href="http://www.liabio.cn/tags/git/">git</a>
     
-    <a href="http://liabio.cn/tags/http/">http</a>
+    <a href="http://www.liabio.cn/tags/http/">http</a>
     
-    <a href="http://liabio.cn/tags/hugo/">hugo</a>
+    <a href="http://www.liabio.cn/tags/hugo/">hugo</a>
     
-    <a href="http://liabio.cn/tags/ingress-nginx/">ingress-nginx</a>
+    <a href="http://www.liabio.cn/tags/ingress-nginx/">ingress-nginx</a>
     
-    <a href="http://liabio.cn/tags/java/">java</a>
+    <a href="http://www.liabio.cn/tags/java/">java</a>
     
-    <a href="http://liabio.cn/tags/job/">job</a>
+    <a href="http://www.liabio.cn/tags/job/">job</a>
     
-    <a href="http://liabio.cn/tags/kubernetes/">kubernetes</a>
+    <a href="http://www.liabio.cn/tags/kubernetes/">kubernetes</a>
     
-    <a href="http://liabio.cn/tags/linux/">linux</a>
+    <a href="http://www.liabio.cn/tags/linux/">linux</a>
     
-    <a href="http://liabio.cn/tags/mysql/">mysql</a>
+    <a href="http://www.liabio.cn/tags/mysql/">mysql</a>
     
-    <a href="http://liabio.cn/tags/nginx/">nginx</a>
+    <a href="http://www.liabio.cn/tags/nginx/">nginx</a>
     
-    <a href="http://liabio.cn/tags/operator/">operator</a>
+    <a href="http://www.liabio.cn/tags/operator/">operator</a>
     
-    <a href="http://liabio.cn/tags/redis%E9%9B%86%E7%BE%A4/">redis集群</a>
+    <a href="http://www.liabio.cn/tags/redis%E9%9B%86%E7%BE%A4/">redis集群</a>
     
-    <a href="http://liabio.cn/tags/shell/">shell</a>
+    <a href="http://www.liabio.cn/tags/shell/">shell</a>
     
-    <a href="http://liabio.cn/tags/telnet/">telnet</a>
+    <a href="http://www.liabio.cn/tags/telnet/">telnet</a>
     
-    <a href="http://liabio.cn/tags/thrift/">thrift</a>
+    <a href="http://www.liabio.cn/tags/thrift/">thrift</a>
     
-    <a href="http://liabio.cn/tags/%E4%B8%8A%E7%BD%91/">上网</a>
+    <a href="http://www.liabio.cn/tags/%E4%B8%8A%E7%BD%91/">上网</a>
     
-    <a href="http://liabio.cn/tags/%E4%BB%A3%E7%90%86/">代理</a>
+    <a href="http://www.liabio.cn/tags/%E4%BB%A3%E7%90%86/">代理</a>
     
-    <a href="http://liabio.cn/tags/%E5%8C%85%E7%AE%A1%E7%90%86/">包管理</a>
+    <a href="http://www.liabio.cn/tags/%E5%8C%85%E7%AE%A1%E7%90%86/">包管理</a>
     
-    <a href="http://liabio.cn/tags/%E5%9B%BD%E9%99%85%E5%8C%96/">国际化</a>
+    <a href="http://www.liabio.cn/tags/%E5%9B%BD%E9%99%85%E5%8C%96/">国际化</a>
     
-    <a href="http://liabio.cn/tags/%E5%9D%91/">坑</a>
+    <a href="http://www.liabio.cn/tags/%E5%9D%91/">坑</a>
     
-    <a href="http://liabio.cn/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/">垃圾回收器</a>
+    <a href="http://www.liabio.cn/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/">垃圾回收器</a>
     
-    <a href="http://liabio.cn/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/">存储过程</a>
+    <a href="http://www.liabio.cn/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/">存储过程</a>
     
-    <a href="http://liabio.cn/tags/%E5%AE%B9%E5%99%A8/">容器</a>
+    <a href="http://www.liabio.cn/tags/%E5%AE%B9%E5%99%A8/">容器</a>
     
-    <a href="http://liabio.cn/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+    <a href="http://www.liabio.cn/tags/%E5%B7%A5%E5%85%B7/">工具</a>
     
-    <a href="http://liabio.cn/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/">效率工具</a>
+    <a href="http://www.liabio.cn/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/">效率工具</a>
     
-    <a href="http://liabio.cn/tags/%E6%95%99%E7%A8%8B/">教程</a>
+    <a href="http://www.liabio.cn/tags/%E6%95%99%E7%A8%8B/">教程</a>
     
-    <a href="http://liabio.cn/tags/%E6%97%A5%E5%BF%97%E8%BD%AC%E5%82%A8/">日志转储</a>
+    <a href="http://www.liabio.cn/tags/%E6%97%A5%E5%BF%97%E8%BD%AC%E5%82%A8/">日志转储</a>
     
-    <a href="http://liabio.cn/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E5%85%A8/">服务器安全</a>
+    <a href="http://www.liabio.cn/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E5%85%A8/">服务器安全</a>
     
-    <a href="http://liabio.cn/tags/%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/">灰度发布</a>
+    <a href="http://www.liabio.cn/tags/%E7%81%B0%E5%BA%A6%E5%8F%91%E5%B8%83/">灰度发布</a>
     
-    <a href="http://liabio.cn/tags/%E7%88%AC%E8%99%AB/">爬虫</a>
+    <a href="http://www.liabio.cn/tags/%E7%88%AC%E8%99%AB/">爬虫</a>
     
-    <a href="http://liabio.cn/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/">虚拟机</a>
+    <a href="http://www.liabio.cn/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/">虚拟机</a>
     
-    <a href="http://liabio.cn/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/">解决问题</a>
+    <a href="http://www.liabio.cn/tags/%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98/">解决问题</a>
     
-    <a href="http://liabio.cn/tags/%E9%85%8D%E7%BD%AE/">配置</a>
+    <a href="http://www.liabio.cn/tags/%E9%85%8D%E7%BD%AE/">配置</a>
     
-    <a href="http://liabio.cn/tags/%E9%95%9C%E5%83%8F/">镜像</a>
+    <a href="http://www.liabio.cn/tags/%E9%95%9C%E5%83%8F/">镜像</a>
     
-    <a href="http://liabio.cn/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">问题解决</a>
+    <a href="http://www.liabio.cn/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">问题解决</a>
     
-    <a href="http://liabio.cn/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/">验证码</a>
+    <a href="http://www.liabio.cn/tags/%E9%AA%8C%E8%AF%81%E7%A0%81/">验证码</a>
     
 </div>
     </section>
 
     
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="http://blog.liabio.cn" title="码农实战的博客">码农实战的博客</a>
+        </li>
+        
+    </ul>
+</section>
+
 
     <section class="widget">
         <h3 class="widget-title">其它</h3>
         <ul class="widget-list">
-            <li><a href="http://liabio.cn/index.xml">文章 RSS</a></li>
+            <li><a href="http://www.liabio.cn/index.xml">文章 RSS</a></li>
         </ul>
     </section>
 </div>
@@ -1363,7 +1370,7 @@ if len(s) == 0 || s[0] != '-' || len(s) == 1 {
 
     </div>
     <div class="container" style="text-align: center; padding-top: 3px">
-        &copy; 2019 <a href="http://liabio.cn">小碗汤的博客 By 小碗汤</a>.
+        &copy; 2019 <a href="http://www.liabio.cn">小碗汤的博客 By 小碗汤</a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
         <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
         

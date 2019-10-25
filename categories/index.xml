@@ -2,309 +2,309 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on 小碗汤的博客</title>
-    <link>http://liabio.cn/categories/</link>
+    <link>http://www.liabio.cn/categories/</link>
     <description>Recent content in Categories on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 16 Oct 2019 15:28:03 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 25 Oct 2019 11:49:42 +0800</lastBuildDate>
     
-	<atom:link href="http://liabio.cn/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.liabio.cn/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>blog</title>
-      <link>http://liabio.cn/categories/blog/</link>
-      <pubDate>Wed, 16 Oct 2019 15:28:03 +0800</pubDate>
+      <link>http://www.liabio.cn/categories/blog/</link>
+      <pubDate>Fri, 25 Oct 2019 11:49:42 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/blog/</guid>
+      <guid>http://www.liabio.cn/categories/blog/</guid>
       <description></description>
     </item>
     
     <item>
       <title>云服务器</title>
-      <link>http://liabio.cn/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+      <link>http://www.liabio.cn/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
       <pubDate>Sun, 13 Oct 2019 20:27:19 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+      <guid>http://www.liabio.cn/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
       <description></description>
     </item>
     
     <item>
       <title>kubernetes</title>
-      <link>http://liabio.cn/categories/kubernetes/</link>
+      <link>http://www.liabio.cn/categories/kubernetes/</link>
       <pubDate>Fri, 11 Oct 2019 21:21:50 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/kubernetes/</guid>
+      <guid>http://www.liabio.cn/categories/kubernetes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>golang</title>
-      <link>http://liabio.cn/categories/golang/</link>
+      <link>http://www.liabio.cn/categories/golang/</link>
       <pubDate>Thu, 10 Oct 2019 17:20:28 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/golang/</guid>
+      <guid>http://www.liabio.cn/categories/golang/</guid>
       <description></description>
     </item>
     
     <item>
       <title>npm</title>
-      <link>http://liabio.cn/categories/npm/</link>
+      <link>http://www.liabio.cn/categories/npm/</link>
       <pubDate>Tue, 08 Oct 2019 20:49:44 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/npm/</guid>
+      <guid>http://www.liabio.cn/categories/npm/</guid>
       <description></description>
     </item>
     
     <item>
       <title>etcd</title>
-      <link>http://liabio.cn/categories/etcd/</link>
+      <link>http://www.liabio.cn/categories/etcd/</link>
       <pubDate>Fri, 27 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/etcd/</guid>
+      <guid>http://www.liabio.cn/categories/etcd/</guid>
       <description></description>
     </item>
     
     <item>
       <title>debug</title>
-      <link>http://liabio.cn/categories/debug/</link>
+      <link>http://www.liabio.cn/categories/debug/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/debug/</guid>
+      <guid>http://www.liabio.cn/categories/debug/</guid>
       <description></description>
     </item>
     
     <item>
       <title>docker</title>
-      <link>http://liabio.cn/categories/docker/</link>
+      <link>http://www.liabio.cn/categories/docker/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/docker/</guid>
+      <guid>http://www.liabio.cn/categories/docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>git</title>
-      <link>http://liabio.cn/categories/git/</link>
+      <link>http://www.liabio.cn/categories/git/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/git/</guid>
+      <guid>http://www.liabio.cn/categories/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ingress-nginx</title>
-      <link>http://liabio.cn/categories/ingress-nginx/</link>
+      <link>http://www.liabio.cn/categories/ingress-nginx/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/ingress-nginx/</guid>
+      <guid>http://www.liabio.cn/categories/ingress-nginx/</guid>
       <description></description>
     </item>
     
     <item>
       <title>job</title>
-      <link>http://liabio.cn/categories/job/</link>
+      <link>http://www.liabio.cn/categories/job/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/job/</guid>
+      <guid>http://www.liabio.cn/categories/job/</guid>
       <description></description>
     </item>
     
     <item>
       <title>k8s</title>
-      <link>http://liabio.cn/categories/k8s/</link>
+      <link>http://www.liabio.cn/categories/k8s/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/k8s/</guid>
+      <guid>http://www.liabio.cn/categories/k8s/</guid>
       <description></description>
     </item>
     
     <item>
       <title>工具</title>
-      <link>http://liabio.cn/categories/%E5%B7%A5%E5%85%B7/</link>
+      <link>http://www.liabio.cn/categories/%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/%E5%B7%A5%E5%85%B7/</guid>
+      <guid>http://www.liabio.cn/categories/%E5%B7%A5%E5%85%B7/</guid>
       <description></description>
     </item>
     
     <item>
       <title>mysql</title>
-      <link>http://liabio.cn/categories/mysql/</link>
+      <link>http://www.liabio.cn/categories/mysql/</link>
       <pubDate>Wed, 21 Aug 2019 17:51:26 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/mysql/</guid>
+      <guid>http://www.liabio.cn/categories/mysql/</guid>
       <description></description>
     </item>
     
     <item>
       <title>linux</title>
-      <link>http://liabio.cn/categories/linux/</link>
+      <link>http://www.liabio.cn/categories/linux/</link>
       <pubDate>Sat, 20 Jul 2019 17:50:56 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/linux/</guid>
+      <guid>http://www.liabio.cn/categories/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>shell</title>
-      <link>http://liabio.cn/categories/shell/</link>
+      <link>http://www.liabio.cn/categories/shell/</link>
       <pubDate>Thu, 20 Jun 2019 17:50:45 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/shell/</guid>
+      <guid>http://www.liabio.cn/categories/shell/</guid>
       <description></description>
     </item>
     
     <item>
       <title>java</title>
-      <link>http://liabio.cn/categories/java/</link>
+      <link>http://www.liabio.cn/categories/java/</link>
       <pubDate>Mon, 20 May 2019 17:50:15 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/java/</guid>
+      <guid>http://www.liabio.cn/categories/java/</guid>
       <description></description>
     </item>
     
     <item>
       <title>http</title>
-      <link>http://liabio.cn/categories/http/</link>
+      <link>http://www.liabio.cn/categories/http/</link>
       <pubDate>Wed, 20 Mar 2019 17:49:52 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/http/</guid>
+      <guid>http://www.liabio.cn/categories/http/</guid>
       <description></description>
     </item>
     
     <item>
       <title>xyplorer</title>
-      <link>http://liabio.cn/categories/xyplorer/</link>
+      <link>http://www.liabio.cn/categories/xyplorer/</link>
       <pubDate>Fri, 08 Feb 2019 17:49:07 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/xyplorer/</guid>
+      <guid>http://www.liabio.cn/categories/xyplorer/</guid>
       <description></description>
     </item>
     
     <item>
       <title>anyListen</title>
-      <link>http://liabio.cn/categories/anyListen/</link>
+      <link>http://www.liabio.cn/categories/anyListen/</link>
       <pubDate>Mon, 07 Jan 2019 17:45:29 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/anyListen/</guid>
+      <guid>http://www.liabio.cn/categories/anyListen/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ditto</title>
-      <link>http://liabio.cn/categories/ditto/</link>
+      <link>http://www.liabio.cn/categories/ditto/</link>
       <pubDate>Sat, 05 Jan 2019 17:42:39 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/ditto/</guid>
+      <guid>http://www.liabio.cn/categories/ditto/</guid>
       <description></description>
     </item>
     
     <item>
       <title>yum</title>
-      <link>http://liabio.cn/categories/yum/</link>
+      <link>http://www.liabio.cn/categories/yum/</link>
       <pubDate>Thu, 03 Jan 2019 17:39:30 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/yum/</guid>
+      <guid>http://www.liabio.cn/categories/yum/</guid>
       <description></description>
     </item>
     
     <item>
       <title>vmware</title>
-      <link>http://liabio.cn/categories/vmware/</link>
+      <link>http://www.liabio.cn/categories/vmware/</link>
       <pubDate>Tue, 01 Jan 2019 17:36:41 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/vmware/</guid>
+      <guid>http://www.liabio.cn/categories/vmware/</guid>
       <description></description>
     </item>
     
     <item>
       <title>springmvc</title>
-      <link>http://liabio.cn/categories/springmvc/</link>
+      <link>http://www.liabio.cn/categories/springmvc/</link>
       <pubDate>Tue, 25 Dec 2018 17:30:24 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/springmvc/</guid>
+      <guid>http://www.liabio.cn/categories/springmvc/</guid>
       <description></description>
     </item>
     
     <item>
       <title>idea</title>
-      <link>http://liabio.cn/categories/idea/</link>
+      <link>http://www.liabio.cn/categories/idea/</link>
       <pubDate>Sat, 22 Dec 2018 17:23:16 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/idea/</guid>
+      <guid>http://www.liabio.cn/categories/idea/</guid>
       <description></description>
     </item>
     
     <item>
       <title>elasticsearch</title>
-      <link>http://liabio.cn/categories/elasticsearch/</link>
+      <link>http://www.liabio.cn/categories/elasticsearch/</link>
       <pubDate>Fri, 21 Dec 2018 17:20:27 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/elasticsearch/</guid>
+      <guid>http://www.liabio.cn/categories/elasticsearch/</guid>
       <description></description>
     </item>
     
     <item>
       <title>centos</title>
-      <link>http://liabio.cn/categories/centos/</link>
+      <link>http://www.liabio.cn/categories/centos/</link>
       <pubDate>Wed, 19 Dec 2018 17:17:22 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/centos/</guid>
+      <guid>http://www.liabio.cn/categories/centos/</guid>
       <description></description>
     </item>
     
     <item>
       <title>windows</title>
-      <link>http://liabio.cn/categories/windows/</link>
+      <link>http://www.liabio.cn/categories/windows/</link>
       <pubDate>Wed, 19 Dec 2018 17:16:03 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/windows/</guid>
+      <guid>http://www.liabio.cn/categories/windows/</guid>
       <description></description>
     </item>
     
     <item>
       <title>nginx</title>
-      <link>http://liabio.cn/categories/nginx/</link>
+      <link>http://www.liabio.cn/categories/nginx/</link>
       <pubDate>Sun, 02 Dec 2018 15:15:43 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/nginx/</guid>
+      <guid>http://www.liabio.cn/categories/nginx/</guid>
       <description></description>
     </item>
     
     <item>
       <title>微服务</title>
-      <link>http://liabio.cn/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</link>
+      <link>http://www.liabio.cn/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</link>
       <pubDate>Mon, 19 Nov 2018 17:10:29 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</guid>
+      <guid>http://www.liabio.cn/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</guid>
       <description></description>
     </item>
     
     <item>
       <title>redis</title>
-      <link>http://liabio.cn/categories/redis/</link>
+      <link>http://www.liabio.cn/categories/redis/</link>
       <pubDate>Sun, 18 Nov 2018 17:07:16 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/redis/</guid>
+      <guid>http://www.liabio.cn/categories/redis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>zookeeper</title>
-      <link>http://liabio.cn/categories/zookeeper/</link>
+      <link>http://www.liabio.cn/categories/zookeeper/</link>
       <pubDate>Fri, 16 Nov 2018 17:03:54 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/zookeeper/</guid>
+      <guid>http://www.liabio.cn/categories/zookeeper/</guid>
       <description></description>
     </item>
     
     <item>
       <title>openresty</title>
-      <link>http://liabio.cn/categories/openresty/</link>
+      <link>http://www.liabio.cn/categories/openresty/</link>
       <pubDate>Tue, 13 Nov 2018 16:56:04 +0800</pubDate>
       
-      <guid>http://liabio.cn/categories/openresty/</guid>
+      <guid>http://www.liabio.cn/categories/openresty/</guid>
       <description></description>
     </item>
     

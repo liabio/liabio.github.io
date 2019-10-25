@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>效率工具 on 小碗汤的博客</title>
-    <link>http://liabio.cn/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/</link>
+    <link>http://www.liabio.cn/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/</link>
     <description>Recent content in 效率工具 on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 08 Feb 2019 17:49:07 +0800</lastBuildDate>
     
-	<atom:link href="http://liabio.cn/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.liabio.cn/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>一款最好用的windows文件管理器</title>
-      <link>http://liabio.cn/posts/2019-02-08-%E4%B8%80%E6%AC%BE%E6%9C%80%E5%A5%BD%E7%94%A8%E7%9A%84windows%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/</link>
+      <link>http://www.liabio.cn/posts/2019-02-08-%E4%B8%80%E6%AC%BE%E6%9C%80%E5%A5%BD%E7%94%A8%E7%9A%84windows%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/</link>
       <pubDate>Fri, 08 Feb 2019 17:49:07 +0800</pubDate>
       
-      <guid>http://liabio.cn/posts/2019-02-08-%E4%B8%80%E6%AC%BE%E6%9C%80%E5%A5%BD%E7%94%A8%E7%9A%84windows%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/</guid>
+      <guid>http://www.liabio.cn/posts/2019-02-08-%E4%B8%80%E6%AC%BE%E6%9C%80%E5%A5%BD%E7%94%A8%E7%9A%84windows%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/</guid>
       <description>在日常生活或工作中，除了一些文本编辑工具以及网页浏览器以外，我们接触的最多的可能就是资源管理器了。资源管理器软件有很多。如： Clover 、QTTabBar、FreeCommander、WindowsTabs、Q-Dir、Total Commander等</description>
     </item>
     
     <item>
       <title>一款全网音乐神器</title>
-      <link>http://liabio.cn/posts/2019-01-07-%E4%B8%80%E6%AC%BE%E5%85%A8%E7%BD%91%E9%9F%B3%E4%B9%90%E7%A5%9E%E5%99%A8/</link>
+      <link>http://www.liabio.cn/posts/2019-01-07-%E4%B8%80%E6%AC%BE%E5%85%A8%E7%BD%91%E9%9F%B3%E4%B9%90%E7%A5%9E%E5%99%A8/</link>
       <pubDate>Mon, 07 Jan 2019 17:45:29 +0800</pubDate>
       
-      <guid>http://liabio.cn/posts/2019-01-07-%E4%B8%80%E6%AC%BE%E5%85%A8%E7%BD%91%E9%9F%B3%E4%B9%90%E7%A5%9E%E5%99%A8/</guid>
+      <guid>http://www.liabio.cn/posts/2019-01-07-%E4%B8%80%E6%AC%BE%E5%85%A8%E7%BD%91%E9%9F%B3%E4%B9%90%E7%A5%9E%E5%99%A8/</guid>
       <description>突然发现自己很久没有听音乐了，之前对纯音乐和泰勒歌曲喜欢入迷的我，由于工作忙的原因，都很少打开网易云音乐静静品味音乐带来的美感。 音乐距离心最近，好的音乐能让人在忙碌生活之余放松自我。 现在音乐很多都是收费的，或者只能听不能下载的。如果你想听、</description>
     </item>
     
     <item>
       <title>一款效率神器Ditto</title>
-      <link>http://liabio.cn/posts/2019-01-05-%E4%B8%80%E6%AC%BE%E6%95%88%E7%8E%87%E7%A5%9E%E5%99%A8Ditto/</link>
+      <link>http://www.liabio.cn/posts/2019-01-05-%E4%B8%80%E6%AC%BE%E6%95%88%E7%8E%87%E7%A5%9E%E5%99%A8Ditto/</link>
       <pubDate>Sat, 05 Jan 2019 17:42:39 +0800</pubDate>
       
-      <guid>http://liabio.cn/posts/2019-01-05-%E4%B8%80%E6%AC%BE%E6%95%88%E7%8E%87%E7%A5%9E%E5%99%A8Ditto/</guid>
+      <guid>http://www.liabio.cn/posts/2019-01-05-%E4%B8%80%E6%AC%BE%E6%95%88%E7%8E%87%E7%A5%9E%E5%99%A8Ditto/</guid>
       <description>Ditto 是一款开源、免费、强大的剪贴板增强工具。可以把复制过的所有内容保存起来（可以设定保存日期或条目总数），快捷地供后续调用。还可以合并粘贴，纯文本粘贴，支持分组、置顶、快速搜索、热键粘贴功能。并且，还可以通过网络共享剪贴板内容。 平常情况下，D</description>
     </item>
     

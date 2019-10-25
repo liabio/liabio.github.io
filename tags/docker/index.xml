@@ -2,102 +2,102 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>docker on 小碗汤的博客</title>
-    <link>http://liabio.cn/tags/docker/</link>
+    <link>http://www.liabio.cn/tags/docker/</link>
     <description>Recent content in docker on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 27 Sep 2019 09:59:46 +0800</lastBuildDate>
     
-	<atom:link href="http://liabio.cn/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.liabio.cn/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>etcd操作</title>
-      <link>http://liabio.cn/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/</link>
+      <link>http://www.liabio.cn/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Fri, 27 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://liabio.cn/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/</guid>
+      <guid>http://www.liabio.cn/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/</guid>
       <description>etcdctl安装 下载并解压二进制文件 curl -L https://github.com/coreos/etcd/releases/download/v3.3.2/etcd-v3.3.2-linux-amd64.tar.gz -o etcd-v3.3.2-linux-amd64.tar.gz tar zxf etcd-v3.3.2-linux-amd64.tar.gz 解压后是一些文档和两个二进制文件etcd和etcdctl。etcd是server端，etcdctl是客户端。 将解压后的etcd和etcdctl移动到$GOPATH/bin目录下，可以直接</description>
     </item>
     
     <item>
       <title>docker镜像制作必备技能</title>
-      <link>http://liabio.cn/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/</link>
+      <link>http://www.liabio.cn/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://liabio.cn/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/</guid>
+      <guid>http://www.liabio.cn/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/</guid>
       <description>正文 使用过docker的都知道dockerfile，其用于定义制作镜像的流程，由一系列命令和参数构成的脚本，这些命令应用于基础镜像并最终创建一个新的镜像。可参考往期文章学习：docker基础知识整理 有时候，我们想在原有镜像基础上修改、增加文</description>
     </item>
     
     <item>
       <title>k8s使用Job执行任务失败了怎么办</title>
-      <link>http://liabio.cn/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/</link>
+      <link>http://www.liabio.cn/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://liabio.cn/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/</guid>
+      <guid>http://www.liabio.cn/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/</guid>
       <description>正文 Kubernetes 中使用 Job 和 CronJob 两个资源分别提供了一次性任务和定时任务的特性，这两种对象也使用控制器模型来实现资源的管理，我们在这篇文章来介绍Job执行如果失败了会怎么样呢？ 修改job-fail.yaml，故意引入一个错误： Never 如果将 restartPolicy 设置为 Never 会怎么样？下</description>
     </item>
     
     <item>
       <title>云服务器使用docker搭建服务</title>
-      <link>http://liabio.cn/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/</link>
+      <link>http://www.liabio.cn/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://liabio.cn/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/</guid>
+      <guid>http://www.liabio.cn/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/</guid>
       <description>前提：亚马逊云已经配置好启动。 安全组入站策略如下： 出站策略如下： 登陆EC2后，默认只能用ec2-user用户登陆，然后切换到root： sudo su 用yum执行安装docker提示No package docker avaible yum install docker -y 解决方法： 在/etc/yum.repos.d/下加C</description>
     </item>
     
     <item>
       <title>史上最全docker基础知识汇总</title>
-      <link>http://liabio.cn/posts/2019-09-24-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/</link>
+      <link>http://www.liabio.cn/posts/2019-09-24-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://liabio.cn/posts/2019-09-24-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/</guid>
+      <guid>http://www.liabio.cn/posts/2019-09-24-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/</guid>
       <description>正文 Docker常用命令 run docker run [OPTIONS] IMAGE [COMMAND] [ARG...] -e设置环境变量；-e username=zhj &amp;ndash;name为容器指定一个名称；&amp;ndash;name=zhj -p指定端口映射，格式为：主机(宿主)端口:容器端口 -p 80:8080 -t为容器重新分配一个伪输入终端，通常与 -i 同时使用</description>
     </item>
     
     <item>
       <title>采坑指南——k8s域名解析coredns问题排查过程</title>
-      <link>http://liabio.cn/posts/2019-09-24-%E9%87%87%E5%9D%91%E6%8C%87%E5%8D%97-k8s%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90coredns%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/</link>
+      <link>http://www.liabio.cn/posts/2019-09-24-%E9%87%87%E5%9D%91%E6%8C%87%E5%8D%97-k8s%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90coredns%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://liabio.cn/posts/2019-09-24-%E9%87%87%E5%9D%91%E6%8C%87%E5%8D%97-k8s%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90coredns%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/</guid>
+      <guid>http://www.liabio.cn/posts/2019-09-24-%E9%87%87%E5%9D%91%E6%8C%87%E5%8D%97-k8s%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90coredns%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/</guid>
       <description>正文 前几天，在ucloud上搭建的k8s集群（搭建教程后续会发出）。今天发现域名解析不了。 组件版本：k8s 1.15.0，coredns：1.3.1 过程是这样的： 首先用以下yaml文件创建了一个nginx服务 apiVersion: v1 kind: Service metadata: name: nginx-svc-old labels: app: nginx-svc spec: selector: app: nginx ports: - protocol:</description>
     </item>
     
     <item>
       <title>云服务器使用docker搭建服务</title>
-      <link>http://liabio.cn/posts/2019-09-21-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/</link>
+      <link>http://www.liabio.cn/posts/2019-09-21-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/</link>
       <pubDate>Sat, 21 Sep 2019 10:48:21 +0800</pubDate>
       
-      <guid>http://liabio.cn/posts/2019-09-21-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/</guid>
+      <guid>http://www.liabio.cn/posts/2019-09-21-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/</guid>
       <description>前提：亚马逊云已经配置好启动。 安全组入站策略如下： 出站策略如下： 登陆EC2后，默认只能用ec2-user用户登陆，然后切换到root： sudo su 用yum执行安装docker提示No package docker avaible yum install docker -y 解决方法： 在/etc/yum.repos.d/下加C</description>
     </item>
     
     <item>
       <title>MySql镜像安装</title>
-      <link>http://liabio.cn/posts/2019-04-20-MySql%E9%95%9C%E5%83%8F%E5%AE%89%E8%A3%85/</link>
+      <link>http://www.liabio.cn/posts/2019-04-20-MySql%E9%95%9C%E5%83%8F%E5%AE%89%E8%A3%85/</link>
       <pubDate>Sat, 20 Apr 2019 17:50:04 +0800</pubDate>
       
-      <guid>http://liabio.cn/posts/2019-04-20-MySql%E9%95%9C%E5%83%8F%E5%AE%89%E8%A3%85/</guid>
+      <guid>http://www.liabio.cn/posts/2019-04-20-MySql%E9%95%9C%E5%83%8F%E5%AE%89%E8%A3%85/</guid>
       <description>安装MySql镜像 &amp;gt; docker search mysql #查找MySql镜像版本 &amp;gt; docker pull mysql:tag #安装指定版本的mysql镜像，tag为版本号 例如： &amp;gt; docker pull mysql:5.6 #安装MySql 5.6版本镜像 启动MySql容器 &amp;gt; docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag 例如： &amp;gt; docker run --name test-mysql -e MYSQL_ROOT_PASSWORD=123456 -d -p 3306:3306 mysql:5.6 #启动mysql 5.6版本镜</description>
     </item>
     
     <item>
       <title>Redis Cluster介绍与docker容器方式搭建</title>
-      <link>http://liabio.cn/posts/2018-09-02-RedisCluster%E4%BB%8B%E7%BB%8D%E4%B8%8Edocker%E5%AE%B9%E5%99%A8%E6%96%B9%E5%BC%8F%E6%90%AD%E5%BB%BA/</link>
+      <link>http://www.liabio.cn/posts/2018-09-02-RedisCluster%E4%BB%8B%E7%BB%8D%E4%B8%8Edocker%E5%AE%B9%E5%99%A8%E6%96%B9%E5%BC%8F%E6%90%AD%E5%BB%BA/</link>
       <pubDate>Sun, 02 Sep 2018 15:10:53 +0800</pubDate>
       
-      <guid>http://liabio.cn/posts/2018-09-02-RedisCluster%E4%BB%8B%E7%BB%8D%E4%B8%8Edocker%E5%AE%B9%E5%99%A8%E6%96%B9%E5%BC%8F%E6%90%AD%E5%BB%BA/</guid>
+      <guid>http://www.liabio.cn/posts/2018-09-02-RedisCluster%E4%BB%8B%E7%BB%8D%E4%B8%8Edocker%E5%AE%B9%E5%99%A8%E6%96%B9%E5%BC%8F%E6%90%AD%E5%BB%BA/</guid>
       <description>1. Redis Cluster介绍 Redis Cluster是Redis的分布式解决方案，在Redis 3.0版本正式推出的，有效解决了Redis分布式方面的需求。当遇到单机内存、并发、流量等瓶颈时，可以采用Cluster架构达到负载均衡的目的。 1.1 数据分布理论 分布</description>
     </item>
     
     <item>
       <title>Docker升级到最新版本</title>
-      <link>http://liabio.cn/posts/2018-08-02-Docker%E5%8D%87%E7%BA%A7%E5%88%B0%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC/</link>
+      <link>http://www.liabio.cn/posts/2018-08-02-Docker%E5%8D%87%E7%BA%A7%E5%88%B0%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC/</link>
       <pubDate>Thu, 02 Aug 2018 15:09:25 +0800</pubDate>
       
-      <guid>http://liabio.cn/posts/2018-08-02-Docker%E5%8D%87%E7%BA%A7%E5%88%B0%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC/</guid>
+      <guid>http://www.liabio.cn/posts/2018-08-02-Docker%E5%8D%87%E7%BA%A7%E5%88%B0%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC/</guid>
       <description>1、查看系统要求 Docker 要求 CentOS 系统的内核版本高于 3.10 ,查看CentOS的内核版本。 uname -a 2、删除旧版本 yum remove docker docker-common docker-selinux docker-engine 3、安装需要的软件包 yum-util 提供yum-config-manager功能，另外两个是devicemapper驱动依赖的 sudo yum install -y yum-utils device-mapper-persistent-data lvm2 4、设置D</description>
     </item>
     

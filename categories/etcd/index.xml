@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>etcd on 小碗汤的博客</title>
-    <link>http://liabio.cn/categories/etcd/</link>
+    <link>http://www.liabio.cn/categories/etcd/</link>
     <description>Recent content in etcd on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 27 Sep 2019 09:59:46 +0800</lastBuildDate>
     
-	<atom:link href="http://liabio.cn/categories/etcd/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.liabio.cn/categories/etcd/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>etcd操作</title>
-      <link>http://liabio.cn/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/</link>
+      <link>http://www.liabio.cn/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Fri, 27 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://liabio.cn/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/</guid>
+      <guid>http://www.liabio.cn/posts/2019-5-21-etcd%E6%93%8D%E4%BD%9C/</guid>
       <description>etcdctl安装 下载并解压二进制文件 curl -L https://github.com/coreos/etcd/releases/download/v3.3.2/etcd-v3.3.2-linux-amd64.tar.gz -o etcd-v3.3.2-linux-amd64.tar.gz tar zxf etcd-v3.3.2-linux-amd64.tar.gz 解压后是一些文档和两个二进制文件etcd和etcdctl。etcd是server端，etcdctl是客户端。 将解压后的etcd和etcdctl移动到$GOPATH/bin目录下，可以直接</description>
     </item>
     

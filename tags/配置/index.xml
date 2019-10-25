@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>配置 on 小碗汤的博客</title>
-    <link>http://liabio.cn/tags/%E9%85%8D%E7%BD%AE/</link>
+    <link>http://www.liabio.cn/tags/%E9%85%8D%E7%BD%AE/</link>
     <description>Recent content in 配置 on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 17 Nov 2018 17:05:55 +0800</lastBuildDate>
     
-	<atom:link href="http://liabio.cn/tags/%E9%85%8D%E7%BD%AE/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.liabio.cn/tags/%E9%85%8D%E7%BD%AE/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>IntelliJ IDEA自动导入包去除星号</title>
-      <link>http://liabio.cn/posts/2018-11-17-IntelliJ-IDEA%E8%87%AA%E5%8A%A8%E5%AF%BC%E5%85%A5%E5%8C%85%E5%8E%BB%E9%99%A4%E6%98%9F%E5%8F%B7/</link>
+      <link>http://www.liabio.cn/posts/2018-11-17-IntelliJ-IDEA%E8%87%AA%E5%8A%A8%E5%AF%BC%E5%85%A5%E5%8C%85%E5%8E%BB%E9%99%A4%E6%98%9F%E5%8F%B7/</link>
       <pubDate>Sat, 17 Nov 2018 17:05:55 +0800</pubDate>
       
-      <guid>http://liabio.cn/posts/2018-11-17-IntelliJ-IDEA%E8%87%AA%E5%8A%A8%E5%AF%BC%E5%85%A5%E5%8C%85%E5%8E%BB%E9%99%A4%E6%98%9F%E5%8F%B7/</guid>
+      <guid>http://www.liabio.cn/posts/2018-11-17-IntelliJ-IDEA%E8%87%AA%E5%8A%A8%E5%AF%BC%E5%85%A5%E5%8C%85%E5%8E%BB%E9%99%A4%E6%98%9F%E5%8F%B7/</guid>
       <description>打开设置&amp;gt;Editor&amp;gt;Code Style&amp;gt;Java&amp;gt;Scheme Default&amp;gt;Imports ① 将Class count to use import with &amp;ldquo;*&amp;ldquo;改为99（导入同一个包的类超过这个数值自动变为 * ） ② 将Names count to use static import with &amp;ldquo;*&amp;ldquo;改为99（同上，但这是静态导入的</description>
     </item>
     

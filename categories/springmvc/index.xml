@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>springmvc on 小碗汤的博客</title>
-    <link>http://liabio.cn/categories/springmvc/</link>
+    <link>http://www.liabio.cn/categories/springmvc/</link>
     <description>Recent content in springmvc on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 25 Dec 2018 17:30:24 +0800</lastBuildDate>
     
-	<atom:link href="http://liabio.cn/categories/springmvc/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.liabio.cn/categories/springmvc/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>SpringMVC实现发送邮件</title>
-      <link>http://liabio.cn/posts/2018-12-25-SpringMVC%E5%AE%9E%E7%8E%B0%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</link>
+      <link>http://www.liabio.cn/posts/2018-12-25-SpringMVC%E5%AE%9E%E7%8E%B0%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</link>
       <pubDate>Tue, 25 Dec 2018 17:30:24 +0800</pubDate>
       
-      <guid>http://liabio.cn/posts/2018-12-25-SpringMVC%E5%AE%9E%E7%8E%B0%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</guid>
+      <guid>http://www.liabio.cn/posts/2018-12-25-SpringMVC%E5%AE%9E%E7%8E%B0%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</guid>
       <description>今天来试着用SpringMVC发送邮件，主要需要依赖以下两个包； &amp;lt;!--spring发送邮件依赖spring.version=4.3.8.RELEASE--&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-context-support&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;${spring.version}&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!-- Javamail API --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;javax.mail&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;mail&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;1.4.5&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; spring-mail.xml配置文件如下</description>
     </item>
     

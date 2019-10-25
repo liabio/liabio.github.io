@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ingress-nginx on 小碗汤的博客</title>
-    <link>http://liabio.cn/tags/ingress-nginx/</link>
+    <link>http://www.liabio.cn/tags/ingress-nginx/</link>
     <description>Recent content in ingress-nginx on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 24 Sep 2019 09:59:46 +0800</lastBuildDate>
     
-	<atom:link href="http://liabio.cn/tags/ingress-nginx/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.liabio.cn/tags/ingress-nginx/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>k8s中部署负载均衡器ingress-nginx</title>
-      <link>http://liabio.cn/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/</link>
+      <link>http://www.liabio.cn/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://liabio.cn/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/</guid>
+      <guid>http://www.liabio.cn/posts/2019-09-24-k8s%E4%B8%AD%E9%83%A8%E7%BD%B2ingress-nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/</guid>
       <description>正文 在Kubernetes中，服务和Pod的IP地址仅可以在集群网络内部使用，对于集群外的应用是不可见的。为了使外部的应用能够访问集群内的服务，在Kubernetes 目前 提供了以下几种方案： NodePort LoadBalancer Ingress 本节主要就ingress和ingress控制</description>
     </item>
     

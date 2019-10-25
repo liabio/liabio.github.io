@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>工具 on 小碗汤的博客</title>
-    <link>http://liabio.cn/categories/%E5%B7%A5%E5%85%B7/</link>
+    <link>http://www.liabio.cn/categories/%E5%B7%A5%E5%85%B7/</link>
     <description>Recent content in 工具 on 小碗汤的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 24 Sep 2019 09:59:46 +0800</lastBuildDate>
     
-	<atom:link href="http://liabio.cn/categories/%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.liabio.cn/categories/%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>一次socket.error: [Errno 99] Cannot assign requested address报错排查</title>
-      <link>http://liabio.cn/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/</link>
+      <link>http://www.liabio.cn/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://liabio.cn/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/</guid>
+      <guid>http://www.liabio.cn/posts/2019-09-24-%E4%B8%80%E6%AC%A1socketError/</guid>
       <description>今天在Ucloud国际版的机器上配置某个不可描述的服务时，遇到了 socket.error: [Errno 99] Cannot assign requested address 的错误，详细如下： [root@liabio ~]# docker logs c0c34ba49967 2019-07-15 00:02:26 INFO loading libcrypto from libcrypto.so.1.0.0 2019-07-15 00:02:26 INFO starting server at 128.1.132.124:8002 Traceback (most recent call last): File &amp;quot;/usr/local/bin/ssserver&amp;quot;, line 11, in &amp;lt;module&amp;gt; sys.exit(main()) File &amp;quot;/usr/local/lib/python2.7/dist-packages/shadowsocks/server.py&amp;quot;, line 68, in main tcp_servers.append(tcprelay.TCPRelay(a_config, dns_resolver, False)) File &amp;quot;/usr/local/lib/python2.7/dist-packages/shadowsocks/tcprelay.py&amp;quot;, line 582, in __init__ server_socket.bind(sa) File &amp;quot;/usr/lib/python2.7/socket.py&amp;quot;, line 228, in meth return getattr(self._sock,name)(*args) socket.error: [Errno 99] Cannot assign requested address 原先以为是resol</description>
     </item>
     
