@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>redis集群 on 小碗汤的博客</title>
+    <title>redis集群 on 码农实战</title>
     <link>http://www.liabio.cn/tags/redis%E9%9B%86%E7%BE%A4/</link>
-    <description>Recent content in redis集群 on 小碗汤的博客</description>
+    <description>Recent content in redis集群 on 码农实战</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 02 Sep 2018 15:10:53 +0800</lastBuildDate>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>zookeeper on 小碗汤的博客</title>
+    <title>zookeeper on 码农实战</title>
     <link>http://www.liabio.cn/categories/zookeeper/</link>
-    <description>Recent content in zookeeper on 小碗汤的博客</description>
+    <description>Recent content in zookeeper on 码农实战</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 16 Nov 2018 17:03:54 +0800</lastBuildDate>
