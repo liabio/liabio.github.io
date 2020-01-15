@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>centos on 码农实战</title>
-    <link>http://www.liabio.cn/categories/centos/</link>
+    <link>https://liabio.github.io/categories/centos/</link>
     <description>Recent content in centos on 码农实战</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 19 Dec 2018 17:17:22 +0800</lastBuildDate>
     
-	<atom:link href="http://www.liabio.cn/categories/centos/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://liabio.github.io/categories/centos/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Centos Linux使用Yum安装Go和配置环境</title>
-      <link>http://www.liabio.cn/posts/2018-12-19-CentosLinux%E4%BD%BF%E7%94%A8Yum%E5%AE%89%E8%A3%85Go%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/</link>
+      <link>https://liabio.github.io/posts/2018-12-19-CentosLinux%E4%BD%BF%E7%94%A8Yum%E5%AE%89%E8%A3%85Go%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/</link>
       <pubDate>Wed, 19 Dec 2018 17:17:22 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-19-CentosLinux%E4%BD%BF%E7%94%A8Yum%E5%AE%89%E8%A3%85Go%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/</guid>
+      <guid>https://liabio.github.io/posts/2018-12-19-CentosLinux%E4%BD%BF%E7%94%A8Yum%E5%AE%89%E8%A3%85Go%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/</guid>
       <description>安装环境：CentOS7.2 64位，安装Golang 查看go是否安装过： $ go env GOARCH=&amp;quot;amd64&amp;quot; GOBIN=&amp;quot;&amp;quot; GOEXE=&amp;quot;&amp;quot; GOHOSTARCH=&amp;quot;amd64&amp;quot; GOHOSTOS=&amp;quot;linux&amp;quot; GOOS=&amp;quot;linux&amp;quot; GOPATH=&amp;quot;/root/go&amp;quot; GORACE=&amp;quot;&amp;quot; GOROOT=&amp;quot;/usr/lib/golang&amp;quot; GOTOOLDIR=&amp;quot;/usr/lib/golang/pkg/tool/linux_amd64&amp;quot; GCCGO=&amp;quot;gccgo&amp;quot; CC=&amp;quot;gcc&amp;quot; GOGCCFLAGS=&amp;quot;-fPIC -m64 -pthread -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build892156781=/tmp/go-build -gno-record-gcc-switches&amp;quot; CXX=&amp;quot;g++&amp;quot; CGO_ENABLED=&amp;quot;1&amp;quot; CGO_CFLAGS=&amp;quot;-g -O2&amp;quot; CGO_CPPFLAGS=&amp;quot;&amp;quot; CGO_CXXFLAGS=&amp;quot;-g -O2&amp;quot; CGO_FFLAGS=&amp;quot;-g -O2&amp;quot; CGO_LDFLAGS=&amp;quot;-g -O2&amp;quot; PKG_CONFIG=&amp;quot;pkg-config&amp;quot; 查看yum的Golang 查看golang： $ yum info golang Loading mirror speeds from cached hostfile Installed Packages Name : golang Arch : x86_64 Version : 1.8.3 Release : 1.el7 Size : 11 M Repo :</description>
     </item>
     
     <item>
       <title>如何让CentOS也能科学上网</title>
-      <link>http://www.liabio.cn/posts/2018-11-19-%E5%A6%82%E4%BD%95%E8%AE%A9CentOS%E4%B9%9F%E8%83%BD%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</link>
+      <link>https://liabio.github.io/posts/2018-11-19-%E5%A6%82%E4%BD%95%E8%AE%A9CentOS%E4%B9%9F%E8%83%BD%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</link>
       <pubDate>Mon, 19 Nov 2018 17:10:57 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-11-19-%E5%A6%82%E4%BD%95%E8%AE%A9CentOS%E4%B9%9F%E8%83%BD%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</guid>
+      <guid>https://liabio.github.io/posts/2018-11-19-%E5%A6%82%E4%BD%95%E8%AE%A9CentOS%E4%B9%9F%E8%83%BD%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</guid>
       <description>对于攻城狮们来说，在 PC 机上安装 ss ，以及在海外服务器上搭建 ss 服务已经不是什么新鲜事，毕竟知识无国界，有时候参照些国外先进的技术，对自身的提高也是很有帮助的。 但是如何在国内服务器上搭建 ss 客户端，并进行代理，这却是比较少见的。也正好今天碰到有这需</description>
     </item>
     

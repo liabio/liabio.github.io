@@ -2,93 +2,93 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>教程 on 码农实战</title>
-    <link>http://www.liabio.cn/tags/%E6%95%99%E7%A8%8B/</link>
+    <link>https://liabio.github.io/tags/%E6%95%99%E7%A8%8B/</link>
     <description>Recent content in 教程 on 码农实战</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 16 Oct 2019 15:28:03 +0800</lastBuildDate>
     
-	<atom:link href="http://www.liabio.cn/tags/%E6%95%99%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://liabio.github.io/tags/%E6%95%99%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>​“ReadMore” 之 cnblogs 博客园使用指南</title>
-      <link>http://www.liabio.cn/posts/2019-10-16-cnblog-readmore/</link>
+      <link>https://liabio.github.io/posts/2019-10-16-cnblog-readmore/</link>
       <pubDate>Wed, 16 Oct 2019 15:28:03 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-10-16-cnblog-readmore/</guid>
+      <guid>https://liabio.github.io/posts/2019-10-16-cnblog-readmore/</guid>
       <description>readmore来源于：https://openwrite.cn/openwrite/openwrite-readmore/ 博客园接入 readmore 很简单，三步走，2 分钟搞定！ 在 OpenWrite 生成 readmore 脚本 微信公众号设置关键词回复 在博客园设置中添加脚本 1、在 OpenWrite 生成 readmore 脚</description>
     </item>
     
     <item>
       <title>CSDN VIP博客如何自定义栏目</title>
-      <link>http://www.liabio.cn/posts/2019-10-15-csdn-custom-menu/</link>
+      <link>https://liabio.github.io/posts/2019-10-15-csdn-custom-menu/</link>
       <pubDate>Tue, 15 Oct 2019 17:49:46 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-10-15-csdn-custom-menu/</guid>
+      <guid>https://liabio.github.io/posts/2019-10-15-csdn-custom-menu/</guid>
       <description>几个月前我也开始在csdn上开了博客，一来给自己加几个少的可怜的流量，再者，让公众号的原创文章获得更多的曝光，让有需要的同学看到。 写过csdn博客的同学都知道，默认只有打赏c币功能；也没有专门广告位；引导栏目，只有侧栏csdn自己的引导二维</description>
     </item>
     
     <item>
       <title>Golang Flag包使用笔记</title>
-      <link>http://www.liabio.cn/posts/2019-06-20-golangFlag%E5%8C%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</link>
+      <link>https://liabio.github.io/posts/2019-06-20-golangFlag%E5%8C%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Thu, 20 Jun 2019 17:50:36 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-06-20-golangFlag%E5%8C%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</guid>
+      <guid>https://liabio.github.io/posts/2019-06-20-golangFlag%E5%8C%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</guid>
       <description>本文原文地址：flag - 命令行参数解析 在写命令行程序（工具、server）时，对命令参数进行解析是常见的需求。各种语言一般都会提供解析命令行参数的方法或库，以方便程序员使用。如果命令行参数纯粹自己写代码来解析，对于比较复杂的，还是挺费劲的。</description>
     </item>
     
     <item>
       <title>Mysql大小写敏感与校对规则</title>
-      <link>http://www.liabio.cn/posts/2019-01-08-mysql%E5%A4%A7%E5%B0%8F%E5%86%99%E6%95%8F%E6%84%9F%E4%B8%8E%E6%A0%A1%E5%AF%B9%E8%A7%84%E5%88%99/</link>
+      <link>https://liabio.github.io/posts/2019-01-08-mysql%E5%A4%A7%E5%B0%8F%E5%86%99%E6%95%8F%E6%84%9F%E4%B8%8E%E6%A0%A1%E5%AF%B9%E8%A7%84%E5%88%99/</link>
       <pubDate>Tue, 08 Jan 2019 17:46:39 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-01-08-mysql%E5%A4%A7%E5%B0%8F%E5%86%99%E6%95%8F%E6%84%9F%E4%B8%8E%E6%A0%A1%E5%AF%B9%E8%A7%84%E5%88%99/</guid>
+      <guid>https://liabio.github.io/posts/2019-01-08-mysql%E5%A4%A7%E5%B0%8F%E5%86%99%E6%95%8F%E6%84%9F%E4%B8%8E%E6%A0%A1%E5%AF%B9%E8%A7%84%E5%88%99/</guid>
       <description>大家在使用mysql过程中，可能会遇到类似以下的问题： 模糊匹配 jg%，结果以JG开头的字符串也出现在结果集中，大家很自然的认为是大小写敏感的问题。那么mysql中大小写敏感是如何控制的；数据库名，表名，字段名这些字典对象以及字段值的大小敏感</description>
     </item>
     
     <item>
       <title>Vmware上安装linux过程记录</title>
-      <link>http://www.liabio.cn/posts/2019-01-01-vmware%E4%B8%8A%E5%AE%89%E8%A3%85linux%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/</link>
+      <link>https://liabio.github.io/posts/2019-01-01-vmware%E4%B8%8A%E5%AE%89%E8%A3%85linux%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Tue, 01 Jan 2019 17:36:41 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-01-01-vmware%E4%B8%8A%E5%AE%89%E8%A3%85linux%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/</guid>
+      <guid>https://liabio.github.io/posts/2019-01-01-vmware%E4%B8%8A%E5%AE%89%E8%A3%85linux%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/</guid>
       <description>以前的电脑上安装过vmware+redhat，但是奈何电脑太老，配置太低，打开的时候超级卡，没法用。换了电脑后，再装上玩玩，故此记录一下安装过程。需要安装的小伙伴可以在此获取包然后按此步骤安装。 1、创建新的虚拟机 -&amp;gt; 自定义安装 2、选择虚拟机兼</description>
     </item>
     
     <item>
       <title>Mysql支持原生json使用说明</title>
-      <link>http://www.liabio.cn/posts/2018-12-24-mysql%E6%94%AF%E6%8C%81%E5%8E%9F%E7%94%9Fjson%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</link>
+      <link>https://liabio.github.io/posts/2018-12-24-mysql%E6%94%AF%E6%8C%81%E5%8E%9F%E7%94%9Fjson%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</link>
       <pubDate>Mon, 24 Dec 2018 17:28:07 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-24-mysql%E6%94%AF%E6%8C%81%E5%8E%9F%E7%94%9Fjson%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</guid>
+      <guid>https://liabio.github.io/posts/2018-12-24-mysql%E6%94%AF%E6%8C%81%E5%8E%9F%E7%94%9Fjson%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</guid>
       <description>MySQL在5.7.8开始对json原生支持，本文将对MySQL中json类型的用法简单说明，希望对你有用。 CREATE TABLE testproject ( `id` int(10) unsigned NOT NULL AUTO_INCREMENT, `skill` JSON NOT NULL, `student` JSON NOT NULL, PRIMARY KEY (`id`) ); 查看表结构： 这样JSON的字段就被创建好了 注：JSON类型不能有默认值。 插入JSON 插入</description>
     </item>
     
     <item>
       <title>Elasticsearch6.2.4插件head安装</title>
-      <link>http://www.liabio.cn/posts/2018-12-20-elasticsearch6-2-4%E6%8F%92%E4%BB%B6head%E5%AE%89%E8%A3%85/</link>
+      <link>https://liabio.github.io/posts/2018-12-20-elasticsearch6-2-4%E6%8F%92%E4%BB%B6head%E5%AE%89%E8%A3%85/</link>
       <pubDate>Thu, 20 Dec 2018 17:18:27 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-20-elasticsearch6-2-4%E6%8F%92%E4%BB%B6head%E5%AE%89%E8%A3%85/</guid>
+      <guid>https://liabio.github.io/posts/2018-12-20-elasticsearch6-2-4%E6%8F%92%E4%BB%B6head%E5%AE%89%E8%A3%85/</guid>
       <description>安装nodejs： https://nodejs.org/en/download/current/ 以windows64为例，下载msi文件： 安装时，安装目录选择D盘，一路下一步即可。 安装完成，在cmd里执行node -v，成功回显版本号表示nodejs安装成功： 安装grunt： npm install -g grunt-cli grunt -version 开始安装head 在https:</description>
     </item>
     
     <item>
       <title>Centos Linux使用Yum安装Go和配置环境</title>
-      <link>http://www.liabio.cn/posts/2018-12-19-CentosLinux%E4%BD%BF%E7%94%A8Yum%E5%AE%89%E8%A3%85Go%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/</link>
+      <link>https://liabio.github.io/posts/2018-12-19-CentosLinux%E4%BD%BF%E7%94%A8Yum%E5%AE%89%E8%A3%85Go%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/</link>
       <pubDate>Wed, 19 Dec 2018 17:17:22 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-19-CentosLinux%E4%BD%BF%E7%94%A8Yum%E5%AE%89%E8%A3%85Go%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/</guid>
+      <guid>https://liabio.github.io/posts/2018-12-19-CentosLinux%E4%BD%BF%E7%94%A8Yum%E5%AE%89%E8%A3%85Go%E5%92%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/</guid>
       <description>安装环境：CentOS7.2 64位，安装Golang 查看go是否安装过： $ go env GOARCH=&amp;quot;amd64&amp;quot; GOBIN=&amp;quot;&amp;quot; GOEXE=&amp;quot;&amp;quot; GOHOSTARCH=&amp;quot;amd64&amp;quot; GOHOSTOS=&amp;quot;linux&amp;quot; GOOS=&amp;quot;linux&amp;quot; GOPATH=&amp;quot;/root/go&amp;quot; GORACE=&amp;quot;&amp;quot; GOROOT=&amp;quot;/usr/lib/golang&amp;quot; GOTOOLDIR=&amp;quot;/usr/lib/golang/pkg/tool/linux_amd64&amp;quot; GCCGO=&amp;quot;gccgo&amp;quot; CC=&amp;quot;gcc&amp;quot; GOGCCFLAGS=&amp;quot;-fPIC -m64 -pthread -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build892156781=/tmp/go-build -gno-record-gcc-switches&amp;quot; CXX=&amp;quot;g++&amp;quot; CGO_ENABLED=&amp;quot;1&amp;quot; CGO_CFLAGS=&amp;quot;-g -O2&amp;quot; CGO_CPPFLAGS=&amp;quot;&amp;quot; CGO_CXXFLAGS=&amp;quot;-g -O2&amp;quot; CGO_FFLAGS=&amp;quot;-g -O2&amp;quot; CGO_LDFLAGS=&amp;quot;-g -O2&amp;quot; PKG_CONFIG=&amp;quot;pkg-config&amp;quot; 查看yum的Golang 查看golang： $ yum info golang Loading mirror speeds from cached hostfile Installed Packages Name : golang Arch : x86_64 Version : 1.8.3 Release : 1.el7 Size : 11 M Repo :</description>
     </item>
     
     <item>
       <title>听说你还没掌握Normalizer的使用方法</title>
-      <link>http://www.liabio.cn/posts/2018-11-19-%E5%90%AC%E8%AF%B4%E4%BD%A0%E8%BF%98%E6%B2%A1%E6%8E%8C%E6%8F%A1Normalizer%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</link>
+      <link>https://liabio.github.io/posts/2018-11-19-%E5%90%AC%E8%AF%B4%E4%BD%A0%E8%BF%98%E6%B2%A1%E6%8E%8C%E6%8F%A1Normalizer%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</link>
       <pubDate>Mon, 19 Nov 2018 17:14:22 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-11-19-%E5%90%AC%E8%AF%B4%E4%BD%A0%E8%BF%98%E6%B2%A1%E6%8E%8C%E6%8F%A1Normalizer%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</guid>
+      <guid>https://liabio.github.io/posts/2018-11-19-%E5%90%AC%E8%AF%B4%E4%BD%A0%E8%BF%98%E6%B2%A1%E6%8E%8C%E6%8F%A1Normalizer%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</guid>
       <description>在 Elasticsearch 中处理字符串类型的数据时，如果我们想把整个字符串作为一个完整的 term 存储，我们通常会将其类型 type 设定为 keyword。但有时这种设定又会给我们带来麻烦，比如同一个数据再写入时由于没有做好清洗，导致大小写不一致，比如 apple、Apple两个实</description>
     </item>
     

@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>nginx on 码农实战</title>
-    <link>http://www.liabio.cn/categories/nginx/</link>
+    <link>https://liabio.github.io/categories/nginx/</link>
     <description>Recent content in nginx on 码农实战</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 02 Dec 2018 15:15:43 +0800</lastBuildDate>
     
-	<atom:link href="http://www.liabio.cn/categories/nginx/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://liabio.github.io/categories/nginx/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Nginx Map配置根据请求头不同分配流量到不同后端服务</title>
-      <link>http://www.liabio.cn/posts/2018-12-02-nginx-map%E9%85%8D%E7%BD%AE%E6%A0%B9%E6%8D%AE%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%B8%8D%E5%90%8C%E5%88%86%E9%85%8D%E6%B5%81%E9%87%8F%E5%88%B0%E4%B8%8D%E5%90%8C%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1/</link>
+      <link>https://liabio.github.io/posts/2018-12-02-nginx-map%E9%85%8D%E7%BD%AE%E6%A0%B9%E6%8D%AE%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%B8%8D%E5%90%8C%E5%88%86%E9%85%8D%E6%B5%81%E9%87%8F%E5%88%B0%E4%B8%8D%E5%90%8C%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1/</link>
       <pubDate>Sun, 02 Dec 2018 15:15:43 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-02-nginx-map%E9%85%8D%E7%BD%AE%E6%A0%B9%E6%8D%AE%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%B8%8D%E5%90%8C%E5%88%86%E9%85%8D%E6%B5%81%E9%87%8F%E5%88%B0%E4%B8%8D%E5%90%8C%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1/</guid>
+      <guid>https://liabio.github.io/posts/2018-12-02-nginx-map%E9%85%8D%E7%BD%AE%E6%A0%B9%E6%8D%AE%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%B8%8D%E5%90%8C%E5%88%86%E9%85%8D%E6%B5%81%E9%87%8F%E5%88%B0%E4%B8%8D%E5%90%8C%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1/</guid>
       <description>最近在做一个需求开发：根据请求后的不同，nginx将请求分发到不同的后端服务；需要修改kubernetes的ingress-nginx-controller的源码，调试的时候遇到了挺多问题，写出来，有需要的老铁可以参考。具体方案就不说了，只</description>
     </item>
     
     <item>
       <title>学习openresty时nginx的一个坑</title>
-      <link>http://www.liabio.cn/posts/2018-11-13-%E5%AD%A6%E4%B9%A0openresty%E6%97%B6nginx%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/</link>
+      <link>https://liabio.github.io/posts/2018-11-13-%E5%AD%A6%E4%B9%A0openresty%E6%97%B6nginx%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/</link>
       <pubDate>Tue, 13 Nov 2018 16:56:04 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-11-13-%E5%AD%A6%E4%B9%A0openresty%E6%97%B6nginx%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/</guid>
+      <guid>https://liabio.github.io/posts/2018-11-13-%E5%AD%A6%E4%B9%A0openresty%E6%97%B6nginx%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/</guid>
       <description>报错： nginx: [error] CreateFile() &amp;quot;./logs/nginx.pid&amp;quot; failed (2: The system cannot find the file specified) 在执行了nginx -s stop后，再次启动nginx时报错： 这个坑主要原因就是没有nginx.pid这个文件，./logs/下找不到nginx.pid文件，看了确实找不到。 看了网上很多方案是 需要建立nginx.</description>
     </item>
     

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>http on 码农实战</title>
-    <link>http://www.liabio.cn/tags/http/</link>
+    <link>https://liabio.github.io/tags/http/</link>
     <description>Recent content in http on 码农实战</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 20 Mar 2019 17:49:52 +0800</lastBuildDate>
     
-	<atom:link href="http://www.liabio.cn/tags/http/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://liabio.github.io/tags/http/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>HTTP请求中的FormData与RequestPayload的区别</title>
-      <link>http://www.liabio.cn/posts/2019-03-20-HTTP%E8%AF%B7%E6%B1%82%E4%B8%AD%E7%9A%84FormData%E4%B8%8ERequestPayload%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
+      <link>https://liabio.github.io/posts/2019-03-20-HTTP%E8%AF%B7%E6%B1%82%E4%B8%AD%E7%9A%84FormData%E4%B8%8ERequestPayload%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
       <pubDate>Wed, 20 Mar 2019 17:49:52 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-03-20-HTTP%E8%AF%B7%E6%B1%82%E4%B8%AD%E7%9A%84FormData%E4%B8%8ERequestPayload%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
+      <guid>https://liabio.github.io/posts/2019-03-20-HTTP%E8%AF%B7%E6%B1%82%E4%B8%AD%E7%9A%84FormData%E4%B8%8ERequestPayload%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
       <description>HTTP请求中的Form Data与Request Payload的区别 前端开发中经常会用到AJAX发送异步请求，对于POST类型的请求会附带请求数据。而常用的两种传参方式为：Form Data 和 Request Payload。 GET请求 使用get请求时，参数会以k</description>
     </item>
     

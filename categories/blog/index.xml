@@ -2,57 +2,57 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>blog on 码农实战</title>
-    <link>http://www.liabio.cn/categories/blog/</link>
+    <link>https://liabio.github.io/categories/blog/</link>
     <description>Recent content in blog on 码农实战</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 25 Oct 2019 11:49:42 +0800</lastBuildDate>
     
-	<atom:link href="http://www.liabio.cn/categories/blog/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://liabio.github.io/categories/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>5分钟搭建个博客玩玩</title>
-      <link>http://www.liabio.cn/posts/2019-10-24-solo-blog/</link>
+      <link>https://liabio.github.io/posts/2019-10-24-solo-blog/</link>
       <pubDate>Fri, 25 Oct 2019 11:49:42 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-10-24-solo-blog/</guid>
+      <guid>https://liabio.github.io/posts/2019-10-24-solo-blog/</guid>
       <description>大家都知道最近阿里云服务器很便宜火爆，于是小编也入手了一台3年的，配置：1核2G内存，40G硬盘。 今年比去年便宜，10.24~11.11购买是1年86元，3年229元，打开以下链接参与，也可以扫描文末的海报二维码，或点击文末阅读原文 点我参与</description>
     </item>
     
     <item>
       <title>​“ReadMore” 之 cnblogs 博客园使用指南</title>
-      <link>http://www.liabio.cn/posts/2019-10-16-cnblog-readmore/</link>
+      <link>https://liabio.github.io/posts/2019-10-16-cnblog-readmore/</link>
       <pubDate>Wed, 16 Oct 2019 15:28:03 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-10-16-cnblog-readmore/</guid>
+      <guid>https://liabio.github.io/posts/2019-10-16-cnblog-readmore/</guid>
       <description>readmore来源于：https://openwrite.cn/openwrite/openwrite-readmore/ 博客园接入 readmore 很简单，三步走，2 分钟搞定！ 在 OpenWrite 生成 readmore 脚本 微信公众号设置关键词回复 在博客园设置中添加脚本 1、在 OpenWrite 生成 readmore 脚</description>
     </item>
     
     <item>
       <title>CSDN VIP博客如何自定义栏目</title>
-      <link>http://www.liabio.cn/posts/2019-10-15-csdn-custom-menu/</link>
+      <link>https://liabio.github.io/posts/2019-10-15-csdn-custom-menu/</link>
       <pubDate>Tue, 15 Oct 2019 17:49:46 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-10-15-csdn-custom-menu/</guid>
+      <guid>https://liabio.github.io/posts/2019-10-15-csdn-custom-menu/</guid>
       <description>几个月前我也开始在csdn上开了博客，一来给自己加几个少的可怜的流量，再者，让公众号的原创文章获得更多的曝光，让有需要的同学看到。 写过csdn博客的同学都知道，默认只有打赏c币功能；也没有专门广告位；引导栏目，只有侧栏csdn自己的引导二维</description>
     </item>
     
     <item>
       <title>Hugo搭建博客教程</title>
-      <link>http://www.liabio.cn/posts/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</link>
+      <link>https://liabio.github.io/posts/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</link>
       <pubDate>Fri, 03 May 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</guid>
+      <guid>https://liabio.github.io/posts/2019-05-03-Hugo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</guid>
       <description>在编译时报错如下： Building sites … ERROR 2019/05/03 10:36:45 Failed to read Git log: fatal: Not a git repository (or any of the parent d irectories): .git Building sites … ERROR 2019/05/03 10:45:16 Failed to read Git log: fatal: your current branch &#39;master&#39; does not have a ny commits yet 需要先在站点根目录执行以下命令： git init git add . git commit -m &#39;test&#39; config.toml中的baseUrl为http://liabio.gith</description>
     </item>
     
     <item>
       <title>快速搭建个人博客</title>
-      <link>http://www.liabio.cn/posts/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+      <link>https://liabio.github.io/posts/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
       <pubDate>Mon, 06 Feb 2017 09:59:46 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <guid>https://liabio.github.io/posts/2017-02-06-%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
       <description>正所谓前人栽树，后人乘凉。 感谢Huxpro提供的博客模板 我的的博客 前言 从 Jekyll 到 GitHub Pages 中间踩了许多坑，终于把我的个人博客BY Blog搭建出来了。。。 本教程针对的是不懂技术又想搭建个人博客的小白，操作简单暴力且快速。当然懂技术那就更好了。 看看看博客</description>
     </item>
     

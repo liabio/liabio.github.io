@@ -2,102 +2,102 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>docker on 码农实战</title>
-    <link>http://www.liabio.cn/categories/docker/</link>
+    <link>https://liabio.github.io/categories/docker/</link>
     <description>Recent content in docker on 码农实战</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 24 Sep 2019 09:59:46 +0800</lastBuildDate>
     
-	<atom:link href="http://www.liabio.cn/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://liabio.github.io/categories/docker/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>docker镜像制作必备技能</title>
-      <link>http://www.liabio.cn/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/</link>
+      <link>https://liabio.github.io/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/</guid>
+      <guid>https://liabio.github.io/posts/2019-09-24-docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E5%BF%85%E5%A4%87%E6%8A%80%E8%83%BD/</guid>
       <description>正文 使用过docker的都知道dockerfile，其用于定义制作镜像的流程，由一系列命令和参数构成的脚本，这些命令应用于基础镜像并最终创建一个新的镜像。可参考往期文章学习：docker基础知识整理 有时候，我们想在原有镜像基础上修改、增加文</description>
     </item>
     
     <item>
       <title>k8s使用Job执行任务失败了怎么办</title>
-      <link>http://www.liabio.cn/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/</link>
+      <link>https://liabio.github.io/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/</guid>
+      <guid>https://liabio.github.io/posts/2019-09-24-k8s%E4%BD%BF%E7%94%A8Job%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1%E5%A4%B1%E8%B4%A5%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/</guid>
       <description>正文 Kubernetes 中使用 Job 和 CronJob 两个资源分别提供了一次性任务和定时任务的特性，这两种对象也使用控制器模型来实现资源的管理，我们在这篇文章来介绍Job执行如果失败了会怎么样呢？ 修改job-fail.yaml，故意引入一个错误： Never 如果将 restartPolicy 设置为 Never 会怎么样？下</description>
     </item>
     
     <item>
       <title>云服务器使用docker搭建服务</title>
-      <link>http://www.liabio.cn/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/</link>
+      <link>https://liabio.github.io/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/</guid>
+      <guid>https://liabio.github.io/posts/2019-09-24-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/</guid>
       <description>前提：亚马逊云已经配置好启动。 安全组入站策略如下： 出站策略如下： 登陆EC2后，默认只能用ec2-user用户登陆，然后切换到root： sudo su 用yum执行安装docker提示No package docker avaible yum install docker -y 解决方法： 在/etc/yum.repos.d/下加C</description>
     </item>
     
     <item>
       <title>史上最全docker基础知识汇总</title>
-      <link>http://www.liabio.cn/posts/2019-09-24-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/</link>
+      <link>https://liabio.github.io/posts/2019-09-24-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-09-24-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/</guid>
+      <guid>https://liabio.github.io/posts/2019-09-24-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8docker%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/</guid>
       <description>正文 Docker常用命令 run docker run [OPTIONS] IMAGE [COMMAND] [ARG...] -e设置环境变量；-e username=zhj &amp;ndash;name为容器指定一个名称；&amp;ndash;name=zhj -p指定端口映射，格式为：主机(宿主)端口:容器端口 -p 80:8080 -t为容器重新分配一个伪输入终端，通常与 -i 同时使用</description>
     </item>
     
     <item>
       <title>采坑指南——k8s域名解析coredns问题排查过程</title>
-      <link>http://www.liabio.cn/posts/2019-09-24-%E9%87%87%E5%9D%91%E6%8C%87%E5%8D%97-k8s%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90coredns%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/</link>
+      <link>https://liabio.github.io/posts/2019-09-24-%E9%87%87%E5%9D%91%E6%8C%87%E5%8D%97-k8s%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90coredns%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/</link>
       <pubDate>Tue, 24 Sep 2019 09:59:46 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-09-24-%E9%87%87%E5%9D%91%E6%8C%87%E5%8D%97-k8s%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90coredns%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/</guid>
+      <guid>https://liabio.github.io/posts/2019-09-24-%E9%87%87%E5%9D%91%E6%8C%87%E5%8D%97-k8s%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90coredns%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/</guid>
       <description>正文 前几天，在ucloud上搭建的k8s集群（搭建教程后续会发出）。今天发现域名解析不了。 组件版本：k8s 1.15.0，coredns：1.3.1 过程是这样的： 首先用以下yaml文件创建了一个nginx服务 apiVersion: v1 kind: Service metadata: name: nginx-svc-old labels: app: nginx-svc spec: selector: app: nginx ports: - protocol:</description>
     </item>
     
     <item>
       <title>云服务器使用docker搭建服务</title>
-      <link>http://www.liabio.cn/posts/2019-09-21-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/</link>
+      <link>https://liabio.github.io/posts/2019-09-21-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/</link>
       <pubDate>Sat, 21 Sep 2019 10:48:21 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-09-21-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/</guid>
+      <guid>https://liabio.github.io/posts/2019-09-21-%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8docker%E6%90%AD%E5%BB%BA%E6%9C%8D%E5%8A%A1/</guid>
       <description>前提：亚马逊云已经配置好启动。 安全组入站策略如下： 出站策略如下： 登陆EC2后，默认只能用ec2-user用户登陆，然后切换到root： sudo su 用yum执行安装docker提示No package docker avaible yum install docker -y 解决方法： 在/etc/yum.repos.d/下加C</description>
     </item>
     
     <item>
       <title>Docker镜像仓库</title>
-      <link>http://www.liabio.cn/posts/2018-11-15-docker%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93/</link>
+      <link>https://liabio.github.io/posts/2018-11-15-docker%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93/</link>
       <pubDate>Thu, 15 Nov 2018 17:00:35 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-11-15-docker%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93/</guid>
+      <guid>https://liabio.github.io/posts/2018-11-15-docker%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93/</guid>
       <description>公有仓库和私有仓库： 速度：公有仓库走的公网，速度较慢；私有仓库走的是内网，即局域网； 安全性：公有仓库存放在公共硬盘上；私有仓库存在自己服务器硬盘上。 公有仓： 最权威的，但速度比较慢： https://hub.docker.com/ 首先登陆： $ docker login -usmallsoup Password: WARNING! Your password will be stored unencrypted in /root/.docker/config.json. Configure a credential helper to remove this warning. See https://docs.docker.com/engine/reference/commandline/login/#credentials-store</description>
     </item>
     
     <item>
       <title>Docker CE镜像源站</title>
-      <link>http://www.liabio.cn/posts/2018-11-12-DockerCE%E9%95%9C%E5%83%8F%E6%BA%90%E7%AB%99/</link>
+      <link>https://liabio.github.io/posts/2018-11-12-DockerCE%E9%95%9C%E5%83%8F%E6%BA%90%E7%AB%99/</link>
       <pubDate>Mon, 12 Nov 2018 16:54:24 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-11-12-DockerCE%E9%95%9C%E5%83%8F%E6%BA%90%E7%AB%99/</guid>
+      <guid>https://liabio.github.io/posts/2018-11-12-DockerCE%E9%95%9C%E5%83%8F%E6%BA%90%E7%AB%99/</guid>
       <description>使用官方安装脚本自动安装 curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun 手动安装帮助 Ubuntu 14.04 16.04 (使用apt-get进行安装) # step 1: 安装必要的一些系统工具 sudo apt-get update sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common # step 2: 安装GPG证书 curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add - # Step 3: 写入软件源信息 sudo add-apt-repository &amp;quot;deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable&amp;quot; # Step 4: 更新并安装 Docker-CE sudo apt-get -y update sudo</description>
     </item>
     
     <item>
       <title>Docker multi stage build机制</title>
-      <link>http://www.liabio.cn/posts/2018-11-11-DockerMulti-stageBuild%E6%9C%BA%E5%88%B6/</link>
+      <link>https://liabio.github.io/posts/2018-11-11-DockerMulti-stageBuild%E6%9C%BA%E5%88%B6/</link>
       <pubDate>Sun, 11 Nov 2018 16:52:06 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-11-11-DockerMulti-stageBuild%E6%9C%BA%E5%88%B6/</guid>
+      <guid>https://liabio.github.io/posts/2018-11-11-DockerMulti-stageBuild%E6%9C%BA%E5%88%B6/</guid>
       <description>摘要： 随着17.05版本的发布，Docker对于镜像构建这块也作了一项重要更新，那就是 multi-stage build（多阶段构建），这对于长期因为构建镜像太大而困扰的小伙伴们来说真是雪中送炭。 随着17.05版本的发布，Docker对于镜像构建这块也作了一项重</description>
     </item>
     
     <item>
       <title>Docker升级到最新版本</title>
-      <link>http://www.liabio.cn/posts/2018-08-02-Docker%E5%8D%87%E7%BA%A7%E5%88%B0%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC/</link>
+      <link>https://liabio.github.io/posts/2018-08-02-Docker%E5%8D%87%E7%BA%A7%E5%88%B0%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC/</link>
       <pubDate>Thu, 02 Aug 2018 15:09:25 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-08-02-Docker%E5%8D%87%E7%BA%A7%E5%88%B0%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC/</guid>
+      <guid>https://liabio.github.io/posts/2018-08-02-Docker%E5%8D%87%E7%BA%A7%E5%88%B0%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC/</guid>
       <description>1、查看系统要求 Docker 要求 CentOS 系统的内核版本高于 3.10 ,查看CentOS的内核版本。 uname -a 2、删除旧版本 yum remove docker docker-common docker-selinux docker-engine 3、安装需要的软件包 yum-util 提供yum-config-manager功能，另外两个是devicemapper驱动依赖的 sudo yum install -y yum-utils device-mapper-persistent-data lvm2 4、设置D</description>
     </item>
     

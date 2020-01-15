@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>zookeeper on 码农实战</title>
-    <link>http://www.liabio.cn/categories/zookeeper/</link>
+    <link>https://liabio.github.io/categories/zookeeper/</link>
     <description>Recent content in zookeeper on 码农实战</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 16 Nov 2018 17:03:54 +0800</lastBuildDate>
     
-	<atom:link href="http://www.liabio.cn/categories/zookeeper/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://liabio.github.io/categories/zookeeper/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>连接zookeeper报错NoRouteToHost</title>
-      <link>http://www.liabio.cn/posts/2018-11-16-%E8%BF%9E%E6%8E%A5zookeeper%E6%8A%A5%E9%94%99NoRouteToHost/</link>
+      <link>https://liabio.github.io/posts/2018-11-16-%E8%BF%9E%E6%8E%A5zookeeper%E6%8A%A5%E9%94%99NoRouteToHost/</link>
       <pubDate>Fri, 16 Nov 2018 17:03:54 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-11-16-%E8%BF%9E%E6%8E%A5zookeeper%E6%8A%A5%E9%94%99NoRouteToHost/</guid>
+      <guid>https://liabio.github.io/posts/2018-11-16-%E8%BF%9E%E6%8E%A5zookeeper%E6%8A%A5%E9%94%99NoRouteToHost/</guid>
       <description>最近在学习微服务，遇到了很多问题，今天又遇到了个连接zookeeper报错的问题，在此记录下。 学生课程管理系统简单微服务架构图： 各个服务容器化以后，用docker-compose启动，其中docker-compose.yml文件如下： version: &amp;quot;3&amp;quot; services:</description>
     </item>
     

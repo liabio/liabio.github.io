@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>chocolate on 码农实战</title>
-    <link>http://www.liabio.cn/tags/chocolate/</link>
+    <link>https://liabio.github.io/tags/chocolate/</link>
     <description>Recent content in chocolate on 码农实战</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 19 Dec 2018 17:16:03 +0800</lastBuildDate>
     
-	<atom:link href="http://www.liabio.cn/tags/chocolate/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://liabio.github.io/tags/chocolate/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>使用Chocolate通过脚本管理Windows应用</title>
-      <link>http://www.liabio.cn/posts/2018-12-19-%E4%BD%BF%E7%94%A8Chocolate%E9%80%9A%E8%BF%87%E8%84%9A%E6%9C%AC%E7%AE%A1%E7%90%86Windows%E5%BA%94%E7%94%A8/</link>
+      <link>https://liabio.github.io/posts/2018-12-19-%E4%BD%BF%E7%94%A8Chocolate%E9%80%9A%E8%BF%87%E8%84%9A%E6%9C%AC%E7%AE%A1%E7%90%86Windows%E5%BA%94%E7%94%A8/</link>
       <pubDate>Wed, 19 Dec 2018 17:16:03 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-12-19-%E4%BD%BF%E7%94%A8Chocolate%E9%80%9A%E8%BF%87%E8%84%9A%E6%9C%AC%E7%AE%A1%E7%90%86Windows%E5%BA%94%E7%94%A8/</guid>
+      <guid>https://liabio.github.io/posts/2018-12-19-%E4%BD%BF%E7%94%A8Chocolate%E9%80%9A%E8%BF%87%E8%84%9A%E6%9C%AC%E7%AE%A1%E7%90%86Windows%E5%BA%94%E7%94%A8/</guid>
       <description>使用Chocolate通过脚本管理Windows应用 在类Unix系统中，我们可以使用例如port、apt-get、yum此类包管理工具，对应用进行快速便捷的安装。在Windows平台，通过chololate，我们同样可以做到通过一条命令完成</description>
     </item>
     

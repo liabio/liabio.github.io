@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>java on 码农实战</title>
-    <link>http://www.liabio.cn/tags/java/</link>
+    <link>https://liabio.github.io/tags/java/</link>
     <description>Recent content in java on 码农实战</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Mon, 20 May 2019 17:50:15 +0800</lastBuildDate>
     
-	<atom:link href="http://www.liabio.cn/tags/java/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://liabio.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Java子类调用父类构造器函数</title>
-      <link>http://www.liabio.cn/posts/2019-05-20-java%E5%AD%90%E7%B1%BB%E8%B0%83%E7%94%A8%E7%88%B6%E7%B1%BB%E6%9E%84%E9%80%A0%E5%99%A8%E5%87%BD%E6%95%B0/</link>
+      <link>https://liabio.github.io/posts/2019-05-20-java%E5%AD%90%E7%B1%BB%E8%B0%83%E7%94%A8%E7%88%B6%E7%B1%BB%E6%9E%84%E9%80%A0%E5%99%A8%E5%87%BD%E6%95%B0/</link>
       <pubDate>Mon, 20 May 2019 17:50:15 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-05-20-java%E5%AD%90%E7%B1%BB%E8%B0%83%E7%94%A8%E7%88%B6%E7%B1%BB%E6%9E%84%E9%80%A0%E5%99%A8%E5%87%BD%E6%95%B0/</guid>
+      <guid>https://liabio.github.io/posts/2019-05-20-java%E5%AD%90%E7%B1%BB%E8%B0%83%E7%94%A8%E7%88%B6%E7%B1%BB%E6%9E%84%E9%80%A0%E5%99%A8%E5%87%BD%E6%95%B0/</guid>
       <description>class FatherClass{ public FatherClass(){ System.out.println(&amp;quot;父类 无参 构造函数&amp;quot;); } public FatherClass(int i){ System.out.println(&amp;quot;父类 一个参数构造函数super = &amp;quot;+i); } public FatherClass(int i,String j){ System.out.println(&amp;quot</description>
     </item>
     

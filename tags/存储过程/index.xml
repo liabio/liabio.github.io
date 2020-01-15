@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>存储过程 on 码农实战</title>
-    <link>http://www.liabio.cn/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</link>
+    <link>https://liabio.github.io/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</link>
     <description>Recent content in 存储过程 on 码农实战</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 21 Aug 2019 17:51:26 +0800</lastBuildDate>
     
-	<atom:link href="http://www.liabio.cn/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://liabio.github.io/tags/%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>利用procedure批量插入数据</title>
-      <link>http://www.liabio.cn/posts/2019-08-21-%E5%88%A9%E7%94%A8procedure%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE/</link>
+      <link>https://liabio.github.io/posts/2019-08-21-%E5%88%A9%E7%94%A8procedure%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE/</link>
       <pubDate>Wed, 21 Aug 2019 17:51:26 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-08-21-%E5%88%A9%E7%94%A8procedure%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE/</guid>
+      <guid>https://liabio.github.io/posts/2019-08-21-%E5%88%A9%E7%94%A8procedure%E6%89%B9%E9%87%8F%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE/</guid>
       <description>&amp;emsp;&amp;emsp;要求在页面查询到5000条数据，为了方便插入，准备用shell脚本写curl命令调用自己写的代码接口，但是速度慢，而且写的时候遇到点儿小问题，故用sql语句写了这个功能 &amp;emsp;&amp;emsp;由于operationl</description>
     </item>
     
     <item>
       <title>存储过程procedure和函数Function的区别</title>
-      <link>http://www.liabio.cn/posts/2019-07-21-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8Bprocedure%E5%92%8C%E5%87%BD%E6%95%B0Function%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
+      <link>https://liabio.github.io/posts/2019-07-21-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8Bprocedure%E5%92%8C%E5%87%BD%E6%95%B0Function%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
       <pubDate>Sun, 21 Jul 2019 17:51:13 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2019-07-21-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8Bprocedure%E5%92%8C%E5%87%BD%E6%95%B0Function%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
+      <guid>https://liabio.github.io/posts/2019-07-21-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8Bprocedure%E5%92%8C%E5%87%BD%E6%95%B0Function%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
       <description>1、返回值的区别 函数有1个返回值,而存储过程是通过参数返回的,可以有多个或者没有 2. 调用的区别,函数可以在查询语句中直接调用,而存储过程必须单独调用. 函数：一般情况下是用来计算并返回一个计算结果； 存储过程： 一般是用来完成特定的数据操作（比如修</description>
     </item>
     

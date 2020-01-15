@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>nginx on 码农实战</title>
-    <link>http://www.liabio.cn/tags/nginx/</link>
+    <link>https://liabio.github.io/tags/nginx/</link>
     <description>Recent content in nginx on 码农实战</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 13 Nov 2018 16:56:04 +0800</lastBuildDate>
     
-	<atom:link href="http://www.liabio.cn/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://liabio.github.io/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>学习openresty时nginx的一个坑</title>
-      <link>http://www.liabio.cn/posts/2018-11-13-%E5%AD%A6%E4%B9%A0openresty%E6%97%B6nginx%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/</link>
+      <link>https://liabio.github.io/posts/2018-11-13-%E5%AD%A6%E4%B9%A0openresty%E6%97%B6nginx%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/</link>
       <pubDate>Tue, 13 Nov 2018 16:56:04 +0800</pubDate>
       
-      <guid>http://www.liabio.cn/posts/2018-11-13-%E5%AD%A6%E4%B9%A0openresty%E6%97%B6nginx%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/</guid>
+      <guid>https://liabio.github.io/posts/2018-11-13-%E5%AD%A6%E4%B9%A0openresty%E6%97%B6nginx%E7%9A%84%E4%B8%80%E4%B8%AA%E5%9D%91/</guid>
       <description>报错： nginx: [error] CreateFile() &amp;quot;./logs/nginx.pid&amp;quot; failed (2: The system cannot find the file specified) 在执行了nginx -s stop后，再次启动nginx时报错： 这个坑主要原因就是没有nginx.pid这个文件，./logs/下找不到nginx.pid文件，看了确实找不到。 看了网上很多方案是 需要建立nginx.</description>
     </item>
     
